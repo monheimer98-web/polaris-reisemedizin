@@ -164,15 +164,15 @@ export const kostenPage: KostenPage = {
       id: 'gelbfieber',
       heading: { de: 'Gelbfieberimpfung', en: 'Yellow-fever vaccination' },
       note: {
-        de: 'Die Gelbfieberimpfung darf nur in einer staatlich autorisierten Gelbfieberimpfstelle durchgeführt werden. Unsere Zulassung ist in Vorbereitung – Termine sind in Kürze buchbar.',
-        en: 'Yellow-fever vaccination may only be carried out at a state-authorised yellow-fever centre. Our authorisation is in preparation – appointments will be bookable soon.',
+        de: 'Die Gelbfieberimpfung darf nur in einer staatlich autorisierten Gelbfieberimpfstelle durchgeführt werden. Die Online-Buchung für Gelbfieber-Termine richten wir gerade ein und ist in Kürze verfügbar.',
+        en: 'Yellow-fever vaccination may only be carried out at a state-authorised yellow-fever centre. Online booking for yellow-fever appointments is currently being set up and will be available shortly.',
       },
       items: [
         {
           service: { de: 'Gelbfieberimpfung inkl. internationalem Impfnachweis (ICVP)', en: 'Yellow-fever vaccination incl. international certificate (ICVP)' },
           detail: {
-            de: 'Sobald unsere Zulassung als Gelbfieberimpfstelle aktiv ist. Der Impfstoff (Stamaril®) wird gesondert berechnet.',
-            en: 'As soon as our authorisation as a yellow-fever centre is active. The vaccine (Stamaril®) is billed separately.',
+            de: 'Der Impfstoff (Stamaril®) wird gesondert berechnet. Die Online-Buchung für Gelbfieber-Termine ist in Kürze verfügbar.',
+            en: 'The vaccine (Stamaril®) is billed separately. Online booking for yellow-fever appointments will be available shortly.',
           },
           price: { de: 'in Vorbereitung', en: 'in preparation' },
         },

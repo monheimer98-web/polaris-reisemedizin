@@ -11,6 +11,20 @@
  */
 import type { Localized, ConsentEmbedText } from './types';
 
+/** Eine Terminart zur Orientierung der Patient:innen bei der Buchung. */
+export interface AppointmentType {
+  id: string;
+  icon: 'consultation' | 'focus' | 'vaccination' | 'yellowFever';
+  name: Localized;
+  /** Ungefähre Dauer als kleines Label. */
+  duration: Localized;
+  description: Localized;
+  /** Empfohlener Einstieg (Beratung zuerst) – wird hervorgehoben. */
+  recommended?: boolean;
+  /** Buchbar? Gelbfieber bleibt vorerst false → „in Vorbereitung". */
+  enabled: boolean;
+}
+
 export interface BookingPage {
   meta: {
     title: Localized;
@@ -20,6 +34,17 @@ export interface BookingPage {
   };
   intro: Localized<string[]>;
   widgetHeading: Localized;
+  /** Terminarten zur Orientierung; Gelbfieber ist noch nicht buchbar. */
+  appointmentTypes: {
+    heading: Localized;
+    lead: Localized;
+    recommendedLabel: Localized;
+    pendingLabel: Localized;
+    costsLabel: Localized;
+    /** Logischer Pfad ohne Locale-Präfix. */
+    costsPath: string;
+    items: AppointmentType[];
+  };
   consent: ConsentEmbedText;
   /** „Vor Ihrem Termin" – kurze Vorbereitungs-Hinweise. */
   prepare: {
@@ -72,6 +97,88 @@ export const bookingPage: BookingPage = {
   widgetHeading: {
     de: 'Online-Terminbuchung',
     en: 'Online appointment booking',
+  },
+  appointmentTypes: {
+    heading: {
+      de: 'Welcher Termin passt zu Ihnen?',
+      en: 'Which appointment is right for you?',
+    },
+    lead: {
+      de: 'Wählen Sie bei der Buchung die passende Terminart. Im Zweifel ist die reisemedizinische Vollberatung der richtige Einstieg – sie bildet die Grundlage für alle weiteren Schritte.',
+      en: 'Choose the matching appointment type when booking. If in doubt, the full travel-medicine consultation is the right starting point – it forms the basis for every further step.',
+    },
+    recommendedLabel: {
+      de: 'Empfohlener Start',
+      en: 'Recommended start',
+    },
+    pendingLabel: {
+      de: 'In Vorbereitung',
+      en: 'In preparation',
+    },
+    costsLabel: {
+      de: 'Kosten & Abrechnung ansehen',
+      en: 'View fees & billing',
+    },
+    costsPath: '/kosten',
+    items: [
+      {
+        id: 'beratung',
+        icon: 'consultation',
+        name: {
+          de: 'Reisemedizinische Vollberatung',
+          en: 'Full travel-medicine consultation',
+        },
+        duration: { de: 'ca. 30 Minuten', en: 'approx. 30 minutes' },
+        description: {
+          de: 'Ausführliche Beratung zu Ihren Reisezielen, Prüfung der Impftauglichkeit und ein persönlicher, schriftlicher Impf- und Reiseplan – den Sie unabhängig von einer späteren Impfung erhalten.',
+          en: 'In-depth advice for your destinations, a fitness-for-vaccination check and a personal written vaccination and travel plan – which you receive regardless of any later vaccination.',
+        },
+        recommended: true,
+        enabled: true,
+      },
+      {
+        id: 'fokus',
+        icon: 'focus',
+        name: {
+          de: 'Fokus-Beratung: Malaria & Höhenmedizin',
+          en: 'Focused advice: malaria & altitude',
+        },
+        duration: { de: 'ca. 20 Minuten', en: 'approx. 20 minutes' },
+        description: {
+          de: 'Gezielte Beratung, wenn Sie speziell zu Malariaschutz oder Höhenmedizin Fragen haben – auf Wunsch mit Privatrezept für ein Notfallset.',
+          en: 'Targeted advice if you have specific questions about malaria protection or altitude medicine – with a private prescription for a stand-by kit on request.',
+        },
+        enabled: true,
+      },
+      {
+        id: 'impftermin',
+        icon: 'vaccination',
+        name: {
+          de: 'Impftermin',
+          en: 'Vaccination appointment',
+        },
+        duration: { de: 'ca. 15 Minuten', en: 'approx. 15 minutes' },
+        description: {
+          de: 'Durchführung einer Impfung mit Aufklärung und Dokumentation – als gesonderter Folgetermin oder direkt, wenn bereits eine klare Impfempfehlung vorliegt. Den passenden Impfstoff bestellen wir individuell für Sie.',
+          en: 'Administration of a vaccination with briefing and documentation – as a separate follow-up appointment or directly when a clear recommendation already exists. We order the right vaccine individually for you.',
+        },
+        enabled: true,
+      },
+      {
+        id: 'gelbfieber',
+        icon: 'yellowFever',
+        name: {
+          de: 'Gelbfieberimpfung',
+          en: 'Yellow-fever vaccination',
+        },
+        duration: { de: 'ca. 15 Minuten', en: 'approx. 15 minutes' },
+        description: {
+          de: 'Gelbfieberimpfung inklusive internationalem Impfnachweis (ICVP). Die Online-Buchung für Gelbfieber-Termine richten wir gerade ein – sie ist in Kürze verfügbar. Bis dahin vereinbaren Sie Ihren Termin bitte direkt mit uns.',
+          en: 'Yellow-fever vaccination including the international certificate (ICVP). Online booking for yellow-fever appointments is currently being set up and will be available shortly. Until then, please arrange your appointment with us directly.',
+        },
+        enabled: false,
+      },
+    ],
   },
   consent: {
     title: {
