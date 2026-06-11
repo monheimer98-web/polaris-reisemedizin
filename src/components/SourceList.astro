@@ -1,0 +1,53 @@
+---
+/**
+ * „Quellen & Stand"-Box für Fachseiten. Listet die belegten Quellen
+ * (Herausgeber – Titel, verlinkt, mit Abrufdatum), zeigt das Datum der
+ * letzten inhaltlichen Prüfung und einen Hinweis zur regelmäßigen Aktualisierung.
+ */
+import { getLangFromUrl, useTranslations, formatReviewDate } from '../i18n/utils';
+import type { SourceWithId } from '../data/sources';
+
+interface Props {
+  sources: SourceWithId[];
+  lastReviewed: Date;
+}
+
+const { sources, lastReviewed } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section aria-labelledby="sources-heading" class="mt-14 rounded-2xl border border-line bg-sand/50 p-6 sm:p-8">
+  <h2 id="sources-heading" class="text-lg font-semibold text-petrol-900">{t('content.sourcesTitle')}</h2>
+
+  <ul class="mt-4 space-y-3 text-sm leading-relaxed text-ink-soft">
+    {
+      sources.map((source) => (
+        <li>
+          <span class="font-medium text-ink">{source.publisher}</span>
+          {' — '}
+          <a
+            href={source.url}
+            class="font-medium text-petrol-700 underline decoration-gold-400/60 underline-offset-2 hover:text-petrol-900"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {source.title[lang]}
+          </a>
+          {source.note && <span class="text-ink-soft"> · {source.note[lang]}</span>}
+          <span class="mt-0.5 block text-xs text-ink-soft/80">
+            {t('content.retrievedLabel')} {formatReviewDate(source.retrieved, lang)}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="mt-5 border-t border-line pt-4 text-sm text-ink-soft">
+    <p>
+      <span class="font-medium text-ink">{t('content.lastReviewedLabel')}</span>
+      {' '}{formatReviewDate(lastReviewed, lang)}
+    </p>
+    <p class="mt-1 text-xs">{t('content.annualUpdate')}</p>
+  </div>
+</section>

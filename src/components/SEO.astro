@@ -1,0 +1,109 @@
+---
+/**
+ * Zentrale SEO-Komponente: Title, Description, Canonical, hreflang-Alternates,
+ * OpenGraph/Twitter sowie JSON-LD (MedicalClinic) aus der Praxis-Konfiguration.
+ */
+import { site, SITE_URL, DEFAULT_LOCALE, type Locale } from '../config/site';
+import { getAlternateLanguages, HREFLANG } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Pfad zu einem OG-Bild relativ zur Domain, z. B. „/images/og-default.png". */
+  image?: string;
+  /** Seiten von der Indexierung ausschließen (z. B. Danke-/Fehlerseiten). */
+  noindex?: boolean;
+  lang: Locale;
+  /**
+   * Optionale seitenspezifische JSON-LD-Objekte (z. B. FAQPage, Physician),
+   * die zusätzlich zum MedicalClinic-Knoten ausgegeben werden.
+   */
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { title, description, image = '/images/og-default.png', noindex = false, lang, schema } = Astro.props;
+
+// Trailing-Slash normalisieren (außer Root), damit Canonical eindeutig bleibt.
+const normalizedPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const canonicalHref = new URL(normalizedPath, SITE_URL).href;
+const ogImage = new URL(image, SITE_URL).href;
+const ogImageAlt = `${site.brand.name} — ${site.brand.tagline[lang]}`;
+
+const alternates = getAlternateLanguages(Astro.url.pathname);
+const fullTitle = `${title} · ${site.brand.name}`;
+
+// Platzhalterwerte (z. B. „[PLATZHALTER: …]") nicht ins JSON-LD übernehmen.
+const real = (value: string): string | undefined => (value.startsWith('[') ? undefined : value);
+
+const clinicSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalClinic',
+  '@id': `${SITE_URL}/#practice`,
+  name: site.brand.name,
+  description,
+  url: SITE_URL,
+  logo: new URL('/favicon.svg', SITE_URL).href,
+  image: ogImage,
+  inLanguage: HREFLANG[lang],
+  availableLanguage: ['de', 'en'],
+  medicalSpecialty: 'PublicHealth',
+  areaServed: { '@type': 'Country', name: 'Deutschland' },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.contact.street,
+    postalCode: site.contact.zip,
+    addressLocality: site.contact.city,
+    addressCountry: 'DE',
+  },
+  telephone: real(site.contact.phone),
+  email: real(site.contact.email),
+  availableService: [
+    { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Gelbfieberimpfung' : 'Yellow fever vaccination' },
+    { '@type': 'MedicalProcedure', name: lang === 'de' ? 'FSME-Impfung' : 'TBE vaccination' },
+  ],
+};
+
+// MedicalClinic + optionale seitenspezifische Schemata (FAQPage, Physician …).
+const extraSchemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+const schemas = [clinicSchema, ...extraSchemas];
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalHref} />
+
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+{/* Sprach-Alternates für Suchmaschinen */}
+{
+  alternates.map(({ lang: altLang, path }) => (
+    <link rel="alternate" hreflang={HREFLANG[altLang]} href={new URL(path, SITE_URL).href} />
+  ))
+}
+<link
+  rel="alternate"
+  hreflang="x-default"
+  href={new URL(alternates.find((a) => a.lang === DEFAULT_LOCALE)?.path ?? '/', SITE_URL).href}
+/>
+
+{/* OpenGraph */}
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={site.brand.name} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalHref} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:alt" content={ogImageAlt} />
+{/* Maße des Standard-Karten-Bildes (1200×630); beschleunigt das Link-Unfurling. */}
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content={HREFLANG[lang].replace('-', '_')} />
+
+{/* Twitter */}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={ogImageAlt} />
+
+{schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} is:inline />)}

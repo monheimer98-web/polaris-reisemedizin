@@ -1,0 +1,38 @@
+---
+/**
+ * Sprachumschalter als segmentierte DE/EN-Steuerung.
+ * Verlinkt jeweils auf den gleichen logischen Pfad in der anderen Sprache.
+ */
+import { getLangFromUrl, getAlternateLanguages, useTranslations, HREFLANG } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const alternates = getAlternateLanguages(Astro.url.pathname);
+---
+
+<div
+  class="inline-flex items-center rounded-full border border-line bg-white/70 p-0.5 text-xs font-semibold"
+  role="group"
+  aria-label={t('lang.label')}
+>
+  {
+    alternates.map(({ lang: l, path }) => {
+      const isActive = l === lang;
+      return (
+        <a
+          href={path}
+          lang={l}
+          hreflang={HREFLANG[l]}
+          aria-current={isActive ? 'true' : undefined}
+          aria-label={l === 'en' ? t('lang.switchToEn') : t('lang.switchToDe')}
+          class:list={[
+            'rounded-full px-3 py-1 uppercase tracking-wider transition-colors',
+            isActive ? 'bg-petrol-800 text-cream' : 'text-petrol-700 hover:bg-cream',
+          ]}
+        >
+          {l}
+        </a>
+      );
+    })
+  }
+</div>

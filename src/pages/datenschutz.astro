@@ -1,0 +1,17 @@
+---
+/**
+ * Datenschutzerklärung (Deutsch). Dünne Seite: DatenschutzContent rendert die
+ * Informationen nach Art. 13/14 DSGVO (Verantwortlicher aus site.ts, Sprache
+ * aus der URL). Bewusst OHNE CTA – eine Rechtsseite. Identisch zur EN-Variante.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DatenschutzContent from '../components/DatenschutzContent.astro';
+import { getLangFromUrl } from '../i18n/utils';
+import { datenschutzPage } from '../data/datenschutz';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={datenschutzPage.meta.title[lang]} description={datenschutzPage.meta.description[lang]}>
+  <DatenschutzContent />
+</BaseLayout>

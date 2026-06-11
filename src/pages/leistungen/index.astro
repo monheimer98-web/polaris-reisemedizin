@@ -1,0 +1,74 @@
+---
+/**
+ * Übersicht „Leistungen" (Deutsch) — Eltern-Seite der Navigation. Listet die
+ * beiden Impfleistungen als Karten. Sprache aus der URL; identisch zu /en.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import OverviewCard from '../../components/OverviewCard.astro';
+import CTA from '../../components/CTA.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={t('overview.servicesTitle')} description={t('overview.servicesLead')}>
+  <article>
+    <header class="border-b border-line bg-sand/40">
+      <div class="u-container py-14 sm:py-20">
+        <p class="eyebrow"><span class="rule-gold"></span>{t('nav.services')}</p>
+        <h1 class="mt-4 font-display text-4xl text-petrol-900 sm:text-5xl">{t('overview.servicesTitle')}</h1>
+        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft">{t('overview.servicesLead')}</p>
+      </div>
+    </header>
+
+    <div class="u-container pb-16 pt-12 sm:pb-20 sm:pt-16">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <OverviewCard
+          variant="consultation"
+          title={t('home.serviceConsultationTitle')}
+          text={t('home.serviceConsultationText')}
+          cta={t('cta.serviceDetail')}
+          href={getLocalizedPath('/leistungen/reiseberatung', lang)}
+        />
+        <OverviewCard
+          variant="travelVaccinations"
+          title={t('home.serviceTravelVaccTitle')}
+          text={t('home.serviceTravelVaccText')}
+          cta={t('cta.serviceDetail')}
+          href={getLocalizedPath('/leistungen/reiseimpfungen', lang)}
+        />
+        <OverviewCard
+          variant="yellowFever"
+          title={t('home.serviceYfTitle')}
+          text={t('home.serviceYfText')}
+          cta={t('cta.serviceDetail')}
+          href={getLocalizedPath('/leistungen/gelbfieberimpfung', lang)}
+        />
+        <OverviewCard
+          variant="fsme"
+          title={t('home.serviceFsmeTitle')}
+          text={t('home.serviceFsmeText')}
+          cta={t('cta.serviceDetail')}
+          href={getLocalizedPath('/leistungen/fsme-impfung', lang)}
+        />
+        <OverviewCard
+          variant="malaria"
+          title={t('home.serviceMalariaTitle')}
+          text={t('home.serviceMalariaText')}
+          cta={t('cta.serviceDetail')}
+          href={getLocalizedPath('/leistungen/malaria', lang)}
+        />
+        <OverviewCard
+          variant="altitude"
+          title={t('home.serviceAltitudeTitle')}
+          text={t('home.serviceAltitudeText')}
+          cta={t('cta.serviceDetail')}
+          href={getLocalizedPath('/leistungen/hoehenmedizin', lang)}
+        />
+      </div>
+    </div>
+  </article>
+
+  <CTA />
+</BaseLayout>

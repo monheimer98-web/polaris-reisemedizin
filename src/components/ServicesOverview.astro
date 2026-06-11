@@ -1,0 +1,89 @@
+---
+/**
+ * Leistungs-Überblick der Startseite. Spiegelt das vollständige, beratungs-
+ * geführte Angebot: zwei hervorgehobene Karten (Reisemedizinische Beratung &
+ * Reiseimpfungen) und darunter die spezifischen Themen (Gelbfieber, FSME,
+ * Malaria, Höhenmedizin) als kompakte Karten. Abschluss: Link auf die
+ * Leistungsübersicht. Sprache aus der URL.
+ */
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import ServiceCard from './ServiceCard.astro';
+import OverviewCard from './OverviewCard.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="u-container py-20 sm:py-24">
+  <div class="max-w-2xl">
+    <p class="eyebrow">
+      <span class="rule-gold"></span>
+      {t('home.servicesEyebrow')}
+    </p>
+    <h2 class="mt-4 text-3xl sm:text-4xl">{t('home.servicesTitle')}</h2>
+    <p class="mt-4 text-lg leading-relaxed text-ink-soft">{t('home.servicesLead')}</p>
+  </div>
+
+  {/* Hervorgehoben: beratungsgeführter Kern */}
+  <div class="mt-12 grid gap-6 lg:grid-cols-2">
+    <ServiceCard
+      variant="consultation"
+      title={t('home.serviceConsultationTitle')}
+      text={t('home.serviceConsultationText')}
+      facts={[t('home.serviceConsultationFact1'), t('home.serviceConsultationFact2'), t('home.serviceConsultationFact3')]}
+      href={getLocalizedPath('/leistungen/reiseberatung', lang)}
+    />
+    <ServiceCard
+      variant="travelVaccinations"
+      title={t('home.serviceTravelVaccTitle')}
+      text={t('home.serviceTravelVaccText')}
+      facts={[t('home.serviceTravelVaccFact1'), t('home.serviceTravelVaccFact2'), t('home.serviceTravelVaccFact3')]}
+      href={getLocalizedPath('/leistungen/reiseimpfungen', lang)}
+    />
+  </div>
+
+  {/* Spezifische Themen & Pflichtimpfungen */}
+  <h3 class="mt-14 font-display text-xl text-petrol-900 sm:mt-16">{t('home.servicesMoreTitle')}</h3>
+  <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <OverviewCard
+      variant="yellowFever"
+      title={t('home.serviceYfTitle')}
+      text={t('home.serviceYfText')}
+      cta={t('cta.serviceDetail')}
+      href={getLocalizedPath('/leistungen/gelbfieberimpfung', lang)}
+    />
+    <OverviewCard
+      variant="fsme"
+      title={t('home.serviceFsmeTitle')}
+      text={t('home.serviceFsmeText')}
+      cta={t('cta.serviceDetail')}
+      href={getLocalizedPath('/leistungen/fsme-impfung', lang)}
+    />
+    <OverviewCard
+      variant="malaria"
+      title={t('home.serviceMalariaTitle')}
+      text={t('home.serviceMalariaText')}
+      cta={t('cta.serviceDetail')}
+      href={getLocalizedPath('/leistungen/malaria', lang)}
+    />
+    <OverviewCard
+      variant="altitude"
+      title={t('home.serviceAltitudeTitle')}
+      text={t('home.serviceAltitudeText')}
+      cta={t('cta.serviceDetail')}
+      href={getLocalizedPath('/leistungen/hoehenmedizin', lang)}
+    />
+  </div>
+
+  <div class="mt-10">
+    <a
+      href={getLocalizedPath('/leistungen', lang)}
+      class="inline-flex items-center gap-1.5 text-sm font-semibold text-petrol-700 transition-colors hover:text-petrol-900"
+    >
+      {t('home.servicesAllLink')}
+      <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <path d="M3 8h9M9 5l3 3-3 3" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+  </div>
+</section>

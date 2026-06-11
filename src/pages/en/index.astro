@@ -1,0 +1,22 @@
+---
+/**
+ * Home page (English, /en/). Sections derive their language from the URL,
+ * so this page stays minimal and identical to the German index.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Hero from '../../components/Hero.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import ServicesOverview from '../../components/ServicesOverview.astro';
+import CTA from '../../components/CTA.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={t('home.heroTitle')} description={t('home.heroLead')}>
+  <Hero />
+  <TrustBar />
+  <ServicesOverview />
+  <CTA />
+</BaseLayout>

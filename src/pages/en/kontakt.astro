@@ -1,0 +1,18 @@
+---
+/**
+ * Contact & directions (English). Thin page: KontaktContent renders the
+ * content incl. the 2-click map (language from the URL). Deliberately without
+ * a closing CTA – the page is itself the contact endpoint. Identical to the
+ * German variant.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import KontaktContent from '../../components/KontaktContent.astro';
+import { getLangFromUrl } from '../../i18n/utils';
+import { kontaktPage } from '../../data/kontakt';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={kontaktPage.meta.title[lang]} description={kontaktPage.meta.description[lang]}>
+  <KontaktContent />
+</BaseLayout>

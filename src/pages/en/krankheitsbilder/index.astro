@@ -1,0 +1,46 @@
+---
+/**
+ * Diseases overview (English) — parent navigation page. Lists the two diseases
+ * as cards. Language from the URL; identical to the German variant.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import OverviewCard from '../../../components/OverviewCard.astro';
+import CTA from '../../../components/CTA.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={t('overview.diseasesTitle')} description={t('overview.diseasesLead')}>
+  <article>
+    <header class="border-b border-line bg-sand/40">
+      <div class="u-container py-14 sm:py-20">
+        <p class="eyebrow"><span class="rule-gold"></span>{t('nav.diseases')}</p>
+        <h1 class="mt-4 font-display text-4xl text-petrol-900 sm:text-5xl">{t('overview.diseasesTitle')}</h1>
+        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft">{t('overview.diseasesLead')}</p>
+      </div>
+    </header>
+
+    <div class="u-container pb-16 pt-12 sm:pb-20 sm:pt-16">
+      <div class="grid gap-6 lg:grid-cols-2">
+        <OverviewCard
+          variant="yellowFever"
+          title={t('nav.yellowFever')}
+          text={t('overview.diseaseYfText')}
+          cta={t('cta.diseaseDetail')}
+          href={getLocalizedPath('/krankheitsbilder/gelbfieber', lang)}
+        />
+        <OverviewCard
+          variant="fsme"
+          title={t('nav.fsme')}
+          text={t('overview.diseaseFsmeText')}
+          cta={t('cta.diseaseDetail')}
+          href={getLocalizedPath('/krankheitsbilder/fsme', lang)}
+        />
+      </div>
+    </div>
+  </article>
+
+  <CTA />
+</BaseLayout>

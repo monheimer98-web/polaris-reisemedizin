@@ -1,0 +1,17 @@
+---
+/**
+ * Termin buchen (Deutsch). Dünne Seite: TerminContent rendert den Inhalt inkl.
+ * 2-Klick-Consent-Gate (Sprache aus der URL). Bewusst OHNE abschließende CTA –
+ * diese Seite ist selbst der Conversion-Punkt. Identisch zur EN-Variante.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TerminContent from '../components/TerminContent.astro';
+import { getLangFromUrl } from '../i18n/utils';
+import { bookingPage } from '../data/termin';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={bookingPage.meta.title[lang]} description={bookingPage.meta.description[lang]}>
+  <TerminContent />
+</BaseLayout>

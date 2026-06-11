@@ -1,0 +1,69 @@
+---
+/**
+ * Vertrauensleiste: vier sachliche Belege für Kompetenz & Seriosität der
+ * Praxis (autorisierte Impfstelle, ärztliche Leitung, gesicherte Quellen,
+ * persönliche Betreuung). Sprache aus der URL; Texte aus dem i18n-Wörterbuch.
+ */
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import type { UiKey } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+type IconName = 'shield' | 'cap' | 'book' | 'calendar';
+interface Item {
+  icon: IconName;
+  titleKey: UiKey;
+  textKey: UiKey;
+}
+
+const items: Item[] = [
+  { icon: 'shield', titleKey: 'trust.authorizedTitle', textKey: 'trust.authorizedText' },
+  { icon: 'cap', titleKey: 'trust.specialistTitle', textKey: 'trust.specialistText' },
+  { icon: 'book', titleKey: 'trust.sourcesTitle', textKey: 'trust.sourcesText' },
+  { icon: 'calendar', titleKey: 'trust.personalTitle', textKey: 'trust.personalText' },
+];
+---
+
+<section aria-label={t('trust.ariaLabel')} class="border-y border-line bg-sand/70">
+  <div class="u-container py-14 sm:py-16">
+    <ul class="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        items.map((item) => (
+          <li class="flex flex-col gap-3">
+            <span class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-petrol-800/[0.06] text-petrol-700">
+              {item.icon === 'shield' && (
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path d="M12 3l7 2.5v5.5c0 4.6-3.1 8.2-7 9.2-3.9-1-7-4.6-7-9.2V5.5L12 3z" stroke-linejoin="round" />
+                  <path d="M9 12l2 2 4-4.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              )}
+              {item.icon === 'cap' && (
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path d="M12 4 2.5 8.5 12 13l9.5-4.5L12 4Z" stroke-linejoin="round" />
+                  <path d="M6.5 10.8v4.4c0 1.2 2.5 2.8 5.5 2.8s5.5-1.6 5.5-2.8v-4.4" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M21.5 8.5v5" stroke-linecap="round" />
+                </svg>
+              )}
+              {item.icon === 'book' && (
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path d="M12 6.5C10.3 5.2 8 4.5 5 4.7v13c3-.2 5.3.5 7 1.8 1.7-1.3 4-2 7-1.8v-13c-3-.2-5.3.5-7 1.8Z" stroke-linejoin="round" />
+                  <path d="M12 6.5v12.8" stroke-linecap="round" />
+                </svg>
+              )}
+              {item.icon === 'calendar' && (
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <rect x="3.5" y="5" width="17" height="15.5" rx="2.5" />
+                  <path d="M3.5 9.5h17M8 3v4M16 3v4" stroke-linecap="round" />
+                  <path d="M9 14.2l1.8 1.8 3.4-3.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              )}
+            </span>
+            <h3 class="text-base font-semibold text-petrol-900">{t(item.titleKey)}</h3>
+            <p class="text-sm leading-relaxed text-ink-soft">{t(item.textKey)}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

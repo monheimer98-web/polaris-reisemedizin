@@ -1,0 +1,107 @@
+---
+/**
+ * Inhalt der Datenschutz-Seite. Selbsttragend: leitet die Sprache aus der URL
+ * ab, setzt den Verantwortlichen zentral aus `site.ts` ein und rendert die
+ * Rechtsprosa aus `datenschutzPage`. Anbieterabhängige Platzhalter
+ * (`{bookingProvider}`/`{mapProvider}`) werden mit den real konfigurierten
+ * Anbieternamen aufgelöst – analog zum `{provider}`-Muster der Consent-Texte.
+ */
+import { getLangFromUrl, useTranslations, formatReviewDate } from '../i18n/utils';
+import { site } from '../config/site';
+import { datenschutzPage as page } from '../data/datenschutz';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+/** Anbieter-Platzhalter in der Rechtsprosa auflösen. */
+const fill = (value: string) =>
+  value.replaceAll('{bookingProvider}', site.booking.provider).replaceAll('{mapProvider}', site.map.provider);
+---
+
+<article>
+  {/* Hero */}
+  <header class="border-b border-line bg-sand/40">
+    <div class="u-container py-14 sm:py-20">
+      <div class="max-w-3xl">
+        <p class="eyebrow">
+          <span class="rule-gold"></span>
+          {page.meta.eyebrow[lang]}
+        </p>
+        <h1 class="mt-5 font-display text-4xl text-petrol-900 sm:text-5xl">{page.meta.title[lang]}</h1>
+        <p class="mt-5 text-lg leading-relaxed text-ink-soft">{page.meta.lead[lang]}</p>
+        <p class="mt-6 text-sm text-ink-soft">
+          <span class="font-medium text-ink">{t('legal.lastUpdated')}</span>
+          {formatReviewDate(page.lastUpdated, lang)}
+        </p>
+      </div>
+    </div>
+  </header>
+
+  {/* Verantwortlicher + Abschnitte */}
+  <section class="u-container-narrow py-14 sm:py-16">
+    <div class="space-y-12">
+      {/* Verantwortlicher (aus site.ts) */}
+      <section id="verantwortlicher">
+        <h2 class="font-display text-2xl text-petrol-900 sm:text-3xl">{page.controllerHeading[lang]}</h2>
+        <p class="mt-4 leading-relaxed text-ink-soft">{page.controllerIntro[lang]}</p>
+        <address class="mt-4 space-y-0.5 not-italic leading-relaxed text-ink-soft">
+          <p class="font-semibold text-petrol-900">{site.brand.legalName}</p>
+          <p>{site.contact.street}</p>
+          {site.contact.addressNote && <p>{site.contact.addressNote[lang]}</p>}
+          <p>{site.contact.zip} {site.contact.city}</p>
+          <p>{site.contact.country[lang]}</p>
+        </address>
+        <dl class="mt-4 space-y-2 text-sm">
+          <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <dt class="font-semibold uppercase tracking-wider text-gold-700">{page.contactLabels.phone[lang]}</dt>
+            <dd>
+              <a
+                href={site.contact.phoneHref}
+                class="font-medium text-petrol-800 underline decoration-gold-500 underline-offset-4 hover:text-petrol-900"
+              >
+                {site.contact.phone}
+              </a>
+            </dd>
+          </div>
+          <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <dt class="font-semibold uppercase tracking-wider text-gold-700">{page.contactLabels.email[lang]}</dt>
+            <dd>
+              <a
+                href={site.contact.emailHref}
+                class="font-medium text-petrol-800 underline decoration-gold-500 underline-offset-4 hover:text-petrol-900"
+              >
+                {site.contact.email}
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      {/* Rechtsprosa-Abschnitte */}
+      {
+        page.sections.map((section) => (
+          <section id={section.id}>
+            <h2 class="font-display text-2xl text-petrol-900 sm:text-3xl">{section.heading[lang]}</h2>
+            <div class="mt-4 space-y-3 leading-relaxed text-ink-soft">
+              {section.body[lang].map((paragraph) => (
+                <p>{fill(paragraph)}</p>
+              ))}
+            </div>
+            {section.list && (
+              <ul class="mt-4 space-y-2 pl-5 leading-relaxed text-ink-soft [list-style:disc]">
+                {section.list[lang].map((item) => (
+                  <li class="pl-1">{fill(item)}</li>
+                ))}
+              </ul>
+            )}
+          </section>
+        ))
+      }
+
+      {/* Abschluss-Hinweis (Mustercharakter) */}
+      <p class="rounded-2xl border border-line bg-sand/50 px-5 py-4 text-sm leading-relaxed text-ink-soft sm:px-6">
+        {page.closingNote[lang]}
+      </p>
+    </div>
+  </section>
+</article>

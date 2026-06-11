@@ -1,0 +1,38 @@
+---
+/**
+ * Abschluss-CTA der Startseite: Petrol-Band mit Terminbuchung als primärer
+ * Handlungsaufforderung, Kontakt als Sekundärweg und Hinweis auf die
+ * 10-Tage-Frist der Gelbfieberimpfung. Sprache aus der URL.
+ */
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import { BOOKING_PATH } from '../config/nav';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="u-container pb-20 sm:pb-24">
+  <div class="relative overflow-hidden rounded-3xl bg-petrol-800 px-6 py-14 sm:px-12 sm:py-16">
+    <div class="pointer-events-none absolute -right-16 -top-24 h-72 w-72 rounded-full bg-gold-400/10 blur-3xl" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -bottom-24 -left-10 h-64 w-64 rounded-full bg-petrol-300/10 blur-3xl" aria-hidden="true"></div>
+
+    <div class="relative mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl text-cream sm:text-4xl">{t('home.ctaTitle')}</h2>
+      <p class="mt-4 text-lg leading-relaxed text-cream/80">{t('home.ctaLead')}</p>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a href={getLocalizedPath(BOOKING_PATH, lang)} class="btn-gold" aria-label={t('cta.bookAria')}>
+          {t('cta.book')}
+        </a>
+        <a
+          href={getLocalizedPath('/kontakt', lang)}
+          class="btn-ghost border-cream/30 bg-transparent text-cream hover:bg-white/10"
+        >
+          {t('nav.contact')}
+        </a>
+      </div>
+
+      <p class="mt-6 text-sm leading-relaxed text-cream/60">{t('home.ctaNote')}</p>
+    </div>
+  </div>
+</section>

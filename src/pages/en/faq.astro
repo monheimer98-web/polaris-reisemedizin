@@ -1,0 +1,32 @@
+---
+/**
+ * FAQ (English). Thin page: FAQContent renders the content (language from the
+ * URL), CTA closes it off. Identical to the German variant.
+ * The same content also produces a FAQPage JSON-LD.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FAQContent from '../../components/FAQContent.astro';
+import CTA from '../../components/CTA.astro';
+import { getLangFromUrl } from '../../i18n/utils';
+import { faqPage } from '../../data/faq';
+
+const lang = getLangFromUrl(Astro.url);
+
+// FAQPage JSON-LD: questions from all groups, answer paragraphs joined to text.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqPage.groups.flatMap((group) =>
+    group.items.map((item) => ({
+      '@type': 'Question',
+      name: item.q[lang],
+      acceptedAnswer: { '@type': 'Answer', text: item.a[lang].join(' ') },
+    })),
+  ),
+};
+---
+
+<BaseLayout title={faqPage.meta.title[lang]} description={faqPage.meta.description[lang]} schema={faqSchema}>
+  <FAQContent />
+  <CTA />
+</BaseLayout>

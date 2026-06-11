@@ -1,0 +1,17 @@
+---
+/**
+ * Imprint (English). Thin page: ImpressumContent renders the § 5 DDG mandatory
+ * information (data from site.ts, language from the URL). Deliberately without a
+ * CTA – a legal page. Identical to the German variant.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ImpressumContent from '../../components/ImpressumContent.astro';
+import { getLangFromUrl } from '../../i18n/utils';
+import { impressumPage } from '../../data/impressum';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={impressumPage.meta.title[lang]} description={impressumPage.meta.description[lang]}>
+  <ImpressumContent />
+</BaseLayout>

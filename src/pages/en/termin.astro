@@ -1,0 +1,18 @@
+---
+/**
+ * Book appointment (English). Thin page: TerminContent renders the content
+ * including the 2-click consent gate (language from the URL). Deliberately
+ * WITHOUT a closing CTA – this page is the conversion point itself.
+ * Identical to the German variant.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TerminContent from '../../components/TerminContent.astro';
+import { getLangFromUrl } from '../../i18n/utils';
+import { bookingPage } from '../../data/termin';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={bookingPage.meta.title[lang]} description={bookingPage.meta.description[lang]}>
+  <TerminContent />
+</BaseLayout>

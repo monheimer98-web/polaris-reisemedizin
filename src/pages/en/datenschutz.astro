@@ -1,0 +1,17 @@
+---
+/**
+ * Privacy policy (English). Thin page: DatenschutzContent renders the Art. 13/14
+ * GDPR information (controller from site.ts, language from the URL). Deliberately
+ * without a CTA – a legal page. Identical to the German variant.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DatenschutzContent from '../../components/DatenschutzContent.astro';
+import { getLangFromUrl } from '../../i18n/utils';
+import { datenschutzPage } from '../../data/datenschutz';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={datenschutzPage.meta.title[lang]} description={datenschutzPage.meta.description[lang]}>
+  <DatenschutzContent />
+</BaseLayout>

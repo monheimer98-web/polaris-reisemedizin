@@ -1,0 +1,17 @@
+---
+/**
+ * Reisemedizin für Unternehmen (Deutsch). Dünne Seite: UnternehmenContent
+ * rendert den B2B-Inhalt inkl. eigenem Kontakt-Band (Sprache aus der URL).
+ * Identisch zur EN-Variante; keine zusätzliche Termin-CTA.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import UnternehmenContent from '../components/UnternehmenContent.astro';
+import { getLangFromUrl } from '../i18n/utils';
+import { unternehmenPage } from '../data/unternehmen';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={unternehmenPage.meta.title[lang]} description={unternehmenPage.meta.description[lang]}>
+  <UnternehmenContent />
+</BaseLayout>

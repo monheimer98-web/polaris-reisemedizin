@@ -1,0 +1,17 @@
+---
+/**
+ * Travel medicine for businesses (English). Thin page: UnternehmenContent
+ * renders the B2B content incl. its own contact band (language from the URL).
+ * Identical to the German variant; no additional booking CTA.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import UnternehmenContent from '../../components/UnternehmenContent.astro';
+import { getLangFromUrl } from '../../i18n/utils';
+import { unternehmenPage } from '../../data/unternehmen';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={unternehmenPage.meta.title[lang]} description={unternehmenPage.meta.description[lang]}>
+  <UnternehmenContent />
+</BaseLayout>

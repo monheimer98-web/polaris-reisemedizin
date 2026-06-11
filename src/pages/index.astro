@@ -1,0 +1,22 @@
+---
+/**
+ * Startseite (Deutsch, unpräfixiert). Sektionen leiten ihre Sprache selbst aus
+ * der URL ab — daher bleibt diese Seite schlank und identisch zu /en/index.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ServicesOverview from '../components/ServicesOverview.astro';
+import CTA from '../components/CTA.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={t('home.heroTitle')} description={t('home.heroLead')}>
+  <Hero />
+  <TrustBar />
+  <ServicesOverview />
+  <CTA />
+</BaseLayout>

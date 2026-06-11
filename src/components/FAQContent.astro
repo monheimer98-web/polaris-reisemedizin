@@ -1,0 +1,69 @@
+---
+/**
+ * Inhalt der FAQ-Seite. Selbsttragend: leitet die Sprache aus der URL ab und
+ * rendert die thematisch gruppierten Fragen aus `faqPage`. Die Akkordeons
+ * nutzen das native `<details>`/`<summary>`-Element – barrierearm und ganz
+ * ohne JavaScript-Island. Der Chevron dreht sich rein per CSS (`group-open`).
+ */
+import { getLangFromUrl } from '../i18n/utils';
+import { faqPage as page } from '../data/faq';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<article>
+  {/* Hero */}
+  <header class="border-b border-line bg-sand/40">
+    <div class="u-container py-14 sm:py-20">
+      <div class="max-w-3xl">
+        <p class="eyebrow">
+          <span class="rule-gold"></span>
+          {page.meta.eyebrow[lang]}
+        </p>
+        <h1 class="mt-5 font-display text-4xl text-petrol-900 sm:text-5xl">{page.meta.title[lang]}</h1>
+        <p class="mt-5 text-lg leading-relaxed text-ink-soft">{page.meta.lead[lang]}</p>
+      </div>
+    </div>
+  </header>
+
+  {/* Fragen, thematisch gruppiert */}
+  <section class="u-container py-14 sm:py-16">
+    <div class="mx-auto max-w-3xl space-y-12 sm:space-y-14">
+      {
+        page.groups.map((group) => (
+          <div>
+            <h2 class="font-display text-2xl text-petrol-900 sm:text-3xl">{group.title[lang]}</h2>
+            <div class="mt-6 space-y-3">
+              {group.items.map((item) => (
+                <details class="group overflow-hidden rounded-2xl border border-line bg-white shadow-[var(--shadow-soft)] transition-colors open:border-petrol-800/20">
+                  <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold text-petrol-900 marker:hidden [&::-webkit-details-marker]:hidden sm:px-6">
+                    <span>{item.q[lang]}</span>
+                    <svg
+                      class="h-5 w-5 shrink-0 text-gold-700 transition-transform duration-200 group-open:rotate-180"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </summary>
+                  <div class="space-y-3 px-5 pb-5 leading-relaxed text-ink-soft sm:px-6">
+                    {item.a[lang].map((paragraph) => (
+                      <p>{paragraph}</p>
+                    ))}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+
+      <p class="rounded-2xl border border-line bg-sand/50 px-5 py-4 text-sm leading-relaxed text-ink-soft sm:px-6">
+        {page.note[lang]}
+      </p>
+    </div>
+  </section>
+</article>

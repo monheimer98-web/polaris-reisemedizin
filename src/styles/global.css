@@ -1,0 +1,197 @@
+/* ------------------------------------------------------------------ *
+ * Polaris — Design-System (Tailwind v4, CSS-first)
+ * Schriften werden selbst gehostet (DSGVO: kein Google-Fonts-CDN) und per
+ * JS-Import in BaseLayout.astro geladen, damit Vite die woff2-Dateien
+ * bündelt und die URLs korrekt umschreibt.
+ * ------------------------------------------------------------------ */
+@import 'tailwindcss';
+
+@theme {
+  /* — Markenfarben: Petrol (Primär) — */
+  --color-petrol-50: #edf5f5;
+  --color-petrol-100: #d2e6e6;
+  --color-petrol-200: #a6cdcd;
+  --color-petrol-300: #72abac;
+  --color-petrol-400: #45888b;
+  --color-petrol-500: #2c6a6e;
+  --color-petrol-600: #20545a;
+  --color-petrol-700: #18434a;
+  --color-petrol-800: #0e3b43; /* Markenbasis */
+  --color-petrol-900: #082a30;
+
+  /* — Akzent: Gold — */
+  --color-gold-50: #fbf7ec;
+  --color-gold-100: #f4e9c9;
+  --color-gold-200: #e9d293;
+  --color-gold-300: #dcba62;
+  --color-gold-400: #c9a24b; /* Markenakzent */
+  --color-gold-500: #b68b38;
+  --color-gold-600: #97702c;
+  --color-gold-700: #735427;
+  --color-gold-800: #4f3a1f;
+  --color-gold-900: #2c2012;
+
+  /* — Warme Neutraltöne — */
+  --color-cream: #f7f5f0;
+  --color-sand: #efece4;
+  --color-line: #e4dfd4;
+  --color-ink: #15211f;
+  --color-ink-soft: #45524f;
+
+  /* — Schriften — */
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-display: 'Fraunces Variable', ui-serif, Georgia, 'Times New Roman', serif;
+
+  /* — Weiche Elevation (premium) — */
+  --shadow-soft: 0 1px 2px rgba(8, 42, 48, 0.04), 0 10px 30px -12px rgba(8, 42, 48, 0.18);
+  --shadow-card: 0 1px 0 rgba(8, 42, 48, 0.04), 0 18px 40px -20px rgba(8, 42, 48, 0.22);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.012em;
+    color: var(--color-petrol-900);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-underline-offset: 0.18em;
+  }
+
+  /* Sichtbarer, markenkonformer Fokus für Tastaturnutzer */
+  :focus-visible {
+    outline: 2px solid var(--color-gold-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-petrol-800);
+    color: var(--color-cream);
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Inhalts-Container mit konsistentem Seitenrand */
+  .u-container {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .u-container-narrow {
+    @apply mx-auto w-full max-w-3xl px-5 sm:px-8;
+  }
+
+  /* Überschriften-Label */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-petrol-500;
+  }
+
+  /* Buttons — gemeinsame Basis für alle Varianten über eine Sammel-Selektor-
+     Regel. Tailwind v4 erlaubt @apply nur für echte Utilities, nicht für eine
+     selbst definierte Klasse (.btn), daher die Gruppierung statt „@apply btn". */
+  .btn,
+  .btn-primary,
+  .btn-gold,
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold leading-none transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2;
+  }
+  .btn-primary {
+    @apply bg-petrol-800 text-cream hover:bg-petrol-700;
+  }
+  .btn-gold {
+    @apply bg-gold-400 text-petrol-900 hover:bg-gold-300;
+  }
+  .btn-ghost {
+    @apply border border-line bg-transparent text-petrol-800 hover:bg-white;
+  }
+
+  /* Karten-Oberfläche */
+  .card {
+    @apply rounded-2xl border border-line bg-white p-6 shadow-[var(--shadow-card)] sm:p-8;
+  }
+
+  /* Feine goldene Trennlinie */
+  .rule-gold {
+    @apply h-px w-12 bg-gold-400;
+  }
+
+  /* Fließtext-Typografie für Fachseiten (Ersatz für „prose";
+     kein @tailwindcss/typography installiert). Gilt je Abschnitt. */
+  .rich-text > :first-child {
+    @apply mt-0;
+  }
+  .rich-text h2 {
+    @apply text-2xl sm:text-3xl;
+  }
+  .rich-text h3 {
+    @apply mt-8 text-xl;
+  }
+  .rich-text p {
+    @apply mt-4 text-ink-soft;
+  }
+  .rich-text ul {
+    @apply mt-4 space-y-2.5 pl-0;
+  }
+  .rich-text li {
+    @apply relative pl-6 text-ink-soft;
+  }
+  .rich-text li::before {
+    content: '';
+    @apply absolute left-0 top-[0.62em] h-1.5 w-1.5 rounded-full bg-gold-400;
+  }
+  .rich-text a {
+    @apply font-medium text-petrol-700 underline decoration-gold-400/50 underline-offset-4 hover:text-petrol-900;
+  }
+  .rich-text strong {
+    @apply font-semibold text-petrol-900;
+  }
+}

@@ -1,0 +1,33 @@
+---
+/**
+ * Team / Über uns (Deutsch). Dünne Seite: TeamContent rendert den Inhalt
+ * (Sprache aus der URL), CTA schließt ab. Identisch zur EN-Variante.
+ * Für approbierte Ärzt:innen entsteht zusätzlich ein Physician-JSON-LD.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TeamContent from '../components/TeamContent.astro';
+import CTA from '../components/CTA.astro';
+import { getLangFromUrl } from '../i18n/utils';
+import { site, SITE_URL } from '../config/site';
+import { teamPage } from '../data/team';
+
+const lang = getLangFromUrl(Astro.url);
+
+// Physician-JSON-LD nur für approbierte Ärzt:innen (nicht für med. Mitarbeiter).
+const physicianSchema = site.team
+  .filter((member) => member.isPhysician)
+  .map((member) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Physician',
+    name: member.name,
+    image: new URL(member.photo, SITE_URL).href,
+    jobTitle: member.role[lang],
+    medicalSpecialty: 'PublicHealth',
+    worksFor: { '@type': 'MedicalClinic', '@id': `${SITE_URL}/#practice`, name: site.brand.name },
+  }));
+---
+
+<BaseLayout title={teamPage.meta.title[lang]} description={teamPage.meta.description[lang]} schema={physicianSchema}>
+  <TeamContent />
+  <CTA />
+</BaseLayout>

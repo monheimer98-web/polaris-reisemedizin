@@ -1,0 +1,18 @@
+---
+/**
+ * Fees & billing (English). Thin page: KostenContent renders the fee guidance
+ * (language from the URL), CTA closes. Identical to the German variant.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import KostenContent from '../../components/KostenContent.astro';
+import CTA from '../../components/CTA.astro';
+import { getLangFromUrl } from '../../i18n/utils';
+import { kostenPage } from '../../data/kosten';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={kostenPage.meta.title[lang]} description={kostenPage.meta.description[lang]}>
+  <KostenContent />
+  <CTA />
+</BaseLayout>

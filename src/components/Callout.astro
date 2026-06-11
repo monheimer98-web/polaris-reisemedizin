@@ -1,0 +1,75 @@
+---
+/**
+ * Hervorgehobener Hinweis für Fachseiten. Drei Varianten:
+ *  - info      (Petrol): Kernfakt / neutrale Information
+ *  - important (Gold):   wichtiger Hinweis
+ *  - caution   (Amber):  Vorsicht / Gegenanzeigen
+ * Text wird als Slot übergeben; optionaler Titel als Prop.
+ */
+import type { CalloutVariant } from '../data/types';
+
+interface Props {
+  variant?: CalloutVariant;
+  title?: string;
+}
+
+const { variant = 'info', title } = Astro.props;
+
+const styles: Record<CalloutVariant, { box: string; icon: string; title: string }> = {
+  info: {
+    box: 'border-petrol-200 bg-petrol-50',
+    icon: 'text-petrol-700',
+    title: 'text-petrol-900',
+  },
+  important: {
+    box: 'border-gold-300 bg-gold-50',
+    icon: 'text-gold-700',
+    title: 'text-petrol-900',
+  },
+  caution: {
+    box: 'border-amber-300 bg-amber-50',
+    icon: 'text-amber-700',
+    title: 'text-amber-900',
+  },
+};
+
+const s = styles[variant];
+---
+
+<aside role="note" class:list={['my-6 flex gap-3.5 rounded-2xl border p-4 sm:p-5', s.box]}>
+  <span class:list={['mt-0.5 shrink-0', s.icon]}>
+    {
+      variant === 'info' && (
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 11v5" stroke-linecap="round" />
+          <path d="M12 7.6h.01" stroke-linecap="round" />
+        </svg>
+      )
+    }
+    {
+      variant === 'important' && (
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 8v5" stroke-linecap="round" />
+          <path d="M12 16.4h.01" stroke-linecap="round" />
+        </svg>
+      )
+    }
+    {
+      variant === 'caution' && (
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M12 4.5 21 19.5H3L12 4.5Z" stroke-linejoin="round" />
+          <path d="M12 10v4" stroke-linecap="round" />
+          <path d="M12 17h.01" stroke-linecap="round" />
+        </svg>
+      )
+    }
+  </span>
+  <div class="min-w-0">
+    {title && <p class:list={['font-semibold', s.title]}>{title}</p>}
+    <div class:list={['text-sm leading-relaxed text-ink-soft', title && 'mt-1']}>
+      <slot />
+    </div>
+  </div>
+</aside>

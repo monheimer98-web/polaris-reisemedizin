@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+# Statisches Deployment der Meridian-Website auf GitHub Pages.
+# Die offizielle withastro/action übernimmt Install + `astro build` und lädt
+# das Pages-Artefakt hoch; actions/deploy-pages veröffentlicht es.
+#
+# Hinweis (laut Projektentscheidung): zunächst GitHub Pages, später Migration
+# auf einen EU-/DE-Hoster (DSGVO/AVV, eigene Security-Header). Bei Nutzung
+# einer Custom-Domain ist KEIN `base`-Pfad nötig; ohne Custom-Domain müsste
+# in astro.config.mjs `base: '/<repo-name>'` gesetzt werden.
+
+on:
+  # Bei jedem Push auf main automatisch deployen …
+  push:
+    branches: [main]
+  # … und manuell auslösbar.
+  workflow_dispatch:
+
+# Vom GitHub-Pages-Deployment benötigte Rechte (OIDC).
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Gleichzeitige Deployments vermeiden; laufendes nicht abbrechen.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build mit Astro
+        uses: withastro/action@v6
+        with:
+          # Node-Version an den gepinnten Stack angleichen.
+          node-version: 24
+          # path: .                # Projekt-Root (Default)
+          # package-manager: npm   # wird automatisch erkannt
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy auf GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

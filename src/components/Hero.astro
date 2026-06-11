@@ -1,0 +1,44 @@
+---
+/**
+ * Startseiten-Hero: Eyebrow, Titel, Lead, primäre/sekundäre CTA sowie
+ * Vertrauens-Badge (staatlich autorisierte Gelbfieberimpfstelle).
+ * Sprache wird aus der URL abgeleitet.
+ */
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import { BOOKING_PATH } from '../config/nav';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="relative overflow-hidden">
+  <div class="pointer-events-none absolute -right-32 -top-40 h-[28rem] w-[28rem] rounded-full bg-petrol-100/50 blur-3xl" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-gold-100/40 blur-3xl" aria-hidden="true"></div>
+
+  <div class="u-container relative py-20 sm:py-28">
+    <div class="max-w-3xl">
+      <p class="eyebrow">
+        <span class="rule-gold"></span>
+        {t('home.eyebrow')}
+      </p>
+      <h1 class="mt-5 text-balance text-4xl sm:text-5xl lg:text-6xl">{t('home.heroTitle')}</h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">{t('home.heroLead')}</p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3">
+        <a href={getLocalizedPath(BOOKING_PATH, lang)} class="btn-gold" aria-label={t('cta.bookAria')}>
+          {t('cta.book')}
+        </a>
+        <a href={getLocalizedPath('/leistungen', lang)} class="btn-ghost">{t('cta.services')}</a>
+      </div>
+
+      <div class="mt-10 inline-flex items-center gap-3 rounded-full border border-line bg-white px-4 py-2.5 shadow-[var(--shadow-soft)]">
+        <svg class="h-5 w-5 shrink-0 text-gold-500" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M10 1.5l6.5 2.4v4.3c0 4.1-2.8 7.3-6.5 8.3-3.7-1-6.5-4.2-6.5-8.3V3.9L10 1.5z" fill="currentColor" opacity="0.16" />
+          <path d="M10 1.5l6.5 2.4v4.3c0 4.1-2.8 7.3-6.5 8.3-3.7-1-6.5-4.2-6.5-8.3V3.9L10 1.5z" stroke="currentColor" stroke-width="1.3" />
+          <path d="M7 10l2 2 4-4.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span class="text-sm font-medium text-petrol-900">{t('home.badgeYellowFever')}</span>
+      </div>
+    </div>
+  </div>
+</section>

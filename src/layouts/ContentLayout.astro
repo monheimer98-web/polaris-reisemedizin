@@ -1,0 +1,97 @@
+---
+/**
+ * Layout für zitierte Fachseiten (Krankheitsbilder & Leistungen).
+ * Baut auf BaseLayout auf und rahmt den Fließtext (Slot) mit:
+ *  - klinischem Hero (Eyebrow + H1 + Lead + „Inhaltlich geprüft"-Datum),
+ *  - optionalen Querverweisen (related),
+ *  - „Quellen & Stand"-Box (SourceList),
+ *  - medizinischem Disclaimer (aus dem i18n-Wörterbuch),
+ *  - Abschluss-CTA (bestehende CTA-Komponente).
+ * Sprache wird aus der URL abgeleitet.
+ */
+import BaseLayout from './BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+import SourceList from '../components/SourceList.astro';
+import { getLangFromUrl, useTranslations, formatReviewDate } from '../i18n/utils';
+import type { SourceWithId } from '../data/sources';
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  lead: string;
+  lastReviewed: Date;
+  sources: SourceWithId[];
+  related?: { label: string; path: string }[];
+  image?: string;
+  noindex?: boolean;
+}
+
+const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={title} description={description} image={image} noindex={noindex}>
+  <article>
+    <header class="border-b border-line bg-sand/40">
+      <div class="u-container py-14 sm:py-20">
+        <div class="max-w-3xl">
+          <p class="eyebrow">
+            <span class="rule-gold"></span>
+            {eyebrow}
+          </p>
+          <h1 class="mt-5 text-4xl sm:text-5xl">{title}</h1>
+          <p class="mt-5 text-lg leading-relaxed text-ink-soft">{lead}</p>
+          <p class="mt-6 text-sm text-ink-soft">
+            <span class="font-medium text-ink">{t('content.lastReviewedLabel')}</span>
+            {' '}{formatReviewDate(lastReviewed, lang)}
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <div class="u-container-narrow py-14 sm:py-16">
+      <slot />
+
+      {
+        related.length > 0 && (
+          <nav aria-label={t('content.relatedTitle')} class="mt-12 border-t border-line pt-8">
+            <h2 class="text-lg font-semibold text-petrol-900">{t('content.relatedTitle')}</h2>
+            <ul class="mt-4 flex flex-col gap-2.5">
+              {related.map((item) => (
+                <li>
+                  <a
+                    href={item.path}
+                    class="group inline-flex items-center gap-2 font-medium text-petrol-700 hover:text-petrol-900"
+                  >
+                    <span class="underline decoration-gold-400/50 underline-offset-4">{item.label}</span>
+                    <svg
+                      class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )
+      }
+
+      <SourceList sources={sources} lastReviewed={lastReviewed} />
+
+      <aside class="mt-10 rounded-2xl border border-line bg-white/60 p-5 text-sm leading-relaxed text-ink-soft">
+        <p class="font-semibold text-petrol-900">{t('footer.disclaimerTitle')}</p>
+        <p class="mt-1">{t('footer.disclaimer')}</p>
+      </aside>
+    </div>
+  </article>
+
+  <CTA />
+</BaseLayout>

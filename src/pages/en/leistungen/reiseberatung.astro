@@ -1,0 +1,55 @@
+---
+/**
+ * Travel medicine consultation — service (English). Content comes from the typed
+ * data module; the page stays minimal and identical to the German variant.
+ */
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import Callout from '../../../components/Callout.astro';
+import { getLangFromUrl, getLocalizedPath } from '../../../i18n/utils';
+import { getSources } from '../../../data/sources';
+import { reiseberatungService as page } from '../../../data/services/reiseberatung';
+
+const lang = getLangFromUrl(Astro.url);
+const sources = getSources(page.sourceIds);
+const related = (page.related ?? []).map((item) => ({
+  label: item.label[lang],
+  path: getLocalizedPath(item.path, lang),
+}));
+---
+
+<ContentLayout
+  title={page.meta.title[lang]}
+  description={page.meta.description[lang]}
+  eyebrow={page.meta.eyebrow[lang]}
+  lead={page.meta.lead[lang]}
+  lastReviewed={page.lastReviewed}
+  sources={sources}
+  related={related}
+>
+  <div class="space-y-12 sm:space-y-14">
+    {
+      page.sections.map((section) => (
+        <section id={section.id} class="scroll-mt-24">
+          <div class="rich-text">
+            <h2>{section.heading[lang]}</h2>
+            {section.body[lang].map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+            {section.list && (
+              <ul>
+                {section.list[lang].map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+          {section.callout && (
+            <Callout variant={section.callout.variant} title={section.callout.title?.[lang]}>
+              {section.callout.text[lang]}
+            </Callout>
+          )}
+        </section>
+      ))
+    }
+  </div>
+</ContentLayout>

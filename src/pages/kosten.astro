@@ -1,0 +1,19 @@
+---
+/**
+ * Kosten & Abrechnung (Deutsch). Dünne Seite: KostenContent rendert die
+ * Preisorientierung (Sprache aus der URL), CTA schließt ab. Identisch zur
+ * EN-Variante.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import KostenContent from '../components/KostenContent.astro';
+import CTA from '../components/CTA.astro';
+import { getLangFromUrl } from '../i18n/utils';
+import { kostenPage } from '../data/kosten';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={kostenPage.meta.title[lang]} description={kostenPage.meta.description[lang]}>
+  <KostenContent />
+  <CTA />
+</BaseLayout>
