@@ -18,18 +18,41 @@ export function useTranslations(lang: Locale) {
   };
 }
 
-/** Logischer Pfad ohne Locale-Präfix, ohne abschließenden Slash. */
+/**
+ * Konfigurierter Basis-Pfad (aus `astro.config` → Vite `BASE_URL`), z. B. „/"
+ * bei Root-/Custom-Domain-Hosting oder „/polaris-reisemedizin/" bei einem
+ * GitHub-Pages-Projekt-Deploy. `BASE_PREFIX` ist die Variante ohne Slash am
+ * Ende („" bzw. „/polaris-reisemedizin"), die sich verlustfrei voranstellen
+ * lässt. Bei Root-Hosting ist sie leer → alle Helfer verhalten sich wie zuvor.
+ */
+const BASE_PREFIX = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+/**
+ * Einen wurzel-absoluten Pfad (Asset oder Route) mit dem Basis-Pfad versehen,
+ * damit er auch unter einem Unterpfad-Deploy korrekt auflöst.
+ */
+export function withBase(path: string): string {
+  if (!path.startsWith('/')) return path;
+  return path === '/' ? `${BASE_PREFIX}/` : `${BASE_PREFIX}${path}`;
+}
+
+/** Logischer Pfad ohne Basis- und Locale-Präfix, ohne abschließenden Slash. */
 export function getLogicalPath(pathname: string): string {
-  const stripped = pathname.replace(/^\/en(?=\/|$)/, '');
+  // Basis-Pfad entfernen (zur Laufzeit enthält `Astro.url.pathname` ihn).
+  let p = pathname;
+  if (BASE_PREFIX && (p === BASE_PREFIX || p.startsWith(`${BASE_PREFIX}/`))) {
+    p = p.slice(BASE_PREFIX.length) || '/';
+  }
+  const stripped = p.replace(/^\/en(?=\/|$)/, '');
   const noTrailing = stripped.replace(/\/+$/, '');
   return noTrailing === '' ? '/' : noTrailing;
 }
 
-/** Logischen Pfad in die Ziel-Locale übersetzen. */
+/** Logischen Pfad in die Ziel-Locale übersetzen (inkl. Basis-Pfad). */
 export function getLocalizedPath(path: string, lang: Locale): string {
   const logical = getLogicalPath(path);
-  if (lang === DEFAULT_LOCALE) return logical;
-  return logical === '/' ? '/en' : `/en${logical}`;
+  const localized = lang === DEFAULT_LOCALE ? logical : logical === '/' ? '/en' : `/en${logical}`;
+  return withBase(localized);
 }
 
 /** Alle Sprachvarianten eines Pfads (für hreflang & Sprachumschalter). */

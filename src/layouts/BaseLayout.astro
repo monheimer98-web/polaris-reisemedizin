@@ -8,7 +8,7 @@
 import '@fontsource-variable/inter';
 import '@fontsource-variable/fraunces';
 import '../styles/global.css';
-import { getLangFromUrl, HREFLANG } from '../i18n/utils';
+import { getLangFromUrl, withBase, HREFLANG } from '../i18n/utils';
 import SEO from '../components/SEO.astro';
 import Analytics from '../components/Analytics.astro';
 import Header from '../components/Header.astro';
@@ -34,8 +34,8 @@ const lang = getLangFromUrl(Astro.url);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
     <meta name="theme-color" content="#0E3B43" />
     <meta name="generator" content={Astro.generator} />
     <SEO title={title} description={description} image={image} noindex={noindex} lang={lang} schema={schema} />

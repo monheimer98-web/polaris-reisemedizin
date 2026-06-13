@@ -5,9 +5,14 @@ name: Deploy to GitHub Pages
 # das Pages-Artefakt hoch; actions/deploy-pages veröffentlicht es.
 #
 # Hinweis (laut Projektentscheidung): zunächst GitHub Pages, später Migration
-# auf einen EU-/DE-Hoster (DSGVO/AVV, eigene Security-Header). Bei Nutzung
-# einer Custom-Domain ist KEIN `base`-Pfad nötig; ohne Custom-Domain müsste
-# in astro.config.mjs `base: '/<repo-name>'` gesetzt werden.
+# auf einen EU-/DE-Hoster (DSGVO/AVV, eigene Security-Header).
+#
+# Diese Vorschau läuft unter dem Projekt-Unterpfad
+# „<user>.github.io/polaris-reisemedizin/". Damit Links, Assets, Canonical,
+# Sitemap und hreflang stimmen, setzt der Build-Job unten die drei
+# PUBLIC_*-Variablen (astro.config.mjs liest sie aus). Bei späterem Wechsel
+# auf eine Custom-Domain einfach diese drei `env`-Zeilen entfernen (Defaults =
+# Root-Pfad „/" + echte Domain, indexierbar) und eine CNAME-Datei ergänzen.
 
 on:
   # Bei jedem Push auf main automatisch deployen …
@@ -30,6 +35,14 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Unterpfad-/Vorschau-Konfiguration: astro.config.mjs liest diese Variablen
+    # und richtet base, site (für Canonical/OG/hreflang/Sitemap) sowie das
+    # noindex-Flag (SEO.astro) entsprechend aus. Für eine Custom-Domain einfach
+    # entfernen (Defaults greifen).
+    env:
+      PUBLIC_BASE_PATH: /polaris-reisemedizin/
+      PUBLIC_SITE_URL: https://monheimer98-web.github.io
+      PUBLIC_NOINDEX: 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4

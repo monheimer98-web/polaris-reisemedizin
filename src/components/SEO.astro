@@ -4,7 +4,7 @@
  * OpenGraph/Twitter sowie JSON-LD (MedicalClinic) aus der Praxis-Konfiguration.
  */
 import { site, SITE_URL, DEFAULT_LOCALE, type Locale } from '../config/site';
-import { getAlternateLanguages, HREFLANG } from '../i18n/utils';
+import { getAlternateLanguages, withBase, HREFLANG } from '../i18n/utils';
 
 interface Props {
   title: string;
@@ -23,10 +23,22 @@ interface Props {
 
 const { title, description, image = '/images/og-default.png', noindex = false, lang, schema } = Astro.props;
 
+// Auslieferungs-Origin: konfigurierte `site`-URL (Custom-Domain ODER GitHub-
+// Pages-Vorschau, je nach Build) mit Fallback auf die Default-Domain.
+const origin = Astro.site?.href ?? SITE_URL;
+// Startseiten-URL inkl. Basis-Pfad (bei Unterpfad-Deploys, sonst „/").
+const homeUrl = new URL(import.meta.env.BASE_URL, origin).href;
+
+// Indexierung ausschließen: pro Seite (`noindex`-Prop) ODER global per
+// Build-Flag (`PUBLIC_NOINDEX=true`, z. B. für die GitHub-Pages-Vorschau,
+// solange die echte Domain noch nicht live ist).
+const robotsNoindex = noindex || import.meta.env.PUBLIC_NOINDEX === 'true';
+
 // Trailing-Slash normalisieren (außer Root), damit Canonical eindeutig bleibt.
+// `Astro.url.pathname` enthält bereits den Basis-Pfad.
 const normalizedPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
-const canonicalHref = new URL(normalizedPath, SITE_URL).href;
-const ogImage = new URL(image, SITE_URL).href;
+const canonicalHref = new URL(normalizedPath, origin).href;
+const ogImage = new URL(withBase(image), origin).href;
 const ogImageAlt = `${site.brand.name} — ${site.brand.tagline[lang]}`;
 
 const alternates = getAlternateLanguages(Astro.url.pathname);
@@ -46,11 +58,11 @@ const geo =
 const clinicSchema = {
   '@context': 'https://schema.org',
   '@type': 'MedicalClinic',
-  '@id': `${SITE_URL}/#practice`,
+  '@id': `${homeUrl}#practice`,
   name: site.brand.name,
   description,
-  url: SITE_URL,
-  logo: new URL('/favicon.svg', SITE_URL).href,
+  url: homeUrl,
+  logo: new URL(withBase('/favicon.svg'), origin).href,
   image: ogImage,
   inLanguage: HREFLANG[lang],
   availableLanguage: ['de', 'en'],
@@ -100,18 +112,18 @@ const schemas = [clinicSchema, ...extraSchemas];
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalHref} />
 
-{noindex && <meta name="robots" content="noindex, nofollow" />}
+{robotsNoindex && <meta name="robots" content="noindex, nofollow" />}
 
 {/* Sprach-Alternates für Suchmaschinen */}
 {
   alternates.map(({ lang: altLang, path }) => (
-    <link rel="alternate" hreflang={HREFLANG[altLang]} href={new URL(path, SITE_URL).href} />
+    <link rel="alternate" hreflang={HREFLANG[altLang]} href={new URL(path, origin).href} />
   ))
 }
 <link
   rel="alternate"
   hreflang="x-default"
-  href={new URL(alternates.find((a) => a.lang === DEFAULT_LOCALE)?.path ?? '/', SITE_URL).href}
+  href={new URL(alternates.find((a) => a.lang === DEFAULT_LOCALE)?.path ?? withBase('/'), origin).href}
 />
 
 {/* OpenGraph */}

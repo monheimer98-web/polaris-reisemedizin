@@ -8,7 +8,7 @@
  * bearbeitung); die Einpassung in den quadratischen Avatar erfolgt rein per
  * CSS (`object-cover` + `object-position` aus `member.focal`).
  */
-import { getLangFromUrl } from '../i18n/utils';
+import { getLangFromUrl, withBase } from '../i18n/utils';
 import { site } from '../config/site';
 import { teamPage as page } from '../data/team';
 
@@ -47,7 +47,7 @@ const values = page.values;
           team.map((member) => (
             <article class="card flex flex-col gap-5 sm:flex-row sm:items-start">
               <img
-                src={member.photo}
+                src={withBase(member.photo)}
                 alt={member.name}
                 width="112"
                 height="112"
