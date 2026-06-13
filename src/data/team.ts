@@ -59,11 +59,11 @@ export const teamPage: TeamPage = {
   intro: {
     de: [
       'Unsere Praxis ist auf Reise- und Impfmedizin spezialisiert. Wir beraten Sie vor Reisen in Risikogebiete, führen die empfohlenen und vorgeschriebenen Impfungen durch und stellen die erforderlichen Nachweise aus – darunter den internationalen Impfnachweis für Gelbfieber.',
-      'Unser Anspruch ist eine Beratung, die sich an gesicherten Fachquellen orientiert und sich Zeit für Ihre individuelle Situation nimmt – sachlich, verständlich und ohne Versprechen, die sich nicht halten lassen.',
+      'Dabei nehmen wir uns bewusst Zeit: Sie sollen Ihre Fragen in Ruhe stellen können und am Ende genau wissen, welche Impfungen und Vorsichtsmaßnahmen für Ihre Reise sinnvoll sind. Unsere Empfehlungen orientieren sich an gesicherten Fachquellen – sachlich, verständlich und ohne Versprechen, die sich nicht halten lassen.',
     ],
     en: [
       'Our practice specialises in travel and vaccination medicine. We advise you ahead of trips to risk areas, administer the recommended and required vaccinations and issue the necessary certificates – including the international certificate for yellow fever.',
-      'Our aim is advice that is guided by trusted professional sources and takes time for your individual situation – factual, clear and without promises that cannot be kept.',
+      'We deliberately take our time: you should be able to ask your questions calmly and leave knowing exactly which vaccinations and precautions make sense for your trip. Our recommendations are guided by trusted professional sources – factual, clear and without promises that cannot be kept.',
     ],
   },
   teamHeading: {
@@ -122,12 +122,12 @@ export const teamPage: TeamPage = {
   },
   practiceBody: {
     de: [
-      'Unsere Praxis berät Reisende sorgfältig und unabhängig. Das Leistungsspektrum umfasst derzeit die Gelbfieber- und die FSME-Impfung samt zugehöriger Beratung.',
-      'Die Praxis ist als staatlich autorisierte Gelbfieberimpfstelle zugelassen. Termine vereinbaren Sie bequem online; die persönliche Beratung findet vor Ort statt.',
+      'Bei uns sollen Sie sich vom ersten Moment an gut aufgehoben fühlen. Wir beraten Reisende sorgfältig und unabhängig, nehmen uns Zeit für Ihre Fragen und richten jede Empfehlung an Ihrer konkreten Reise aus.',
+      'Die Praxis ist als staatlich autorisierte Gelbfieberimpfstelle zugelassen und führt Reiseimpfungen wie die Gelbfieber- und die FSME-Impfung durch. Termine vereinbaren Sie bequem online; die persönliche Beratung findet in Ruhe vor Ort statt.',
     ],
     en: [
-      'Our practice advises travellers carefully and independently. The range of services currently comprises yellow fever and TBE vaccination together with the related consultation.',
-      'The practice is licensed as a state-authorised yellow fever vaccination centre. You can book appointments conveniently online; the personal consultation takes place on site.',
+      'From the very first moment, you should feel in good hands with us. We advise travellers carefully and independently, take time for your questions and tailor every recommendation to your specific trip.',
+      'The practice is licensed as a state-authorised yellow fever vaccination centre and provides travel vaccinations such as the yellow fever and TBE vaccination. You can book appointments conveniently online; the personal consultation takes place, unhurried, on site.',
     ],
   },
 };

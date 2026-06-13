@@ -1,0 +1,56 @@
+---
+/**
+ * Reichweitenmessung (Web-Analyse) — datenschutzfreundlich, cookielos,
+ * STANDARDMÄSSIG INAKTIV.
+ *
+ * Lädt NICHTS, solange `site.analytics.enabled` false ist oder
+ * `scriptUrl`/`domain` leer sind (Auslieferung inaktiv – analog zur leeren
+ * Buchungs-Endpoint). Erst nach Einrichtung eines eigenen EU-/Self-Hosting-
+ * Analyse-Hosts aktivieren.
+ *
+ * Privacy-first by design:
+ * - cookielos (Plausible von Haus aus; Matomo via `disableCookies`),
+ * - respektiert „Do-Not-Track" und „Global Privacy Control" (GPC): bei
+ *   gesetztem Signal wird das Skript erst gar nicht geladen,
+ * - keine personenbezogenen Profile, keine Drittanbieter-Werbung.
+ *
+ * Der Loader wird als `is:inline`-Skript ausgegeben, damit Astro ihn nicht
+ * bündelt/umschreibt; das eigentliche Anbieter-Skript wird erst zur Laufzeit
+ * (nach der DNT/GPC-Prüfung) nachgeladen.
+ */
+import { site } from '../config/site';
+
+const a = site.analytics;
+const active = a.enabled && a.scriptUrl !== '' && a.domain !== '';
+
+const cfg = JSON.stringify({
+  provider: a.provider,
+  scriptUrl: a.scriptUrl,
+  domain: a.domain,
+  siteId: a.siteId,
+  dnt: a.respectDoNotTrack,
+});
+
+const loader =
+  '(function(){try{var c=' +
+  cfg +
+  ';' +
+  // Do-Not-Track / Global Privacy Control respektieren → nicht laden.
+  'if(c.dnt){var n=navigator||{};' +
+  "if(n.doNotTrack=='1'||n.doNotTrack=='yes'||window.doNotTrack=='1'||n.globalPrivacyControl===true){return;}}" +
+  // Matomo (cookielos konfiguriert)
+  "if(c.provider==='Matomo'){var u=c.scriptUrl.replace(/matomo\\.js.*$/,'');" +
+  'window._paq=window._paq||[];' +
+  "_paq.push(['disableCookies']);_paq.push(['setDoNotTrack',true]);" +
+  "_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);" +
+  "_paq.push(['setTrackerUrl',u+'matomo.php']);_paq.push(['setSiteId',c.siteId]);" +
+  "var s=document.createElement('script');s.async=true;s.src=c.scriptUrl;" +
+  'document.head.appendChild(s);}' +
+  // Plausible (cookielos by design)
+  "else{var s=document.createElement('script');s.defer=true;" +
+  "s.setAttribute('data-domain',c.domain);s.src=c.scriptUrl;" +
+  'document.head.appendChild(s);}' +
+  '}catch(e){}})();';
+---
+
+{active && <script is:inline set:html={loader} />}

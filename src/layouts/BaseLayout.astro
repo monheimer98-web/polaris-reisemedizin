@@ -10,6 +10,7 @@ import '@fontsource-variable/fraunces';
 import '../styles/global.css';
 import { getLangFromUrl, HREFLANG } from '../i18n/utils';
 import SEO from '../components/SEO.astro';
+import Analytics from '../components/Analytics.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -38,6 +39,7 @@ const lang = getLangFromUrl(Astro.url);
     <meta name="theme-color" content="#0E3B43" />
     <meta name="generator" content={Astro.generator} />
     <SEO title={title} description={description} image={image} noindex={noindex} lang={lang} schema={schema} />
+    <Analytics />
   </head>
   <body class="flex min-h-screen flex-col">
     <Header />

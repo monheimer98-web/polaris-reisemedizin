@@ -31,5 +31,8 @@ pnpm-debug.log*
 # local agent config (machine-specific)
 .claude/
 
+# internal research notes (not part of the published site)
+.research/
+
 # separate project — internal practice app, keeps its own repository
 Reiseprax Polaris\ /

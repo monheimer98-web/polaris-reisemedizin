@@ -53,6 +53,12 @@ export interface ContentSection {
   body: Localized<string[]>;
   /** Optionale Aufzählung nach dem Fließtext. */
   list?: Localized<string[]>;
+  /**
+   * Optionale weiterführende Links am Abschnittsende (interne Vertiefung).
+   * Genutzt z. B. auf der Reiseziele-Seite, um je Reisetyp auf die passenden
+   * Krankheitsbild-/Leistungsseiten zu verweisen (starke interne Verlinkung).
+   */
+  links?: RelatedLink[];
   /** Optionaler hervorgehobener Hinweis am Abschnittsende. */
   callout?: SectionCallout;
 }

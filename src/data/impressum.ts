@@ -66,8 +66,8 @@ export const impressumPage: ImpressumPage = {
       en: 'Imprint',
     },
     description: {
-      de: 'Impressum und Anbieterkennzeichnung gemäß § 5 Digitale-Dienste-Gesetz (DDG): verantwortliche Praxis, Kontakt, zuständige Ärztekammer, Berufsrecht und Berufshaftpflicht.',
-      en: 'Imprint and provider identification pursuant to Section 5 of the German Digital Services Act (DDG): responsible practice, contact, competent medical association, professional law and indemnity insurance.',
+      de: 'Impressum und Anbieterkennzeichnung gemäß § 5 Digitale-Dienste-Gesetz (DDG): verantwortliche Praxis, Praxisinhaber, Kontakt, zuständige Ärztekammer und Berufsrecht.',
+      en: 'Imprint and provider identification pursuant to Section 5 of the German Digital Services Act (DDG): responsible practice, practice owner, contact, competent medical association and professional law.',
     },
     eyebrow: {
       de: 'Rechtliches',
@@ -78,15 +78,15 @@ export const impressumPage: ImpressumPage = {
       en: 'Information pursuant to Section 5 of the German Digital Services Act (DDG) and Section 18 (2) of the Interstate Media Treaty (MStV).',
     },
   },
-  lastUpdated: new Date('2026-06-05'),
+  lastUpdated: new Date('2026-06-12'),
   labels: {
     providerHeading: {
       de: 'Diensteanbieter',
       en: 'Service provider',
     },
     responsibleHeading: {
-      de: 'Vertretungsberechtigt / verantwortlicher Arzt',
-      en: 'Authorised representative / responsible physician',
+      de: 'Praxisinhaber und verantwortlicher Arzt',
+      en: 'Practice owner and responsible physician',
     },
     responsibleNote: {
       de: 'Inhaltlich und berufsrechtlich verantwortlich für die ärztlichen Leistungen der Praxis.',
@@ -125,8 +125,8 @@ export const impressumPage: ImpressumPage = {
       en: 'Professional regulations',
     },
     rulesText: {
-      de: 'Es gilt insbesondere die Berufsordnung der zuständigen Ärztekammer. Die berufsrechtlichen Regelungen sind über die Website der Kammer einsehbar.',
-      en: 'In particular, the code of professional conduct of the competent medical association applies. The professional regulations can be viewed on the chamber’s website.',
+      de: 'Es gelten insbesondere die Berufsordnung der Ärztekammer Nordrhein sowie das Heilberufsgesetz Nordrhein-Westfalen (HeilBerG NRW). Die berufsrechtlichen Regelungen sind über die Website der Kammer einsehbar.',
+      en: 'In particular, the code of professional conduct of the North Rhine Medical Association (Ärztekammer Nordrhein) and the North Rhine-Westphalia Healthcare Professions Act (HeilBerG NRW) apply. The professional regulations can be viewed on the chamber’s website.',
     },
     yellowFeverHeading: {
       de: 'Zulassung als Gelbfieberimpfstelle',
@@ -242,7 +242,7 @@ export const impressumPage: ImpressumPage = {
     },
   ],
   closingNote: {
-    de: 'Dieser Text ist eine sorgfältig erstellte Vorlage und ersetzt keine individuelle Rechtsberatung. Vor dem Go-Live sind sämtliche mit „[PLATZHALTER]" markierten Angaben durch die realen Praxisdaten zu ersetzen; eine anwaltliche Endabnahme wird empfohlen. Maßgeblich ist die deutsche Fassung.',
-    en: 'This text is a carefully prepared template and does not replace individual legal advice. Before going live, all entries marked “[PLACEHOLDER]” must be replaced with the practice’s actual data; a final legal review is recommended. The German version shall prevail.',
+    de: 'Dieser Text ist eine sorgfältig erstellte Vorlage und ersetzt keine individuelle Rechtsberatung. Das Aktenzeichen der Gelbfieber-Zulassung wird ergänzt, sobald der Zulassungsbescheid vorliegt; eine anwaltliche Endabnahme wird empfohlen. Maßgeblich ist die deutsche Fassung.',
+    en: 'This text is a carefully prepared template and does not replace individual legal advice. The reference number of the yellow fever authorisation will be added as soon as the authorisation notice is available; a final legal review is recommended. The German version shall prevail.',
   },
 };

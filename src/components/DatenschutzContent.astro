@@ -3,8 +3,11 @@
  * Inhalt der Datenschutz-Seite. Selbsttragend: leitet die Sprache aus der URL
  * ab, setzt den Verantwortlichen zentral aus `site.ts` ein und rendert die
  * Rechtsprosa aus `datenschutzPage`. Anbieterabhängige Platzhalter
- * (`{bookingProvider}`/`{mapProvider}`) werden mit den real konfigurierten
- * Anbieternamen aufgelöst – analog zum `{provider}`-Muster der Consent-Texte.
+ * (`{bookingProvider}`/`{mapProvider}`/`{analyticsProvider}`/`{analyticsHost}`)
+ * werden mit den real konfigurierten Anbieternamen aufgelöst – analog zum
+ * `{provider}`-Muster der Consent-Texte. Der Analyse-Abschnitt wird nur dann
+ * ausgegeben, wenn die Reichweitenmessung in `site.ts` aktiviert ist
+ * (`analytics.enabled`) – so bleibt die Erklärung in beiden Zuständen wahr.
  */
 import { getLangFromUrl, useTranslations, formatReviewDate } from '../i18n/utils';
 import { site } from '../config/site';
@@ -15,7 +18,18 @@ const t = useTranslations(lang);
 
 /** Anbieter-Platzhalter in der Rechtsprosa auflösen. */
 const fill = (value: string) =>
-  value.replaceAll('{bookingProvider}', site.booking.provider).replaceAll('{mapProvider}', site.map.provider);
+  value
+    .replaceAll('{bookingProvider}', site.booking.provider)
+    .replaceAll('{mapProvider}', site.map.provider)
+    .replaceAll('{analyticsProvider}', site.analytics.provider)
+    .replaceAll('{analyticsHost}', site.analytics.host);
+
+/**
+ * Abschnitte filtern: Der Analyse-Abschnitt erscheint nur, wenn die
+ * Reichweitenmessung aktiv ist – sonst würde die Erklärung eine nicht
+ * stattfindende Verarbeitung beschreiben (und Platzhalter offenlegen).
+ */
+const sections = page.sections.filter((s) => s.id !== 'analytics' || site.analytics.enabled);
 ---
 
 <article>
@@ -46,6 +60,7 @@ const fill = (value: string) =>
         <p class="mt-4 leading-relaxed text-ink-soft">{page.controllerIntro[lang]}</p>
         <address class="mt-4 space-y-0.5 not-italic leading-relaxed text-ink-soft">
           <p class="font-semibold text-petrol-900">{site.brand.legalName}</p>
+          {site.brand.owner && <p>{site.brand.owner}</p>}
           <p>{site.contact.street}</p>
           {site.contact.addressNote && <p>{site.contact.addressNote[lang]}</p>}
           <p>{site.contact.zip} {site.contact.city}</p>
@@ -79,7 +94,7 @@ const fill = (value: string) =>
 
       {/* Rechtsprosa-Abschnitte */}
       {
-        page.sections.map((section) => (
+        sections.map((section) => (
           <section id={section.id}>
             <h2 class="font-display text-2xl text-petrol-900 sm:text-3xl">{section.heading[lang]}</h2>
             <div class="mt-4 space-y-3 leading-relaxed text-ink-soft">

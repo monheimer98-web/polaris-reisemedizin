@@ -14,7 +14,13 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="u-container py-20 sm:py-24">
+<section class="relative overflow-hidden">
+  {/* Weiche Marken-Wäsche — Tiefe, damit die hellen Karten ruhig „aufliegen" */}
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-petrol-50/55 via-cream to-sand/35" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -left-32 top-24 h-80 w-80 rounded-full bg-petrol-100/40 blur-3xl" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -right-28 bottom-12 h-72 w-72 rounded-full bg-gold-100/40 blur-3xl" aria-hidden="true"></div>
+
+  <div class="u-container relative py-20 sm:py-24">
   <div class="max-w-2xl">
     <p class="eyebrow">
       <span class="rule-gold"></span>
@@ -85,5 +91,6 @@ const t = useTranslations(lang);
         <path d="M3 8h9M9 5l3 3-3 3" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     </a>
+  </div>
   </div>
 </section>

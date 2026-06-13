@@ -1,0 +1,50 @@
+---
+/**
+ * Wiederverwendbarer Seiten-Hero für Übersichts- und Sonderseiten: warme
+ * Marken-Wäsche (Petrol→Creme→Sand) + dezentes Globus-/Meridian-Motiv,
+ * Eyebrow + H1 + Lead. Über den Default-Slot lassen sich Zusatzangaben
+ * (z. B. „Inhaltlich geprüft"-Datum oder Badges) unter dem Lead ergänzen.
+ */
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead?: string;
+  /** Globus-/Meridian-Motiv anzeigen (Default true). */
+  motif?: boolean;
+}
+
+const { eyebrow, title, lead, motif = true } = Astro.props;
+---
+
+<header class="relative overflow-hidden border-b border-petrol-100/70">
+  {/* Warme Marken-Wäsche statt flachem Sand */}
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-petrol-50/80 via-cream to-sand/40" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -right-24 -top-28 h-80 w-80 rounded-full bg-petrol-100/45 blur-3xl" aria-hidden="true"></div>
+  {
+    motif && (
+      <div class="pointer-events-none absolute top-1/2 right-[-2.5rem] hidden -translate-y-1/2 lg:block" aria-hidden="true">
+        <svg class="h-72 w-72 text-petrol-200/70 xl:h-80 xl:w-80" viewBox="0 0 240 240" fill="none">
+          <g stroke="currentColor">
+            <circle cx="120" cy="120" r="92" stroke-width="1.2" />
+            <ellipse cx="120" cy="120" rx="31" ry="92" stroke-width="0.9" />
+            <ellipse cx="120" cy="120" rx="62" ry="92" stroke-width="0.9" />
+            <line x1="28" y1="120" x2="212" y2="120" stroke-width="1" />
+            <line x1="120" y1="28" x2="120" y2="212" stroke-width="0.9" />
+            <line x1="44" y1="82" x2="196" y2="82" stroke-width="0.7" />
+            <line x1="44" y1="158" x2="196" y2="158" stroke-width="0.7" />
+          </g>
+          <path d="M70 168 Q120 70 184 104" stroke="currentColor" class="text-gold-300" stroke-width="1.1" stroke-dasharray="1.2 6" stroke-linecap="round" />
+        </svg>
+      </div>
+    )
+  }
+  <div class="u-container relative py-14 sm:py-20">
+    <div class="max-w-3xl">
+      {Astro.slots.has('breadcrumb') && <div class="mb-6"><slot name="breadcrumb" /></div>}
+      <p class="eyebrow"><span class="rule-gold"></span>{eyebrow}</p>
+      <h1 class="mt-5 text-4xl sm:text-5xl">{title}</h1>
+      {lead && <p class="mt-5 text-lg leading-relaxed text-ink-soft">{lead}</p>}
+      <slot />
+    </div>
+  </div>
+</header>

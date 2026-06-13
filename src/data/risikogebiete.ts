@@ -187,6 +187,7 @@ export const riskAreasPage: ClinicalPage = {
   ],
   lastReviewed: new Date('2026-05-15'),
   related: [
+    { label: { de: 'Reiseimpfungen nach Reiseziel', en: 'Travel vaccinations by destination' }, path: '/reiseziele' },
     { label: { de: 'Gelbfieber (Krankheitsbild)', en: 'Yellow fever (disease)' }, path: '/krankheitsbilder/gelbfieber' },
     { label: { de: 'Gelbfieberimpfung', en: 'Yellow fever vaccination' }, path: '/leistungen/gelbfieberimpfung' },
     { label: { de: 'FSME (Krankheitsbild)', en: 'TBE (disease)' }, path: '/krankheitsbilder/fsme' },

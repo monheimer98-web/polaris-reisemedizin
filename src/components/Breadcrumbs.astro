@@ -1,0 +1,70 @@
+---
+/**
+ * Brotkrumen-Navigation: sichtbarer Pfad + BreadcrumbList-JSON-LD.
+ * `items` ist geordnet (Start → … → aktuelle Seite). Das letzte Element ist
+ * die aktuelle Seite und wird ohne `path` übergeben (kein Link, `aria-current`).
+ * Das JSON-LD steht bewusst beim Markup (Google liest es auch im Body).
+ */
+import { SITE_URL } from '../config/site';
+
+interface Crumb {
+  label: string;
+  /** Lokalisierter Pfad; entfällt beim letzten (aktuellen) Element. */
+  path?: string;
+}
+
+interface Props {
+  items: Crumb[];
+  /** Zugängliche Beschriftung der Navigation. */
+  label?: string;
+}
+
+const { items, label = 'Breadcrumb' } = Astro.props;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    ...(item.path ? { item: new URL(item.path, SITE_URL).href } : {}),
+  })),
+};
+---
+
+<nav aria-label={label} class="text-sm">
+  <ol class="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+    {
+      items.map((item, index) => (
+        <li class="flex items-center gap-x-1.5">
+          {item.path ? (
+            <a
+              href={item.path}
+              class="text-ink-soft underline-offset-4 transition-colors hover:text-petrol-700 hover:underline hover:decoration-gold-400/50"
+            >
+              {item.label}
+            </a>
+          ) : (
+            <span class="font-medium text-petrol-900" aria-current="page">
+              {item.label}
+            </span>
+          )}
+          {index < items.length - 1 && (
+            <svg
+              class="h-3.5 w-3.5 shrink-0 text-petrol-300"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+</nav>

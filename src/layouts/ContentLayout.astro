@@ -11,8 +11,14 @@
  */
 import BaseLayout from './BaseLayout.astro';
 import CTA from '../components/CTA.astro';
+import PageHero from '../components/PageHero.astro';
 import SourceList from '../components/SourceList.astro';
-import { getLangFromUrl, useTranslations, formatReviewDate } from '../i18n/utils';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import DiseaseFactsBox from '../components/DiseaseFactsBox.astro';
+import { getLangFromUrl, useTranslations, formatReviewDate, getLocalizedPath, getLogicalPath, HREFLANG } from '../i18n/utils';
+import { SITE_URL } from '../config/site';
+import { diseaseFacts } from '../data/diseaseFacts';
+import type { UiKey } from '../i18n/ui';
 import type { SourceWithId } from '../data/sources';
 
 interface Props {
@@ -30,29 +36,112 @@ interface Props {
 const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Brotkrumen aus dem URL-Pfad: Start › <Hub> › <aktuelle Seite>.
+// Tiefenseiten unter einem Hub erhalten die Zwischenebene; Top-Level-Seiten
+// (z. B. /ablauf) bleiben bei „Start › <Seite>".
+const hubSegment = getLogicalPath(Astro.url.pathname).split('/')[1] ?? '';
+const HUB_LABEL_KEY: Record<string, UiKey> = {
+  krankheitsbilder: 'nav.diseases',
+  leistungen: 'nav.services',
+};
+const hubKey = HUB_LABEL_KEY[hubSegment];
+const breadcrumbItems = [
+  { label: t('nav.home'), path: getLocalizedPath('/', lang) },
+  ...(hubKey ? [{ label: t(hubKey), path: getLocalizedPath(`/${hubSegment}`, lang) }] : []),
+  { label: title },
+];
+
+// Seitenspezifisches JSON-LD: MedicalWebPage mit „lastReviewed" (YMYL-Signal)
+// und einem `about`, das je nach Hub die Krankheit (MedicalCondition) bzw. die
+// Leistung (MedicalProcedure) auszeichnet. `@id`-Verweise binden die Seite an
+// den globalen MedicalClinic-Knoten (#practice).
+const canonical = new URL(Astro.url.pathname.replace(/\/+$/, '') || '/', SITE_URL).href;
+const ABOUT_TYPE: Record<string, string> = {
+  krankheitsbilder: 'MedicalCondition',
+  leistungen: 'MedicalProcedure',
+};
+const aboutType = ABOUT_TYPE[hubSegment];
+const medicalWebPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: title,
+  description,
+  url: canonical,
+  inLanguage: HREFLANG[lang],
+  lastReviewed: lastReviewed.toISOString().slice(0, 10),
+  reviewedBy: { '@id': `${SITE_URL}/#practice` },
+  isPartOf: { '@id': `${SITE_URL}/#practice` },
+  ...(aboutType ? { about: { '@type': aboutType, name: title } } : {}),
+};
+
+// „Auf dieser Seite": Sprungmarken automatisch aus dem gerenderten Inhalt.
+// Der Slot wird einmal zu HTML gerendert (deshalb kein zweites <slot/>), daraus
+// werden <section id> + zugehörige <h2> extrahiert. Bewusst nur für die
+// strukturgleichen Hubs (Krankheitsbilder/Leistungen) und erst ab 3 Abschnitten.
+const bodyHtml = await Astro.slots.render('default');
+const TOC_HUBS = new Set(['krankheitsbilder', 'leistungen', 'reiseziele', 'reiseapotheke']);
+const toc: { id: string; label: string }[] = [];
+if (TOC_HUBS.has(hubSegment)) {
+  // Im gerenderten HTML sind Zeichen wie & als Entities kodiert (&amp;); nach dem
+  // Strippen der Tags zurück in Klartext wandeln, sonst doppelt-escaped im TOC.
+  const decodeEntities = (s: string) =>
+    s
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&amp;/g, '&');
+  const sectionRe = /<section[^>]*\bid="([^"]+)"[^>]*>[\s\S]*?<h2[^>]*>([\s\S]*?)<\/h2>/g;
+  let match: RegExpExecArray | null;
+  while ((match = sectionRe.exec(bodyHtml)) !== null) {
+    toc.push({ id: match[1], label: decodeEntities(match[2].replace(/<[^>]+>/g, '').trim()) });
+  }
+}
+const showToc = toc.length >= 3;
+
+// „Steckbrief": Kernfakten je Krankheitsbild automatisch über den Seiten-Slug
+// (= letztes Pfadsegment) laden. Nur für den Krankheitsbilder-Hub, damit
+// Leistungs-/Top-Level-Seiten unberührt bleiben.
+const slug = getLogicalPath(Astro.url.pathname).split('/').pop() ?? '';
+const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined;
 ---
 
-<BaseLayout title={title} description={description} image={image} noindex={noindex}>
+<BaseLayout title={title} description={description} image={image} noindex={noindex} schema={medicalWebPageSchema}>
   <article>
-    <header class="border-b border-line bg-sand/40">
-      <div class="u-container py-14 sm:py-20">
-        <div class="max-w-3xl">
-          <p class="eyebrow">
-            <span class="rule-gold"></span>
-            {eyebrow}
-          </p>
-          <h1 class="mt-5 text-4xl sm:text-5xl">{title}</h1>
-          <p class="mt-5 text-lg leading-relaxed text-ink-soft">{lead}</p>
-          <p class="mt-6 text-sm text-ink-soft">
-            <span class="font-medium text-ink">{t('content.lastReviewedLabel')}</span>
-            {' '}{formatReviewDate(lastReviewed, lang)}
-          </p>
-        </div>
-      </div>
-    </header>
+    <PageHero eyebrow={eyebrow} title={title} lead={lead}>
+      <Breadcrumbs slot="breadcrumb" items={breadcrumbItems} label={t('content.breadcrumb')} />
+      <p class="mt-6 text-sm text-ink-soft">
+        <span class="font-medium text-ink">{t('content.lastReviewedLabel')}</span>
+        {' '}{formatReviewDate(lastReviewed, lang)}
+      </p>
+    </PageHero>
 
     <div class="u-container-narrow py-14 sm:py-16">
-      <slot />
+      {facts && <DiseaseFactsBox facts={facts} />}
+
+      {
+        showToc && (
+          <nav aria-label={t('content.onThisPage')} class="mb-12 rounded-2xl border border-line bg-white/70 p-5 sm:p-6">
+            <p class="text-sm font-semibold text-petrol-900">{t('content.onThisPage')}</p>
+            <ol class="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">
+              {toc.map((item, i) => (
+                <li>
+                  <a
+                    href={`#${item.id}`}
+                    class="group inline-flex items-baseline gap-2 text-sm text-ink-soft transition-colors hover:text-petrol-900"
+                  >
+                    <span class="text-xs font-semibold tabular-nums text-gold-500">{String(i + 1).padStart(2, '0')}</span>
+                    <span class="underline-offset-4 group-hover:underline group-hover:decoration-gold-400/50">{item.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )
+      }
+
+      <Fragment set:html={bodyHtml} />
 
       {
         related.length > 0 && (

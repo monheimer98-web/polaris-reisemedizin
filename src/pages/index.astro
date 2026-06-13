@@ -8,6 +8,7 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import Hero from '../components/Hero.astro';
 import TrustBar from '../components/TrustBar.astro';
 import ServicesOverview from '../components/ServicesOverview.astro';
+import Reviews from '../components/Reviews.astro';
 import CTA from '../components/CTA.astro';
 
 const lang = getLangFromUrl(Astro.url);
@@ -18,5 +19,6 @@ const t = useTranslations(lang);
   <Hero />
   <TrustBar />
   <ServicesOverview />
+  <Reviews />
   <CTA />
 </BaseLayout>

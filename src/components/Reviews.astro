@@ -1,0 +1,115 @@
+---
+/**
+ * Kundenstimmen-Sektion (Startseite) — AUFGESETZT, ABER STANDARDMÄSSIG INAKTIV.
+ *
+ * Die Sektion rendert bewusst NICHTS, solange `site.reviews.enabled` false ist
+ * ODER keine echten Bewertungen hinterlegt sind. Dadurch lässt sie sich später
+ * mit einem einzigen Schalter (`site.ts → reviews.enabled = true`) aktivieren,
+ * sobald echte, mit Einwilligung freigegebene Bewertungen vorliegen – ohne
+ * weitere Code-Änderung. KEINE erfundenen Testimonials.
+ *
+ * First-party & datensparsam: keine Google-/Drittanbieter-Widgets, kein
+ * externer Request, kein Tracking. Der „Bei Google ansehen"-Link ist ein reiner
+ * Outbound-Verweis (lädt ohne Klick nichts). UI-Texte aus dem i18n-Wörterbuch;
+ * die Bewertungen selbst werden verbatim ausgegeben (nicht übersetzt).
+ */
+import { getLangFromUrl, useTranslations, formatReviewDate } from '../i18n/utils';
+import { site } from '../config/site';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const reviews = site.reviews;
+const items = reviews.items;
+const active = reviews.enabled && items.length > 0;
+
+const aggregate = reviews.aggregate;
+const hasAggregate = active && aggregate.ratingValue !== '';
+const aggregateValue = Math.round(Number(aggregate.ratingValue));
+const googleUrl = reviews.googleProfileUrl;
+const hasGoogle = active && googleUrl !== '';
+
+const STARS = [1, 2, 3, 4, 5];
+const openQuote = lang === 'de' ? '„' : '“';
+const closeQuote = lang === 'de' ? '“' : '”';
+---
+
+{
+  active && (
+    <section aria-label={t('reviews.ariaLabel')} class="u-container py-16 sm:py-20">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow">
+          <span class="rule-gold" />
+          {t('reviews.eyebrow')}
+        </p>
+        <h2 class="mt-5 font-display text-3xl text-petrol-900 sm:text-4xl">{t('reviews.title')}</h2>
+        <p class="mt-4 text-lg leading-relaxed text-ink-soft">{t('reviews.lead')}</p>
+
+        {hasAggregate && (
+          <div class="mt-6 flex items-center justify-center gap-3">
+            <span class="flex" aria-hidden="true">
+              {STARS.map((n) => (
+                <svg
+                  class={`h-5 w-5 ${n <= aggregateValue ? 'text-gold-400' : 'text-line'}`}
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.51L10 14.9l-4.95 2.6.94-5.5-4-3.9 5.53-.8L10 1.6Z" />
+                </svg>
+              ))}
+            </span>
+            <span class="text-sm font-medium text-petrol-900">
+              {`${aggregate.ratingValue} ${t('reviews.outOfFive')}`}
+              {aggregate.reviewCount !== '' && (
+                <span class="text-ink-soft">{` · ${aggregate.reviewCount} ${t('reviews.reviewsWord')}`}</span>
+              )}
+            </span>
+          </div>
+        )}
+      </div>
+
+      <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((review) => (
+          <li class="card flex flex-col gap-4">
+            {typeof review.rating === 'number' && (
+              <span class="flex" aria-label={`${review.rating} ${t('reviews.outOfFive')}`}>
+                {STARS.map((n) => (
+                  <svg
+                    class={`h-4 w-4 ${n <= review.rating! ? 'text-gold-400' : 'text-line'}`}
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.51L10 14.9l-4.95 2.6.94-5.5-4-3.9 5.53-.8L10 1.6Z" />
+                  </svg>
+                ))}
+              </span>
+            )}
+            <blockquote class="leading-relaxed text-pretty text-ink">{`${openQuote}${review.quote}${closeQuote}`}</blockquote>
+            <footer class="mt-auto flex items-center justify-between gap-3 border-t border-line pt-4 text-sm">
+              <span class="font-semibold text-petrol-900">{review.author}</span>
+              {(review.source || review.date) && (
+                <span class="text-ink-soft">
+                  {review.source}
+                  {review.source && review.date && ' · '}
+                  {review.date && <time datetime={review.date}>{formatReviewDate(new Date(review.date), lang)}</time>}
+                </span>
+              )}
+            </footer>
+          </li>
+        ))}
+      </ul>
+
+      {hasGoogle && (
+        <div class="mt-10 text-center">
+          <a href={googleUrl} target="_blank" rel="noopener noreferrer" class="btn-ghost">
+            {t('reviews.googleCta')}
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M7 17 17 7M17 7H9M17 7v8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      )}
+    </section>
+  )
+}

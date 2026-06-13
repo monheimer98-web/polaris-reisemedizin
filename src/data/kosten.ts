@@ -116,7 +116,7 @@ export const kostenPage: KostenPage = {
             de: 'Ausstellung eines Privatrezepts im Rahmen der Beratung. Die Medikamentenkosten zahlen Sie in der Apotheke.',
             en: 'Issuing a private prescription as part of the consultation. Medication costs are paid at the pharmacy.',
           },
-          price: { de: 'zzgl. ab 6 €', en: 'plus from €6' },
+          price: { de: 'zzgl. ca. 11 €', en: 'plus approx. €11' },
         },
       ],
     },
@@ -204,6 +204,17 @@ export const kostenPage: KostenPage = {
         en: [
           'Statutory health insurers generally do not cover travel vaccinations; some now reimburse them as a voluntary statutory benefit – in full or in part. Private plans handle this differently.',
           'Please clarify possible reimbursement with your insurer before your appointment. You can submit our invoice to them.',
+        ],
+      },
+    },
+    {
+      heading: { de: 'Bezahlung in der Praxis', en: 'Payment at the practice' },
+      body: {
+        de: [
+          'Die Bezahlung erfolgt vor Ort bargeldlos per Karte (girocard/EC- und gängige Kreditkarten). Eine Barzahlung ist nicht möglich – bitte denken Sie zu Ihrem Termin an Ihre Karte.',
+        ],
+        en: [
+          'Payment is made on site by card (girocard/EC and common credit cards). Cash payment is not possible – please remember to bring your card to your appointment.',
         ],
       },
     },

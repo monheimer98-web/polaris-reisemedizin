@@ -27,7 +27,9 @@ function isActive(path: string): boolean {
   {t('skip.toContent')}
 </a>
 
-<header class="sticky top-0 z-40 border-b border-line/80 bg-cream/85 backdrop-blur-md">
+<header class="sticky top-0 z-40 border-b border-petrol-100/70 bg-gradient-to-b from-petrol-50/90 to-cream/85 backdrop-blur-md">
+  {/* Feine goldene Markenkante — dezenter Premium-Akzent */}
+  <div class="h-[3px] w-full bg-gradient-to-r from-gold-300/0 via-gold-400 to-gold-300/0" aria-hidden="true"></div>
   <div class="u-container flex h-16 items-center justify-between gap-4 sm:h-20">
     {/* Marke */}
     <a href={homeHref} class="group flex items-center gap-2.5" aria-label={`${site.brand.name} — ${t('nav.home')}`}>
@@ -40,8 +42,10 @@ function isActive(path: string): boolean {
       </span>
     </a>
 
-    {/* Desktop-Navigation */}
-    <nav class="hidden items-center gap-1 lg:flex" aria-label={t('header.primaryNav')}>
+    {/* Desktop-Navigation — erst ab xl (≥1280px), da die achtteilige, zweisprachige
+        Leiste (Marke + Tagline + Untermenüs + Sprache + CTA) darunter zu breit wird
+        und im EN-Layout sonst überliefe. Zwischen lg und xl greift das Off-Canvas-Menü. */}
+    <nav class="hidden items-center gap-1 xl:flex" aria-label={t('header.primaryNav')}>
       {
         primaryNav.map((item) =>
           item.children?.length ? (
@@ -106,7 +110,7 @@ function isActive(path: string): boolean {
       <button
         type="button"
         id="menu-toggle"
-        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-petrol-800 transition-colors hover:bg-white lg:hidden"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-petrol-800 transition-colors hover:bg-white xl:hidden"
         aria-controls="mobile-menu"
         aria-expanded="false"
         aria-label={t('header.openMenu')}
@@ -124,7 +128,7 @@ function isActive(path: string): boolean {
   </div>
 
   {/* Mobile-Menü */}
-  <div id="mobile-menu" class="hidden border-t border-line bg-cream lg:hidden">
+  <div id="mobile-menu" class="hidden border-t border-line bg-cream xl:hidden">
     <nav class="u-container flex flex-col gap-1 py-4" aria-label={t('header.primaryNav')}>
       {
         primaryNav.map((item) => (
@@ -184,8 +188,8 @@ function isActive(path: string): boolean {
     setOpen(menu?.classList.contains('hidden') ?? false);
   });
 
-  // Beim Wechsel auf Desktop-Breite zurücksetzen.
-  window.matchMedia('(min-width: 1024px)').addEventListener('change', (e) => {
+  // Beim Wechsel auf Desktop-Breite (xl) zurücksetzen.
+  window.matchMedia('(min-width: 1280px)').addEventListener('change', (e) => {
     if (e.matches) setOpen(false);
   });
 </script>

@@ -4,10 +4,11 @@
  * Aufbau wie bei den übrigen selbsttragenden Seiten: hier liegt ausschließlich
  * die redaktionelle, zweisprachige Rechtsprosa als `LegalSection[]`. Der
  * Verantwortliche (Name/Anschrift/Kontakt) wird erst in `DatenschutzContent.astro`
- * zentral aus `site.ts` eingesetzt. Anbieterabhängige Stellen nutzen die
- * Platzhalter `{bookingProvider}` und `{mapProvider}`, die im Component aus
- * `site.booking.provider`/`site.map.provider` aufgelöst werden – analog zum
- * `{provider}`-Muster der Consent-Texte.
+ * zentral aus `site.ts` eingesetzt. Die Online-Terminbuchung läuft über das
+ * praxiseigene Terminsystem (kein externer Auftragsverarbeiter); anbieter-
+ * abhängig ist nur noch der Kartendienst über den Platzhalter `{mapProvider}`
+ * (aufgelöst aus `site.map.provider` – analog zum `{provider}`-Muster der
+ * Consent-Texte).
  *
  * Rechtsstand-Hinweise (2026): TMG → DDG (Mai 2024); TTDSG → TDDDG; Art. 9
  * Abs. 2 lit. h DSGVO i. V. m. § 22 BDSG für Gesundheitsdaten; § 203 StGB
@@ -45,8 +46,8 @@ export const datenschutzPage: DatenschutzPage = {
       en: 'Privacy policy',
     },
     description: {
-      de: 'Datenschutzerklärung nach Art. 13/14 DSGVO: Verarbeitung personenbezogener Daten und Gesundheitsdaten, ärztliche Schweigepflicht, 2-Klick-Einbettungen, selbst gehostete Schriften, Speicherdauer und Ihre Rechte.',
-      en: 'Privacy policy pursuant to Art. 13/14 GDPR: processing of personal data and health data, medical confidentiality, two-click embeds, self-hosted fonts, retention periods and your rights.',
+      de: 'Datenschutzerklärung nach Art. 13/14 DSGVO: Verarbeitung personenbezogener Daten und Gesundheitsdaten, ärztliche Schweigepflicht, Online-Terminanfrage über das eigene Praxissystem, 2-Klick-Karte, selbst gehostete Schriften, Speicherdauer und Ihre Rechte.',
+      en: 'Privacy policy pursuant to Art. 13/14 GDPR: processing of personal data and health data, medical confidentiality, online appointment enquiry via our own practice system, two-click map, self-hosted fonts, retention periods and your rights.',
     },
     eyebrow: {
       de: 'Rechtliches',
@@ -57,7 +58,7 @@ export const datenschutzPage: DatenschutzPage = {
       en: 'Information on the processing of your personal data pursuant to Articles 13 and 14 of the General Data Protection Regulation (GDPR).',
     },
   },
-  lastUpdated: new Date('2026-06-05'),
+  lastUpdated: new Date('2026-06-12'),
   controllerHeading: {
     de: 'Verantwortlicher',
     en: 'Controller',
@@ -85,6 +86,35 @@ export const datenschutzPage: DatenschutzPage = {
         en: [
           'Protecting your personal data is important to us. This privacy policy informs you which personal data we process when you visit this website and when arranging an appointment, for what purposes and on what legal basis this takes place, and what rights you have.',
           'Personal data is any information relating to an identified or identifiable natural person. In principle, this website can be used without providing personal data; however, to arrange an appointment or to contact us we require certain information.',
+        ],
+      },
+    },
+    {
+      id: 'datenkategorien',
+      heading: {
+        de: 'Verarbeitete Datenkategorien',
+        en: 'Categories of data processed',
+      },
+      body: {
+        de: [
+          'Je nach Anlass – Websitebesuch, Terminvereinbarung, Beratung und Impfung – verarbeiten wir folgende Kategorien personenbezogener Daten:',
+        ],
+        en: [
+          'Depending on the context – visiting the website, arranging an appointment, consultation and vaccination – we process the following categories of personal data:',
+        ],
+      },
+      list: {
+        de: [
+          'Stammdaten: Name, Vorname, Geburtsdatum und Anschrift,',
+          'Kontaktdaten: Telefonnummer und E-Mail-Adresse,',
+          'Gesundheitsdaten (Art. 9 DSGVO): Anamnese, Vorerkrankungen, Medikation, Reiseziele und Impfstatus sowie die Impfdokumentation einschließlich Impfstoff und Chargennummer,',
+          'Abrechnungsdaten: Zahlungsart und Rechnungsbetrag.',
+        ],
+        en: [
+          'Master data: surname, first name, date of birth and address,',
+          'Contact data: telephone number and email address,',
+          'Health data (Art. 9 GDPR): medical history, pre-existing conditions, medication, travel destinations and vaccination status, as well as the vaccination record including vaccine and batch number,',
+          'Billing data: payment method and invoice amount.',
         ],
       },
     },
@@ -193,12 +223,33 @@ export const datenschutzPage: DatenschutzPage = {
       },
       body: {
         de: [
-          'Wir setzen keine Tracking- oder Marketing-Cookies und binden keine Analyse- oder Werbedienste ein. Für die 2-Klick-Einbettungen (Terminbuchung, Anfahrtskarte) speichern wir Ihre Einwilligung ausschließlich lokal in Ihrem Browser (im sogenannten „localStorage") unter den Schlüsseln „polaris:consent:booking" bzw. „polaris:consent:map".',
-          'Diese Speicherung ist technisch erforderlich, um Ihre Entscheidung zu merken, und überträgt keine Daten an uns oder Dritte. Rechtsgrundlage für das Speichern bzw. Auslesen dieser für den von Ihnen gewünschten Dienst unbedingt erforderlichen Information ist § 25 Abs. 2 Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz (TDDDG); die Einwilligung gilt, bis Sie sie widerrufen. Sie können die gespeicherte Einwilligung jederzeit über die Schaltfläche an der jeweiligen Einbettung oder durch Löschen der Browserdaten widerrufen.',
+          'Wir setzen keine Cookies zu Tracking-, Profiling- oder Marketingzwecken und binden keine Werbe-Netzwerke ein. Für die 2-Klick-Einbettung der Anfahrtskarte speichern wir Ihre Einwilligung ausschließlich lokal in Ihrem Browser (im sogenannten „localStorage") unter dem Schlüssel „polaris:consent:map". Unser Terminanfrage-Formular läuft demgegenüber direkt über unsere eigene Website und benötigt hierfür keine solche Einwilligungsspeicherung.',
+          'Diese Speicherung ist technisch erforderlich, um Ihre Entscheidung zu merken, und überträgt keine Daten an uns oder Dritte. Rechtsgrundlage für das Speichern bzw. Auslesen dieser für den von Ihnen gewünschten Dienst unbedingt erforderlichen Information ist § 25 Abs. 2 Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz (TDDDG); die Einwilligung gilt, bis Sie sie widerrufen. Sie können die gespeicherte Einwilligung jederzeit über die Schaltfläche an der Einbettung oder durch Löschen der Browserdaten widerrufen.',
         ],
         en: [
-          'We do not use tracking or marketing cookies and do not embed any analytics or advertising services. For the two-click embeds (appointment booking, location map) we store your consent exclusively locally in your browser (in what is known as “localStorage”) under the keys “polaris:consent:booking” and “polaris:consent:map”.',
-          'This storage is technically necessary in order to remember your decision and does not transmit any data to us or to third parties. The legal basis for storing or reading this information, which is strictly necessary for the service you have requested, is Section 25 (2) of the German Telecommunications Digital Services Data Protection Act (TDDDG); the consent applies until you revoke it. You can withdraw the stored consent at any time using the button on the respective embed or by deleting your browser data.',
+          'We do not use cookies for tracking, profiling or marketing purposes and do not embed any advertising networks. For the two-click embed of the location map we store your consent exclusively locally in your browser (in what is known as “localStorage”) under the key “polaris:consent:map”. Our appointment enquiry form, by contrast, runs directly via our own website and does not require any such consent storage.',
+          'This storage is technically necessary in order to remember your decision and does not transmit any data to us or to third parties. The legal basis for storing or reading this information, which is strictly necessary for the service you have requested, is Section 25 (2) of the German Telecommunications Digital Services Data Protection Act (TDDDG); the consent applies until you revoke it. You can withdraw the stored consent at any time using the button on the embed or by deleting your browser data.',
+        ],
+      },
+    },
+    {
+      id: 'analytics',
+      heading: {
+        de: 'Reichweitenmessung (Web-Analyse)',
+        en: 'Reach measurement (web analytics)',
+      },
+      body: {
+        de: [
+          'Zur statistischen Auswertung der Nutzung unserer Website und zur bedarfsgerechten Verbesserung unseres Angebots setzen wir die cookielose Web-Analyse-Lösung {analyticsProvider} ein, die wir datenschutzfreundlich bei einem Auftragsverarbeiter in der Europäischen Union betreiben ({analyticsHost}). Die Auswertung erfolgt ohne Cookies und ohne sonstige Speicherung oder Auslesung von Informationen auf Ihrem Endgerät; es werden keine geräteübergreifenden Profile gebildet und keine Daten zu Werbezwecken verwendet oder an Dritte weitergegeben.',
+          'Verarbeitet werden ausschließlich aggregierte, nicht auf Sie zurückführbare Angaben – etwa aufgerufene Seiten, die verweisende Seite, die ungefähre Herkunft (Land), der verwendete Browser- und Gerätetyp sowie Datum und Uhrzeit des Zugriffs. Ihre IP-Adresse wird dabei nur kurzzeitig zur Verarbeitung des Zugriffs verwendet, umgehend anonymisiert und nicht gespeichert. Eine Identifizierung einzelner Besucherinnen und Besucher ist uns hierüber nicht möglich.',
+          'Da hierfür keine Informationen auf Ihrem Endgerät gespeichert oder ausgelesen werden, ist eine Einwilligung nach § 25 Abs. 1 TDDDG nicht erforderlich. Rechtsgrundlage für die Verarbeitung ist unser berechtigtes Interesse an einer bedarfsgerechten Gestaltung und der statistischen Auswertung unserer Website (Art. 6 Abs. 1 lit. f DSGVO). Mit dem Analyse-Anbieter haben wir einen Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO geschlossen.',
+          'Sie können dieser Verarbeitung jederzeit mit Wirkung für die Zukunft widersprechen (Art. 21 DSGVO). Darüber hinaus respektiert unsere Reichweitenmessung die Signale „Do Not Track" (DNT) und „Global Privacy Control" (GPC) Ihres Browsers: Ist eines dieser Signale gesetzt, wird das Analyse-Skript bereits nicht geladen und keinerlei Auswertung vorgenommen.',
+        ],
+        en: [
+          'To statistically evaluate the use of our website and to improve our services in line with actual needs, we use the cookieless web analytics solution {analyticsProvider}, which we operate in a privacy-friendly manner with a processor in the European Union ({analyticsHost}). The analysis works without cookies and without any other storage or reading of information on your device; no cross-device profiles are created and no data is used for advertising purposes or passed on to third parties.',
+          'Only aggregated information that cannot be traced back to you is processed – such as the pages accessed, the referring page, the approximate origin (country), the browser and device type used, and the date and time of access. Your IP address is used only briefly to process the access, is anonymised immediately and is not stored. We are unable to identify individual visitors on this basis.',
+          'As no information is stored on or read from your device for this purpose, consent under Section 25 (1) TDDDG is not required. The legal basis for the processing is our legitimate interest in the needs-based design and statistical evaluation of our website (Art. 6 (1) (f) GDPR). We have concluded a data processing agreement pursuant to Art. 28 GDPR with the analytics provider.',
+          'You can object to this processing at any time with effect for the future (Art. 21 GDPR). In addition, our reach measurement respects the “Do Not Track” (DNT) and “Global Privacy Control” (GPC) signals of your browser: if either of these signals is set, the analytics script is not even loaded and no analysis is carried out.',
         ],
       },
     },
@@ -210,12 +261,12 @@ export const datenschutzPage: DatenschutzPage = {
       },
       body: {
         de: [
-          'Für die Online-Terminbuchung setzen wir den Dienst {bookingProvider} ein. Das Buchungsfenster wird über eine 2-Klick-Lösung eingebunden: Vor Ihrer aktiven Einwilligung wird keine Verbindung zum Anbieter aufgebaut und es werden keine Daten an ihn übertragen. Erst wenn Sie auf „Termin buchen & einwilligen" klicken, wird das Buchungs-Widget geladen.',
-          'Mit dem Laden stellt Ihr Browser eine direkte Verbindung zu den Servern des Anbieters her; dabei können technische Daten (z. B. Ihre IP-Adresse) übertragen werden. Die im Buchungsformular angegebenen Daten (z. B. Name, Kontaktdaten, gewünschter Termin) werden vom Anbieter in unserem Auftrag verarbeitet. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) für die Einbettung sowie die Anbahnung und Durchführung der Behandlung (Art. 6 Abs. 1 lit. b DSGVO). Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO. Die Datenschutzinformationen des Anbieters finden Sie im Einwilligungsdialog der Terminbuchung.',
+          'Auf unserer Terminseite können Sie über ein Anfrageformular einen Wunschtermin anfragen. Das Formular ist Bestandteil unserer eigenen Website und übermittelt Ihre Angaben direkt an unser praxiseigenes Terminsystem. Es wird kein externer Buchungsdienst eingebunden, es findet keine 2-Klick-Einbindung statt und vor dem Absenden werden keine Verbindungen zu Dritten aufgebaut.',
+          'Wir verarbeiten die von Ihnen angegebenen Daten – Terminart, Vor- und Nachname und E-Mail-Adresse sowie, sofern Sie diese freiwillig angeben, Telefonnummer, Geburtsdatum, Wunschtermin, Reiseziel, Abreisedatum und Ihre Nachricht –, um Ihre Terminanfrage zu bearbeiten und den Termin mit Ihnen abzustimmen. Die Übermittlung erfolgt über eine verschlüsselte Verbindung; die Speicherung erfolgt in unserer eigenen, auf Praxisinfrastruktur betriebenen Terminverwaltung. Eine Weitergabe an einen externen Buchungsanbieter findet nicht statt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung und Durchführung des Behandlungsvertrags) sowie Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die Sie mit dem Absenden des Formulars erteilen und jederzeit mit Wirkung für die Zukunft widerrufen können. Das Formular fragt bewusst keine Gesundheitsdaten ab; bitte teilen Sie uns Angaben zu Ihrem Gesundheitszustand erst im persönlichen Gespräch mit. Sollten Sie im Freitextfeld dennoch Gesundheitsdaten angeben, erfolgt deren Verarbeitung auf Grundlage von Art. 9 Abs. 2 lit. h DSGVO i. V. m. § 22 BDSG.',
         ],
         en: [
-          'For online appointment booking we use the service {bookingProvider}. The booking window is embedded via a two-click solution: before your active consent, no connection to the provider is established and no data is transmitted to it. Only when you click “Book appointment & consent” is the booking widget loaded.',
-          'Once loaded, your browser establishes a direct connection to the provider’s servers, during which technical data (e.g. your IP address) may be transmitted. The data entered in the booking form (e.g. name, contact details, preferred appointment) is processed by the provider on our behalf. The legal basis is your consent (Art. 6 (1) (a) GDPR) for the embedding as well as the initiation and performance of treatment (Art. 6 (1) (b) GDPR). A data processing agreement pursuant to Art. 28 GDPR is in place with the provider. You can find the provider’s privacy information in the consent dialog of the appointment booking.',
+          'On our appointments page you can request a preferred appointment via an enquiry form. The form is part of our own website and transmits your details directly to our in-practice scheduling system. No external booking service is embedded, there is no two-click embed, and no connections to third parties are established before you submit.',
+          'We process the data you provide – appointment type, first and last name and email address, as well as, where you choose to provide them, phone number, date of birth, preferred appointment, travel destination, departure date and your message – in order to handle your appointment request and arrange the appointment with you. Transmission takes place via an encrypted connection; storage takes place in our own scheduling system operated on practice infrastructure. The data is not passed on to an external booking provider. The legal basis is Art. 6 (1) (b) GDPR (initiation and performance of the treatment contract) and your consent (Art. 6 (1) (a) GDPR), which you give by submitting the form and can withdraw at any time with effect for the future. The form deliberately does not ask for health data; please share information about your state of health only in a personal consultation. Should you nevertheless enter health data in the free-text field, it is processed on the basis of Art. 9 (2) (h) GDPR in conjunction with Section 22 BDSG.',
         ],
       },
     },
@@ -270,15 +321,30 @@ export const datenschutzPage: DatenschutzPage = {
       list: {
         de: [
           'Hosting und Auslieferung der Website: [PLATZHALTER: Name des Hosting-Anbieters].',
-          'Online-Terminbuchung: {bookingProvider}.',
           'Kartendienst / Anfahrt: {mapProvider} (nur nach Einwilligung).',
-          'Gegebenenfalls ein Abrechnungsdienstleister sowie weitere zur Leistungserbringung erforderliche Dienstleister: [PLATZHALTER: sofern genutzt, hier ergänzen].',
+          'Gegebenenfalls weitere technische Dienstleister zur Unterstützung von Betrieb und Sicherheit der Website – jeweils als Auftragsverarbeiter.',
         ],
         en: [
           'Hosting and delivery of the website: [PLACEHOLDER: name of the hosting provider].',
-          'Online appointment booking: {bookingProvider}.',
           'Map service / directions: {mapProvider} (only after consent).',
-          'Where applicable, a billing service provider and other service providers necessary for providing the service: [PLACEHOLDER: add here if used].',
+          'Where applicable, further technical service providers supporting the operation and security of the website – each as a processor.',
+        ],
+      },
+    },
+    {
+      id: 'offenlegung',
+      heading: {
+        de: 'Weitergabe aufgrund gesetzlicher Pflichten oder auf Ihren Wunsch',
+        en: 'Disclosure due to legal obligations or at your request',
+      },
+      body: {
+        de: [
+          'Über die genannten Auftragsverarbeiter hinaus geben wir Ihre Daten nur weiter, wenn wir gesetzlich dazu verpflichtet sind, dies zur Geltendmachung oder Abwehr von Rechtsansprüchen erforderlich ist oder Sie ausdrücklich eingewilligt haben.',
+          'Dies betrifft insbesondere: infektionsschutzrechtliche Meldepflichten gegenüber dem zuständigen Gesundheitsamt nach dem Infektionsschutzgesetz (IfSG); die Übermittlung an mit- oder weiterbehandelnde Ärztinnen und Ärzte auf Ihren Wunsch; sowie die Weitergabe von Rechnungs- und Buchhaltungsdaten an unsere Steuerberatung zur Erfüllung steuerlicher Pflichten. Eine Weitergabe zu Werbezwecken oder ein Verkauf Ihrer Daten findet nicht statt.',
+        ],
+        en: [
+          'Beyond the processors named above, we only disclose your data where we are legally obliged to do so, where it is necessary to assert or defend legal claims, or where you have given your explicit consent.',
+          'This concerns in particular: reporting obligations towards the competent public health authority under the German Infection Protection Act (IfSG); transmission to co-treating or subsequently treating physicians at your request; and the disclosure of invoice and accounting data to our tax advisors in order to meet tax obligations. We do not disclose your data for advertising purposes, nor do we sell it.',
         ],
       },
     },
@@ -306,11 +372,11 @@ export const datenschutzPage: DatenschutzPage = {
       body: {
         de: [
           'Wir speichern personenbezogene Daten nur so lange, wie es für die genannten Zwecke erforderlich ist oder gesetzliche Aufbewahrungsfristen es verlangen. Anschließend werden die Daten gelöscht oder anonymisiert.',
-          'Behandlungs- und Impfdokumentationen unterliegen ärztlichen Aufbewahrungspflichten und werden grundsätzlich für mindestens zehn Jahre nach Abschluss der Behandlung aufbewahrt (§ 630f Bürgerliches Gesetzbuch sowie die Berufsordnung); für bestimmte Unterlagen können längere gesetzliche Fristen gelten. Einwilligungen (lokal in Ihrem Browser) gelten bis zum Widerruf. Server-Logfiles werden nur kurzfristig verarbeitet und regelmäßig gelöscht.',
+          'Behandlungs- und Impfdokumentationen unterliegen ärztlichen Aufbewahrungspflichten und werden grundsätzlich für mindestens zehn Jahre nach Abschluss der Behandlung aufbewahrt (§ 630f Bürgerliches Gesetzbuch sowie die Berufsordnung); für bestimmte Unterlagen können längere gesetzliche Fristen gelten. Rechnungs- und Buchhaltungsunterlagen bewahren wir nach den handels- und steuerrechtlichen Vorgaben (insbesondere § 257 Handelsgesetzbuch – HGB und § 147 Abgabenordnung – AO) regelmäßig zehn Jahre auf. Einwilligungen (lokal in Ihrem Browser) gelten bis zum Widerruf. Server-Logfiles werden nur kurzfristig verarbeitet und regelmäßig gelöscht.',
         ],
         en: [
           'We store personal data only for as long as is necessary for the stated purposes or as required by statutory retention periods. The data is then deleted or anonymised.',
-          'Treatment and vaccination records are subject to medical retention obligations and are generally retained for at least ten years after completion of treatment (Section 630f of the German Civil Code and the code of professional conduct); longer statutory periods may apply to certain documents. Consents (stored locally in your browser) apply until withdrawn. Server log files are processed only for a short time and deleted regularly.',
+          'Treatment and vaccination records are subject to medical retention obligations and are generally retained for at least ten years after completion of treatment (Section 630f of the German Civil Code and the code of professional conduct); longer statutory periods may apply to certain documents. Invoice and accounting records are retained in accordance with commercial and tax law requirements (in particular Section 257 of the German Commercial Code – HGB and Section 147 of the German Fiscal Code – AO), generally for ten years. Consents (stored locally in your browser) apply until withdrawn. Server log files are processed only for a short time and deleted regularly.',
         ],
       },
     },

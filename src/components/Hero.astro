@@ -12,8 +12,34 @@ const t = useTranslations(lang);
 ---
 
 <section class="relative overflow-hidden">
-  <div class="pointer-events-none absolute -right-32 -top-40 h-[28rem] w-[28rem] rounded-full bg-petrol-100/50 blur-3xl" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-gold-100/40 blur-3xl" aria-hidden="true"></div>
+  {/* Warmer Hintergrund-Verlauf — Tiefe statt flachem Weiß */}
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-petrol-50/80 via-cream to-sand/50" aria-hidden="true"></div>
+
+  {/* Weiche Farbschleier */}
+  <div class="pointer-events-none absolute -right-28 -top-36 h-[32rem] w-[32rem] rounded-full bg-petrol-100/60 blur-3xl" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -bottom-36 -left-24 h-96 w-96 rounded-full bg-gold-100/50 blur-3xl" aria-hidden="true"></div>
+
+  {/* Marken-Motiv: Globus mit Meridianen, Reiseroute & Polarstern (ab lg) */}
+  <div class="pointer-events-none absolute top-1/2 right-[-6rem] hidden -translate-y-1/2 lg:block xl:right-[-2rem]" aria-hidden="true">
+    <svg class="h-[32rem] w-[32rem] xl:h-[38rem] xl:w-[38rem]" viewBox="0 0 460 460" fill="none">
+      <g stroke="currentColor" class="text-petrol-200">
+        <circle cx="230" cy="230" r="170" stroke-width="1.5" />
+        <ellipse cx="230" cy="230" rx="57" ry="170" stroke-width="1.1" />
+        <ellipse cx="230" cy="230" rx="115" ry="170" stroke-width="1.1" />
+        <line x1="230" y1="60" x2="230" y2="400" stroke-width="1.1" />
+        <line x1="60" y1="230" x2="400" y2="230" stroke-width="1.2" />
+        <line x1="76" y1="158" x2="384" y2="158" stroke-width="1" />
+        <line x1="76" y1="302" x2="384" y2="302" stroke-width="1" />
+      </g>
+      {/* Reiseroute über den Globus */}
+      <path d="M120 322 Q232 132 346 198" stroke="currentColor" class="text-gold-300" stroke-width="1.6" stroke-dasharray="1.5 7" stroke-linecap="round" />
+      <circle cx="120" cy="322" r="3.5" fill="currentColor" class="text-gold-400/70" />
+      <circle cx="346" cy="198" r="5" fill="currentColor" class="text-gold-400" />
+      {/* Polarstern + Begleitstern */}
+      <path d="M330 56 L337 71 L352 78 L337 85 L330 100 L323 85 L308 78 L323 71 Z" fill="currentColor" class="text-gold-400" />
+      <path d="M374 132 L377.5 139 L384 142.5 L377.5 146 L374 153 L370.5 146 L364 142.5 L370.5 139 Z" fill="currentColor" class="text-gold-300" />
+    </svg>
+  </div>
 
   <div class="u-container relative py-20 sm:py-28">
     <div class="max-w-3xl">

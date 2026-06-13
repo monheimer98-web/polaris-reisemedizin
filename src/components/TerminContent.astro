@@ -2,34 +2,57 @@
 /**
  * Inhalt der „Termin buchen"-Seite. Selbsttragend: leitet die Sprache aus der
  * URL ab und rendert Rahmentexte aus `bookingPage`. Kern ist das React-Island
- * `ConsentEmbed` (2-Klick-Consent-Gate) – Anbieter, Einbettungs-URL und
- * Anbieter-Datenschutzlink kommen aus `site.booking`, die eigene
- * Datenschuts-URL wird sprachabhängig erzeugt. Telefon/E-Mail-Fallback und
- * Sprechzeiten stammen zentral aus `site.contact` bzw. `site.openingHours`.
+ * `BookingForm` (Terminanfrage-Formular) – es sendet die Anfrage an das EIGENE
+ * Praxis-Terminsystem (praxis-app) über `site.booking.endpoint`. Kein
+ * Drittanbieter-iframe, kein Token im Browser (siehe README). Solange der
+ * Endpunkt leer ist, zeigt das Island einen Platzhalter; Telefon/E-Mail-Fallback
+ * und Sprechzeiten stammen zentral aus `site.contact` bzw. `site.openingHours`.
  */
 import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
 import { site } from '../config/site';
 import { bookingPage as page } from '../data/termin';
-import ConsentEmbed from './ConsentEmbed';
+import BookingForm from './BookingForm';
 
 const lang = getLangFromUrl(Astro.url);
-const c = page.consent;
+const f = page.form;
 
-/** Consent-Texte in der aktuellen Sprache für das React-Island auflösen. */
-const labels = {
-  consentTitle: c.title[lang],
-  consentLead: c.lead[lang],
-  consentPoints: c.points[lang],
-  privacyIntro: c.privacyIntro[lang],
-  providerPrivacyLabel: c.providerPrivacyLabel[lang],
-  ourPrivacyLabel: c.ourPrivacyLabel[lang],
-  loadButton: c.loadButton[lang],
-  externalLabel: c.externalLabel[lang],
-  iframeTitle: c.iframeTitle[lang],
-  loadedNote: c.loadedNote[lang],
-  revokeLabel: c.revokeLabel[lang],
-  placeholderTitle: c.placeholderTitle[lang],
-  placeholderBody: c.placeholderBody[lang],
+/** Buchbare Terminarten in der aktuellen Sprache (id = praxis-app-Terminart). */
+const bookableTypes = page.bookableTypes.map((t) => ({ id: t.id, name: t.name[lang] }));
+
+/** Formular-Oberflächentexte in der aktuellen Sprache für das React-Island auflösen. */
+const formText = {
+  heading: f.heading[lang],
+  intro: f.intro[lang],
+  labels: {
+    terminart: f.labels.terminart[lang],
+    terminartPlaceholder: f.labels.terminartPlaceholder[lang],
+    vorname: f.labels.vorname[lang],
+    nachname: f.labels.nachname[lang],
+    email: f.labels.email[lang],
+    telefon: f.labels.telefon[lang],
+    geburtsdatum: f.labels.geburtsdatum[lang],
+    wunschdatum: f.labels.wunschdatum[lang],
+    wunschzeit: f.labels.wunschzeit[lang],
+    reiseziel: f.labels.reiseziel[lang],
+    abreise: f.labels.abreise[lang],
+    notiz: f.labels.notiz[lang],
+    notizPlaceholder: f.labels.notizPlaceholder[lang],
+    optional: f.labels.optional[lang],
+  },
+  consentLabel: f.consentLabel[lang],
+  consentLinkLabel: f.consentLinkLabel[lang],
+  submit: f.submit[lang],
+  submitting: f.submitting[lang],
+  successTitle: f.successTitle[lang],
+  successBody: f.successBody[lang],
+  errorTitle: f.errorTitle[lang],
+  errorBody: f.errorBody[lang],
+  requiredHint: f.requiredHint[lang],
+  consentRequired: f.consentRequired[lang],
+  privacyNote: f.privacyNote[lang],
+  honeypotLabel: f.honeypotLabel[lang],
+  placeholderTitle: f.placeholderTitle[lang],
+  placeholderBody: f.placeholderBody[lang],
 };
 ---
 
@@ -58,15 +81,12 @@ const labels = {
       <div>
         <h2 class="font-display text-2xl text-petrol-900 sm:text-3xl">{page.widgetHeading[lang]}</h2>
         <div class="mt-6">
-          <ConsentEmbed
+          <BookingForm
             client:load
-            storageKey="booking"
-            provider={site.booking.provider}
-            embedUrl={site.booking.embedUrl}
-            providerPrivacyUrl={site.booking.providerPrivacyUrl}
-            externalUrl={site.booking.externalUrl}
-            ourPrivacyUrl={getLocalizedPath('/datenschutz', lang)}
-            labels={labels}
+            endpoint={site.booking.endpoint}
+            privacyUrl={getLocalizedPath('/datenschutz', lang)}
+            bookableTypes={bookableTypes}
+            text={formText}
           />
         </div>
       </div>

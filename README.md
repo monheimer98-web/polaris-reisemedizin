@@ -2,7 +2,8 @@
 
 Zweisprachige (DE/EN) Website einer Privatpraxis für Reise- & Impfmedizin.
 Statisch gebaut mit **Astro** (SSG), selbst gehostete Schriften, DSGVO-konforme
-2-Klick-Einbettung für Terminbuchung und Karte. Inhalte sind sachlich,
+Terminbuchung über das **eigene Praxissystem** (First-Party-Formular, kein
+Drittanbieter) und 2-Klick-Karte. Inhalte sind sachlich,
 HWG-konform und über ein zentrales Quellenregister belegt
 (RKI/STIKO · WHO · PEI · DTG · Auswärtiges Amt).
 
@@ -14,7 +15,7 @@ HWG-konform und über ein zentrales Quellenregister belegt
 ## Tech-Stack
 
 - **Astro 6** (Static Site Generation), **TypeScript**
-- **@astrojs/react** — nur für die Buchungs-/Karten-Insel (`ConsentEmbed`)
+- **@astrojs/react** — für das Terminanfrage-Formular (`BookingForm`) und die Karten-Insel (`ConsentEmbed`)
 - **@astrojs/sitemap** — `sitemap-index.xml`
 - **Tailwind CSS v4** (CSS-first, Design-Tokens in `src/styles/global.css`)
 - **@fontsource-variable/{inter,fraunces}** — selbst gehostet (kein Google-Fonts-CDN)
@@ -25,7 +26,7 @@ HWG-konform und über ein zentrales Quellenregister belegt
 ```bash
 npm install
 npm run dev        # Dev-Server (Standard-Port 4321)
-npm run build      # Produktions-Build nach dist/ (43 Seiten + Sitemap)
+npm run build      # Produktions-Build nach dist/ (67 Seiten + Sitemap)
 npm run preview    # gebauten Stand lokal ansehen
 npx astro check    # Typprüfung (muss 0 Fehler / 0 Warnungen sein)
 ```
@@ -49,10 +50,10 @@ src/
     types.ts              # Localized<T>, ClinicalPage, ContentSection …
     diseases/*.ts         # Krankheitsbilder (Gelbfieber, FSME)
     services/*.ts         # Leistungsseiten (Impfungen, Beratung, Malaria, Höhe)
-    termin.ts             # /termin: Texte + Terminarten (appointmentTypes)
+    termin.ts             # /termin: Texte + Terminarten + Formulartexte (BookingForm)
     kosten.ts             # /kosten: GOÄ-Preisorientierung (Richtwerte)
     team.ts kontakt.ts faq.ts impressum.ts datenschutz.ts unternehmen.ts …
-  components/             # Header, Footer, Hero, ConsentEmbed, *Content.astro …
+  components/             # Header, Footer, Hero, BookingForm, ConsentEmbed, *Content.astro …
   layouts/               # BaseLayout, ContentLayout
   pages/                 # DE unpräfixiert, EN unter /en/
 public/images/team/      # Porträtfotos (alexander-mayer.webp, konstantin-mayer.webp)
@@ -103,9 +104,11 @@ Scharfschalten genau diese Stellen anpassen:
 2. **`src/data/termin.ts`** — im Terminarten-Block den Eintrag `id: 'gelbfieber'`
    von `enabled: false` auf **`enabled: true`** setzen (entfernt die
    „In Vorbereitung"-Markierung und aktiviert die Karte).
-3. **Buchungs-Widget** muss aktiv sein — siehe nächster Abschnitt
-   (`site.booking.embedUrl`). Solange `embedUrl` leer ist, zeigt `/termin` für
-   **alle** Terminarten den Platzhalter „Online-Terminbuchung in Vorbereitung".
+3. **Buchungs-Endpunkt** muss aktiv sein — siehe nächster Abschnitt
+   (`site.booking.endpoint`). Solange `endpoint` leer ist, zeigt `/termin` den
+   Platzhalter „Online-Terminanfrage in Vorbereitung". Gelbfieber bleibt in der
+   praxis-app zusätzlich `gated` (siehe `src/lib/terminarten.ts`) und ist daher
+   bewusst **nicht** in `site` → `data/termin.ts` (`bookableTypes`) gelistet.
 4. **Vorbereitungs-Texte zurücknehmen**, die aktuell „Online-Buchung in Kürze"
    sagen:
    - `src/data/termin.ts` — Beschreibung der Terminart `gelbfieber`
@@ -122,21 +125,151 @@ Scharfschalten genau diese Stellen anpassen:
 
 ---
 
-## Online-Terminbuchung einrichten (2-Klick-Lösung + AVV)
+## Online-Terminbuchung einrichten (eigenes Praxissystem)
 
-Die Buchung wird datenschutzkonform per **2-Klick-Einwilligung** geladen
-(`ConsentEmbed`): vor dem aktiven Klick gibt es **keinen** Drittanbieter-Request.
+Die Buchung läuft über das **eigene Praxis-Terminsystem** (die interne
+`praxis-app`) — **kein Drittanbieter, kein iframe, keine AVV**. Auf `/termin`
+rendert die React-Insel **`BookingForm`** ein Anfrageformular; beim Absenden
+geht ein `POST` an `site.booking.endpoint`. Dort entsteht in der praxis-app ein
+Termin mit Status **„angefragt"**, den das Backoffice bestätigt. Solange
+`endpoint` leer ist, zeigt das Formular einen neutralen Platzhalter mit
+Telefon-/E-Mail-Fallback (**kein** Netzwerk-Request).
 
 In **`src/config/site.ts → site.booking`**:
 
-- `provider` — Anzeigename des Anbieters (z. B. „Dr. Flex", „Doctolib", „samedi")
-- `embedUrl` — Einbettungs-URL des Buchungs-Widgets **(leer = Platzhalter aktiv)**
-- `providerPrivacyUrl` — Datenschutzerklärung des Anbieters (für den Consent-Text)
-- `externalUrl` — optionaler direkter Buchungslink als Fallback
+- `provider` — Anzeigename des eigenen Systems (u. a. in der Datenschutzerklärung)
+- `endpoint` — `POST`-Ziel des Formulars **(leer = Platzhalter aktiv)**
 
-> **AVV-Pflicht (Art. 28 DSGVO):** Mit dem Buchungsanbieter muss vor Produktiv-
-> einsatz ein **Auftragsverarbeitungsvertrag** geschlossen werden. Erst danach
-> `embedUrl` setzen.
+### Sicherheit: Token NIE im Browser → Reverse-Proxy injiziert es
+
+Die praxis-app schützt ihre Buchungs-API mit einem **`BOOKING_TOKEN`**. Dieses
+Token darf **niemals** im statisch ausgelieferten JS/Browser stehen. Lösung:
+`endpoint` zeigt **nicht** direkt auf die praxis-app, sondern auf einen
+**Reverse-Proxy** (Caddy/nginx — „Variante A" der praxis-app), der
+
+1. den `X-Booking-Token`-Header **serverseitig** setzt (aus einer Server-Env, nie im Repo) und
+2. die Anfrage an die intern gebundene praxis-app (`127.0.0.1:4317`) weiterreicht.
+
+**Empfehlung: SAME-ORIGIN.** Website **und** Proxy unter derselben Domain
+betreiben und `endpoint` auf einen **relativen Pfad** wie **`/api/buchung`**
+setzen. Dann entfällt CORS vollständig. Das Formular sendet bewusst als
+`application/x-www-form-urlencoded` (»simple request« → **kein** Preflight).
+
+> **⚠ CORS-Falle bei Cross-Origin:** Liegt der Endpunkt auf einer **anderen**
+> Domain und der Proxy setzt **kein** `Access-Control-Allow-Origin`, dann
+> *erreicht* der `POST` den Server (der Termin wird angelegt!), aber der Browser
+> **blockiert das Lesen der Antwort** → das Formular zeigt fälschlich einen
+> Fehler, der Nutzer bucht evtl. doppelt. Daher entweder same-origin nutzen
+> **oder** im Proxy `Access-Control-Allow-Origin` setzen **und** `OPTIONS`
+> beantworten.
+
+Beispiel-Proxy (Caddy, same-origin):
+
+```caddy
+example-praxis.de {
+    handle /api/buchung {
+        header_up X-Booking-Token "{$BOOKING_TOKEN}"   # serverseitig, aus Server-Env
+        reverse_proxy 127.0.0.1:4317
+    }
+    handle { root * /var/www/polaris/dist; file_server }   # statische Website
+}
+```
+
+### Backend-Vertrag (praxis-app) — Single Source of Truth
+
+`POST` an `endpoint`, Body `application/x-www-form-urlencoded`. Das Formular
+sendet genau diese Feldnamen (Mapping in `src/components/BookingForm.tsx`):
+
+| Formularfeld           | Body-Feld        | Pflicht |
+|------------------------|------------------|---------|
+| Terminart              | `terminart`      | ja      |
+| Vorname / Nachname     | `vorname` / `nachname` | ja |
+| E-Mail                 | `email`          | ja      |
+| Wunschdatum            | `datum`          | ja      |
+| Wunschzeit             | `zeit`           | nein    |
+| Telefon                | `telefon`        | nein    |
+| Geburtsdatum           | `geburtsdatum`   | nein    |
+| Reiseziel              | `reiseziel`      | nein    |
+| Abreisedatum           | `abreise_datum`  | nein    |
+| Nachricht              | `notiz`          | nein    |
+
+Erfolg: HTTP **201** mit `{ ok: true, appointmentId, status: "angefragt" }`.
+Fehler: **400/401** mit `{ ok: false, fehler }`. Das Formular wertet
+`res.ok && json.ok === true` aus.
+
+### Terminart-IDs synchron halten
+
+Die buchbaren Arten stehen in **`src/data/termin.ts → bookableTypes`**. Jede
+`id` **muss exakt** einer nicht-gesperrten Terminart der praxis-app
+(`src/lib/terminarten.ts`) entsprechen — das Backend prüft erneut und weist
+unbekannte oder `gated` Arten (z. B. **gelbfieber**) ab. Beim Hinzufügen/Ändern
+von Terminarten **beide Stellen** anpassen.
+
+### Anti-Spam
+
+`BookingForm` enthält ein verstecktes **Honeypot-Feld** (`homepage`): von
+Menschen unsichtbar; ist es ausgefüllt, wird **nicht** gesendet. Zusätzlich
+sollte der Reverse-Proxy/die praxis-app **Rate-Limiting** auf `/api/buchung`
+erzwingen (z. B. pro IP/Minute).
+
+> **Keine medizinischen Daten im Formular:** Ein sichtbarer Hinweis bittet darum,
+> hier **keine** Gesundheitsdaten einzutragen (die werden vertraulich im Termin
+> besprochen). Pflichtfelder beschränken sich auf Kontakt- und Termindaten.
+
+## Kundenstimmen / Bewertungen aktivieren
+
+Die `Reviews`-Sektion der Startseite ist **aufgesetzt, aber bewusst inaktiv**:
+Solange `site.reviews.enabled` `false` ist **oder** `items` leer ist, rendert
+sie **nichts** – die Startseite bleibt unverändert. So lässt sie sich später
+ohne Code-Änderung freischalten, sobald echte Bewertungen vorliegen.
+
+Aktivieren (in `src/config/site.ts → reviews`):
+
+1. Pro echter, **mit ausdrücklicher Einwilligung freigegebener** Bewertung ein
+   Objekt in `items` eintragen (`quote` verbatim in Originalsprache, `author`
+   datensparsam wie „Sandra M.", optional `rating` 1–5, `date`, `source`).
+   **Keine erfundenen Testimonials** – wettbewerbs- und berufsrechtlich unzulässig.
+2. Optional `googleProfileUrl` (Outbound-Link zum Google-Profil) und `aggregate`
+   (`ratingValue`/`reviewCount`) setzen – Letzteres nur, wenn es **reale**
+   Bewertungen widerspiegelt.
+3. `enabled: true` setzen → fertig (DE/EN-Texte kommen aus `i18n/ui.ts`,
+   Schlüssel `reviews.*`).
+
+First-party & datensparsam: Es werden **keine** Google-/Drittanbieter-Widgets
+geladen, kein externer Request, kein Tracking. Eine Schema.org-`aggregateRating`
+wird (bei realer Basis) erst später separat ergänzt.
+
+## Reichweitenmessung / Web-Analyse aktivieren
+
+Die Analyse ist **aufgesetzt, aber standardmäßig inaktiv** (wie der leere
+Buchungs-Endpoint). Solange `site.analytics.enabled` `false` ist **oder**
+`scriptUrl`/`domain` leer sind, wird **kein** Analyse-Skript ausgeliefert und der
+Abschnitt „Reichweitenmessung" in der Datenschutzerklärung **nicht** angezeigt –
+beides hängt am selben Schalter, damit die Erklärung in jedem Zustand wahr bleibt.
+
+Konzipiert ist eine **cookielose, EU-/self-hosted** Lösung (Plausible oder
+Matomo im `disableCookies`-Modus). Cookielos = keine Speicherung/Auslesung auf
+dem Endgerät → **kein** Einwilligungsbanner nötig (§ 25 Abs. 1 TDDDG), Verarbeitung
+auf Grundlage des berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO). Der Loader
+respektiert „Do Not Track" und „Global Privacy Control": ist eines gesetzt, wird
+gar nicht erst geladen.
+
+Aktivieren (in `src/config/site.ts → analytics`), sobald ein eigener
+EU-/Self-Hosting-Analyse-Host eingerichtet ist:
+
+1. `provider` wählen (`'Plausible'` oder `'Matomo'`).
+2. `scriptUrl` (Anbieter-Skript), `domain` (registrierte Site) und – nur bei
+   Matomo – `siteId` setzen.
+3. `host` mit dem realen Analyse-Hoster füllen (erscheint in der
+   Datenschutzerklärung als Auftragsverarbeiter; **AVV nach Art. 28 DSGVO
+   abschließen**).
+4. `enabled: true` setzen → fertig. Der Abschnitt „Reichweitenmessung" in der
+   Datenschutzerklärung erscheint dann automatisch mit aufgelöstem Anbieter/Host.
+
+> **Hinweis:** Würde stattdessen eine **cookie-basierte** Analyse eingesetzt,
+> wäre ein vorgeschaltetes Einwilligungsbanner (Opt-in) zwingend – dann müsste
+> das Skript erst **nach** aktiver Einwilligung geladen und die Rechtsgrundlage
+> in der Datenschutzerklärung auf Art. 6 Abs. 1 lit. a DSGVO umgestellt werden.
 
 ## Karten-Embed (Anfahrt)
 

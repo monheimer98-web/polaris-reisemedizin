@@ -2,14 +2,17 @@
  * Inhalte der „Termin buchen"-Seite (DE+EN).
  *
  * Selbsttragend wie die übrigen Marketing-Seiten: nur redaktionelle Texte,
- * keine medizinischen Belegaussagen (daher KEINE ClinicalPage). Die
- * eigentliche Buchung wird über ein zertifiziertes Praxis-Terminsystem
- * eingebunden – datenschutzfreundlich per 2-Klick-Lösung (siehe
- * `ConsentEmbed`). Anbieter, Einbettungs-URL und Datenschutzlink kommen
- * zentral aus `site.booking`; hier liegen nur die Oberflächentexte. Der
- * Markenname wird NICHT hartkodiert (Storage-Key in `ConsentEmbed`).
+ * keine medizinischen Belegaussagen (daher KEINE ClinicalPage). Die Buchung
+ * läuft über das EIGENE Praxis-Terminsystem (praxis-app): Das Formular sendet
+ * die Terminanfrage an `site.booking.endpoint` (Reverse-Proxy vor der
+ * praxis-app); es entsteht ein Termin mit Status „angefragt", den das Backoffice
+ * bestätigt. Kein Drittanbieter-iframe, kein geheimes Token im Browser (das
+ * BOOKING_TOKEN injiziert der Reverse-Proxy serverseitig – siehe README).
+ * Hier liegen nur die Oberflächentexte; Endpunkt/Provider kommen aus
+ * `site.booking`. Die `bookableTypes`-IDs müssen den Terminart-IDs der
+ * praxis-app (`src/lib/terminarten.ts`) exakt entsprechen.
  */
-import type { Localized, ConsentEmbedText } from './types';
+import type { Localized } from './types';
 
 /** Eine Terminart zur Orientierung der Patient:innen bei der Buchung. */
 export interface AppointmentType {
@@ -23,6 +26,64 @@ export interface AppointmentType {
   recommended?: boolean;
   /** Buchbar? Gelbfieber bleibt vorerst false → „in Vorbereitung". */
   enabled: boolean;
+}
+
+/**
+ * Online buchbare Terminart für das Anfrageformular. Die `id` MUSS exakt der
+ * Terminart-ID in der praxis-app (`src/lib/terminarten.ts`) entsprechen – das
+ * Backend prüft sie erneut und weist unbekannte oder gesperrte (gated) Arten ab.
+ * Gelbfieber ist dort `gated` und erscheint daher hier bewusst NICHT.
+ */
+export interface BookableType {
+  id: string;
+  name: Localized;
+}
+
+/**
+ * Oberflächentexte des Terminanfrage-Formulars (React-Insel `BookingForm`),
+ * in der jeweiligen Sprache aufgelöst übergeben. Bewusst ausführlich, damit das
+ * Formular vollständig zweisprachig und ohne hartkodierte Strings rendert.
+ */
+export interface BookingFormText {
+  heading: Localized;
+  /** Kurzer Hinweis: es ist eine Anfrage (kein automatisch fixer Slot). */
+  intro: Localized;
+  labels: {
+    terminart: Localized;
+    terminartPlaceholder: Localized;
+    vorname: Localized;
+    nachname: Localized;
+    email: Localized;
+    telefon: Localized;
+    geburtsdatum: Localized;
+    wunschdatum: Localized;
+    wunschzeit: Localized;
+    reiseziel: Localized;
+    abreise: Localized;
+    notiz: Localized;
+    notizPlaceholder: Localized;
+    /** Suffix für optionale Felder, z. B. „(optional)". */
+    optional: Localized;
+  };
+  /** Einwilligungstext; enthält den Platzhalter `{privacy}` für den Link. */
+  consentLabel: Localized;
+  consentLinkLabel: Localized;
+  submit: Localized;
+  submitting: Localized;
+  successTitle: Localized;
+  successBody: Localized;
+  errorTitle: Localized;
+  errorBody: Localized;
+  /** Validierung. */
+  requiredHint: Localized;
+  consentRequired: Localized;
+  /** Datenschutz-Kurzhinweis unter dem Formular. */
+  privacyNote: Localized;
+  /** Honeypot-Beschriftung (visuell versteckt, nur für Bots/Screenreader-Hinweis). */
+  honeypotLabel: Localized;
+  /** Pre-Go-live (solange `site.booking.endpoint` leer ist): neutraler Platzhalter. */
+  placeholderTitle: Localized;
+  placeholderBody: Localized<string[]>;
 }
 
 export interface BookingPage {
@@ -45,7 +106,10 @@ export interface BookingPage {
     costsPath: string;
     items: AppointmentType[];
   };
-  consent: ConsentEmbedText;
+  /** Online buchbare Terminarten für das Anfrageformular (IDs = praxis-app). */
+  bookableTypes: BookableType[];
+  /** Oberflächentexte des Terminanfrage-Formulars. */
+  form: BookingFormText;
   /** „Vor Ihrem Termin" – kurze Vorbereitungs-Hinweise. */
   prepare: {
     heading: Localized;
@@ -72,25 +136,25 @@ export const bookingPage: BookingPage = {
       en: 'Book your appointment online',
     },
     description: {
-      de: 'Buchen Sie Ihren Termin für die reisemedizinische Beratung und Impfung online – datenschutzfreundlich über ein zertifiziertes Terminsystem.',
-      en: 'Book your appointment for travel-medicine advice and vaccination online – with a privacy-friendly setup using a certified scheduling system.',
+      de: 'Buchen Sie Ihren Termin für die reisemedizinische Beratung und Impfung online – datenschutzfreundlich und direkt über unser eigenes Praxis-Terminsystem.',
+      en: 'Book your appointment for travel-medicine advice and vaccination online – privacy-friendly and directly through our own practice scheduling system.',
     },
     eyebrow: {
       de: 'Terminbuchung',
       en: 'Appointments',
     },
     lead: {
-      de: 'Buchen Sie Ihren Termin für Beratung und Impfung bequem online. Die Einbindung erfolgt datenschutzfreundlich – der Buchungsdialog wird erst nach Ihrer Einwilligung geladen.',
-      en: 'Book your appointment for advice and vaccination conveniently online. The setup is privacy-friendly – the booking dialog is only loaded once you have given your consent.',
+      de: 'Buchen Sie Ihren Termin für Beratung und Impfung bequem online. Ihre Anfrage geht direkt und datenschutzfreundlich an unsere Praxis – ohne externen Buchungsdienst.',
+      en: 'Book your appointment for advice and vaccination conveniently online. Your request goes directly and privacy-friendly to our practice – with no external booking service.',
     },
   },
   intro: {
     de: [
-      'Vereinbaren Sie Ihren Termin für die reisemedizinische Beratung und Impfung bequem online. Die Terminbuchung läuft über ein zertifiziertes Praxis-Terminsystem.',
+      'Vereinbaren Sie Ihren Termin für die reisemedizinische Beratung und Impfung bequem online. Ihre Anfrage läuft direkt über unser eigenes Praxis-Terminsystem – ohne externen Anbieter.',
       'Bitte planen Sie ausreichend Vorlauf ein – einige Reiseimpfungen sollten rechtzeitig vor der Abreise erfolgen.',
     ],
     en: [
-      'Arrange your appointment for travel-medicine advice and vaccination conveniently online. Booking runs through a certified practice scheduling system.',
+      'Arrange your appointment for travel-medicine advice and vaccination conveniently online. Your request runs directly through our own practice scheduling system – with no external provider.',
       'Please allow enough lead time – some travel vaccinations should be given well before departure.',
     ],
   },
@@ -180,70 +244,82 @@ export const bookingPage: BookingPage = {
       },
     ],
   },
-  consent: {
-    title: {
-      de: 'Externe Terminbuchung',
-      en: 'External booking tool',
+  bookableTypes: [
+    { id: 'vollberatung', name: { de: 'Reisemedizinische Beratung', en: 'Travel-medicine consultation' } },
+    { id: 'impftermin', name: { de: 'Impftermin', en: 'Vaccination appointment' } },
+    { id: 'folgetermin', name: { de: 'Folge-/Impftermin (nach Impfplan)', en: 'Follow-up vaccination (per plan)' } },
+    { id: 'malaria-beratung', name: { de: 'Malariaberatung', en: 'Malaria consultation' } },
+    { id: 'hoehen-beratung', name: { de: 'Höhenmedizin-Beratung', en: 'Altitude-medicine consultation' } },
+    { id: 'malaria-hoehe', name: { de: 'Malaria- & Höhenberatung (kombiniert)', en: 'Malaria & altitude (combined)' } },
+    { id: 'fsme', name: { de: 'FSME-Impftermin', en: 'TBE vaccination appointment' } },
+    { id: 'b2b', name: { de: 'Reisemedizin für Unternehmen (B2B)', en: 'Corporate travel medicine (B2B)' } },
+  ],
+  form: {
+    heading: {
+      de: 'Termin anfragen',
+      en: 'Request an appointment',
     },
-    lead: {
-      de: 'Die Online-Terminbuchung wird von {provider} bereitgestellt. Aus Datenschutzgründen wird der Buchungsdialog erst geladen, wenn Sie zustimmen.',
-      en: 'The online booking is provided by {provider}. For data-protection reasons, the booking dialog is only loaded once you agree.',
+    intro: {
+      de: 'Senden Sie uns Ihren Wunschtermin – wir prüfen die Verfügbarkeit und bestätigen Ihren Termin persönlich per E-Mail. Ihre Angaben werden direkt an unsere Praxis übermittelt; es ist kein externer Buchungsdienst beteiligt.',
+      en: 'Send us your preferred appointment – we check availability and confirm your appointment personally by email. Your details are sent directly to our practice; no external booking service is involved.',
     },
-    points: {
-      de: [
-        'Beim Laden wird eine direkte Verbindung zu den Servern des Anbieters hergestellt und dabei Ihre IP-Adresse übertragen.',
-        'Der Anbieter kann Cookies oder vergleichbare Technologien einsetzen, um die Terminbuchung bereitzustellen.',
-        'Ihre Einwilligung wird ausschließlich lokal in Ihrem Browser gespeichert und gilt, bis Sie sie widerrufen.',
-      ],
-      en: [
-        "When loaded, a direct connection to the provider's servers is established and your IP address is transferred in the process.",
-        'The provider may use cookies or comparable technologies to deliver the booking tool.',
-        'Your consent is stored locally in your browser only and applies until you revoke it.',
-      ],
+    labels: {
+      terminart: { de: 'Terminart', en: 'Appointment type' },
+      terminartPlaceholder: { de: 'Bitte wählen …', en: 'Please choose …' },
+      vorname: { de: 'Vorname', en: 'First name' },
+      nachname: { de: 'Nachname', en: 'Last name' },
+      email: { de: 'E-Mail', en: 'Email' },
+      telefon: { de: 'Telefon', en: 'Phone' },
+      geburtsdatum: { de: 'Geburtsdatum', en: 'Date of birth' },
+      wunschdatum: { de: 'Wunschdatum', en: 'Preferred date' },
+      wunschzeit: { de: 'Wunschzeit', en: 'Preferred time' },
+      reiseziel: { de: 'Reiseziel', en: 'Destination' },
+      abreise: { de: 'Abreisedatum', en: 'Departure date' },
+      notiz: { de: 'Nachricht', en: 'Message' },
+      notizPlaceholder: {
+        de: 'Reiseroute, geplante Aktivitäten, Fragen … (optional)',
+        en: 'Itinerary, planned activities, questions … (optional)',
+      },
+      optional: { de: '(optional)', en: '(optional)' },
     },
-    privacyIntro: {
-      de: 'Weitere Informationen:',
-      en: 'Further information:',
+    consentLabel: {
+      de: 'Ich willige ein, dass meine Angaben zur Bearbeitung meiner Terminanfrage gespeichert und verarbeitet werden. Hinweise dazu finden Sie in unserer {privacy}.',
+      en: 'I consent to my details being stored and processed to handle my appointment request. For details, see our {privacy}.',
     },
-    providerPrivacyLabel: {
-      de: 'Datenschutz des Anbieters',
-      en: "Provider's privacy notice",
+    consentLinkLabel: {
+      de: 'Datenschutzerklärung',
+      en: 'privacy policy',
     },
-    ourPrivacyLabel: {
-      de: 'Unsere Datenschutzerklärung',
-      en: 'Our privacy policy',
+    submit: { de: 'Terminanfrage senden', en: 'Send appointment request' },
+    submitting: { de: 'Wird gesendet …', en: 'Sending …' },
+    successTitle: { de: 'Anfrage eingegangen – danke!', en: 'Request received – thank you!' },
+    successBody: {
+      de: 'Wir haben Ihre Terminanfrage erhalten und melden uns zur Bestätigung Ihres Wunschtermins bei Ihnen. Bitte prüfen Sie auch Ihren Spam-Ordner.',
+      en: 'We have received your appointment request and will get back to you to confirm your preferred slot. Please also check your spam folder.',
     },
-    loadButton: {
-      de: 'Buchung laden & einwilligen',
-      en: 'Load booking & consent',
+    errorTitle: { de: 'Senden nicht möglich', en: 'Could not send' },
+    errorBody: {
+      de: 'Ihre Anfrage konnte gerade nicht übermittelt werden. Bitte versuchen Sie es in einem Moment erneut oder kontaktieren Sie uns direkt – die Kontaktdaten finden Sie unten auf dieser Seite.',
+      en: 'Your request could not be submitted right now. Please try again in a moment or contact us directly – you’ll find the details at the bottom of this page.',
     },
-    externalLabel: {
-      de: 'Direkt beim Anbieter buchen',
-      en: 'Book directly with the provider',
+    requiredHint: { de: 'Bitte füllen Sie die Pflichtfelder aus.', en: 'Please complete the required fields.' },
+    consentRequired: { de: 'Bitte bestätigen Sie die Einwilligung.', en: 'Please confirm your consent.' },
+    privacyNote: {
+      de: 'Pflichtfelder sind mit * markiert. Bitte übermitteln Sie hier keine medizinischen Details – diese besprechen wir vertraulich im Termin.',
+      en: 'Required fields are marked with *. Please do not submit medical details here – we discuss those confidentially during your appointment.',
     },
-    iframeTitle: {
-      de: 'Online-Terminbuchung',
-      en: 'Online appointment booking',
-    },
-    loadedNote: {
-      de: 'Die Terminbuchung ist geladen. Ihre Einwilligung gilt, bis Sie sie widerrufen.',
-      en: 'The booking tool is loaded. Your consent applies until you revoke it.',
-    },
-    revokeLabel: {
-      de: 'Einwilligung widerrufen',
-      en: 'Revoke consent',
-    },
+    honeypotLabel: { de: 'Dieses Feld bitte frei lassen', en: 'Please leave this field empty' },
     placeholderTitle: {
-      de: 'Online-Terminbuchung in Vorbereitung',
-      en: 'Online booking coming soon',
+      de: 'Online-Terminanfrage in Vorbereitung',
+      en: 'Online appointment requests coming soon',
     },
     placeholderBody: {
       de: [
-        'Die Online-Terminbuchung wird derzeit eingerichtet und steht in Kürze zur Verfügung.',
+        'Die Online-Terminanfrage wird derzeit eingerichtet und steht in Kürze zur Verfügung.',
         'Bis dahin vereinbaren Sie Ihren Termin bitte telefonisch oder per E-Mail – die Kontaktdaten finden Sie unten auf dieser Seite.',
       ],
       en: [
-        'Online booking is currently being set up and will be available shortly.',
+        'Online appointment requests are currently being set up and will be available shortly.',
         "Until then, please arrange your appointment by phone or email – you'll find the contact details at the bottom of this page.",
       ],
     },

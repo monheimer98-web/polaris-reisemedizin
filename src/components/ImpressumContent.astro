@@ -20,6 +20,16 @@ const physicians = site.team.filter((member) => member.isPhysician);
 
 /** Nur echte URLs verlinken; Platzhalter („[PLATZHALTER: …]") bleiben Klartext. */
 const isUrl = (value: string) => /^https?:\/\//.test(value);
+
+/**
+ * Berufshaftpflicht nur ausweisen, wenn ein echter Versicherer hinterlegt ist.
+ * Die Nennung im Impressum ist für ärztliche Heilbehandlung nicht zwingend; ist
+ * `insurer` leer (oder ein Platzhalter), bleibt der Abschnitt aus.
+ */
+const hasInsurer = (() => {
+  const v = site.liabilityInsurance.insurer.trim();
+  return v !== '' && !v.startsWith('[');
+})();
 ---
 
 <article>
@@ -171,20 +181,24 @@ const isUrl = (value: string) => /^https?:\/\//.test(value);
         </dl>
       </section>
 
-      {/* Berufshaftpflichtversicherung */}
-      <section>
-        <h2 class="font-display text-2xl text-petrol-900 sm:text-3xl">{l.insuranceHeading[lang]}</h2>
-        <dl class="mt-4 space-y-3">
-          <div>
-            <dt class="text-xs font-semibold uppercase tracking-wider text-gold-700">{l.insurerLabel[lang]}</dt>
-            <dd class="mt-1 leading-relaxed text-ink-soft">{site.liabilityInsurance.insurer}</dd>
-          </div>
-          <div>
-            <dt class="text-xs font-semibold uppercase tracking-wider text-gold-700">{l.insuranceScopeLabel[lang]}</dt>
-            <dd class="mt-1 leading-relaxed text-ink-soft">{site.liabilityInsurance.scope[lang]}</dd>
-          </div>
-        </dl>
-      </section>
+      {/* Berufshaftpflichtversicherung — nur, wenn ein echter Versicherer hinterlegt ist */}
+      {
+        hasInsurer && (
+          <section>
+            <h2 class="font-display text-2xl text-petrol-900 sm:text-3xl">{l.insuranceHeading[lang]}</h2>
+            <dl class="mt-4 space-y-3">
+              <div>
+                <dt class="text-xs font-semibold uppercase tracking-wider text-gold-700">{l.insurerLabel[lang]}</dt>
+                <dd class="mt-1 leading-relaxed text-ink-soft">{site.liabilityInsurance.insurer}</dd>
+              </div>
+              <div>
+                <dt class="text-xs font-semibold uppercase tracking-wider text-gold-700">{l.insuranceScopeLabel[lang]}</dt>
+                <dd class="mt-1 leading-relaxed text-ink-soft">{site.liabilityInsurance.scope[lang]}</dd>
+              </div>
+            </dl>
+          </section>
+        )
+      }
 
       {/* Umsatzsteuer */}
       <section>

@@ -67,6 +67,7 @@ export const reiseimpfungenService: ClinicalPage = {
           'Meningokokken-Meningitis (u. a. „Meningitis-Gürtel", Pilgerreisen)',
           'Japanische Enzephalitis (ländliches Asien, Reisanbaugebiete)',
           'Cholera (bestimmte Risikogebiete, Helfer in Ausbruchsgebieten)',
+          'Dengue und Chikungunya – gezielte Reiseimpfungen nur für bestimmte Reisende bzw. Reisesituationen',
           'Gelbfieber und FSME – als eigene Leistungen ausführlich beschrieben',
         ],
         en: [
@@ -76,6 +77,7 @@ export const reiseimpfungenService: ClinicalPage = {
           'meningococcal meningitis (e.g. the "meningitis belt", pilgrimages)',
           'Japanese encephalitis (rural Asia, rice-growing areas)',
           'cholera (certain risk areas, aid workers in outbreak areas)',
+          'dengue and chikungunya – targeted travel vaccinations only for certain travellers or travel situations',
           'yellow fever and TBE (FSME) – described in detail as separate services',
         ],
       },
@@ -137,6 +139,8 @@ export const reiseimpfungenService: ClinicalPage = {
     { label: { de: 'Reisemedizinische Beratung', en: 'Travel medicine consultation' }, path: '/leistungen/reiseberatung' },
     { label: { de: 'Gelbfieberimpfung', en: 'Yellow fever vaccination' }, path: '/leistungen/gelbfieberimpfung' },
     { label: { de: 'FSME-Impfung', en: 'TBE (FSME) vaccination' }, path: '/leistungen/fsme-impfung' },
+    { label: { de: 'Dengue-Fieber', en: 'Dengue fever' }, path: '/krankheitsbilder/dengue' },
+    { label: { de: 'Chikungunya', en: 'Chikungunya' }, path: '/krankheitsbilder/chikungunya' },
     { label: { de: 'Risikogebiete', en: 'Risk areas' }, path: '/risikogebiete' },
   ],
 };

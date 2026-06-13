@@ -35,6 +35,14 @@ const fullTitle = `${title} · ${site.brand.name}`;
 // Platzhalterwerte (z. B. „[PLATZHALTER: …]") nicht ins JSON-LD übernehmen.
 const real = (value: string): string | undefined => (value.startsWith('[') ? undefined : value);
 
+// Geokoordinaten nur ausgeben, wenn BEIDE Werte gepflegt sind — kein erfundener
+// Standort. Ein gesetztes `geo` verbessert die lokale Auffindbarkeit (Distanz-/
+// Kartensuche). Solange leer, bleibt der Knoten bewusst weg (analog zu `real`).
+const geo =
+  site.contact.geo.lat && site.contact.geo.lng
+    ? { '@type': 'GeoCoordinates', latitude: site.contact.geo.lat, longitude: site.contact.geo.lng }
+    : undefined;
+
 const clinicSchema = {
   '@context': 'https://schema.org',
   '@type': 'MedicalClinic',
@@ -47,19 +55,39 @@ const clinicSchema = {
   inLanguage: HREFLANG[lang],
   availableLanguage: ['de', 'en'],
   medicalSpecialty: 'PublicHealth',
-  areaServed: { '@type': 'Country', name: 'Deutschland' },
+  // Einzugsgebiet von lokal nach national gestaffelt (Ort → Bundesland → Land),
+  // damit Suchmaschinen den regionalen Bezug (Langenfeld/Rheinland) erkennen.
+  areaServed: [
+    { '@type': 'City', name: site.contact.city },
+    { '@type': 'State', name: site.contact.region[lang] },
+    { '@type': 'Country', name: site.contact.country[lang] },
+  ],
   address: {
     '@type': 'PostalAddress',
     streetAddress: site.contact.street,
     postalCode: site.contact.zip,
     addressLocality: site.contact.city,
+    addressRegion: site.contact.region[lang],
     addressCountry: 'DE',
   },
+  ...(geo ? { geo } : {}),
+  hasMap: site.map.externalUrl,
   telephone: real(site.contact.phone),
   email: real(site.contact.email),
+  paymentAccepted: lang === 'de' ? 'EC-/girocard, Kreditkarte' : 'Debit card (girocard), credit card',
+  openingHoursSpecification: site.openingHoursSpec.map((spec) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: spec.days,
+    opens: spec.opens,
+    closes: spec.closes,
+  })),
   availableService: [
+    { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Reisemedizinische Beratung' : 'Travel-medicine consultation' },
+    { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Reiseimpfungen' : 'Travel vaccinations' },
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Gelbfieberimpfung' : 'Yellow fever vaccination' },
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'FSME-Impfung' : 'TBE vaccination' },
+    { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Malariaberatung' : 'Malaria advice' },
+    { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Höhenmedizinische Beratung' : 'Altitude-medicine advice' },
   ],
 };
 

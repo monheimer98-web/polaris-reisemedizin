@@ -5,6 +5,7 @@
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import OverviewCard from '../../components/OverviewCard.astro';
+import PageHero from '../../components/PageHero.astro';
 import CTA from '../../components/CTA.astro';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
 
@@ -14,16 +15,14 @@ const t = useTranslations(lang);
 
 <BaseLayout title={t('overview.diseasesTitle')} description={t('overview.diseasesLead')}>
   <article>
-    <header class="border-b border-line bg-sand/40">
-      <div class="u-container py-14 sm:py-20">
-        <p class="eyebrow"><span class="rule-gold"></span>{t('nav.diseases')}</p>
-        <h1 class="mt-4 font-display text-4xl text-petrol-900 sm:text-5xl">{t('overview.diseasesTitle')}</h1>
-        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft">{t('overview.diseasesLead')}</p>
-      </div>
-    </header>
+    <PageHero
+      eyebrow={t('nav.diseases')}
+      title={t('overview.diseasesTitle')}
+      lead={t('overview.diseasesLead')}
+    />
 
     <div class="u-container pb-16 pt-12 sm:pb-20 sm:pt-16">
-      <div class="grid gap-6 lg:grid-cols-2">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <OverviewCard
           variant="yellowFever"
           title={t('nav.yellowFever')}
@@ -32,11 +31,74 @@ const t = useTranslations(lang);
           href={getLocalizedPath('/krankheitsbilder/gelbfieber', lang)}
         />
         <OverviewCard
+          variant="dengue"
+          title={t('nav.dengue')}
+          text={t('overview.diseaseDengueText')}
+          cta={t('cta.diseaseDetail')}
+          href={getLocalizedPath('/krankheitsbilder/dengue', lang)}
+        />
+        <OverviewCard
+          variant="chikungunya"
+          title={t('nav.chikungunya')}
+          text={t('overview.diseaseChikText')}
+          cta={t('cta.diseaseDetail')}
+          href={getLocalizedPath('/krankheitsbilder/chikungunya', lang)}
+        />
+        <OverviewCard
           variant="fsme"
           title={t('nav.fsme')}
           text={t('overview.diseaseFsmeText')}
           cta={t('cta.diseaseDetail')}
           href={getLocalizedPath('/krankheitsbilder/fsme', lang)}
+        />
+        <OverviewCard
+          variant="hepatitisA"
+          title={t('nav.hepatitisA')}
+          text={t('overview.diseaseHepAText')}
+          cta={t('cta.diseaseDetail')}
+          href={getLocalizedPath('/krankheitsbilder/hepatitis-a', lang)}
+        />
+        <OverviewCard
+          variant="hepatitisB"
+          title={t('nav.hepatitisB')}
+          text={t('overview.diseaseHepBText')}
+          cta={t('cta.diseaseDetail')}
+          href={getLocalizedPath('/krankheitsbilder/hepatitis-b', lang)}
+        />
+        <OverviewCard
+          variant="typhus"
+          title={t('nav.typhus')}
+          text={t('overview.diseaseTyphusText')}
+          cta={t('cta.diseaseDetail')}
+          href={getLocalizedPath('/krankheitsbilder/typhus', lang)}
+        />
+        <OverviewCard
+          variant="rabies"
+          title={t('nav.rabies')}
+          text={t('overview.diseaseRabiesText')}
+          cta={t('cta.diseaseDetail')}
+          href={getLocalizedPath('/krankheitsbilder/tollwut', lang)}
+        />
+        <OverviewCard
+          variant="japaneseEncephalitis"
+          title={t('nav.japaneseEncephalitis')}
+          text={t('overview.diseaseJeText')}
+          cta={t('cta.diseaseDetail')}
+          href={getLocalizedPath('/krankheitsbilder/japanische-enzephalitis', lang)}
+        />
+        <OverviewCard
+          variant="meningococcal"
+          title={t('nav.meningococcal')}
+          text={t('overview.diseaseMeningoText')}
+          cta={t('cta.diseaseDetail')}
+          href={getLocalizedPath('/krankheitsbilder/meningokokken', lang)}
+        />
+        <OverviewCard
+          variant="cholera"
+          title={t('nav.cholera')}
+          text={t('overview.diseaseCholeraText')}
+          cta={t('cta.diseaseDetail')}
+          href={getLocalizedPath('/krankheitsbilder/cholera', lang)}
         />
       </div>
     </div>

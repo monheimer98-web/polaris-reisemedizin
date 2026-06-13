@@ -88,8 +88,8 @@ export const kontaktPage: KontaktPage = {
       en: 'Getting here',
     },
     mapLead: {
-      de: 'Planen Sie Ihre Anfahrt bequem mit dem Kartendienst. Aus Datenschutzgründen wird die interaktive Karte erst nach Ihrer Einwilligung geladen.',
-      en: 'Plan your journey conveniently with the map service. For data-protection reasons, the interactive map is only loaded after your consent.',
+      de: 'Unsere Praxis liegt in Langenfeld im Rheinland, zwischen Düsseldorf und Köln. Planen Sie Ihre Anfahrt bequem mit dem Kartendienst. Aus Datenschutzgründen wird die interaktive Karte erst nach Ihrer Einwilligung geladen.',
+      en: 'Our practice is in Langenfeld in the Rhineland, between Düsseldorf and Cologne. Plan your journey conveniently with the map service. For data-protection reasons, the interactive map is only loaded after your consent.',
     },
   },
   consent: {

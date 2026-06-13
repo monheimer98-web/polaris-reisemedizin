@@ -11,7 +11,16 @@ export const ui = {
     'nav.services': 'Leistungen',
     'nav.diseases': 'Krankheitsbilder',
     'nav.yellowFever': 'Gelbfieber',
+    'nav.dengue': 'Dengue-Fieber',
+    'nav.chikungunya': 'Chikungunya',
     'nav.fsme': 'FSME',
+    'nav.hepatitisA': 'Hepatitis A',
+    'nav.hepatitisB': 'Hepatitis B',
+    'nav.typhus': 'Typhus',
+    'nav.rabies': 'Tollwut',
+    'nav.japaneseEncephalitis': 'Japanische Enzephalitis',
+    'nav.meningococcal': 'Meningokokken',
+    'nav.cholera': 'Cholera',
     'nav.consultation': 'Reisemedizinische Beratung',
     'nav.travelVaccinations': 'Reiseimpfungen',
     'nav.yellowFeverVaccination': 'Gelbfieberimpfung',
@@ -19,7 +28,10 @@ export const ui = {
     'nav.malaria': 'Malaria-Vorsorge',
     'nav.altitude': 'Höhenmedizin',
     'nav.riskAreas': 'Risikogebiete',
+    'nav.destinations': 'Reiseziele',
     'nav.process': 'Ablauf',
+    'nav.travelTips': 'Reisetipps',
+    'nav.travelKit': 'Reiseapotheke',
     'nav.costs': 'Kosten',
     'nav.business': 'Für Unternehmen',
     'nav.team': 'Team',
@@ -125,6 +137,16 @@ export const ui = {
     'home.ctaNote':
       'Bitte beachten Sie für die Gelbfieberimpfung eine Frist von mindestens 10 Tagen vor Abreise.',
 
+    // Startseite — Kundenstimmen (nur sichtbar, wenn in site.ts aktiviert)
+    'reviews.ariaLabel': 'Kundenstimmen',
+    'reviews.eyebrow': 'Das sagen Reisende',
+    'reviews.title': 'Erfahrungen unserer Patientinnen und Patienten',
+    'reviews.lead':
+      'Was Reisende über die Beratung und Betreuung in unserer Praxis berichten.',
+    'reviews.outOfFive': 'von 5',
+    'reviews.reviewsWord': 'Bewertungen',
+    'reviews.googleCta': 'Alle Bewertungen bei Google ansehen',
+
     // Rechtsseiten (Impressum & Datenschutz)
     'legal.lastUpdated': 'Stand:',
 
@@ -135,6 +157,17 @@ export const ui = {
     'content.annualUpdate':
       'Diese Angaben werden regelmäßig, mindestens einmal jährlich, auf Aktualität geprüft.',
     'content.relatedTitle': 'Weiterführend',
+    'content.breadcrumb': 'Brotkrumennavigation',
+    'content.onThisPage': 'Auf dieser Seite',
+    'content.moreOnTopic': 'Mehr dazu',
+
+    // Steckbrief / Kernfakten-Box (Krankheitsbilder)
+    'facts.title': 'Steckbrief',
+    'facts.pathogen': 'Erreger',
+    'facts.transmission': 'Übertragung',
+    'facts.regions': 'Verbreitung',
+    'facts.vaccine': 'Reiseimpfung',
+    'facts.note': 'Gut zu wissen',
 
     // Übersichtsseiten (Eltern-Navigation)
     'overview.servicesTitle': 'Unsere Leistungen',
@@ -145,8 +178,26 @@ export const ui = {
       'Fachlich fundierte Informationen zu den Erkrankungen, vor denen unsere Impfungen schützen – mit Angabe der Quellen und des jeweiligen Stands.',
     'overview.diseaseYfText':
       'Durch Stechmücken übertragene Viruserkrankung in den Tropen Afrikas und Südamerikas. Der wirksamste Schutz ist die Impfung.',
+    'overview.diseaseDengueText':
+      'Weltweit häufigste durch Stechmücken übertragene Viruserkrankung der Tropen und Subtropen – mit konsequentem Mückenschutz und in bestimmten Fällen einer Impfung.',
+    'overview.diseaseChikText':
+      'Tropische Virusinfektion mit hohem Fieber und teils langanhaltenden Gelenkschmerzen – übertragen durch tagaktive Stechmücken.',
     'overview.diseaseFsmeText':
       'Durch Zecken übertragene Viruserkrankung, die das Nervensystem befallen kann – relevant in Risikogebieten in Deutschland und Europa.',
+    'overview.diseaseHepAText':
+      'Virusbedingte Leberentzündung, die über Wasser und Lebensmittel übertragen wird – eine der häufigsten impfpräventablen Reiseinfektionen.',
+    'overview.diseaseHepBText':
+      'Über Blut und Körperflüssigkeiten übertragene Leberentzündung, die chronisch verlaufen kann – durch eine Impfung vermeidbar.',
+    'overview.diseaseTyphusText':
+      'Bakterielle Allgemeininfektion mit hohem Fieber, übertragen über verunreinigtes Wasser und Lebensmittel – vor allem in Südasien.',
+    'overview.diseaseRabiesText':
+      'Durch Tierbisse übertragene Virusinfektion, die nach Ausbruch nahezu immer tödlich ist – durch Vorbeugung zuverlässig vermeidbar.',
+    'overview.diseaseJeText':
+      'Durch Stechmücken übertragene Virusinfektion mit seltener, aber schwerer Hirnentzündung – vor allem im ländlichen Asien.',
+    'overview.diseaseMeningoText':
+      'Bakterien, die eine Hirnhautentzündung und Blutvergiftung auslösen können – impfpräventabel, mit Nachweispflicht für Pilgerreisen.',
+    'overview.diseaseCholeraText':
+      'Bakterielle Durchfallerkrankung über verunreinigtes Wasser – für gewöhnliche Reisende ein sehr geringes Risiko.',
     'cta.diseaseDetail': 'Zum Krankheitsbild',
 
     // 404
@@ -162,7 +213,16 @@ export const ui = {
     'nav.services': 'Services',
     'nav.diseases': 'Diseases',
     'nav.yellowFever': 'Yellow fever',
+    'nav.dengue': 'Dengue fever',
+    'nav.chikungunya': 'Chikungunya',
     'nav.fsme': 'TBE (FSME)',
+    'nav.hepatitisA': 'Hepatitis A',
+    'nav.hepatitisB': 'Hepatitis B',
+    'nav.typhus': 'Typhoid fever',
+    'nav.rabies': 'Rabies',
+    'nav.japaneseEncephalitis': 'Japanese encephalitis',
+    'nav.meningococcal': 'Meningococcal disease',
+    'nav.cholera': 'Cholera',
     'nav.consultation': 'Travel medicine consultation',
     'nav.travelVaccinations': 'Travel vaccinations',
     'nav.yellowFeverVaccination': 'Yellow fever vaccination',
@@ -170,7 +230,10 @@ export const ui = {
     'nav.malaria': 'Malaria prevention',
     'nav.altitude': 'Altitude medicine',
     'nav.riskAreas': 'Risk areas',
+    'nav.destinations': 'Destinations',
     'nav.process': 'How it works',
+    'nav.travelTips': 'Travel tips',
+    'nav.travelKit': 'Travel first-aid kit',
     'nav.costs': 'Costs',
     'nav.business': 'For businesses',
     'nav.team': 'Team',
@@ -276,6 +339,16 @@ export const ui = {
     'home.ctaNote':
       'For the yellow fever vaccination, please allow at least 10 days before departure.',
 
+    // Home — testimonials (only shown when enabled in site.ts)
+    'reviews.ariaLabel': 'Patient testimonials',
+    'reviews.eyebrow': 'What travellers say',
+    'reviews.title': 'Experiences from our patients',
+    'reviews.lead':
+      'What travellers report about the advice and care they received at our practice.',
+    'reviews.outOfFive': 'out of 5',
+    'reviews.reviewsWord': 'reviews',
+    'reviews.googleCta': 'View all reviews on Google',
+
     // Legal pages (imprint & privacy)
     'legal.lastUpdated': 'Last updated:',
 
@@ -286,6 +359,17 @@ export const ui = {
     'content.annualUpdate':
       'This information is reviewed for accuracy regularly, at least once a year.',
     'content.relatedTitle': 'Related pages',
+    'content.breadcrumb': 'Breadcrumb',
+    'content.onThisPage': 'On this page',
+    'content.moreOnTopic': 'Learn more',
+
+    // Steckbrief / Kernfakten-Box (Krankheitsbilder)
+    'facts.title': 'At a glance',
+    'facts.pathogen': 'Pathogen',
+    'facts.transmission': 'Transmission',
+    'facts.regions': 'Distribution',
+    'facts.vaccine': 'Travel vaccine',
+    'facts.note': 'Good to know',
 
     // Overview pages (parent navigation)
     'overview.servicesTitle': 'Our services',
@@ -296,8 +380,26 @@ export const ui = {
       'Evidence-based information on the diseases our vaccinations protect against – with the relevant sources and review date stated.',
     'overview.diseaseYfText':
       'A mosquito-borne viral disease in tropical Africa and South America. The most effective protection is vaccination.',
+    'overview.diseaseDengueText':
+      'The most common mosquito-borne viral disease of the tropics and subtropics worldwide – managed with consistent mosquito protection and, in certain cases, vaccination.',
+    'overview.diseaseChikText':
+      'A tropical viral infection with high fever and sometimes long-lasting joint pain – transmitted by day-biting mosquitoes.',
     'overview.diseaseFsmeText':
       'A tick-borne viral disease that can affect the nervous system – relevant in risk areas in Germany and Europe.',
+    'overview.diseaseHepAText':
+      'A viral inflammation of the liver transmitted via water and food – one of the most common vaccine-preventable travel infections.',
+    'overview.diseaseHepBText':
+      'An inflammation of the liver transmitted via blood and body fluids that can become chronic – avoidable through vaccination.',
+    'overview.diseaseTyphusText':
+      'A systemic bacterial infection with high fever, transmitted via contaminated water and food – particularly in South Asia.',
+    'overview.diseaseRabiesText':
+      'A viral infection transmitted by animal bites that is almost always fatal once it breaks out – reliably avoidable through prevention.',
+    'overview.diseaseJeText':
+      'A mosquito-borne viral infection with rare but severe inflammation of the brain – mainly in rural Asia.',
+    'overview.diseaseMeningoText':
+      'Bacteria that can cause meningitis and blood poisoning – vaccine-preventable, with a proof requirement for pilgrimages.',
+    'overview.diseaseCholeraText':
+      'A bacterial diarrhoeal disease from contaminated water – a very low risk for ordinary travellers.',
     'cta.diseaseDetail': 'View disease',
 
     // 404
