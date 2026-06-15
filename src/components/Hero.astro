@@ -19,25 +19,24 @@ const t = useTranslations(lang);
   <div class="pointer-events-none absolute -right-28 -top-36 h-[32rem] w-[32rem] rounded-full bg-petrol-100/60 blur-3xl" aria-hidden="true"></div>
   <div class="pointer-events-none absolute -bottom-36 -left-24 h-96 w-96 rounded-full bg-gold-100/50 blur-3xl" aria-hidden="true"></div>
 
-  {/* Marken-Motiv: Globus mit Meridianen, Reiseroute & Polarstern (ab lg) */}
+  {/* Marken-Motiv: Leitstern im Meridian-Sternfeld (ab lg) — der Kompassstern aus
+      dem Signet, umkränzt von feinen goldenen Punkt-Ringen & verstreuten Sternen */}
   <div class="pointer-events-none absolute top-1/2 right-[-6rem] hidden -translate-y-1/2 lg:block xl:right-[-2rem]" aria-hidden="true">
     <svg class="h-[32rem] w-[32rem] xl:h-[38rem] xl:w-[38rem]" viewBox="0 0 460 460" fill="none">
-      <g stroke="currentColor" class="text-petrol-200">
-        <circle cx="230" cy="230" r="170" stroke-width="1.5" />
-        <ellipse cx="230" cy="230" rx="57" ry="170" stroke-width="1.1" />
-        <ellipse cx="230" cy="230" rx="115" ry="170" stroke-width="1.1" />
-        <line x1="230" y1="60" x2="230" y2="400" stroke-width="1.1" />
-        <line x1="60" y1="230" x2="400" y2="230" stroke-width="1.2" />
-        <line x1="76" y1="158" x2="384" y2="158" stroke-width="1" />
-        <line x1="76" y1="302" x2="384" y2="302" stroke-width="1" />
+      {/* Feiner Petrol-Ring */}
+      <circle cx="230" cy="230" r="178" stroke="currentColor" class="text-petrol-200" stroke-width="1.4" />
+      {/* Goldene Punkt-/Strich-Kränze (Kompass-Teilung im Großformat) */}
+      <g stroke="currentColor" class="text-gold-300" fill="none" stroke-linecap="round">
+        <circle cx="230" cy="230" r="150" stroke-width="1.5" stroke-dasharray="0 10" />
+        <circle cx="230" cy="230" r="98" stroke-width="1.2" stroke-dasharray="2 9" />
       </g>
-      {/* Reiseroute über den Globus */}
-      <path d="M120 322 Q232 132 346 198" stroke="currentColor" class="text-gold-300" stroke-width="1.6" stroke-dasharray="1.5 7" stroke-linecap="round" />
-      <circle cx="120" cy="322" r="3.5" fill="currentColor" class="text-gold-400/70" />
-      <circle cx="346" cy="198" r="5" fill="currentColor" class="text-gold-400" />
-      {/* Polarstern + Begleitstern */}
-      <path d="M330 56 L337 71 L352 78 L337 85 L330 100 L323 85 L308 78 L323 71 Z" fill="currentColor" class="text-gold-400" />
-      <path d="M374 132 L377.5 139 L384 142.5 L377.5 146 L374 153 L370.5 146 L364 142.5 L370.5 139 Z" fill="currentColor" class="text-gold-300" />
+      {/* Großer Leitstern — Vier-Strahl-Kompassstern */}
+      <path d="M230 144 L252 208 L316 230 L252 252 L230 316 L208 252 L144 230 L208 208 Z" fill="currentColor" class="text-petrol-200" />
+      <circle cx="230" cy="230" r="4.5" fill="currentColor" class="text-gold-400" />
+      {/* Verstreute Begleitsterne */}
+      <path d="M388 84 L391.6 93.4 L401 97 L391.6 100.6 L388 110 L384.4 100.6 L375 97 L384.4 93.4 Z" fill="currentColor" class="text-gold-400" />
+      <path d="M70 152 L72.6 159 L79.6 161.6 L72.6 164.2 L70 171.2 L67.4 164.2 L60.4 161.6 L67.4 159 Z" fill="currentColor" class="text-gold-300" />
+      <path d="M156 392 L158 397.2 L163.2 399.2 L158 401.2 L156 406.4 L154 401.2 L148.8 399.2 L154 397.2 Z" fill="currentColor" class="text-gold-300" />
     </svg>
   </div>
 

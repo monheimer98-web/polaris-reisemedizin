@@ -24,16 +24,16 @@ const { eyebrow, title, lead, motif = true } = Astro.props;
     motif && (
       <div class="pointer-events-none absolute top-1/2 right-[-2.5rem] hidden -translate-y-1/2 lg:block" aria-hidden="true">
         <svg class="h-72 w-72 text-petrol-200/70 xl:h-80 xl:w-80" viewBox="0 0 240 240" fill="none">
-          <g stroke="currentColor">
-            <circle cx="120" cy="120" r="92" stroke-width="1.2" />
-            <ellipse cx="120" cy="120" rx="31" ry="92" stroke-width="0.9" />
-            <ellipse cx="120" cy="120" rx="62" ry="92" stroke-width="0.9" />
-            <line x1="28" y1="120" x2="212" y2="120" stroke-width="1" />
-            <line x1="120" y1="28" x2="120" y2="212" stroke-width="0.9" />
-            <line x1="44" y1="82" x2="196" y2="82" stroke-width="0.7" />
-            <line x1="44" y1="158" x2="196" y2="158" stroke-width="0.7" />
-          </g>
-          <path d="M70 168 Q120 70 184 104" stroke="currentColor" class="text-gold-300" stroke-width="1.1" stroke-dasharray="1.2 6" stroke-linecap="round" />
+          {/* Feiner Petrol-Ring */}
+          <circle cx="120" cy="120" r="98" stroke="currentColor" stroke-width="1.1" />
+          {/* Goldener Punkt-Kranz (Kompass-Teilung) */}
+          <circle cx="120" cy="120" r="78" stroke="currentColor" class="text-gold-300" stroke-width="1.1" stroke-linecap="round" stroke-dasharray="0 6.5" />
+          {/* Leitstern — Vier-Strahl-Kompassstern */}
+          <path d="M120 62 L135 105 L178 120 L135 135 L120 178 L105 135 L62 120 L105 105 Z" fill="currentColor" />
+          <circle cx="120" cy="120" r="3" fill="currentColor" class="text-gold-400" />
+          {/* Begleitsterne */}
+          <path d="M44 52 L46.3 57.7 L52 60 L46.3 62.3 L44 68 L41.7 62.3 L36 60 L41.7 57.7 Z" fill="currentColor" class="text-gold-300" />
+          <path d="M200 175.5 L201.9 180.1 L206.5 182 L201.9 183.9 L200 188.5 L198.1 183.9 L193.5 182 L198.1 180.1 Z" fill="currentColor" class="text-gold-300" />
         </svg>
       </div>
     )

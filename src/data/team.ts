@@ -59,11 +59,11 @@ export const teamPage: TeamPage = {
   intro: {
     de: [
       'Unsere Praxis ist auf Reise- und Impfmedizin spezialisiert. Wir beraten Sie vor Reisen in Risikogebiete, führen die empfohlenen und vorgeschriebenen Impfungen durch und stellen die erforderlichen Nachweise aus – darunter den internationalen Impfnachweis für Gelbfieber.',
-      'Dabei nehmen wir uns bewusst Zeit: Sie sollen Ihre Fragen in Ruhe stellen können und am Ende genau wissen, welche Impfungen und Vorsichtsmaßnahmen für Ihre Reise sinnvoll sind. Unsere Empfehlungen orientieren sich an gesicherten Fachquellen – sachlich, verständlich und ohne Versprechen, die sich nicht halten lassen.',
+      'Dabei nehmen wir uns Zeit: Sie sollen in Ruhe fragen können und am Ende genau wissen, welche Impfungen und Vorkehrungen für Ihre Reise sinnvoll sind.',
     ],
     en: [
       'Our practice specialises in travel and vaccination medicine. We advise you ahead of trips to risk areas, administer the recommended and required vaccinations and issue the necessary certificates – including the international certificate for yellow fever.',
-      'We deliberately take our time: you should be able to ask your questions calmly and leave knowing exactly which vaccinations and precautions make sense for your trip. Our recommendations are guided by trusted professional sources – factual, clear and without promises that cannot be kept.',
+      'We take our time: you should be able to ask your questions calmly and leave knowing exactly which vaccinations and precautions make sense for your trip.',
     ],
   },
   teamHeading: {
@@ -71,8 +71,8 @@ export const teamPage: TeamPage = {
     en: 'Our team',
   },
   teamLead: {
-    de: 'Die ärztliche Beratung und die Impfungen liegen in approbierter Hand; unser medizinischer Mitarbeiter unterstützt Sie bei Organisation und Ablauf rund um Ihren Termin.',
-    en: 'Medical advice and vaccinations are in licensed hands; our medical team member supports you with organisation and the practicalities around your appointment.',
+    de: 'Die Impfungen und die Beratung liegen in ärztlicher Hand; unser medizinischer Mitarbeiter kümmert sich um Termine und Ablauf.',
+    en: 'Vaccinations and advice are in the physician’s hands; our medical team member takes care of appointments and logistics.',
   },
   valuesHeading: {
     de: 'Unser Ansatz',
@@ -122,11 +122,11 @@ export const teamPage: TeamPage = {
   },
   practiceBody: {
     de: [
-      'Bei uns sollen Sie sich vom ersten Moment an gut aufgehoben fühlen. Wir beraten Reisende sorgfältig und unabhängig, nehmen uns Zeit für Ihre Fragen und richten jede Empfehlung an Ihrer konkreten Reise aus.',
+      'Bei uns sollen Sie sich vom ersten Moment an gut aufgehoben fühlen. Wir beraten Reisende sorgfältig und unabhängig und richten jede Empfehlung an Ihrer konkreten Reise aus.',
       'Die Praxis ist als staatlich autorisierte Gelbfieberimpfstelle zugelassen und führt Reiseimpfungen wie die Gelbfieber- und die FSME-Impfung durch. Termine vereinbaren Sie bequem online; die persönliche Beratung findet in Ruhe vor Ort statt.',
     ],
     en: [
-      'From the very first moment, you should feel in good hands with us. We advise travellers carefully and independently, take time for your questions and tailor every recommendation to your specific trip.',
+      'From the very first moment, you should feel in good hands with us. We advise travellers carefully and independently and tailor every recommendation to your specific trip.',
       'The practice is licensed as a state-authorised yellow fever vaccination centre and provides travel vaccinations such as the yellow fever and TBE vaccination. You can book appointments conveniently online; the personal consultation takes place, unhurried, on site.',
     ],
   },

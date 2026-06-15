@@ -5,11 +5,13 @@
  */
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import Callout from '../../components/Callout.astro';
-import { getLangFromUrl, getLocalizedPath } from '../../i18n/utils';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
+import { BOOKING_PATH } from '../../config/nav';
 import { getSources } from '../../data/sources';
 import { gelbfieberimpfungService as page } from '../../data/services/gelbfieberimpfung';
 
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const sources = getSources(page.sourceIds);
 const related = (page.related ?? []).map((item) => ({
   label: item.label[lang],
@@ -47,6 +49,11 @@ const related = (page.related ?? []).map((item) => ({
             <Callout variant={section.callout.variant} title={section.callout.title?.[lang]}>
               {section.callout.text[lang]}
             </Callout>
+          )}
+          {section.id === 'impfstoff' && (
+            <a href={getLocalizedPath(BOOKING_PATH, lang)} class="btn-gold mt-5 inline-flex" aria-label={t('cta.bookAria')}>
+              {t('cta.book')}
+            </a>
           )}
         </section>
       ))

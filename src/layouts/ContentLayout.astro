@@ -17,6 +17,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import DiseaseFactsBox from '../components/DiseaseFactsBox.astro';
 import { getLangFromUrl, useTranslations, formatReviewDate, getLocalizedPath, getLogicalPath, HREFLANG } from '../i18n/utils';
 import { SITE_URL } from '../config/site';
+import { BOOKING_PATH } from '../config/nav';
 import { diseaseFacts } from '../data/diseaseFacts';
 import type { UiKey } from '../i18n/ui';
 import type { SourceWithId } from '../data/sources';
@@ -111,6 +112,9 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
   <article>
     <PageHero eyebrow={eyebrow} title={title} lead={lead}>
       <Breadcrumbs slot="breadcrumb" items={breadcrumbItems} label={t('content.breadcrumb')} />
+      <a href={getLocalizedPath(BOOKING_PATH, lang)} class="btn-gold mt-8 inline-flex" aria-label={t('cta.bookAria')}>
+        {t('cta.book')}
+      </a>
       <p class="mt-6 text-sm text-ink-soft">
         <span class="font-medium text-ink">{t('content.lastReviewedLabel')}</span>
         {' '}{formatReviewDate(lastReviewed, lang)}

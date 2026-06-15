@@ -45,20 +45,22 @@ const values = page.values;
       <div class="mt-8 grid gap-6 lg:grid-cols-2">
         {
           team.map((member) => (
-            <article class="card flex flex-col gap-5 sm:flex-row sm:items-start">
-              <img
-                src={withBase(member.photo)}
-                alt={member.name}
-                width="112"
-                height="112"
-                loading="lazy"
-                decoding="async"
-                class="h-24 w-24 shrink-0 self-start rounded-2xl object-cover shadow-[var(--shadow-soft)] ring-1 ring-petrol-900/10 sm:h-28 sm:w-28"
-                style={`object-position: ${member.focal ?? 'center'}`}
-              />
-              <div class="min-w-0">
-                <h3 class="font-display text-xl text-petrol-900">{member.name}</h3>
-                <p class="mt-1 text-xs font-semibold uppercase tracking-wider text-gold-700">{member.role[lang]}</p>
+            <article class="flex flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-[var(--shadow-card)] sm:flex-row">
+              <div class="h-60 w-full shrink-0 overflow-hidden bg-sand sm:h-auto sm:w-44 sm:self-stretch">
+                <img
+                  src={withBase(member.photo)}
+                  alt={member.name}
+                  width="512"
+                  height="768"
+                  loading="lazy"
+                  decoding="async"
+                  class="h-full w-full object-cover"
+                  style={`object-position: ${member.focal ?? 'center'}`}
+                />
+              </div>
+              <div class="min-w-0 p-6 sm:p-7">
+                <h3 class="font-display text-xl text-petrol-900 sm:text-2xl">{member.name}</h3>
+                <p class="mt-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-gold-700">{member.role[lang]}</p>
                 <p class="mt-3 leading-relaxed text-ink-soft">{member.bio[lang]}</p>
               </div>
             </article>
@@ -120,13 +122,17 @@ const values = page.values;
   {/* Über die Praxis */}
   <section class="u-container py-14 sm:py-16">
     <div class="rounded-3xl border border-line bg-white/60 p-8 shadow-[var(--shadow-soft)] sm:p-10">
-      <p class="eyebrow">
-        <span class="rule-gold"></span>
-        {site.brand.name} — {site.brand.tagline[lang]}
-      </p>
-      <h2 class="mt-4 font-display text-2xl text-petrol-900 sm:text-3xl">{page.practiceHeading[lang]}</h2>
-      <div class="mt-4 max-w-2xl space-y-4 leading-relaxed text-ink-soft">
-        {page.practiceBody[lang].map((paragraph) => <p>{paragraph}</p>)}
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] lg:gap-12 lg:items-start">
+        <div>
+          <p class="eyebrow">
+            <span class="rule-gold"></span>
+            {site.brand.name} — {site.brand.tagline[lang]}
+          </p>
+          <h2 class="mt-4 font-display text-2xl text-petrol-900 sm:text-3xl">{page.practiceHeading[lang]}</h2>
+        </div>
+        <div class="space-y-4 leading-relaxed text-ink-soft">
+          {page.practiceBody[lang].map((paragraph) => <p>{paragraph}</p>)}
+        </div>
       </div>
     </div>
   </section>

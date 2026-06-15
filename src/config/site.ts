@@ -137,8 +137,8 @@ export const site = {
       name: 'Alexander Mayer',
       role: { de: 'Arzt – Reise- & Impfmedizin', en: 'Physician – Travel & Vaccination Medicine' },
       bio: {
-        de: 'Als Arzt der Praxis übernimmt Alexander Mayer die reisemedizinische Beratung und die Impfungen. Er nimmt sich Zeit, Ihre Reisepläne, geplanten Aktivitäten und Ihre Krankengeschichte in Ruhe mit Ihnen durchzugehen, und erklärt jede Empfehlung verständlich – damit Sie gut vorbereitet und mit einem sicheren Gefühl reisen.',
-        en: 'As the practice’s physician, Alexander Mayer provides the travel-medicine consultations and administers the vaccinations. He takes the time to go through your travel plans, planned activities and medical history with you, and explains every recommendation clearly – so that you travel well prepared and with peace of mind.',
+        de: 'Als Arzt der Praxis verantwortet er Beratung und Impfungen. Er nimmt sich Zeit für Ihre Reisepläne und erklärt jede Empfehlung verständlich.',
+        en: 'As the practice’s physician, he is responsible for consultations and vaccinations. He takes time for your travel plans and explains every recommendation clearly.',
       },
       photo: '/images/team/alexander-mayer.webp',
       focal: 'center 20%',
@@ -148,8 +148,8 @@ export const site = {
       name: 'Konstantin Mayer',
       role: { de: 'Medizinischer Mitarbeiter', en: 'Medical team member' },
       bio: {
-        de: 'In unserer Praxis ist Konstantin Mayer oft Ihr erster Ansprechpartner. Er koordiniert die Termine, bereitet Ihre Beratung vor und kümmert sich um die Impfunterlagen und den internationalen Impfnachweis – damit rund um Ihren Besuch alles ruhig, persönlich und gut organisiert abläuft.',
-        en: 'At our practice, Konstantin Mayer is often your first point of contact. He coordinates appointments, prepares your consultation and looks after your vaccination records and the international certificate – so that everything around your visit is calm, personal and well organised.',
+        de: 'Als medizinischer Mitarbeiter ist er oft Ihr erster Ansprechpartner und kümmert sich um Termine, Unterlagen und einen reibungslosen Ablauf.',
+        en: 'As a medical team member, he is often your first point of contact and looks after appointments, paperwork and a smooth visit.',
       },
       photo: '/images/team/konstantin-mayer.webp',
       focal: 'center 25%',
