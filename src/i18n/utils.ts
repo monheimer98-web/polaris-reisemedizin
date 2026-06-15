@@ -5,9 +5,35 @@
 import { ui, type UiKey } from './ui';
 import { DEFAULT_LOCALE, LOCALES, type Locale } from '../config/site';
 
-/** Aktuelle Sprache aus der URL ableiten. */
+/**
+ * Konfigurierter Basis-Pfad (aus `astro.config` → Vite `BASE_URL`), z. B. „/"
+ * bei Root-/Custom-Domain-Hosting oder „/polaris-reisemedizin/" bei einem
+ * GitHub-Pages-Projekt-Deploy. `BASE_PREFIX` ist die Variante ohne Slash am
+ * Ende („" bzw. „/polaris-reisemedizin"), die sich verlustfrei voranstellen
+ * lässt. Bei Root-Hosting ist sie leer → alle Helfer verhalten sich wie zuvor.
+ */
+const BASE_PREFIX = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+/**
+ * Den Basis-Pfad von einem (zur Laufzeit basis-präfigierten) Pfad entfernen.
+ * Bei Root-Hosting (leerer Prefix) bleibt der Pfad unverändert.
+ */
+function stripBase(pathname: string): string {
+  if (BASE_PREFIX && (pathname === BASE_PREFIX || pathname.startsWith(`${BASE_PREFIX}/`))) {
+    return pathname.slice(BASE_PREFIX.length) || '/';
+  }
+  return pathname;
+}
+
+/**
+ * Aktuelle Sprache aus der URL ableiten. Basis-pfad-sicher: Unter einem
+ * Unterpfad-Deploy (z. B. „/polaris-reisemedizin/en/…") enthält
+ * `Astro.url.pathname` das Basis-Präfix. Ohne dessen Entfernung läge das
+ * Locale-Segment nicht an Position 1 und Englisch würde fälschlich als Deutsch
+ * erkannt — die gesamte /en-Seite würde auf Deutsch ausgeliefert.
+ */
 export function getLangFromUrl(url: URL): Locale {
-  const maybe = url.pathname.split('/')[1];
+  const maybe = stripBase(url.pathname).split('/')[1];
   return (LOCALES as string[]).includes(maybe) ? (maybe as Locale) : DEFAULT_LOCALE;
 }
 
@@ -17,15 +43,6 @@ export function useTranslations(lang: Locale) {
     return ui[lang][key] ?? ui[DEFAULT_LOCALE][key];
   };
 }
-
-/**
- * Konfigurierter Basis-Pfad (aus `astro.config` → Vite `BASE_URL`), z. B. „/"
- * bei Root-/Custom-Domain-Hosting oder „/polaris-reisemedizin/" bei einem
- * GitHub-Pages-Projekt-Deploy. `BASE_PREFIX` ist die Variante ohne Slash am
- * Ende („" bzw. „/polaris-reisemedizin"), die sich verlustfrei voranstellen
- * lässt. Bei Root-Hosting ist sie leer → alle Helfer verhalten sich wie zuvor.
- */
-const BASE_PREFIX = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 /**
  * Einen wurzel-absoluten Pfad (Asset oder Route) mit dem Basis-Pfad versehen,
@@ -39,11 +56,7 @@ export function withBase(path: string): string {
 /** Logischer Pfad ohne Basis- und Locale-Präfix, ohne abschließenden Slash. */
 export function getLogicalPath(pathname: string): string {
   // Basis-Pfad entfernen (zur Laufzeit enthält `Astro.url.pathname` ihn).
-  let p = pathname;
-  if (BASE_PREFIX && (p === BASE_PREFIX || p.startsWith(`${BASE_PREFIX}/`))) {
-    p = p.slice(BASE_PREFIX.length) || '/';
-  }
-  const stripped = p.replace(/^\/en(?=\/|$)/, '');
+  const stripped = stripBase(pathname).replace(/^\/en(?=\/|$)/, '');
   const noTrailing = stripped.replace(/\/+$/, '');
   return noTrailing === '' ? '/' : noTrailing;
 }
