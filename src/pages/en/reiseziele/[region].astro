@@ -1,0 +1,98 @@
+---
+/**
+ * Travel-region detail page (English) — dynamic route via `getStaticPaths`.
+ *
+ * One page per world region (afrika, asien, …) from the typed regions module,
+ * rendered through the clinical ContentLayout (breadcrumb "Start › Destinations
+ * › <region>", automatic table of contents, sources, disclaimer, CTA). The
+ * section rendering (rich text + list + callout + "learn more" links) is
+ * identical to the German variant; language is derived from the URL.
+ */
+import type { GetStaticPaths } from 'astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import Callout from '../../../components/Callout.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../../i18n/utils';
+import { getSources } from '../../../data/sources';
+import { regionList } from '../../../data/reiseziele/regions';
+import type { DestinationRegion } from '../../../data/reiseziele/regions';
+
+export const getStaticPaths = (() =>
+  regionList.map((region) => ({
+    params: { region: region.slug },
+    props: { region },
+  }))) satisfies GetStaticPaths;
+
+interface Props {
+  region: DestinationRegion;
+}
+
+const { region } = Astro.props;
+const page = region.page;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const sources = getSources(page.sourceIds);
+const related = (page.related ?? []).map((item) => ({
+  label: item.label[lang],
+  path: getLocalizedPath(item.path, lang),
+}));
+---
+
+<ContentLayout
+  title={page.meta.title[lang]}
+  description={page.meta.description[lang]}
+  eyebrow={page.meta.eyebrow[lang]}
+  lead={page.meta.lead[lang]}
+  lastReviewed={page.lastReviewed}
+  sources={sources}
+  related={related}
+>
+  <div class="space-y-12 sm:space-y-14">
+    {
+      page.sections.map((section) => (
+        <section id={section.id} class="scroll-mt-24">
+          <div class="rich-text">
+            <h2>{section.heading[lang]}</h2>
+            {section.body[lang].map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+            {section.list && (
+              <ul>
+                {section.list[lang].map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+          {section.callout && (
+            <Callout variant={section.callout.variant} title={section.callout.title?.[lang]}>
+              {section.callout.text[lang]}
+            </Callout>
+          )}
+          {section.links && section.links.length > 0 && (
+            <div class="mt-5 flex flex-wrap items-center gap-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-ink-soft">{t('content.moreOnTopic')}</span>
+              {section.links.map((link) => (
+                <a
+                  href={getLocalizedPath(link.path, lang)}
+                  class="group inline-flex items-center gap-1.5 rounded-full border border-petrol-100 bg-white px-3 py-1.5 text-sm font-medium text-petrol-800 transition-colors hover:border-gold-300 hover:bg-gold-50/50 hover:text-petrol-900"
+                >
+                  {link.label[lang]}
+                  <svg
+                    class="h-3.5 w-3.5 text-petrol-400 transition-transform group-hover:translate-x-0.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              ))}
+            </div>
+          )}
+        </section>
+      ))
+    }
+  </div>
+</ContentLayout>

@@ -45,6 +45,7 @@ const hubSegment = getLogicalPath(Astro.url.pathname).split('/')[1] ?? '';
 const HUB_LABEL_KEY: Record<string, UiKey> = {
   krankheitsbilder: 'nav.diseases',
   leistungen: 'nav.services',
+  reiseziele: 'nav.destinations',
 };
 const hubKey = HUB_LABEL_KEY[hubSegment];
 const breadcrumbItems = [
