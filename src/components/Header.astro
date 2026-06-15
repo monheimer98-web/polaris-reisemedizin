@@ -30,13 +30,21 @@ function isActive(path: string): boolean {
 <header class="sticky top-0 z-40 border-b border-petrol-100/70 bg-gradient-to-b from-petrol-50/90 to-cream/85 backdrop-blur-md">
   {/* Feine goldene Markenkante — dezenter Premium-Akzent */}
   <div class="h-[3px] w-full bg-gradient-to-r from-gold-300/0 via-gold-400 to-gold-300/0" aria-hidden="true"></div>
-  <div class="u-container flex h-16 items-center justify-between gap-4 sm:h-20">
-    {/* Marke */}
-    <a href={homeHref} class="group flex items-center gap-2.5" aria-label={`${site.brand.name} — ${t('nav.home')}`}>
+  {/* Eigene, etwas breitere Container-Breite als der Inhalt (max-w-7xl statt
+      max-w-6xl): Die achtteilige Navigation plus Marke, Sprachumschalter und CTA
+      braucht im gedeckelten Raster mehr Luft. Ein etwas breiterer Kopfbalken als
+      die Inhaltsspalte ist ein etabliertes, ruhiges Premium-Muster. */}
+  <div class="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-5 sm:h-20 sm:px-8">
+    {/* Marke — shrink-0, damit der Schriftzug nie in die Navigation gestaucht wird.
+        Die (breite, gesperrte) Tagline erscheint nur dort, wo Platz ist: auf
+        Tablet (sm–lg). Im Desktop-Navi-Bereich (ab xl, achtteilige Leiste im
+        gedeckelten Container) bleibt sie aus, sonst kollidiert sie mit
+        „Leistungen". whitespace-nowrap verhindert das Umbrechen. */}
+    <a href={homeHref} class="group flex shrink-0 items-center gap-2.5" aria-label={`${site.brand.name} — ${t('nav.home')}`}>
       <Logo class="h-9 w-9 shrink-0 sm:h-10 sm:w-10" />
       <span class="flex flex-col leading-none">
         <span class="font-display text-lg font-semibold tracking-tight text-petrol-900 sm:text-xl">{site.brand.name}</span>
-        <span class="hidden text-[0.66rem] font-medium uppercase tracking-[0.16em] text-petrol-500 sm:block">
+        <span class="hidden whitespace-nowrap text-[0.66rem] font-medium uppercase tracking-[0.16em] text-petrol-500 sm:block xl:hidden">
           {site.brand.tagline[lang]}
         </span>
       </span>
@@ -53,7 +61,7 @@ function isActive(path: string): boolean {
               <a
                 href={getLocalizedPath(item.path, lang)}
                 class:list={[
-                  'inline-flex items-center gap-1 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:bg-white',
+                  'inline-flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-white',
                   isActive(item.path) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
                 ]}
                 aria-current={isActive(item.path) ? 'page' : undefined}
@@ -86,7 +94,7 @@ function isActive(path: string): boolean {
             <a
               href={getLocalizedPath(item.path, lang)}
               class:list={[
-                'whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:bg-white',
+                'whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-white',
                 isActive(item.path) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
               ]}
               aria-current={isActive(item.path) ? 'page' : undefined}
@@ -103,7 +111,7 @@ function isActive(path: string): boolean {
       <div class="hidden sm:block">
         <LanguageSwitcher />
       </div>
-      <a href={bookingHref} class="btn-gold hidden h-10 px-5 sm:inline-flex" aria-label={t('cta.bookAria')}>
+      <a href={bookingHref} class="btn-gold hidden h-10 px-4 sm:inline-flex" aria-label={t('cta.bookAria')}>
         {t('cta.book')}
       </a>
 
@@ -130,7 +138,7 @@ function isActive(path: string): boolean {
   {/* Mobile-Menü — Akkordeon: Untermenüs sind eingeklappt und per Pfeil aufklappbar,
       damit die lange Liste (u. a. 12 Krankheitsbilder) kompakt und übersichtlich bleibt. */}
   <div id="mobile-menu" class="hidden border-t border-line bg-cream xl:hidden">
-    <nav class="u-container flex flex-col py-2" aria-label={t('header.primaryNav')}>
+    <nav class="mx-auto flex w-full max-w-7xl flex-col px-5 py-2 sm:px-8" aria-label={t('header.primaryNav')}>
       {
         primaryNav.map((item, i) => (
           <div class="border-b border-line/50 last:border-b-0">
