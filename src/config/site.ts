@@ -127,10 +127,12 @@ export const site = {
   ],
 
   /**
-   * Die Praxis-Personen. Name und Foto sind real; die Kurzvita beschreibt die
-   * Tätigkeit (gern vor Go-Live um persönliche Details ergänzen). Aktuell der
-   * ärztliche Leiter Alexander Mayer (Arzt); das Feld `isPhysician` unterscheidet
-   * die Rolle (für künftige Einträge).
+   * Öffentlich auf der Website gezeigt wird – auf Wunsch der Praxis – nur der
+   * Arzt Alexander Mayer (Name und Foto real). Es arbeiten weitere Personen in
+   * der Praxis, die jedoch bewusst NICHT im Internet erscheinen sollen; daher
+   * steht hier nur ein Eintrag. Die Seitentexte sprechen dennoch vom „Praxisteam",
+   * um die Praxis nicht fälschlich als Einzelperson darzustellen. `isPhysician`
+   * unterscheidet die Rolle (für künftige Einträge).
    */
   team: [
     {
