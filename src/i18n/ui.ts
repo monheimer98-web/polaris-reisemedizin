@@ -105,7 +105,7 @@ export const ui = {
       'Von der persönlichen Beratung über Reiseimpfungen bis zur Malaria- und Höhenvorsorge: Wir begleiten Ihre Reise mit fachlicher Tiefe und nehmen uns Zeit für eine sorgfältige Aufklärung.',
     'home.serviceConsultationTitle': 'Reisemedizinische Beratung',
     'home.serviceConsultationText':
-      'Persönliche Beratung mit Feststellung der Impftauglichkeit und schriftlichem Impf- und Reiseplan – individuell auf Ihr Ziel abgestimmt.',
+      'Persönliche Beratung mit schriftlichem Impf- und Reiseplan – individuell auf Ihr Ziel abgestimmt.',
     'home.serviceTravelVaccTitle': 'Reiseimpfungen',
     'home.serviceTravelVaccText':
       'Von Hepatitis bis Tollwut: Überblick über Standard- und Reiseimpfungen – die passende Auswahl klären wir gemeinsam.',
@@ -131,7 +131,7 @@ export const ui = {
     'home.serviceConsultationFact2': 'Persönlicher schriftlicher Impf- und Reiseplan',
     'home.serviceConsultationFact3': 'Beratung in ärztlicher Verantwortung',
     'home.serviceTravelVaccFact1': 'Empfohlene und vorgeschriebene Reiseimpfungen',
-    'home.serviceTravelVaccFact2': 'Impfstoffe individuell für Sie bestellt',
+    'home.serviceTravelVaccFact2': 'Impfstoff per Privatrezept aus der Apotheke',
     'home.serviceTravelVaccFact3': 'Dokumentation im Impfausweis',
     'home.servicesMoreTitle': 'Spezielle Themen & Pflichtimpfungen',
     'home.servicesAllLink': 'Alle Leistungen ansehen',
@@ -314,7 +314,7 @@ export const ui = {
       'From personal advice through travel vaccinations to malaria and altitude prevention: we accompany your trip with clinical depth and take the time that careful counselling requires.',
     'home.serviceConsultationTitle': 'Travel medicine consultation',
     'home.serviceConsultationText':
-      'A personal consultation including the assessment of fitness for vaccination and a written vaccination and travel plan – tailored to your destination.',
+      'A personal consultation with a written vaccination and travel plan – tailored to your destination.',
     'home.serviceTravelVaccTitle': 'Travel vaccinations',
     'home.serviceTravelVaccText':
       'From hepatitis to rabies: an overview of standard and travel vaccinations – we determine the right selection together.',
@@ -340,7 +340,7 @@ export const ui = {
     'home.serviceConsultationFact2': 'Personal written vaccination and travel plan',
     'home.serviceConsultationFact3': 'Advice under medical responsibility',
     'home.serviceTravelVaccFact1': 'Recommended and required travel vaccinations',
-    'home.serviceTravelVaccFact2': 'Vaccines ordered individually for you',
+    'home.serviceTravelVaccFact2': 'Vaccine via private prescription from the pharmacy',
     'home.serviceTravelVaccFact3': 'Documented in your vaccination certificate',
     'home.servicesMoreTitle': 'Specific topics & required vaccinations',
     'home.servicesAllLink': 'View all services',

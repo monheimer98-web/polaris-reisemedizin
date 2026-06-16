@@ -14,7 +14,7 @@ export interface PriceItem {
   service: Localized;
   /** Was enthalten ist / wie sich der Posten erklärt. */
   detail: Localized;
-  /** Preis-Richtwert, z. B. „ab 59 €" oder „in Vorbereitung". */
+  /** Preis-Richtwert, z. B. „ab 49 €" oder „in Vorbereitung". */
   price: Localized;
 }
 
@@ -89,16 +89,16 @@ export const kostenPage: KostenPage = {
         {
           service: { de: 'Reisemedizinische Vollberatung', en: 'Full travel-medicine consultation' },
           detail: {
-            de: 'Individuelle Beratung zu Ihren Reisezielen, Prüfung der Impftauglichkeit und ein persönlicher, schriftlicher Impf- und Reiseplan. Abrechnung nach GOÄ (u. a. Nrn. 3, 5, 75).',
-            en: 'Individual advice for your destinations, a fitness-for-vaccination check and a personal written vaccination and travel plan. Billed under the GOÄ (incl. items 3, 5, 75).',
+            de: 'Individuelle Beratung zu Ihren Reisezielen und ein persönlicher, schriftlicher Impf- und Reiseplan. Abrechnung nach GOÄ (u. a. Nrn. 3, 75).',
+            en: 'Individual advice for your destinations and a personal written vaccination and travel plan. Billed under the GOÄ (incl. items 3, 75).',
           },
-          price: { de: 'ab 59 €', en: 'from €59' },
+          price: { de: 'ab 49 €', en: 'from €49' },
         },
         {
           service: { de: 'Jede weitere mitreisende Person', en: 'Each additional travelling person' },
           detail: {
-            de: 'Eigene Prüfung der Impftauglichkeit und eigener Impfplan – gemeinsam im selben Termin.',
-            en: 'Own fitness-for-vaccination check and own vaccination plan – together in the same appointment.',
+            de: 'Eigene Beratung und eigener Impfplan – gemeinsam im selben Termin.',
+            en: 'Own consultation and own vaccination plan – together in the same appointment.',
           },
           price: { de: 'ab 29 €', en: 'from €29' },
         },
@@ -127,8 +127,8 @@ export const kostenPage: KostenPage = {
         {
           service: { de: 'Impftermin (Durchführung & Dokumentation)', en: 'Vaccination appointment (administration & records)' },
           detail: {
-            de: 'Aufklärung, Durchführung der Impfung und Eintrag in den Impfausweis. Die Impfstoffkosten kommen hinzu.',
-            en: 'Briefing, administration of the vaccination and entry in your vaccination certificate. Vaccine costs are added.',
+            de: 'Aufklärung, Durchführung der Impfung und Eintrag in den Impfausweis. Den Impfstoff bringen Sie per Privatrezept aus der Apotheke mit (FSME halten wir vor Ort vorrätig).',
+            en: 'Briefing, administration of the vaccination and entry in your vaccination certificate. You bring the vaccine from the pharmacy via private prescription (we keep TBE in stock on site).',
           },
           price: { de: 'ab 20 €', en: 'from €20' },
         },
@@ -146,15 +146,23 @@ export const kostenPage: KostenPage = {
       id: 'impfstoffe',
       heading: { de: 'Impfstoffe', en: 'Vaccines' },
       note: {
-        de: 'Wir halten keine großen Impfstoffvorräte vorrätig, sondern bestellen den passenden Impfstoff individuell für Sie. Dadurch erhalten Sie stets frische Ware.',
-        en: 'We do not keep large vaccine stocks; instead we order the right vaccine individually for you. This means you always receive fresh product.',
+        de: 'Für die meisten Reiseimpfungen erhalten Sie ein Privatrezept und holen den Impfstoff gekühlt in der Apotheke. Den FSME-Impfstoff halten wir vor Ort vorrätig.',
+        en: 'For most travel vaccinations you receive a private prescription and collect the refrigerated vaccine at the pharmacy. We keep the TBE vaccine in stock on site.',
       },
       items: [
         {
-          service: { de: 'Impfstoff je Dosis', en: 'Vaccine per dose' },
+          service: { de: 'Impfstoff per Privatrezept', en: 'Vaccine via private prescription' },
           detail: {
-            de: 'Wird für Sie individuell bestellt und zum Bezugspreis berechnet. Der Preis hängt vom jeweiligen Impfstoff ab.',
-            en: 'Ordered individually for you and charged at cost. The price depends on the respective vaccine.',
+            de: 'Den Impfstoff bezahlen Sie direkt in der Apotheke – er erscheint nicht auf unserer Rechnung. Der Preis hängt vom jeweiligen Impfstoff ab.',
+            en: 'You pay for the vaccine directly at the pharmacy – it does not appear on our invoice. The price depends on the respective vaccine.',
+          },
+          price: { de: 'Apothekenpreis', en: 'pharmacy price' },
+        },
+        {
+          service: { de: 'FSME-Impfstoff (vor Ort)', en: 'TBE vaccine (on site)' },
+          detail: {
+            de: 'Den FSME-Impfstoff halten wir vor Ort vorrätig und berechnen ihn zum Bezugspreis (Auslage nach § 10 GOÄ).',
+            en: 'We keep the TBE vaccine in stock on site and charge it at cost (disbursement under § 10 GOÄ).',
           },
           price: { de: 'nach Bezugspreis', en: 'at cost price' },
         },
@@ -186,11 +194,11 @@ export const kostenPage: KostenPage = {
       body: {
         de: [
           'Die Abrechnung folgt der amtlichen Gebührenordnung für Ärzte (GOÄ). Jede Leistung hat dort eine feste Bewertung, die mit einem Steigerungssatz multipliziert wird. Im Regelfall liegt dieser bis zum 2,3-Fachen; ein höherer Satz ist nur bei besonders aufwendiger Leistung und mit schriftlicher Begründung zulässig (§ 5 GOÄ).',
-          'Die reisemedizinische Vollberatung umfasst typischerweise die eingehende Beratung (Nr. 3), die Prüfung der Impftauglichkeit (Nr. 5) und den schriftlichen Impf- und Reiseplan (Nr. 75). Den schriftlichen Plan erhalten Sie unabhängig davon, ob Sie sich anschließend impfen lassen.',
+          'Die reisemedizinische Vollberatung umfasst typischerweise die eingehende Beratung (Nr. 3) und den schriftlichen Impf- und Reiseplan (Nr. 75). Den schriftlichen Plan erhalten Sie unabhängig davon, ob Sie sich anschließend impfen lassen.',
         ],
         en: [
           'Billing follows the official German Medical Fee Schedule (GOÄ). Each service has a fixed valuation there, which is multiplied by a rate factor. As a rule this is up to 2.3×; a higher factor is only permitted for particularly complex services and with a written justification (§ 5 GOÄ).',
-          'The full travel-medicine consultation typically comprises the in-depth advice (item 3), the fitness-for-vaccination check (item 5) and the written vaccination and travel plan (item 75). You receive the written plan regardless of whether you go on to be vaccinated.',
+          'The full travel-medicine consultation typically comprises the in-depth advice (item 3) and the written vaccination and travel plan (item 75). You receive the written plan regardless of whether you go on to be vaccinated.',
         ],
       },
     },
@@ -225,5 +233,5 @@ export const kostenPage: KostenPage = {
     en: 'All amounts are non-binding guide values under the GOÄ and do not replace an individual cost estimate. We agree the binding scope and costs with you before treatment.',
   },
 
-  lastReviewed: new Date('2026-06-04'),
+  lastReviewed: new Date('2026-06-16'),
 };

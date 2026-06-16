@@ -4,9 +4,10 @@
  * ohne Preisangaben (HWG-konform). Preise stehen gebündelt auf /kosten.
  *
  * Beratungs-Erstmodell: Die Beratung ist eine eigenständige ärztliche Leistung.
- * Ergebnis ist ein schriftlicher, individueller Impf- und Reiseplan inkl.
- * Feststellung der Impftauglichkeit – unabhängig davon, ob anschließend
- * geimpft wird. Impfungen erfolgen in der Regel in gesonderten Folgeterminen.
+ * Ergebnis ist ein schriftlicher, individueller Impf- und Reiseplan – unabhängig
+ * davon, ob anschließend geimpft wird. Den Impfstoff holen Patient:innen für die
+ * meisten Reiseimpfungen per Privatrezept in der Apotheke (FSME vor Ort); die
+ * Impfung selbst erfolgt in der Regel in einem gesonderten Folgetermin.
  */
 import type { ClinicalPage } from '../types';
 
@@ -14,8 +15,8 @@ export const reiseberatungService: ClinicalPage = {
   meta: {
     title: { de: 'Reisemedizinische Beratung', en: 'Travel medicine consultation' },
     description: {
-      de: 'Individuelle reisemedizinische Beratung: Impfempfehlungen, Impftauglichkeit, schriftlicher Impf- und Reiseplan, Malaria- und Expositionsschutz – abgestimmt auf Reiseziel, Route und Gesundheitszustand.',
-      en: 'Individual travel-medicine consultation: vaccination recommendations, fitness for vaccination, a written vaccination and travel plan, malaria and exposure protection – tailored to your destination, route and state of health.',
+      de: 'Individuelle reisemedizinische Beratung: Impfempfehlungen, schriftlicher Impf- und Reiseplan, Malaria- und Expositionsschutz – abgestimmt auf Reiseziel, Route und Gesundheitszustand.',
+      en: 'Individual travel-medicine consultation: vaccination recommendations, a written vaccination and travel plan, malaria and exposure protection – tailored to your destination, route and state of health.',
     },
     eyebrow: { de: 'Leistung', en: 'Service' },
     lead: {
@@ -40,7 +41,7 @@ export const reiseberatungService: ClinicalPage = {
       list: {
         de: [
           'Empfohlene Reise- und Standardimpfungen für Ihr Ziel',
-          'Feststellung der Impftauglichkeit und Prüfung Ihres Impfpasses',
+          'Beurteilung, welche Impfungen für Sie geeignet sind, und Durchsicht Ihres Impfpasses',
           'Malaria-Risiko und passende Vorsorge (Expositionsschutz, ggf. Medikamente)',
           'Schutz vor durch Mücken und Zecken übertragenen Erkrankungen',
           'Reisedurchfall, Trinkwasser- und Lebensmittelhygiene',
@@ -48,7 +49,7 @@ export const reiseberatungService: ClinicalPage = {
         ],
         en: [
           'recommended travel and standard vaccinations for your destination',
-          'assessment of fitness for vaccination and review of your vaccination record',
+          'which vaccinations are suitable for you, and a review of your vaccination record',
           'malaria risk and suitable prevention (exposure protection, medication where appropriate)',
           'protection against mosquito- and tick-borne diseases',
           "travellers' diarrhoea, drinking-water and food hygiene",
@@ -83,12 +84,12 @@ export const reiseberatungService: ClinicalPage = {
       heading: { de: 'Beratung und Impfung – getrennte Termine', en: 'Consultation and vaccination – separate appointments' },
       body: {
         de: [
-          'Wir trennen bewusst die Beratung von der Impfung. Im ersten Termin beraten wir Sie ausführlich, prüfen die Impftauglichkeit und erstellen Ihren Plan. Anstehende Impfungen vereinbaren wir – soweit medizinisch sinnvoll – als gesonderte Folgetermine.',
-          'Das hat zwei Gründe: Manche Impfstoffe bestellen wir individuell für Sie, und der zeitliche Abstand erlaubt eine in Ruhe getroffene Entscheidung. Reisen Sie kurzfristig, stimmen wir das Vorgehen direkt auf Ihren Zeitrahmen ab.',
+          'Wir trennen bewusst die Beratung von der Impfung. Im ersten Termin beraten wir Sie ausführlich und erstellen Ihren Plan. Anstehende Impfungen vereinbaren wir – soweit medizinisch sinnvoll – als gesonderte Folgetermine.',
+          'Für die meisten Reiseimpfungen erhalten Sie ein Privatrezept und holen den Impfstoff gekühlt in der Apotheke; den FSME-Impfstoff halten wir vor Ort vorrätig. Der zeitliche Abstand erlaubt zudem eine in Ruhe getroffene Entscheidung. Reisen Sie kurzfristig, stimmen wir das Vorgehen direkt auf Ihren Zeitrahmen ab.',
         ],
         en: [
-          'We deliberately separate the consultation from the vaccination. In the first appointment we advise you in detail, assess your fitness for vaccination and prepare your plan. Any vaccinations are arranged – where medically sensible – as separate follow-up appointments.',
-          'There are two reasons for this: some vaccines are ordered individually for you, and the time interval allows for a decision made calmly. If you are travelling at short notice, we adapt the approach directly to your timeframe.',
+          'We deliberately separate the consultation from the vaccination. In the first appointment we advise you in detail and prepare your plan. Any vaccinations are arranged – where medically sensible – as separate follow-up appointments.',
+          'For most travel vaccinations you receive a private prescription and collect the refrigerated vaccine at the pharmacy; the TBE vaccine we keep in stock on site. The time interval also allows for a decision made calmly. If you are travelling at short notice, we adapt the approach directly to your timeframe.',
         ],
       },
     },
@@ -119,18 +120,18 @@ export const reiseberatungService: ClinicalPage = {
       heading: { de: 'Gemeinsam reisen', en: 'Travelling together' },
       body: {
         de: [
-          'Reisen Sie zu mehrt zum selben Ziel, beraten wir Sie gern gemeinsam. Jede Person erhält dabei eine eigene Beurteilung der Impftauglichkeit und einen eigenen Impf- und Reiseplan, denn Vorerkrankungen, Impfstatus und Verträglichkeit sind individuell.',
+          'Reisen Sie zu mehrt zum selben Ziel, beraten wir Sie gern gemeinsam. Jede Person erhält dabei eine eigene Beratung und einen eigenen Impf- und Reiseplan, denn Vorerkrankungen, Impfstatus und Verträglichkeit sind individuell.',
           'Sprechen Sie uns bei der Terminbuchung einfach an, damit wir genügend Zeit einplanen.',
         ],
         en: [
-          'If several of you are travelling to the same destination, we are happy to advise you together. Each person receives their own assessment of fitness for vaccination and their own vaccination and travel plan, because pre-existing conditions, vaccination status and tolerability are individual.',
+          'If several of you are travelling to the same destination, we are happy to advise you together. Each person receives their own consultation and their own vaccination and travel plan, because pre-existing conditions, vaccination status and tolerability are individual.',
           'Simply let us know when booking so that we can schedule enough time.',
         ],
       },
     },
   ],
   sourceIds: ['stikoImpfempfehlungen', 'dtgReiseimpfungen', 'auswaertigesAmt', 'rkiMalaria'],
-  lastReviewed: new Date('2026-06-04'),
+  lastReviewed: new Date('2026-06-16'),
   related: [
     { label: { de: 'Reiseimpfungen im Überblick', en: 'Travel vaccinations at a glance' }, path: '/leistungen/reiseimpfungen' },
     { label: { de: 'Malaria-Vorsorge', en: 'Malaria prevention' }, path: '/leistungen/malaria' },

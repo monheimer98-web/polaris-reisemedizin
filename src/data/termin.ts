@@ -194,8 +194,8 @@ export const bookingPage: BookingPage = {
         },
         duration: { de: 'ca. 30 Minuten', en: 'approx. 30 minutes' },
         description: {
-          de: 'Ausführliche Beratung zu Ihren Reisezielen, Prüfung der Impftauglichkeit und ein persönlicher, schriftlicher Impf- und Reiseplan – den Sie unabhängig von einer späteren Impfung erhalten.',
-          en: 'In-depth advice for your destinations, a fitness-for-vaccination check and a personal written vaccination and travel plan – which you receive regardless of any later vaccination.',
+          de: 'Ausführliche Beratung zu Ihren Reisezielen und ein persönlicher, schriftlicher Impf- und Reiseplan – den Sie unabhängig von einer späteren Impfung erhalten.',
+          en: 'In-depth advice for your destinations and a personal written vaccination and travel plan – which you receive regardless of any later vaccination.',
         },
         recommended: true,
         enabled: true,
@@ -223,8 +223,8 @@ export const bookingPage: BookingPage = {
         },
         duration: { de: 'ca. 15 Minuten', en: 'approx. 15 minutes' },
         description: {
-          de: 'Durchführung einer Impfung mit Aufklärung und Dokumentation – als gesonderter Folgetermin oder direkt, wenn bereits eine klare Impfempfehlung vorliegt. Den passenden Impfstoff bestellen wir individuell für Sie.',
-          en: 'Administration of a vaccination with briefing and documentation – as a separate follow-up appointment or directly when a clear recommendation already exists. We order the right vaccine individually for you.',
+          de: 'Durchführung einer Impfung mit Aufklärung und Dokumentation – als gesonderter Folgetermin oder direkt, wenn bereits eine klare Impfempfehlung vorliegt. Den Impfstoff bringen Sie per Privatrezept aus der Apotheke mit; FSME halten wir vor Ort vorrätig.',
+          en: 'Administration of a vaccination with briefing and documentation – as a separate follow-up appointment or directly when a clear recommendation already exists. You bring the vaccine from the pharmacy via private prescription; we keep TBE in stock on site.',
         },
         enabled: true,
       },

@@ -108,11 +108,11 @@ export const fsmeImpfungService: ClinicalPage = {
       heading: { de: 'Ablauf in unserer Praxis', en: 'How it works at our practice' },
       body: {
         de: [
-          'Zu Ihrem Termin bringen Sie bitte Ihren Impfausweis mit. Nach einem ärztlichen Aufklärungs- und Beratungsgespräch führen wir die Impfung durch und dokumentieren sie im Impfausweis.',
+          'Den FSME-Impfstoff halten wir vor Ort vorrätig – Sie brauchen dafür kein Privatrezept und können den Termin direkt buchen. Zu Ihrem Termin bringen Sie bitte Ihren Impfausweis mit. Nach einem ärztlichen Aufklärungs- und Beratungsgespräch führen wir die Impfung durch und dokumentieren sie im Impfausweis.',
           'Da die Grundimmunisierung aus mehreren Dosen besteht, vereinbaren wir mit Ihnen die weiteren Termine und erinnern Sie an die nächste Impfung.',
         ],
         en: [
-          'For your appointment, please bring your vaccination certificate. After a medical consultation and explanation, we carry out the vaccination and record it in your vaccination certificate.',
+          'We keep the TBE vaccine in stock on site – you do not need a private prescription for it and can book the appointment directly. For your appointment, please bring your vaccination certificate. After a medical consultation and explanation, we carry out the vaccination and record it in your vaccination certificate.',
           'As the primary immunisation consists of several doses, we arrange the follow-up appointments with you and remind you of the next vaccination.',
         ],
       },
@@ -131,7 +131,7 @@ export const fsmeImpfungService: ClinicalPage = {
     },
   ],
   sourceIds: ['peiFsme', 'rkiFsmeRisikogebiete', 'rkiFsme', 'dtgReiseimpfungen'],
-  lastReviewed: new Date('2026-05-15'),
+  lastReviewed: new Date('2026-06-16'),
   related: [
     {
       label: { de: 'Krankheitsbild FSME', en: 'TBE – the disease' },

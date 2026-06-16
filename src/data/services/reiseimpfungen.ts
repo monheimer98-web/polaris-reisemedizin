@@ -123,18 +123,18 @@ export const reiseimpfungenService: ClinicalPage = {
       heading: { de: 'So gehen wir vor', en: 'How we proceed' },
       body: {
         de: [
-          'Am Anfang steht die reisemedizinische Beratung mit der Feststellung der Impftauglichkeit und einem schriftlichen Impfplan. Die empfohlenen Impfungen führen wir anschließend in der Regel in Folgeterminen durch; viele Impfstoffe bestellen wir individuell für Sie. Wir legen keinen breiten Impfstoffvorrat an, sondern arbeiten gezielt nach Bedarf.',
+          'Am Anfang steht die reisemedizinische Beratung mit einem schriftlichen Impfplan. Für die empfohlenen Impfungen erhalten Sie in der Regel ein Privatrezept und holen den Impfstoff gekühlt in der Apotheke; die Impfung selbst erfolgt dann in einem Folgetermin. Den FSME-Impfstoff halten wir vor Ort vorrätig – FSME ist daher direkt buchbar.',
           'Mehrere fällige Impfungen lassen sich häufig im selben Termin kombinieren – was sinnvoll und verträglich ist, besprechen wir mit Ihnen.',
         ],
         en: [
-          'It all starts with the travel-medicine consultation, including the assessment of fitness for vaccination and a written vaccination plan. We then usually carry out the recommended vaccinations in follow-up appointments; many vaccines are ordered individually for you. We do not keep a broad vaccine stock but work specifically as needed.',
+          'It all starts with the travel-medicine consultation and a written vaccination plan. For the recommended vaccinations you usually receive a private prescription and collect the refrigerated vaccine at the pharmacy; the vaccination itself then takes place at a follow-up appointment. The TBE vaccine we keep in stock on site – so TBE can be booked directly.',
           'Several due vaccinations can often be combined in the same appointment – we discuss with you what is sensible and well tolerated.',
         ],
       },
     },
   ],
   sourceIds: ['stikoImpfempfehlungen', 'dtgReiseimpfungen', 'auswaertigesAmt', 'whoYellowFeverCountries'],
-  lastReviewed: new Date('2026-06-04'),
+  lastReviewed: new Date('2026-06-16'),
   related: [
     { label: { de: 'Reisemedizinische Beratung', en: 'Travel medicine consultation' }, path: '/leistungen/reiseberatung' },
     { label: { de: 'Gelbfieberimpfung', en: 'Yellow fever vaccination' }, path: '/leistungen/gelbfieberimpfung' },
