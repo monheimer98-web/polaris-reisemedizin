@@ -127,10 +127,10 @@ export const site = {
   ],
 
   /**
-   * Das Praxisteam. Namen und Fotos sind real; die Kurzvita beschreibt die
-   * Tätigkeit (gern vor Go-Live um persönliche Details ergänzen). Ein Arzt
-   * (Alexander Mayer) und ein medizinischer Mitarbeiter (Konstantin Mayer);
-   * die Rollen unterscheidet das Feld `isPhysician`.
+   * Die Praxis-Personen. Name und Foto sind real; die Kurzvita beschreibt die
+   * Tätigkeit (gern vor Go-Live um persönliche Details ergänzen). Aktuell der
+   * ärztliche Leiter Alexander Mayer (Arzt); das Feld `isPhysician` unterscheidet
+   * die Rolle (für künftige Einträge).
    */
   team: [
     {
@@ -143,17 +143,6 @@ export const site = {
       photo: '/images/team/alexander-mayer.webp',
       focal: 'center 20%',
       isPhysician: true,
-    },
-    {
-      name: 'Konstantin Mayer',
-      role: { de: 'Medizinischer Mitarbeiter', en: 'Medical team member' },
-      bio: {
-        de: 'Als medizinischer Mitarbeiter ist er oft Ihr erster Ansprechpartner und kümmert sich um Termine, Unterlagen und einen reibungslosen Ablauf.',
-        en: 'As a medical team member, he is often your first point of contact and looks after appointments, paperwork and a smooth visit.',
-      },
-      photo: '/images/team/konstantin-mayer.webp',
-      focal: 'center 25%',
-      isPhysician: false,
     },
   ] as TeamMember[],
 

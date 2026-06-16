@@ -10,7 +10,6 @@ lizenzierte Stockfotografie** zum Einsatz.
 | `../apple-touch-icon.png` | Home-Screen-Icon (180×180), abgeleitet vom Signet | Eigenanfertigung (generiert aus dem Signet) | © Praxisinhaber, alle Rechte vorbehalten |
 | `og-default.png` | Open-Graph-Vorschaubild (1200×630) | Eigenanfertigung (Marke/Typografie) | © Praxisinhaber, alle Rechte vorbehalten |
 | `team/alexander-mayer.webp` | Porträt Alexander Mayer (Arzt) | Vom Auftraggeber bereitgestellt | Nutzungsrecht durch die abgebildete Person erteilt |
-| `team/konstantin-mayer.webp` | Porträt Konstantin Mayer (med. Mitarbeiter) | Vom Auftraggeber bereitgestellt | Nutzungsrecht durch die abgebildete Person erteilt |
 
 ## Hinweise
 

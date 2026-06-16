@@ -40,20 +40,20 @@ export interface TeamPage {
 export const teamPage: TeamPage = {
   meta: {
     title: {
-      de: 'Ihr Praxisteam',
-      en: 'Your practice team',
+      de: 'Die Praxis',
+      en: 'Our practice',
     },
     description: {
-      de: 'Lernen Sie das Team unserer Praxis für Reise- und Impfmedizin kennen – mit einem Beratungsansatz auf Grundlage gesicherter Fachquellen.',
-      en: 'Meet the team of our travel and vaccination medicine practice – with an approach to advice grounded in trusted professional sources.',
+      de: 'Lernen Sie unsere Praxis für Reise- und Impfmedizin kennen – mit ärztlicher Beratung auf Grundlage gesicherter Fachquellen.',
+      en: 'Get to know our travel and vaccination medicine practice – with medical advice grounded in trusted professional sources.',
     },
     eyebrow: {
       de: 'Über uns',
       en: 'About us',
     },
     lead: {
-      de: 'Ärztliche Kompetenz und ein eingespieltes Praxisteam mit einem gemeinsamen Anspruch: eine sorgfältige, persönliche Reiseimpfberatung auf dem Stand gesicherter Fachquellen. Lernen Sie das Team und unseren Ansatz kennen.',
-      en: 'Medical expertise and a well-coordinated practice team with one shared standard: careful, personal travel-vaccination advice based on trusted professional sources. Get to know the team and our approach.',
+      de: 'Ärztliche Kompetenz mit einem klaren Anspruch: eine sorgfältige, persönliche Reiseimpfberatung auf dem Stand gesicherter Fachquellen. Lernen Sie die Praxis und unseren Ansatz kennen.',
+      en: 'Medical expertise with one clear standard: careful, personal travel-vaccination advice based on trusted professional sources. Get to know the practice and our approach.',
     },
   },
   intro: {
@@ -67,12 +67,12 @@ export const teamPage: TeamPage = {
     ],
   },
   teamHeading: {
-    de: 'Unser Team',
-    en: 'Our team',
+    de: 'Ihr Arzt',
+    en: 'Your physician',
   },
   teamLead: {
-    de: 'Die Impfungen und die Beratung liegen in ärztlicher Hand; unser medizinischer Mitarbeiter kümmert sich um Termine und Ablauf.',
-    en: 'Vaccinations and advice are in the physician’s hands; our medical team member takes care of appointments and logistics.',
+    de: 'Beratung und Impfungen liegen in ärztlicher Hand – persönlich und auf dem Stand gesicherter Fachquellen.',
+    en: 'Advice and vaccinations are in the physician’s hands – personal and based on trusted professional sources.',
   },
   valuesHeading: {
     de: 'Unser Ansatz',
