@@ -175,6 +175,56 @@ example-praxis.de {
 }
 ```
 
+### Variante: Praxis-App bleibt im Praxisnetz (nur Buchungs-Endpunkt öffentlich)
+
+Soll die `praxis-app` **ausschließlich im Praxisnetz** laufen (Patientendaten nie
+im Internet), wird **nur der Buchungs-POST** öffentlich gemacht — über einen
+kleinen, gehärteten **EU-Mini-Proxy** (günstiger VPS), der per verschlüsseltem
+**Tunnel** (WireGuard) in die Praxis reicht. Das Formular schickt **genau einen**
+`POST /api/buchung` (kein Live-Slot-Abruf) → die öffentliche Angriffsfläche ist
+minimal:
+
+```
+[Patient-Browser]
+   │  POST https://buchung.<domain>/api/buchung   (form-urlencoded, OHNE Token)
+   ▼
+[EU-Mini-Proxy]   TLS · CORS · setzt X-Booking-Token · NUR /api/buchung
+   │  WireGuard-Tunnel (verschlüsselt)
+   ▼
+[praxis-app im Praxisnetz]   lauscht nur auf der Tunnel-IP, nie öffentlich
+```
+
+- **Nur `/api/buchung`** wird durchgereicht; alle anderen Routen (Patienten,
+  Kalender, Admin) sind über den Proxy **nicht** erreichbar.
+- Die App bindet an die **Tunnel-IP** (z. B. `10.10.0.2:4317`), **nicht** an
+  `0.0.0.0` → ohne Tunnel aus dem Internet komplett unsichtbar.
+- Die Website liegt (noch) auf GitHub Pages → der POST ist **Cross-Origin**; der
+  Proxy muss daher `Access-Control-Allow-Origin` für die Website-Domain setzen
+  (siehe CORS-Falle oben).
+
+Caddy auf dem Mini-Proxy:
+
+```caddy
+buchung.<domain> {
+    handle /api/buchung {
+        header Access-Control-Allow-Origin "https://<website-domain>"
+        header Access-Control-Allow-Methods "POST, OPTIONS"
+        header Access-Control-Allow-Headers "Content-Type, Accept"
+        @options method OPTIONS
+        respond @options 204
+        header_up X-Booking-Token "{$BOOKING_TOKEN}"   # serverseitig, aus Server-Env
+        reverse_proxy 10.10.0.2:4317                    # praxis-app über WireGuard
+    }
+    handle { respond 404 }   # alles andere bleibt dicht
+}
+```
+
+Danach `site.booking.endpoint` auf `https://buchung.<domain>/api/buchung` setzen
+→ das Formular geht live. (Zieht die Website später auf denselben EU-Host, wird
+der Pfad wieder same-origin `/api/buchung`; CORS entfällt.) Die App selbst bleibt
+unangetastet (Login/2FA, CSRF, `frame-ancestors 'none'`) — dieser Weg nutzt
+**kein** iframe, nur den Formular-POST.
+
 ### Backend-Vertrag (praxis-app) — Single Source of Truth
 
 `POST` an `endpoint`, Body `application/x-www-form-urlencoded`. Das Formular
