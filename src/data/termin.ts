@@ -315,12 +315,12 @@ export const bookingPage: BookingPage = {
     },
     placeholderBody: {
       de: [
-        'Die Online-Terminanfrage wird derzeit eingerichtet und steht in Kürze zur Verfügung.',
-        'Bis dahin vereinbaren Sie Ihren Termin bitte telefonisch oder per E-Mail – die Kontaktdaten finden Sie unten auf dieser Seite.',
+        'Die Online-Buchung schalten wir in Kürze frei. Ihren Termin bekommen Sie aber schon jetzt – ganz unkompliziert:',
+        'Rufen Sie uns an oder schreiben Sie uns kurz eine E-Mail (Kontaktdaten direkt unten auf dieser Seite). Wir finden gemeinsam einen passenden Termin.',
       ],
       en: [
-        'Online appointment requests are currently being set up and will be available shortly.',
-        "Until then, please arrange your appointment by phone or email – you'll find the contact details at the bottom of this page.",
+        'Online booking goes live shortly. You can still get an appointment right now – quite simply:',
+        'Call us or send us a short email (contact details just below on this page). We will find a suitable slot together.',
       ],
     },
   },

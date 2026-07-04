@@ -7,8 +7,15 @@
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import { BOOKING_PATH } from '../config/nav';
 
+interface Props {
+  /** Terminart-ID, die auf der Buchungsseite vorbelegt wird (`?art=`). */
+  bookingType?: string;
+}
+
+const { bookingType } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const bookingHref = getLocalizedPath(BOOKING_PATH, lang) + (bookingType ? `?art=${bookingType}` : '');
 ---
 
 <section class="u-container pb-20 sm:pb-24">
@@ -21,7 +28,7 @@ const t = useTranslations(lang);
       <p class="mt-4 text-lg leading-relaxed text-cream/80">{t('home.ctaLead')}</p>
 
       <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href={getLocalizedPath(BOOKING_PATH, lang)} class="btn-gold" aria-label={t('cta.bookAria')}>
+        <a href={bookingHref} class="btn-gold" aria-label={t('cta.bookAria')}>
           {t('cta.book')}
         </a>
         <a
@@ -32,7 +39,7 @@ const t = useTranslations(lang);
         </a>
       </div>
 
-      <p class="mt-6 text-sm leading-relaxed text-cream/60">{t('home.ctaNote')}</p>
+      <p class="mt-6 text-sm leading-relaxed text-cream/75">{t('home.ctaNote')}</p>
     </div>
   </div>
 </section>

@@ -22,7 +22,7 @@
  * (`datum` = Wunschdatum, `zeit` = Wunschzeit, `abreise_datum` = Abreise). Alle
  * Texte kommen sprachaufgelöst als Props – die Sprachlogik bleibt im Astro-Layer.
  */
-import { useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import type { ChangeEvent, SyntheticEvent } from 'react';
 
 /** In der jeweiligen Sprache aufgelöste Oberflächentexte. */
@@ -143,6 +143,17 @@ function TextField(props: {
 
 export default function BookingForm({ endpoint, privacyUrl, bookableTypes, text }: BookingFormProps) {
   const [values, setValues] = useState<Values>({ ...EMPTY });
+
+  // Terminart aus der URL vorbelegen (`?art=<id>`): Kommt der Besucher von einer
+  // Leistungsseite (z. B. FSME), ist die passende Art direkt gewählt. Erst nach dem
+  // Mount, damit SSR- und Client-Hydration übereinstimmen; nur gültige, buchbare IDs.
+  useEffect(() => {
+    const art = new URLSearchParams(window.location.search).get('art');
+    if (art && bookableTypes.some((t) => t.id === art)) {
+      setValues((v) => (v.terminart ? v : { ...v, terminart: art }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [consent, setConsent] = useState(false);
   const [honeypot, setHoneypot] = useState('');
   const [status, setStatus] = useState<Status>('idle');

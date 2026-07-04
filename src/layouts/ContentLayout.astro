@@ -32,10 +32,13 @@ interface Props {
   related?: { label: string; path: string }[];
   image?: string;
   noindex?: boolean;
+  /** Terminart-ID (praxis-app), die auf der Buchungsseite vorbelegt wird (`?art=`). */
+  bookingType?: string;
 }
 
-const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex } = Astro.props;
+const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
+const bookingHref = getLocalizedPath(BOOKING_PATH, lang) + (bookingType ? `?art=${bookingType}` : '');
 const t = useTranslations(lang);
 
 // Brotkrumen aus dem URL-Pfad: Start › <Hub> › <aktuelle Seite>.
@@ -113,7 +116,7 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
   <article>
     <PageHero eyebrow={eyebrow} title={title} lead={lead}>
       <Breadcrumbs slot="breadcrumb" items={breadcrumbItems} label={t('content.breadcrumb')} />
-      <a href={getLocalizedPath(BOOKING_PATH, lang)} class="btn-gold mt-8 inline-flex" aria-label={t('cta.bookAria')}>
+      <a href={bookingHref} class="btn-gold mt-8 inline-flex" aria-label={t('cta.bookAria')}>
         {t('cta.book')}
       </a>
       <p class="mt-6 text-sm text-ink-soft">
@@ -187,5 +190,5 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
     </div>
   </article>
 
-  <CTA />
+  <CTA bookingType={bookingType} />
 </BaseLayout>

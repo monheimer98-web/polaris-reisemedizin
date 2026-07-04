@@ -49,7 +49,7 @@ const values = page.values;
               <div class="h-60 w-full shrink-0 overflow-hidden bg-sand sm:h-auto sm:w-44 sm:self-stretch">
                 <img
                   src={withBase(member.photo)}
-                  alt={member.name}
+                  alt={`${member.name} – ${member.role[lang]}`}
                   width="512"
                   height="768"
                   loading="lazy"
