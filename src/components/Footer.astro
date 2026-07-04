@@ -28,7 +28,7 @@ const infoLinks = footerInfoNav;
           <span class="font-display text-xl font-semibold text-cream">{site.brand.name}</span>
         </div>
         <p class="mt-4 text-sm leading-relaxed text-cream/70">{site.brand.tagline[lang]}</p>
-        <p class="mt-2 text-sm leading-relaxed text-cream/60">{t('home.badgeYellowFever')}</p>
+        <p class="mt-2 text-sm leading-relaxed text-cream/75">{t('home.badgeYellowFever')}</p>
       </div>
 
       {/* Leistungen */}
@@ -83,7 +83,7 @@ const infoLinks = footerInfoNav;
         <address class="mt-4 space-y-1 text-sm not-italic text-cream/75">
           <p>{site.contact.street}</p>
           <p>{site.contact.zip} {site.contact.city}</p>
-          {site.contact.addressNote && <p class="text-cream/55">{site.contact.addressNote[lang]}</p>}
+          {site.contact.addressNote && <p class="text-cream/70">{site.contact.addressNote[lang]}</p>}
           <p class="pt-2">
             <a href={site.contact.phoneHref} class="transition-colors hover:text-cream">{site.contact.phone}</a>
           </p>
@@ -92,12 +92,28 @@ const infoLinks = footerInfoNav;
           </p>
         </address>
 
+        {
+          site.reviews.googleProfileUrl && (
+            <a
+              href={site.reviews.googleProfileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex items-center gap-1.5 text-sm text-cream/80 transition-colors hover:text-cream"
+            >
+              <svg class="h-4 w-4 text-gold-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.86-5-4.87 7.1-1.01L12 2Z" />
+              </svg>
+              {t('footer.googleProfile')}
+            </a>
+          )
+        }
+
         <h3 class="mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-gold-300">{t('footer.hoursTitle')}</h3>
         <dl class="mt-3 space-y-1 text-sm text-cream/75">
           {
             site.openingHours.map((row) => (
               <div class="flex justify-between gap-6">
-                <dt class="whitespace-nowrap text-cream/60">{row.day[lang]}</dt>
+                <dt class="whitespace-nowrap text-cream/75">{row.day[lang]}</dt>
                 <dd class="whitespace-nowrap text-right tabular-nums">{row.hours[lang]}</dd>
               </div>
             ))
@@ -110,18 +126,18 @@ const infoLinks = footerInfoNav;
     <div class="mt-14 grid gap-6 border-t border-cream/15 pt-8 sm:grid-cols-2">
       <div>
         <h2 class="text-xs font-semibold uppercase tracking-[0.16em] text-gold-300">{t('footer.disclaimerTitle')}</h2>
-        <p class="mt-3 text-xs leading-relaxed text-cream/55">{t('footer.disclaimer')}</p>
+        <p class="mt-3 text-xs leading-relaxed text-cream/70">{t('footer.disclaimer')}</p>
       </div>
       <div>
         <h2 class="text-xs font-semibold uppercase tracking-[0.16em] text-gold-300">{t('footer.legalTitle')}</h2>
-        <p class="mt-3 text-xs leading-relaxed text-cream/55">{t('footer.sourcesNote')}</p>
+        <p class="mt-3 text-xs leading-relaxed text-cream/70">{t('footer.sourcesNote')}</p>
       </div>
     </div>
   </div>
 
   {/* Bottom-Bar */}
   <div class="border-t border-cream/15">
-    <div class="u-container flex flex-col items-center justify-between gap-4 py-6 text-xs text-cream/55 sm:flex-row">
+    <div class="u-container flex flex-col items-center justify-between gap-4 py-6 text-xs text-cream/70 sm:flex-row">
       <p>© {year} {site.brand.name}. {t('footer.rights')}</p>
       <nav aria-label={t('footer.legalTitle')}>
         <ul class="flex items-center gap-5">

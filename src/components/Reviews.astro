@@ -27,7 +27,7 @@ const aggregate = reviews.aggregate;
 const hasAggregate = active && aggregate.ratingValue !== '';
 const aggregateValue = Math.round(Number(aggregate.ratingValue));
 const googleUrl = reviews.googleProfileUrl;
-const hasGoogle = active && googleUrl !== '';
+const hasGoogle = active && Boolean(googleUrl);
 
 const STARS = [1, 2, 3, 4, 5];
 const openQuote = lang === 'de' ? '„' : '“';

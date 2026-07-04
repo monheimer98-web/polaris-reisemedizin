@@ -101,8 +101,8 @@ export const site = {
      * (kein erfundener Standort) – analog zu den übrigen Platzhaltern.
      */
     geo: { lat: '', lng: '' },
-    phone: '0211 15869214',
-    phoneHref: 'tel:+4921115869214',
+    phone: '02173 9990280',
+    phoneHref: 'tel:+4921739990280',
     fax: '',
     email: 'info@polaris-reisemedizin.de',
     emailHref: 'mailto:info@polaris-reisemedizin.de',
@@ -257,7 +257,7 @@ export const site = {
     /** Master-Schalter. `false` = Sektion komplett ausgeblendet (Default). */
     enabled: false,
     /** Öffentliches Google-Unternehmensprofil (Outbound-Link). Leer = ausgeblendet. */
-    googleProfileUrl: '',
+    googleProfileUrl: 'https://share.google/69X2xI03EUsjb8YPK',
     /** Gesamtbewertung – nur ausfüllen, wenn durch echte Bewertungen gedeckt. */
     aggregate: { ratingValue: '', reviewCount: '' },
     /** Echte, freigegebene Kundenstimmen. Leer lassen, bis welche vorliegen. */

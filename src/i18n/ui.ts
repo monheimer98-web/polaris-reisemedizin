@@ -50,6 +50,7 @@ export const ui = {
     // Allgemeine Aktionen
     'cta.book': 'Termin buchen',
     'cta.bookAria': 'Termin online buchen',
+    'cta.callAria': 'Praxis anrufen',
     'cta.services': 'Unsere Leistungen',
     'cta.learnMore': 'Mehr erfahren',
     'cta.allRiskAreas': 'Risikogebiete ansehen',
@@ -67,6 +68,7 @@ export const ui = {
     'footer.servicesTitle': 'Leistungen',
     'footer.infoTitle': 'Information',
     'footer.contactTitle': 'Kontakt',
+    'footer.googleProfile': 'Bewertungen auf Google',
     'footer.hoursTitle': 'Sprechzeiten',
     'footer.legalTitle': 'Rechtliches',
     'footer.disclaimerTitle': 'Medizinischer Hinweis',
@@ -259,6 +261,7 @@ export const ui = {
     // General actions
     'cta.book': 'Book appointment',
     'cta.bookAria': 'Book an appointment online',
+    'cta.callAria': 'Call the practice',
     'cta.services': 'Our services',
     'cta.learnMore': 'Learn more',
     'cta.allRiskAreas': 'View risk areas',
@@ -276,6 +279,7 @@ export const ui = {
     'footer.servicesTitle': 'Services',
     'footer.infoTitle': 'Information',
     'footer.contactTitle': 'Contact',
+    'footer.googleProfile': 'Reviews on Google',
     'footer.hoursTitle': 'Opening hours',
     'footer.legalTitle': 'Legal',
     'footer.disclaimerTitle': 'Medical notice',
