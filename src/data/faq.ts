@@ -265,11 +265,11 @@ export const faqPage: FaqPage = {
           },
           a: {
             de: [
-              'Reiseimpfungen zählen in der Regel zu den individuellen Gesundheitsleistungen und werden als Selbstzahlerleistung abgerechnet. Einige gesetzliche Krankenkassen erstatten bestimmte Reiseimpfungen freiwillig – ob und in welchem Umfang, klären Sie bitte vorab mit Ihrer Krankenkasse.',
+              'Reiseimpfungen sind individuelle Gesundheitsleistungen und werden als Selbstzahlerleistung abgerechnet. Viele gesetzliche Krankenkassen erstatten Reiseimpfungen inzwischen freiwillig – häufig ganz oder zu einem großen Teil. Ob und in welchem Umfang, hängt von Ihrer Kasse ab; mit unserer itemisierten Rechnung können Sie die Kosten unkompliziert einreichen.',
               'Die für Sie anfallenden Kosten besprechen wir transparent vor der Impfung.',
             ],
             en: [
-              'Travel vaccinations are generally individual health services and are billed as a self-pay service. Some statutory health insurers voluntarily reimburse certain travel vaccinations – please check in advance with your insurer whether and to what extent this applies.',
+              'Travel vaccinations are individual health services and are billed as a self-pay service. Many statutory health insurers now reimburse travel vaccinations voluntarily – often in full or to a large extent. Whether and to what extent depends on your fund; with our itemised invoice you can submit the costs without hassle.',
               'We will explain the costs that apply to you transparently before the vaccination.',
             ],
           },

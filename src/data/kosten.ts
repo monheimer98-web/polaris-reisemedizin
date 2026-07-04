@@ -14,7 +14,7 @@ export interface PriceItem {
   service: Localized;
   /** Was enthalten ist / wie sich der Posten erklärt. */
   detail: Localized;
-  /** Preis-Richtwert, z. B. „ab 49 €" oder „in Vorbereitung". */
+  /** Preis-Richtwert, z. B. „ab 42 €" oder „ab 40 € + Impfstoff". */
   price: Localized;
 }
 
@@ -65,12 +65,12 @@ export const kostenPage: KostenPage = {
 
   intro: {
     de: [
-      'Reisemedizinische Leistungen gehören in der Regel nicht zum Leistungskatalog der gesetzlichen Krankenversicherung. Sie werden als private bzw. individuelle Gesundheitsleistung nach der GOÄ abgerechnet – Sie erhalten dafür eine nachvollziehbare Rechnung.',
+      'Reisemedizinische Leistungen sind private bzw. individuelle Gesundheitsleistungen und werden nach der GOÄ abgerechnet – Sie erhalten dafür eine nachvollziehbare, einreichbare Rechnung.',
       'Vor jeder kostenpflichtigen Leistung besprechen wir mit Ihnen den Umfang und die voraussichtlichen Kosten. Reiseimpfungen sind individuelle Gesundheitsleistungen; hierzu treffen wir eine schriftliche Kostenvereinbarung (§ 630c BGB).',
       'Die folgenden Beträge sind unverbindliche Richtwerte zur Orientierung. Der endgültige Betrag hängt vom tatsächlichen Aufwand im Einzelfall ab.',
     ],
     en: [
-      'Travel-medicine services are generally not covered by the German statutory health insurance. They are billed as private/individual health services under the GOÄ – you receive a fully itemised invoice.',
+      'Travel-medicine services are private/individual health services and are billed under the GOÄ – you receive a clear, itemised invoice you can submit to your insurer.',
       'Before any chargeable service we discuss its scope and the expected cost with you. Travel vaccinations are individual health services, for which we put a written cost agreement in place (§ 630c German Civil Code).',
       'The amounts below are non-binding guide values for orientation. The final amount depends on the actual effort in each individual case.',
     ],
@@ -87,36 +87,36 @@ export const kostenPage: KostenPage = {
       heading: { de: 'Beratung & Impfplanung', en: 'Consultation & vaccination planning' },
       items: [
         {
-          service: { de: 'Reisemedizinische Vollberatung', en: 'Full travel-medicine consultation' },
+          service: { de: 'Reisemedizinische Beratung – ein Reiseziel', en: 'Travel-medicine consultation – one destination' },
           detail: {
-            de: 'Individuelle Beratung zu Ihren Reisezielen und ein persönlicher, schriftlicher Impf- und Reiseplan. Abrechnung nach GOÄ (u. a. Nrn. 3, 75).',
-            en: 'Individual advice for your destinations and a personal written vaccination and travel plan. Billed under the GOÄ (incl. items 3, 75).',
+            de: 'Ausführliche Beratung zu Ihrem Reiseziel und ein persönlicher, schriftlicher Impf- und Reiseplan – inklusive Malaria-Rezept, falls sinnvoll. Abrechnung nach GOÄ zum Regelsatz.',
+            en: 'In-depth advice for your destination and a personal written vaccination and travel plan – including a malaria prescription where useful. Billed under the GOÄ at the standard rate.',
           },
-          price: { de: 'ab 49 €', en: 'from €49' },
+          price: { de: 'ab 42 €', en: 'from €42' },
+        },
+        {
+          service: { de: 'Ausführliche Beratung – mehrere Ziele / komplexe Reise', en: 'Extended consultation – multiple destinations / complex trip' },
+          detail: {
+            de: 'Für längere Beratungen ab etwa 20 Minuten – mehrere Reiseziele, besondere Vorgeschichte oder eine gemeinsame Familienreise.',
+            en: 'For longer consultations from around 20 minutes – multiple destinations, a particular medical history or a shared family trip.',
+          },
+          price: { de: 'ab 50 €', en: 'from €50' },
         },
         {
           service: { de: 'Jede weitere mitreisende Person', en: 'Each additional travelling person' },
           detail: {
-            de: 'Eigene Beratung und eigener Impfplan – gemeinsam im selben Termin.',
-            en: 'Own consultation and own vaccination plan – together in the same appointment.',
+            de: 'Eigene Beratung und eigener Impfplan im selben Termin – als ganz normale, einzeln einreichbare Rechnung (gleiches Reiseziel, bis zu vier Personen).',
+            en: 'Own consultation and own vaccination plan in the same appointment – as a regular, individually submittable invoice (same destination, up to four people).',
           },
-          price: { de: 'ab 29 €', en: 'from €29' },
+          price: { de: 'ab 34 €', en: 'from €34' },
         },
         {
           service: { de: 'Fokus-Beratung Malaria oder Höhenmedizin', en: 'Focused malaria or altitude consultation' },
           detail: {
-            de: 'Wenn Sie gezielt nur zum Malariaschutz oder zur Höhenmedizin beraten werden möchten.',
-            en: 'If you would like advice specifically on malaria protection or altitude medicine only.',
+            de: 'Wenn Sie gezielt nur zum Malariaschutz oder zur Höhenmedizin beraten werden möchten – auf Wunsch mit Privatrezept.',
+            en: 'If you would like advice specifically on malaria protection or altitude medicine only – with a private prescription on request.',
           },
           price: { de: 'ab 35 €', en: 'from €35' },
-        },
-        {
-          service: { de: 'Privatrezept (z. B. Malaria-Notfallset)', en: 'Private prescription (e.g. malaria stand-by kit)' },
-          detail: {
-            de: 'Ausstellung eines Privatrezepts im Rahmen der Beratung. Die Medikamentenkosten zahlen Sie in der Apotheke.',
-            en: 'Issuing a private prescription as part of the consultation. Medication costs are paid at the pharmacy.',
-          },
-          price: { de: 'zzgl. ca. 11 €', en: 'plus approx. €11' },
         },
       ],
     },
@@ -139,6 +139,22 @@ export const kostenPage: KostenPage = {
             en: 'Brief consultation followed by vaccination when the recommendation is already clear.',
           },
           price: { de: 'ab 32 €', en: 'from €32' },
+        },
+        {
+          service: { de: 'Jede weitere Impfung am selben Tag', en: 'Each additional vaccination on the same day' },
+          detail: {
+            de: 'Wenn mehrere Impfungen in einem Termin zusammengefasst werden.',
+            en: 'When several vaccinations are combined in one appointment.',
+          },
+          price: { de: 'zzgl. ca. 7 €', en: 'plus approx. €7' },
+        },
+        {
+          service: { de: 'Neuer Impfausweis (falls noch keiner vorhanden)', en: 'New vaccination certificate (if you don’t have one yet)' },
+          detail: {
+            de: 'Ausstellung eines neuen Impfausweises.',
+            en: 'Issuing a new vaccination certificate.',
+          },
+          price: { de: 'ca. 5 €', en: 'approx. €5' },
         },
       ],
     },
@@ -172,17 +188,17 @@ export const kostenPage: KostenPage = {
       id: 'gelbfieber',
       heading: { de: 'Gelbfieberimpfung', en: 'Yellow-fever vaccination' },
       note: {
-        de: 'Die Gelbfieberimpfung darf nur in einer staatlich autorisierten Gelbfieberimpfstelle durchgeführt werden. Die Online-Buchung für Gelbfieber-Termine richten wir gerade ein und ist in Kürze verfügbar.',
-        en: 'Yellow-fever vaccination may only be carried out at a state-authorised yellow-fever centre. Online booking for yellow-fever appointments is currently being set up and will be available shortly.',
+        de: 'Als staatlich autorisierte Gelbfieberimpfstelle führen wir die Gelbfieberimpfung bei uns vor Ort durch und stellen den international gültigen Impfnachweis (ICVP) aus – in einem Termin, direkt online buchbar.',
+        en: 'As a state-authorised yellow-fever centre, we carry out the yellow-fever vaccination on site and issue the internationally valid certificate (ICVP) – in a single appointment, bookable directly online.',
       },
       items: [
         {
           service: { de: 'Gelbfieberimpfung inkl. internationalem Impfnachweis (ICVP)', en: 'Yellow-fever vaccination incl. international certificate (ICVP)' },
           detail: {
-            de: 'Der Impfstoff (Stamaril®) wird gesondert berechnet. Die Online-Buchung für Gelbfieber-Termine ist in Kürze verfügbar.',
-            en: 'The vaccine (Stamaril®) is billed separately. Online booking for yellow-fever appointments will be available shortly.',
+            de: 'Ärztliches Honorar für Aufklärung, Impfung und ICVP-Eintrag. Der Impfstoff (Stamaril®) wird gesondert als Auslage berechnet.',
+            en: 'Medical fee for the briefing, vaccination and ICVP entry. The vaccine (Stamaril®) is billed separately as a disbursement.',
           },
-          price: { de: 'in Vorbereitung', en: 'in preparation' },
+          price: { de: 'ab 40 € + Impfstoff', en: 'from €40 + vaccine' },
         },
       ],
     },
@@ -193,12 +209,12 @@ export const kostenPage: KostenPage = {
       heading: { de: 'Wie sich die Kosten zusammensetzen', en: 'How the fees are calculated' },
       body: {
         de: [
-          'Die Abrechnung folgt der amtlichen Gebührenordnung für Ärzte (GOÄ). Jede Leistung hat dort eine feste Bewertung, die mit einem Steigerungssatz multipliziert wird. Im Regelfall liegt dieser bis zum 2,3-Fachen; ein höherer Satz ist nur bei besonders aufwendiger Leistung und mit schriftlicher Begründung zulässig (§ 5 GOÄ).',
-          'Die reisemedizinische Vollberatung umfasst typischerweise die eingehende Beratung (Nr. 3) und den schriftlichen Impf- und Reiseplan (Nr. 75). Den schriftlichen Plan erhalten Sie unabhängig davon, ob Sie sich anschließend impfen lassen.',
+          'Die Abrechnung folgt der amtlichen Gebührenordnung für Ärzte (GOÄ) und bleibt beim Regelsatz (2,3-fach) – ohne erhöhte Faktoren und ohne gesonderte Honorarvereinbarung. Der ausgewiesene Betrag ergibt sich aus den einzelnen, tatsächlich erbrachten Leistungen.',
+          'Die Beratung umfasst das ausführliche ärztliche Gespräch und den schriftlichen, individuellen Impf- und Reiseplan – den Sie unabhängig davon erhalten, ob Sie sich anschließend impfen lassen.',
         ],
         en: [
-          'Billing follows the official German Medical Fee Schedule (GOÄ). Each service has a fixed valuation there, which is multiplied by a rate factor. As a rule this is up to 2.3×; a higher factor is only permitted for particularly complex services and with a written justification (§ 5 GOÄ).',
-          'The full travel-medicine consultation typically comprises the in-depth advice (item 3) and the written vaccination and travel plan (item 75). You receive the written plan regardless of whether you go on to be vaccinated.',
+          'Billing follows the official German Medical Fee Schedule (GOÄ) and stays at the standard rate (2.3×) – without increased factors or a separate fee agreement. The amount shown reflects the individual services actually provided.',
+          'The consultation comprises the in-depth medical conversation and the written, individual vaccination and travel plan – which you receive regardless of whether you go on to be vaccinated.',
         ],
       },
     },
@@ -206,12 +222,12 @@ export const kostenPage: KostenPage = {
       heading: { de: 'Erstattung durch Ihre Versicherung', en: 'Reimbursement by your insurer' },
       body: {
         de: [
-          'Gesetzliche Krankenkassen übernehmen Reiseimpfungen in der Regel nicht; einige erstatten sie inzwischen als freiwillige Satzungsleistung – ganz oder anteilig. Private Tarife regeln dies unterschiedlich.',
-          'Bitte klären Sie eine mögliche Erstattung vor Ihrem Termin mit Ihrer Versicherung. Mit unserer Rechnung können Sie die Kosten dort einreichen.',
+          'Viele gesetzliche Krankenkassen erstatten Reiseimpfungen inzwischen als freiwillige Satzungsleistung – häufig ganz oder zu einem großen Teil. Ob und in welcher Höhe, hängt von Ihrer Kasse ab; private Tarife regeln es individuell.',
+          'Am besten klären Sie die Erstattung kurz vorab mit Ihrer Kasse. Sie erhalten von uns eine ordentliche, itemisierte Rechnung, die Sie unkompliziert einreichen können.',
         ],
         en: [
-          'Statutory health insurers generally do not cover travel vaccinations; some now reimburse them as a voluntary statutory benefit – in full or in part. Private plans handle this differently.',
-          'Please clarify possible reimbursement with your insurer before your appointment. You can submit our invoice to them.',
+          'Many statutory health insurers now reimburse travel vaccinations as a voluntary statutory benefit – often in full or to a large extent. Whether and how much depends on your fund; private plans handle it individually.',
+          'It is best to check reimbursement briefly with your fund beforehand. You receive a proper, itemised invoice from us that you can submit without hassle.',
         ],
       },
     },
@@ -233,5 +249,5 @@ export const kostenPage: KostenPage = {
     en: 'All amounts are non-binding guide values under the GOÄ and do not replace an individual cost estimate. We agree the binding scope and costs with you before treatment.',
   },
 
-  lastReviewed: new Date('2026-06-16'),
+  lastReviewed: new Date('2026-07-04'),
 };

@@ -6,7 +6,6 @@
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import Callout from '../../../components/Callout.astro';
 import { getLangFromUrl, getLocalizedPath } from '../../../i18n/utils';
-import { site } from '../../../config/site';
 import { getSources } from '../../../data/sources';
 import { gelbfieberimpfungService as page } from '../../../data/services/gelbfieberimpfung';
 
@@ -26,6 +25,7 @@ const related = (page.related ?? []).map((item) => ({
   lastReviewed={page.lastReviewed}
   sources={sources}
   related={related}
+  bookingType="gelbfieber"
 >
   <div class="space-y-12 sm:space-y-14">
     {
@@ -47,30 +47,6 @@ const related = (page.related ?? []).map((item) => ({
           {section.callout && (
             <Callout variant={section.callout.variant} title={section.callout.title?.[lang]}>
               {section.callout.text[lang]}
-            </Callout>
-          )}
-          {section.id === 'impfstoff' && (
-            <Callout
-              variant="important"
-              title={lang === 'de' ? 'Gelbfieber-Termin vereinbaren' : 'Arranging a yellow-fever appointment'}
-            >
-              {lang === 'de'
-                ? 'Die Online-Buchung für Gelbfieber-Termine richten wir gerade ein. Bis dahin vereinbaren Sie Ihren Termin bitte direkt mit uns – telefonisch unter '
-                : 'We are currently setting up online booking for yellow-fever appointments. Until then, please arrange your appointment with us directly – by phone on '}
-              <a
-                href={site.contact.phoneHref}
-                class="font-medium text-petrol-800 underline decoration-gold-500 underline-offset-2 hover:text-petrol-900"
-              >
-                {site.contact.phone}
-              </a>
-              {lang === 'de' ? ' oder per E-Mail an ' : ' or by email at '}
-              <a
-                href={site.contact.emailHref}
-                class="font-medium text-petrol-800 underline decoration-gold-500 underline-offset-2 hover:text-petrol-900"
-              >
-                {site.contact.email}
-              </a>
-              .
             </Callout>
           )}
         </section>

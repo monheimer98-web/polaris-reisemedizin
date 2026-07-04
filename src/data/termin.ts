@@ -24,7 +24,7 @@ export interface AppointmentType {
   description: Localized;
   /** Empfohlener Einstieg (Beratung zuerst) – wird hervorgehoben. */
   recommended?: boolean;
-  /** Buchbar? Gelbfieber bleibt vorerst false → „in Vorbereitung". */
+  /** Buchbar? (alle aktiv – Gelbfieber ist als autorisierte Impfstelle vor Ort buchbar) */
   enabled: boolean;
 }
 
@@ -192,10 +192,10 @@ export const bookingPage: BookingPage = {
           de: 'Reisemedizinische Vollberatung',
           en: 'Full travel-medicine consultation',
         },
-        duration: { de: 'ca. 30 Minuten', en: 'approx. 30 minutes' },
+        duration: { de: '15–25 Minuten', en: '15–25 minutes' },
         description: {
-          de: 'Ausführliche Beratung zu Ihren Reisezielen und ein persönlicher, schriftlicher Impf- und Reiseplan – den Sie unabhängig von einer späteren Impfung erhalten.',
-          en: 'In-depth advice for your destinations and a personal written vaccination and travel plan – which you receive regardless of any later vaccination.',
+          de: 'Ausführliche Beratung zu Ihren Reisezielen und ein persönlicher, schriftlicher Impf- und Reiseplan – den Sie unabhängig von einer späteren Impfung erhalten. Für mehrere Ziele oder komplexe Reisen planen wir mehr Zeit ein.',
+          en: 'In-depth advice for your destinations and a personal written vaccination and travel plan – which you receive regardless of any later vaccination. For multiple destinations or complex trips we allow more time.',
         },
         recommended: true,
         enabled: true,
@@ -207,7 +207,7 @@ export const bookingPage: BookingPage = {
           de: 'Fokus-Beratung: Malaria & Höhenmedizin',
           en: 'Focused advice: malaria & altitude',
         },
-        duration: { de: 'ca. 20 Minuten', en: 'approx. 20 minutes' },
+        duration: { de: 'ca. 15 Minuten', en: 'approx. 15 minutes' },
         description: {
           de: 'Gezielte Beratung, wenn Sie speziell zu Malariaschutz oder Höhenmedizin Fragen haben – auf Wunsch mit Privatrezept für ein Notfallset.',
           en: 'Targeted advice if you have specific questions about malaria protection or altitude medicine – with a private prescription for a stand-by kit on request.',
@@ -235,23 +235,25 @@ export const bookingPage: BookingPage = {
           de: 'Gelbfieberimpfung',
           en: 'Yellow-fever vaccination',
         },
-        duration: { de: 'ca. 15 Minuten', en: 'approx. 15 minutes' },
+        duration: { de: 'ca. 10 Minuten', en: 'approx. 10 minutes' },
         description: {
-          de: 'Gelbfieberimpfung inklusive internationalem Impfnachweis (ICVP). Die Online-Buchung für Gelbfieber-Termine richten wir gerade ein – sie ist in Kürze verfügbar. Bis dahin vereinbaren Sie Ihren Termin bitte direkt mit uns.',
-          en: 'Yellow-fever vaccination including the international certificate (ICVP). Online booking for yellow-fever appointments is currently being set up and will be available shortly. Until then, please arrange your appointment with us directly.',
+          de: 'Gelbfieberimpfung inklusive internationalem Impfnachweis (ICVP) – in einem Termin bei uns vor Ort. Den Impfstoff (Stamaril®) halten wir vorrätig; direkt online buchbar.',
+          en: 'Yellow-fever vaccination including the international certificate (ICVP) – in a single appointment on site. We keep the vaccine (Stamaril®) in stock; bookable directly online.',
         },
-        enabled: false,
+        enabled: true,
       },
     ],
   },
   bookableTypes: [
-    { id: 'vollberatung', name: { de: 'Reisemedizinische Beratung', en: 'Travel-medicine consultation' } },
+    { id: 'vollberatung', name: { de: 'Reiseberatung – ein Reiseziel', en: 'Travel consultation – one destination' } },
+    { id: 'vollberatung-mehrziel', name: { de: 'Reiseberatung – mehrere Ziele / komplexe Reise', en: 'Travel consultation – multiple destinations' } },
     { id: 'impftermin', name: { de: 'Impftermin', en: 'Vaccination appointment' } },
     { id: 'folgetermin', name: { de: 'Folge-/Impftermin (nach Impfplan)', en: 'Follow-up vaccination (per plan)' } },
     { id: 'malaria-beratung', name: { de: 'Malariaberatung', en: 'Malaria consultation' } },
     { id: 'hoehen-beratung', name: { de: 'Höhenmedizin-Beratung', en: 'Altitude-medicine consultation' } },
     { id: 'malaria-hoehe', name: { de: 'Malaria- & Höhenberatung (kombiniert)', en: 'Malaria & altitude (combined)' } },
     { id: 'fsme', name: { de: 'FSME-Impftermin', en: 'TBE vaccination appointment' } },
+    { id: 'gelbfieber', name: { de: 'Gelbfieberimpfung', en: 'Yellow-fever vaccination' } },
     { id: 'b2b', name: { de: 'Reisemedizin für Unternehmen (B2B)', en: 'Corporate travel medicine (B2B)' } },
   ],
   form: {
