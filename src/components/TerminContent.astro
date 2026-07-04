@@ -12,6 +12,7 @@ import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
 import { site } from '../config/site';
 import { bookingPage as page } from '../data/termin';
 import BookingForm from './BookingForm';
+import BookingEmbed from './BookingEmbed.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const f = page.form;
@@ -81,13 +82,19 @@ const formText = {
       <div>
         <h2 class="font-display text-2xl text-petrol-900 sm:text-3xl">{page.widgetHeading[lang]}</h2>
         <div class="mt-6">
-          <BookingForm
-            client:load
-            endpoint={site.booking.endpoint}
-            privacyUrl={getLocalizedPath('/datenschutz', lang)}
-            bookableTypes={bookableTypes}
-            text={formText}
-          />
+          {
+            site.booking.embedUrl ? (
+              <BookingEmbed embedUrl={site.booking.embedUrl} title={page.widgetHeading[lang]} />
+            ) : (
+              <BookingForm
+                client:load
+                endpoint={site.booking.endpoint}
+                privacyUrl={getLocalizedPath('/datenschutz', lang)}
+                bookableTypes={bookableTypes}
+                text={formText}
+              />
+            )
+          }
         </div>
       </div>
     </div>

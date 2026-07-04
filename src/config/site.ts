@@ -201,7 +201,17 @@ export const site = {
   booking: {
     /** Anzeigename des eigenen Terminsystems (u. a. in der Datenschutzerklärung). */
     provider: 'Polaris-Terminsystem',
-    /** POST-Endpunkt (Reverse-Proxy vor der praxis-app). Leer = Platzhalter. */
+    /**
+     * ÖFFENTLICHE URL der App-Buchungsseite (`/buchung` der praxis-app) für die
+     * iframe-Einbettung des fertigen Buchungstools (Live-Slots, Sofortbestätigung).
+     * Empfehlung: `…/buchung` über den EU-Mini-Proxy (nur Buchungs-Routen +
+     * `/static` öffentlich; Patientendaten bleiben im Praxisnetz). Die App muss die
+     * Einbettung erlauben (CSP `frame-ancestors` → Website-Origin) und meldet ihre
+     * Höhe per postMessage (nahtlose Auto-Höhe). Leer = kein Embed.
+     * Vorrang: `embedUrl` → iframe-Tool; sonst `endpoint` → natives Formular; sonst Platzhalter.
+     */
+    embedUrl: '',
+    /** POST-Endpunkt (Reverse-Proxy vor der praxis-app) für das native Formular. Leer = Platzhalter. */
     endpoint: '',
   },
 

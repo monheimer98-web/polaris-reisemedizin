@@ -1,0 +1,58 @@
+---
+/**
+ * Einbettung des in der praxis-app gebauten Buchungstools (`/buchung`) als
+ * responsives iframe mit nahtloser Auto-Höhe.
+ *
+ * First-Party (eigene Praxis-Infrastruktur, kein Drittanbieter) → es ist KEIN
+ * Cookie-/Consent-Gate nötig. Die eingebettete Buchungsseite meldet ihre Höhe per
+ * `postMessage({ type: 'polaris-booking-height', height })`; das Skript unten setzt
+ * die iframe-Höhe entsprechend, sodass kein innerer Scrollbalken entsteht und sich
+ * das Tool wie ein nativer Seitenabschnitt anfühlt. Meldet die Seite keine Höhe
+ * (ältere Version), bleibt eine sinnvolle Standardhöhe als Fallback.
+ *
+ * Die App muss die Einbettung erlauben (CSP `frame-ancestors` enthält den
+ * Website-Origin) und die Seite idealerweise im „?embed=1"-Modus (ohne eigenen
+ * Kopf) ausliefern. URL kommt aus `site.booking.embedUrl`.
+ */
+interface Props {
+  /** Öffentliche URL der App-Buchungsseite (…/buchung). */
+  embedUrl: string;
+  /** Zugänglicher Titel des iframes (Screenreader). */
+  title: string;
+}
+
+const { embedUrl, title } = Astro.props;
+const src = embedUrl + (embedUrl.includes('?') ? '&' : '?') + 'embed=1';
+let origin = '';
+try {
+  origin = new URL(embedUrl).origin;
+} catch {
+  origin = '';
+}
+---
+
+<div class="overflow-hidden rounded-2xl border border-line bg-white shadow-[var(--shadow-card)]">
+  <iframe
+    class="booking-embed-frame block w-full"
+    src={src}
+    title={title}
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin"
+    style="height: 760px; border: 0;"
+    data-origin={origin}></iframe>
+</div>
+
+<script>
+  // Auto-Höhe: Höhen-Nachrichten der eingebetteten Buchungsseite übernehmen.
+  const frame = document.querySelector('.booking-embed-frame');
+  if (frame instanceof HTMLIFrameElement) {
+    const allowed = frame.dataset.origin;
+    window.addEventListener('message', (event) => {
+      if (allowed && event.origin !== allowed) return;
+      const data = event.data as { type?: string; height?: number } | null;
+      if (data && data.type === 'polaris-booking-height' && typeof data.height === 'number') {
+        frame.style.height = Math.max(480, Math.min(4000, Math.round(data.height))) + 'px';
+      }
+    });
+  }
+</script>
