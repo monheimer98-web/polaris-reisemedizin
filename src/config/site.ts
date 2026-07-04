@@ -210,7 +210,10 @@ export const site = {
      * Höhe per postMessage (nahtlose Auto-Höhe). Leer = kein Embed.
      * Vorrang: `embedUrl` → iframe-Tool; sonst `endpoint` → natives Formular; sonst Platzhalter.
      */
-    embedUrl: '',
+    // Per Build-Env überschreibbar (Muster wie PUBLIC_SITE_URL/PUBLIC_BASE_PATH):
+    // Test-/LAN-Builds setzen PUBLIC_BOOKING_EMBED_URL, der öffentliche
+    // Pages-Build bleibt ohne (→ Platzhalter), bis die öffentliche URL existiert.
+    embedUrl: import.meta.env.PUBLIC_BOOKING_EMBED_URL ?? '',
     /** POST-Endpunkt (Reverse-Proxy vor der praxis-app) für das native Formular. Leer = Platzhalter. */
     endpoint: '',
   },
