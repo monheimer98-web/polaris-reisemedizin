@@ -14,7 +14,7 @@ export interface PriceItem {
   service: Localized;
   /** Was enthalten ist / wie sich der Posten erklärt. */
   detail: Localized;
-  /** Preis-Richtwert, z. B. „ab 42 €" oder „ab 40 € + Impfstoff". */
+  /** Preis-Richtwert, z. B. „ab 39 €" oder „ab 38 € + Impfstoff". */
   price: Localized;
 }
 
@@ -87,28 +87,28 @@ export const kostenPage: KostenPage = {
       heading: { de: 'Beratung & Impfplanung', en: 'Consultation & vaccination planning' },
       items: [
         {
-          service: { de: 'Reisemedizinische Beratung – ein Reiseziel', en: 'Travel-medicine consultation – one destination' },
+          service: { de: 'Reiseberatung – einfaches Reiseziel', en: 'Travel consultation – straightforward destination' },
           detail: {
-            de: 'Ausführliche Beratung zu Ihrem Reiseziel und ein persönlicher, schriftlicher Impf- und Reiseplan – inklusive Malaria-Rezept, falls sinnvoll. Abrechnung nach GOÄ zum Regelsatz.',
-            en: 'In-depth advice for your destination and a personal written vaccination and travel plan – including a malaria prescription where useful. Billed under the GOÄ at the standard rate.',
+            de: 'Kompakte Beratung für ein einzelnes, einfaches Reiseziel (z. B. Europa, USA, Kanada, Australien) – mit persönlichem, schriftlichem Impf- und Reiseplan.',
+            en: 'A compact consultation for a single, straightforward destination (e.g. Europe, USA, Canada, Australia) – with a personal written vaccination and travel plan.',
           },
-          price: { de: 'ab 42 €', en: 'from €42' },
+          price: { de: 'ab 39 €', en: 'from €39' },
         },
         {
-          service: { de: 'Ausführliche Beratung – mehrere Ziele / komplexe Reise', en: 'Extended consultation – multiple destinations / complex trip' },
+          service: { de: 'Reisemedizinische Beratung – Fernreise oder mehrere Länder', en: 'Travel-medicine consultation – long-haul or multiple countries' },
           detail: {
-            de: 'Für längere Beratungen ab etwa 20 Minuten – mehrere Reiseziele, besondere Vorgeschichte oder eine gemeinsame Familienreise.',
-            en: 'For longer consultations from around 20 minutes – multiple destinations, a particular medical history or a shared family trip.',
+            de: 'Ausführliche Beratung (ab etwa 20 Minuten) für Fernreisen, mehrere Länder oder eine besondere Vorgeschichte – inklusive Malaria-Rezept, falls sinnvoll, und schriftlichem Impf- und Reiseplan.',
+            en: 'An in-depth consultation (from around 20 minutes) for long-haul trips, multiple countries or a particular medical history – including a malaria prescription where useful and a written vaccination and travel plan.',
           },
-          price: { de: 'ab 50 €', en: 'from €50' },
+          price: { de: 'ab 60 €', en: 'from €60' },
         },
         {
           service: { de: 'Jede weitere mitreisende Person', en: 'Each additional travelling person' },
           detail: {
-            de: 'Eigene Beratung und eigener Impfplan im selben Termin – als ganz normale, einzeln einreichbare Rechnung (gleiches Reiseziel, bis zu vier Personen).',
-            en: 'Own consultation and own vaccination plan in the same appointment – as a regular, individually submittable invoice (same destination, up to four people).',
+            de: 'Eigene Beratung und eigener Impfplan im selben Termin – als ganz normale, einzeln einreichbare Rechnung (gleiches Reiseziel, bis zu sechs Personen).',
+            en: 'Own consultation and own vaccination plan in the same appointment – as a regular, individually submittable invoice (same destination, up to six people).',
           },
-          price: { de: 'ab 34 €', en: 'from €34' },
+          price: { de: 'ab 31 €', en: 'from €31' },
         },
         {
           service: { de: 'Fokus-Beratung Malaria oder Höhenmedizin', en: 'Focused malaria or altitude consultation' },
@@ -116,7 +116,7 @@ export const kostenPage: KostenPage = {
             de: 'Wenn Sie gezielt nur zum Malariaschutz oder zur Höhenmedizin beraten werden möchten – auf Wunsch mit Privatrezept.',
             en: 'If you would like advice specifically on malaria protection or altitude medicine only – with a private prescription on request.',
           },
-          price: { de: 'ab 35 €', en: 'from €35' },
+          price: { de: 'ab 20 €', en: 'from €20' },
         },
       ],
     },
@@ -198,7 +198,7 @@ export const kostenPage: KostenPage = {
             de: 'Ärztliches Honorar für Aufklärung, Impfung und ICVP-Eintrag. Der Impfstoff (Stamaril®) wird gesondert als Auslage berechnet.',
             en: 'Medical fee for the briefing, vaccination and ICVP entry. The vaccine (Stamaril®) is billed separately as a disbursement.',
           },
-          price: { de: 'ab 40 € + Impfstoff', en: 'from €40 + vaccine' },
+          price: { de: 'ab 38 € + Impfstoff', en: 'from €38 + vaccine' },
         },
       ],
     },
