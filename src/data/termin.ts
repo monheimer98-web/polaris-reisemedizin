@@ -218,13 +218,13 @@ export const bookingPage: BookingPage = {
         id: 'impftermin',
         icon: 'vaccination',
         name: {
-          de: 'Impftermin',
-          en: 'Vaccination appointment',
+          de: 'Folge-Impftermin',
+          en: 'Follow-up vaccination appointment',
         },
-        duration: { de: 'ca. 15 Minuten', en: 'approx. 15 minutes' },
+        duration: { de: 'ca. 10 Minuten', en: 'approx. 10 minutes' },
         description: {
-          de: 'Durchführung einer Impfung mit Aufklärung und Dokumentation – als gesonderter Folgetermin oder direkt, wenn bereits eine klare Impfempfehlung vorliegt. Den Impfstoff bringen Sie per Privatrezept aus der Apotheke mit; FSME halten wir vor Ort vorrätig.',
-          en: 'Administration of a vaccination with briefing and documentation – as a separate follow-up appointment or directly when a clear recommendation already exists. You bring the vaccine from the pharmacy via private prescription; we keep TBE in stock on site.',
+          de: 'Die eigentliche Impfung nach Ihrem Impfplan: Sie bringen den Impfstoff per Privatrezept aus der Apotheke mit. FSME und Gelbfieber halten wir vor Ort vorrätig und impfen sie direkt in einem Termin.',
+          en: 'The vaccination itself, following your plan: you bring the vaccine from the pharmacy via private prescription. TBE and yellow fever are kept in stock on site and given directly in a single appointment.',
         },
         enabled: true,
       },
@@ -247,8 +247,7 @@ export const bookingPage: BookingPage = {
   bookableTypes: [
     { id: 'vollberatung-kurz', name: { de: 'Reiseberatung – einfaches Reiseziel (Europa, USA, Kanada, Australien)', en: 'Travel consultation – straightforward destination (Europe, USA, Canada, Australia)' } },
     { id: 'vollberatung', name: { de: 'Reisemedizinische Beratung – Fernreise / mehrere Länder', en: 'Travel-medicine consultation – long-haul / multiple countries' } },
-    { id: 'impftermin', name: { de: 'Impftermin', en: 'Vaccination appointment' } },
-    { id: 'folgetermin', name: { de: 'Folge-/Impftermin (nach Impfplan)', en: 'Follow-up vaccination (per plan)' } },
+    { id: 'folgetermin', name: { de: 'Impftermin nach Ihrem Impfplan', en: 'Vaccination appointment (per your plan)' } },
     { id: 'malaria-beratung', name: { de: 'Malariaberatung', en: 'Malaria consultation' } },
     { id: 'hoehen-beratung', name: { de: 'Höhenmedizin-Beratung', en: 'Altitude-medicine consultation' } },
     { id: 'malaria-hoehe', name: { de: 'Malaria- & Höhenberatung (kombiniert)', en: 'Malaria & altitude (combined)' } },

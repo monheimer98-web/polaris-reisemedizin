@@ -125,20 +125,20 @@ export const kostenPage: KostenPage = {
       heading: { de: 'Impftermine', en: 'Vaccination appointments' },
       items: [
         {
-          service: { de: 'Impftermin (Durchführung & Dokumentation)', en: 'Vaccination appointment (administration & records)' },
+          service: { de: 'Folge-Impftermin (nach Ihrem Impfplan)', en: 'Follow-up vaccination appointment (per your plan)' },
           detail: {
-            de: 'Aufklärung, Durchführung der Impfung und Eintrag in den Impfausweis. Den Impfstoff bringen Sie per Privatrezept aus der Apotheke mit (FSME halten wir vor Ort vorrätig).',
-            en: 'Briefing, administration of the vaccination and entry in your vaccination certificate. You bring the vaccine from the pharmacy via private prescription (we keep TBE in stock on site).',
+            de: 'Die eigentliche Impfung nach Ihrem Impfplan: Aufklärung, Impfung und Eintrag in den Impfausweis. Den Impfstoff bringen Sie per Privatrezept aus der Apotheke mit.',
+            en: 'The vaccination itself, following your plan: briefing, injection and entry in your vaccination certificate. You bring the vaccine from the pharmacy via private prescription.',
           },
           price: { de: 'ab 20 €', en: 'from €20' },
         },
         {
-          service: { de: 'Ersttermin mit direkter Impfung', en: 'First appointment with immediate vaccination' },
+          service: { de: 'FSME-Impfung direkt (vor Ort, ein Termin)', en: 'TBE vaccination directly (on site, one appointment)' },
           detail: {
-            de: 'Kurzberatung mit anschließender Impfung, wenn die Impfempfehlung bereits eindeutig ist.',
-            en: 'Brief consultation followed by vaccination when the recommendation is already clear.',
+            de: 'FSME halten wir vor Ort vorrätig – dafür brauchen Sie kein Privatrezept und können den Termin direkt buchen. (Gelbfieber ist ebenfalls vor Ort möglich, siehe unten.)',
+            en: 'We keep the TBE vaccine in stock on site – no private prescription needed, and you can book directly. (Yellow fever is also available on site, see below.)',
           },
-          price: { de: 'ab 32 €', en: 'from €32' },
+          price: { de: 'ab 32 € + Impfstoff', en: 'from €32 + vaccine' },
         },
         {
           service: { de: 'Jede weitere Impfung am selben Tag', en: 'Each additional vaccination on the same day' },
