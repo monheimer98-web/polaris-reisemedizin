@@ -3,56 +3,104 @@
  * Einbettung des in der praxis-app gebauten Buchungstools (`/buchung`) als
  * responsives iframe mit nahtloser Auto-Höhe.
  *
- * First-Party (eigene Praxis-Infrastruktur, kein Drittanbieter) → es ist KEIN
- * Cookie-/Consent-Gate nötig. Die eingebettete Buchungsseite meldet ihre Höhe per
- * `postMessage({ type: 'polaris-booking-height', height })`; das Skript unten setzt
- * die iframe-Höhe entsprechend, sodass kein innerer Scrollbalken entsteht und sich
- * das Tool wie ein nativer Seitenabschnitt anfühlt. Meldet die Seite keine Höhe
- * (ältere Version), bleibt eine sinnvolle Standardhöhe als Fallback.
+ * SELBSTHEILEND: Die eigentliche Server-Adresse (Cloudflare-Quick-Tunnel)
+ * wechselt bei jedem Mac-Neustart. Damit die eingebettete Buchung NIE eine tote
+ * URL zeigt, wird die aktuelle Basis-Adresse zur LAUFZEIT aus `app-url.json`
+ * gelesen (dieselbe Datei, die der Mac automatisch aktualisiert) und daraus die
+ * iframe-Quelle `<basis>/buchung?embed=1` gebaut. `embedUrl` (Build-Zeit) dient
+ * nur noch als optionaler Fallback.
  *
- * Die App muss die Einbettung erlauben (CSP `frame-ancestors` enthält den
- * Website-Origin) und die Seite idealerweise im „?embed=1"-Modus (ohne eigenen
- * Kopf) ausliefern. URL kommt aus `site.booking.embedUrl`.
+ * First-Party (eigene Praxis-Infrastruktur, kein Drittanbieter) → kein Cookie-/
+ * Consent-Gate nötig. Die eingebettete Seite meldet ihre Höhe per
+ * postMessage({ type: 'polaris-booking-height', height }); das Skript setzt die
+ * iframe-Höhe entsprechend (kein innerer Scrollbalken). Die App erlaubt die
+ * Einbettung per CSP `frame-ancestors` (Website-Origin in EMBED_ORIGINS).
  */
 interface Props {
-  /** Öffentliche URL der App-Buchungsseite (…/buchung). */
-  embedUrl: string;
+  /** Optionaler Build-Zeit-Fallback (…/buchung). Zur Laufzeit gewinnt app-url.json. */
+  embedUrl?: string;
   /** Zugänglicher Titel des iframes (Screenreader). */
   title: string;
 }
 
-const { embedUrl, title } = Astro.props;
-const src = embedUrl + (embedUrl.includes('?') ? '&' : '?') + 'embed=1';
-let origin = '';
-try {
-  origin = new URL(embedUrl).origin;
-} catch {
-  origin = '';
-}
+const { embedUrl = '', title } = Astro.props;
+// Pfad zur selbst-aktualisierenden Adress-Datei (respektiert den Pages-Unterpfad).
+const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
 ---
 
 <div class="overflow-hidden rounded-2xl border border-line bg-white shadow-[var(--shadow-card)]">
-  <iframe
-    class="booking-embed-frame block w-full"
-    src={src}
-    title={title}
-    loading="lazy"
-    referrerpolicy="strict-origin-when-cross-origin"
-    style="height: 760px; border: 0;"
-    data-origin={origin}></iframe>
+  <div
+    class="booking-embed-mount"
+    data-json={jsonUrl}
+    data-fallback={embedUrl}
+    data-title={title}>
+    <div class="booking-embed-lade" role="status">Buchung wird geladen …</div>
+  </div>
 </div>
 
 <script>
-  // Auto-Höhe: Höhen-Nachrichten der eingebetteten Buchungsseite übernehmen.
-  const frame = document.querySelector('.booking-embed-frame');
-  if (frame instanceof HTMLIFrameElement) {
-    const allowed = frame.dataset.origin;
-    window.addEventListener('message', (event) => {
-      if (allowed && event.origin !== allowed) return;
-      const data = event.data as { type?: string; height?: number } | null;
-      if (data && data.type === 'polaris-booking-height' && typeof data.height === 'number') {
-        frame.style.height = Math.max(480, Math.min(4000, Math.round(data.height))) + 'px';
-      }
-    });
+  // Aktuelle Server-Adresse holen und iframe bauen. Läuft im Browser der
+  // Besucherin, immer frisch (Cache umgangen), damit ein Mac-Neustart die
+  // Buchung nicht kaputt macht.
+  const mount = document.querySelector('.booking-embed-mount');
+  if (mount instanceof HTMLElement) {
+    const jsonUrl = mount.dataset.json || 'app-url.json';
+    const fallback = mount.dataset.fallback || '';
+    const title = mount.dataset.title || 'Terminbuchung';
+
+    function basisAus(u: string): string {
+      try { return new URL(u).origin; } catch { return u.replace(/\/(buchung|mobil).*$/, ''); }
+    }
+
+    function baueIframe(basis: string) {
+      const src = basis.replace(/\/+$/, '') + '/buchung?embed=1';
+      let origin = '';
+      try { origin = new URL(src).origin; } catch { origin = ''; }
+      const frame = document.createElement('iframe');
+      frame.className = 'booking-embed-frame block w-full';
+      frame.title = title;
+      frame.setAttribute('loading', 'lazy');
+      frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      frame.style.cssText = 'height:760px;border:0;';
+      frame.src = src;
+      mount!.replaceChildren(frame);
+      window.addEventListener('message', (event) => {
+        if (origin && event.origin !== origin) return;
+        const data = event.data as { type?: string; height?: number } | null;
+        if (data && data.type === 'polaris-booking-height' && typeof data.height === 'number') {
+          frame.style.height = Math.max(480, Math.min(4000, Math.round(data.height))) + 'px';
+        }
+      });
+    }
+
+    function fehler() {
+      mount!.innerHTML =
+        '<div class="booking-embed-lade">Die Online-Buchung ist gerade nicht erreichbar. ' +
+        'Bitte rufen Sie uns an oder versuchen Sie es später erneut.</div>';
+    }
+
+    fetch(jsonUrl + '?_=' + Date.now(), { cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((d) => {
+        if (d && d.url) baueIframe(basisAus(d.url));
+        else throw new Error('keine URL');
+      })
+      .catch(() => {
+        if (fallback) baueIframe(basisAus(fallback));
+        else fehler();
+      });
   }
 </script>
+
+<style>
+  .booking-embed-lade {
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    color: var(--color-muted, #5a6b6a);
+    font-size: 0.95rem;
+  }
+</style>

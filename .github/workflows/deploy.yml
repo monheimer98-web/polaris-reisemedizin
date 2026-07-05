@@ -43,12 +43,9 @@ jobs:
       PUBLIC_BASE_PATH: /polaris-reisemedizin/
       PUBLIC_SITE_URL: https://monheimer98-web.github.io
       PUBLIC_NOINDEX: 'true'
-      # LIVETEST: öffentliches Buchungstool (praxis-app hinter dem Buchungs-only-
-      # Tunnel; nur /buchung*-Routen erreichbar, kein Login/Patientendaten).
-      # Quick-Tunnel-URL wechselt bei Neustart des Dienstes com.polaris.praxis.tunnel
-      # auf dem Praxis-Mac -> dann hier aktualisieren (aktuelle URL steht dort in
-      # ~/Library/Logs/polaris-tunnel-url.txt) und erneut deployen.
-      PUBLIC_BOOKING_EMBED_URL: https://compete-statutes-territories-have.trycloudflare.com/buchung
+      # Buchungs-Embed holt die aktuelle Server-Adresse zur Laufzeit aus
+      # public/app-url.json (self-healing, s. BookingEmbed.astro) – kein
+      # Build-Zeit-URL mehr nötig, überlebt Mac-Neustarts automatisch.
     steps:
       - name: Checkout
         uses: actions/checkout@v6

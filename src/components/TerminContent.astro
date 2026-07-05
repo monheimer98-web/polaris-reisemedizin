@@ -82,19 +82,10 @@ const formText = {
       <div>
         <h2 class="font-display text-2xl text-petrol-900 sm:text-3xl">{page.widgetHeading[lang]}</h2>
         <div class="mt-6">
-          {
-            site.booking.embedUrl ? (
-              <BookingEmbed embedUrl={site.booking.embedUrl} title={page.widgetHeading[lang]} />
-            ) : (
-              <BookingForm
-                client:load
-                endpoint={site.booking.endpoint}
-                privacyUrl={getLocalizedPath('/datenschutz', lang)}
-                bookableTypes={bookableTypes}
-                text={formText}
-              />
-            )
-          }
+          {/* Buchung immer eingebettet – BookingEmbed holt die aktuelle
+              Server-Adresse selbst aus app-url.json (überlebt Mac-Neustarts).
+              Fällt das aus, zeigt es einen freundlichen Hinweis. */}
+          <BookingEmbed embedUrl={site.booking.embedUrl} title={page.widgetHeading[lang]} />
         </div>
       </div>
     </div>
