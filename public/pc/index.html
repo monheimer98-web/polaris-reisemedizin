@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Polaris</title>
+<title>Polaris Praxis</title>
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -27,7 +27,7 @@
 </head>
 <body>
   <img src="icon.png" alt="">
-  <div class="name">Polaris</div>
+  <div class="name">Polaris · Praxis</div>
   <div class="spin" id="spin"></div>
   <div class="sub" id="status">wird geöffnet …</div>
   <div id="fehler">Der Praxis-Server ist gerade nicht erreichbar. Bitte prüfen, ob der Praxis-Mac läuft, und erneut versuchen. <br><br><a href="#" onclick="location.reload();return false">Nochmal versuchen</a></div>
@@ -40,7 +40,7 @@
     fetch(url, { cache: "no-store" })
       .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
       .then(function (d) {
-        if (d && d.url) { location.replace(d.url.replace(/\/+$/,"") + "/mobil"); }
+        if (d && d.url) { location.replace(d.url.replace(/\/+$/,"") + "/"); }
         else { throw new Error("keine URL"); }
       })
       .catch(function () {
