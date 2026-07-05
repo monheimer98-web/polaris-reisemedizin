@@ -6,7 +6,7 @@
  * Beratungs-Erstmodell: Die Beratung ist eine eigenständige ärztliche Leistung.
  * Ergebnis ist ein schriftlicher, individueller Impf- und Reiseplan – unabhängig
  * davon, ob anschließend geimpft wird. Den Impfstoff holen Patient:innen für die
- * meisten Reiseimpfungen per Privatrezept in der Apotheke (FSME vor Ort); die
+ * meisten Reiseimpfungen per Privatrezept in der Apotheke (FSME + Gelbfieber vor Ort); die
  * Impfung selbst erfolgt in der Regel in einem gesonderten Folgetermin.
  */
 import type { ClinicalPage } from '../types';
@@ -85,11 +85,11 @@ export const reiseberatungService: ClinicalPage = {
       body: {
         de: [
           'Wir trennen bewusst die Beratung von der Impfung. Im ersten Termin beraten wir Sie ausführlich und erstellen Ihren Plan. Anstehende Impfungen vereinbaren wir – soweit medizinisch sinnvoll – als gesonderte Folgetermine.',
-          'Für die meisten Reiseimpfungen erhalten Sie ein Privatrezept und holen den Impfstoff gekühlt in der Apotheke; den FSME-Impfstoff halten wir vor Ort vorrätig. Der zeitliche Abstand erlaubt zudem eine in Ruhe getroffene Entscheidung. Reisen Sie kurzfristig, stimmen wir das Vorgehen direkt auf Ihren Zeitrahmen ab.',
+          'Für die meisten Reiseimpfungen erhalten Sie ein Privatrezept und holen den Impfstoff gekühlt in der Apotheke; den FSME- und den Gelbfieber-Impfstoff halten wir vor Ort vorrätig. Der zeitliche Abstand erlaubt zudem eine in Ruhe getroffene Entscheidung. Reisen Sie kurzfristig, stimmen wir das Vorgehen direkt auf Ihren Zeitrahmen ab.',
         ],
         en: [
           'We deliberately separate the consultation from the vaccination. In the first appointment we advise you in detail and prepare your plan. Any vaccinations are arranged – where medically sensible – as separate follow-up appointments.',
-          'For most travel vaccinations you receive a private prescription and collect the refrigerated vaccine at the pharmacy; the TBE vaccine we keep in stock on site. The time interval also allows for a decision made calmly. If you are travelling at short notice, we adapt the approach directly to your timeframe.',
+          'For most travel vaccinations you receive a private prescription and collect the refrigerated vaccine at the pharmacy; the TBE and yellow fever vaccines we keep in stock on site. The time interval also allows for a decision made calmly. If you are travelling at short notice, we adapt the approach directly to your timeframe.',
         ],
       },
     },

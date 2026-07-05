@@ -31,10 +31,10 @@ export const processPage: ClinicalPage = {
       heading: { de: 'Was Sie erwartet', en: 'What to expect' },
       body: {
         de: [
-          'Im Mittelpunkt steht Ihre konkrete Reise. Wir bewerten das gesundheitliche Risiko anhand aktueller, offizieller Quellen und besprechen sinnvolle und gegebenenfalls vorgeschriebene Impfungen. Für die meisten Impfungen erhalten Sie ein Privatrezept und kommen zum Impfen wieder; FSME können wir vor Ort direkt durchführen. Den Abschluss bildet die ordnungsgemäße Dokumentation Ihres Impfschutzes.',
+          'Im Mittelpunkt steht Ihre konkrete Reise. Wir bewerten das gesundheitliche Risiko anhand aktueller, offizieller Quellen und besprechen sinnvolle und gegebenenfalls vorgeschriebene Impfungen. Für die meisten Impfungen erhalten Sie ein Privatrezept und kommen zum Impfen wieder; FSME und Gelbfieber können wir vor Ort direkt durchführen. Den Abschluss bildet die ordnungsgemäße Dokumentation Ihres Impfschutzes.',
         ],
         en: [
-          'Your specific trip is the focus. We assess the health risk using current official sources and discuss advisable and any legally required vaccinations. For most vaccinations you receive a private prescription and return for the injection; TBE we can administer directly on site. Finally, we document your vaccination protection properly.',
+          'Your specific trip is the focus. We assess the health risk using current official sources and discuss advisable and any legally required vaccinations. For most vaccinations you receive a private prescription and return for the injection; TBE and yellow fever we can administer directly on site. Finally, we document your vaccination protection properly.',
         ],
       },
       list: {
@@ -102,19 +102,19 @@ export const processPage: ClinicalPage = {
       body: {
         de: [
           'Am Anfang steht die ausführliche Beratung mit dem schriftlichen Impf- und Reiseplan. Sie bildet die Grundlage für alle weiteren Schritte.',
-          'Für die meisten Reiseimpfungen erhalten Sie anschließend ein Privatrezept, holen den Impfstoff gekühlt in der Apotheke und kommen zum Impftermin wieder. Den FSME-Impfstoff halten wir vor Ort vorrätig – FSME können wir daher direkt im Termin impfen. So sind oft zwei Schritte sinnvoll: zuerst die Beratung, dann das Impfen.',
+          'Für die meisten Reiseimpfungen erhalten Sie anschließend ein Privatrezept, holen den Impfstoff gekühlt in der Apotheke und kommen zum Impftermin wieder. Den FSME- und den Gelbfieber-Impfstoff halten wir vor Ort vorrätig – FSME und Gelbfieber können wir daher direkt im Termin impfen. So sind oft zwei Schritte sinnvoll: zuerst die Beratung, dann das Impfen.',
         ],
         en: [
           'It all starts with the in-depth consultation and the written vaccination and travel plan. This forms the basis for every further step.',
-          'For most travel vaccinations you then receive a private prescription, collect the refrigerated vaccine at the pharmacy and return for the vaccination appointment. The TBE vaccine we keep in stock on site – so TBE can be given directly during the appointment. Two steps therefore often make sense: first the consultation, then the vaccination.',
+          'For most travel vaccinations you then receive a private prescription, collect the refrigerated vaccine at the pharmacy and return for the vaccination appointment. The TBE and yellow fever vaccines we keep in stock on site – so both can be given directly during the appointment. Two steps therefore often make sense: first the consultation, then the vaccination.',
         ],
       },
       callout: {
         variant: 'info',
         title: { de: 'Warum getrennte Termine?', en: 'Why separate appointments?' },
         text: {
-          de: 'Den Impfstoff holen Sie für die meisten Reiseimpfungen per Privatrezept gekühlt in der Apotheke – das bedeutet meist einen zweiten Termin, dafür erhalten Sie frische, individuell ausgewählte Impfstoffe. Den FSME-Impfstoff halten wir vor Ort vorrätig.',
-          en: 'For most travel vaccinations you collect the refrigerated vaccine at the pharmacy via private prescription – this usually means a second appointment, but you receive fresh, individually selected vaccines. We keep the TBE vaccine in stock on site.',
+          de: 'Den Impfstoff holen Sie für die meisten Reiseimpfungen per Privatrezept gekühlt in der Apotheke – das bedeutet meist einen zweiten Termin, dafür erhalten Sie frische, individuell ausgewählte Impfstoffe. FSME und Gelbfieber halten wir vor Ort vorrätig – hier genügt ein Termin.',
+          en: 'For most travel vaccinations you collect the refrigerated vaccine at the pharmacy via private prescription – this usually means a second appointment, but you receive fresh, individually selected vaccines. TBE and yellow fever we keep in stock on site – here a single appointment is enough.',
         },
       },
     },

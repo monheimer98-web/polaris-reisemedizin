@@ -123,11 +123,11 @@ export const reiseimpfungenService: ClinicalPage = {
       heading: { de: 'So gehen wir vor', en: 'How we proceed' },
       body: {
         de: [
-          'Am Anfang steht die reisemedizinische Beratung mit einem schriftlichen Impfplan. Für die empfohlenen Impfungen erhalten Sie in der Regel ein Privatrezept und holen den Impfstoff gekühlt in der Apotheke; die Impfung selbst erfolgt dann in einem Folgetermin. Den FSME-Impfstoff halten wir vor Ort vorrätig – FSME ist daher direkt buchbar.',
+          'Am Anfang steht die reisemedizinische Beratung mit einem schriftlichen Impfplan. Für die empfohlenen Impfungen erhalten Sie in der Regel ein Privatrezept und holen den Impfstoff gekühlt in der Apotheke; die Impfung selbst erfolgt dann in einem Folgetermin. Den FSME- und den Gelbfieber-Impfstoff halten wir vor Ort vorrätig – FSME und Gelbfieber sind daher direkt in einem Termin buchbar.',
           'Mehrere fällige Impfungen lassen sich häufig im selben Termin kombinieren – was sinnvoll und verträglich ist, besprechen wir mit Ihnen.',
         ],
         en: [
-          'It all starts with the travel-medicine consultation and a written vaccination plan. For the recommended vaccinations you usually receive a private prescription and collect the refrigerated vaccine at the pharmacy; the vaccination itself then takes place at a follow-up appointment. The TBE vaccine we keep in stock on site – so TBE can be booked directly.',
+          'It all starts with the travel-medicine consultation and a written vaccination plan. For the recommended vaccinations you usually receive a private prescription and collect the refrigerated vaccine at the pharmacy; the vaccination itself then takes place at a follow-up appointment. The TBE and yellow fever vaccines we keep in stock on site – so both can be booked directly in a single appointment.',
           'Several due vaccinations can often be combined in the same appointment – we discuss with you what is sensible and well tolerated.',
         ],
       },

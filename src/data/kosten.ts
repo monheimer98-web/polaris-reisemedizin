@@ -162,8 +162,8 @@ export const kostenPage: KostenPage = {
       id: 'impfstoffe',
       heading: { de: 'Impfstoffe', en: 'Vaccines' },
       note: {
-        de: 'Für die meisten Reiseimpfungen erhalten Sie ein Privatrezept und holen den Impfstoff gekühlt in der Apotheke. Den FSME-Impfstoff halten wir vor Ort vorrätig.',
-        en: 'For most travel vaccinations you receive a private prescription and collect the refrigerated vaccine at the pharmacy. We keep the TBE vaccine in stock on site.',
+        de: 'Für die meisten Reiseimpfungen erhalten Sie ein Privatrezept und holen den Impfstoff gekühlt in der Apotheke. Den FSME- und den Gelbfieber-Impfstoff halten wir vor Ort vorrätig.',
+        en: 'For most travel vaccinations you receive a private prescription and collect the refrigerated vaccine at the pharmacy. We keep the TBE and yellow-fever vaccines in stock on site.',
       },
       items: [
         {
@@ -175,10 +175,10 @@ export const kostenPage: KostenPage = {
           price: { de: 'Apothekenpreis', en: 'pharmacy price' },
         },
         {
-          service: { de: 'FSME-Impfstoff (vor Ort)', en: 'TBE vaccine (on site)' },
+          service: { de: 'FSME- und Gelbfieber-Impfstoff (vor Ort)', en: 'TBE and yellow-fever vaccine (on site)' },
           detail: {
-            de: 'Den FSME-Impfstoff halten wir vor Ort vorrätig und berechnen ihn zum Bezugspreis (Auslage nach § 10 GOÄ).',
-            en: 'We keep the TBE vaccine in stock on site and charge it at cost (disbursement under § 10 GOÄ).',
+            de: 'FSME und Gelbfieber (Stamaril®) halten wir vor Ort vorrätig und berechnen den Impfstoff zum Bezugspreis (Auslage nach § 10 GOÄ).',
+            en: 'We keep TBE and yellow fever (Stamaril®) in stock on site and charge the vaccine at cost (disbursement under § 10 GOÄ).',
           },
           price: { de: 'nach Bezugspreis', en: 'at cost price' },
         },
