@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Polaris</title>
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Polaris">
+<meta name="theme-color" content="#0E3B43">
+<style>
+  html,body{margin:0;height:100%}
+  body{background:#0E3B43;color:#F7F5F0;font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+       padding:env(safe-area-inset-top) 24px env(safe-area-inset-bottom);text-align:center}
+  img{width:88px;height:88px;border-radius:22px;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+  .name{font-size:22px;font-weight:600;letter-spacing:.3px}
+  .sub{font-size:14px;color:#bfd0ce}
+  .spin{width:26px;height:26px;border:3px solid rgba(255,255,255,.25);border-top-color:#C9A24B;border-radius:50%;animation:s .8s linear infinite}
+  @keyframes s{to{transform:rotate(360deg)}}
+  a{color:#C9A24B}
+  #fehler{display:none;font-size:14px;color:#f0c0c0;max-width:300px}
+</style>
+</head>
+<body>
+  <img src="icon.png" alt="">
+  <div class="name">Polaris</div>
+  <div class="spin" id="spin"></div>
+  <div class="sub" id="status">wird geöffnet …</div>
+  <div id="fehler">Der Praxis-Server ist gerade nicht erreichbar. Bitte prüfen, ob der Praxis-Mac läuft, und erneut versuchen. <br><br><a href="#" onclick="location.reload();return false">Nochmal versuchen</a></div>
+<script>
+  // Feste Adresse: liest die aktuelle (sich änderbare) Server-Adresse aus
+  // app-url.json und leitet dorthin weiter. So bleibt DIESE Seite die eine
+  // gleichbleibende Adresse fürs iPhone – auch wenn sich der Server neu startet.
+  (function () {
+    var url = "../app-url.json?_=" + Date.now(); // Cache umgehen (immer frisch)
+    fetch(url, { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (d) {
+        if (d && d.url) { location.replace(d.url); }
+        else { throw new Error("keine URL"); }
+      })
+      .catch(function () {
+        document.getElementById("spin").style.display = "none";
+        document.getElementById("status").style.display = "none";
+        document.getElementById("fehler").style.display = "block";
+      });
+  })();
+</script>
+</body>
+</html>
