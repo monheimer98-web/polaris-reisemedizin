@@ -167,11 +167,11 @@ export const bookingPage: BookingPage = {
   },
   intro: {
     de: [
-      'Vereinbaren Sie Ihren Termin für die reisemedizinische Beratung und Impfung telefonisch oder per E-Mail. Sie erreichen unsere Praxis direkt – ganz ohne externen Anbieter.',
+      'Wählen Sie im Buchungstool Ihre Terminart und einen Wunschtermin – wir prüfen die Verfügbarkeit und bestätigen den Termin persönlich. Lieber telefonisch oder per E-Mail? Auch das ist jederzeit möglich.',
       'Bitte planen Sie ausreichend Vorlauf ein – einige Reiseimpfungen sollten rechtzeitig vor der Abreise erfolgen.',
     ],
     en: [
-      'Arrange your appointment for travel-medicine advice and vaccination by phone or email. You reach our practice directly – with no external provider.',
+      'Choose your appointment type and a preferred time in the booking tool – we check availability and confirm the appointment personally. Prefer phone or email? That works just as well, any time.',
       'Please allow enough lead time – some travel vaccinations should be given well before departure.',
     ],
   },
