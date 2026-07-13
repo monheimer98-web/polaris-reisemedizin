@@ -253,8 +253,8 @@ export const bookingPage: BookingPage = {
         },
         duration: { de: 'ca. 10 Minuten', en: 'approx. 10 minutes' },
         description: {
-          de: 'Kompakte Beratung für ein einzelnes Reiseland innerhalb Europas – mit persönlichem, schriftlichem Impf- und Reiseplan. Den Plan erhalten Sie unabhängig von einer späteren Impfung.',
-          en: 'A compact consultation for a single destination country within Europe – with a personal written vaccination and travel plan. You receive the plan regardless of any later vaccination.',
+          de: 'Die kürzere Variante, wenn Sie nur ein einzelnes Reiseland innerhalb Europas planen – mit persönlichem, schriftlichem Impf- und Reiseplan. Den Plan erhalten Sie unabhängig von einer späteren Impfung.',
+          en: 'The shorter option when you are only planning a single destination country within Europe – with a personal written vaccination and travel plan. You receive the plan regardless of any later vaccination.',
         },
         price: { de: 'ca. 28 €', en: 'approx. €28' },
         enabled: true,
