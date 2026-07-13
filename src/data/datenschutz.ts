@@ -46,8 +46,8 @@ export const datenschutzPage: DatenschutzPage = {
       en: 'Privacy policy',
     },
     description: {
-      de: 'Datenschutzerklärung nach Art. 13/14 DSGVO: Verarbeitung personenbezogener Daten und Gesundheitsdaten, ärztliche Schweigepflicht, Online-Terminanfrage über das eigene Praxissystem, 2-Klick-Karte, selbst gehostete Schriften, Speicherdauer und Ihre Rechte.',
-      en: 'Privacy policy pursuant to Art. 13/14 GDPR: processing of personal data and health data, medical confidentiality, online appointment enquiry via our own practice system, two-click map, self-hosted fonts, retention periods and your rights.',
+      de: 'Datenschutzerklärung nach Art. 13/14 DSGVO: Verarbeitung personenbezogener Daten und Gesundheitsdaten, ärztliche Schweigepflicht und Ihre Rechte.',
+      en: 'Privacy policy pursuant to Art. 13/14 GDPR: processing of personal and health data, medical confidentiality, retention periods and your rights.',
     },
     eyebrow: {
       de: 'Rechtliches',
@@ -261,12 +261,12 @@ export const datenschutzPage: DatenschutzPage = {
       },
       body: {
         de: [
-          'Auf unserer Terminseite können Sie über ein Anfrageformular einen Wunschtermin anfragen. Das Formular ist Bestandteil unserer eigenen Website und übermittelt Ihre Angaben direkt an unser praxiseigenes Terminsystem. Es wird kein externer Buchungsdienst eingebunden, es findet keine 2-Klick-Einbindung statt und vor dem Absenden werden keine Verbindungen zu Dritten aufgebaut.',
-          'Wir verarbeiten die von Ihnen angegebenen Daten – Terminart, Vor- und Nachname und E-Mail-Adresse sowie, sofern Sie diese freiwillig angeben, Telefonnummer, Geburtsdatum, Wunschtermin, Reiseziel, Abreisedatum und Ihre Nachricht –, um Ihre Terminanfrage zu bearbeiten und den Termin mit Ihnen abzustimmen. Die Übermittlung erfolgt über eine verschlüsselte Verbindung; die Speicherung erfolgt in unserer eigenen, auf Praxisinfrastruktur betriebenen Terminverwaltung. Eine Weitergabe an einen externen Buchungsanbieter findet nicht statt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung und Durchführung des Behandlungsvertrags) sowie Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die Sie mit dem Absenden des Formulars erteilen und jederzeit mit Wirkung für die Zukunft widerrufen können. Das Formular fragt bewusst keine Gesundheitsdaten ab; bitte teilen Sie uns Angaben zu Ihrem Gesundheitszustand erst im persönlichen Gespräch mit. Sollten Sie im Freitextfeld dennoch Gesundheitsdaten angeben, erfolgt deren Verarbeitung auf Grundlage von Art. 9 Abs. 2 lit. h DSGVO i. V. m. § 22 BDSG.',
+          'Die Online-Terminbuchung über unsere Website ist derzeit deaktiviert (im Umbau). Auf unserer Terminseite wird kein Anfrageformular ausgeliefert; es werden dort keine personenbezogenen Daten erhoben oder an unser Terminsystem übermittelt.',
+          'Terminwünsche vereinbaren Sie zurzeit telefonisch oder per E-Mail. Wie wir dabei mit Ihren Angaben umgehen, ist im Abschnitt „Kontaktaufnahme" beschrieben. Sobald die Online-Terminbuchung wieder verfügbar ist, aktualisieren wir diese Datenschutzerklärung entsprechend.',
         ],
         en: [
-          'On our appointments page you can request a preferred appointment via an enquiry form. The form is part of our own website and transmits your details directly to our in-practice scheduling system. No external booking service is embedded, there is no two-click embed, and no connections to third parties are established before you submit.',
-          'We process the data you provide – appointment type, first and last name and email address, as well as, where you choose to provide them, phone number, date of birth, preferred appointment, travel destination, departure date and your message – in order to handle your appointment request and arrange the appointment with you. Transmission takes place via an encrypted connection; storage takes place in our own scheduling system operated on practice infrastructure. The data is not passed on to an external booking provider. The legal basis is Art. 6 (1) (b) GDPR (initiation and performance of the treatment contract) and your consent (Art. 6 (1) (a) GDPR), which you give by submitting the form and can withdraw at any time with effect for the future. The form deliberately does not ask for health data; please share information about your state of health only in a personal consultation. Should you nevertheless enter health data in the free-text field, it is processed on the basis of Art. 9 (2) (h) GDPR in conjunction with Section 22 BDSG.',
+          'Online appointment booking via our website is currently deactivated (undergoing maintenance). No enquiry form is served on our appointments page; no personal data is collected there or transmitted to our scheduling system.',
+          'For now, please arrange appointments by phone or email. How we handle your details in that case is described in the “Contacting us” section. As soon as online booking is available again, we will update this privacy policy accordingly.',
         ],
       },
     },

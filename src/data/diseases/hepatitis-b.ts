@@ -12,8 +12,8 @@ export const hepatitisBDisease: ClinicalPage = {
   meta: {
     title: { de: 'Hepatitis B', en: 'Hepatitis B' },
     description: {
-      de: 'Hepatitis B – Erreger, Übertragung über Blut und Schleimhäute, Verbreitung, Krankheitsverlauf mit Chronifizierungsrisiko, Impfung und Vorbeugung. Fachlich fundiert und mit Quellen belegt.',
-      en: 'Hepatitis B – pathogen, transmission via blood and mucous membranes, distribution, course of disease with risk of chronicity, vaccination and prevention. Evidence-based and fully referenced.',
+      de: 'Hepatitis B – Erreger, Übertragung über Blut und Schleimhäute, Verbreitung, Krankheitsverlauf mit Chronifizierungsrisiko, Impfung und Vorbeugung.',
+      en: 'Hepatitis B – pathogen, transmission via blood and mucous membranes, distribution, course of disease with risk of chronicity, vaccination and prevention.',
     },
     eyebrow: { de: 'Krankheitsbild', en: 'Disease' },
     lead: {

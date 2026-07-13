@@ -15,8 +15,8 @@ export const reiseberatungService: ClinicalPage = {
   meta: {
     title: { de: 'Reisemedizinische Beratung', en: 'Travel medicine consultation' },
     description: {
-      de: 'Individuelle reisemedizinische Beratung: Impfempfehlungen, schriftlicher Impf- und Reiseplan, Malaria- und Expositionsschutz – abgestimmt auf Reiseziel, Route und Gesundheitszustand.',
-      en: 'Individual travel-medicine consultation: vaccination recommendations, a written vaccination and travel plan, malaria and exposure protection – tailored to your destination, route and state of health.',
+      de: 'Individuelle reisemedizinische Beratung: Impfempfehlungen, schriftlicher Impf- und Reiseplan, Malaria- und Expositionsschutz – auf Ihre Reise abgestimmt.',
+      en: 'Individual travel-medicine consultation: vaccination advice, a written vaccination and travel plan, malaria and exposure protection.',
     },
     eyebrow: { de: 'Leistung', en: 'Service' },
     lead: {

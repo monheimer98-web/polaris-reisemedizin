@@ -67,10 +67,10 @@ export const faqPage: FaqPage = {
           },
           a: {
             de: [
-              'Am einfachsten buchen Sie Ihren Termin online über unsere Terminseite. Alternativ erreichen Sie uns telefonisch oder per E-Mail – die Kontaktdaten finden Sie auf der Kontaktseite und im Seitenfuß.',
+              'Für eine Terminvereinbarung erreichen Sie uns am einfachsten telefonisch oder per E-Mail – die Kontaktdaten finden Sie auf der Kontaktseite und im Seitenfuß. Unsere Online-Terminbuchung wird derzeit überarbeitet.',
             ],
             en: [
-              'The easiest way is to book your appointment online via our appointments page. Alternatively, you can reach us by phone or email – you will find the contact details on the contact page and in the footer.',
+              'The easiest way to arrange an appointment is by phone or email – you will find the contact details on the contact page and in the footer. Our online appointment booking is currently being reworked.',
             ],
           },
         },

@@ -13,8 +13,8 @@ export const japanischeEnzephalitisDisease: ClinicalPage = {
   meta: {
     title: { de: 'Japanische Enzephalitis', en: 'Japanese encephalitis' },
     description: {
-      de: 'Japanische Enzephalitis – Erreger, Übertragung durch Stechmücken, Verbreitung, Krankheitsverlauf, Impfung und Vorbeugung. Fachlich fundiert und mit Quellen belegt.',
-      en: 'Japanese encephalitis – pathogen, transmission via mosquitoes, distribution, course of disease, vaccination and prevention. Evidence-based and fully referenced.',
+      de: 'Japanische Enzephalitis – Erreger, Übertragung durch Stechmücken, Verbreitung, Krankheitsverlauf, Impfung und Vorbeugung.',
+      en: 'Japanese encephalitis – pathogen, transmission via mosquitoes, distribution, course of disease, vaccination and prevention.',
     },
     eyebrow: { de: 'Krankheitsbild', en: 'Disease' },
     lead: {

@@ -42,24 +42,24 @@ export const kontaktPage: KontaktPage = {
       en: 'Contact & directions',
     },
     description: {
-      de: 'So erreichen Sie unsere Praxis für Reise- und Impfmedizin in Langenfeld: Adresse, Telefon, E-Mail, Sprechzeiten und Anfahrt – datenschutzfreundlich eingebunden.',
-      en: 'How to reach our travel and vaccination medicine practice in Langenfeld: address, phone, email, opening hours and directions – embedded in a privacy-friendly way.',
+      de: 'So erreichen Sie unsere Praxis für Reise- und Impfmedizin in Langenfeld: Adresse, Telefon, E-Mail, Sprechzeiten und Anfahrt.',
+      en: 'How to reach our travel and vaccination medicine practice in Langenfeld: address, phone, email, opening hours and directions.',
     },
     eyebrow: {
       de: 'Kontakt',
       en: 'Contact',
     },
     lead: {
-      de: 'Sie erreichen uns telefonisch, per E-Mail oder über die Online-Terminbuchung. Hier finden Sie alle Kontaktdaten, unsere Sprechzeiten und den Weg zu uns.',
-      en: 'You can reach us by phone, email or via online booking. Here you will find all contact details, our opening hours and how to get to us.',
+      de: 'Sie erreichen uns telefonisch oder per E-Mail. Hier finden Sie alle Kontaktdaten, unsere Sprechzeiten und den Weg zu uns.',
+      en: 'You can reach us by phone or email. Here you will find all contact details, our opening hours and how to get to us.',
     },
   },
   intro: {
     de: [
-      'Wir freuen uns auf Ihre Nachricht. Für eine reisemedizinische Beratung oder Impfung vereinbaren Sie am besten vorab einen Termin – telefonisch, per E-Mail oder bequem online.',
+      'Wir freuen uns auf Ihre Nachricht. Für eine reisemedizinische Beratung oder Impfung vereinbaren Sie am besten vorab einen Termin – telefonisch oder per E-Mail.',
     ],
     en: [
-      'We look forward to hearing from you. For travel-medicine advice or a vaccination, it is best to arrange an appointment in advance – by phone, email or conveniently online.',
+      'We look forward to hearing from you. For travel-medicine advice or a vaccination, it is best to arrange an appointment in advance – by phone or email.',
     ],
   },
   labels: {

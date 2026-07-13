@@ -38,8 +38,8 @@ export const unternehmenPage: UnternehmenPage = {
   meta: {
     title: { de: 'Reisemedizin für Unternehmen', en: 'Travel medicine for businesses' },
     description: {
-      de: 'Reisemedizinische Vorbereitung für entsendete und dienstreisende Mitarbeitende: Beratung, Impfungen, Impfnachweise und vollständige Dokumentation – strukturiert und zuverlässig.',
-      en: 'Travel-medicine preparation for posted and business-travelling staff: consultation, vaccinations, certificates and complete documentation – structured and reliable.',
+      de: 'Reisemedizinische Vorbereitung für entsendete und dienstreisende Mitarbeitende: Beratung, Impfungen, Impfnachweise und Dokumentation.',
+      en: 'Travel-medicine preparation for posted and business-travelling staff: consultation, vaccinations, certificates and documentation.',
     },
     eyebrow: { de: 'Für Unternehmen', en: 'For businesses' },
     lead: {
@@ -85,8 +85,8 @@ export const unternehmenPage: UnternehmenPage = {
     {
       title: { de: 'Internationale Impfnachweise', en: 'International vaccination certificates' },
       text: {
-        de: 'Vollständige Impfdokumentation. Gelbfieber-Nachweis (ICVP), sobald unsere Zulassung aktiv ist.',
-        en: 'Complete vaccination records. Yellow-fever certificate (ICVP) as soon as our authorisation is active.',
+        de: 'Vollständige Impfdokumentation inklusive international gültigem Gelbfieber-Nachweis (ICVP) als staatlich autorisierte Gelbfieberimpfstelle.',
+        en: 'Complete vaccination records including the internationally valid yellow-fever certificate (ICVP) as a state-authorised yellow-fever vaccination centre.',
       },
     },
     {

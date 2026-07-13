@@ -13,8 +13,8 @@ export const chikungunyaDisease: ClinicalPage = {
   meta: {
     title: { de: 'Chikungunya', en: 'Chikungunya' },
     description: {
-      de: 'Chikungunya – Erreger, Übertragung durch tagaktive Stechmücken, Verbreitung, Krankheitsverlauf mit anhaltenden Gelenkschmerzen, Impfung (Ixchiq®, Vimkunya®) und Vorbeugung. Fachlich fundiert und mit Quellen belegt.',
-      en: 'Chikungunya – pathogen, transmission by day-biting mosquitoes, distribution, course of disease with persistent joint pain, vaccination (Ixchiq®, Vimkunya®) and prevention. Evidence-based and fully referenced.',
+      de: 'Chikungunya – Erreger, Übertragung durch tagaktive Stechmücken, Verbreitung, Krankheitsverlauf mit anhaltenden Gelenkschmerzen, Impfung und Vorbeugung.',
+      en: 'Chikungunya – pathogen, transmission by day-biting mosquitoes, distribution, course of disease with persistent joint pain, vaccination and prevention.',
     },
     eyebrow: { de: 'Krankheitsbild', en: 'Disease' },
     lead: {
@@ -92,12 +92,12 @@ export const chikungunyaDisease: ClinicalPage = {
       heading: { de: 'Mückenschutz', en: 'Mosquito-bite protection' },
       body: {
         de: [
-          'Da die übertragenden Mücken tagsüber stechen, ist ein konsequenter Schutz über den ganzen Tag entscheidend – nicht nur in der Dämmerung. Dazu gehören hautbedeckende, helle Kleidung, Mückenschutzmittel (Repellentien) auf unbedeckter Haut, Moskitonetze sowie nach Möglichkeit klimatisierte oder mückensichere Räume.',
-          'Dieser Expositionsschutz ist die Grundlage der Vorbeugung – auch dann, wenn eine Impfung infrage kommt.',
+          'Chikungunya wird von tagaktiven Aedes-Mücken (unter anderem der Tigermücke) übertragen – Mückenschutz ist deshalb tagsüber ebenso wichtig wie in der Dämmerung. Bewährt sind Repellentien auf unbedeckter Haut, lange und helle Kleidung, Moskitonetze und, wo möglich, klimatisierte oder mückensichere Räume.',
+          'Dieser konsequente Stichschutz ist der wichtigste Baustein der Vorbeugung – zumal er zugleich vor Dengue und weiteren von denselben Mücken übertragenen Erkrankungen schützt.',
         ],
         en: [
-          'Because the transmitting mosquitoes bite during the day, consistent protection throughout the day is decisive – not only at dusk. This includes light, skin-covering clothing, insect repellents on exposed skin, mosquito nets and, where possible, air-conditioned or mosquito-proof rooms.',
-          'This exposure protection is the foundation of prevention – including when vaccination is an option.',
+          'Chikungunya is spread by day-active Aedes mosquitoes (including the tiger mosquito), so bite protection matters during the day just as much as at dusk. Repellents on exposed skin, long, light-coloured clothing, mosquito nets and, where possible, air-conditioned or mosquito-proof rooms all help.',
+          'This consistent bite protection is the most important element of prevention – all the more so because it also guards against dengue and other diseases carried by the same mosquitoes.',
         ],
       },
     },

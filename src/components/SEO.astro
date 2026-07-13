@@ -87,12 +87,16 @@ const clinicSchema = {
   telephone: real(site.contact.phone),
   email: real(site.contact.email),
   paymentAccepted: lang === 'de' ? 'EC-/girocard, Kreditkarte' : 'Debit card (girocard), credit card',
-  openingHoursSpecification: site.openingHoursSpec.map((spec) => ({
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: spec.days,
-    opens: spec.opens,
-    closes: spec.closes,
-  })),
+  ...(site.openingHoursSpec.length
+    ? {
+        openingHoursSpecification: site.openingHoursSpec.map((spec) => ({
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: spec.days,
+          opens: spec.opens,
+          closes: spec.closes,
+        })),
+      }
+    : {}),
   availableService: [
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Reisemedizinische Beratung' : 'Travel-medicine consultation' },
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Reiseimpfungen' : 'Travel vaccinations' },

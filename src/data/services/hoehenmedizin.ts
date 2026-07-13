@@ -10,8 +10,8 @@ export const hoehenmedizinService: ClinicalPage = {
   meta: {
     title: { de: 'Höhenmedizin & Höhenberatung', en: 'Altitude medicine & consultation' },
     description: {
-      de: 'Sicher in die Höhe: Akklimatisation, Warnzeichen der Höhenkrankheit (AMS, HACE, HAPE), Verhaltensregeln und medikamentöse Vorbeugung – individuell für Trekking, Bergreisen und Expeditionen.',
-      en: 'Safely to altitude: acclimatisation, warning signs of altitude illness (AMS, HACE, HAPE), rules of conduct and preventive medication – individually for trekking, mountain travel and expeditions.',
+      de: 'Sicher in die Höhe: Akklimatisation, Warnzeichen der Höhenkrankheit (AMS, HACE, HAPE), Verhaltensregeln und medikamentöse Vorbeugung.',
+      en: 'Safely to altitude: acclimatisation, warning signs of altitude illness (AMS, HACE, HAPE), rules of conduct and preventive medication.',
     },
     eyebrow: { de: 'Leistung', en: 'Service' },
     lead: {

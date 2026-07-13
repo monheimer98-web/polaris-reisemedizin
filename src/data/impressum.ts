@@ -42,7 +42,6 @@ export interface ImpressumPage {
     rulesText: Localized;
     yellowFeverHeading: Localized;
     yellowFeverIntro: Localized;
-    yellowFeverRefLabel: Localized;
     yellowFeverAuthorityLabel: Localized;
     insuranceHeading: Localized;
     insurerLabel: Localized;
@@ -66,8 +65,8 @@ export const impressumPage: ImpressumPage = {
       en: 'Imprint',
     },
     description: {
-      de: 'Impressum und Anbieterkennzeichnung gemäß § 5 Digitale-Dienste-Gesetz (DDG): verantwortliche Praxis, Praxisinhaber, Kontakt, zuständige Ärztekammer und Berufsrecht.',
-      en: 'Imprint and provider identification pursuant to Section 5 of the German Digital Services Act (DDG): responsible practice, practice owner, contact, competent medical association and professional law.',
+      de: 'Impressum und Anbieterkennzeichnung nach § 5 DDG: verantwortliche Praxis, Praxisinhaber, Kontakt, zuständige Ärztekammer und Berufsrecht.',
+      en: 'Imprint and provider identification under Section 5 DDG: responsible practice, practice owner, contact, competent medical association and professional law.',
     },
     eyebrow: {
       de: 'Rechtliches',
@@ -135,10 +134,6 @@ export const impressumPage: ImpressumPage = {
     yellowFeverIntro: {
       de: 'Die Praxis ist als staatlich autorisierte Gelbfieberimpfstelle nach den Internationalen Gesundheitsvorschriften (IGV) zugelassen.',
       en: 'The practice is authorised as a state-approved yellow fever vaccination centre under the International Health Regulations (IHR).',
-    },
-    yellowFeverRefLabel: {
-      de: 'Aktenzeichen der Zulassung',
-      en: 'Authorisation reference number',
     },
     yellowFeverAuthorityLabel: {
       de: 'Autorisierende Behörde',
@@ -242,7 +237,7 @@ export const impressumPage: ImpressumPage = {
     },
   ],
   closingNote: {
-    de: 'Dieser Text ist eine sorgfältig erstellte Vorlage und ersetzt keine individuelle Rechtsberatung. Das Aktenzeichen der Gelbfieber-Zulassung wird ergänzt, sobald der Zulassungsbescheid vorliegt; eine anwaltliche Endabnahme wird empfohlen. Maßgeblich ist die deutsche Fassung.',
-    en: 'This text is a carefully prepared template and does not replace individual legal advice. The reference number of the yellow fever authorisation will be added as soon as the authorisation notice is available; a final legal review is recommended. The German version shall prevail.',
+    de: 'Dieser Text ist eine sorgfältig erstellte Vorlage und ersetzt keine individuelle Rechtsberatung. Eine anwaltliche Endabnahme wird empfohlen. Maßgeblich ist die deutsche Fassung.',
+    en: 'This text is a carefully prepared template and does not replace individual legal advice. A final legal review is recommended. The German version shall prevail.',
   },
 };

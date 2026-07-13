@@ -69,8 +69,8 @@ const afrika: DestinationRegion = {
     meta: {
       title: { de: 'Reiseimpfungen für Afrika südlich der Sahara', en: 'Travel vaccinations for Sub-Saharan Africa' },
       description: {
-        de: 'Welche Impfungen für Safari, Westafrika und den Sahel? Überblick zu Gelbfieber (mit ICVP-Nachweis), Hepatitis A, Typhus, Tollwut, Meningokokken und Malaria – mit Verweis auf die persönliche Beratung.',
-        en: 'Which vaccinations for safari, West Africa and the Sahel? An overview of yellow fever (with ICVP certificate), hepatitis A, typhoid, rabies, meningococcal disease and malaria – with reference to a personal consultation.',
+        de: 'Welche Impfungen für Safari, Westafrika und den Sahel? Überblick zu Gelbfieber (ICVP), Hepatitis A, Typhus, Tollwut, Meningokokken und Malaria.',
+        en: 'Which vaccinations for safari, West Africa and the Sahel? Overview of yellow fever (ICVP), hepatitis A, typhoid, rabies, meningococcal and malaria.',
       },
       eyebrow: { de: 'Reiseziele & Impfplanung', en: 'Destinations & vaccination planning' },
       lead: {
@@ -245,8 +245,8 @@ const asien: DestinationRegion = {
     meta: {
       title: { de: 'Reiseimpfungen für Süd- & Südostasien', en: 'Travel vaccinations for South & Southeast Asia' },
       description: {
-        de: 'Welche Impfungen für Thailand, Bali, Indien & Co.? Überblick zu Hepatitis A, Typhus, Tollwut, Japanischer Enzephalitis, Dengue und Malaria – mit Verweis auf die persönliche Beratung.',
-        en: 'Which vaccinations for Thailand, Bali, India & co.? An overview of hepatitis A, typhoid, rabies, Japanese encephalitis, dengue and malaria – with reference to a personal consultation.',
+        de: 'Welche Impfungen für Thailand, Bali, Indien & Co.? Überblick zu Hepatitis A, Typhus, Tollwut, Japanischer Enzephalitis, Dengue und Malaria.',
+        en: 'Which vaccinations for Thailand, Bali, India & co.? Overview of hepatitis A, typhoid, rabies, Japanese encephalitis, dengue and malaria.',
       },
       eyebrow: { de: 'Reiseziele & Impfplanung', en: 'Destinations & vaccination planning' },
       lead: {
@@ -416,8 +416,8 @@ const lateinamerika: DestinationRegion = {
     meta: {
       title: { de: 'Reiseimpfungen für Lateinamerika & Karibik', en: 'Travel vaccinations for Latin America & the Caribbean' },
       description: {
-        de: 'Welche Impfungen für Brasilien, Peru, Mexiko & Co.? Überblick zu Gelbfieber (Amazonas, ICVP), Hepatitis A, Typhus, Dengue, Höhenkrankheit und Malaria – mit Verweis auf die persönliche Beratung.',
-        en: 'Which vaccinations for Brazil, Peru, Mexico & co.? An overview of yellow fever (Amazon, ICVP), hepatitis A, typhoid, dengue, altitude sickness and malaria – with reference to a personal consultation.',
+        de: 'Welche Impfungen für Brasilien, Peru, Mexiko & Co.? Überblick zu Gelbfieber (Amazonas, ICVP), Hepatitis A, Typhus, Dengue, Höhe und Malaria.',
+        en: 'Which vaccinations for Brazil, Peru, Mexico & co.? Overview of yellow fever (Amazon, ICVP), hepatitis A, typhoid, dengue, altitude and malaria.',
       },
       eyebrow: { de: 'Reiseziele & Impfplanung', en: 'Destinations & vaccination planning' },
       lead: {
@@ -592,8 +592,8 @@ const naherOsten: DestinationRegion = {
     meta: {
       title: { de: 'Reiseimpfungen für den Nahen Osten & Nordafrika', en: 'Travel vaccinations for the Middle East & North Africa' },
       description: {
-        de: 'Welche Impfungen für Ägypten, Marokko, Jordanien & Co.? Überblick zu Hepatitis A, Typhus, Standardimpfschutz und der Meningokokken-Nachweispflicht für Mekka-Pilger – mit Verweis auf die persönliche Beratung.',
-        en: 'Which vaccinations for Egypt, Morocco, Jordan & co.? An overview of hepatitis A, typhoid, routine cover and the meningococcal certificate required for Mecca pilgrims – with reference to a personal consultation.',
+        de: 'Welche Impfungen für Ägypten, Marokko, Jordanien & Co.? Überblick zu Hepatitis A, Typhus, Standardimpfschutz und Meningokokken für Mekka-Pilger.',
+        en: 'Which vaccinations for Egypt, Morocco, Jordan & co.? Overview of hepatitis A, typhoid, routine cover and meningococcal for Mecca pilgrims.',
       },
       eyebrow: { de: 'Reiseziele & Impfplanung', en: 'Destinations & vaccination planning' },
       lead: {
@@ -733,8 +733,8 @@ const europa: DestinationRegion = {
     meta: {
       title: { de: 'Reiseimpfungen für Europa & den Mittelmeerraum', en: 'Travel vaccinations for Europe & the Mediterranean' },
       description: {
-        de: 'Welche Vorsorge für Reisen in Europa? Überblick zu FSME in Zeckengebieten, Standardimpfschutz und Hepatitis A in Teilen Ost- und Südosteuropas – mit Verweis auf die persönliche Beratung.',
-        en: 'What prevention for trips within Europe? An overview of TBE in tick areas, routine vaccination cover and hepatitis A in parts of Eastern and South-Eastern Europe – with reference to a personal consultation.',
+        de: 'Welche Vorsorge für Reisen in Europa? Überblick zu FSME in Zeckengebieten, Standardimpfschutz und Hepatitis A in Teilen Ost- und Südosteuropas.',
+        en: 'What prevention for trips within Europe? Overview of TBE in tick areas, routine cover and hepatitis A in parts of Eastern and South-Eastern Europe.',
       },
       eyebrow: { de: 'Reiseziele & Impfplanung', en: 'Destinations & vaccination planning' },
       lead: {
@@ -871,8 +871,8 @@ const ozeanien: DestinationRegion = {
     meta: {
       title: { de: 'Reiseimpfungen für Australien, Neuseeland & den Pazifik', en: 'Travel vaccinations for Australia, New Zealand & the Pacific' },
       description: {
-        de: 'Welche Vorsorge für Australien, Neuseeland und die Pazifikinseln? Überblick zu Standardimpfschutz, Hepatitis A sowie Dengue und Malaria auf tropischen Inseln und in Papua-Neuguinea – mit Verweis auf die persönliche Beratung.',
-        en: 'What prevention for Australia, New Zealand and the Pacific islands? An overview of routine cover, hepatitis A as well as dengue and malaria on tropical islands and in Papua New Guinea – with reference to a personal consultation.',
+        de: 'Welche Vorsorge für Australien, Neuseeland und die Pazifikinseln? Überblick zu Standardimpfschutz, Hepatitis A sowie Dengue und Malaria in den Tropen.',
+        en: 'What prevention for Australia, New Zealand and the Pacific islands? Overview of routine cover, hepatitis A plus dengue and malaria in tropical areas.',
       },
       eyebrow: { de: 'Reiseziele & Impfplanung', en: 'Destinations & vaccination planning' },
       lead: {
@@ -981,7 +981,7 @@ const ozeanien: DestinationRegion = {
     lastReviewed: LAST_REVIEWED,
     related: [
       { label: { de: 'Süd- & Südostasien', en: 'South & Southeast Asia' }, path: '/reiseziele/asien' },
-      { label: { de: 'Mittel- & Südamerika', en: 'Central & South America' }, path: '/reiseziele/lateinamerika' },
+      { label: { de: 'Lateinamerika & Karibik', en: 'Latin America & Caribbean' }, path: '/reiseziele/lateinamerika' },
       { label: { de: 'Reisemedizinische Beratung', en: 'Travel medicine consultation' }, path: '/leistungen/reiseberatung' },
       { label: { de: 'Risikogebiete – Gelbfieber & FSME', en: 'Risk areas – yellow fever & TBE' }, path: '/risikogebiete' },
     ],

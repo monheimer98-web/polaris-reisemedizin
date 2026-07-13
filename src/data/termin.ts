@@ -22,6 +22,13 @@ export interface AppointmentType {
   /** Ungefähre Dauer als kleines Label. */
   duration: Localized;
   description: Localized;
+  /**
+   * Preis-Richtwert nach GOÄ (unverbindlich), z. B. „ab 28 €". Wird direkt
+   * auf der Karte gezeigt, damit die Kosten schon bei der Terminwahl sichtbar
+   * sind. Der ausführliche Aufschlüsselung verlinkt weiterhin `/kosten`.
+   * Optional: fehlt der Wert, wird keine Preiszeile gerendert.
+   */
+  price?: Localized;
   /** Empfohlener Einstieg (Beratung zuerst) – wird hervorgehoben. */
   recommended?: boolean;
   /** Buchbar? (alle aktiv – Gelbfieber ist als autorisierte Impfstelle vor Ort buchbar) */
@@ -95,12 +102,22 @@ export interface BookingPage {
   };
   intro: Localized<string[]>;
   widgetHeading: Localized;
+  /** Umbau-Hinweis statt Online-Buchung: verweist auf Telefon/E-Mail. */
+  widgetNotice: {
+    badge: Localized;
+    title: Localized;
+    body: Localized;
+    phoneCtaLabel: Localized;
+    emailCtaLabel: Localized;
+  };
   /** Terminarten zur Orientierung; Gelbfieber ist noch nicht buchbar. */
   appointmentTypes: {
     heading: Localized;
     lead: Localized;
     recommendedLabel: Localized;
     pendingLabel: Localized;
+    /** Kleines Label über dem Preis-Richtwert auf der Karte. */
+    priceNoteLabel: Localized;
     costsLabel: Localized;
     /** Logischer Pfad ohne Locale-Präfix. */
     costsPath: string;
@@ -132,35 +149,57 @@ export interface BookingPage {
 export const bookingPage: BookingPage = {
   meta: {
     title: {
-      de: 'Termin online buchen',
-      en: 'Book your appointment online',
+      de: 'Termin vereinbaren',
+      en: 'Arrange an appointment',
     },
     description: {
-      de: 'Buchen Sie Ihren Termin für die reisemedizinische Beratung und Impfung online – datenschutzfreundlich und direkt über unser eigenes Praxis-Terminsystem.',
-      en: 'Book your appointment for travel-medicine advice and vaccination online – privacy-friendly and directly through our own practice scheduling system.',
+      de: 'Vereinbaren Sie Ihren Termin für die reisemedizinische Beratung und Impfung – telefonisch oder per E-Mail, direkt mit unserer Praxis.',
+      en: 'Arrange your appointment for travel-medicine advice and vaccination – by phone or email, directly with our practice.',
     },
     eyebrow: {
       de: 'Terminbuchung',
       en: 'Appointments',
     },
     lead: {
-      de: 'Buchen Sie Ihren Termin für Beratung und Impfung bequem online. Ihre Anfrage geht direkt und datenschutzfreundlich an unsere Praxis – ohne externen Buchungsdienst.',
-      en: 'Book your appointment for advice and vaccination conveniently online. Your request goes directly and privacy-friendly to our practice – with no external booking service.',
+      de: 'Vereinbaren Sie Ihren Termin für Beratung und Impfung ganz unkompliziert telefonisch oder per E-Mail – Sie erreichen unsere Praxis direkt.',
+      en: 'Arrange your appointment for advice and vaccination simply by phone or email – you reach our practice directly.',
     },
   },
   intro: {
     de: [
-      'Vereinbaren Sie Ihren Termin für die reisemedizinische Beratung und Impfung bequem online. Ihre Anfrage läuft direkt über unser eigenes Praxis-Terminsystem – ohne externen Anbieter.',
+      'Vereinbaren Sie Ihren Termin für die reisemedizinische Beratung und Impfung telefonisch oder per E-Mail. Sie erreichen unsere Praxis direkt – ganz ohne externen Anbieter.',
       'Bitte planen Sie ausreichend Vorlauf ein – einige Reiseimpfungen sollten rechtzeitig vor der Abreise erfolgen.',
     ],
     en: [
-      'Arrange your appointment for travel-medicine advice and vaccination conveniently online. Your request runs directly through our own practice scheduling system – with no external provider.',
+      'Arrange your appointment for travel-medicine advice and vaccination by phone or email. You reach our practice directly – with no external provider.',
       'Please allow enough lead time – some travel vaccinations should be given well before departure.',
     ],
   },
   widgetHeading: {
-    de: 'Online-Terminbuchung',
-    en: 'Online appointment booking',
+    de: 'Terminvereinbarung',
+    en: 'Arrange an appointment',
+  },
+  widgetNotice: {
+    badge: {
+      de: 'Im Umbau',
+      en: 'Under maintenance',
+    },
+    title: {
+      de: 'Online-Terminbuchung zurzeit nicht verfügbar',
+      en: 'Online booking currently unavailable',
+    },
+    body: {
+      de: 'Unsere Online-Terminbuchung wird gerade überarbeitet und ist vorübergehend nicht verfügbar. Für eine Terminvereinbarung können Sie uns gerne telefonisch oder per E-Mail kontaktieren – wir melden uns zeitnah bei Ihnen.',
+      en: 'Our online appointment booking is currently being reworked and is temporarily unavailable. To arrange an appointment, please contact us by phone or email – we will get back to you promptly.',
+    },
+    phoneCtaLabel: {
+      de: 'Anrufen',
+      en: 'Call us',
+    },
+    emailCtaLabel: {
+      de: 'E-Mail schreiben',
+      en: 'Send an email',
+    },
   },
   appointmentTypes: {
     heading: {
@@ -168,8 +207,8 @@ export const bookingPage: BookingPage = {
       en: 'Which appointment is right for you?',
     },
     lead: {
-      de: 'Wählen Sie bei der Buchung die passende Terminart. Im Zweifel ist die reisemedizinische Vollberatung der richtige Einstieg – sie bildet die Grundlage für alle weiteren Schritte.',
-      en: 'Choose the matching appointment type when booking. If in doubt, the full travel-medicine consultation is the right starting point – it forms the basis for every further step.',
+      de: 'Nennen Sie uns bei der Terminvereinbarung die passende Terminart. Im Zweifel ist die reisemedizinische Beratung der richtige Einstieg – sie bildet die Grundlage für alle weiteren Schritte.',
+      en: 'Just let us know the matching appointment type when you get in touch. If in doubt, the travel-medicine consultation is the right starting point – it forms the basis for every further step.',
     },
     recommendedLabel: {
       de: 'Empfohlener Start',
@@ -178,6 +217,10 @@ export const bookingPage: BookingPage = {
     pendingLabel: {
       de: 'In Vorbereitung',
       en: 'In preparation',
+    },
+    priceNoteLabel: {
+      de: 'Richtwert nach GOÄ',
+      en: 'Guide price (GOÄ)',
     },
     costsLabel: {
       de: 'Kosten & Abrechnung ansehen',
@@ -189,14 +232,15 @@ export const bookingPage: BookingPage = {
         id: 'beratung',
         icon: 'consultation',
         name: {
-          de: 'Reisemedizinische Vollberatung',
-          en: 'Full travel-medicine consultation',
+          de: 'Reisemedizinische Beratung',
+          en: 'Travel-medicine consultation',
         },
-        duration: { de: '15–20 Minuten', en: '15–20 minutes' },
+        duration: { de: '10–20 Minuten', en: '10–20 minutes' },
         description: {
-          de: 'Ein persönlicher, schriftlicher Impf- und Reiseplan – kompakt für ein einfaches Reiseziel oder ausführlich für Fernreisen und mehrere Länder. Den Plan erhalten Sie unabhängig von einer späteren Impfung.',
-          en: 'A personal written vaccination and travel plan – compact for a straightforward destination or in-depth for long-haul trips and multiple countries. You receive the plan regardless of any later vaccination.',
+          de: 'Ein persönlicher, schriftlicher Impf- und Reiseplan – kompakt für ein einzelnes Reiseland innerhalb Europas oder ausführlich für Fernreisen und mehrere Länder. Den Plan erhalten Sie unabhängig von einer späteren Impfung.',
+          en: 'A personal written vaccination and travel plan – compact for a single destination country within Europe, or in-depth for long-haul trips and multiple countries. You receive the plan regardless of any later vaccination.',
         },
+        price: { de: 'ab 28 €', en: 'from €28' },
         recommended: true,
         enabled: true,
       },
@@ -212,6 +256,7 @@ export const bookingPage: BookingPage = {
           de: 'Gezielte Beratung, wenn Sie speziell zu Malariaschutz oder Höhenmedizin Fragen haben – auf Wunsch mit Privatrezept für ein Notfallset.',
           en: 'Targeted advice if you have specific questions about malaria protection or altitude medicine – with a private prescription for a stand-by kit on request.',
         },
+        price: { de: 'ab 20 €', en: 'from €20' },
         enabled: true,
       },
       {
@@ -226,6 +271,7 @@ export const bookingPage: BookingPage = {
           de: 'Die eigentliche Impfung nach Ihrem Impfplan: Sie bringen den Impfstoff per Privatrezept aus der Apotheke mit. FSME und Gelbfieber halten wir vor Ort vorrätig und impfen sie direkt in einem Termin.',
           en: 'The vaccination itself, following your plan: you bring the vaccine from the pharmacy via private prescription. TBE and yellow fever are kept in stock on site and given directly in a single appointment.',
         },
+        price: { de: 'ab 20 € + Impfstoff', en: 'from €20 + vaccine' },
         enabled: true,
       },
       {
@@ -237,16 +283,17 @@ export const bookingPage: BookingPage = {
         },
         duration: { de: 'ca. 10 Minuten', en: 'approx. 10 minutes' },
         description: {
-          de: 'Gelbfieberimpfung inklusive internationalem Impfnachweis (ICVP) – in einem Termin bei uns vor Ort. Den Impfstoff (Stamaril®) halten wir vorrätig; direkt online buchbar.',
-          en: 'Yellow-fever vaccination including the international certificate (ICVP) – in a single appointment on site. We keep the vaccine (Stamaril®) in stock; bookable directly online.',
+          de: 'Gelbfieberimpfung inklusive internationalem Impfnachweis (ICVP) – in einem Termin bei uns vor Ort. Den Impfstoff (Stamaril®) halten wir vorrätig.',
+          en: 'Yellow-fever vaccination including the international certificate (ICVP) – in a single appointment on site. We keep the vaccine (Stamaril®) in stock.',
         },
+        price: { de: 'ab 38 € + Impfstoff', en: 'from €38 + vaccine' },
         enabled: true,
       },
     ],
   },
   bookableTypes: [
-    { id: 'vollberatung-kurz', name: { de: 'Reiseberatung – einfaches Reiseziel (Europa, USA, Kanada, Australien)', en: 'Travel consultation – straightforward destination (Europe, USA, Canada, Australia)' } },
     { id: 'vollberatung', name: { de: 'Reisemedizinische Beratung – Fernreise / mehrere Länder', en: 'Travel-medicine consultation – long-haul / multiple countries' } },
+    { id: 'vollberatung-kurz', name: { de: 'Reiseberatung kompakt (Europa)', en: 'Compact travel consultation (Europe)' } },
     { id: 'folgetermin', name: { de: 'Impftermin nach Ihrem Impfplan', en: 'Vaccination appointment (per your plan)' } },
     { id: 'malaria-beratung', name: { de: 'Malariaberatung', en: 'Malaria consultation' } },
     { id: 'hoehen-beratung', name: { de: 'Höhenmedizin-Beratung', en: 'Altitude-medicine consultation' } },
@@ -311,16 +358,16 @@ export const bookingPage: BookingPage = {
     },
     honeypotLabel: { de: 'Dieses Feld bitte frei lassen', en: 'Please leave this field empty' },
     placeholderTitle: {
-      de: 'Online-Terminanfrage in Vorbereitung',
-      en: 'Online appointment requests coming soon',
+      de: 'Online-Terminbuchung zurzeit nicht verfügbar',
+      en: 'Online booking currently unavailable',
     },
     placeholderBody: {
       de: [
-        'Die Online-Buchung schalten wir in Kürze frei. Ihren Termin bekommen Sie aber schon jetzt – ganz unkompliziert:',
+        'Unsere Online-Terminbuchung wird gerade überarbeitet. Ihren Termin bekommen Sie aber schon jetzt – ganz unkompliziert:',
         'Rufen Sie uns an oder schreiben Sie uns kurz eine E-Mail (Kontaktdaten direkt unten auf dieser Seite). Wir finden gemeinsam einen passenden Termin.',
       ],
       en: [
-        'Online booking goes live shortly. You can still get an appointment right now – quite simply:',
+        'Our online appointment booking is currently being reworked. You can still get an appointment right now – quite simply:',
         'Call us or send us a short email (contact details just below on this page). We will find a suitable slot together.',
       ],
     },

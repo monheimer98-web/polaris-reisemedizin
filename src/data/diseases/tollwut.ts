@@ -13,13 +13,13 @@ export const tollwutDisease: ClinicalPage = {
   meta: {
     title: { de: 'Tollwut', en: 'Rabies' },
     description: {
-      de: 'Tollwut – Erreger, Übertragung durch Tierbisse, Verbreitung, Krankheitsverlauf, Verhalten nach Tierkontakt, Impfung (PrEP) und Vorbeugung. Fachlich fundiert und mit Quellen belegt.',
-      en: 'Rabies – pathogen, transmission via animal bites, distribution, course of disease, what to do after animal contact, vaccination (PrEP) and prevention. Evidence-based and fully referenced.',
+      de: 'Tollwut – Erreger, Übertragung durch Tierbisse, Verbreitung, Krankheitsverlauf, Verhalten nach Tierkontakt, Impfung (PrEP) und Vorbeugung.',
+      en: 'Rabies – pathogen, transmission via animal bites, distribution, course of disease, what to do after animal contact, vaccination (PrEP) and prevention.',
     },
     eyebrow: { de: 'Krankheitsbild', en: 'Disease' },
     lead: {
-      de: 'Tollwut ist eine Virusinfektion, die über den Speichel infizierter Tiere – meist durch Hundebisse – übertragen wird. Sobald Symptome auftreten, verläuft sie nahezu immer tödlich; durch rechtzeitige Vorbeugung lässt sie sich jedoch zuverlässig verhindern.',
-      en: 'Rabies is a viral infection transmitted via the saliva of infected animals – usually through dog bites. Once symptoms appear it is almost always fatal; with timely prevention, however, it can be reliably averted.',
+      de: 'Tollwut ist eine Virusinfektion, die über den Speichel infizierter Tiere – meist durch Hundebisse – übertragen wird. Mit rechtzeitiger Vorsorge und der richtigen Behandlung nach einem Tierkontakt lässt sie sich zuverlässig verhindern; einmal ausgebrochen, ist sie dagegen kaum behandelbar. Umso wichtiger ist der vorbeugende Schutz.',
+      en: 'Rabies is a viral infection transmitted via the saliva of infected animals – usually through dog bites. With timely prevention and the right treatment after animal contact it can be reliably averted; once it has broken out, however, it is barely treatable. That makes preventive protection all the more important.',
     },
   },
   sections: [
@@ -71,11 +71,11 @@ export const tollwutDisease: ClinicalPage = {
       body: {
         de: [
           'Zwischen Ansteckung und Erkrankung liegen meist zwei bis drei Monate, in Einzelfällen wenige Tage bis mehrere Jahre. Erste Anzeichen sind oft unspezifisch, etwa Fieber, Kopfschmerzen und Missempfindungen an der Bissstelle. Im weiteren Verlauf kommt es zu schweren neurologischen Symptomen, bei der häufigen Form mit Erregungszuständen, Krämpfen und ausgeprägter Angst vor Wasser (Hydrophobie).',
-          'Die Erkrankung betrifft das Gehirn und endet, sobald Symptome aufgetreten sind, nahezu ausnahmslos tödlich. Der gesamte Schutz beruht deshalb darauf, eine Infektion vor dem Ausbruch der Erkrankung zu verhindern.',
+          'Die Erkrankung betrifft das Gehirn und ist, sobald Symptome aufgetreten sind, kaum noch behandelbar. Der gesamte Schutz beruht deshalb darauf, eine Infektion rechtzeitig – vor dem Ausbruch der Erkrankung – zu verhindern.',
         ],
         en: [
           'Between infection and illness there are usually two to three months, in individual cases a few days to several years. The first signs are often non-specific, such as fever, headache and abnormal sensations at the bite site. As it progresses, severe neurological symptoms develop, in the common form with agitation, spasms and a marked fear of water (hydrophobia).',
-          'The disease affects the brain and, once symptoms have appeared, is almost invariably fatal. All protection is therefore based on preventing an infection before the disease breaks out.',
+          'The disease affects the brain and, once symptoms have appeared, is barely treatable. All protection is therefore based on preventing an infection in time – before the disease can break out.',
         ],
       },
       callout: {

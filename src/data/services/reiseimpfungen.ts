@@ -10,8 +10,8 @@ export const reiseimpfungenService: ClinicalPage = {
   meta: {
     title: { de: 'Reiseimpfungen im Überblick', en: 'Travel vaccinations at a glance' },
     description: {
-      de: 'Welche Reiseimpfungen für welches Ziel? Überblick über Standard- und Reiseimpfungen, Pflichtimpfungen und den internationalen Impfnachweis – die konkrete Auswahl klären wir in der Beratung.',
-      en: 'Which travel vaccinations for which destination? An overview of standard and travel vaccinations, mandatory vaccinations and the international certificate – the specific selection is clarified in the consultation.',
+      de: 'Welche Reiseimpfungen für welches Ziel? Überblick über Standard- und Reiseimpfungen, Pflichtimpfungen und den internationalen Impfnachweis.',
+      en: 'Which travel vaccinations for which destination? Overview of standard and travel vaccinations, mandatory vaccinations and the international certificate.',
     },
     eyebrow: { de: 'Leistung', en: 'Service' },
     lead: {

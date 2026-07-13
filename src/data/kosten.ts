@@ -14,7 +14,7 @@ export interface PriceItem {
   service: Localized;
   /** Was enthalten ist / wie sich der Posten erklärt. */
   detail: Localized;
-  /** Preis-Richtwert, z. B. „ab 39 €" oder „ab 38 € + Impfstoff". */
+  /** Preis-Richtwert, z. B. „ab 50 €" oder „ab 38 € + Impfstoff". */
   price: Localized;
 }
 
@@ -87,20 +87,20 @@ export const kostenPage: KostenPage = {
       heading: { de: 'Beratung & Impfplanung', en: 'Consultation & vaccination planning' },
       items: [
         {
-          service: { de: 'Reiseberatung – einfaches Reiseziel', en: 'Travel consultation – straightforward destination' },
-          detail: {
-            de: 'Kompakte Beratung für ein einzelnes, einfaches Reiseziel (z. B. Europa, USA, Kanada, Australien) – mit persönlichem, schriftlichem Impf- und Reiseplan.',
-            en: 'A compact consultation for a single, straightforward destination (e.g. Europe, USA, Canada, Australia) – with a personal written vaccination and travel plan.',
-          },
-          price: { de: 'ab 39 €', en: 'from €39' },
-        },
-        {
           service: { de: 'Reisemedizinische Beratung – Fernreise oder mehrere Länder', en: 'Travel-medicine consultation – long-haul or multiple countries' },
           detail: {
             de: 'Ausführliche Beratung (ab etwa 20 Minuten) für Fernreisen, mehrere Länder oder eine besondere Vorgeschichte – inklusive Malaria-Rezept, falls sinnvoll, und schriftlichem Impf- und Reiseplan.',
             en: 'An in-depth consultation (from around 20 minutes) for long-haul trips, multiple countries or a particular medical history – including a malaria prescription where useful and a written vaccination and travel plan.',
           },
-          price: { de: 'ab 60 €', en: 'from €60' },
+          price: { de: 'ab 50 €', en: 'from €50' },
+        },
+        {
+          service: { de: 'Reiseberatung kompakt (Europa)', en: 'Compact travel consultation (Europe)' },
+          detail: {
+            de: 'Kompakte Beratung für ein einzelnes Reiseland innerhalb Europas – mit persönlichem, schriftlichem Impf- und Reiseplan.',
+            en: 'A compact consultation for a single destination country within Europe – with a personal written vaccination and travel plan.',
+          },
+          price: { de: 'ab 28 €', en: 'from €28' },
         },
         {
           service: { de: 'Jede weitere mitreisende Person', en: 'Each additional travelling person' },
@@ -108,7 +108,7 @@ export const kostenPage: KostenPage = {
             de: 'Eigene Beratung und eigener Impfplan im selben Termin – als ganz normale, einzeln einreichbare Rechnung (gleiches Reiseziel, bis zu sechs Personen).',
             en: 'Own consultation and own vaccination plan in the same appointment – as a regular, individually submittable invoice (same destination, up to six people).',
           },
-          price: { de: 'ab 31 €', en: 'from €31' },
+          price: { de: 'ab 28 €', en: 'from €28' },
         },
         {
           service: { de: 'Fokus-Beratung Malaria oder Höhenmedizin', en: 'Focused malaria or altitude consultation' },
@@ -188,8 +188,8 @@ export const kostenPage: KostenPage = {
       id: 'gelbfieber',
       heading: { de: 'Gelbfieberimpfung', en: 'Yellow-fever vaccination' },
       note: {
-        de: 'Als staatlich autorisierte Gelbfieberimpfstelle führen wir die Gelbfieberimpfung bei uns vor Ort durch und stellen den international gültigen Impfnachweis (ICVP) aus – in einem Termin, direkt online buchbar.',
-        en: 'As a state-authorised yellow-fever centre, we carry out the yellow-fever vaccination on site and issue the internationally valid certificate (ICVP) – in a single appointment, bookable directly online.',
+        de: 'Als staatlich autorisierte Gelbfieberimpfstelle führen wir die Gelbfieberimpfung bei uns vor Ort durch und stellen den international gültigen Impfnachweis (ICVP) aus – in einem Termin bei uns vor Ort.',
+        en: 'As a state-authorised yellow-fever centre, we carry out the yellow-fever vaccination on site and issue the internationally valid certificate (ICVP) – in a single appointment on site.',
       },
       items: [
         {

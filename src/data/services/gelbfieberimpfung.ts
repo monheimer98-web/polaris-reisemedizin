@@ -9,8 +9,8 @@ export const gelbfieberimpfungService: ClinicalPage = {
   meta: {
     title: { de: 'Gelbfieberimpfung', en: 'Yellow fever vaccination' },
     description: {
-      de: 'Gelbfieberimpfung in unserer staatlich autorisierten Impfstelle: Impfstoff, Schutzdauer, internationaler Impfnachweis, Eignung, Gegenanzeigen, Ablauf und Kosten.',
-      en: 'Yellow fever vaccination at our state-authorised centre: vaccine, duration of protection, international certificate, suitability, contraindications, procedure and costs.',
+      de: 'Gelbfieberimpfung in unserer staatlich autorisierten Impfstelle: Impfstoff, Schutzdauer, internationaler Impfnachweis, Eignung und Ablauf.',
+      en: 'Yellow fever vaccination at our state-authorised centre: vaccine, duration of protection, international certificate, suitability and procedure.',
     },
     eyebrow: { de: 'Leistung', en: 'Service' },
     lead: {

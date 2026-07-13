@@ -10,8 +10,8 @@ export const travelTipsPage: ClinicalPage = {
   meta: {
     title: { de: 'Allgemeine Reisetipps', en: 'General travel tips' },
     description: {
-      de: 'Gesund reisen: praktische Tipps zu Reiseplanung und Impfschutz, Mückenschutz, sicherem Essen und Trinken, Sonne und Hitze sowie zur Zeit nach der Rückkehr. Fundiert und mit Quellen belegt.',
-      en: 'Travel healthy: practical tips on trip planning and vaccinations, mosquito-bite protection, safe food and water, sun and heat, and the time after returning home. Evidence-based and fully referenced.',
+      de: 'Gesund reisen: praktische Tipps zu Reiseplanung und Impfschutz, Mückenschutz, sicherem Essen und Trinken, Sonne und Hitze sowie zur Rückkehr.',
+      en: 'Travel healthy: practical tips on trip planning and vaccinations, mosquito protection, safe food and water, sun and heat, and returning home.',
     },
     eyebrow: { de: 'Reisetipps', en: 'Travel tips' },
     lead: {

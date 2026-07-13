@@ -10,8 +10,8 @@ export const malariaService: ClinicalPage = {
   meta: {
     title: { de: 'Malaria-Vorsorge', en: 'Malaria prevention' },
     description: {
-      de: 'Malaria verstehen und vorbeugen: Verbreitung, konsequenter Mückenschutz, medikamentöse Vorbeugung und Notfallmedikation – individuell für Ihre Reise abgestimmt.',
-      en: 'Understanding and preventing malaria: distribution, consistent mosquito protection, preventive medication and standby treatment – tailored individually to your trip.',
+      de: 'Malaria verstehen und vorbeugen: Verbreitung, konsequenter Mückenschutz, medikamentöse Vorbeugung und Notfallmedikation – auf Ihre Reise abgestimmt.',
+      en: 'Understanding and preventing malaria: distribution, consistent mosquito protection, preventive medication and standby treatment – tailored to your trip.',
     },
     eyebrow: { de: 'Leistung', en: 'Service' },
     lead: {

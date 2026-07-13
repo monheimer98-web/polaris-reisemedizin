@@ -108,23 +108,27 @@ export const site = {
     emailHref: 'mailto:info@polaris-reisemedizin.de',
   },
 
-  /** Öffnungs-/Sprechzeiten. */
+  /**
+   * Sprechzeiten. Die Praxis arbeitet bewusst OHNE feste Öffnungszeiten:
+   * Reisemedizin braucht planbare, individuelle Zeitfenster (Beratung,
+   * Impf-Serien, Gelbfieber). Termine werden daher persönlich vergeben –
+   * das ist kundenfreundlich (auch Abend-/Samstagstermine möglich) und
+   * verspricht keine Uhrzeiten, die im Alltag nicht immer gehalten werden
+   * können. Die Anzeige (`openingHours`) bleibt ein Zwei-Spalten-Eintrag,
+   * damit alle bestehenden Render-Stellen unverändert funktionieren.
+   */
   openingHours: [
-    { day: { de: 'Mo, Mi, Fr', en: 'Mon, Wed, Fri' }, hours: { de: '18:30 – 21:00 Uhr', en: '6:30 – 9:00 pm' } },
-    { day: { de: 'Samstag', en: 'Saturday' }, hours: { de: '10:00 – 18:00 Uhr', en: '10:00 am – 6:00 pm' } },
-    { day: { de: 'Di, Do, So', en: 'Tue, Thu, Sun' }, hours: { de: 'geschlossen', en: 'closed' } },
+    { day: { de: 'Termine', en: 'Appointments' }, hours: { de: 'nach Vereinbarung', en: 'by appointment' } },
   ] as OpeningHours[],
 
   /**
    * Maschinenlesbare Sprechzeiten für das JSON-LD (schema.org
-   * `openingHoursSpecification`) – parallel zur Anzeige (`openingHours`)
-   * gepflegt. 24-Stunden-Zeiten, Wochentage als schema.org-Tagesnamen;
-   * geschlossene Tage werden weggelassen. Verbessert die lokale Auffindbarkeit.
+   * `openingHoursSpecification`). Bewusst LEER: Ohne feste Öffnungszeiten
+   * werden keine erfundenen Uhrzeiten an Suchmaschinen gemeldet (das wäre
+   * für Nutzer:innen irreführend). Solange leer, gibt `SEO.astro` die
+   * Eigenschaft gar nicht erst aus. Terminvereinbarung erfolgt persönlich.
    */
-  openingHoursSpec: [
-    { days: ['Monday', 'Wednesday', 'Friday'], opens: '18:30', closes: '21:00' },
-    { days: ['Saturday'], opens: '10:00', closes: '18:00' },
-  ],
+  openingHoursSpec: [] as { days: string[]; opens: string; closes: string }[],
 
   /**
    * Öffentlich auf der Website gezeigt wird – auf Wunsch der Praxis – nur der
@@ -164,8 +168,6 @@ export const site = {
 
   /** Zulassung als Gelbfieberimpfstelle. */
   yellowFever: {
-    /** Aktenzeichen/Registriernummer der Zulassung. */
-    authorizationRef: '[folgt – wird nach Erteilung des Zulassungsbescheids ergänzt]',
     /** Zuständige Behörde / Bundesland, das die Impfstelle autorisiert hat. */
     authority: 'Ministerium für Arbeit, Gesundheit und Soziales des Landes Nordrhein-Westfalen (MAGS NRW)',
   },

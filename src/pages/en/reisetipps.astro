@@ -5,11 +5,12 @@
  */
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import Callout from '../../components/Callout.astro';
-import { getLangFromUrl, getLocalizedPath } from '../../i18n/utils';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
 import { getSources } from '../../data/sources';
 import { travelTipsPage as page } from '../../data/reisetipps';
 
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const sources = getSources(page.sourceIds);
 const related = (page.related ?? []).map((item) => ({
   label: item.label[lang],
@@ -25,6 +26,7 @@ const related = (page.related ?? []).map((item) => ({
   lastReviewed={page.lastReviewed}
   sources={sources}
   related={related}
+  printLabel={t('content.saveAsPdf')}
 >
   <div class="space-y-12 sm:space-y-14">
     {

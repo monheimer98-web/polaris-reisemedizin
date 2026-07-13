@@ -1,0 +1,37 @@
+---
+/**
+ * „Als PDF speichern / drucken"-Schaltfläche für druckbare Seiten
+ * (Reiseapotheke, Reisetipps). Nutzt bewusst `window.print()` statt einer
+ * statisch gepflegten PDF-Datei: So bleibt der Inhalt immer synchron mit der
+ * Website, zweisprachig und barrierefrei. Über den Druck-Dialog des Browsers
+ * lässt sich die Seite auch als PDF speichern („Als PDF sichern").
+ *
+ * Die Schaltfläche selbst trägt `no-print` und verschwindet daher im Ausdruck.
+ * Das begleitende, `@media print`-optimierte Layout liegt in `global.css`.
+ */
+interface Props {
+  label: string;
+  /** Zusätzliche Utility-Klassen (optional). */
+  class?: string;
+}
+
+const { label, class: className = '' } = Astro.props;
+---
+
+<button type="button" data-print-trigger class:list={['btn-ghost no-print inline-flex items-center gap-2', className]}>
+  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M6 9V2h12v7" />
+    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+    <path d="M6 14h12v8H6z" />
+  </svg>
+  {label}
+</button>
+
+<script>
+  // Ein Listener pro Button; mehrfaches Einbinden ist unschädlich (idempotent).
+  document.querySelectorAll<HTMLButtonElement>('[data-print-trigger]').forEach((btn) => {
+    if (btn.dataset.printBound) return;
+    btn.dataset.printBound = 'true';
+    btn.addEventListener('click', () => window.print());
+  });
+</script>

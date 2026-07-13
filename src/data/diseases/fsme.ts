@@ -11,7 +11,7 @@ export const fsmeDisease: ClinicalPage = {
     title: { de: 'FSME – Frühsommer-Meningoenzephalitis', en: 'Tick-borne encephalitis (TBE)' },
     description: {
       de: 'FSME – Erreger, Übertragung durch Zecken, Verbreitung und Risikogebiete, Krankheitsverlauf und Vorbeugung. Fachlich fundiert und mit Quellen belegt.',
-      en: 'Tick-borne encephalitis (TBE/FSME) – pathogen, transmission by ticks, distribution and risk areas, course of disease and prevention. Evidence-based and fully referenced.',
+      en: 'Tick-borne encephalitis (TBE/FSME) – pathogen, transmission by ticks, distribution and risk areas, course of disease and prevention.',
     },
     eyebrow: { de: 'Krankheitsbild', en: 'Disease' },
     lead: {

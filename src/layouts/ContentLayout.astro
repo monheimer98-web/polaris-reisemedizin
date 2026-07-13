@@ -12,11 +12,12 @@
 import BaseLayout from './BaseLayout.astro';
 import CTA from '../components/CTA.astro';
 import PageHero from '../components/PageHero.astro';
+import PrintButton from '../components/PrintButton.astro';
 import SourceList from '../components/SourceList.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import DiseaseFactsBox from '../components/DiseaseFactsBox.astro';
 import { getLangFromUrl, useTranslations, formatReviewDate, getLocalizedPath, getLogicalPath, HREFLANG } from '../i18n/utils';
-import { SITE_URL } from '../config/site';
+import { SITE_URL, site } from '../config/site';
 import { BOOKING_PATH } from '../config/nav';
 import { diseaseFacts } from '../data/diseaseFacts';
 import type { UiKey } from '../i18n/ui';
@@ -34,9 +35,16 @@ interface Props {
   noindex?: boolean;
   /** Terminart-ID (praxis-app), die auf der Buchungsseite vorbelegt wird (`?art=`). */
   bookingType?: string;
+  /**
+   * Ist gesetzt, wird die Seite druck-/PDF-optimiert: „Als PDF speichern"-Knopf
+   * im Hero, gebrandeter Druck-Briefkopf und Checklisten-Kästchen im Ausdruck.
+   * Der Wert ist die Button-Beschriftung. Für Checklisten-Seiten (Reiseapotheke,
+   * Reisetipps) gedacht; andere Seiten bleiben unverändert.
+   */
+  printLabel?: string;
 }
 
-const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType } = Astro.props;
+const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const bookingHref = getLocalizedPath(BOOKING_PATH, lang) + (bookingType ? `?art=${bookingType}` : '');
 const t = useTranslations(lang);
@@ -113,12 +121,15 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
 ---
 
 <BaseLayout title={title} description={description} image={image} noindex={noindex} schema={medicalWebPageSchema}>
-  <article>
+  <article class:list={[printLabel && 'is-printable']}>
     <PageHero eyebrow={eyebrow} title={title} lead={lead}>
       <Breadcrumbs slot="breadcrumb" items={breadcrumbItems} label={t('content.breadcrumb')} />
-      <a href={bookingHref} class="btn-gold mt-8 inline-flex" aria-label={t('cta.bookAria')}>
-        {t('cta.book')}
-      </a>
+      <div class="no-print mt-8 flex flex-wrap items-center gap-3">
+        <a href={bookingHref} class="btn-gold inline-flex" aria-label={t('cta.bookAria')}>
+          {t('cta.book')}
+        </a>
+        {printLabel && <PrintButton label={printLabel} />}
+      </div>
       <p class="mt-6 text-sm text-ink-soft">
         <span class="font-medium text-ink">{t('content.lastReviewedLabel')}</span>
         {' '}{formatReviewDate(lastReviewed, lang)}
@@ -126,6 +137,19 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
     </PageHero>
 
     <div class="u-container-narrow py-14 sm:py-16">
+      {
+        printLabel && (
+          <div class="print-only print-letterhead">
+            <div class="print-letterhead__bar">
+              <span class="print-letterhead__brand">{site.brand.name} · {site.brand.tagline[lang]}</span>
+              <span class="print-letterhead__url">{site.brand.domain}</span>
+            </div>
+            <p class="print-letterhead__title">{title}</p>
+            <p class="print-letterhead__lead">{lead}</p>
+          </div>
+        )
+      }
+
       {facts && <DiseaseFactsBox facts={facts} />}
 
       {

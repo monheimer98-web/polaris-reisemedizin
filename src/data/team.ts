@@ -123,11 +123,11 @@ export const teamPage: TeamPage = {
   practiceBody: {
     de: [
       'Bei uns sollen Sie sich vom ersten Moment an gut aufgehoben fühlen. Wir beraten Reisende sorgfältig und unabhängig und richten jede Empfehlung an Ihrer konkreten Reise aus.',
-      'Die Praxis ist als staatlich autorisierte Gelbfieberimpfstelle zugelassen und führt Reiseimpfungen wie die Gelbfieber- und die FSME-Impfung durch. Termine vereinbaren Sie bequem online; die persönliche Beratung findet in Ruhe vor Ort statt.',
+      'Die Praxis ist als staatlich autorisierte Gelbfieberimpfstelle zugelassen und führt Reiseimpfungen wie die Gelbfieber- und die FSME-Impfung durch. Termine vereinbaren Sie telefonisch oder per E-Mail; die persönliche Beratung findet in Ruhe vor Ort statt.',
     ],
     en: [
       'From the very first moment, you should feel in good hands with us. We advise travellers carefully and independently and tailor every recommendation to your specific trip.',
-      'The practice is licensed as a state-authorised yellow fever vaccination centre and provides travel vaccinations such as the yellow fever and TBE vaccination. You can book appointments conveniently online; the personal consultation takes place, unhurried, on site.',
+      'The practice is licensed as a state-authorised yellow fever vaccination centre and provides travel vaccinations such as the yellow fever and TBE vaccination. You can arrange appointments by phone or email; the personal consultation takes place, unhurried, on site.',
     ],
   },
 };

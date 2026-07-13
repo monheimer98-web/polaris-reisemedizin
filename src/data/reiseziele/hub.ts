@@ -41,8 +41,8 @@ export const destinationsHub: DestinationsHubContent = {
   meta: {
     title: { de: 'Reiseziele & Impfplanung', en: 'Destinations & vaccination planning' },
     description: {
-      de: 'Impfschutz nach Reiseregion planen: Afrika, Asien, Mittel- & Südamerika, Naher Osten, Europa und der Pazifik im Überblick – mit den vier Faktoren guter Reisevorsorge und dem Verweis auf die persönliche Beratung.',
-      en: 'Plan vaccination cover by travel region: Sub-Saharan Africa, Asia, Central & South America, the Middle East, Europe and the Pacific at a glance – with the four factors of good travel prevention and a reference to a personal consultation.',
+      de: 'Impfschutz nach Reiseregion planen: Afrika, Asien, Mittel- & Südamerika, Naher Osten, Europa und der Pazifik im Überblick – mit persönlicher Beratung.',
+      en: 'Plan vaccination cover by travel region: Africa, Asia, Central & South America, the Middle East, Europe and the Pacific – with personal advice.',
     },
     eyebrow: { de: 'Reisevorsorge nach Region', en: 'Travel prevention by region' },
     lead: {

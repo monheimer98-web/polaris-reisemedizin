@@ -30,24 +30,35 @@
   <div class="name">Polaris · Praxis</div>
   <div class="spin" id="spin"></div>
   <div class="sub" id="status">wird geöffnet …</div>
-  <div id="fehler">Der Praxis-Server ist gerade nicht erreichbar. Bitte prüfen, ob der Praxis-Mac läuft, und erneut versuchen. <br><br><a href="#" onclick="location.reload();return false">Nochmal versuchen</a></div>
+  <div id="fehler">Das Backoffice ist nur im Praxisnetz erreichbar. Bitte mit dem Praxis-WLAN verbinden und prüfen, ob der Praxis-Mac läuft. <br><br><a href="#" onclick="location.reload();return false">Nochmal versuchen</a></div>
 <script>
-  // Feste Adresse: liest die aktuelle (sich änderbare) Server-Adresse aus
-  // app-url.json und leitet dorthin weiter. So bleibt DIESE Seite die eine
-  // gleichbleibende Adresse fürs iPhone – auch wenn sich der Server neu startet.
+  // Das vollständige Backoffice (Patientenakten, Rechnungen, Admin) ist aus
+  // Datenschutzgründen NUR im lokalen Praxisnetz (LAN) erreichbar – NICHT über
+  // den öffentlichen Tunnel. Diese Verknüpfung führt daher fest auf die
+  // LAN-Adresse (Caddy Port 8443, Bonjour-Name des Praxis-Macs). Außerhalb des
+  // Praxisnetzes löst der Name nicht auf und die Fehlermeldung erscheint.
   (function () {
-    var url = "../app-url.json?_=" + Date.now(); // Cache umgehen (immer frisch)
-    fetch(url, { cache: "no-store" })
-      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
-      .then(function (d) {
-        if (d && d.url) { location.replace(d.url.replace(/\/+$/,"") + "/"); }
-        else { throw new Error("keine URL"); }
-      })
-      .catch(function () {
-        document.getElementById("spin").style.display = "none";
-        document.getElementById("status").style.display = "none";
-        document.getElementById("fehler").style.display = "block";
-      });
+    var LAN_BACKOFFICE = "https://macbook-air-von-nicole.local:8443/";
+    // Kurz prüfen, ob der LAN-Server erreichbar ist; sonst Hinweis zeigen.
+    var img = new Image();
+    var erledigt = false;
+    var timer = setTimeout(zeigeFehler, 4000);
+    function weiter() {
+      if (erledigt) return; erledigt = true; clearTimeout(timer);
+      location.replace(LAN_BACKOFFICE);
+    }
+    function zeigeFehler() {
+      if (erledigt) return; erledigt = true; clearTimeout(timer);
+      document.getElementById("spin").style.display = "none";
+      document.getElementById("status").style.display = "none";
+      document.getElementById("fehler").style.display = "block";
+    }
+    // Ein erreichbarer Server beantwortet die Favicon-Anfrage (load ODER error
+    // wegen Zertifikat/Content) – beides heißt „Host da"; nur ein Timeout heißt
+    // „nicht im Praxisnetz".
+    img.onload = weiter;
+    img.onerror = weiter;
+    img.src = LAN_BACKOFFICE + "static/styles.css?_=" + Date.now();
   })();
 </script>
 </body>

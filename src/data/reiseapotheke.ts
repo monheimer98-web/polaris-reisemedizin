@@ -13,8 +13,8 @@ export const travelKitPage: ClinicalPage = {
   meta: {
     title: { de: 'Reiseapotheke', en: 'Travel first-aid kit' },
     description: {
-      de: 'Checkliste Reiseapotheke: Was gehört in die Reiseapotheke? Grundausstattung, Magen-Darm, Mücken- und Sonnenschutz, Malaria sowie wichtige Dokumente – praktisch zusammengefasst und mit Quellen belegt. Die individuelle Zusammenstellung besprechen wir in der reisemedizinischen Beratung.',
-      en: 'Travel first-aid kit checklist: what belongs in your travel medical kit? Basics, gastrointestinal items, insect and sun protection, malaria and important documents – practically summarised and fully referenced. We tailor the individual kit in your travel-medicine consultation.',
+      de: 'Checkliste Reiseapotheke: Grundausstattung, Magen-Darm, Mücken- und Sonnenschutz, Malaria und wichtige Dokumente – kompakt und mit Quellen belegt.',
+      en: 'Travel first-aid kit checklist: basics, gastrointestinal items, insect and sun protection, malaria and key documents – concise and fully referenced.',
     },
     eyebrow: { de: 'Reisevorbereitung', en: 'Trip preparation' },
     lead: {

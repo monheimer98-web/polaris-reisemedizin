@@ -43,13 +43,13 @@ export const ui = {
     'nav.team': 'Praxis',
     'nav.faq': 'Fragen & Antworten',
     'nav.contact': 'Kontakt',
-    'nav.booking': 'Termin buchen',
+    'nav.booking': 'Termin vereinbaren',
     'nav.imprint': 'Impressum',
     'nav.privacy': 'Datenschutz',
 
     // Allgemeine Aktionen
-    'cta.book': 'Termin buchen',
-    'cta.bookAria': 'Termin online buchen',
+    'cta.book': 'Termin vereinbaren',
+    'cta.bookAria': 'Termin vereinbaren',
     'cta.callAria': 'Praxis anrufen',
     'cta.services': 'Unsere Leistungen',
     'cta.learnMore': 'Mehr erfahren',
@@ -169,6 +169,8 @@ export const ui = {
     'content.breadcrumb': 'Brotkrumennavigation',
     'content.onThisPage': 'Auf dieser Seite',
     'content.moreOnTopic': 'Mehr dazu',
+    'content.saveAsPdf': 'Als PDF speichern / drucken',
+    'content.printIntro': 'Diese Seite zum Mitnehmen: Speichern Sie sie als PDF oder drucken Sie sie zum Abhaken aus.',
 
     // Steckbrief / Kernfakten-Box (Krankheitsbilder)
     'facts.title': 'Steckbrief',
@@ -182,6 +184,8 @@ export const ui = {
     'overview.servicesTitle': 'Unsere Leistungen',
     'overview.servicesLead':
       'Reisemedizin aus einer Hand: persönliche Beratung, Reiseimpfungen sowie Malaria- und Höhenvorsorge. Wählen Sie eine Leistung für alle Details zu Ablauf, Eignung und Kosten.',
+    'overview.servicesMeta':
+      'Reisemedizin aus einer Hand: persönliche Beratung, Reiseimpfungen sowie Malaria- und Höhenvorsorge – mit Details zu Ablauf, Eignung und Kosten.',
     'overview.diseasesTitle': 'Krankheitsbilder im Überblick',
     'overview.diseasesLead':
       'Fachlich fundierte Informationen zu den Erkrankungen, vor denen unsere Impfungen schützen – mit Angabe der Quellen und des jeweiligen Stands.',
@@ -254,13 +258,13 @@ export const ui = {
     'nav.team': 'Practice',
     'nav.faq': 'FAQ',
     'nav.contact': 'Contact',
-    'nav.booking': 'Book appointment',
+    'nav.booking': 'Arrange appointment',
     'nav.imprint': 'Imprint',
     'nav.privacy': 'Privacy',
 
     // General actions
-    'cta.book': 'Book appointment',
-    'cta.bookAria': 'Book an appointment online',
+    'cta.book': 'Arrange appointment',
+    'cta.bookAria': 'Arrange an appointment',
     'cta.callAria': 'Call the practice',
     'cta.services': 'Our services',
     'cta.learnMore': 'Learn more',
@@ -380,6 +384,8 @@ export const ui = {
     'content.breadcrumb': 'Breadcrumb',
     'content.onThisPage': 'On this page',
     'content.moreOnTopic': 'Learn more',
+    'content.saveAsPdf': 'Save as PDF / print',
+    'content.printIntro': 'This page to take with you: save it as a PDF or print it out to tick off.',
 
     // Steckbrief / Kernfakten-Box (Krankheitsbilder)
     'facts.title': 'At a glance',
@@ -393,6 +399,8 @@ export const ui = {
     'overview.servicesTitle': 'Our services',
     'overview.servicesLead':
       'Travel medicine from a single source: personal advice, travel vaccinations and malaria and altitude prevention. Choose a service for all the details on procedure, suitability and costs.',
+    'overview.servicesMeta':
+      'Travel medicine from a single source: personal advice, travel vaccinations, malaria and altitude care – details on process, suitability and cost.',
     'overview.diseasesTitle': 'Diseases at a glance',
     'overview.diseasesLead':
       'Evidence-based information on the diseases our vaccinations protect against – with the relevant sources and review date stated.',

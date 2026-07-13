@@ -17,7 +17,7 @@ export const riskAreasPage: ClinicalPage = {
     },
     description: {
       de: 'Überblick zu den Risikoregionen für Gelbfieber und FSME mit Verweis auf die maßgeblichen, laufend aktualisierten Quellen von WHO, RKI und Auswärtigem Amt.',
-      en: 'Overview of the risk regions for yellow fever and tick-borne encephalitis (TBE), with links to the authoritative, regularly updated sources from the WHO, RKI and the German Federal Foreign Office.',
+      en: 'Overview of the risk regions for yellow fever and tick-borne encephalitis (TBE), with links to the authoritative, regularly updated WHO and RKI sources.',
     },
     eyebrow: {
       de: 'Reisemedizinische Orientierung',

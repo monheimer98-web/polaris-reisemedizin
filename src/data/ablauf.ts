@@ -13,8 +13,8 @@ export const processPage: ClinicalPage = {
       en: 'How the consultation works',
     },
     description: {
-      de: 'So läuft Ihre reisemedizinische Beratung ab: Vorbereitung, Sprechstunde, Impfung, Dokumentation und die richtige Zeitplanung – inklusive der Zehn-Tage-Regel bei der Gelbfieberimpfung.',
-      en: 'How your travel-medicine consultation works: preparation, the appointment, vaccination, documentation and the right timing – including the ten-day rule for yellow fever vaccination.',
+      de: 'So läuft Ihre reisemedizinische Beratung ab: Vorbereitung, Sprechstunde, Impfung, Dokumentation und die richtige Zeitplanung vor der Reise.',
+      en: 'How your travel-medicine consultation works: preparation, the appointment, vaccination, documentation and the right timing before you travel.',
     },
     eyebrow: {
       de: 'Reisemedizinische Beratung',

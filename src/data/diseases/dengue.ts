@@ -12,8 +12,8 @@ export const dengueDisease: ClinicalPage = {
   meta: {
     title: { de: 'Dengue-Fieber', en: 'Dengue fever' },
     description: {
-      de: 'Dengue-Fieber – Erreger, Übertragung durch tagaktive Stechmücken, Verbreitung, Krankheitsverlauf, Impfung (Qdenga®) und Vorbeugung. Fachlich fundiert und mit Quellen belegt.',
-      en: 'Dengue fever – pathogen, transmission by day-biting mosquitoes, distribution, course of disease, vaccination (Qdenga®) and prevention. Evidence-based and fully referenced.',
+      de: 'Dengue-Fieber – Erreger, Übertragung durch tagaktive Stechmücken, Verbreitung, Krankheitsverlauf, Impfung (Qdenga®) und Vorbeugung.',
+      en: 'Dengue fever – pathogen, transmission by day-biting mosquitoes, distribution, course of disease, vaccination (Qdenga®) and prevention.',
     },
     eyebrow: { de: 'Krankheitsbild', en: 'Disease' },
     lead: {

@@ -13,8 +13,8 @@ export const meningokokkenDisease: ClinicalPage = {
   meta: {
     title: { de: 'Meningokokken', en: 'Meningococcal disease' },
     description: {
-      de: 'Meningokokken – Erreger, Übertragung durch Tröpfchen, Verbreitung, Krankheitsverlauf, Einreisebestimmungen, Impfung und Vorbeugung. Fachlich fundiert und mit Quellen belegt.',
-      en: 'Meningococcal disease – pathogen, droplet transmission, distribution, course of disease, entry requirements, vaccination and prevention. Evidence-based and fully referenced.',
+      de: 'Meningokokken – Erreger, Übertragung durch Tröpfchen, Verbreitung, Krankheitsverlauf, Einreisebestimmungen, Impfung und Vorbeugung.',
+      en: 'Meningococcal disease – pathogen, droplet transmission, distribution, course of disease, entry requirements, vaccination and prevention.',
     },
     eyebrow: { de: 'Krankheitsbild', en: 'Disease' },
     lead: {
@@ -71,11 +71,11 @@ export const meningokokkenDisease: ClinicalPage = {
       body: {
         de: [
           'Zwischen Ansteckung und Erkrankung liegen meist drei bis vier Tage. Die Erkrankung beginnt oft plötzlich. Bei einer Hirnhautentzündung (Meningitis) treten hohes Fieber, starke Kopfschmerzen, ein steifer Nacken und Lichtempfindlichkeit auf. Bei einer Blutvergiftung (Sepsis) können punktförmige Hauteinblutungen hinzukommen.',
-          'Meningokokken-Erkrankungen können innerhalb von Stunden lebensbedrohlich werden. Auch bei rascher Behandlung können sie tödlich verlaufen, und ein Teil der Betroffenen behält Folgeschäden zurück. Enge Kontaktpersonen einer erkrankten Person erhalten vorsorglich Antibiotika, um eine Ausbreitung zu verhindern.',
+          'Meningokokken-Erkrankungen können innerhalb von Stunden schwer verlaufen – deshalb zählt bei Verdacht jede Stunde: Wer rasch ärztlich behandelt wird, hat die besten Aussichten. In seltenen, schweren Fällen kann die Erkrankung trotz Behandlung lebensbedrohlich sein oder Folgeschäden hinterlassen. Enge Kontaktpersonen einer erkrankten Person erhalten vorsorglich Antibiotika, um eine Ausbreitung zu verhindern.',
         ],
         en: [
           'Between infection and illness there are usually three to four days. The illness often begins suddenly. With meningitis there is high fever, severe headache, a stiff neck and sensitivity to light. With blood poisoning (sepsis), pinpoint skin bleeds may also appear.',
-          'Meningococcal disease can become life-threatening within hours. Even with rapid treatment it can be fatal, and some of those affected are left with lasting damage. Close contacts of an ill person receive antibiotics as a precaution to prevent its spread.',
+          'Meningococcal disease can become severe within hours – so if it is suspected, every hour counts: those treated promptly have the best outlook. In rare, severe cases the disease can be life-threatening despite treatment or leave lasting effects. Close contacts of an ill person receive antibiotics as a precaution to prevent its spread.',
         ],
       },
       callout: {
