@@ -3,12 +3,11 @@
  * Einbettung des in der praxis-app gebauten Buchungstools (`/buchung`) als
  * responsives iframe mit nahtloser Auto-Höhe.
  *
- * SELBSTHEILEND: Die eigentliche Server-Adresse (Cloudflare-Quick-Tunnel)
- * wechselt bei jedem Mac-Neustart. Damit die eingebettete Buchung NIE eine tote
- * URL zeigt, wird die aktuelle Basis-Adresse zur LAUFZEIT aus `app-url.json`
- * gelesen (dieselbe Datei, die der Mac automatisch aktualisiert) und daraus die
- * iframe-Quelle `<basis>/buchung?embed=1` gebaut. `embedUrl` (Build-Zeit) dient
- * nur noch als optionaler Fallback.
+ * ADRESSE: Bevorzugt die feste Build-Zeit-URL `embedUrl` (permanenter
+ * Cloudflare-Named-Tunnel, PUBLIC_BOOKING_EMBED_URL) und baut daraus
+ * `<basis>/buchung?embed=1`. Nur wenn keine feste URL gesetzt ist (LAN-/Vorschau-
+ * Builds), liest ein Fallback die aktuelle Basis-Adresse zur Laufzeit aus
+ * `app-url.json` (Rest der abgelösten Quick-Tunnel-Automatik).
  *
  * First-Party (eigene Praxis-Infrastruktur, kein Drittanbieter) → kein Cookie-/
  * Consent-Gate nötig. Die eingebettete Seite meldet ihre Höhe per
@@ -17,7 +16,7 @@
  * Einbettung per CSP `frame-ancestors` (Website-Origin in EMBED_ORIGINS).
  */
 interface Props {
-  /** Optionaler Build-Zeit-Fallback (…/buchung). Zur Laufzeit gewinnt app-url.json. */
+  /** Feste Buchungs-URL (…/buchung), bevorzugt. Leer → Laufzeit-Fallback app-url.json. */
   embedUrl?: string;
   /** Zugänglicher Titel des iframes (Screenreader). */
   title: string;
@@ -79,16 +78,20 @@ const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
         'Bitte rufen Sie uns an oder versuchen Sie es später erneut.</div>';
     }
 
-    fetch(jsonUrl + '?_=' + Date.now(), { cache: 'no-store' })
-      .then((r) => (r.ok ? r.json() : Promise.reject()))
-      .then((d) => {
-        if (d && d.url) baueIframe(basisAus(d.url));
-        else throw new Error('keine URL');
-      })
-      .catch(() => {
-        if (fallback) baueIframe(basisAus(fallback));
-        else fehler();
-      });
+    if (fallback) {
+      // Fester, permanenter Buchungs-Tunnel (Build-Zeit, PUBLIC_BOOKING_EMBED_URL).
+      baueIframe(basisAus(fallback));
+    } else {
+      // Nur ohne feste URL (LAN-/Vorschau-Builds): Adresse zur Laufzeit aus
+      // app-url.json lesen (Rest der abgelösten Quick-Tunnel-Automatik).
+      fetch(jsonUrl + '?_=' + Date.now(), { cache: 'no-store' })
+        .then((r) => (r.ok ? r.json() : Promise.reject()))
+        .then((d) => {
+          if (d && d.url) baueIframe(basisAus(d.url));
+          else throw new Error('keine URL');
+        })
+        .catch(() => fehler());
+    }
   }
 </script>
 

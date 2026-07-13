@@ -35,17 +35,15 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Unterpfad-/Vorschau-Konfiguration: astro.config.mjs liest diese Variablen
-    # und richtet base, site (für Canonical/OG/hreflang/Sitemap) sowie das
-    # noindex-Flag (SEO.astro) entsprechend aus. Für eine Custom-Domain einfach
-    # entfernen (Defaults greifen).
+    # Custom-Domain-Betrieb (www.polaris-reisemedizin.de):
+    # Ohne PUBLIC_BASE_PATH/PUBLIC_SITE_URL/PUBLIC_NOINDEX greifen die Defaults aus
+    # astro.config.mjs / src/config/site.ts → Root-Pfad „/", echte Domain (Canonical/
+    # OG/hreflang/Sitemap) und indexierbar. Die frühere GitHub-Pages-Unterpfad-
+    # Vorschau ist damit abgelöst (CNAME siehe public/CNAME).
     env:
-      PUBLIC_BASE_PATH: /polaris-reisemedizin/
-      PUBLIC_SITE_URL: https://monheimer98-web.github.io
-      PUBLIC_NOINDEX: 'true'
-      # Buchungs-Embed holt die aktuelle Server-Adresse zur Laufzeit aus
-      # public/app-url.json (self-healing, s. BookingEmbed.astro) – kein
-      # Build-Zeit-URL mehr nötig, überlebt Mac-Neustarts automatisch.
+      # Buchungs-Embed fest auf den permanenten Cloudflare-Named-Tunnel
+      # (buchung.polaris-reisemedizin.de) – ersetzt die alte app-url.json-Krücke.
+      PUBLIC_BOOKING_EMBED_URL: https://buchung.polaris-reisemedizin.de/buchung
     steps:
       - name: Checkout
         uses: actions/checkout@v6
