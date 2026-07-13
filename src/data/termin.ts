@@ -235,13 +235,28 @@ export const bookingPage: BookingPage = {
           de: 'Reisemedizinische Beratung',
           en: 'Travel-medicine consultation',
         },
-        duration: { de: '10–20 Minuten', en: '10–20 minutes' },
+        duration: { de: 'ca. 20 Minuten', en: 'approx. 20 minutes' },
         description: {
-          de: 'Ein persönlicher, schriftlicher Impf- und Reiseplan – kompakt für ein einzelnes Reiseland innerhalb Europas oder ausführlich für Fernreisen und mehrere Länder. Den Plan erhalten Sie unabhängig von einer späteren Impfung.',
-          en: 'A personal written vaccination and travel plan – compact for a single destination country within Europe, or in-depth for long-haul trips and multiple countries. You receive the plan regardless of any later vaccination.',
+          de: 'Ausführliche Beratung für Fernreisen, mehrere Länder oder eine besondere Vorgeschichte – mit persönlichem, schriftlichem Impf- und Reiseplan. Den Plan erhalten Sie unabhängig von einer späteren Impfung.',
+          en: 'An in-depth consultation for long-haul trips, multiple countries or a particular medical history – with a personal written vaccination and travel plan. You receive the plan regardless of any later vaccination.',
+        },
+        price: { de: 'ca. 50 €', en: 'approx. €50' },
+        recommended: true,
+        enabled: true,
+      },
+      {
+        id: 'beratung-kompakt',
+        icon: 'consultation',
+        name: {
+          de: 'Reiseberatung kompakt (Europa)',
+          en: 'Compact travel consultation (Europe)',
+        },
+        duration: { de: 'ca. 10 Minuten', en: 'approx. 10 minutes' },
+        description: {
+          de: 'Die kürzere Variante, wenn Sie nur ein einzelnes Reiseland innerhalb Europas planen – mit persönlichem, schriftlichem Impf- und Reiseplan. Den Plan erhalten Sie unabhängig von einer späteren Impfung.',
+          en: 'The shorter option when you are only planning a single destination country within Europe – with a personal written vaccination and travel plan. You receive the plan regardless of any later vaccination.',
         },
         price: { de: 'ca. 28 €', en: 'approx. €28' },
-        recommended: true,
         enabled: true,
       },
       {
