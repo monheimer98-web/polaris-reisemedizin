@@ -23,9 +23,9 @@ export interface AppointmentType {
   duration: Localized;
   description: Localized;
   /**
-   * Preis-Richtwert nach GOÄ (unverbindlich), z. B. „ab 28 €". Wird direkt
+   * Preis-Richtwert nach GOÄ (unverbindlich), z. B. „ca. 28 €". Wird direkt
    * auf der Karte gezeigt, damit die Kosten schon bei der Terminwahl sichtbar
-   * sind. Der ausführliche Aufschlüsselung verlinkt weiterhin `/kosten`.
+   * sind. Die ausführliche Aufschlüsselung verlinkt weiterhin `/kosten`.
    * Optional: fehlt der Wert, wird keine Preiszeile gerendert.
    */
   price?: Localized;
@@ -240,7 +240,7 @@ export const bookingPage: BookingPage = {
           de: 'Ein persönlicher, schriftlicher Impf- und Reiseplan – kompakt für ein einzelnes Reiseland innerhalb Europas oder ausführlich für Fernreisen und mehrere Länder. Den Plan erhalten Sie unabhängig von einer späteren Impfung.',
           en: 'A personal written vaccination and travel plan – compact for a single destination country within Europe, or in-depth for long-haul trips and multiple countries. You receive the plan regardless of any later vaccination.',
         },
-        price: { de: 'ab 28 €', en: 'from €28' },
+        price: { de: 'ca. 28 €', en: 'approx. €28' },
         recommended: true,
         enabled: true,
       },
@@ -256,7 +256,7 @@ export const bookingPage: BookingPage = {
           de: 'Gezielte Beratung, wenn Sie speziell zu Malariaschutz oder Höhenmedizin Fragen haben – auf Wunsch mit Privatrezept für ein Notfallset.',
           en: 'Targeted advice if you have specific questions about malaria protection or altitude medicine – with a private prescription for a stand-by kit on request.',
         },
-        price: { de: 'ab 20 €', en: 'from €20' },
+        price: { de: 'ca. 20 €', en: 'approx. €20' },
         enabled: true,
       },
       {
@@ -271,7 +271,7 @@ export const bookingPage: BookingPage = {
           de: 'Die eigentliche Impfung nach Ihrem Impfplan: Sie bringen den Impfstoff per Privatrezept aus der Apotheke mit. FSME und Gelbfieber halten wir vor Ort vorrätig und impfen sie direkt in einem Termin.',
           en: 'The vaccination itself, following your plan: you bring the vaccine from the pharmacy via private prescription. TBE and yellow fever are kept in stock on site and given directly in a single appointment.',
         },
-        price: { de: 'ab 20 € + Impfstoff', en: 'from €20 + vaccine' },
+        price: { de: 'ca. 20 € + Impfstoff', en: 'approx. €20 + vaccine' },
         enabled: true,
       },
       {
@@ -286,7 +286,7 @@ export const bookingPage: BookingPage = {
           de: 'Gelbfieberimpfung inklusive internationalem Impfnachweis (ICVP) – in einem Termin bei uns vor Ort. Den Impfstoff (Stamaril®) halten wir vorrätig.',
           en: 'Yellow-fever vaccination including the international certificate (ICVP) – in a single appointment on site. We keep the vaccine (Stamaril®) in stock.',
         },
-        price: { de: 'ab 38 € + Impfstoff', en: 'from €38 + vaccine' },
+        price: { de: 'ca. 38 € + Impfstoff', en: 'approx. €38 + vaccine' },
         enabled: true,
       },
     ],

@@ -12,8 +12,9 @@
  * Rechtsstand-Hinweis: § 5 DDG (Digitale-Dienste-Gesetz) hat seit Mai 2024 den
  * § 5 TMG abgelöst; die redaktionelle Verantwortlichkeit folgt § 18 Abs. 2 MStV.
  * Die EU-OS-Plattform wurde zum 20. Juli 2025 eingestellt – daher bewusst KEIN
- * (toter) OS-Link, nur die VSBG-Erklärung. Ein anwaltlicher Endcheck wird
- * empfohlen.
+ * (toter) OS-Link, nur die VSBG-Erklärung. Die Pflichtangaben nach § 5 DDG
+ * (Anbieter, Kontakt, Kammer/Aufsicht, Berufsrecht, Versicherung, USt) sind
+ * vollständig gesetzt.
  */
 import type { Localized, LegalSection } from './types';
 
@@ -54,7 +55,7 @@ export interface ImpressumPage {
   };
   /** Rechtliche Boilerplate-Prosa (Haftung, Links, Urheberrecht, Streitbeilegung). */
   blocks: LegalSection[];
-  /** Abschluss-Hinweis (Mustercharakter / maßgebliche Sprachfassung). */
+  /** Abschluss-Hinweis (maßgebliche Sprachfassung). */
   closingNote: Localized;
 }
 
@@ -237,7 +238,7 @@ export const impressumPage: ImpressumPage = {
     },
   ],
   closingNote: {
-    de: 'Dieser Text ist eine sorgfältig erstellte Vorlage und ersetzt keine individuelle Rechtsberatung. Eine anwaltliche Endabnahme wird empfohlen. Maßgeblich ist die deutsche Fassung.',
-    en: 'This text is a carefully prepared template and does not replace individual legal advice. A final legal review is recommended. The German version shall prevail.',
+    de: 'Maßgeblich ist die deutsche Fassung; die englische Übersetzung dient ausschließlich der Information.',
+    en: 'The German version shall prevail; the English translation is provided for information only.',
   },
 };

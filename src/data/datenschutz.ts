@@ -4,16 +4,17 @@
  * Aufbau wie bei den übrigen selbsttragenden Seiten: hier liegt ausschließlich
  * die redaktionelle, zweisprachige Rechtsprosa als `LegalSection[]`. Der
  * Verantwortliche (Name/Anschrift/Kontakt) wird erst in `DatenschutzContent.astro`
- * zentral aus `site.ts` eingesetzt. Die Online-Terminbuchung läuft über das
- * praxiseigene Terminsystem (kein externer Auftragsverarbeiter); anbieter-
- * abhängig ist nur noch der Kartendienst über den Platzhalter `{mapProvider}`
- * (aufgelöst aus `site.map.provider` – analog zum `{provider}`-Muster der
- * Consent-Texte).
+ * zentral aus `site.ts` eingesetzt. Die Online-Terminbuchung ist derzeit
+ * deaktiviert; anbieterabhängig sind der Hosting-Anbieter
+ * (`{hostingProvider}`/`{hostingProviderAddress}`) und der Kartendienst
+ * (`{mapProvider}`), jeweils aufgelöst aus `site.ts` – analog zum
+ * `{provider}`-Muster der Consent-Texte.
  *
  * Rechtsstand-Hinweise (2026): TMG → DDG (Mai 2024); TTDSG → TDDDG; Art. 9
  * Abs. 2 lit. h DSGVO i. V. m. § 22 BDSG für Gesundheitsdaten; § 203 StGB
- * (Schweigepflicht). Die Seite ist eine prüffähige Vorlage – anwaltliche
- * Endabnahme wird empfohlen.
+ * (Schweigepflicht). Der Hosting-Anbieter wird zentral aus `site.hosting`
+ * gespeist (`{hostingProvider}`/`{hostingProviderAddress}`); der US-Anbieter
+ * (GitHub Pages) trägt den Drittland-/SCC-Hinweis im Hosting-Abschnitt.
  */
 import type { Localized, LegalSection } from './types';
 
@@ -35,7 +36,7 @@ export interface DatenschutzPage {
   };
   /** Die übrigen Abschnitte (Rechtsgrundlagen, Hosting, Consent, Rechte …). */
   sections: LegalSection[];
-  /** Abschluss-Hinweis (Mustercharakter / maßgebliche Sprachfassung). */
+  /** Abschluss-Hinweis (maßgebliche Sprachfassung). */
   closingNote: Localized;
 }
 
@@ -174,13 +175,13 @@ export const datenschutzPage: DatenschutzPage = {
       },
       body: {
         de: [
-          'Diese Website wird bei einem externen Dienstleister gehostet: [PLATZHALTER: Name und Anschrift des Hosting-Anbieters]. Beim Aufruf der Website übermittelt Ihr Browser technisch notwendige Daten, die der Anbieter in Server-Logfiles verarbeitet.',
-          'Hierzu zählen insbesondere: die (gekürzte) IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite bzw. Datei, die übertragene Datenmenge, der verweisende URL (Referrer) sowie Browsertyp und Betriebssystem. Diese Verarbeitung dient dem technisch sicheren, stabilen und funktionsfähigen Betrieb der Website; Rechtsgrundlage ist unser berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO).',
+          'Diese Website wird bei einem externen Dienstleister gehostet: {hostingProviderAddress}. Beim Aufruf der Website übermittelt Ihr Browser technisch notwendige Daten, die der Anbieter in Server-Logfiles verarbeitet.',
+          'Hierzu zählen insbesondere: die IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite bzw. Datei, die übertragene Datenmenge, der verweisende URL (Referrer) sowie Browsertyp und Betriebssystem. Diese Verarbeitung dient dem technisch sicheren, stabilen und funktionsfähigen Betrieb der Website; Rechtsgrundlage ist unser berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO).',
           'Mit dem Hosting-Anbieter besteht ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO. Sollte der Anbieter Daten in einem Drittland (z. B. USA) verarbeiten, erfolgt dies auf Grundlage geeigneter Garantien (insbesondere EU-Standardvertragsklauseln). Eine Verlagerung auf einen Hoster mit Sitz und Serverstandort in der EU ist vorgesehen.',
         ],
         en: [
-          'This website is hosted by an external service provider: [PLACEHOLDER: name and address of the hosting provider]. When you access the website, your browser transmits technically necessary data that the provider processes in server log files.',
-          'These include in particular: the (shortened) IP address, the date and time of access, the page or file requested, the volume of data transferred, the referring URL (referrer) as well as browser type and operating system. This processing serves the technically secure, stable and functional operation of the website; the legal basis is our legitimate interest (Art. 6 (1) (f) GDPR).',
+          'This website is hosted by an external service provider: {hostingProviderAddress}. When you access the website, your browser transmits technically necessary data that the provider processes in server log files.',
+          'These include in particular: the IP address, the date and time of access, the page or file requested, the volume of data transferred, the referring URL (referrer) as well as browser type and operating system. This processing serves the technically secure, stable and functional operation of the website; the legal basis is our legitimate interest (Art. 6 (1) (f) GDPR).',
           'A data processing agreement pursuant to Art. 28 GDPR is in place with the hosting provider. Should the provider process data in a third country (e.g. the USA), this is carried out on the basis of appropriate safeguards (in particular EU standard contractual clauses). A move to a hosting provider domiciled with servers located in the EU is planned.',
         ],
       },
@@ -223,11 +224,11 @@ export const datenschutzPage: DatenschutzPage = {
       },
       body: {
         de: [
-          'Wir setzen keine Cookies zu Tracking-, Profiling- oder Marketingzwecken und binden keine Werbe-Netzwerke ein. Für die 2-Klick-Einbettung der Anfahrtskarte speichern wir Ihre Einwilligung ausschließlich lokal in Ihrem Browser (im sogenannten „localStorage") unter dem Schlüssel „polaris:consent:map". Unser Terminanfrage-Formular läuft demgegenüber direkt über unsere eigene Website und benötigt hierfür keine solche Einwilligungsspeicherung.',
+          'Wir setzen keine Cookies zu Tracking-, Profiling- oder Marketingzwecken und binden keine Werbe-Netzwerke ein. Für die 2-Klick-Einbettung der Anfahrtskarte speichern wir Ihre Einwilligung ausschließlich lokal in Ihrem Browser (im sogenannten „localStorage") unter dem Schlüssel „polaris:consent:map".',
           'Diese Speicherung ist technisch erforderlich, um Ihre Entscheidung zu merken, und überträgt keine Daten an uns oder Dritte. Rechtsgrundlage für das Speichern bzw. Auslesen dieser für den von Ihnen gewünschten Dienst unbedingt erforderlichen Information ist § 25 Abs. 2 Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz (TDDDG); die Einwilligung gilt, bis Sie sie widerrufen. Sie können die gespeicherte Einwilligung jederzeit über die Schaltfläche an der Einbettung oder durch Löschen der Browserdaten widerrufen.',
         ],
         en: [
-          'We do not use cookies for tracking, profiling or marketing purposes and do not embed any advertising networks. For the two-click embed of the location map we store your consent exclusively locally in your browser (in what is known as “localStorage”) under the key “polaris:consent:map”. Our appointment enquiry form, by contrast, runs directly via our own website and does not require any such consent storage.',
+          'We do not use cookies for tracking, profiling or marketing purposes and do not embed any advertising networks. For the two-click embed of the location map we store your consent exclusively locally in your browser (in what is known as “localStorage”) under the key “polaris:consent:map”.',
           'This storage is technically necessary in order to remember your decision and does not transmit any data to us or to third parties. The legal basis for storing or reading this information, which is strictly necessary for the service you have requested, is Section 25 (2) of the German Telecommunications Digital Services Data Protection Act (TDDDG); the consent applies until you revoke it. You can withdraw the stored consent at any time using the button on the embed or by deleting your browser data.',
         ],
       },
@@ -320,12 +321,12 @@ export const datenschutzPage: DatenschutzPage = {
       },
       list: {
         de: [
-          'Hosting und Auslieferung der Website: [PLATZHALTER: Name des Hosting-Anbieters].',
+          'Hosting und Auslieferung der Website: {hostingProvider}',
           'Kartendienst / Anfahrt: {mapProvider} (nur nach Einwilligung).',
           'Gegebenenfalls weitere technische Dienstleister zur Unterstützung von Betrieb und Sicherheit der Website – jeweils als Auftragsverarbeiter.',
         ],
         en: [
-          'Hosting and delivery of the website: [PLACEHOLDER: name of the hosting provider].',
+          'Hosting and delivery of the website: {hostingProvider}',
           'Map service / directions: {mapProvider} (only after consent).',
           'Where applicable, further technical service providers supporting the operation and security of the website – each as a processor.',
         ],
@@ -464,7 +465,7 @@ export const datenschutzPage: DatenschutzPage = {
     },
   ],
   closingNote: {
-    de: 'Diese Datenschutzerklärung ist eine sorgfältig erstellte Vorlage und ersetzt keine individuelle Rechtsberatung. Vor dem Go-Live sind die mit „[PLATZHALTER]" markierten Angaben (insbesondere der Hosting-Anbieter) zu vervollständigen und die eingesetzten Dienste zu prüfen; eine anwaltliche Endabnahme wird empfohlen. Maßgeblich ist die deutsche Fassung.',
-    en: 'This privacy policy is a carefully prepared template and does not replace individual legal advice. Before going live, the entries marked “[PLACEHOLDER]” (in particular the hosting provider) must be completed and the services used must be reviewed; a final legal review is recommended. The German version shall prevail.',
+    de: 'Diese Datenschutzerklärung wird an Änderungen unserer Datenverarbeitung oder der Rechtslage angepasst. Maßgeblich ist die deutsche Fassung; die englische Übersetzung dient ausschließlich der Information.',
+    en: 'This privacy policy is updated to reflect changes in our data processing or the legal framework. The German version shall prevail; the English translation is provided for information only.',
   },
 };

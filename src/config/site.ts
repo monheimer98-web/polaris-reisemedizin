@@ -186,6 +186,21 @@ export const site = {
   },
 
   /**
+   * Hosting der ÖFFENTLICHEN Website (für die Datenschutzerklärung).
+   *
+   * IST-STAND: GitHub Pages (GitHub, Inc.) auf der Standard-`github.io`-Domain –
+   * ein US-Anbieter; daher der Drittland-/SCC-Hinweis im Hosting-Abschnitt.
+   * `provider` = Kurzname (Empfänger-Liste), `providerAddress` = Name + Anschrift
+   * (Hosting-Abschnitt). Bei einem Umzug auf einen EU-Hoster nur hier ändern –
+   * die Rechtstexte ziehen die Werte per `{hostingProvider}` /
+   * `{hostingProviderAddress}` automatisch nach (siehe DatenschutzContent.astro).
+   */
+  hosting: {
+    provider: 'GitHub, Inc.',
+    providerAddress: 'GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA',
+  },
+
+  /**
    * Online-Terminbuchung über das EIGENE Praxis-Terminsystem (praxis-app) –
    * kein Drittanbieter. Das Anfrageformular (`BookingForm`) sendet die Daten per
    * POST an `endpoint`; dort entsteht ein Termin mit Status „angefragt", den das

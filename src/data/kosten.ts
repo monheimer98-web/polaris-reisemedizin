@@ -14,7 +14,7 @@ export interface PriceItem {
   service: Localized;
   /** Was enthalten ist / wie sich der Posten erklärt. */
   detail: Localized;
-  /** Preis-Richtwert, z. B. „ab 50 €" oder „ab 38 € + Impfstoff". */
+  /** Preis-Richtwert, z. B. „ca. 50 €" oder „ca. 38 € + Impfstoff". */
   price: Localized;
 }
 
@@ -92,7 +92,7 @@ export const kostenPage: KostenPage = {
             de: 'Ausführliche Beratung (ab etwa 20 Minuten) für Fernreisen, mehrere Länder oder eine besondere Vorgeschichte – inklusive Malaria-Rezept, falls sinnvoll, und schriftlichem Impf- und Reiseplan.',
             en: 'An in-depth consultation (from around 20 minutes) for long-haul trips, multiple countries or a particular medical history – including a malaria prescription where useful and a written vaccination and travel plan.',
           },
-          price: { de: 'ab 50 €', en: 'from €50' },
+          price: { de: 'ca. 50 €', en: 'approx. €50' },
         },
         {
           service: { de: 'Reiseberatung kompakt (Europa)', en: 'Compact travel consultation (Europe)' },
@@ -100,7 +100,7 @@ export const kostenPage: KostenPage = {
             de: 'Kompakte Beratung für ein einzelnes Reiseland innerhalb Europas – mit persönlichem, schriftlichem Impf- und Reiseplan.',
             en: 'A compact consultation for a single destination country within Europe – with a personal written vaccination and travel plan.',
           },
-          price: { de: 'ab 28 €', en: 'from €28' },
+          price: { de: 'ca. 28 €', en: 'approx. €28' },
         },
         {
           service: { de: 'Jede weitere mitreisende Person', en: 'Each additional travelling person' },
@@ -108,7 +108,7 @@ export const kostenPage: KostenPage = {
             de: 'Eigene Beratung und eigener Impfplan im selben Termin – als ganz normale, einzeln einreichbare Rechnung (gleiches Reiseziel, bis zu sechs Personen).',
             en: 'Own consultation and own vaccination plan in the same appointment – as a regular, individually submittable invoice (same destination, up to six people).',
           },
-          price: { de: 'ab 28 €', en: 'from €28' },
+          price: { de: 'ca. 28 €', en: 'approx. €28' },
         },
         {
           service: { de: 'Fokus-Beratung Malaria oder Höhenmedizin', en: 'Focused malaria or altitude consultation' },
@@ -116,7 +116,7 @@ export const kostenPage: KostenPage = {
             de: 'Wenn Sie gezielt nur zum Malariaschutz oder zur Höhenmedizin beraten werden möchten – auf Wunsch mit Privatrezept.',
             en: 'If you would like advice specifically on malaria protection or altitude medicine only – with a private prescription on request.',
           },
-          price: { de: 'ab 20 €', en: 'from €20' },
+          price: { de: 'ca. 20 €', en: 'approx. €20' },
         },
       ],
     },
@@ -130,7 +130,7 @@ export const kostenPage: KostenPage = {
             de: 'Die eigentliche Impfung nach Ihrem Impfplan: Aufklärung, Impfung und Eintrag in den Impfausweis. Den Impfstoff bringen Sie per Privatrezept aus der Apotheke mit.',
             en: 'The vaccination itself, following your plan: briefing, injection and entry in your vaccination certificate. You bring the vaccine from the pharmacy via private prescription.',
           },
-          price: { de: 'ab 20 €', en: 'from €20' },
+          price: { de: 'ca. 20 €', en: 'approx. €20' },
         },
         {
           service: { de: 'FSME-Impfung direkt (vor Ort, ein Termin)', en: 'TBE vaccination directly (on site, one appointment)' },
@@ -138,7 +138,7 @@ export const kostenPage: KostenPage = {
             de: 'FSME halten wir vor Ort vorrätig – dafür brauchen Sie kein Privatrezept und können den Termin direkt buchen. (Gelbfieber ist ebenfalls vor Ort möglich, siehe unten.)',
             en: 'We keep the TBE vaccine in stock on site – no private prescription needed, and you can book directly. (Yellow fever is also available on site, see below.)',
           },
-          price: { de: 'ab 32 € + Impfstoff', en: 'from €32 + vaccine' },
+          price: { de: 'ca. 32 € + Impfstoff', en: 'approx. €32 + vaccine' },
         },
         {
           service: { de: 'Jede weitere Impfung am selben Tag', en: 'Each additional vaccination on the same day' },
@@ -198,7 +198,7 @@ export const kostenPage: KostenPage = {
             de: 'Ärztliches Honorar für Aufklärung, Impfung und ICVP-Eintrag. Der Impfstoff (Stamaril®) wird gesondert als Auslage berechnet.',
             en: 'Medical fee for the briefing, vaccination and ICVP entry. The vaccine (Stamaril®) is billed separately as a disbursement.',
           },
-          price: { de: 'ab 38 € + Impfstoff', en: 'from €38 + vaccine' },
+          price: { de: 'ca. 38 € + Impfstoff', en: 'approx. €38 + vaccine' },
         },
       ],
     },

@@ -3,9 +3,10 @@
  * Inhalt der Datenschutz-Seite. Selbsttragend: leitet die Sprache aus der URL
  * ab, setzt den Verantwortlichen zentral aus `site.ts` ein und rendert die
  * Rechtsprosa aus `datenschutzPage`. Anbieterabhängige Platzhalter
- * (`{bookingProvider}`/`{mapProvider}`/`{analyticsProvider}`/`{analyticsHost}`)
- * werden mit den real konfigurierten Anbieternamen aufgelöst – analog zum
- * `{provider}`-Muster der Consent-Texte. Der Analyse-Abschnitt wird nur dann
+ * (`{bookingProvider}`/`{mapProvider}`/`{analyticsProvider}`/`{analyticsHost}`
+ * sowie `{hostingProvider}`/`{hostingProviderAddress}`) werden mit den real
+ * konfigurierten Anbieterangaben aufgelöst – analog zum `{provider}`-Muster der
+ * Consent-Texte. Der Analyse-Abschnitt wird nur dann
  * ausgegeben, wenn die Reichweitenmessung in `site.ts` aktiviert ist
  * (`analytics.enabled`) – so bleibt die Erklärung in beiden Zuständen wahr.
  */
@@ -22,7 +23,9 @@ const fill = (value: string) =>
     .replaceAll('{bookingProvider}', site.booking.provider)
     .replaceAll('{mapProvider}', site.map.provider)
     .replaceAll('{analyticsProvider}', site.analytics.provider)
-    .replaceAll('{analyticsHost}', site.analytics.host);
+    .replaceAll('{analyticsHost}', site.analytics.host)
+    .replaceAll('{hostingProviderAddress}', site.hosting.providerAddress)
+    .replaceAll('{hostingProvider}', site.hosting.provider);
 
 /**
  * Abschnitte filtern: Der Analyse-Abschnitt erscheint nur, wenn die
@@ -113,7 +116,7 @@ const sections = page.sections.filter((s) => s.id !== 'analytics' || site.analyt
         ))
       }
 
-      {/* Abschluss-Hinweis (Mustercharakter) */}
+      {/* Abschluss-Hinweis (maßgebliche Sprachfassung) */}
       <p class="rounded-2xl border border-line bg-sand/50 px-5 py-4 text-sm leading-relaxed text-ink-soft sm:px-6">
         {page.closingNote[lang]}
       </p>
