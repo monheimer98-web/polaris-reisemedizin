@@ -106,6 +106,20 @@ export const site = {
     fax: '',
     email: 'info@polaris-reisemedizin.de',
     emailHref: 'mailto:info@polaris-reisemedizin.de',
+    /**
+     * POST-Endpunkt des Kontaktformulars (Route `/api/kontakt` der praxis-app,
+     * über den Reverse-Proxy). Gleiche Sicherheitslogik wie `booking.endpoint`:
+     * der Proxy injiziert das geheime BOOKING_TOKEN serverseitig als
+     * `X-Booking-Token`-Header – das Token darf NIE im Browser stehen. Das
+     * Formular sendet nur eine Nachricht per E-Mail an die Praxis (Reply-To =
+     * Absenderadresse), es entsteht KEINE Datenbank-/Patientenakte.
+     *
+     * Per Build-Env überschreibbar (Muster wie PUBLIC_BOOKING_EMBED_URL):
+     * Test-/LAN-Builds setzen PUBLIC_CONTACT_ENDPOINT, der öffentliche
+     * Pages-Build bleibt leer (→ Platzhalter mit Telefon/E-Mail-Fallback),
+     * bis der Endpunkt über den Tunnel erreichbar ist.
+     */
+    formEndpoint: import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? '',
   },
 
   /**

@@ -31,6 +31,39 @@ export interface KontaktPage {
     mapHeading: Localized;
     mapLead: Localized;
   };
+  /**
+   * Texte des Kontaktformulars (React-Insel `KontaktForm`). Sprachaufgelöst im
+   * Astro-Layer und als flaches `KontaktFormStrings`-Objekt an die Insel gereicht.
+   */
+  form: {
+    sectionHeading: Localized;
+    heading: Localized;
+    intro: Localized;
+    fields: {
+      name: Localized;
+      email: Localized;
+      telefon: Localized;
+      betreff: Localized;
+      nachricht: Localized;
+      nachrichtPlaceholder: Localized;
+      optional: Localized;
+    };
+    consentLabel: Localized;
+    consentLinkLabel: Localized;
+    submit: Localized;
+    submitting: Localized;
+    successTitle: Localized;
+    successBody: Localized;
+    errorTitle: Localized;
+    errorBody: Localized;
+    requiredHint: Localized;
+    emailInvalid: Localized;
+    consentRequired: Localized;
+    privacyNote: Localized;
+    honeypotLabel: Localized;
+    placeholderTitle: Localized;
+    placeholderBody: Localized<string[]>;
+  };
   /** 2-Klick-Consent-Texte für die Karten-Einbettung. */
   consent: ConsentEmbedText;
 }
@@ -90,6 +123,116 @@ export const kontaktPage: KontaktPage = {
     mapLead: {
       de: 'Unsere Praxis liegt in Langenfeld im Rheinland, zwischen Düsseldorf und Köln. Planen Sie Ihre Anfahrt bequem mit dem Kartendienst. Aus Datenschutzgründen wird die interaktive Karte erst nach Ihrer Einwilligung geladen.',
       en: 'Our practice is in Langenfeld in the Rhineland, between Düsseldorf and Cologne. Plan your journey conveniently with the map service. For data-protection reasons, the interactive map is only loaded after your consent.',
+    },
+  },
+  form: {
+    sectionHeading: {
+      de: 'Schreiben Sie uns',
+      en: 'Send us a message',
+    },
+    heading: {
+      de: 'Nachricht an die Praxis',
+      en: 'Message to the practice',
+    },
+    intro: {
+      de: 'Ihre Nachricht erreicht uns direkt per E-Mail. Wir melden uns so bald wie möglich bei Ihnen zurück. Mit * markierte Felder sind Pflichtfelder.',
+      en: 'Your message reaches us directly by email. We will get back to you as soon as possible. Fields marked with * are required.',
+    },
+    fields: {
+      name: {
+        de: 'Name',
+        en: 'Name',
+      },
+      email: {
+        de: 'E-Mail',
+        en: 'Email',
+      },
+      telefon: {
+        de: 'Telefon',
+        en: 'Phone',
+      },
+      betreff: {
+        de: 'Betreff',
+        en: 'Subject',
+      },
+      nachricht: {
+        de: 'Nachricht',
+        en: 'Message',
+      },
+      nachrichtPlaceholder: {
+        de: 'Wie können wir Ihnen helfen?',
+        en: 'How can we help you?',
+      },
+      optional: {
+        de: '(optional)',
+        en: '(optional)',
+      },
+    },
+    consentLabel: {
+      de: 'Ich habe die {privacy} gelesen und willige ein, dass meine Angaben zur Bearbeitung meiner Anfrage per E-Mail verarbeitet werden.',
+      en: 'I have read the {privacy} and consent to my details being processed by email to handle my enquiry.',
+    },
+    consentLinkLabel: {
+      de: 'Datenschutzerklärung',
+      en: 'privacy policy',
+    },
+    submit: {
+      de: 'Nachricht senden',
+      en: 'Send message',
+    },
+    submitting: {
+      de: 'Wird gesendet …',
+      en: 'Sending …',
+    },
+    successTitle: {
+      de: 'Vielen Dank – Ihre Nachricht ist unterwegs.',
+      en: 'Thank you – your message is on its way.',
+    },
+    successBody: {
+      de: 'Wir haben Ihre Nachricht erhalten und melden uns so bald wie möglich bei Ihnen. Bei dringenden Anliegen erreichen Sie uns telefonisch.',
+      en: 'We have received your message and will get back to you as soon as possible. For urgent matters, please reach us by phone.',
+    },
+    errorTitle: {
+      de: 'Ihre Nachricht konnte nicht gesendet werden.',
+      en: 'Your message could not be sent.',
+    },
+    errorBody: {
+      de: 'Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per Telefon oder E-Mail.',
+      en: 'Please try again later or contact us directly by phone or email.',
+    },
+    requiredHint: {
+      de: 'Bitte füllen Sie die Pflichtfelder aus.',
+      en: 'Please fill in the required fields.',
+    },
+    emailInvalid: {
+      de: 'Bitte geben Sie eine gültige E-Mail-Adresse an, damit wir Ihnen antworten können.',
+      en: 'Please enter a valid email address so we can reply to you.',
+    },
+    consentRequired: {
+      de: 'Bitte bestätigen Sie die Einwilligung, damit wir Ihre Nachricht bearbeiten dürfen.',
+      en: 'Please confirm your consent so we may process your message.',
+    },
+    privacyNote: {
+      de: 'Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben.',
+      en: 'Your details are used solely to handle your enquiry and are not shared with third parties.',
+    },
+    honeypotLabel: {
+      de: 'Dieses Feld bitte frei lassen',
+      en: 'Please leave this field empty',
+    },
+    placeholderTitle: {
+      de: 'Kontakt per Telefon oder E-Mail',
+      en: 'Contact by phone or email',
+    },
+    placeholderBody: {
+      de: [
+        'Das Nachrichtenformular wird derzeit noch eingerichtet. Sie erreichen uns in der Zwischenzeit jederzeit direkt per Telefon oder E-Mail – die Kontaktdaten finden Sie nebenstehend.',
+        'Für eine reisemedizinische Beratung oder Impfung vereinbaren Sie am besten vorab einen Termin.',
+      ],
+      en: [
+        'The message form is still being set up. In the meantime you can reach us any time directly by phone or email – you will find the contact details alongside.',
+        'For travel-medicine advice or a vaccination, it is best to arrange an appointment in advance.',
+      ],
     },
   },
   consent: {
