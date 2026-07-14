@@ -81,19 +81,25 @@ const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
     function baueButton(basis: string) {
       // Kein iframe, sondern ein Button, der die Buchung direkt öffnet – für
       // kleine Bildschirme (v. a. iOS-Safari), wo die iframe-Einbettung
-      // unzuverlässig ist (leerer Rahmen).
+      // unzuverlässig ist (leerer Rahmen). WICHTIG: inline stylen – dynamisch
+      // erzeugte Elemente bekommen kein Astro-Scope-Attribut, scoped-CSS greift
+      // hier NICHT.
       const url = basis.replace(/\/+$/, '') + '/buchung';
       const wrap = document.createElement('div');
-      wrap.className = 'booking-embed-cta';
+      wrap.style.cssText =
+        'min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:36px 24px;';
       const text = document.createElement('p');
-      text.className = 'booking-embed-cta-text';
+      text.style.cssText = 'margin:0;max-width:34ch;color:#5a6b6a;font-size:1rem;line-height:1.5;';
       text.textContent = 'Terminart wählen und Wunschtermin sichern – in wenigen Schritten.';
       const link = document.createElement('a');
       link.href = url;
       link.target = '_blank';
       link.rel = 'noopener';
-      link.className = 'booking-embed-cta-btn';
-      link.textContent = 'Zur Online-Buchung';
+      link.style.cssText =
+        'display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:9999px;' +
+        'background:#123f3a;color:#fff;font-weight:600;font-size:1.05rem;text-decoration:none;' +
+        'box-shadow:0 8px 22px rgba(0,0,0,0.16);';
+      link.textContent = 'Zur Online-Buchung →';
       wrap.append(text, link);
       mount!.replaceChildren(wrap);
     }
@@ -131,45 +137,5 @@ const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
     padding: 24px;
     color: var(--color-muted, #5a6b6a);
     font-size: 0.95rem;
-  }
-
-  /* Mobiler Fallback: Button statt iframe (iOS-Safari-robust). */
-  .booking-embed-cta {
-    min-height: 260px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-    text-align: center;
-    padding: 32px 24px;
-  }
-  .booking-embed-cta-text {
-    margin: 0;
-    max-width: 34ch;
-    color: var(--color-muted, #5a6b6a);
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  .booking-embed-cta-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 15px 30px;
-    border-radius: 9999px;
-    background: var(--color-petrol, #123f3a);
-    color: #fff;
-    font-weight: 600;
-    font-size: 1.05rem;
-    text-decoration: none;
-    box-shadow: var(--shadow-card, 0 8px 22px rgba(0, 0, 0, 0.14));
-  }
-  .booking-embed-cta-btn::after {
-    content: '↗';
-    font-size: 0.95em;
-  }
-  .booking-embed-cta-btn:hover {
-    filter: brightness(1.08);
   }
 </style>
