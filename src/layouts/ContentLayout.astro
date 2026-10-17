@@ -69,7 +69,7 @@ const breadcrumbItems = [
 // und einem `about`, das je nach Hub die Krankheit (MedicalCondition) bzw. die
 // Leistung (MedicalProcedure) auszeichnet. `@id`-Verweise binden die Seite an
 // den globalen MedicalClinic-Knoten (#practice).
-const canonical = new URL(Astro.url.pathname.replace(/\/+$/, '') || '/', SITE_URL).href;
+const canonical = new URL(`${Astro.url.pathname.replace(/\/+$/, '')}/`, SITE_URL).href;
 const ABOUT_TYPE: Record<string, string> = {
   krankheitsbilder: 'MedicalCondition',
   leistungen: 'MedicalProcedure',

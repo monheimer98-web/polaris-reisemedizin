@@ -93,11 +93,11 @@ export const choleraDisease: ClinicalPage = {
       body: {
         de: [
           'Der wichtigste Schutz vor Cholera ist eine sorgfältige Trinkwasser- und Lebensmittelhygiene: nur sicheres Wasser trinken, auf Eiswürfel verzichten, Speisen ausreichend erhitzen und Obst selbst schälen („cook it, boil it, peel it or forget it"). Gründliches Händewaschen ist ebenso wichtig.',
-          'Diese Maßnahmen schützen zuverlässig vor Cholera und zugleich vor anderen Durchfallerkrankungen, die auf Reisen deutlich häufiger sind. Für die meisten Reisenden sind sie der entscheidende Schutz.',
+          'Diese Maßnahmen senken das Risiko für Cholera deutlich und zugleich für andere Durchfallerkrankungen, die auf Reisen deutlich häufiger sind. Für die meisten Reisenden sind sie der entscheidende Schutz.',
         ],
         en: [
           'The most important protection against cholera is careful drinking-water and food hygiene: drink only safe water, avoid ice cubes, heat food thoroughly and peel fruit yourself ("cook it, boil it, peel it or forget it"). Thorough hand washing is equally important.',
-          'These measures reliably protect against cholera and at the same time against other diarrhoeal diseases, which are far more common when travelling. For most travellers they are the decisive protection.',
+          'These measures considerably reduce the risk of cholera and at the same time of other diarrhoeal diseases, which are far more common when travelling. For most travellers they are the decisive protection.',
         ],
       },
     },
@@ -106,12 +106,12 @@ export const choleraDisease: ClinicalPage = {
       heading: { de: 'Schutzimpfung', en: 'Vaccination' },
       body: {
         de: [
-          'Gegen Cholera stehen orale Impfstoffe zur Verfügung, die als Trinklösung eingenommen werden. Verfügbar sind ein inaktivierter Impfstoff, der in zwei Dosen gegeben wird, sowie ein oraler Lebendimpfstoff als Einzeldosis für Erwachsene. Die Impfung sollte rechtzeitig vor der Reise abgeschlossen sein.',
+          'Gegen Cholera stehen orale Impfstoffe zur Verfügung, die als Trinklösung eingenommen werden. Verfügbar sind ein inaktivierter Impfstoff (ab 6 Jahren zwei Dosen, von 2 bis 5 Jahren drei Dosen) sowie ein oraler Lebendimpfstoff als Einzeldosis ab 2 Jahren, mindestens 10 Tage vor der Reise. Die Impfung sollte rechtzeitig vor der Reise abgeschlossen sein.',
           'Die Ständige Impfkommission (STIKO) und die DTG empfehlen die Cholera-Impfung nur in Ausnahmefällen – etwa für Einsatz- und Hilfskräfte in akuten Ausbruchsgebieten oder bei Aufenthalten unter einfachsten hygienischen Bedingungen. Für gewöhnliche Urlaubs- und Geschäftsreisen wird sie in der Regel nicht empfohlen.',
           'Ob eine Cholera-Impfung für Ihre Reise infrage kommt, hängt von Reiseziel, Reisestil und Tätigkeit vor Ort ab. Wir klären dies individuell im reisemedizinischen Beratungsgespräch.',
         ],
         en: [
-          'Oral vaccines taken as a drinking solution are available against cholera. There is an inactivated vaccine given in two doses and an oral live vaccine given as a single dose for adults. Vaccination should be completed in good time before the trip.',
+          'Oral vaccines taken as a drinking solution are available against cholera. There is an inactivated vaccine (two doses from age 6, three doses from age 2 to 5) and an oral live vaccine given as a single dose from age 2, at least 10 days before travel. Vaccination should be completed in good time before the trip.',
           'The German Standing Committee on Vaccination (STIKO) and the DTG recommend cholera vaccination only in exceptional cases – for instance for emergency and aid workers in acute outbreak areas or during stays under the simplest hygienic conditions. For ordinary holiday and business travel it is generally not recommended.',
           'Whether a cholera vaccination is an option for your trip depends on the destination, travel style and your activity on site. We clarify this individually in the travel-medicine consultation.',
         ],

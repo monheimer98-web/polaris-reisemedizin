@@ -169,11 +169,37 @@ export const sources = {
       de: 'Empfehlungen der Ständigen Impfkommission (STIKO) & Impfkalender',
       en: 'Recommendations of the German Standing Committee on Vaccination (STIKO) & vaccination schedule',
     },
-    url: 'https://www.rki.de/DE/Themen/Infektionskrankheiten/Impfen/Impfempfehlungen/Impfempfehlungen_node.html',
-    retrieved: new Date('2026-06-04'),
+    url: 'https://www.rki.de/DE/Themen/Infektionskrankheiten/Impfen/Staendige-Impfkommission/Empfehlungen-der-STIKO/empfehlungen-der-stiko-node.html',
+    retrieved: new Date('2026-10-17'),
     note: {
       de: 'Maßgebliche Grundlage für Standard-, Indikations- und Reiseimpfungen in Deutschland; jährlich im Epidemiologischen Bulletin aktualisiert.',
       en: 'Authoritative basis for standard, indication and travel vaccinations in Germany; updated annually in the Epidemiological Bulletin.',
+    },
+  },
+  stikoReise2026: {
+    publisher: 'Robert Koch-Institut (RKI) / STIKO, DTG, StAR',
+    title: {
+      de: 'Empfehlungen zu Reiseimpfungen – Epidemiologisches Bulletin 27/2026',
+      en: 'Recommendations on travel vaccinations – Epidemiological Bulletin 27/2026',
+    },
+    url: 'https://www.rki.de/DE/Aktuelles/Publikationen/Epidemiologisches-Bulletin/2026/27_26.pdf',
+    retrieved: new Date('2026-10-17'),
+    note: {
+      de: 'Gemeinsame Reiseimpfempfehlungen von STIKO, DTG und StAR (veröffentlicht 02.07.2026), u. a. zu Gelbfieber-Auffrischung, Tollwut, Japanischer Enzephalitis und Typhus.',
+      en: 'Joint travel-vaccination recommendations of STIKO, DTG and StAR (published 2 July 2026), including yellow fever boosters, rabies, Japanese encephalitis and typhoid.',
+    },
+  },
+  peiIxchiqRhb: {
+    publisher: 'Paul-Ehrlich-Institut (PEI)',
+    title: {
+      de: 'Rote-Hand-Brief zum Chikungunya-Lebendimpfstoff (14.07.2026)',
+      en: 'Dear Healthcare Professional Communication on the live chikungunya vaccine (14 July 2026)',
+    },
+    url: 'https://www.pei.de/DE/newsroom/veroffentlichungen-arzneimittel/sicherheitsinformationen-human/2026/ablage2026/2026-07-14-rhb-ixchiq.html',
+    retrieved: new Date('2026-10-17'),
+    note: {
+      de: 'Einschränkung der Anwendung auf Personen mit hohem Risiko für eine Chikungunya-Infektion.',
+      en: 'Use restricted to persons at high risk of chikungunya infection.',
     },
   },
   rkiMalaria: {
@@ -252,11 +278,11 @@ export const sources = {
       de: 'STIKO-Empfehlung zur Dengue-Impfung (Qdenga®)',
       en: 'STIKO recommendation on dengue vaccination (Qdenga®)',
     },
-    url: 'https://www.rki.de/DE/Themen/Infektionskrankheiten/Impfen/Reiseimpfungen/reiseimpfungen-node.html',
-    retrieved: new Date('2026-06-12'),
+    url: 'https://www.rki.de/SharedDocs/FAQs/DE/Dengue/FAQ-Liste.html',
+    retrieved: new Date('2026-10-17'),
     note: {
-      de: 'Reiseimpfempfehlung: Qdenga® für Personen ab 4 Jahren mit gesicherter, früher durchgemachter Dengue-Infektion (Epidemiologisches Bulletin 48/2023 bzw. 14/2024).',
-      en: 'Travel recommendation: Qdenga® for persons aged 4+ with a confirmed previous dengue infection (Epidemiological Bulletin 48/2023 / 14/2024).',
+      de: 'Reiseimpfempfehlung: Personen ab 4 Jahren mit labordiagnostisch gesicherter, früher durchgemachter Dengue-Infektion bei Reisen mit erhöhtem Expositionsrisiko (Epidemiologisches Bulletin 48/2023, bestätigt in 27/2026).',
+      en: 'Travel recommendation: persons aged 4+ with a laboratory-confirmed previous dengue infection travelling with increased exposure risk (Epidemiological Bulletin 48/2023, confirmed in 27/2026).',
     },
   },
   emaQdenga: {
@@ -303,8 +329,8 @@ export const sources = {
     url: 'https://www.rki.de/SharedDocs/FAQs/DE/Impfen/Chikungunya/FAQ-Liste_Impfempfehlung.html',
     retrieved: new Date('2026-06-12'),
     note: {
-      de: 'Indikationsimpfung ab 12 Jahren für bestimmte Reisende (Stand 01.12.2025; Epidemiologisches Bulletin 28/2025); altersabhängige Impfstoffwahl Ixchiq®/Vimkunya®.',
-      en: 'Indication vaccination from age 12 for certain travellers (as of 1 Dec 2025; Epidemiological Bulletin 28/2025); age-dependent choice of Ixchiq®/Vimkunya®.',
+      de: 'Indikationsimpfung ab 12 Jahren für bestimmte Reisende (Epidemiologisches Bulletin 27/2026, RKI-FAQ Stand 15.07.2026); Lebendimpfstoff seit Juli 2026 nur noch bei hohem Infektionsrisiko.',
+      en: 'Indication vaccination from age 12 for certain travellers (Epidemiological Bulletin 27/2026, RKI FAQ as of 15 July 2026); since July 2026 the live vaccine is restricted to persons at high risk of infection.',
     },
   },
   emaIxchiq: {
@@ -316,8 +342,8 @@ export const sources = {
     url: 'https://www.ema.europa.eu/en/medicines/human/EPAR/ixchiq',
     retrieved: new Date('2026-06-12'),
     note: {
-      de: 'EU-Zulassung 28.06.2024; 2025 verschärfte Warnhinweise (insbesondere ältere Personen mit Vorerkrankungen).',
-      en: 'EU authorisation 28 June 2024; strengthened warnings in 2025 (especially older persons with comorbidities).',
+      de: 'EU-Zulassung 28.06.2024; 2025 verschärfte Warnhinweise; seit 06/2026 Indikation auf Personen mit hohem Infektionsrisiko eingeschränkt (PEI-Rote-Hand-Brief 14.07.2026).',
+      en: 'EU authorisation 28 June 2024; strengthened warnings in 2025; since 06/2026 indication restricted to persons at high risk of infection (PEI communication of 14 July 2026).',
     },
   },
   emaVimkunya: {

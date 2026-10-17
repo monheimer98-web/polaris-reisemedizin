@@ -15,7 +15,7 @@ export const malariaService: ClinicalPage = {
     },
     eyebrow: { de: 'Leistung', en: 'Service' },
     lead: {
-      de: 'Malaria ist die wichtigste durch Mücken übertragene Reisekrankheit – und gut vermeidbar. Wir bewerten Ihr Risiko für die konkrete Reise und stimmen Mückenschutz und, wenn sinnvoll, eine medikamentöse Vorbeugung individuell ab.',
+      de: 'Malaria ist die wichtigste durch Mücken übertragene Reisekrankheit – und weitgehend vermeidbar. Wir bewerten Ihr Risiko für die konkrete Reise und stimmen Mückenschutz und, wenn sinnvoll, eine medikamentöse Vorbeugung individuell ab.',
       en: 'Malaria is the most important mosquito-borne travel disease – and largely preventable. We assess your risk for the specific trip and tailor mosquito protection and, where sensible, preventive medication individually.',
     },
   },
@@ -87,11 +87,11 @@ export const malariaService: ClinicalPage = {
       heading: { de: 'Medikamentöse Vorbeugung & Notfallmedikation', en: 'Preventive medication & standby treatment' },
       body: {
         de: [
-          'Für Reisen in Gebiete mit höherem Risiko kann eine medikamentöse Vorbeugung (Chemoprophylaxe) sinnvoll sein: Dabei werden vor, während und nach der Reise Tabletten eingenommen. Für Regionen mit geringerem Risiko kommt alternativ ein Notfallmedikament zur Selbstbehandlung („Standby") infrage, das nur bei Fieber und nicht erreichbarer ärztlicher Hilfe angewendet wird.',
+          'Für Reisen in Gebiete mit höherem Risiko kann eine medikamentöse Vorbeugung (Chemoprophylaxe) sinnvoll sein: Dabei werden vor, während und nach der Reise Tabletten eingenommen. Für die meisten Gebiete mit geringem Risiko genügt ein konsequenter Mückenschutz. Ein Notfallmedikament zur Selbstbehandlung („Standby") kommt nur in seltenen Fällen in Betracht – etwa bei Aufenthalten mehr als 48 Stunden von ärztlicher Versorgung entfernt.',
           'Welche Strategie und welches Präparat passen, hängt vom Zielgebiet, der Reisedauer, Ihren Vorerkrankungen und Wechselwirkungen mit anderen Medikamenten ab. Diese Auswahl und die Verordnung treffen wir individuell im Beratungsgespräch – eine pauschale Empfehlung gibt es bewusst nicht.',
         ],
         en: [
-          'For trips to higher-risk areas, preventive medication (chemoprophylaxis) may be sensible: tablets are taken before, during and after the trip. For lower-risk regions, a standby emergency medication for self-treatment is an alternative, used only in the event of fever when medical help is not reachable.',
+          'For trips to higher-risk areas, preventive medication (chemoprophylaxis) may be sensible: tablets are taken before, during and after the trip. For most low-risk areas, consistent mosquito protection is sufficient. A standby emergency medication for self-treatment is only an option in rare cases – such as stays more than 48 hours away from medical care.',
           'Which strategy and which medication are suitable depends on the destination, the length of the trip, your pre-existing conditions and interactions with other medications. We make this selection and the prescription individually during the consultation – deliberately, there is no blanket recommendation.',
         ],
       },

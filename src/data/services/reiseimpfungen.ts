@@ -88,10 +88,12 @@ export const reiseimpfungenService: ClinicalPage = {
       body: {
         de: [
           'Einzelne Länder verlangen bei der Einreise einen Impfnachweis. Am bekanntesten ist die Gelbfieberimpfung, die im Internationalen Impfausweis (ICVP) bescheinigt wird und nur in einer staatlich autorisierten Gelbfieberimpfstelle erfolgen darf. Für bestimmte Reisen – etwa die Pilgerfahrt nach Saudi-Arabien – kann eine Meningokokken-Impfung vorgeschrieben sein.',
+          'Polio: Wegen der weltweiten Polio-Lage gelten WHO-Sonderregeln. Bei längeren Aufenthalten (über vier Wochen) in betroffenen Ländern – etwa Pakistan oder Afghanistan – kann bei der Ausreise der Nachweis einer Polio-Impfung verlangt werden, die zwischen vier Wochen und zwölf Monaten zurückliegt. Für Reisen in Polio-Risikogebiete prüfen wir Ihren Impfschutz und frischen bei Bedarf auf.',
           'Einreisebestimmungen ändern sich. Maßgeblich sind die offiziellen Vorgaben des Ziellandes; wir prüfen mit Ihnen die aktuelle Lage und verweisen auf die Hinweise des Auswärtigen Amts und der WHO.',
         ],
         en: [
           'Some countries require proof of vaccination on entry. The best known is the yellow fever vaccination, which is certified in the International Certificate of Vaccination (ICVP) and may only be administered at a state-authorised yellow fever vaccination centre. For certain trips – such as the pilgrimage to Saudi Arabia – a meningococcal vaccination may be required.',
+          'Polio: because of the global polio situation, special WHO rules apply. For longer stays (over four weeks) in affected countries – such as Pakistan or Afghanistan – proof of a polio vaccination given between four weeks and twelve months earlier may be required on departure. For travel to polio risk areas we check your protection and give a booster if needed.',
           'Entry requirements change. The official requirements of the destination country are decisive; we check the current situation with you and refer to the information from the Federal Foreign Office and the WHO.',
         ],
       },
@@ -109,11 +111,11 @@ export const reiseimpfungenService: ClinicalPage = {
       heading: { de: 'Lebend- und Totimpfstoffe', en: 'Live and inactivated vaccines' },
       body: {
         de: [
-          'Man unterscheidet Totimpfstoffe (mit abgetöteten Erregern oder Erregerbestandteilen) und Lebendimpfstoffe (mit abgeschwächten, vermehrungsfähigen Erregern). Diese Unterscheidung ist wichtig: Lebendimpfstoffe – etwa gegen Gelbfieber oder Masern – sind bei stark geschwächtem Immunsystem oder in der Schwangerschaft in der Regel nicht geeignet und müssen mitunter zeitlich aufeinander abgestimmt werden.',
+          'Man unterscheidet Totimpfstoffe (mit abgetöteten Erregern oder Erregerbestandteilen) und Lebendimpfstoffe (mit abgeschwächten, vermehrungsfähigen Erregern). Diese Unterscheidung ist wichtig: Lebendimpfstoffe – etwa gegen Gelbfieber oder Masern – sind bei stark geschwächtem Immunsystem oder in der Schwangerschaft in der Regel nicht geeignet. Mehrere Lebendimpfstoffe werden entweder am selben Tag oder im Abstand von mindestens vier Wochen gegeben.',
           'Gerade deshalb steht die individuelle Beratung am Anfang: Wir berücksichtigen Ihren Gesundheitszustand und planen die Reihenfolge der Impfungen sinnvoll.',
         ],
         en: [
-          'A distinction is made between inactivated vaccines (containing killed pathogens or pathogen components) and live vaccines (containing weakened, replication-competent pathogens). This distinction matters: live vaccines – for example against yellow fever or measles – are generally not suitable for a severely weakened immune system or during pregnancy and sometimes have to be coordinated in timing.',
+          'A distinction is made between inactivated vaccines (containing killed pathogens or pathogen components) and live vaccines (containing weakened, replication-competent pathogens). This distinction matters: live vaccines – for example against yellow fever or measles – are generally not suitable for a severely weakened immune system or during pregnancy. Several live vaccines are given either on the same day or at least four weeks apart.',
           'This is precisely why the individual consultation comes first: we take your state of health into account and plan a sensible sequence of vaccinations.',
         ],
       },

@@ -4,7 +4,8 @@
  * OpenGraph/Twitter sowie JSON-LD (MedicalClinic) aus der Praxis-Konfiguration.
  */
 import { site, SITE_URL, DEFAULT_LOCALE, type Locale } from '../config/site';
-import { getAlternateLanguages, withBase, HREFLANG } from '../i18n/utils';
+import { getAlternateLanguages, getLogicalPath, withBase, HREFLANG } from '../i18n/utils';
+import { seoTitles } from '../data/seoTitles';
 
 interface Props {
   title: string;
@@ -34,15 +35,17 @@ const homeUrl = new URL(import.meta.env.BASE_URL, origin).href;
 // solange die echte Domain noch nicht live ist).
 const robotsNoindex = noindex || import.meta.env.PUBLIC_NOINDEX === 'true';
 
-// Trailing-Slash normalisieren (außer Root), damit Canonical eindeutig bleibt.
+// Canonical immer MIT abschließendem Slash (so liefert GitHub Pages die Seiten
+// aus; die Variante ohne Slash leitet per 301 weiter). Muss zur Sitemap passen.
 // `Astro.url.pathname` enthält bereits den Basis-Pfad.
-const normalizedPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const normalizedPath = `${Astro.url.pathname.replace(/\/+$/, '')}/`;
 const canonicalHref = new URL(normalizedPath, origin).href;
 const ogImage = new URL(withBase(image), origin).href;
 const ogImageAlt = `${site.brand.name} — ${site.brand.tagline[lang]}`;
 
 const alternates = getAlternateLanguages(Astro.url.pathname);
-const fullTitle = `${title} · ${site.brand.name}`;
+// Für Schlüsselseiten gibt es einen eigenen Suchmaschinen-Titel mit Ortsbezug.
+const fullTitle = seoTitles[getLogicalPath(Astro.url.pathname)]?.[lang] ?? `${title} · ${site.brand.name}`;
 
 // Platzhalterwerte (z. B. „[PLATZHALTER: …]") nicht ins JSON-LD übernehmen.
 const real = (value: string): string | undefined => (value.startsWith('[') ? undefined : value);
@@ -59,14 +62,14 @@ const clinicSchema = {
   '@context': 'https://schema.org',
   '@type': 'MedicalClinic',
   '@id': `${homeUrl}#practice`,
-  name: site.brand.name,
+  name: `${site.brand.name} – Privatpraxis für Reise- und Impfmedizin`,
+  alternateName: site.brand.name,
   description,
   url: homeUrl,
   logo: new URL(withBase('/favicon.svg'), origin).href,
   image: ogImage,
   inLanguage: HREFLANG[lang],
   availableLanguage: ['de', 'en'],
-  medicalSpecialty: 'PublicHealth',
   // Einzugsgebiet von lokal nach national gestaffelt (Ort → Bundesland → Land),
   // damit Suchmaschinen den regionalen Bezug (Langenfeld/Rheinland) erkennen.
   areaServed: [
@@ -84,7 +87,7 @@ const clinicSchema = {
   },
   ...(geo ? { geo } : {}),
   hasMap: site.map.externalUrl,
-  telephone: real(site.contact.phone),
+  telephone: site.contact.phoneHref.replace(/^tel:/, ''),
   email: real(site.contact.email),
   paymentAccepted: lang === 'de' ? 'EC-/girocard, Kreditkarte' : 'Debit card (girocard), credit card',
   ...(site.openingHoursSpec.length

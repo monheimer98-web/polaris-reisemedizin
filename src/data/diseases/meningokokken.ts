@@ -106,14 +106,14 @@ export const meningokokkenDisease: ClinicalPage = {
       heading: { de: 'Schutzimpfung', en: 'Vaccination' },
       body: {
         de: [
-          'Zum Schutz vor Meningokokken stehen gut verträgliche Totimpfstoffe zur Verfügung, die keine vermehrungsfähigen Bakterien enthalten. Sie richten sich gegen unterschiedliche Serogruppen: ein Konjugatimpfstoff gegen die Gruppen A, C, W und Y (MenACWY) sowie eigene Impfstoffe gegen die Gruppe B (MenB).',
+          'Zum Schutz vor Meningokokken stehen gut verträgliche Totimpfstoffe zur Verfügung, die keine vermehrungsfähigen Bakterien enthalten. Sie richten sich gegen unterschiedliche Serogruppen: Konjugatimpfstoffe gegen die Gruppen A, C, W und Y (MenACWY) sowie eigene Impfstoffe gegen die Gruppe B (MenB).',
           'Welche Impfung sinnvoll ist, hängt vom Reiseziel, vom Reiseanlass und vom Alter ab. Für Reisen in den Meningitisgürtel und für Pilgerreisen nach Saudi-Arabien ist die ACWY-Impfung maßgeblich; die Impfung gegen die Gruppe B kann je nach Situation ergänzend sinnvoll sein.',
-          'Unabhängig von Reisen empfiehlt die Ständige Impfkommission (STIKO) die Meningokokken-B-Impfung als Standardimpfung im Säuglingsalter sowie – seit 2025 – eine MenACWY-Impfung für Jugendliche. Bringen Sie Ihren Impfpass mit; wir prüfen den vorhandenen Schutz und besprechen, welche Impfung für Ihre Reise sinnvoll ist.',
+          'Unabhängig von Reisen empfiehlt die Ständige Impfkommission (STIKO) die Meningokokken-B-Impfung als Standardimpfung im Säuglingsalter sowie eine MenACWY-Impfung im Alter von 12 bis 14 Jahren (Nachholen bis unter 25 Jahre). Bringen Sie Ihren Impfpass mit; wir prüfen den vorhandenen Schutz und besprechen, welche Impfung für Ihre Reise sinnvoll ist.',
         ],
         en: [
-          'Well-tolerated inactivated vaccines that contain no viable bacteria are available to protect against meningococci. They are directed against different serogroups: a conjugate vaccine against groups A, C, W and Y (MenACWY) and separate vaccines against group B (MenB).',
+          'Well-tolerated inactivated vaccines that contain no viable bacteria are available to protect against meningococci. They are directed against different serogroups: conjugate vaccines against groups A, C, W and Y (MenACWY) and separate vaccines against group B (MenB).',
           'Which vaccination is sensible depends on the destination, the purpose of the trip and age. For travel to the meningitis belt and for pilgrimages to Saudi Arabia the ACWY vaccination is decisive; vaccination against group B can be a useful addition depending on the situation.',
-          'Independently of travel, the German Standing Committee on Vaccination (STIKO) recommends meningococcal B vaccination as a standard immunisation in infancy and – since 2025 – a MenACWY vaccination for adolescents. Please bring your vaccination record; we check the existing protection and discuss which vaccination is sensible for your trip.',
+          'Independently of travel, the German Standing Committee on Vaccination (STIKO) recommends meningococcal B vaccination as a standard immunisation in infancy and a MenACWY vaccination at the age of 12 to 14 (catch-up up to the age of 24). Please bring your vaccination record; we check the existing protection and discuss which vaccination is sensible for your trip.',
         ],
       },
       callout: {

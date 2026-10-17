@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+# Interne Team-Verknüpfungen nicht indexieren
+Disallow: /app/
+Disallow: /pc/
+Disallow: /app-url.json
 
 Sitemap: https://www.polaris-reisemedizin.de/sitemap-index.xml

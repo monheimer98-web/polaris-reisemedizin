@@ -106,14 +106,14 @@ export const typhusDisease: ClinicalPage = {
       heading: { de: 'Schutzimpfung', en: 'Vaccination' },
       body: {
         de: [
-          'Zum Schutz vor Typhus stehen zwei Impfstofftypen zur Verfügung: ein oraler Lebendimpfstoff, der als Kapseln an drei Tagen eingenommen wird (ab dem Alter von fünf Jahren), und ein gespritzter Totimpfstoff aus einem Bestandteil der Bakterienhülle (Vi-Polysaccharid) als Einzeldosis (ab dem Alter von zwei Jahren). Den Totimpfstoff gibt es auch in Kombination mit der Hepatitis-A-Impfung.',
+          'Zum Schutz vor Typhus stehen zwei Impfstofftypen zur Verfügung: ein oraler Lebendimpfstoff, der als Kapseln an Tag 1, 3 und 5 eingenommen wird (ab dem Alter von fünf Jahren; bei erneuter Reise empfiehlt die STIKO eine jährliche Auffrischung), und ein gespritzter Totimpfstoff aus einem Bestandteil der Bakterienhülle (Vi-Polysaccharid) als Einzeldosis (ab dem Alter von zwei Jahren; Wiederimpfung spätestens nach drei Jahren).',
           'Beide Impfstoffe bieten einen begrenzten Schutz von etwa der Hälfte bis zwei Dritteln der Geimpften; die Hygiene bleibt daher entscheidend. Beim oralen Lebendimpfstoff sind zudem zeitliche Abstände zu bestimmten Antibiotika und zur Malariaprophylaxe zu beachten, und er ist bei Immunschwäche oder in der Schwangerschaft nicht geeignet.',
-          'Die Ständige Impfkommission (STIKO) und die DTG empfehlen die Typhus-Impfung als Reiseimpfung für bestimmte Reisen in Regionen mit erhöhtem Vorkommen, insbesondere bei einfachen Reisebedingungen oder längeren Aufenthalten. Ob und in welcher Form die Impfung für Sie sinnvoll ist, klären wir individuell im Beratungsgespräch.',
+          'Die Ständige Impfkommission (STIKO) und die DTG empfehlen die Typhus-Impfung als Reiseimpfung für bestimmte Reisen in Regionen mit erhöhtem Vorkommen, insbesondere bei einfachen Reisebedingungen oder längeren Aufenthalten. Für Reisen nach Indien, Pakistan, Nepal, Bangladesch und Afghanistan empfehlen sie die Impfung unabhängig vom Reisestil. Ob und in welcher Form die Impfung für Sie sinnvoll ist, klären wir individuell im Beratungsgespräch.',
         ],
         en: [
-          'Two types of vaccine are available to protect against typhoid fever: an oral live vaccine taken as capsules on three days (from the age of five), and an injected inactivated vaccine made from a component of the bacterial capsule (Vi polysaccharide) given as a single dose (from the age of two). The inactivated vaccine is also available in combination with the hepatitis A vaccine.',
+          'Two types of vaccine are available to protect against typhoid fever: an oral live vaccine taken as capsules on days 1, 3 and 5 (from the age of five; for repeat travel STIKO recommends an annual booster), and an injected inactivated vaccine made from a component of the bacterial capsule (Vi polysaccharide) given as a single dose (from the age of two; revaccination after three years at the latest).',
           'Both vaccines offer limited protection in around half to two-thirds of those vaccinated; hygiene therefore remains decisive. The oral live vaccine also requires time intervals from certain antibiotics and from malaria prophylaxis and is not suitable in cases of immunodeficiency or during pregnancy.',
-          'The German Standing Committee on Vaccination (STIKO) and the DTG recommend typhoid vaccination as a travel vaccination for certain trips to regions with increased occurrence, particularly under simple travel conditions or on longer stays. Whether and in what form vaccination is sensible for you is something we clarify individually in the consultation.',
+          'The German Standing Committee on Vaccination (STIKO) and the DTG recommend typhoid vaccination as a travel vaccination for certain trips to regions with increased occurrence, particularly under simple travel conditions or on longer stays. For travel to India, Pakistan, Nepal, Bangladesh and Afghanistan they recommend vaccination regardless of travel style. Whether and in what form vaccination is sensible for you is something we clarify individually in the consultation.',
         ],
       },
       callout: {
@@ -126,7 +126,7 @@ export const typhusDisease: ClinicalPage = {
       },
     },
   ],
-  sourceIds: ['rkiTyphus', 'whoTyphus', 'peiTyphus', 'stikoImpfempfehlungen', 'auswaertigesAmt'],
+  sourceIds: ['rkiTyphus', 'whoTyphus', 'peiTyphus', 'stikoReise2026', 'stikoImpfempfehlungen', 'auswaertigesAmt'],
   lastReviewed: new Date('2026-06-12'),
   related: [
     {

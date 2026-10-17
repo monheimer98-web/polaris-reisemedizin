@@ -114,15 +114,15 @@ export const destinationsHub: DestinationsHubContent = {
     required: {
       title: { de: 'Vorgeschriebene Impfungen', en: 'Mandatory vaccinations' },
       text: {
-        de: 'Einzelne Länder verlangen für die Einreise einen Impfnachweis – am häufigsten gegen Gelbfieber, abhängig vom Reiseweg. Für bestimmte Reisen (etwa die Pilgerfahrt nach Saudi-Arabien) gilt eine Meningokokken-Nachweispflicht. Maßgeblich sind die Einreisebestimmungen des Auswärtigen Amts.',
-        en: 'Some countries require proof of vaccination for entry – most commonly against yellow fever, depending on the itinerary. For certain trips (such as the pilgrimage to Saudi Arabia) a meningococcal certificate is mandatory. The entry requirements of the Federal Foreign Office are decisive.',
+        de: 'Einzelne Länder verlangen für die Einreise einen Impfnachweis – am häufigsten gegen Gelbfieber, abhängig vom Reiseweg. Für bestimmte Reisen (etwa die Pilgerfahrt nach Saudi-Arabien) gilt eine Meningokokken-Nachweispflicht. Maßgeblich sind die Einreisevorschriften des Ziellandes (Übersicht u. a. beim Auswärtigen Amt).',
+        en: 'Some countries require proof of vaccination for entry – most commonly against yellow fever, depending on the itinerary. For certain trips (such as the pilgrimage to Saudi Arabia) a meningococcal certificate is mandatory. The destination country’s entry rules are decisive (overview, among others, from the German Federal Foreign Office).',
       },
     },
     recommended: {
       title: { de: 'Empfohlene Impfungen', en: 'Recommended vaccinations' },
       text: {
-        de: 'Die meisten Reiseimpfungen sind nicht vorgeschrieben, aber medizinisch sinnvoll – etwa Hepatitis A, Typhus, Tollwut oder die Malariavorsorge. Welche zu Ihrer Reise passen, richtet sich nach den vier Faktoren oben.',
-        en: 'Most travel vaccinations are not mandatory but medically advisable – for example hepatitis A, typhoid, rabies or malaria prevention. Which suit your trip depends on the four factors above.',
+        de: 'Die meisten Reiseimpfungen sind nicht vorgeschrieben, aber medizinisch sinnvoll – etwa Hepatitis A, Typhus oder Tollwut; hinzu kommt je nach Ziel die Malariavorsorge. Welche zu Ihrer Reise passen, richtet sich nach den vier Faktoren oben.',
+        en: 'Most travel vaccinations are not mandatory but medically advisable – for example hepatitis A, typhoid or rabies; depending on the destination, malaria prevention is added. Which suit your trip depends on the four factors above.',
       },
     },
   },

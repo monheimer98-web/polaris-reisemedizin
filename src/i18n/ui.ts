@@ -80,9 +80,9 @@ export const ui = {
 
     // Startseite — Hero
     'home.eyebrow': 'Privatpraxis für Reise- & Impfmedizin',
-    'home.heroTitle': 'Sicher reisen. Gut geschützt.',
+    'home.heroTitle': 'Gut vorbereitet reisen.',
     'home.heroLead':
-      'Ihre reisemedizinische Privatpraxis: persönliche Beratung, Reiseimpfungen und Vorsorge – ärztlich fundiert und auf dem aktuellen Stand der Wissenschaft.',
+      'Ihre reisemedizinische Privatpraxis in Langenfeld: persönliche Beratung, Reiseimpfungen und Vorsorge – ärztlich fundiert und auf dem aktuellen Stand der Wissenschaft.',
     'home.badgeYellowFever': 'Staatlich autorisierte Gelbfieberimpfstelle',
 
     // Startseite — Vertrauensleiste
@@ -98,11 +98,11 @@ export const ui = {
       'Unsere Empfehlungen orientieren sich an RKI/STIKO, WHO und Paul-Ehrlich-Institut – mit Angabe des Stands.',
     'trust.personalTitle': 'Persönlich & planbar',
     'trust.personalText':
-      'Feste Ansprechpersonen, klare Abläufe und Termine ohne anonyme Warteschleife.',
+      'Feste Ansprechpersonen, klare Abläufe und persönlich vergebene Termine.',
 
     // Startseite — Leistungs-Überblick
     'home.servicesEyebrow': 'Unsere Leistungen',
-    'home.servicesTitle': 'Umfassende Reisemedizin – mit voller Sorgfalt',
+    'home.servicesTitle': 'Reisemedizin aus einer Hand',
     'home.servicesLead':
       'Von der persönlichen Beratung über Reiseimpfungen bis zur Malaria- und Höhenvorsorge: Wir begleiten Ihre Reise mit fachlicher Tiefe und nehmen uns Zeit für eine sorgfältige Aufklärung.',
     'home.serviceConsultationTitle': 'Reisemedizinische Beratung',
@@ -113,8 +113,8 @@ export const ui = {
       'Von Hepatitis bis Tollwut: Überblick über Standard- und Reiseimpfungen – die passende Auswahl klären wir gemeinsam.',
     'home.serviceYfTitle': 'Gelbfieberimpfung',
     'home.serviceYfText':
-      'Einmalige Impfung mit lebenslangem Impfschutz gemäß WHO – für viele Länder Afrikas und Südamerikas Pflicht bei der Einreise.',
-    'home.serviceYfFact1': 'Impfstoff Stamaril® (ab dem Alter von 9 Monaten)',
+      'Lebendimpfung mit international lebenslang gültigem Impfnachweis (ICVP) – in einigen Ländern Voraussetzung für die Einreise.',
+    'home.serviceYfFact1': 'Lebendimpfstoff, zugelassen ab 9 Monaten',
     'home.serviceYfFact2': 'International gültiger Impfeintrag ab Tag 10',
     'home.serviceYfFact3': 'Nur in autorisierten Impfstellen möglich',
     'home.serviceFsmeTitle': 'FSME-Impfung',
@@ -128,7 +128,7 @@ export const ui = {
       'Risikobewertung, konsequenter Mückenschutz und – wenn sinnvoll – medikamentöse Vorbeugung für Ihre Reise.',
     'home.serviceAltitudeTitle': 'Höhenmedizin',
     'home.serviceAltitudeText':
-      'Sicher in die Höhe: Akklimatisation, Warnzeichen und Vorbeugung für Trekking, Bergreisen und Expeditionen.',
+      'Gut vorbereitet in die Höhe: Akklimatisation, Warnzeichen und Vorbeugung für Trekking, Bergreisen und Expeditionen.',
     'home.serviceConsultationFact1': 'Individuelle Risikobewertung für Ihr Reiseziel',
     'home.serviceConsultationFact2': 'Persönlicher schriftlicher Impf- und Reiseplan',
     'home.serviceConsultationFact3': 'Beratung in ärztlicher Verantwortung',
@@ -204,9 +204,9 @@ export const ui = {
     'overview.diseaseTyphusText':
       'Bakterielle Allgemeininfektion mit hohem Fieber, übertragen über verunreinigtes Wasser und Lebensmittel – vor allem in Südasien.',
     'overview.diseaseRabiesText':
-      'Durch Tierbisse übertragene Virusinfektion, die nach Ausbruch nahezu immer tödlich ist – durch Vorbeugung zuverlässig vermeidbar.',
+      'Durch Tierbisse übertragene Virusinfektion, die nach Ausbruch nahezu immer tödlich ist – durch rechtzeitige Vorbeugung und richtiges Handeln nach Tierkontakt in aller Regel verhinderbar.',
     'overview.diseaseJeText':
-      'Durch Stechmücken übertragene Virusinfektion mit seltener, aber schwerer Hirnentzündung – vor allem im ländlichen Asien.',
+      'Durch Stechmücken übertragene Virusinfektion mit seltener, aber schwerer Hirnentzündung – in weiten Teilen Asiens.',
     'overview.diseaseMeningoText':
       'Bakterien, die eine Hirnhautentzündung und Blutvergiftung auslösen können – impfpräventabel, mit Nachweispflicht für Pilgerreisen.',
     'overview.diseaseCholeraText':
@@ -295,9 +295,9 @@ export const ui = {
 
     // Home — hero
     'home.eyebrow': 'Private practice for travel & vaccination medicine',
-    'home.heroTitle': 'Travel safely. Well protected.',
+    'home.heroTitle': 'Travel well prepared.',
     'home.heroLead':
-      'Your travel-medicine private practice: personal advice, travel vaccinations and prevention – medically grounded and based on the current state of science.',
+      'Your travel-medicine private practice in Langenfeld: personal advice, travel vaccinations and prevention – medically grounded and based on the current state of science.',
     'home.badgeYellowFever': 'State-authorised yellow fever vaccination centre',
 
     // Home — trust bar
@@ -313,11 +313,11 @@ export const ui = {
       'Our recommendations follow RKI/STIKO, WHO and the Paul-Ehrlich-Institut – with the review date stated.',
     'trust.personalTitle': 'Personal & plannable',
     'trust.personalText':
-      'Consistent contacts, clear processes and appointments without an anonymous queue.',
+      'Consistent contacts, clear processes and personally arranged appointments.',
 
     // Home — services overview
     'home.servicesEyebrow': 'Our services',
-    'home.servicesTitle': 'Comprehensive travel medicine – with full diligence',
+    'home.servicesTitle': 'Travel medicine from a single source',
     'home.servicesLead':
       'From personal advice through travel vaccinations to malaria and altitude prevention: we accompany your trip with clinical depth and take the time that careful counselling requires.',
     'home.serviceConsultationTitle': 'Travel medicine consultation',
@@ -328,8 +328,8 @@ export const ui = {
       'From hepatitis to rabies: an overview of standard and travel vaccinations – we determine the right selection together.',
     'home.serviceYfTitle': 'Yellow fever vaccination',
     'home.serviceYfText':
-      'A single vaccination with lifelong protection according to the WHO – mandatory for entry into many countries in Africa and South America.',
-    'home.serviceYfFact1': 'Stamaril® vaccine (from the age of 9 months)',
+      'Live vaccination with an international certificate (ICVP) valid for life – a condition of entry in some countries.',
+    'home.serviceYfFact1': 'Live vaccine, approved from 9 months of age',
     'home.serviceYfFact2': 'Internationally valid certificate from day 10',
     'home.serviceYfFact3': 'Only available at authorised vaccination centres',
     'home.serviceFsmeTitle': 'TBE vaccination',
@@ -343,7 +343,7 @@ export const ui = {
       'Risk assessment, consistent mosquito protection and – where sensible – preventive medication for your trip.',
     'home.serviceAltitudeTitle': 'Altitude medicine',
     'home.serviceAltitudeText':
-      'Safely to altitude: acclimatisation, warning signs and prevention for trekking, mountain travel and expeditions.',
+      'Well prepared for altitude: acclimatisation, warning signs and prevention for trekking, mountain travel and expeditions.',
     'home.serviceConsultationFact1': 'Individual risk assessment for your destination',
     'home.serviceConsultationFact2': 'Personal written vaccination and travel plan',
     'home.serviceConsultationFact3': 'Advice under medical responsibility',
@@ -419,9 +419,9 @@ export const ui = {
     'overview.diseaseTyphusText':
       'A systemic bacterial infection with high fever, transmitted via contaminated water and food – particularly in South Asia.',
     'overview.diseaseRabiesText':
-      'A viral infection transmitted by animal bites that is almost always fatal once it breaks out – reliably avoidable through prevention.',
+      'A viral infection transmitted by animal bites that is almost always fatal once it breaks out – usually preventable through timely vaccination and the right steps after animal contact.',
     'overview.diseaseJeText':
-      'A mosquito-borne viral infection with rare but severe inflammation of the brain – mainly in rural Asia.',
+      'A mosquito-borne viral infection with rare but severe inflammation of the brain – across large parts of Asia.',
     'overview.diseaseMeningoText':
       'Bacteria that can cause meningitis and blood poisoning – vaccine-preventable, with a proof requirement for pilgrimages.',
     'overview.diseaseCholeraText':

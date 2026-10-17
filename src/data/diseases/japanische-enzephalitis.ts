@@ -43,11 +43,11 @@ export const japanischeEnzephalitisDisease: ClinicalPage = {
       body: {
         de: [
           'Übertragen wird das Virus durch den Stich infizierter Stechmücken der Gattung Culex. Diese Mücken sind vor allem in der Dämmerung und nachts aktiv und brüten häufig in Reisfeldern und stehenden Gewässern.',
-          'Das Risiko ist daher in ländlichen Gebieten mit Reisanbau und Schweinehaltung am höchsten und steigt während und nach der Regenzeit. In Städten und bei kurzen Aufenthalten in städtischer Umgebung ist das Risiko gering.',
+          'Das Risiko ist daher in der Nähe von Reisfeldern und Schweinehaltung am höchsten – das kann auch Stadtränder betreffen – und steigt während und nach der Regenzeit. Bei kurzen Aufenthalten ausschließlich in Stadtzentren ist das Risiko gering.',
         ],
         en: [
           'The virus is transmitted by the bite of infected Culex mosquitoes. These mosquitoes are active mainly at dusk and at night and often breed in rice fields and standing water.',
-          'The risk is therefore highest in rural areas with rice cultivation and pig farming and rises during and after the rainy season. In cities and on short stays in urban surroundings the risk is low.',
+          'The risk is therefore highest near rice fields and pig farming – which can include urban outskirts – and rises during and after the rainy season. On short stays confined to city centres the risk is low.',
         ],
       },
     },
@@ -106,27 +106,27 @@ export const japanischeEnzephalitisDisease: ClinicalPage = {
       heading: { de: 'Schutzimpfung', en: 'Vaccination' },
       body: {
         de: [
-          'Zum Schutz vor der Japanischen Enzephalitis steht ein gut verträglicher Totimpfstoff mit inaktivierten Viren zur Verfügung, der ab dem Säuglingsalter angewendet werden kann. Die Grundimmunisierung besteht aus zwei Dosen im Abstand von 28 Tagen; für Erwachsene ist unter bestimmten Voraussetzungen ein beschleunigtes Schema möglich.',
+          'Zum Schutz vor der Japanischen Enzephalitis steht ein gut verträglicher Totimpfstoff mit inaktivierten Viren zur Verfügung, der ab dem Säuglingsalter angewendet werden kann. Die Grundimmunisierung besteht aus zwei Dosen im Abstand von 28 Tagen; für Erwachsene von 18 bis 65 Jahren ohne Immunschwäche ist ein Schnellschema (Tag 0 und 7) möglich.',
           'Bei fortbestehender Exposition kann nach ein bis zwei Jahren eine Auffrischung sinnvoll sein. Die Impfung sollte rechtzeitig vor der Abreise abgeschlossen sein, damit der Schutz zu Reisebeginn vollständig aufgebaut ist.',
-          'Die Ständige Impfkommission (STIKO) und die DTG empfehlen die Impfung als Reiseimpfung insbesondere bei Aufenthalten in ländlichen Risikogebieten, längeren Reisen oder Reisen während der Übertragungssaison. Ob die Impfung für Sie sinnvoll ist, klären wir individuell anhand von Reiseziel, Reisezeit und Reisestil im Beratungsgespräch.',
+          'Die Ständige Impfkommission (STIKO) und die DTG empfehlen die Impfung bei Aufenthalten in Endemiegebieten während der Übertragungszeit – insbesondere bei Reisen in Ausbruchsgebiete, Aufenthalten über vier Wochen, wiederholten Kurzaufenthalten oder absehbarem Aufenthalt in der Nähe von Reisfeldern und Schweinehaltung; das ist nicht auf ländliche Gebiete beschränkt. Ob die Impfung für Sie sinnvoll ist, klären wir individuell anhand von Reiseziel, Reisezeit und Reisestil im Beratungsgespräch.',
         ],
         en: [
-          'A well-tolerated inactivated (killed-virus) vaccine that can be used from infancy is available to protect against Japanese encephalitis. Primary immunisation consists of two doses 28 days apart; for adults an accelerated schedule is possible under certain conditions.',
+          'A well-tolerated inactivated (killed-virus) vaccine that can be used from infancy is available to protect against Japanese encephalitis. Primary immunisation consists of two doses 28 days apart; for adults aged 18 to 65 without immunodeficiency a rapid schedule (days 0 and 7) is possible.',
           'Where exposure continues, a booster may be sensible after one to two years. Vaccination should be completed in good time before departure so that protection is fully established by the start of the trip.',
-          'The German Standing Committee on Vaccination (STIKO) and the DTG recommend vaccination as a travel vaccination, particularly for stays in rural risk areas, longer trips or travel during the transmission season. Whether vaccination is sensible for you is something we clarify individually on the basis of destination, travel time and travel style in the consultation.',
+          'The German Standing Committee on Vaccination (STIKO) and the DTG recommend vaccination for stays in endemic areas during the transmission period – particularly for travel to outbreak areas, stays of more than four weeks, repeated short stays or foreseeable time near rice fields and pig farming; this is not limited to rural areas. Whether vaccination is sensible for you is something we clarify individually on the basis of destination, travel time and travel style in the consultation.',
         ],
       },
       callout: {
         variant: 'info',
         title: { de: 'Auf die Reise zugeschnitten', en: 'Tailored to your trip' },
         text: {
-          de: 'Ob die Impfung sinnvoll ist, hängt stark von Reiseziel, Jahreszeit, Dauer und Art der Reise ab. Bei kurzen Städtereisen ist sie meist nicht erforderlich, bei längeren Aufenthalten im ländlichen Raum dagegen oft empfehlenswert. Diese Abwägung treffen wir gemeinsam.',
-          en: 'Whether vaccination is sensible depends strongly on destination, season, duration and type of trip. For short city trips it is usually not necessary, whereas for longer stays in rural areas it is often advisable. We make this assessment together.',
+          de: 'Ob die Impfung sinnvoll ist, hängt stark von Reiseziel, Jahreszeit, Dauer und Art der Reise ab. Bei kurzen Städtereisen ist sie meist nicht erforderlich, bei längeren oder wiederholten Aufenthalten in Endemiegebieten dagegen oft empfehlenswert. Diese Abwägung treffen wir gemeinsam.',
+          en: 'Whether vaccination is sensible depends strongly on destination, season, duration and type of trip. For short city trips it is usually not necessary, whereas for longer or repeated stays in endemic areas it is often advisable. We make this assessment together.',
         },
       },
     },
   ],
-  sourceIds: ['rkiJapanischeEnzephalitis', 'whoJapaneseEncephalitis', 'peiJapanischeEnzephalitis', 'stikoImpfempfehlungen', 'auswaertigesAmt'],
+  sourceIds: ['rkiJapanischeEnzephalitis', 'whoJapaneseEncephalitis', 'peiJapanischeEnzephalitis', 'stikoReise2026', 'stikoImpfempfehlungen', 'auswaertigesAmt'],
   lastReviewed: new Date('2026-06-12'),
   related: [
     {

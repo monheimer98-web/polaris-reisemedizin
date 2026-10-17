@@ -113,8 +113,8 @@ export const processPage: ClinicalPage = {
         variant: 'info',
         title: { de: 'Warum getrennte Termine?', en: 'Why separate appointments?' },
         text: {
-          de: 'Den Impfstoff holen Sie für die meisten Reiseimpfungen per Privatrezept gekühlt in der Apotheke – das bedeutet meist einen zweiten Termin, dafür erhalten Sie frische, individuell ausgewählte Impfstoffe. FSME und Gelbfieber halten wir vor Ort vorrätig – hier genügt ein Termin.',
-          en: 'For most travel vaccinations you collect the refrigerated vaccine at the pharmacy via private prescription – this usually means a second appointment, but you receive fresh, individually selected vaccines. TBE and yellow fever we keep in stock on site – here a single appointment is enough.',
+          de: 'Den Impfstoff holen Sie für die meisten Reiseimpfungen per Privatrezept gekühlt in der Apotheke – das bedeutet meist einen zweiten Termin. Bitte transportieren Sie den Impfstoff in einer Kühltasche direkt zu uns. FSME und Gelbfieber halten wir vor Ort vorrätig – hier genügt ein Termin.',
+          en: 'For most travel vaccinations you collect the refrigerated vaccine at the pharmacy via private prescription – this usually means a second appointment. Please bring the vaccine straight to us in a cool bag. TBE and yellow fever we keep in stock on site – here a single appointment is enough.',
         },
       },
     },

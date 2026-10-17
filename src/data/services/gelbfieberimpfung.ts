@@ -24,12 +24,12 @@ export const gelbfieberimpfungService: ClinicalPage = {
       heading: { de: 'Impfstoff & Schutzdauer', en: 'Vaccine & duration of protection' },
       body: {
         de: [
-          'Verwendet wird der Lebendimpfstoff Stamaril® auf Basis des abgeschwächten Virusstamms 17D. Er wird einmalig als Injektion verabreicht und ist laut Fachinformation ab einem Alter von neun Monaten zugelassen.',
-          'Nach heutigem Stand der Weltgesundheitsorganisation (WHO) bietet eine einmalige Impfung einen lang anhaltenden, in der Regel lebenslangen Schutz. Eine routinemäßige Auffrischung alle zehn Jahre ist seit der Anpassung der Internationalen Gesundheitsvorschriften (IHR) im Jahr 2016 grundsätzlich nicht mehr erforderlich. In bestimmten Situationen kann dennoch eine erneute Impfung sinnvoll sein – das klären wir individuell.',
+          'Verwendet wird ein Lebendimpfstoff auf Basis des abgeschwächten Virusstamms 17D. Er wird als Injektion verabreicht und ist laut Fachinformation ab einem Alter von neun Monaten zugelassen.',
+          'Der internationale Impfnachweis (ICVP) gilt nach den Internationalen Gesundheitsvorschriften seit 2016 lebenslang – an der Grenze genügt ein Eintrag, der mindestens 10 Tage alt ist. Medizinisch empfiehlt die STIKO vor einer erneuten oder bei fortgesetzter Reise in ein Gelbfiebergebiet einmalig eine Auffrischimpfung, wenn die Erstimpfung 10 Jahre oder länger zurückliegt; nach zwei Impfdosen sind keine weiteren nötig. Besondere Regeln gelten u. a. bei Erstimpfung vor dem 2. Geburtstag, in der Schwangerschaft oder bei Immunschwäche. Wir prüfen das anhand Ihres Impfausweises.',
         ],
         en: [
-          'We use the live vaccine Stamaril®, based on the attenuated virus strain 17D. It is given once as an injection and, according to the product information, is approved from the age of nine months.',
-          'According to the current position of the World Health Organization (WHO), a single vaccination provides long-lasting and generally lifelong protection. Since the amendment of the International Health Regulations (IHR) in 2016, a routine booster every ten years is generally no longer required. In certain situations a further dose may nevertheless be advisable – we clarify this individually.',
+          'We use a live vaccine based on the attenuated virus strain 17D. It is given as an injection and, according to the product information, is approved from the age of nine months.',
+          'Under the International Health Regulations, the international certificate (ICVP) has been valid for life since 2016 – at the border, an entry at least 10 days old is sufficient. Medically, the German Standing Committee on Vaccination (STIKO) recommends a single booster before renewed or continued travel to a yellow fever area if the first vaccination was 10 or more years ago; after two doses no further doses are needed. Special rules apply, among others, if the first vaccination was given before the age of two, during pregnancy or with a weakened immune system. We check this using your vaccination record.',
         ],
       },
       callout: {
@@ -72,34 +72,40 @@ export const gelbfieberimpfungService: ClinicalPage = {
       heading: { de: 'Gegenanzeigen & Vorsichtsmaßnahmen', en: 'Contraindications & precautions' },
       body: {
         de: [
-          'Als Lebendimpfstoff ist Stamaril® nicht für alle Personen geeignet. Gegenanzeigen oder besondere Vorsicht betreffen unter anderem:',
+          'Als Lebendimpfstoff ist der Gelbfieberimpfstoff nicht für alle Personen geeignet. Gegenanzeigen oder besondere Vorsicht betreffen unter anderem:',
         ],
         en: [
-          'As a live vaccine, Stamaril® is not suitable for everyone. Contraindications or particular caution apply, among others, to:',
+          'As a live vaccine, the yellow fever vaccine is not suitable for everyone. Contraindications or particular caution apply, among others, to:',
         ],
       },
       list: {
         de: [
-          'eine schwere Schwäche des Immunsystems (durch Erkrankung oder Medikamente) sowie eine symptomatische HIV-Infektion,',
-          'eine echte Allergie gegen Hühnereiweiß oder andere Bestandteile des Impfstoffs,',
-          'Säuglinge unter neun Monaten (unter sechs Monaten ist die Impfung kontraindiziert),',
-          'Schwangerschaft und Stillzeit – hier erfolgt die Impfung nur nach sorgfältiger Nutzen-Risiko-Abwägung,',
-          'ein höheres Lebensalter (ab 60 Jahren), da sehr selten auftretende schwere Impfreaktionen in dieser Gruppe etwas häufiger beobachtet werden.',
+          'eine angeborene oder erworbene Immunschwäche bzw. eine immunsuppressive Therapie (einschließlich hochdosierter Kortison-Behandlung) sowie eine symptomatische HIV-Infektion oder eine CD4-Zellzahl unter 200/µl,',
+          'Erkrankungen des Thymus (z. B. Thymom, Myasthenia gravis) oder eine Entfernung des Thymus,',
+          'eine schwere (anaphylaktische) Allergie gegen Hühnereiweiß oder andere Bestandteile des Impfstoffs,',
+          'Säuglinge unter sechs Monaten (kontraindiziert); zwischen sechs und neun Monaten nur in Ausnahmefällen,',
+          'die Stillzeit, solange das Kind jünger als sechs Monate ist (kontraindiziert); danach nur in Ausnahmefällen,',
+          'die Schwangerschaft – hier nur bei unvermeidbarem Risiko nach sorgfältiger Nutzen-Risiko-Abwägung,',
+          'schwere Impfkomplikationen nach einer Gelbfieberimpfung bei Verwandten ersten Grades,',
+          'ein Alter ab 60 Jahren – laut Fachinformation nur bei deutlichem, unvermeidbarem Infektionsrisiko, da sehr seltene schwere Impfreaktionen in dieser Gruppe häufiger auftreten.',
         ],
         en: [
-          'a severe weakness of the immune system (due to illness or medication) and symptomatic HIV infection,',
-          'a genuine allergy to egg protein or other components of the vaccine,',
-          'infants under nine months of age (under six months the vaccination is contraindicated),',
-          'pregnancy and breastfeeding – here the vaccination is given only after careful weighing of benefits and risks,',
-          'older age (from 60 years), as very rare severe vaccine reactions are observed somewhat more frequently in this group.',
+          'congenital or acquired immunodeficiency or immunosuppressive therapy (including high-dose corticosteroids), symptomatic HIV infection or a CD4 count below 200/µl,',
+          'disorders of the thymus (e.g. thymoma, myasthenia gravis) or removal of the thymus,',
+          'a severe (anaphylactic) allergy to egg protein or other components of the vaccine,',
+          'infants under six months (contraindicated); between six and nine months only in exceptional cases,',
+          'breastfeeding while the child is younger than six months (contraindicated); thereafter only in exceptional cases,',
+          'pregnancy – only where the risk is unavoidable and after careful weighing of benefits and risks,',
+          'severe complications after yellow fever vaccination in first-degree relatives,',
+          'age 60 and over – according to the product information only where there is a significant, unavoidable risk of infection, as very rare severe vaccine reactions occur more often in this group.',
         ],
       },
       callout: {
         variant: 'caution',
         title: { de: 'Individuelle Abklärung notwendig', en: 'Individual assessment required' },
         text: {
-          de: 'Diese Aufzählung ersetzt kein ärztliches Gespräch. Bitte informieren Sie uns vor der Impfung über Vorerkrankungen, Medikamente, Allergien und eine mögliche Schwangerschaft, damit wir Eignung und mögliche Risiken sorgfältig prüfen können.',
-          en: 'This list does not replace a medical consultation. Please inform us before the vaccination about pre-existing conditions, medications, allergies and a possible pregnancy, so that we can carefully assess suitability and potential risks.',
+          de: 'Diese Aufzählung ersetzt kein ärztliches Gespräch. Bitte informieren Sie uns vor der Impfung über Vorerkrankungen, Medikamente, Allergien und eine mögliche Schwangerschaft, damit wir Eignung und mögliche Risiken sorgfältig prüfen können. Ist eine Impfung nicht möglich, kann eine Befreiungsbescheinigung (Exemption Certificate) ausgestellt werden – die Einreiseländer müssen sie allerdings nicht anerkennen.',
+          en: 'This list does not replace a medical consultation. Please inform us before the vaccination about pre-existing conditions, medications, allergies and a possible pregnancy, so that we can carefully assess suitability and potential risks. If vaccination is not possible, an exemption certificate can be issued – however, destination countries are not obliged to accept it.',
         },
       },
     },
@@ -122,15 +128,15 @@ export const gelbfieberimpfungService: ClinicalPage = {
       heading: { de: 'Kosten', en: 'Costs' },
       body: {
         de: [
-          'Reiseimpfungen wie die Gelbfieberimpfung sind in der Regel eine private Leistung (Selbstzahlerleistung). Viele gesetzliche Krankenkassen erstatten die Kosten inzwischen ganz oder teilweise auf Antrag; die Erstattung richtet sich nach Ihrer Krankenkasse. Die konkreten Kosten nennen wir Ihnen transparent vor der Impfung.',
+          'Als Privatpraxis rechnen wir nach der Gebührenordnung für Ärzte (GOÄ) ab; Sie zahlen zunächst selbst. Manche Krankenkassen erstatten Reiseimpfungen freiwillig – Umfang und Bedingungen sind je Kasse sehr unterschiedlich, teils nur bei Impfung in einer Kassenpraxis. Bitte klären Sie die Erstattung vorab mit Ihrer Kasse. Die konkreten Kosten nennen wir Ihnen vor der Impfung.',
         ],
         en: [
-          'Travel vaccinations such as the yellow fever vaccination are usually a private service (self-pay). Many statutory health insurers now reimburse the costs in full or in part on request; reimbursement depends on your insurer. We will tell you the specific costs transparently before the vaccination.',
+          'As a private practice we bill under the German medical fee schedule (GOÄ); you pay first yourself. Some health insurers reimburse travel vaccinations voluntarily – scope and conditions vary widely, sometimes only for vaccinations given in a statutory-insurance practice. Please check reimbursement with your insurer in advance. We will tell you the specific costs before the vaccination.',
         ],
       },
     },
   ],
-  sourceIds: ['peiGelbfieber', 'whoPositionPaper', 'rkiGelbfieber', 'dtgReiseimpfungen', 'auswaertigesAmt'],
+  sourceIds: ['stikoReise2026', 'peiGelbfieber', 'whoPositionPaper', 'rkiGelbfieber', 'dtgReiseimpfungen', 'auswaertigesAmt'],
   lastReviewed: new Date('2026-05-15'),
   related: [
     {

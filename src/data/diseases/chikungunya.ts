@@ -106,14 +106,14 @@ export const chikungunyaDisease: ClinicalPage = {
       heading: { de: 'Schutzimpfung', en: 'Vaccination' },
       body: {
         de: [
-          'Seit 2024 bzw. 2025 sind in der EU zwei Impfstoffe gegen Chikungunya zugelassen, jeweils als Einzeldosis ab dem Alter von zwölf Jahren: Ixchiq® ist ein abgeschwächter Lebendimpfstoff, Vimkunya® ein Totimpfstoff auf Basis virusähnlicher Partikel (ohne vermehrungsfähiges Virus).',
+          'In der EU sind zwei Impfstoffe gegen Chikungunya zugelassen, jeweils als Einzeldosis ab dem Alter von zwölf Jahren: ein abgeschwächter Lebendimpfstoff und ein Totimpfstoff auf Basis virusähnlicher Partikel (ohne vermehrungsfähiges Virus).',
           'Die Ständige Impfkommission (STIKO) empfiehlt eine Chikungunya-Impfung nicht pauschal für alle Reisenden, sondern gezielt: für Reisen in ein Gebiet mit einem aktuellen Ausbruch sowie für längere Aufenthalte (mehr als vier Wochen) oder wiederholte Reisen in Endemiegebiete, wenn zusätzlich ein erhöhtes Risiko für einen schweren Verlauf besteht (etwa höheres Lebensalter oder bestimmte chronische Erkrankungen).',
-          'Bei der Wahl des Impfstoffs richtet sich die STIKO nach dem Alter: Der Lebendimpfstoff Ixchiq® wird für Personen von 12 bis einschließlich 59 Jahren vorgesehen; ab 60 Jahren sowie bei geschwächtem Immunsystem, in Schwangerschaft und Stillzeit ist der Totimpfstoff Vimkunya® das Mittel der Wahl. Der Lebendimpfstoff darf bei geschwächtem Immunsystem nicht verabreicht werden. Ob und mit welchem Impfstoff eine Impfung für Sie sinnvoll und möglich ist, klären wir individuell im reisemedizinischen Beratungsgespräch.',
+          'Der Lebendimpfstoff darf seit Juli 2026 nur noch bei hohem Infektionsrisiko eingesetzt werden; die STIKO sieht ihn nur für 12- bis 59-Jährige vor. Bei Immunschwäche, in Schwangerschaft und Stillzeit ist er kontraindiziert. Der Totimpfstoff ist ab 12 Jahren ohne obere Altersgrenze zugelassen, wird ab 60 Jahren bevorzugt und kann bei Immunschwäche, in Schwangerschaft und Stillzeit nach individueller Nutzen-Risiko-Abwägung eingesetzt werden. Ob und mit welchem Impfstoff eine Impfung für Sie sinnvoll und möglich ist, klären wir individuell im reisemedizinischen Beratungsgespräch.',
         ],
         en: [
-          'Since 2024 and 2025 respectively, two chikungunya vaccines have been authorised in the EU, each as a single dose from the age of twelve: Ixchiq® is a live-attenuated vaccine, while Vimkunya® is an inactivated vaccine based on virus-like particles (containing no replication-competent virus).',
+          'Two chikungunya vaccines are authorised in the EU, each as a single dose from the age of twelve: a live-attenuated vaccine and an inactivated vaccine based on virus-like particles (containing no replication-competent virus).',
           'The German Standing Committee on Vaccination (STIKO) does not recommend chikungunya vaccination for all travellers across the board, but in a targeted way: for travel to an area with a current outbreak, and for longer stays (more than four weeks) or repeated travel to endemic areas when there is an additional increased risk of a severe course (for example, older age or certain chronic conditions).',
-          'For the choice of vaccine, STIKO is guided by age: the live vaccine Ixchiq® is intended for people aged 12 up to and including 59 years; from the age of 60, as well as in the case of a weakened immune system and during pregnancy and breastfeeding, the inactivated vaccine Vimkunya® is the option of choice. The live vaccine must not be given to people with a weakened immune system. Whether and with which vaccine vaccination is sensible and possible for you is something we clarify individually in the travel-medicine consultation.',
+          'Since July 2026 the live vaccine may only be used for people at high risk of infection; STIKO intends it only for those aged 12 to 59. It is contraindicated in immunodeficiency, pregnancy and breastfeeding. The inactivated vaccine is authorised from age 12 without an upper age limit, is preferred from age 60 and can be used in immunodeficiency, pregnancy and breastfeeding after an individual benefit-risk assessment. Whether and with which vaccine vaccination is sensible and possible for you is something we clarify individually in the travel-medicine consultation.',
         ],
       },
       callout: {
@@ -126,7 +126,7 @@ export const chikungunyaDisease: ClinicalPage = {
       },
     },
   ],
-  sourceIds: ['rkiChikungunya', 'whoChikungunya', 'stikoChikungunya', 'emaIxchiq', 'emaVimkunya', 'auswaertigesAmt'],
+  sourceIds: ['rkiChikungunya', 'whoChikungunya', 'stikoChikungunya', 'stikoReise2026', 'peiIxchiqRhb', 'emaIxchiq', 'emaVimkunya', 'auswaertigesAmt'],
   lastReviewed: new Date('2026-06-12'),
   related: [
     {

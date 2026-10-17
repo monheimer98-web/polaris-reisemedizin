@@ -56,21 +56,21 @@ export const riskAreasPage: ClinicalPage = {
       heading: { de: 'Gelbfieber: betroffene Regionen', en: 'Yellow fever: affected regions' },
       body: {
         de: [
-          'Gelbfieber kommt in tropischen Regionen Afrikas südlich der Sahara sowie im tropischen Südamerika vor. In Asien, Europa, Nordamerika und im Pazifikraum tritt die Erkrankung nicht auf. Innerhalb der endemischen Zonen konzentriert sich das Risiko auf bestimmte Gebiete und kann je nach Reiseroute und Saison unterschiedlich ausfallen.',
+          'Gelbfieber kommt in tropischen Regionen Afrikas südlich der Sahara, im tropischen Südamerika sowie im Süden Mittelamerikas (Panama) vor. In Asien, Europa, Nordamerika und im Pazifikraum tritt die Erkrankung nicht auf. Innerhalb der endemischen Zonen konzentriert sich das Risiko auf bestimmte Gebiete und kann je nach Reiseroute und Saison unterschiedlich ausfallen.',
         ],
         en: [
-          'Yellow fever occurs in tropical regions of sub-Saharan Africa and in tropical South America. The disease does not occur in Asia, Europe, North America or the Pacific. Within the endemic zones the risk is concentrated in particular areas and can vary depending on the route and the season.',
+          'Yellow fever occurs in tropical regions of sub-Saharan Africa, in tropical South America and in southern Central America (Panama). The disease does not occur in Asia, Europe, North America or the Pacific. Within the endemic zones the risk is concentrated in particular areas and can vary depending on the route and the season.',
         ],
       },
       list: {
         de: [
           'Subsahara-Afrika (tropische Regionen)',
-          'Tropisches Südamerika (u. a. Amazonasbecken)',
+          'Tropisches Südamerika (u. a. Amazonasbecken) und Panama',
           'Kein Vorkommen in Asien, Europa, Nordamerika und im Pazifikraum',
         ],
         en: [
           'Sub-Saharan Africa (tropical regions)',
-          'Tropical South America (incl. the Amazon basin)',
+          'Tropical South America (incl. the Amazon basin) and Panama',
           'Not present in Asia, Europe, North America or the Pacific',
         ],
       },
@@ -83,11 +83,11 @@ export const riskAreasPage: ClinicalPage = {
       },
       body: {
         de: [
-          'Bei Gelbfieber sind zwei Dinge zu unterscheiden: die medizinische Empfehlung einer Impfung aufgrund des Infektionsrisikos und die rechtliche Impfpflicht zur Einreise. Zahlreiche Länder verlangen nach den Internationalen Gesundheitsvorschriften (IHR) einen gültigen Impfnachweis (ICVP) – häufig bei Einreise aus einem Gelbfieber-Endemiegebiet, teils auch bei kurzem Transit.',
+          'Bei Gelbfieber sind zwei Dinge zu unterscheiden: die medizinische Empfehlung einer Impfung aufgrund des Infektionsrisikos und die rechtliche Impfpflicht zur Einreise. Zahlreiche Länder verlangen nach den Internationalen Gesundheitsvorschriften (IHR) einen gültigen Impfnachweis (ICVP) – häufig bei Einreise aus einem Gelbfieber-Endemiegebiet oder nach einem Transit dort. Einige Länder verlangen ihn sogar von allen Einreisenden, auch bei Anreise aus Deutschland (z. B. Ghana, Côte d’Ivoire, Kamerun, DR Kongo, Uganda, Französisch-Guayana; Stand WHO-Liste).',
           'Welche Länder einen Nachweis verlangen, legt die WHO in einer periodisch aktualisierten Länderliste fest; länderspezifische Hinweise gibt zusätzlich das Auswärtige Amt. Der Impfnachweis ist ab dem 10. Tag nach der Impfung gültig und gilt – seit der IHR-Änderung 2016 – lebenslang.',
         ],
         en: [
-          'With yellow fever, two things must be distinguished: the medical recommendation to vaccinate because of the infection risk, and the legal requirement to be vaccinated in order to enter a country. Under the International Health Regulations (IHR), many countries require a valid certificate of vaccination (ICVP) – often when entering from a yellow fever endemic area, and sometimes even for a short transit.',
+          'With yellow fever, two things must be distinguished: the medical recommendation to vaccinate because of the infection risk, and the legal requirement to be vaccinated in order to enter a country. Under the International Health Regulations (IHR), many countries require a valid certificate of vaccination (ICVP) – often when entering from a yellow fever endemic area or after a transit there. Some countries even require it from all arriving travellers, including those coming from Germany (e.g. Ghana, Côte d’Ivoire, Cameroon, DR Congo, Uganda, French Guiana; per the WHO list).',
           'Which countries require proof is set out by the WHO in a periodically updated list of countries; the German Federal Foreign Office additionally provides country-specific guidance. The certificate is valid from day 10 after vaccination and – since the 2016 amendment to the IHR – for life.',
         ],
       },

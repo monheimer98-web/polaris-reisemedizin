@@ -31,7 +31,7 @@ export const diseaseFacts: Record<string, DiseaseFacts> = {
       de: 'Subsahara-Afrika und tropisches Südamerika (nicht Asien)',
       en: 'Sub-Saharan Africa and tropical South America (not Asia)',
     },
-    vaccine: { de: 'Ja – Lebendimpfstoff (Stamaril®), in der Regel eine Dosis', en: 'Yes – live vaccine (Stamaril®), usually a single dose' },
+    vaccine: { de: 'Ja – Lebendimpfstoff (Stamm 17D); Auffrischung nach STIKO bei erneuter Exposition nach ≥ 10 Jahren', en: 'Yes – live vaccine (strain 17D); STIKO booster for renewed exposure after ≥ 10 years' },
     note: {
       de: 'Keine ursächliche Therapie; für viele Länder Pflichtimpfung, Nachweis (ICVP) ab Tag 10',
       en: 'No causal therapy; required for entry to many countries, proof (ICVP) valid from day 10',
@@ -55,8 +55,8 @@ export const diseaseFacts: Record<string, DiseaseFacts> = {
     transmission: { de: 'Tagaktive Aedes-Mücken', en: 'Day-active Aedes mosquitoes' },
     regions: { de: 'Tropen und Subtropen (Afrika, Asien, Amerika)', en: 'Tropics and subtropics (Africa, Asia, the Americas)' },
     vaccine: {
-      de: 'Ja – Lebendimpfstoff (Ixchiq®) oder Totimpfstoff (Vimkunya®); nach Indikation',
-      en: 'Yes – live vaccine (Ixchiq®) or inactivated vaccine (Vimkunya®); based on indication',
+      de: 'Ja – Totimpfstoff oder (nur bei hohem Infektionsrisiko) Lebendimpfstoff; nach Indikation',
+      en: 'Yes – inactivated vaccine or (only at high risk of infection) live vaccine; based on indication',
     },
     note: {
       de: 'Häufig langwierige Gelenkbeschwerden; keine ursächliche Therapie',
@@ -115,7 +115,7 @@ export const diseaseFacts: Record<string, DiseaseFacts> = {
   tollwut: {
     pathogen: { de: 'Rabiesvirus (Lyssavirus)', en: 'Rabies virus (lyssavirus)' },
     transmission: { de: 'Speichel infizierter Tiere (Biss, Kratzer)', en: 'Saliva of infected animals (bite, scratch)' },
-    regions: { de: 'Asien, Afrika und Lateinamerika', en: 'Asia, Africa and Latin America' },
+    regions: { de: 'Asien, Afrika, Lateinamerika sowie Teile Osteuropas und der Türkei', en: 'Asia, Africa, Latin America and parts of Eastern Europe and Turkey' },
     vaccine: {
       de: 'Ja – Totimpfstoff; vorsorgliche Impfung vor der Reise möglich',
       en: 'Yes – inactivated vaccine; pre-exposure vaccination possible before travel',

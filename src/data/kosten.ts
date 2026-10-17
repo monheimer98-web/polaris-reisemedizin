@@ -177,8 +177,8 @@ export const kostenPage: KostenPage = {
         {
           service: { de: 'FSME- und Gelbfieber-Impfstoff (vor Ort)', en: 'TBE and yellow-fever vaccine (on site)' },
           detail: {
-            de: 'FSME und Gelbfieber (Stamaril®) halten wir vor Ort vorrätig und berechnen den Impfstoff zum Bezugspreis (Auslage nach § 10 GOÄ).',
-            en: 'We keep TBE and yellow fever (Stamaril®) in stock on site and charge the vaccine at cost (disbursement under § 10 GOÄ).',
+            de: 'Den FSME- und den Gelbfieber-Impfstoff halten wir vor Ort vorrätig und berechnen den Impfstoff zum Bezugspreis (Auslage nach § 10 GOÄ).',
+            en: 'We keep the TBE and yellow-fever vaccines in stock on site and charge the vaccine at cost (disbursement under § 10 GOÄ).',
           },
           price: { de: 'nach Bezugspreis', en: 'at cost price' },
         },
@@ -195,8 +195,8 @@ export const kostenPage: KostenPage = {
         {
           service: { de: 'Gelbfieberimpfung inkl. internationalem Impfnachweis (ICVP)', en: 'Yellow-fever vaccination incl. international certificate (ICVP)' },
           detail: {
-            de: 'Ärztliches Honorar für Aufklärung, Impfung und ICVP-Eintrag. Der Impfstoff (Stamaril®) wird gesondert als Auslage berechnet.',
-            en: 'Medical fee for the briefing, vaccination and ICVP entry. The vaccine (Stamaril®) is billed separately as a disbursement.',
+            de: 'Ärztliches Honorar für Aufklärung, Impfung und ICVP-Eintrag. Der Gelbfieber-Impfstoff wird gesondert als Auslage berechnet.',
+            en: 'Medical fee for the briefing, vaccination and ICVP entry. The yellow-fever vaccine is billed separately as a disbursement.',
           },
           price: { de: 'ca. 38 € + Impfstoff', en: 'approx. €38 + vaccine' },
         },
@@ -222,12 +222,12 @@ export const kostenPage: KostenPage = {
       heading: { de: 'Erstattung durch Ihre Versicherung', en: 'Reimbursement by your insurer' },
       body: {
         de: [
-          'Viele gesetzliche Krankenkassen erstatten Reiseimpfungen inzwischen als freiwillige Satzungsleistung – häufig ganz oder zu einem großen Teil. Ob und in welcher Höhe, hängt von Ihrer Kasse ab; private Tarife regeln es individuell.',
-          'Am besten klären Sie die Erstattung kurz vorab mit Ihrer Kasse. Sie erhalten von uns eine ordentliche, itemisierte Rechnung, die Sie unkompliziert einreichen können.',
+          'Manche gesetzliche Krankenkassen erstatten Reiseimpfungen freiwillig als Satzungsleistung. Umfang und Bedingungen sind je Kasse sehr unterschiedlich: oft nur Impfstoff und/oder Impfleistung, die Reiseberatung meist nicht; manche Kassen erstatten nur Impfungen aus Kassenpraxen. Private Tarife regeln es individuell.',
+          'Bitte klären Sie die Erstattung vorab mit Ihrer Kasse. Sie erhalten von uns eine aufgeschlüsselte Rechnung nach GOÄ zum Einreichen.',
         ],
         en: [
-          'Many statutory health insurers now reimburse travel vaccinations as a voluntary statutory benefit – often in full or to a large extent. Whether and how much depends on your fund; private plans handle it individually.',
-          'It is best to check reimbursement briefly with your fund beforehand. You receive a proper, itemised invoice from us that you can submit without hassle.',
+          'Some statutory health insurers reimburse travel vaccinations voluntarily under their statutes. Scope and conditions vary widely: often only the vaccine and/or the vaccination itself, rarely the consultation; some insurers only reimburse vaccinations given in statutory-insurance practices. Private plans handle it individually.',
+          'Please check reimbursement with your insurer in advance. You will receive an itemised GOÄ invoice from us to submit.',
         ],
       },
     },

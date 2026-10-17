@@ -36,3 +36,6 @@ pnpm-debug.log*
 
 # separate project — internal practice app, keeps its own repository
 Reiseprax Polaris\ /
+
+# Internes Praxiskonzept (Preisstrategie) – nicht im öffentlichen Repository
+Praxiskonzept/

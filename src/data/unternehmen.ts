@@ -90,10 +90,10 @@ export const unternehmenPage: UnternehmenPage = {
       },
     },
     {
-      title: { de: 'Ergänzung zur arbeitsmedizinischen Vorsorge', en: 'Complement to occupational health screening' },
+      title: { de: 'Abstimmung mit Ihrem Betriebsarzt', en: 'Coordination with your company physician' },
       text: {
-        de: 'Wir liefern die reisemedizinischen Inhalte. Die arbeitsmedizinische Vorsorge (z. B. nach Grundsatz G35) erfolgt in Abstimmung mit Ihrem betriebsärztlichen Dienst.',
-        en: 'We provide the travel-medicine content. Occupational health screening (e.g. under the G35 guideline) is carried out in coordination with your company medical service.',
+        de: 'Wir übernehmen die reisemedizinische Beratung und die Impfungen. Vorgaben aus der betriebsärztlichen Betreuung Ihres Unternehmens stimmen wir auf Wunsch mit Ihrem Betriebsarzt ab.',
+        en: 'We provide the travel-medicine consultation and the vaccinations. On request we coordinate requirements from your company’s occupational health care with your company physician.',
       },
     },
     {

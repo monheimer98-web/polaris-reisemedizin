@@ -52,8 +52,8 @@ export const teamPage: TeamPage = {
       en: 'About us',
     },
     lead: {
-      de: 'Ärztliche Kompetenz und ein eingespieltes Praxisteam mit einem klaren Anspruch: eine sorgfältige, persönliche Reiseimpfberatung auf dem Stand gesicherter Fachquellen. Lernen Sie die Praxis und unseren Ansatz kennen.',
-      en: 'Medical expertise and a well-coordinated practice team with one clear standard: careful, personal travel-vaccination advice based on trusted professional sources. Get to know the practice and our approach.',
+      de: 'Ärztliche Kompetenz und ein persönliches Praxisteam mit einem klaren Anspruch: eine sorgfältige, persönliche Reiseimpfberatung auf dem Stand gesicherter Fachquellen. Lernen Sie die Praxis und unseren Ansatz kennen.',
+      en: 'Medical expertise and a personal practice team with one clear standard: careful, personal travel-vaccination advice based on trusted professional sources. Get to know the practice and our approach.',
     },
   },
   intro: {
@@ -71,8 +71,8 @@ export const teamPage: TeamPage = {
     en: 'Your physician',
   },
   teamLead: {
-    de: 'Die Beratung und die Impfungen liegen in ärztlicher Hand. Um Ihre Termine und einen reibungslosen Ablauf kümmert sich unser eingespieltes Praxisteam.',
-    en: 'Advice and vaccinations are in the physician’s hands. Our well-coordinated practice team looks after your appointments and a smooth visit.',
+    de: 'Beratung, Aufklärung und Impfentscheidung erfolgen ärztlich. Um Ihre Termine und einen reibungslosen Ablauf kümmert sich unser Praxisteam.',
+    en: 'Advice, informed consent and the vaccination decision are handled by the physician. Our practice team looks after your appointments and a smooth visit.',
   },
   valuesHeading: {
     de: 'Unser Ansatz',

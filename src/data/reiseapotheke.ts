@@ -40,7 +40,7 @@ export const travelKitPage: ClinicalPage = {
           'Wund- und Hautdesinfektionsmittel',
           'Pinzette, kleine Schere und Einmalhandschuhe',
           'Fieberthermometer (digital, bruchsicher)',
-          'Ein Schmerz- und Fiebermittel sowie bei Bedarf ein krampflösendes Mittel',
+          'Ein Schmerz- und Fiebermittel (in Dengue-Gebieten Paracetamol statt ASS oder Ibuprofen) sowie bei Bedarf ein krampflösendes Mittel',
           'Persönliche Dauermedikamente in ausreichender Menge für die gesamte Reise plus Reserve',
         ],
         en: [
@@ -48,7 +48,7 @@ export const travelKitPage: ClinicalPage = {
           'Wound and skin disinfectant',
           'Tweezers, small scissors and disposable gloves',
           'Clinical thermometer (digital, shatterproof)',
-          'A painkiller and fever reducer, plus an antispasmodic if needed',
+          'A painkiller and fever reducer (in dengue areas paracetamol rather than aspirin or ibuprofen), plus an antispasmodic if needed',
           'Your regular long-term medication in sufficient quantity for the whole trip plus a reserve',
         ],
       },
@@ -78,13 +78,13 @@ export const travelKitPage: ClinicalPage = {
       list: {
         de: [
           'Elektrolyt-/Rehydratationslösung (orale Rehydratationssalze) zum Ausgleich von Flüssigkeit und Salzen',
-          'Ein Mittel gegen Durchfall sowie gegen Übelkeit',
+          'Ein Mittel gegen Durchfall (nicht bei Fieber oder blutigem Durchfall und nicht bei Kleinkindern) sowie gegen Übelkeit',
           'Etwas gegen Sodbrennen oder Verstopfung, falls Sie dazu neigen',
           'Händedesinfektionsmittel für unterwegs',
         ],
         en: [
           'Electrolyte/rehydration solution (oral rehydration salts) to replace fluid and salts',
-          'Something for diarrhoea as well as for nausea',
+          'Something for diarrhoea (not with fever or bloody diarrhoea and not for young children) as well as for nausea',
           'Something for heartburn or constipation if you are prone to it',
           'Hand sanitiser for on the go',
         ],
@@ -112,13 +112,13 @@ export const travelKitPage: ClinicalPage = {
       },
       list: {
         de: [
-          'Mückenschutzmittel (Repellent) mit bewährtem Wirkstoff wie DEET oder Icaridin',
+          'Mückenschutzmittel (Repellent) mit bewährtem Wirkstoff – für Malariagebiete DEET 30–50 % oder Icaridin ab 20 %; Altersfreigabe beachten',
           'Moskitonetz (möglichst imprägniert) für Regionen mit nachtaktiven Mücken',
           'Sonnencreme mit hohem Lichtschutzfaktor und etwas für die Hautpflege nach der Sonne',
           'Sonnenbrille und Kopfbedeckung',
         ],
         en: [
-          'Insect repellent with a proven active ingredient such as DEET or icaridin',
+          'Insect repellent with a proven active ingredient – for malaria areas DEET 30–50 % or icaridin from 20 %; check the age approval',
           'A mosquito net (impregnated if possible) for regions with night-active mosquitoes',
           'Sunscreen with a high sun protection factor and something for after-sun skin care',
           'Sunglasses and a head covering',

@@ -35,7 +35,7 @@ export const gelbfieberDisease: ClinicalPage = {
       heading: { de: 'Übertragung', en: 'Transmission' },
       body: {
         de: [
-          'Das Virus wird durch den Stich infizierter Stechmücken übertragen. In Städten erfolgt die Übertragung vor allem durch Mücken der Gattung Aedes, in Wald- und Feuchtgebieten (sylvatischer Zyklus) in Südamerika zusätzlich durch Haemagogus-Mücken.',
+          'Das Virus wird durch den Stich infizierter Stechmücken übertragen. In Städten erfolgt die Übertragung vor allem durch Mücken der Gattung Aedes, in Wald- und Feuchtgebieten (sylvatischer Zyklus) in Südamerika zusätzlich durch Haemagogus- und Sabethes-Mücken.',
           'Eine direkte Übertragung von Mensch zu Mensch findet nicht statt.',
         ],
         en: [
@@ -85,17 +85,17 @@ export const gelbfieberDisease: ClinicalPage = {
       heading: { de: 'Vorbeugung', en: 'Prevention' },
       body: {
         de: [
-          'Die wirksamste Vorsorge ist die Gelbfieberimpfung. Nach heutigem Stand genügt für die meisten Menschen eine einmalige Impfung für einen lang anhaltenden Schutz.',
+          'Die wirksamste Vorsorge ist die Gelbfieberimpfung. Der internationale Impfnachweis gilt lebenslang; medizinisch empfiehlt die STIKO vor erneuter Reise in ein Gelbfiebergebiet einmalig eine Auffrischung, wenn die Erstimpfung 10 Jahre oder länger zurückliegt.',
           'Ergänzend sollten Reisende sich vor Mückenstichen schützen – etwa durch das Bedecken der Haut, geeignete Repellentien und Moskitonetze.',
         ],
         en: [
-          'The most effective prevention is the yellow fever vaccination. For most people, a single dose currently provides long-lasting protection.',
+          'The most effective prevention is the yellow fever vaccination. The international certificate is valid for life; medically, STIKO recommends a single booster before renewed travel to a yellow fever area if the first vaccination was 10 or more years ago.',
           'In addition, travellers should protect themselves against mosquito bites – for example by covering the skin and using suitable repellents and mosquito nets.',
         ],
       },
     },
   ],
-  sourceIds: ['rkiGelbfieber', 'whoYellowFever', 'whoPositionPaper', 'auswaertigesAmt'],
+  sourceIds: ['rkiGelbfieber', 'stikoReise2026', 'whoYellowFever', 'whoPositionPaper', 'auswaertigesAmt'],
   lastReviewed: new Date('2026-05-15'),
   related: [
     {

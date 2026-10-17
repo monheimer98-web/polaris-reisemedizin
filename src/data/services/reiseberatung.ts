@@ -74,8 +74,8 @@ export const reiseberatungService: ClinicalPage = {
         variant: 'important',
         title: { de: 'Beratung unabhängig von der Impfung', en: 'Consultation independent of vaccination' },
         text: {
-          de: 'Die Beratung und der schriftliche Plan sind eine eigenständige Leistung – sie stehen Ihnen unabhängig davon zu, ob Sie sich später impfen lassen. So erhalten Sie eine neutrale, auf Ihren Nutzen ausgerichtete Empfehlung.',
-          en: 'The consultation and the written plan are a service in their own right – you receive them regardless of whether you are vaccinated afterwards. This ensures a neutral recommendation focused on your benefit.',
+          de: 'Die Beratung und der schriftliche Plan sind eine eigenständige Leistung – sie stehen Ihnen unabhängig davon zu, ob Sie sich später impfen lassen. So erhalten Sie eine Empfehlung, die sich an Ihrer Reise orientiert.',
+          en: 'The consultation and the written plan are a service in their own right – you receive them regardless of whether you are vaccinated afterwards. This way you receive a recommendation based on your trip.',
         },
       },
     },
@@ -120,7 +120,7 @@ export const reiseberatungService: ClinicalPage = {
       heading: { de: 'Gemeinsam reisen', en: 'Travelling together' },
       body: {
         de: [
-          'Reisen Sie zu mehrt zum selben Ziel, beraten wir Sie gern gemeinsam. Jede Person erhält dabei eine eigene Beratung und einen eigenen Impf- und Reiseplan, denn Vorerkrankungen, Impfstatus und Verträglichkeit sind individuell.',
+          'Reisen Sie zu mehreren zum selben Ziel, beraten wir Sie gern gemeinsam. Jede Person erhält dabei eine eigene Beratung und einen eigenen Impf- und Reiseplan, denn Vorerkrankungen, Impfstatus und Verträglichkeit sind individuell.',
           'Sprechen Sie uns bei der Terminbuchung einfach an, damit wir genügend Zeit einplanen.',
         ],
         en: [

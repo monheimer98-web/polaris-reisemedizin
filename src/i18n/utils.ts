@@ -65,7 +65,9 @@ export function getLogicalPath(pathname: string): string {
 export function getLocalizedPath(path: string, lang: Locale): string {
   const logical = getLogicalPath(path);
   const localized = lang === DEFAULT_LOCALE ? logical : logical === '/' ? '/en' : `/en${logical}`;
-  return withBase(localized);
+  // Mit abschließendem Slash: GitHub Pages liefert Seiten als Verzeichnis aus;
+  // ohne Slash folgt sonst bei jedem Link eine 301-Weiterleitung.
+  return withBase(localized === '/' ? '/' : `${localized}/`);
 }
 
 /** Alle Sprachvarianten eines Pfads (für hreflang & Sprachumschalter). */

@@ -24,11 +24,11 @@ export const fsmeImpfungService: ClinicalPage = {
       heading: { de: 'Impfstoff', en: 'Vaccine' },
       body: {
         de: [
-          'Zur Verfügung stehen die gut verträglichen Totimpfstoffe FSME-Immun® und Encepur®. Sie enthalten abgetötete (inaktivierte) Viren und können daher – anders als ein Lebendimpfstoff – die Erkrankung nicht auslösen.',
+          'Zur Verfügung stehen zwei Totimpfstoffe. Sie enthalten abgetötete (inaktivierte) Viren und können daher – anders als ein Lebendimpfstoff – die Erkrankung nicht auslösen.',
           'Für Kinder gibt es eigene Präparate mit angepasster Dosierung. Die Impfung ist je nach Impfstoff in der Regel ab einem Alter von einem Jahr möglich.',
         ],
         en: [
-          'The well-tolerated inactivated vaccines FSME-Immun® and Encepur® are available. They contain killed (inactivated) viruses and therefore – unlike a live vaccine – cannot cause the disease.',
+          'Two inactivated vaccines are available. They contain killed (inactivated) viruses and therefore – unlike a live vaccine – cannot cause the disease.',
           'Dedicated paediatric formulations with adjusted dosing are available for children. Depending on the vaccine, vaccination is generally possible from the age of one year.',
         ],
       },
@@ -39,11 +39,11 @@ export const fsmeImpfungService: ClinicalPage = {
       body: {
         de: [
           'Die Grundimmunisierung umfasst drei Impfdosen. Die ersten beiden Dosen werden im Abstand von ein bis drei Monaten gegeben und bauen einen ersten Schutz für die laufende Zeckensaison auf; die dritte Dosis nach mehreren Monaten vervollständigt die Grundimmunisierung und sorgt für einen mehrjährigen Schutz.',
-          'Die erste Auffrischimpfung wird nach drei Jahren empfohlen, danach in der Regel alle fünf Jahre – bei Menschen ab 60 Jahren häufig in kürzeren Abständen. Für kurzfristige Reisen in Risikogebiete gibt es zudem beschleunigte Impfschemata.',
+          'Die erste Auffrischimpfung wird nach drei Jahren empfohlen, danach je nach Impfstoff und Alter alle drei bis fünf Jahre (bei einem Impfstoff ab 50, beim anderen ab 60 Jahren alle drei Jahre). Für kurzfristige Reisen in Risikogebiete gibt es zudem beschleunigte Impfschemata.',
         ],
         en: [
           'Primary immunisation comprises three doses. The first two doses are given one to three months apart and build initial protection for the current tick season; the third dose after several months completes the primary immunisation and provides protection for several years.',
-          'The first booster is recommended after three years, then generally every five years – often at shorter intervals for people aged 60 and over. For trips to risk areas at short notice, accelerated schedules are also available.',
+          'The first booster is recommended after three years, then every three to five years depending on the vaccine and age (every three years from age 50 with one vaccine and from age 60 with the other). For trips to risk areas at short notice, accelerated schedules are also available.',
         ],
       },
       callout: {
@@ -122,10 +122,10 @@ export const fsmeImpfungService: ClinicalPage = {
       heading: { de: 'Kosten', en: 'Costs' },
       body: {
         de: [
-          'Für Personen, die in einem ausgewiesenen Risikogebiet leben oder dort beruflich exponiert sind, ist die FSME-Impfung eine von der STIKO empfohlene Indikationsimpfung; die Kosten werden in diesen Fällen häufig von der gesetzlichen Krankenkasse übernommen. Bei rein reisebedingter Indikation kann es sich um eine private Leistung handeln. Die Kostenübernahme klären wir transparent mit Ihnen.',
+          'Bei uns ist die FSME-Impfung – wie alle Leistungen – eine Privatleistung nach der Gebührenordnung für Ärzte (GOÄ). Ob Ihre Krankenkasse die Kosten erstattet, hängt von Ihrem Wohnort bzw. Ihrer Reise und von Ihrer Kasse ab; bitte fragen Sie vorab nach. Bei beruflicher Exposition trägt in der Regel der Arbeitgeber die Kosten.',
         ],
         en: [
-          'For people who live in a designated risk area or are occupationally exposed there, the TBE vaccination is an indication vaccination recommended by STIKO; in these cases the costs are often covered by statutory health insurance. For a purely travel-related indication it may be a private service. We clarify cost coverage transparently with you.',
+          'At our practice the TBE vaccination – like all services – is a private service under the German medical fee schedule (GOÄ). Whether your health insurer reimburses the costs depends on where you live or travel and on your insurer; please ask in advance. In case of occupational exposure the employer usually bears the costs.',
         ],
       },
     },

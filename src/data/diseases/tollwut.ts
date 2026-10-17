@@ -18,8 +18,8 @@ export const tollwutDisease: ClinicalPage = {
     },
     eyebrow: { de: 'Krankheitsbild', en: 'Disease' },
     lead: {
-      de: 'Tollwut ist eine Virusinfektion, die über den Speichel infizierter Tiere – meist durch Hundebisse – übertragen wird. Mit rechtzeitiger Vorsorge und der richtigen Behandlung nach einem Tierkontakt lässt sie sich zuverlässig verhindern; einmal ausgebrochen, ist sie dagegen kaum behandelbar. Umso wichtiger ist der vorbeugende Schutz.',
-      en: 'Rabies is a viral infection transmitted via the saliva of infected animals – usually through dog bites. With timely prevention and the right treatment after animal contact it can be reliably averted; once it has broken out, however, it is barely treatable. That makes preventive protection all the more important.',
+      de: 'Tollwut ist eine Virusinfektion, die über den Speichel infizierter Tiere – meist durch Hundebisse – übertragen wird. Mit rechtzeitiger Vorsorge und der richtigen Behandlung nach einem Tierkontakt lässt sie sich in aller Regel verhindern; einmal ausgebrochen, verläuft sie dagegen nahezu immer tödlich. Umso wichtiger ist der vorbeugende Schutz.',
+      en: 'Rabies is a viral infection transmitted via the saliva of infected animals – usually through dog bites. With timely prevention and the right treatment after animal contact it can usually be prevented; once it has broken out, however, it is almost always fatal. That makes preventive protection all the more important.',
     },
   },
   sections: [
@@ -71,11 +71,11 @@ export const tollwutDisease: ClinicalPage = {
       body: {
         de: [
           'Zwischen Ansteckung und Erkrankung liegen meist zwei bis drei Monate, in Einzelfällen wenige Tage bis mehrere Jahre. Erste Anzeichen sind oft unspezifisch, etwa Fieber, Kopfschmerzen und Missempfindungen an der Bissstelle. Im weiteren Verlauf kommt es zu schweren neurologischen Symptomen, bei der häufigen Form mit Erregungszuständen, Krämpfen und ausgeprägter Angst vor Wasser (Hydrophobie).',
-          'Die Erkrankung betrifft das Gehirn und ist, sobald Symptome aufgetreten sind, kaum noch behandelbar. Der gesamte Schutz beruht deshalb darauf, eine Infektion rechtzeitig – vor dem Ausbruch der Erkrankung – zu verhindern.',
+          'Die Erkrankung betrifft das Gehirn und verläuft, sobald Symptome aufgetreten sind, nahezu immer tödlich. Der gesamte Schutz beruht deshalb darauf, eine Infektion rechtzeitig – vor dem Ausbruch der Erkrankung – zu verhindern.',
         ],
         en: [
           'Between infection and illness there are usually two to three months, in individual cases a few days to several years. The first signs are often non-specific, such as fever, headache and abnormal sensations at the bite site. As it progresses, severe neurological symptoms develop, in the common form with agitation, spasms and a marked fear of water (hydrophobia).',
-          'The disease affects the brain and, once symptoms have appeared, is barely treatable. All protection is therefore based on preventing an infection in time – before the disease can break out.',
+          'The disease affects the brain and, once symptoms have appeared, is almost always fatal. All protection is therefore based on preventing an infection in time – before the disease can break out.',
         ],
       },
       callout: {
@@ -114,12 +114,12 @@ export const tollwutDisease: ClinicalPage = {
       heading: { de: 'Schutzimpfung', en: 'Vaccination' },
       body: {
         de: [
-          'Zur Vorbeugung steht ein gut verträglicher Totimpfstoff zur Verfügung, der ab dem Säuglingsalter angewendet werden kann. Die vorbeugende Impfung vor der Reise (Präexpositionsprophylaxe) besteht in der Regel aus zwei Dosen im Abstand von einer Woche; bei dauerhaft erhöhtem Risiko kann später eine weitere Dosis sinnvoll sein.',
+          'Zur Vorbeugung stehen zwei gut untersuchte Totimpfstoffe zur Verfügung, die ab Geburt angewendet werden können. Standard ist die vorbeugende Grundimmunisierung vor der Reise (Präexpositionsprophylaxe) mit drei Dosen (Tag 0, 7 und 21 oder 28). Für Personen ohne Immunschwäche ist laut Fachinformation auch ein verkürztes Schema mit zwei Dosen (Tag 0 und 7) möglich; besteht das Risiko danach weiter, sollte spätestens nach einem Jahr eine dritte Dosis folgen.',
           'Die Vorimpfung verhindert eine Ansteckung nicht allein, vereinfacht aber die notwendige Schutzbehandlung nach einem Tierkontakt erheblich: Es sind dann nur noch zwei Impfdosen nötig, und das in Risikoländern oft schwer verfügbare Tollwut-Immunglobulin wird nicht mehr benötigt. Das ist besonders bei Reisen abseits guter medizinischer Versorgung von Vorteil.',
           'Die Ständige Impfkommission (STIKO) und die DTG empfehlen die vorbeugende Tollwut-Impfung als Reiseimpfung unter anderem bei längeren Aufenthalten, Reisen in entlegene Regionen mit eingeschränktem Zugang zu einer Schutzbehandlung, möglichem Tierkontakt sowie für Kinder. Ob die Impfung für Sie sinnvoll ist, klären wir individuell im Beratungsgespräch.',
         ],
         en: [
-          'A well-tolerated inactivated vaccine that can be used from infancy is available for prevention. Preventive vaccination before travel (pre-exposure prophylaxis) usually consists of two doses one week apart; in cases of permanently increased risk a further dose may be sensible later.',
+          'Two well-studied inactivated vaccines that can be used from birth are available for prevention. The standard preventive course before travel (pre-exposure prophylaxis) consists of three doses (days 0, 7 and 21 or 28). For people without immunodeficiency, the product information also allows a shortened two-dose schedule (days 0 and 7); if the risk continues, a third dose should follow within one year at the latest.',
           'Pre-vaccination does not prevent infection on its own but considerably simplifies the necessary protective treatment after animal contact: only two further vaccine doses are then needed, and the rabies immunoglobulin that is often hard to obtain in risk countries is no longer required. This is a particular advantage when travelling away from good medical care.',
           'The German Standing Committee on Vaccination (STIKO) and the DTG recommend preventive rabies vaccination as a travel vaccination, among others for longer stays, travel to remote regions with limited access to protective treatment, possible animal contact and for children. Whether vaccination is sensible for you is something we clarify individually in the consultation.',
         ],
@@ -134,7 +134,7 @@ export const tollwutDisease: ClinicalPage = {
       },
     },
   ],
-  sourceIds: ['rkiTollwut', 'whoRabies', 'peiTollwut', 'stikoImpfempfehlungen', 'auswaertigesAmt'],
+  sourceIds: ['rkiTollwut', 'whoRabies', 'peiTollwut', 'stikoReise2026', 'stikoImpfempfehlungen', 'auswaertigesAmt'],
   lastReviewed: new Date('2026-06-12'),
   related: [
     {

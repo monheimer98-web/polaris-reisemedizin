@@ -54,11 +54,11 @@ export const travelTipsPage: ClinicalPage = {
       body: {
         de: [
           'Der Schutz vor Mückenstichen ist eine der wirksamsten Maßnahmen auf Reisen – denn er beugt zugleich mehreren Erkrankungen vor, gegen die es teils keine Impfung gibt, etwa Dengue, Chikungunya, Zika und Malaria. Tagsüber stechende Mücken übertragen Dengue, Chikungunya und Zika; die Malaria übertragenden Mücken stechen vor allem in der Dämmerung und nachts. Sinnvoll ist deshalb ein Schutz rund um die Uhr.',
-          'Tragen Sie Mückenschutzmittel (Repellentien) mit bewährten Wirkstoffen wie DEET oder Icaridin auf unbedeckte Haut auf und erneuern Sie sie nach Herstellerangabe. Wird zusätzlich Sonnencreme verwendet, kommt zuerst die Sonnencreme und danach das Repellent auf die Haut. Helle, hautbedeckende Kleidung – bei Bedarf mit Insektenschutz imprägniert – sowie Moskitonetze und mückensichere oder klimatisierte Räume ergänzen den Schutz.',
+          'Tragen Sie Mückenschutzmittel (Repellentien) mit bewährten Wirkstoffen wie DEET (30–50 %) oder Icaridin (ab 20 %) auf unbedeckte Haut auf und erneuern Sie sie nach Herstellerangabe. Wird zusätzlich Sonnencreme verwendet, kommt zuerst die Sonnencreme und danach das Repellent auf die Haut. Helle, hautbedeckende Kleidung – bei Bedarf mit Insektenschutz imprägniert – sowie Moskitonetze und mückensichere oder klimatisierte Räume ergänzen den Schutz.',
         ],
         en: [
           'Protection against mosquito bites is one of the most effective measures while travelling – because it prevents several diseases at once, some of which cannot be vaccinated against, such as dengue, chikungunya, Zika and malaria. Day-biting mosquitoes transmit dengue, chikungunya and Zika; the mosquitoes that transmit malaria bite mainly at dusk and at night. Round-the-clock protection therefore makes sense.',
-          'Apply insect repellents with proven active ingredients such as DEET or icaridin to exposed skin and reapply them as directed by the manufacturer. If sunscreen is also used, apply the sunscreen first and the repellent afterwards. Light, skin-covering clothing – impregnated with insecticide if needed – along with mosquito nets and mosquito-proof or air-conditioned rooms complete the protection.',
+          'Apply insect repellents with proven active ingredients such as DEET (30–50 %) or icaridin (from 20 %) to exposed skin and reapply them as directed by the manufacturer. If sunscreen is also used, apply the sunscreen first and the repellent afterwards. Light, skin-covering clothing – impregnated with insecticide if needed – along with mosquito nets and mosquito-proof or air-conditioned rooms complete the protection.',
         ],
       },
       callout: {
@@ -111,11 +111,11 @@ export const travelTipsPage: ClinicalPage = {
       heading: { de: 'Während und nach der Reise', en: 'During and after the trip' },
       body: {
         de: [
-          'Achten Sie unterwegs auf sich und nehmen Sie Beschwerden ernst. Beschwerden können auch erst nach der Rückkehr auftreten – manche Reisekrankheiten zeigen sich Tage bis Wochen später.',
+          'Achten Sie unterwegs auf sich und nehmen Sie Beschwerden ernst. Beschwerden können auch erst nach der Rückkehr auftreten – manche Reisekrankheiten zeigen sich Tage bis Monate später.',
           'Suchen Sie bei Krankheitszeichen nach einer Tropenreise ärztlichen Rat und weisen Sie ausdrücklich auf Ihre Reise hin. Das gilt besonders für Fieber nach einem Aufenthalt in einem Malariagebiet: Fieber nach Tropenreise sollte immer rasch ärztlich abgeklärt werden.',
         ],
         en: [
-          'Look after yourself while travelling and take symptoms seriously. Symptoms can also appear only after returning home – some travel-related illnesses show up days to weeks later.',
+          'Look after yourself while travelling and take symptoms seriously. Symptoms can also appear only after returning home – some travel-related illnesses show up days to months later.',
           'If you develop signs of illness after a trip to the tropics, seek medical advice and explicitly mention your travel. This is especially true for fever after a stay in a malaria area: fever after travelling to the tropics should always be assessed promptly by a doctor.',
         ],
       },

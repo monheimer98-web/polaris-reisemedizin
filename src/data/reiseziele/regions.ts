@@ -136,19 +136,19 @@ const afrika: DestinationRegion = {
         body: {
           de: [
             'In weiten Teilen des tropischen Afrikas besteht ein Gelbfieberrisiko. Zahlreiche Länder verlangen bei der Einreise einen gültigen internationalen Impfnachweis (ICVP) – teils für alle Reisenden, teils nur bei Einreise aus einem weiteren Gelbfiebergebiet. Welche Regelung für Ihre Route gilt, hängt von den einzelnen Ländern und der Reihenfolge Ihrer Stationen ab.',
-            'Die Gelbfieberimpfung ist eine einmalige Impfung und bietet nach Empfehlung der WHO einen lebenslangen Schutz. Der Nachweis wird jedoch erst ab dem 10. Tag nach der Impfung gültig. Als staatlich autorisierte Gelbfieberimpfstelle führen wir die Impfung durch und stellen den international gültigen Eintrag aus.',
+            'Der internationale Gelbfieber-Impfnachweis (ICVP) gilt lebenslang, wird aber erst ab dem 10. Tag nach der Impfung gültig. Einige Länder verlangen ihn von allen Einreisenden – auch bei Anreise aus Deutschland (z. B. Ghana, Côte d’Ivoire, Kamerun, DR Kongo, Uganda; Stand WHO-Liste). Medizinisch empfiehlt die STIKO vor erneuter Reise einmalig eine Auffrischung, wenn die Erstimpfung 10 Jahre oder länger zurückliegt. Als staatlich autorisierte Gelbfieberimpfstelle führen wir die Impfung durch und stellen den international gültigen Eintrag aus.',
           ],
           en: [
             'In large parts of tropical Africa there is a yellow fever risk. Many countries require a valid international certificate of vaccination (ICVP) on entry – sometimes for all travellers, sometimes only when arriving from another yellow fever area. Which rule applies to your route depends on the individual countries and the order of your stops.',
-            'Yellow fever vaccination is a single dose and, according to the WHO, provides lifelong protection. The certificate, however, only becomes valid from day 10 after vaccination. As a state-authorised yellow fever vaccination centre, we perform the vaccination and issue the internationally valid entry.',
+            'The international yellow fever certificate (ICVP) is valid for life but only becomes valid from day 10 after vaccination. Some countries require it from all arriving travellers – even when coming from Germany (e.g. Ghana, Côte d’Ivoire, Cameroon, DR Congo, Uganda; per the WHO list). Medically, STIKO recommends a single booster before renewed travel if the first vaccination was 10 or more years ago. As a state-authorised yellow fever vaccination centre, we perform the vaccination and issue the internationally valid entry.',
           ],
         },
         callout: {
           variant: 'important',
           title: { de: 'Gelbfiebernachweis rechtzeitig planen', en: 'Plan your yellow fever certificate in good time' },
           text: {
-            de: 'Da der ICVP erst ab dem 10. Tag nach der Impfung gilt, sollte der Termin rechtzeitig vor Abreise liegen. Die aktuellen Einreisebestimmungen Ihres Reiselandes prüfen wir gemeinsam – maßgeblich sind die Vorgaben der Länder und die Hinweise des Auswärtigen Amts.',
-            en: 'Because the ICVP only applies from day 10 after vaccination, the appointment should be well before departure. We check the current entry requirements for your destination together – the decisive sources are the countries’ rules and the German Federal Foreign Office travel advice.',
+            de: 'Da der ICVP erst ab dem 10. Tag nach der Impfung gilt, sollte der Termin rechtzeitig vor Abreise liegen. Die aktuellen Einreisebestimmungen Ihres Reiselandes prüfen wir gemeinsam – maßgeblich sind die Einreisevorschriften des Ziellandes (Übersicht u. a. beim Auswärtigen Amt).',
+            en: 'Because the ICVP only applies from day 10 after vaccination, the appointment should be well before departure. We check the current entry requirements for your destination together – the destination country’s entry rules are decisive (overview, among others, from the German Federal Foreign Office).',
           },
         },
         links: [
@@ -162,23 +162,23 @@ const afrika: DestinationRegion = {
         heading: { de: 'Malaria & Mückenschutz', en: 'Malaria & mosquito protection' },
         body: {
           de: [
-            'In vielen Regionen südlich der Sahara besteht ganzjährig oder saisonal ein Malariarisiko – stellenweise hoch. Malaria ist nicht durch eine Impfung vermeidbar; entscheidend sind ein konsequenter Schutz vor Mückenstichen und, je nach Ziel und Reisestil, eine medikamentöse Vorbeugung (Chemoprophylaxe) oder ein Notfallmedikament (Standby).',
+            'In vielen Regionen südlich der Sahara besteht ganzjährig oder saisonal ein Malariarisiko – stellenweise hoch. Malaria ist nicht durch eine Impfung vermeidbar; entscheidend sind ein konsequenter Schutz vor Mückenstichen und für die meisten Gebiete mit hohem Risiko eine medikamentöse Vorbeugung (Chemoprophylaxe). Ein Notfallmedikament zur Selbstbehandlung kommt nur in seltenen Fällen in Betracht, etwa bei Aufenthalten fern ärztlicher Versorgung.',
             'Welche Strategie für Sie passt, hängt vom konkreten Reisegebiet, der Saison und Ihrer Gesundheit ab. In der Beratung bewerten wir Ihr individuelles Risiko und besprechen Mückenschutz, Prophylaxe und Verhaltensregeln. Der Schutz vor Mückenstichen wirkt zugleich gegen weitere Erkrankungen wie Dengue.',
           ],
           en: [
-            'In many regions south of the Sahara there is a year-round or seasonal malaria risk – locally high. Malaria cannot be prevented by vaccination; what matters is consistent protection against mosquito bites and, depending on the destination and travel style, preventive medication (chemoprophylaxis) or an emergency standby medication.',
+            'In many regions south of the Sahara there is a year-round or seasonal malaria risk – locally high. Malaria cannot be prevented by vaccination; what matters is consistent protection against mosquito bites and, for most high-risk areas, preventive medication (chemoprophylaxis). Emergency self-treatment medication is only an option in rare cases, such as stays far from medical care.',
             'Which strategy suits you depends on the specific area, the season and your health. In the consultation we assess your individual risk and discuss mosquito protection, prophylaxis and rules of conduct. Protection against mosquito bites also works against other illnesses such as dengue.',
           ],
         },
         list: {
           de: [
             'Mückenschutz: imprägnierte Kleidung, Repellentien, Moskitonetz',
-            'Chemoprophylaxe oder Standby-Notfallmedikation je nach Gebiet',
+            'Meist Chemoprophylaxe – Notfallmedikament nur in Ausnahmefällen',
             'Risiko abhängig von Region, Höhenlage und Saison',
           ],
           en: [
             'Mosquito protection: treated clothing, repellents, bed net',
-            'Chemoprophylaxis or standby emergency medication depending on the area',
+            'Mostly chemoprophylaxis – emergency medication only in exceptional cases',
             'Risk depending on region, altitude and season',
           ],
         },
@@ -275,11 +275,11 @@ const asien: DestinationRegion = {
         body: {
           de: [
             'Wie bei jeder Fernreise gilt: zuerst den Standardschutz nach STIKO vervollständigen (Tetanus, Diphtherie, Keuchhusten, Polio, MMR). Hepatitis A wird für nahezu alle Reisen empfohlen, Typhus besonders auf dem indischen Subkontinent (Indien, Nepal, Pakistan, Bangladesch) sowie bei einfachen Reisebedingungen.',
-            'Bei längeren Aufenthalten, Rucksack- oder Individualreisen kommen Tollwut und Hepatitis B hinzu. Für bestimmte ländliche Langzeitaufenthalte ist die Impfung gegen Japanische Enzephalitis möglich – dazu unten mehr.',
+            'Bei längeren Aufenthalten, Rucksack- oder Individualreisen kommen Tollwut und Hepatitis B hinzu. Bei längeren oder wiederholten Aufenthalten in Endemiegebieten kann die Impfung gegen Japanische Enzephalitis sinnvoll sein – dazu unten mehr.',
           ],
           en: [
             'As with any long-haul trip: first complete the routine cover under STIKO (tetanus, diphtheria, whooping cough, polio, MMR). Hepatitis A is recommended for almost all trips, typhoid especially on the Indian subcontinent (India, Nepal, Pakistan, Bangladesh) and with simple travel conditions.',
-            'For longer stays, backpacking or independent travel, rabies and hepatitis B are added. For certain rural, long-term stays, vaccination against Japanese encephalitis is possible – more on this below.',
+            'For longer stays, backpacking or independent travel, rabies and hepatitis B are added. For longer or repeated stays in endemic areas, vaccination against Japanese encephalitis may be advisable – more on this below.',
           ],
         },
         list: {
@@ -308,11 +308,11 @@ const asien: DestinationRegion = {
         heading: { de: 'Japanische Enzephalitis & Dengue', en: 'Japanese encephalitis & dengue' },
         body: {
           de: [
-            'Die Japanische Enzephalitis ist eine seltene, aber schwer verlaufende Virusinfektion, die durch Mücken vor allem in ländlichen Gebieten mit Reisanbau und Schweinehaltung übertragen wird. Eine Impfung ist sinnvoll bei längeren Aufenthalten oder wiederholten Reisen in Risikogebiete während der Übertragungssaison.',
+            'Die Japanische Enzephalitis ist eine seltene, aber schwer verlaufende Virusinfektion, die durch Mücken vor allem in der Nähe von Reisfeldern und Schweinehaltung übertragen wird – das kann auch Stadtränder betreffen. Die STIKO empfiehlt die Impfung bei Aufenthalten in Endemiegebieten während der Übertragungszeit, insbesondere bei Reisen in Ausbruchsgebiete, Aufenthalten über vier Wochen oder wiederholten Kurzaufenthalten.',
             'Dengue ist in weiten Teilen Süd- und Südostasiens verbreitet und wird durch tagaktive Mücken übertragen. Den wichtigsten Schutz bietet konsequentes Mückenmanagement; eine Impfung kommt nur in bestimmten Konstellationen in Betracht und wird individuell geprüft.',
           ],
           en: [
-            'Japanese encephalitis is a rare but severe viral infection transmitted by mosquitoes, mainly in rural areas with rice cultivation and pig farming. Vaccination is advisable for longer stays or repeated trips to risk areas during the transmission season.',
+            'Japanese encephalitis is a rare but severe viral infection transmitted by mosquitoes, mainly near rice fields and pig farming – which can include urban outskirts. STIKO recommends vaccination for stays in endemic areas during the transmission period, particularly for travel to outbreak areas, stays of more than four weeks or repeated short stays.',
             'Dengue is widespread across much of South and Southeast Asia and is transmitted by day-biting mosquitoes. The most important protection is consistent mosquito management; vaccination is considered only in certain constellations and is assessed individually.',
           ],
         },
@@ -479,11 +479,11 @@ const lateinamerika: DestinationRegion = {
         heading: { de: 'Gelbfieber im Amazonas & Höhe in den Anden', en: 'Yellow fever in the Amazon & altitude in the Andes' },
         body: {
           de: [
-            'In tropischen Gebieten – vor allem im Amazonasbecken von Brasilien, Peru, Bolivien, Ecuador und Kolumbien – besteht ein Gelbfieberrisiko. Einzelne Länder verlangen einen Impfnachweis (ICVP), insbesondere bei Einreise aus einem weiteren Gelbfiebergebiet. Als staatlich autorisierte Gelbfieberimpfstelle führen wir die Impfung durch und stellen den Nachweis aus.',
+            'In tropischen Gebieten Südamerikas – im Amazonasbecken von Brasilien, Peru, Bolivien, Ecuador und Kolumbien, in Brasilien inzwischen auch deutlich darüber hinaus – sowie im Süden Mittelamerikas (Panama) besteht ein Gelbfieberrisiko. Französisch-Guayana verlangt den Impfnachweis (ICVP) von allen Einreisenden, andere Länder vor allem bei Einreise aus einem Gelbfiebergebiet. Als staatlich autorisierte Gelbfieberimpfstelle führen wir die Impfung durch und stellen den Nachweis aus.',
             'Wer in die Anden reist – etwa Cusco, Machu Picchu, La Paz oder den Titicacasee –, sollte die Höhenanpassung einplanen, um der Höhenkrankheit vorzubeugen. Ein langsamer Aufstieg, ausreichend Akklimatisierungszeit und das Erkennen von Warnzeichen sind entscheidend.',
           ],
           en: [
-            'In tropical areas – above all the Amazon basin of Brazil, Peru, Bolivia, Ecuador and Colombia – there is a yellow fever risk. Some countries require a certificate (ICVP), particularly when entering from another yellow fever area. As a state-authorised yellow fever vaccination centre, we perform the vaccination and issue the certificate.',
+            'In tropical South America – the Amazon basin of Brazil, Peru, Bolivia, Ecuador and Colombia, and in Brazil now well beyond it – and in southern Central America (Panama) there is a yellow fever risk. French Guiana requires a certificate (ICVP) from all arriving travellers, other countries mainly when entering from a yellow fever area. As a state-authorised yellow fever vaccination centre, we perform the vaccination and issue the certificate.',
             'Anyone travelling to the Andes – for example Cusco, Machu Picchu, La Paz or Lake Titicaca – should plan for acclimatisation to prevent altitude sickness. A slow ascent, sufficient time to acclimatise and recognising warning signs are decisive.',
           ],
         },
@@ -655,19 +655,19 @@ const naherOsten: DestinationRegion = {
         body: {
           de: [
             'Für Pilgerreisen nach Mekka (Hadsch und Umra) verlangt Saudi-Arabien einen gültigen Nachweis der Meningokokken-Impfung gegen die Serogruppen A, C, W und Y (ACWY). Der Nachweis ist Einreisevoraussetzung und muss rechtzeitig vor der Reise vorliegen.',
-            'Wir führen die Meningokokken-ACWY-Impfung durch und dokumentieren sie im Impfausweis. Die jeweils aktuellen Einreise- und Impfvorgaben können sich ändern; maßgeblich sind die offiziellen Vorgaben und die Hinweise des Auswärtigen Amts.',
+            'Wir führen die Meningokokken-ACWY-Impfung durch und dokumentieren sie im Impfausweis. Die jeweils aktuellen Einreise- und Impfvorgaben können sich ändern; maßgeblich sind die offiziellen Vorgaben des Ziellandes (Übersicht u. a. beim Auswärtigen Amt).',
           ],
           en: [
             'For pilgrimages to Mecca (Hajj and Umrah), Saudi Arabia requires a valid certificate of meningococcal vaccination against serogroups A, C, W and Y (ACWY). The certificate is a condition of entry and must be in place in good time before the trip.',
-            'We perform the meningococcal ACWY vaccination and document it in your vaccination record. The current entry and vaccination requirements can change; the decisive sources are the official rules and the German Federal Foreign Office travel advice.',
+            'We perform the meningococcal ACWY vaccination and document it in your vaccination record. The current entry and vaccination requirements can change; the destination country’s official rules are decisive (overview, among others, from the German Federal Foreign Office).',
           ],
         },
         callout: {
           variant: 'important',
           title: { de: 'Meningokokken-Nachweis für Mekka-Pilger', en: 'Meningococcal certificate for Mecca pilgrims' },
           text: {
-            de: 'Für Hadsch und Umra ist der ACWY-Nachweis verpflichtend und muss in der Regel einige Tage vor Einreise gültig sein. Planen Sie den Impftermin rechtzeitig und bringen Sie Ihren Impfausweis mit.',
-            en: 'For Hajj and Umrah the ACWY certificate is mandatory and must usually be valid a few days before entry. Plan the vaccination appointment in good time and bring your vaccination record.',
+            de: 'Für Hadsch und Umra ist der ACWY-Nachweis verpflichtend: Konjugatimpfstoff innerhalb der letzten 5 Jahre oder Polysaccharidimpfstoff innerhalb der letzten 3 Jahre, jeweils mindestens 10 Tage vor Ankunft. Der Impfstofftyp sollte im Impfausweis vermerkt sein. Planen Sie den Termin rechtzeitig und bringen Sie Ihren Impfausweis mit.',
+            en: 'For Hajj and Umrah the ACWY certificate is mandatory: conjugate vaccine within the last 5 years or polysaccharide vaccine within the last 3 years, in each case at least 10 days before arrival. The vaccine type should be noted in the vaccination record. Plan the appointment in good time and bring your vaccination record.',
           },
         },
         links: [
@@ -956,11 +956,11 @@ const ozeanien: DestinationRegion = {
         heading: { de: 'Planung & persönliche Beratung', en: 'Planning & personal advice' },
         body: {
           de: [
-            'Reisen nach Ozeanien sind oft lang und mit mehreren Zwischenstopps verbunden – planen Sie die reisemedizinische Beratung daher einige Wochen im Voraus ein, damit Impfungen rechtzeitig wirken. Beachten Sie außerdem Einreisebestimmungen: Bei Einreise aus einem Gelbfieber-Endemiegebiet kann ein Gelbfieber-Impfnachweis verlangt werden, auch wenn in Ozeanien selbst kein Gelbfieber vorkommt. Maßgeblich sind die aktuellen Hinweise des Auswärtigen Amts.',
+            'Reisen nach Ozeanien sind oft lang und mit mehreren Zwischenstopps verbunden – planen Sie die reisemedizinische Beratung daher einige Wochen im Voraus ein, damit Impfungen rechtzeitig wirken. Beachten Sie außerdem Einreisebestimmungen: Bei Einreise aus einem Gelbfieber-Endemiegebiet kann ein Gelbfieber-Impfnachweis verlangt werden, auch wenn in Ozeanien selbst kein Gelbfieber vorkommt. Maßgeblich sind die Einreisevorschriften des Ziellandes (Übersicht u. a. beim Auswärtigen Amt).',
             'Bringen Sie Ihren Impfausweis mit, damit wir den bestehenden Schutz beurteilen und gezielt ergänzen können. In der Beratung stimmen wir alles auf Ihr konkretes Ziel und Ihre Aktivitäten ab.',
           ],
           en: [
-            'Trips to Oceania are often long and involve several stopovers – so plan the travel medicine consultation several weeks ahead, so that vaccinations take effect in time. Also note entry requirements: when arriving from a yellow fever endemic area, proof of yellow fever vaccination may be required, even though yellow fever does not occur in Oceania itself. The current advice from the Federal Foreign Office is decisive.',
+            'Trips to Oceania are often long and involve several stopovers – so plan the travel medicine consultation several weeks ahead, so that vaccinations take effect in time. Also note entry requirements: when arriving from a yellow fever endemic area, proof of yellow fever vaccination may be required, even though yellow fever does not occur in Oceania itself. The destination country’s entry rules are decisive (overview, among others, from the German Federal Foreign Office).',
             'Bring your vaccination record so we can assess your existing protection and add to it specifically. In the consultation, we tailor everything to your specific destination and activities.',
           ],
         },

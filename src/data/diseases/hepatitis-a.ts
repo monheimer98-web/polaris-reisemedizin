@@ -105,13 +105,13 @@ export const hepatitisADisease: ClinicalPage = {
       heading: { de: 'Schutzimpfung', en: 'Vaccination' },
       body: {
         de: [
-          'Zum Schutz vor Hepatitis A stehen gut verträgliche Totimpfstoffe mit inaktivierten Viren zur Verfügung. Sie können ab dem Alter von einem Jahr angewendet werden. Erhältlich sind reine Hepatitis-A-Impfstoffe sowie Kombinationsimpfstoffe gegen Hepatitis A und B oder gegen Hepatitis A und Typhus.',
-          'Die vollständige Grundimmunisierung besteht aus zwei Dosen im Abstand von sechs bis zwölf Monaten und führt zu einem langjährigen Schutz; eine routinemäßige Auffrischung ist nach kompletter Grundimmunisierung in der Regel nicht erforderlich. Bereits die erste Dosis baut innerhalb weniger Tage bis Wochen einen belastbaren Schutz auf, sodass auch kurzfristig vor der Abreise sinnvoll geimpft werden kann.',
+          'Zum Schutz vor Hepatitis A stehen gut verträgliche Totimpfstoffe mit inaktivierten Viren zur Verfügung. Sie können ab dem Alter von einem Jahr angewendet werden. Erhältlich sind reine Hepatitis-A-Impfstoffe sowie ein Kombinationsimpfstoff gegen Hepatitis A und B.',
+          'Die vollständige Grundimmunisierung besteht aus zwei Dosen im Abstand von sechs bis zwölf Monaten und führt zu einem langjährigen Schutz; eine routinemäßige Auffrischung ist nach kompletter Grundimmunisierung nach derzeitigem Kenntnisstand nicht vorgesehen. Bereits die erste Dosis eines reinen Hepatitis-A-Impfstoffs baut innerhalb von etwa zwei Wochen einen guten Schutz auf, sodass auch kurzfristig vor der Abreise sinnvoll geimpft werden kann. Beim Kombinationsimpfstoff mit Hepatitis B besteht der Hepatitis-A-Schutz erst nach der zweiten Dosis.',
           'Die Ständige Impfkommission (STIKO) empfiehlt die Hepatitis-A-Impfung als Reiseimpfung bei Reisen in Regionen mit erhöhtem Vorkommen. Ob und in welcher Form (Einzel- oder Kombinationsimpfstoff) die Impfung für Sie sinnvoll ist, klären wir individuell im reisemedizinischen Beratungsgespräch.',
         ],
         en: [
-          'Well-tolerated inactivated (killed-virus) vaccines are available to protect against hepatitis A. They can be used from the age of one year. Both single hepatitis A vaccines and combination vaccines against hepatitis A and B or against hepatitis A and typhoid are available.',
-          'Full primary immunisation consists of two doses six to twelve months apart and provides many years of protection; a routine booster is generally not required after complete primary immunisation. Even the first dose builds reliable protection within a few days to weeks, so vaccination shortly before departure is also worthwhile.',
+          'Well-tolerated inactivated (killed-virus) vaccines are available to protect against hepatitis A. They can be used from the age of one year. Both single hepatitis A vaccines and a combination vaccine against hepatitis A and B are available.',
+          'Full primary immunisation consists of two doses six to twelve months apart and provides many years of protection; according to current knowledge, no routine booster is planned after complete primary immunisation. Even the first dose of a single hepatitis A vaccine builds good protection within about two weeks, so vaccination shortly before departure is also worthwhile. With the combined hepatitis A and B vaccine, hepatitis A protection is only established after the second dose.',
           'The German Standing Committee on Vaccination (STIKO) recommends hepatitis A vaccination as a travel vaccination for trips to regions with increased occurrence. Whether and in what form (single or combination vaccine) vaccination is sensible for you is something we clarify individually in the travel-medicine consultation.',
         ],
       },
@@ -119,13 +119,13 @@ export const hepatitisADisease: ClinicalPage = {
         variant: 'info',
         title: { de: 'Auch kurzfristig sinnvoll', en: 'Worthwhile even at short notice' },
         text: {
-          de: 'Schon die erste Impfdosis bietet für die anstehende Reise einen guten Schutz. Für den langfristigen Schutz wird die zweite Dosis nach sechs bis zwölf Monaten ergänzt – diese können Sie auch nach der Rückkehr nachholen.',
-          en: 'Even the first dose offers good protection for the upcoming trip. For long-term protection, the second dose is added after six to twelve months – this can also be caught up after your return.',
+          de: 'Schon die erste Dosis eines reinen Hepatitis-A-Impfstoffs bietet für die anstehende Reise einen guten Schutz. Für den langfristigen Schutz wird die zweite Dosis nach sechs bis zwölf Monaten ergänzt – diese können Sie auch nach der Rückkehr nachholen.',
+          en: 'Even the first dose of a single hepatitis A vaccine offers good protection for the upcoming trip. For long-term protection, the second dose is added after six to twelve months – this can also be caught up after your return.',
         },
       },
     },
   ],
-  sourceIds: ['rkiHepatitisA', 'whoHepatitisA', 'peiHepatitisA', 'stikoImpfempfehlungen', 'auswaertigesAmt'],
+  sourceIds: ['rkiHepatitisA', 'whoHepatitisA', 'peiHepatitisA', 'stikoReise2026', 'stikoImpfempfehlungen', 'auswaertigesAmt'],
   lastReviewed: new Date('2026-06-12'),
   related: [
     {

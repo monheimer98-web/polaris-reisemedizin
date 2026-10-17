@@ -161,11 +161,11 @@ export const faqPage: FaqPage = {
           },
           a: {
             de: [
-              'Nach den Internationalen Gesundheitsvorschriften (IHR) und der Position der Weltgesundheitsorganisation (WHO) gilt eine einmalige Gelbfieberimpfung als lebenslang gültig. Eine Auffrischung ist für die meisten Reisenden nicht mehr erforderlich.',
+              'Der internationale Impfnachweis (ICVP) gilt nach den Internationalen Gesundheitsvorschriften (IHR) seit 2016 lebenslang. Medizinisch empfiehlt die STIKO vor einer erneuten oder fortgesetzten Reise in ein Gelbfiebergebiet einmalig eine Auffrischimpfung, wenn die Erstimpfung 10 Jahre oder länger zurückliegt; nach zwei Dosen sind keine weiteren nötig. Besondere Regeln gelten u. a. bei Erstimpfung vor dem 2. Geburtstag, in der Schwangerschaft oder bei Immunschwäche – wir prüfen das anhand Ihres Impfausweises.',
               'Der internationale Impfnachweis (ICVP) wird ab dem zehnten Tag nach der Impfung wirksam.',
             ],
             en: [
-              'Under the International Health Regulations (IHR) and the position of the World Health Organization (WHO), a single yellow fever vaccination is considered valid for life. A booster is no longer required for most travellers.',
+              'Under the International Health Regulations (IHR), the international certificate (ICVP) has been valid for life since 2016. Medically, the German Standing Committee on Vaccination (STIKO) recommends a single booster before renewed or continued travel to a yellow fever area if the first vaccination was 10 or more years ago; after two doses no further doses are needed. Special rules apply, among others, if the first dose was given before the age of two, during pregnancy or with a weakened immune system – we check this using your vaccination record.',
               'The international certificate (ICVP) becomes effective from the tenth day after vaccination.',
             ],
           },
@@ -191,11 +191,11 @@ export const faqPage: FaqPage = {
           },
           a: {
             de: [
-              'Ob die Gelbfieberimpfung für Sie geeignet ist, prüfen wir individuell. Bei bestimmten Vorerkrankungen, einer Immunschwäche, in der Schwangerschaft, bei sehr jungen Säuglingen oder bei einer Allergie gegen Bestandteile des Impfstoffs ist besondere Vorsicht geboten.',
+              'Ob die Gelbfieberimpfung für Sie geeignet ist, prüfen wir individuell. Nicht geimpft werden in der Regel Menschen mit Immunschwäche oder immunsuppressiver Therapie, mit Erkrankungen des Thymus, mit schwerer Allergie gegen Bestandteile des Impfstoffs, Säuglinge unter sechs Monaten sowie Stillende mit einem Kind unter sechs Monaten. In der Schwangerschaft und ab 60 Jahren wird nur bei unvermeidbarem Risiko geimpft.',
               'Bringen Sie relevante Vorbefunde mit, damit wir Nutzen und mögliche Risiken im Aufklärungsgespräch gemeinsam abwägen können.',
             ],
             en: [
-              'Whether the yellow fever vaccination is suitable for you is something we assess individually. Particular caution is required with certain pre-existing conditions, a weakened immune system, during pregnancy, in very young infants or with an allergy to components of the vaccine.',
+              'Whether the yellow fever vaccination is suitable for you is something we assess individually. As a rule, it is not given to people with a weakened immune system or immunosuppressive therapy, thymus disorders, a severe allergy to vaccine components, infants under six months or breastfeeding mothers of a child under six months. During pregnancy and from age 60 it is given only where the risk is unavoidable.',
               'Please bring relevant medical records so that we can weigh the benefits and possible risks together during the consultation.',
             ],
           },
@@ -265,11 +265,11 @@ export const faqPage: FaqPage = {
           },
           a: {
             de: [
-              'Reiseimpfungen sind individuelle Gesundheitsleistungen und werden als Selbstzahlerleistung abgerechnet. Viele gesetzliche Krankenkassen erstatten Reiseimpfungen inzwischen freiwillig – häufig ganz oder zu einem großen Teil. Ob und in welchem Umfang, hängt von Ihrer Kasse ab; mit unserer itemisierten Rechnung können Sie die Kosten unkompliziert einreichen.',
+              'Als Privatpraxis rechnen wir nach der Gebührenordnung für Ärzte (GOÄ) ab; Sie zahlen zunächst selbst. Manche gesetzliche Krankenkassen erstatten Reiseimpfungen freiwillig als Satzungsleistung – Umfang und Bedingungen sind je Kasse sehr unterschiedlich (oft nur Impfstoff und/oder Impfleistung, die Reiseberatung meist nicht; manche Kassen erstatten nur Impfungen aus Kassenpraxen). Bitte klären Sie die Erstattung vorab mit Ihrer Kasse. Sie erhalten von uns eine aufgeschlüsselte Rechnung zum Einreichen.',
               'Die für Sie anfallenden Kosten besprechen wir transparent vor der Impfung.',
             ],
             en: [
-              'Travel vaccinations are individual health services and are billed as a self-pay service. Many statutory health insurers now reimburse travel vaccinations voluntarily – often in full or to a large extent. Whether and to what extent depends on your fund; with our itemised invoice you can submit the costs without hassle.',
+              'As a private practice we bill under the German medical fee schedule (GOÄ); you pay first yourself. Some statutory health insurers reimburse travel vaccinations voluntarily under their statutes – scope and conditions vary widely (often only the vaccine and/or the vaccination itself, rarely the consultation; some insurers only reimburse vaccinations given in statutory-insurance practices). Please check reimbursement with your insurer in advance. You will receive an itemised invoice from us to submit.',
               'We will explain the costs that apply to you transparently before the vaccination.',
             ],
           },
