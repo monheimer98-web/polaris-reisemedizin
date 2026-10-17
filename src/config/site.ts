@@ -168,7 +168,7 @@ export const site = {
 
   /** Berufsrechtliche Angaben (Pflicht im Impressum). */
   professional: {
-    jobTitle: { de: 'Ärztin / Arzt', en: 'Physician (Ärztin / Arzt)' },
+    jobTitle: { de: 'Arzt', en: 'Physician (Arzt)' },
     /** Land, in dem die Approbation/Berufsbezeichnung verliehen wurde. */
     jobTitleCountry: { de: 'verliehen in der Bundesrepublik Deutschland', en: 'awarded in the Federal Republic of Germany' },
     chamberName: 'Ärztekammer Nordrhein, Tersteegenstraße 9, 40474 Düsseldorf',

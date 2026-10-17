@@ -153,25 +153,25 @@ export const bookingPage: BookingPage = {
       en: 'Arrange an appointment',
     },
     description: {
-      de: 'Vereinbaren Sie Ihren Termin für die reisemedizinische Beratung und Impfung – telefonisch oder per E-Mail, direkt mit unserer Praxis.',
-      en: 'Arrange your appointment for travel-medicine advice and vaccination – by phone or email, directly with our practice.',
+      de: 'Buchen Sie Ihren Termin für reisemedizinische Beratung und Impfung online mit sofortiger Bestätigung – oder telefonisch und per E-Mail.',
+      en: 'Book your appointment for travel-medicine advice and vaccination online with instant confirmation – or by phone and email.',
     },
     eyebrow: {
       de: 'Terminbuchung',
       en: 'Appointments',
     },
     lead: {
-      de: 'Vereinbaren Sie Ihren Termin für Beratung und Impfung ganz unkompliziert telefonisch oder per E-Mail – Sie erreichen unsere Praxis direkt.',
-      en: 'Arrange your appointment for advice and vaccination simply by phone or email – you reach our practice directly.',
+      de: 'Buchen Sie Ihren Termin für Beratung und Impfung direkt online – mit sofortiger Bestätigung per E-Mail. Lieber persönlich? Rufen Sie uns an oder schreiben Sie uns.',
+      en: 'Book your appointment for advice and vaccination directly online – with instant confirmation by email. Prefer to talk? Call or write to us.',
     },
   },
   intro: {
     de: [
-      'Wählen Sie im Buchungstool Ihre Terminart und einen Wunschtermin – wir prüfen die Verfügbarkeit und bestätigen den Termin persönlich. Lieber telefonisch oder per E-Mail? Auch das ist jederzeit möglich.',
+      'Wählen Sie im Buchungstool Ihre Terminart und einen freien Termin. Sie erhalten sofort eine Bestätigung per E-Mail mit einem Link zum kostenlosen Absagen. Lieber telefonisch oder per E-Mail? Auch das ist jederzeit möglich.',
       'Bitte planen Sie ausreichend Vorlauf ein – einige Reiseimpfungen sollten rechtzeitig vor der Abreise erfolgen.',
     ],
     en: [
-      'Choose your appointment type and a preferred time in the booking tool – we check availability and confirm the appointment personally. Prefer phone or email? That works just as well, any time.',
+      'Choose your appointment type and a free slot in the booking tool. You will receive an instant confirmation by email with a link to cancel free of charge. Prefer phone or email? That works just as well, any time.',
       'Please allow enough lead time – some travel vaccinations should be given well before departure.',
     ],
   },

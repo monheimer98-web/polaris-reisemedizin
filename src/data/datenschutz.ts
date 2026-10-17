@@ -59,7 +59,7 @@ export const datenschutzPage: DatenschutzPage = {
       en: 'Information on the processing of your personal data pursuant to Articles 13 and 14 of the General Data Protection Regulation (GDPR).',
     },
   },
-  lastUpdated: new Date('2026-06-12'),
+  lastUpdated: new Date('2026-10-17'),
   controllerHeading: {
     de: 'Verantwortlicher',
     en: 'Controller',
@@ -177,12 +177,29 @@ export const datenschutzPage: DatenschutzPage = {
         de: [
           'Diese Website wird bei einem externen Dienstleister gehostet: {hostingProviderAddress}. Beim Aufruf der Website übermittelt Ihr Browser technisch notwendige Daten, die der Anbieter in Server-Logfiles verarbeitet.',
           'Hierzu zählen insbesondere: die IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite bzw. Datei, die übertragene Datenmenge, der verweisende URL (Referrer) sowie Browsertyp und Betriebssystem. Diese Verarbeitung dient dem technisch sicheren, stabilen und funktionsfähigen Betrieb der Website; Rechtsgrundlage ist unser berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO).',
-          'Mit dem Hosting-Anbieter besteht ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO. Sollte der Anbieter Daten in einem Drittland (z. B. USA) verarbeiten, erfolgt dies auf Grundlage geeigneter Garantien (insbesondere EU-Standardvertragsklauseln). Eine Verlagerung auf einen Hoster mit Sitz und Serverstandort in der EU ist vorgesehen.',
+          'Der Hosting-Anbieter verarbeitet die Daten auf Grundlage seiner Datenschutzvereinbarung. Übermittlungen in die USA stützen sich auf das EU-US Data Privacy Framework, unter dem der Anbieter zertifiziert ist, und ergänzend auf EU-Standardvertragsklauseln. Eine Verlagerung auf einen Hoster mit Sitz und Serverstandort in der EU ist vorgesehen.',
         ],
         en: [
           'This website is hosted by an external service provider: {hostingProviderAddress}. When you access the website, your browser transmits technically necessary data that the provider processes in server log files.',
           'These include in particular: the IP address, the date and time of access, the page or file requested, the volume of data transferred, the referring URL (referrer) as well as browser type and operating system. This processing serves the technically secure, stable and functional operation of the website; the legal basis is our legitimate interest (Art. 6 (1) (f) GDPR).',
-          'A data processing agreement pursuant to Art. 28 GDPR is in place with the hosting provider. Should the provider process data in a third country (e.g. the USA), this is carried out on the basis of appropriate safeguards (in particular EU standard contractual clauses). A move to a hosting provider domiciled with servers located in the EU is planned.',
+          'The hosting provider processes the data on the basis of its data protection agreement. Transfers to the USA are based on the EU-US Data Privacy Framework, under which the provider is certified, and additionally on EU standard contractual clauses. A move to a hosting provider domiciled with servers located in the EU is planned.',
+        ],
+      },
+    },
+    {
+      id: 'cdn',
+      heading: {
+        de: 'Auslieferung über Cloudflare',
+        en: 'Delivery via Cloudflare',
+      },
+      body: {
+        de: [
+          'Die gesamte Website und unsere Buchungsseite werden über das Auslieferungs- und Sicherheitsnetz von Cloudflare ausgeliefert (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA). Cloudflare leitet die Aufrufe weiter, schützt vor Angriffen und verarbeitet dabei technisch bedingt Ihre IP-Adresse sowie die Verbindungsdaten wie in den Server-Logfiles beschrieben. Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und schnellen Auslieferung (Art. 6 Abs. 1 lit. f DSGVO).',
+          'Mit Cloudflare besteht ein Vertrag zur Auftragsverarbeitung (Art. 28 DSGVO). Cloudflare ist unter dem EU-US Data Privacy Framework zertifiziert; Übermittlungen in die USA stützen sich auf den Angemessenheitsbeschluss der EU-Kommission vom 10.07.2023 und ergänzend auf EU-Standardvertragsklauseln.',
+        ],
+        en: [
+          'The entire website and our booking page are delivered via Cloudflare’s delivery and security network (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA). Cloudflare forwards requests, protects against attacks and, for technical reasons, processes your IP address and connection data as described for the server log files. The legal basis is our legitimate interest in secure and fast delivery (Art. 6 (1) (f) GDPR).',
+          'A data processing agreement (Art. 28 GDPR) is in place with Cloudflare. Cloudflare is certified under the EU-US Data Privacy Framework; transfers to the USA are based on the European Commission’s adequacy decision of 10 July 2023 and additionally on EU standard contractual clauses.',
         ],
       },
     },
@@ -262,11 +279,11 @@ export const datenschutzPage: DatenschutzPage = {
       },
       body: {
         de: [
-          'Auf unserer Terminseite binden wir unser eigenes Buchungstool über ein iframe von der Subdomain buchung.polaris-reisemedizin.de ein. Dabei handelt es sich um praxiseigene Infrastruktur (das Terminsystem unserer Praxissoftware) und nicht um einen externen Buchungsanbieter. Diese Subdomain wird über einen Reverse-Proxy-/CDN-Dienst (Cloudflare) ausgeliefert; beim Aufruf der Terminseite baut Ihr Browser deshalb eine Verbindung zu dieser Subdomain auf, wobei technisch bedingt Ihre IP-Adresse verarbeitet wird. Mit dem Dienstleister besteht ein Vertrag zur Auftragsverarbeitung (Art. 28 DSGVO).',
+          'Auf unserer Terminseite binden wir unser eigenes Buchungstool über ein iframe von der Subdomain buchung.polaris-reisemedizin.de ein. Dabei handelt es sich um praxiseigene Infrastruktur (das Terminsystem unserer Praxissoftware) und nicht um einen externen Buchungsanbieter. Wie die gesamte Website wird auch diese Subdomain über Cloudflare ausgeliefert (siehe oben); beim Aufruf der Terminseite baut Ihr Browser deshalb eine Verbindung zu dieser Subdomain auf, wobei technisch bedingt Ihre IP-Adresse verarbeitet wird. Bestätigungs- und Erinnerungsmails versenden wir über Microsoft 365 (siehe unten).',
           'Wenn Sie über das eingebettete Tool einen Termin buchen, verarbeiten wir die von Ihnen gemachten Angaben – insbesondere Terminart, Vor- und Nachname, Kontaktdaten (E-Mail-Adresse und, sofern angegeben, Telefonnummer), Ihren Wunschtermin, die Zahl mitreisender Personen sowie etwaige weitere Angaben –, um Ihre Buchung zu bearbeiten und den Termin mit Ihnen abzustimmen. Die Speicherung erfolgt in unserer eigenen, auf Praxisinfrastruktur betriebenen Terminverwaltung; eine Weitergabe an einen externen Buchungsanbieter findet nicht statt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung und Durchführung des Behandlungsvertrags). Das Buchungstool fragt bewusst keine Gesundheitsdaten ab; bitte teilen Sie uns Angaben zu Ihrem Gesundheitszustand erst im persönlichen Gespräch mit.',
         ],
         en: [
-          'On our appointments page we embed our own booking tool via an iframe from the subdomain buchung.polaris-reisemedizin.de. This is our own practice infrastructure (the scheduling system of our practice software) and not an external booking provider. This subdomain is served via a reverse-proxy/CDN service (Cloudflare); when the appointments page loads, your browser therefore establishes a connection to this subdomain, which technically involves processing your IP address. A data processing agreement (Art. 28 GDPR) is in place with that service provider.',
+          'On our appointments page we embed our own booking tool via an iframe from the subdomain buchung.polaris-reisemedizin.de. This is our own practice infrastructure (the scheduling system of our practice software) and not an external booking provider. Like the entire website, this subdomain is served via Cloudflare (see above); when the appointments page loads, your browser therefore establishes a connection to this subdomain, which technically involves processing your IP address. Confirmation and reminder emails are sent via Microsoft 365 (see below).',
           'When you book an appointment through the embedded tool, we process the details you provide – in particular appointment type, first and last name, contact details (email address and, where provided, phone number), your preferred appointment, the number of accompanying persons and any further details – in order to handle your booking and arrange the appointment with you. Storage takes place in our own scheduling system operated on practice infrastructure; the data is not passed on to an external booking provider. The legal basis is Art. 6 (1) (b) GDPR (initiation and performance of the treatment contract). The booking tool deliberately does not ask for health data; please share information about your state of health only in a personal consultation.',
         ],
       },
@@ -280,11 +297,11 @@ export const datenschutzPage: DatenschutzPage = {
       body: {
         de: [
           'Auf der Kontaktseite bieten wir eine interaktive Anfahrtskarte des Dienstes {mapProvider} an – ebenfalls über eine 2-Klick-Lösung. Die Karte wird erst nach Ihrer aktiven Einwilligung geladen; vorher wird keine Verbindung zum Kartendienst hergestellt.',
-          'Beim Laden der Karte stellt Ihr Browser eine direkte Verbindung zu den Servern des Kartendienstes her und überträgt dabei Ihre IP-Adresse; der Dienst kann hierfür Cookies oder vergleichbare Technologien einsetzen. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Der ebenfalls angebotene Link „Route planen" ist ein reiner Verweis, der erst beim Anklicken eine Seite des Kartendienstes in einem neuen Tab öffnet und ohne Klick keine Daten überträgt.',
+          'Beim Laden der Karte stellt Ihr Browser eine direkte Verbindung zu den Servern des Kartendienstes her und überträgt dabei Ihre IP-Adresse; der Dienst kann hierfür Cookies oder vergleichbare Technologien einsetzen. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Anbieter ist Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland; Google verarbeitet die Daten in eigener Verantwortung, Übermittlungen in die USA stützen sich auf das EU-US Data Privacy Framework (Datenschutzerklärung: https://policies.google.com/privacy). Der ebenfalls angebotene Link „Route planen" ist ein reiner Verweis, der erst beim Anklicken eine Seite des Kartendienstes in einem neuen Tab öffnet und ohne Klick keine Daten überträgt.',
         ],
         en: [
           'On the contact page we offer an interactive location map from the service {mapProvider} – likewise via a two-click solution. The map is only loaded after your active consent; beforehand, no connection to the map service is established.',
-          'When the map is loaded, your browser establishes a direct connection to the map service’s servers and transmits your IP address in the process; the service may use cookies or comparable technologies for this. The legal basis is your consent (Art. 6 (1) (a) GDPR). The “Plan route” link that is also offered is a mere reference that only opens a page of the map service in a new tab when clicked and transmits no data without a click.',
+          'When the map is loaded, your browser establishes a direct connection to the map service’s servers and transmits your IP address in the process; the service may use cookies or comparable technologies for this. The legal basis is your consent (Art. 6 (1) (a) GDPR). The provider is Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland; Google processes the data under its own responsibility, and transfers to the USA are based on the EU-US Data Privacy Framework (privacy policy: https://policies.google.com/privacy). The “Plan route” link that is also offered is a mere reference that only opens a page of the map service in a new tab when clicked and transmits no data without a click.',
         ],
       },
     },
@@ -306,6 +323,23 @@ export const datenschutzPage: DatenschutzPage = {
       },
     },
     {
+      id: 'email',
+      heading: {
+        de: 'E-Mail-Versand (Microsoft 365)',
+        en: 'Email (Microsoft 365)',
+      },
+      body: {
+        de: [
+          'Für E-Mails – etwa Terminbestätigungen, Terminerinnerungen und Ihre Korrespondenz mit uns – nutzen wir Microsoft 365 (Microsoft Ireland Operations Ltd., One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Irland). Verarbeitet werden Ihre E-Mail-Adresse, Ihr Name, der Inhalt der Nachricht sowie bei Terminmails Datum, Uhrzeit und Art des Termins.',
+          'Microsoft handelt als unser Auftragsverarbeiter (Art. 28 DSGVO, Microsoft Products and Services Data Protection Addendum) und speichert die Daten grundsätzlich in Rechenzentren in der EU. Soweit dennoch ein Zugriff aus den USA möglich ist, stützt er sich auf das EU-US Data Privacy Framework, unter dem Microsoft zertifiziert ist, und ergänzend auf EU-Standardvertragsklauseln. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung des Behandlungsvertrags).',
+        ],
+        en: [
+          'For emails – such as appointment confirmations, reminders and your correspondence with us – we use Microsoft 365 (Microsoft Ireland Operations Ltd., One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Ireland). We process your email address, your name, the content of the message and, for appointment emails, the date, time and type of appointment.',
+          'Microsoft acts as our processor (Art. 28 GDPR, Microsoft Products and Services Data Protection Addendum) and generally stores the data in data centres in the EU. Insofar as access from the USA is nevertheless possible, it is based on the EU-US Data Privacy Framework, under which Microsoft is certified, and additionally on EU standard contractual clauses. The legal basis is Art. 6 (1) (b) GDPR (performance of the treatment contract).',
+        ],
+      },
+    },
+    {
       id: 'empfaenger',
       heading: {
         de: 'Empfänger und Auftragsverarbeiter',
@@ -321,14 +355,16 @@ export const datenschutzPage: DatenschutzPage = {
       },
       list: {
         de: [
-          'Hosting und Auslieferung der Website: {hostingProvider}',
-          'Kartendienst / Anfahrt: {mapProvider} (nur nach Einwilligung).',
-          'Gegebenenfalls weitere technische Dienstleister zur Unterstützung von Betrieb und Sicherheit der Website – jeweils als Auftragsverarbeiter.',
+          'Hosting der Website: {hostingProvider}',
+          'Auslieferung und Schutz der Website und der Buchungsseite: Cloudflare, Inc.',
+          'E-Mail-Versand und -Postfach: Microsoft Ireland Operations Ltd. (Microsoft 365)',
+          'Der Kartendienst {mapProvider} ist kein Auftragsverarbeiter, sondern verarbeitet Daten nach Ihrer Einwilligung in eigener Verantwortung (siehe „Kartendienst / Anfahrt“).',
         ],
         en: [
-          'Hosting and delivery of the website: {hostingProvider}',
-          'Map service / directions: {mapProvider} (only after consent).',
-          'Where applicable, further technical service providers supporting the operation and security of the website – each as a processor.',
+          'Website hosting: {hostingProvider}',
+          'Delivery and protection of the website and booking page: Cloudflare, Inc.',
+          'Email sending and mailbox: Microsoft Ireland Operations Ltd. (Microsoft 365)',
+          'The map service {mapProvider} is not a processor; after your consent it processes data under its own responsibility (see “Map service / directions”).',
         ],
       },
     },
@@ -373,11 +409,11 @@ export const datenschutzPage: DatenschutzPage = {
       body: {
         de: [
           'Wir speichern personenbezogene Daten nur so lange, wie es für die genannten Zwecke erforderlich ist oder gesetzliche Aufbewahrungsfristen es verlangen. Anschließend werden die Daten gelöscht oder anonymisiert.',
-          'Behandlungs- und Impfdokumentationen unterliegen ärztlichen Aufbewahrungspflichten und werden grundsätzlich für mindestens zehn Jahre nach Abschluss der Behandlung aufbewahrt (§ 630f Bürgerliches Gesetzbuch sowie die Berufsordnung); für bestimmte Unterlagen können längere gesetzliche Fristen gelten. Rechnungs- und Buchhaltungsunterlagen bewahren wir nach den handels- und steuerrechtlichen Vorgaben (insbesondere § 257 Handelsgesetzbuch – HGB und § 147 Abgabenordnung – AO) regelmäßig zehn Jahre auf. Einwilligungen (lokal in Ihrem Browser) gelten bis zum Widerruf. Server-Logfiles werden nur kurzfristig verarbeitet und regelmäßig gelöscht.',
+          'Behandlungs- und Impfdokumentationen unterliegen ärztlichen Aufbewahrungspflichten und werden grundsätzlich für mindestens zehn Jahre nach Abschluss der Behandlung aufbewahrt (§ 630f Bürgerliches Gesetzbuch sowie die Berufsordnung); für bestimmte Unterlagen können längere gesetzliche Fristen gelten. Rechnungs- und Buchhaltungsunterlagen bewahren wir nach den steuerrechtlichen Vorgaben auf (§ 147 Abgabenordnung – AO): Buchungsbelege wie Rechnungen acht Jahre, Bücher und Aufzeichnungen zehn Jahre. Einwilligungen (lokal in Ihrem Browser) gelten bis zum Widerruf. Server-Logfiles werden nur kurzfristig verarbeitet und regelmäßig gelöscht.',
         ],
         en: [
           'We store personal data only for as long as is necessary for the stated purposes or as required by statutory retention periods. The data is then deleted or anonymised.',
-          'Treatment and vaccination records are subject to medical retention obligations and are generally retained for at least ten years after completion of treatment (Section 630f of the German Civil Code and the code of professional conduct); longer statutory periods may apply to certain documents. Invoice and accounting records are retained in accordance with commercial and tax law requirements (in particular Section 257 of the German Commercial Code – HGB and Section 147 of the German Fiscal Code – AO), generally for ten years. Consents (stored locally in your browser) apply until withdrawn. Server log files are processed only for a short time and deleted regularly.',
+          'Treatment and vaccination records are subject to medical retention obligations and are generally retained for at least ten years after completion of treatment (Section 630f of the German Civil Code and the code of professional conduct); longer statutory periods may apply to certain documents. Invoice and accounting records are retained in accordance with tax law (Section 147 of the German Fiscal Code – AO): accounting vouchers such as invoices for eight years, books and records for ten years. Consents (stored locally in your browser) apply until withdrawn. Server log files are processed only for a short time and deleted regularly.',
         ],
       },
     },
@@ -413,6 +449,21 @@ export const datenschutzPage: DatenschutzPage = {
           'Data portability (Art. 20 GDPR),',
           'Objection to processing (Art. 21 GDPR),',
           'Withdrawal of a given consent with effect for the future (Art. 7 (3) GDPR).',
+        ],
+      },
+    },
+    {
+      id: 'widerspruch',
+      heading: {
+        de: 'Widerspruchsrecht nach Art. 21 DSGVO',
+        en: 'Right to object under Art. 21 GDPR',
+      },
+      body: {
+        de: [
+          'Verarbeiten wir Ihre Daten auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO), können Sie dieser Verarbeitung aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit widersprechen. Wir verarbeiten die Daten dann nicht mehr, es sei denn, wir können zwingende schutzwürdige Gründe nachweisen, die Ihre Interessen überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen. Ein formloser Hinweis an die im Impressum genannten Kontaktdaten genügt.',
+        ],
+        en: [
+          'Where we process your data on the basis of our legitimate interest (Art. 6 (1) (f) GDPR), you may object to this processing at any time on grounds relating to your particular situation. We will then no longer process the data unless we can demonstrate compelling legitimate grounds that override your interests, or the processing serves the establishment, exercise or defence of legal claims. An informal message to the contact details given in the legal notice is sufficient.',
         ],
       },
     },

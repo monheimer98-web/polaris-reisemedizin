@@ -89,10 +89,10 @@ export const kontaktPage: KontaktPage = {
   },
   intro: {
     de: [
-      'Wir freuen uns auf Ihre Nachricht. Für eine reisemedizinische Beratung oder Impfung vereinbaren Sie am besten vorab einen Termin – telefonisch oder per E-Mail.',
+      'Wir freuen uns auf Ihre Nachricht. Für eine reisemedizinische Beratung oder Impfung buchen Sie am besten vorab einen Termin – online auf unserer Terminseite, telefonisch oder per E-Mail.',
     ],
     en: [
-      'We look forward to hearing from you. For travel-medicine advice or a vaccination, it is best to arrange an appointment in advance – by phone or email.',
+      'We look forward to hearing from you. For travel-medicine advice or a vaccination, it is best to book an appointment in advance – online on our appointments page, by phone or email.',
     ],
   },
   labels: {
