@@ -31,8 +31,8 @@ const feverCallout: SectionCallout = {
   variant: 'caution',
   title: { de: 'Fieber nach der Reise', en: 'Fever after the trip' },
   text: {
-    de: 'Fieber während oder bis zu Monate nach einer Reise in ein Malariagebiet muss sofort ärztlich abgeklärt werden. Weisen Sie dabei auf Ihre Reise hin.',
-    en: 'Fever during or up to months after a trip to a malaria area must be checked by a doctor immediately. Mention your trip.',
+    de: 'Fieber während einer Reise in ein Malariagebiet oder bis zu mehreren Monaten danach muss sofort ärztlich abgeklärt werden – auch wenn Sie vorbeugend Tabletten eingenommen haben. Weisen Sie dabei auf Ihre Reise hin.',
+    en: 'Fever during a trip to a malaria area or up to several months afterwards must be checked by a doctor immediately – even if you took preventive tablets. Mention your trip.',
   },
 };
 
@@ -115,8 +115,8 @@ const thailand: ClinicalPage = {
           'Hepatitis A: für alle Reisenden empfohlen.',
           'Typhus: bei einfachen Reisebedingungen, längeren Aufenthalten oder Besuchen bei Familie und Freunden.',
           'Hepatitis B: nach individueller Einschätzung, etwa bei längeren Aufenthalten, Tattoos oder Piercings, medizinischen Eingriffen oder neuen Sexualkontakten.',
-          'Tollwut: vorbeugend bei Aufenthalten über vier Wochen oder wiederholten Reisen, wenn zusätzlich Tierkontakte wahrscheinlich sind oder die Behandlung nach einem Biss vor Ort nicht gesichert ist; bei Kindern großzügig.',
-          'Japanische Enzephalitis: landesweit, Hauptsaison Mai bis Oktober, besonders im Norden. Empfohlen vor allem bei längeren oder wiederholten Aufenthalten und bei Aufenthalten nahe Reisfeldern oder Schweinehaltung.',
+          'Tollwut: vorbeugend bei Aufenthalten über vier Wochen oder wiederholten Reisen, wenn zusätzlich die Versorgung nach einem Biss vor Ort nicht gesichert ist, einfache Reisebedingungen bestehen oder Aktivitäten mit erhöhtem Risiko für Tierkontakte geplant sind (etwa Rad- oder Rollerfahren, Joggen); bei Kindern großzügig.',
+          'Japanische Enzephalitis: landesweit, Übertragung ganzjährig möglich; Hauptsaison Mai bis Oktober, besonders im Norden. Empfohlen vor allem bei Aufenthalten über vier Wochen, wiederholten Reisen, Ausbrüchen und absehbaren Aufenthalten nahe Reisfeldern oder Schweinehaltung – auch außerhalb ländlicher Gebiete.',
           'Dengue und Chikungunya: Impfung nur in bestimmten Situationen, etwa nach einer früheren, im Labor nachgewiesenen Dengue-Infektion. Das klären wir in der Beratung.',
         ],
         en: [
@@ -124,8 +124,8 @@ const thailand: ClinicalPage = {
           'Hepatitis A: recommended for all travellers.',
           'Typhoid: for basic travel conditions, longer stays or visits to family and friends.',
           'Hepatitis B: based on individual assessment, for example for longer stays, tattoos or piercings, medical procedures or new sexual contacts.',
-          'Rabies: pre-exposure vaccination for stays of more than four weeks or repeated trips if, in addition, animal contact is likely or treatment after a bite is not assured locally; generously for children.',
-          'Japanese encephalitis: nationwide, main season May to October, especially in the north. Recommended mainly for longer or repeated stays and for stays near rice fields or pig farming.',
+          'Rabies: pre-exposure vaccination for stays of more than four weeks or repeated trips if, in addition, care after a bite is not assured locally, travel conditions are basic or activities with a higher risk of animal contact are planned (such as cycling, riding a scooter or jogging); generously for children.',
+          'Japanese encephalitis: nationwide, transmission possible all year round; main season May to October, especially in the north. Recommended mainly for stays of more than four weeks, repeated trips, outbreaks and foreseeable stays near rice fields or pig farming – including outside rural areas.',
           'Dengue and chikungunya: vaccination only in specific situations, for example after a previous laboratory-confirmed dengue infection. We clarify this in the consultation.',
         ],
       },
@@ -144,16 +144,17 @@ const thailand: ClinicalPage = {
       },
       list: {
         de: [
-          'Malariafrei: Bangkok, Chiang Mai, Chiang Rai und Pattaya.',
+          'Malariafrei: die Städte Bangkok, Chiang Mai, Chiang Rai und Pattaya (nicht das ländliche Umland).',
           'Geringes Risiko: das übrige Land, auch Phuket, Koh Samui, Koh Phangan, Koh Lanta und andere Inseln – Mückenschutz.',
-          'Mittleres Risiko: das Grenzgebiet zu Myanmar und die Insel Little Koh Chang – Mückenschutz; bei Reisen fern ärztlicher Versorgung gegebenenfalls ein Notfallmedikament zur Selbstbehandlung nach ärztlicher Beratung.',
+          'Mittleres Risiko: der Grenzgürtel zu Myanmar und die Insel Little Koh Chang in der Andamanensee (Provinz Ranong – nicht die Ferieninsel Koh Chang im Golf von Thailand) – Mückenschutz. Ist von dort eine ärztliche Malaria-Diagnostik nicht innerhalb von 48 Stunden erreichbar, kann nach ärztlicher Beratung ein Notfallmedikament zur Selbstbehandlung mitgeführt werden. Schwangeren empfiehlt die DTG auch hier eine vorbeugende Tabletteneinnahme.',
         ],
         en: [
-          'Malaria-free: Bangkok, Chiang Mai, Chiang Rai and Pattaya.',
+          'Malaria-free: the cities of Bangkok, Chiang Mai, Chiang Rai and Pattaya (not the surrounding countryside).',
           'Low risk: the rest of the country, including Phuket, Koh Samui, Koh Phangan, Koh Lanta and other islands – mosquito protection.',
-          'Moderate risk: the border area with Myanmar and the island of Little Koh Chang – mosquito protection; for trips far from medical care, possibly an emergency standby treatment after medical advice.',
+          'Moderate risk: the border belt with Myanmar and the island of Little Koh Chang in the Andaman Sea (Ranong province – not the holiday island of Koh Chang in the Gulf of Thailand) – mosquito protection. If medical malaria testing cannot be reached from there within 48 hours, an emergency standby treatment can be carried after medical advice. For pregnant women, DTG recommends preventive tablets here as well.',
         ],
       },
+      callout: feverCallout,
       links: [malariaLink],
     },
     {
@@ -163,14 +164,14 @@ const thailand: ClinicalPage = {
       list: {
         de: [
           'Dengue ganzjährig, vor allem in der Regenzeit – Mückenschutz auch tagsüber.',
-          'Tollwut: Kontakt zu Hunden, Katzen und Affen meiden; Bisse und Kratzer sofort ärztlich versorgen lassen.',
+          'Tollwut: Kontakt zu Hunden, Katzen und Affen meiden. Nach einem Biss oder Kratzer die Wunde sofort etwa 15 Minuten mit Seife und Wasser auswaschen und noch am selben Tag ärztliche Hilfe suchen – auch wenn Sie geimpft sind.',
           'Reisedurchfall, Hepatitis A und Typhus: auf Trinkwasser- und Lebensmittelhygiene achten.',
           'Leptospirose und Melioidose nach Kontakt mit Süßwasser, Schlamm oder Erde, besonders nach Überschwemmungen.',
           'Luftverschmutzung in Bangkok und Chiang Mai, vor allem in der Trockenzeit von November bis April.',
         ],
         en: [
           'Dengue all year round, especially in the rainy season – mosquito protection during the day as well.',
-          'Rabies: avoid contact with dogs, cats and monkeys; have bites and scratches treated by a doctor immediately.',
+          'Rabies: avoid contact with dogs, cats and monkeys. After a bite or scratch, wash the wound immediately with soap and water for about 15 minutes and seek medical help the same day – even if you are vaccinated.',
           "Travellers' diarrhoea, hepatitis A and typhoid: pay attention to drinking water and food hygiene.",
           'Leptospirosis and melioidosis after contact with fresh water, mud or soil, especially after flooding.',
           'Air pollution in Bangkok and Chiang Mai, especially in the dry season from November to April.',
@@ -233,18 +234,18 @@ const kenia: ClinicalPage = {
       body: {
         de: [
           'Bei direkter Einreise aus Deutschland ist keine Impfung vorgeschrieben. Reisende ab einem Jahr, die aus einem Gelbfieber-Gebiet einreisen, müssen eine Gelbfieberimpfung nachweisen.',
-          'Unabhängig von der Pflicht empfehlen WHO, STIKO und DTG die Gelbfieberimpfung für die meisten Landesteile. Nicht generell empfohlen ist sie, wenn Sie ausschließlich Nairobi, Mombasa, die Küstenbezirke Kilifi, Kwale, Lamu, Malindi und Tana River oder den Nordosten besuchen. Nach Gelbfieberfällen im Landesinneren raten STIKO und DTG jedoch, die Impfung großzügig zu empfehlen.',
-          'Geimpft wird nur in einer staatlich autorisierten Gelbfieber-Impfstelle, mindestens zehn Tage vor der Einreise. Das Zertifikat gilt lebenslang.',
+          'Unabhängig von der Pflicht empfehlen WHO, STIKO und DTG die Gelbfieberimpfung für die meisten Landesteile. Nicht generell empfohlen ist sie, wenn Sie ausschließlich Nairobi, Mombasa, die Küstenbezirke Kilifi, Kwale, Lamu, Malindi und Tana River oder den Nordosten besuchen. 2022 sind im Landesinneren Gelbfieberfälle aufgetreten, die sich teils auch auf diese Gebiete ausgebreitet haben. STIKO und DTG raten deshalb bis auf Weiteres, die Impfung für Reisen in ganz Kenia großzügig einzusetzen – auch wenn Sie nur die genannten Gebiete besuchen.',
+          'Geimpft wird nur in einer staatlich autorisierten Gelbfieber-Impfstelle; die erste Impfung muss mindestens zehn Tage vor der Einreise erfolgen. Das Zertifikat gilt lebenslang. Liegt Ihre Impfung zehn Jahre oder länger zurück, empfiehlt die STIKO vor einer erneuten Reise in ein Gelbfiebergebiet einmalig eine Auffrischung; für Kinder, Schwangere und Menschen mit geschwächtem Immunsystem gelten besondere Regeln.',
         ],
         en: [
           'No vaccination is required when entering directly from Germany. Travellers aged one year and older arriving from a yellow fever area must show proof of yellow fever vaccination.',
-          'Regardless of the requirement, WHO, STIKO and DTG recommend yellow fever vaccination for most parts of the country. It is not generally recommended if you visit only Nairobi, Mombasa, the coastal districts of Kilifi, Kwale, Lamu, Malindi and Tana River, or the north-east. After yellow fever cases inland, however, STIKO and DTG advise recommending the vaccination generously.',
-          'Vaccination is only given at a state-authorised yellow fever vaccination centre, at least ten days before entry. The certificate is valid for life.',
+          'Regardless of the requirement, WHO, STIKO and DTG recommend yellow fever vaccination for most parts of the country. It is not generally recommended if you visit only Nairobi, Mombasa, the coastal districts of Kilifi, Kwale, Lamu, Malindi and Tana River, or the north-east. In 2022, yellow fever cases occurred inland and in part spread to these areas as well. STIKO and DTG therefore currently advise using the vaccination generously for travel anywhere in Kenya – even if you visit only the areas listed.',
+          'Vaccination is only given at a state-authorised yellow fever vaccination centre; the first dose must be given at least ten days before entry. The certificate is valid for life. If your vaccination was ten or more years ago, STIKO recommends a single booster before travelling to a yellow fever area again; special rules apply to children, pregnant women and people with a weakened immune system.',
         ],
       },
       callout: {
         variant: 'important',
-        title: { de: 'Weiterreise nach Kenia', en: 'Travelling on from Kenya' },
+        title: { de: 'Weiterreise aus Kenia', en: 'Travelling on from Kenya' },
         text: {
           de: 'Kenia gilt selbst als Gelbfieber-Gebiet. Wer danach nach Tansania, Sansibar, Indien oder in andere Länder mit Nachweispflicht weiterreist, braucht dort eine gültige Impfung. Maßgeblich sind die Einreisevorschriften des jeweiligen Ziellandes.',
           en: 'Kenya itself counts as a yellow fever area. Anyone travelling on to Tanzania, Zanzibar, India or other countries with a certificate requirement needs a valid vaccination there. The entry requirements of each destination country apply.',
@@ -263,20 +264,20 @@ const kenia: ClinicalPage = {
         de: [
           'Standardimpfungen prüfen und auffrischen, insbesondere Masern – in Kenia kommt es wiederholt zu Ausbrüchen.',
           'Hepatitis A: für alle Reisenden.',
-          'Polio: vollständiger Schutz; Auffrischung, wenn die letzte Impfung länger als zehn Jahre zurückliegt.',
-          'Tollwut: Das Risiko durch Hunde ist hoch, Impfstoff und vor allem Immunglobulin sind vor Ort nur begrenzt verfügbar. STIKO und DTG empfehlen die vorbeugende Impfung unabhängig von der Reisedauer, wenn die Versorgung nach einem Biss nicht gesichert ist oder Tierkontakte wahrscheinlich sind.',
+          'Polio: vollständige Grundimmunisierung und mindestens eine Auffrischimpfung; fehlende Impfungen holen wir nach.',
+          'Tollwut: Das Risiko durch Hunde ist hoch, Impfstoff und vor allem Immunglobulin sind vor Ort nur begrenzt verfügbar. STIKO und DTG empfehlen die vorbeugende Impfung – unabhängig von der Reisedauer –, wenn die Versorgung nach einem Biss vor Ort nicht gesichert ist, bei einfachen Reisebedingungen oder bei Aktivitäten mit erhöhtem Risiko für Tierkontakte, etwa Rad- oder Rollerfahren und Joggen; bei Kindern großzügig.',
           'Typhus: bei einfachen Reisebedingungen, längeren Aufenthalten oder Besuchen bei Familie und Freunden.',
           'Hepatitis B: nach individueller Einschätzung.',
-          'Meningokokken ACWY: bei engem Kontakt zur Bevölkerung, längeren Aufenthalten oder Arbeit im Gesundheitswesen; Erkrankungen häufen sich in den Trockenzeiten.',
+          'Meningokokken ACWY: bei längeren Aufenthalten mit engem Kontakt zur Bevölkerung (z. B. Familienbesuche, Arbeit in Schulen), bei Ausbrüchen sowie für medizinisches Personal und Hilfseinsätze; Erkrankungen häufen sich in den Trockenzeiten (Dezember bis März, Juni bis Oktober).',
         ],
         en: [
           'Check and boost routine vaccinations, especially measles – Kenya has repeated outbreaks.',
           'Hepatitis A: for all travellers.',
-          'Polio: complete protection; booster if the last dose was more than ten years ago.',
-          'Rabies: the risk from dogs is high, and vaccine and especially immunoglobulin are only available to a limited extent locally. STIKO and DTG recommend pre-exposure vaccination regardless of trip length if care after a bite is not assured or animal contact is likely.',
+          'Polio: a complete primary course and at least one booster; we catch up on any missing doses.',
+          'Rabies: the risk from dogs is high, and vaccine and especially immunoglobulin are only available to a limited extent locally. STIKO and DTG recommend pre-exposure vaccination – regardless of trip length – if care after a bite is not assured locally, for basic travel conditions, or for activities with a higher risk of animal contact such as cycling, riding a scooter or jogging; generously for children.',
           'Typhoid: for basic travel conditions, longer stays or visits to family and friends.',
           'Hepatitis B: based on individual assessment.',
-          'Meningococcal ACWY: for close contact with the local population, longer stays or healthcare work; cases cluster in the dry seasons.',
+          'Meningococcal ACWY: for longer stays with close contact with the local population (e.g. visiting family, working in schools), during outbreaks, and for healthcare staff and aid work; cases cluster in the dry seasons (December to March, June to October).',
         ],
       },
       links: [rabiesLink, typhoidLink, { label: { de: 'Meningokokken', en: 'Meningococcal disease' }, path: '/krankheitsbilder/meningokokken' }],
@@ -285,8 +286,8 @@ const kenia: ClinicalPage = {
       id: 'malaria',
       heading: { de: 'Malaria', en: 'Malaria' },
       body: {
-        de: ['Malaria ist in Kenia das wichtigste Reiserisiko. Fast alle Infektionen sind Malaria tropica, die gefährlichste Form.'],
-        en: ['Malaria is the most important travel risk in Kenya. Almost all infections are falciparum malaria, the most dangerous form.'],
+        de: ['Malaria ist in Kenia das wichtigste Infektionsrisiko für Reisende. Fast alle Infektionen sind Malaria tropica, die gefährlichste Form.'],
+        en: ['Malaria is the most important infection risk for travellers in Kenya. Almost all infections are falciparum malaria, the most dangerous form.'],
       },
       list: {
         de: [
@@ -325,8 +326,8 @@ const kenia: ClinicalPage = {
         variant: 'info',
         title: { de: 'Aktuelle Lage (Stand Oktober 2026)', en: 'Current situation (as of October 2026)' },
         text: {
-          de: 'Anfang Oktober 2026 wurde in Kenia ein eingeschleppter Ebola-Fall gemeldet; an den Flughäfen Nairobi und Mombasa wird bei der Einreise Fieber gemessen. Prüfen Sie vor der Abreise die aktuellen Hinweise des Auswärtigen Amts.',
-          en: 'In early October 2026 an imported Ebola case was reported in Kenya; temperature screening takes place on arrival at Nairobi and Mombasa airports. Check the current advice of the German Federal Foreign Office before departure.',
+          de: 'Anfang Oktober 2026 wurde in Kenia ein aus der DR Kongo eingeschleppter Ebola-Fall gemeldet; an den Flughäfen Nairobi und Mombasa wird bei der Einreise Fieber gemessen. Andere Länder können nach einem Kenia-Aufenthalt zusätzliche Kontrollen oder Quarantäne verlangen. Prüfen Sie vor der Abreise die aktuellen Hinweise des Auswärtigen Amts.',
+          en: 'In early October 2026 an Ebola case imported from the DR Congo was reported in Kenya; temperature screening takes place on arrival at Nairobi and Mombasa airports. Other countries may require additional checks or quarantine after a stay in Kenya. Check the current advice of the German Federal Foreign Office before departure.',
         },
       },
       links: [altitudeLink],
@@ -390,12 +391,12 @@ const tansania: ClinicalPage = {
       body: {
         de: [
           'Bei direkter Einreise aus Deutschland – auch nach Sansibar – ist keine Gelbfieberimpfung vorgeschrieben. Das gilt auch bei einem Umstieg in einem Gelbfieber-Gebiet, solange er kürzer als zwölf Stunden ist und Sie den Flughafen nicht verlassen.',
-          'Einen Nachweis brauchen Reisende ab einem Jahr, die aus einem Gelbfieber-Gebiet wie Kenia oder Uganda einreisen oder dort länger als zwölf Stunden im Transit waren. Sansibar prüft das auch bei Ankunft vom tansanischen Festland. Fehlt der Nachweis, kann am Einreiseort auf eigene Kosten geimpft werden.',
+          'Einen Nachweis brauchen Reisende ab einem Jahr, die aus einem Gelbfieber-Gebiet wie Kenia oder Uganda einreisen oder dort länger als zwölf Stunden im Transit waren. Sansibar prüft das auch bei Ankunft vom tansanischen Festland. Fehlt der Nachweis, wird nach Angaben der tansanischen Botschaft am Einreiseort auf eigene Kosten geimpft – das ersetzt keine rechtzeitige Impfung vor der Reise.',
           'Zum eigenen Schutz wird die Gelbfieberimpfung für Tansania nicht empfohlen, weil das Übertragungsrisiko dort gering ist.',
         ],
         en: [
           'No yellow fever vaccination is required when entering directly from Germany – including Zanzibar. This also applies to a stopover in a yellow fever area as long as it lasts less than twelve hours and you do not leave the airport.',
-          'Proof is required for travellers aged one year and older who arrive from a yellow fever area such as Kenya or Uganda, or who spent more than twelve hours in transit there. Zanzibar also checks this on arrival from the Tanzanian mainland. Without proof, you may be vaccinated at the point of entry at your own expense.',
+          'Proof is required for travellers aged one year and older who arrive from a yellow fever area such as Kenya or Uganda, or who spent more than twelve hours in transit there. Zanzibar also checks this on arrival from the Tanzanian mainland. Without proof, according to the Tanzanian embassy you will be vaccinated at the point of entry at your own expense – this is no substitute for timely vaccination before the trip.',
           'Yellow fever vaccination for your own protection is not recommended for Tanzania, as the transmission risk there is low.',
         ],
       },
@@ -403,8 +404,8 @@ const tansania: ClinicalPage = {
         variant: 'important',
         title: { de: 'Kombination mit Kenia', en: 'Combined with Kenya' },
         text: {
-          de: 'Die beliebte Kombination aus Kenia-Safari und Sansibar erfordert einen gültigen Gelbfieber-Nachweis. Die Impfung muss mindestens zehn Tage vor der Einreise erfolgen. Maßgeblich sind die Einreisevorschriften des Ziellandes.',
-          en: 'The popular combination of a Kenya safari and Zanzibar requires a valid yellow fever certificate. The vaccination must be given at least ten days before entry. The entry requirements of the destination country apply.',
+          de: 'Wer nach einer Kenia-Safari nach Sansibar oder aufs tansanische Festland weiterreist, braucht einen gültigen Gelbfieber-Nachweis. Die erste Impfung muss mindestens zehn Tage vor der Einreise erfolgen. Maßgeblich sind die Einreisevorschriften des Ziellandes.',
+          en: 'If you travel on to Zanzibar or mainland Tanzania after a Kenya safari, you need a valid yellow fever certificate. The first vaccination must be given at least ten days before entry. The entry requirements of the destination country apply.',
         },
       },
       links: [yellowFeverLink, { label: { de: 'Kenia', en: 'Kenya' }, path: '/reiseziele/afrika/kenia' }],
@@ -420,21 +421,21 @@ const tansania: ClinicalPage = {
         de: [
           'Standardimpfungen prüfen und auffrischen, insbesondere Masern.',
           'Hepatitis A: für alle Reisenden.',
-          'Polio: vollständiger, aufgefrischter Schutz. Bei Aufenthalten über vier Wochen soll die letzte Polio-Impfung nach WHO-Vorgabe vier Wochen bis zwölf Monate vor der Ausreise liegen und im Internationalen Impfausweis eingetragen sein.',
-          'Tollwut: Das Risiko durch Hunde ist hoch, Impfstoff und Immunglobulin sind vor Ort teils nur begrenzt verfügbar. STIKO und DTG empfehlen die vorbeugende Impfung unabhängig von der Reisedauer, wenn die Versorgung nach einem Biss nicht gesichert ist oder Tierkontakte wahrscheinlich sind.',
+          'Polio: vollständiger, aufgefrischter Schutz. Bei Aufenthalten über vier Wochen empfiehlt die WHO, dass die letzte Polio-Impfung vier Wochen bis zwölf Monate vor der Ausreise aus Tansania liegt und im Internationalen Impfausweis eingetragen ist.',
+          'Tollwut: Das Risiko durch Hunde ist hoch, Impfstoff und Immunglobulin sind vor Ort teils nur begrenzt verfügbar. STIKO und DTG empfehlen die vorbeugende Impfung – unabhängig von der Reisedauer –, wenn die Versorgung nach einem Biss vor Ort nicht gesichert ist, bei einfachen Reisebedingungen oder bei Aktivitäten mit erhöhtem Risiko für Tierkontakte, etwa Rad- oder Rollerfahren und Joggen; bei Kindern großzügig.',
           'Typhus: bei einfachen Reisebedingungen, längeren Aufenthalten oder Besuchen bei Familie und Freunden.',
           'Hepatitis B: nach individueller Einschätzung.',
-          'Meningokokken ACWY: bei engem Kontakt zur Bevölkerung oder längeren Aufenthalten; Erkrankungen treten vor allem von Januar bis April im Norden und Westen auf.',
+          'Meningokokken ACWY: bei längeren Aufenthalten mit engem Kontakt zur Bevölkerung (z. B. Familienbesuche, Arbeit in Schulen), bei Ausbrüchen sowie für medizinisches Personal und Hilfseinsätze; Erkrankungen treten vor allem von Januar bis April im Norden und Westen auf.',
           'Cholera: für Touristen in der Regel nicht nötig, nur bei besonderer Gefährdung, etwa in Hilfseinsätzen.',
         ],
         en: [
           'Check and boost routine vaccinations, especially measles.',
           'Hepatitis A: for all travellers.',
-          'Polio: complete, boosted protection. For stays of more than four weeks, the WHO requires the last polio dose to be given four weeks to twelve months before departure from the country and recorded in the international certificate of vaccination.',
-          'Rabies: the risk from dogs is high, and vaccine and immunoglobulin may be only partly available locally. STIKO and DTG recommend pre-exposure vaccination regardless of trip length if care after a bite is not assured or animal contact is likely.',
+          'Polio: complete, boosted protection. For stays of more than four weeks, the WHO recommends that the last polio dose be given four weeks to twelve months before you leave Tanzania and recorded in the international certificate of vaccination.',
+          'Rabies: the risk from dogs is high, and vaccine and immunoglobulin may be only partly available locally. STIKO and DTG recommend pre-exposure vaccination – regardless of trip length – if care after a bite is not assured locally, for basic travel conditions, or for activities with a higher risk of animal contact such as cycling, riding a scooter or jogging; generously for children.',
           'Typhoid: for basic travel conditions, longer stays or visits to family and friends.',
           'Hepatitis B: based on individual assessment.',
-          'Meningococcal ACWY: for close contact with the local population or longer stays; cases occur mainly from January to April in the north and west.',
+          'Meningococcal ACWY: for longer stays with close contact with the local population (e.g. visiting family, working in schools), during outbreaks, and for healthcare staff and aid work; cases occur mainly from January to April in the north and west.',
           'Cholera: usually not needed for tourists, only in special risk situations such as aid work.',
         ],
       },
@@ -500,8 +501,8 @@ const tansania: ClinicalPage = {
     {
       q: { de: 'Was gilt für die Polio-Impfung bei längeren Aufenthalten?', en: 'What applies to polio vaccination for longer stays?' },
       a: {
-        de: 'Bei Aufenthalten über vier Wochen soll nach WHO-Vorgabe die letzte Polio-Impfung vier Wochen bis zwölf Monate vor der Ausreise erfolgt und im Internationalen Impfausweis eingetragen sein. Bei kürzeren Reisen genügt ein vollständiger, aufgefrischter Schutz.',
-        en: 'For stays of more than four weeks, the WHO requires the last polio dose to be given four weeks to twelve months before departure and recorded in the international certificate of vaccination. For shorter trips, complete and boosted protection is sufficient.',
+        de: 'Bei Aufenthalten über vier Wochen empfiehlt die WHO, dass die letzte Polio-Impfung vier Wochen bis zwölf Monate vor der Ausreise aus Tansania erfolgt und im Internationalen Impfausweis eingetragen ist. Bei kürzeren Reisen genügt ein vollständiger, aufgefrischter Schutz.',
+        en: 'For stays of more than four weeks, the WHO recommends that the last polio dose be given four weeks to twelve months before you leave Tanzania and recorded in the international certificate of vaccination. For shorter trips, complete and boosted protection is sufficient.',
       },
     },
   ],
@@ -551,10 +552,10 @@ const indien: ClinicalPage = {
       heading: { de: 'Empfohlene Impfungen', en: 'Recommended vaccinations' },
       body: {
         de: [
-          'Nach den gemeinsamen Reiseimpfempfehlungen von STIKO und DTG sind für alle Indien-Reisenden neben aktuellen Standardimpfungen die Impfungen gegen Hepatitis A und Typhus sinnvoll – Typhus unabhängig vom Reisestil, weil die Krankheit auf dem indischen Subkontinent häufig ist und zunehmend resistente Erreger auftreten.',
+          'Für alle Indien-Reisenden sind neben aktuellen Standardimpfungen die Impfungen gegen Hepatitis A und Typhus sinnvoll. Die Typhus-Impfung empfehlen die DTG und die gemeinsame Arbeitsgruppe Reiseimpfungen von STIKO und DTG unabhängig von Reisestil und Reisedauer, weil Typhus auf dem indischen Subkontinent häufig ist und zunehmend resistente Erreger auftreten. Dabei handelt es sich um einen Expertenkonsens, der über die formale STIKO-Empfehlung hinausgeht.',
         ],
         en: [
-          'According to the joint travel vaccination recommendations of STIKO and DTG, all travellers to India should have hepatitis A and typhoid vaccinations in addition to up-to-date routine vaccinations – typhoid regardless of travel style, because the disease is common on the Indian subcontinent and increasingly resistant strains are emerging.',
+          'For all travellers to India, hepatitis A and typhoid vaccinations are advisable in addition to up-to-date routine vaccinations. DTG and the joint STIKO–DTG working group on travel vaccinations recommend typhoid vaccination regardless of travel style and trip length, because typhoid is common on the Indian subcontinent and increasingly resistant strains are emerging. This is an expert consensus that goes beyond the formal STIKO recommendation.',
         ],
       },
       list: {
@@ -562,19 +563,19 @@ const indien: ClinicalPage = {
           'Standardimpfungen prüfen und auffrischen, etwa Masern, Tetanus und Polio.',
           'Hepatitis A: für alle Reisenden.',
           'Typhus: für alle Reisenden, auch bei kurzen Reisen und guten Hotels.',
-          'Tollwut: Auf Indien entfällt rund ein Drittel der weltweiten Tollwut-Todesfälle, und außerhalb der Großstädte ist die Behandlung nach einem Biss nicht gesichert. STIKO und DTG empfehlen die vorbeugende Impfung deshalb unabhängig von der Reisedauer, wenn die Versorgung vor Ort eingeschränkt ist oder Tierkontakte wahrscheinlich sind.',
+          'Tollwut: Auf Indien entfällt rund ein Drittel der weltweiten Tollwut-Todesfälle, und außerhalb der Großstädte ist die Behandlung nach einem Biss nicht gesichert. STIKO und DTG empfehlen die vorbeugende Impfung deshalb – unabhängig von der Reisedauer –, wenn die Versorgung nach einem Biss vor Ort nicht gesichert ist, bei einfachen Reisebedingungen oder bei Aktivitäten mit erhöhtem Risiko für Tierkontakte, etwa Rad- oder Rollerfahren und Joggen; bei Kindern großzügig.',
           'Hepatitis B: nach individueller Einschätzung.',
-          'Japanische Enzephalitis: in vielen Bundesstaaten, auch in Goa und Kerala; Hauptsaison Mai bis November. Empfohlen vor allem bei längeren oder wiederholten Aufenthalten und bei Aufenthalten nahe Reisfeldern oder Schweinehaltung.',
-          'Dengue und Chikungunya: Impfung nur in bestimmten Situationen. 2026 wurden in Kerala gehäuft Chikungunya-Fälle gemeldet – bei Reisen dorthin prüfen wir, ob eine Impfung sinnvoll ist.',
+          'Japanische Enzephalitis: in vielen Bundesstaaten, auch in Goa und Kerala; Hauptsaison Mai bis November, besonders im Norden – im Süden teils länger oder ganzjährig. Empfohlen vor allem bei Aufenthalten über vier Wochen, wiederholten Reisen, Ausbrüchen und absehbaren Aufenthalten nahe Reisfeldern oder Schweinehaltung – auch außerhalb ländlicher Gebiete.',
+          'Dengue und Chikungunya: Impfung nur in bestimmten Situationen. Im August 2026 wurden in Kerala (vor allem Thiruvananthapuram) gehäuft Chikungunya-Fälle gemeldet – bei Reisen dorthin prüfen wir, ob eine Impfung sinnvoll ist.',
         ],
         en: [
           'Check and boost routine vaccinations, such as measles, tetanus and polio.',
           'Hepatitis A: for all travellers.',
           'Typhoid: for all travellers, even on short trips and in good hotels.',
-          'Rabies: India accounts for around a third of rabies deaths worldwide, and outside the big cities treatment after a bite is not assured. STIKO and DTG therefore recommend pre-exposure vaccination regardless of trip length if local care is limited or animal contact is likely.',
+          'Rabies: India accounts for around a third of rabies deaths worldwide, and outside the big cities treatment after a bite is not assured. STIKO and DTG therefore recommend pre-exposure vaccination – regardless of trip length – if care after a bite is not assured locally, for basic travel conditions, or for activities with a higher risk of animal contact such as cycling, riding a scooter or jogging; generously for children.',
           'Hepatitis B: based on individual assessment.',
-          'Japanese encephalitis: in many states, including Goa and Kerala; main season May to November. Recommended mainly for longer or repeated stays and for stays near rice fields or pig farming.',
-          'Dengue and chikungunya: vaccination only in specific situations. In 2026 a cluster of chikungunya cases was reported in Kerala – for trips there we check whether vaccination makes sense.',
+          'Japanese encephalitis: in many states, including Goa and Kerala; main season May to November, especially in the north – in the south sometimes longer or all year round. Recommended mainly for stays of more than four weeks, repeated trips, outbreaks and foreseeable stays near rice fields or pig farming – including outside rural areas.',
+          'Dengue and chikungunya: vaccination only in specific situations. In August 2026 a cluster of chikungunya cases was reported in Kerala (mainly Thiruvananthapuram) – for trips there we check whether vaccination makes sense.',
         ],
       },
       links: [typhoidLink, rabiesLink, jeLink],
@@ -589,17 +590,18 @@ const indien: ClinicalPage = {
       list: {
         de: [
           'Geringes Risiko: Delhi, Mumbai, Kalkutta, Rajasthan, Goa, Kerala, die meisten anderen Regionen und Städte sowie die Andamanen und Nikobaren – die DTG empfiehlt konsequenten Mückenschutz.',
-          'Mittleres Risiko: Teilgebiete im Osten und Nordosten – Mückenschutz; bei Reisen fern ärztlicher Versorgung gegebenenfalls ein Notfallmedikament zur Selbstbehandlung nach ärztlicher Beratung.',
-          'Hohes Risiko: ein Gebiet in Chhattisgarh – hier empfiehlt die DTG zusätzlich eine vorbeugende Tabletteneinnahme.',
+          'Mittleres Risiko: Teilgebiete im Osten und Nordosten – Mückenschutz. Ist von dort eine ärztliche Malaria-Diagnostik nicht innerhalb von 48 Stunden erreichbar, kann nach ärztlicher Beratung ein Notfallmedikament zur Selbstbehandlung mitgeführt werden. Schwangeren empfiehlt die DTG auch hier eine vorbeugende Tabletteneinnahme.',
+          'Hohes Risiko: ein Gebiet im Süden von Chhattisgarh um die Stadt Geedam – hier empfiehlt die DTG zusätzlich eine vorbeugende Tabletteneinnahme.',
           'Malariafrei: Höhenlagen über 2.500 Meter in Himachal Pradesh, Jammu und Kaschmir sowie Sikkim.',
         ],
         en: [
           'Low risk: Delhi, Mumbai, Kolkata, Rajasthan, Goa, Kerala, most other regions and cities, and the Andaman and Nicobar Islands – DTG recommends consistent mosquito protection.',
-          'Moderate risk: parts of the east and north-east – mosquito protection; for trips far from medical care, possibly an emergency standby treatment after medical advice.',
-          'High risk: one area in Chhattisgarh – DTG additionally recommends preventive tablets there.',
+          'Moderate risk: parts of the east and north-east – mosquito protection. If medical malaria testing cannot be reached from there within 48 hours, an emergency standby treatment can be carried after medical advice. For pregnant women, DTG recommends preventive tablets here as well.',
+          'High risk: an area in southern Chhattisgarh around the town of Geedam – DTG additionally recommends preventive tablets there.',
           'Malaria-free: altitudes above 2,500 metres in Himachal Pradesh, Jammu and Kashmir, and Sikkim.',
         ],
       },
+      callout: feverCallout,
       links: [malariaLink],
     },
     {
@@ -610,14 +612,14 @@ const indien: ClinicalPage = {
         de: [
           'Reisedurchfall, Hepatitis A und E sowie Typhus: auf Trinkwasser- und Lebensmittelhygiene achten.',
           'Dengue, Chikungunya und Japanische Enzephalitis, vor allem während und nach dem Monsun – Mückenschutz auch tagsüber.',
-          'Tollwut: Streunende Hunde sind häufig; Tierkontakt meiden und Bisse sofort ärztlich versorgen lassen.',
+          'Tollwut: Streunende Hunde sind häufig; Tierkontakt meiden. Nach einem Biss oder Kratzer die Wunde sofort etwa 15 Minuten mit Seife und Wasser auswaschen und noch am selben Tag ärztliche Hilfe suchen – auch wenn Sie geimpft sind.',
           'Starke Luftverschmutzung in den Metropolen, vor allem in den Wintermonaten.',
           'Höhenkrankheit beim Trekking im Himalaya.',
         ],
         en: [
           "Travellers' diarrhoea, hepatitis A and E, and typhoid: pay attention to drinking water and food hygiene.",
           'Dengue, chikungunya and Japanese encephalitis, especially during and after the monsoon – mosquito protection during the day as well.',
-          'Rabies: stray dogs are common; avoid animal contact and have bites treated by a doctor immediately.',
+          'Rabies: stray dogs are common; avoid animal contact. After a bite or scratch, wash the wound immediately with soap and water for about 15 minutes and seek medical help the same day – even if you are vaccinated.',
           'Severe air pollution in the major cities, especially in the winter months.',
           'Altitude sickness when trekking in the Himalayas.',
         ],
@@ -630,15 +632,15 @@ const indien: ClinicalPage = {
     {
       q: { de: 'Ist die Typhus-Impfung für Indien wirklich nötig?', en: 'Is the typhoid vaccine really necessary for India?' },
       a: {
-        de: 'Die gemeinsamen Empfehlungen von STIKO und DTG sehen sie für alle Indien-Reisenden vor, unabhängig vom Reisestil. Der Grund ist das hohe Typhus-Risiko auf dem indischen Subkontinent mit zunehmend resistenten Erregern. Hygiene bleibt trotzdem wichtig, denn die Impfung schützt nicht vollständig.',
-        en: 'The joint STIKO and DTG recommendations advise it for all travellers to India, regardless of travel style. The reason is the high typhoid risk on the Indian subcontinent with increasingly resistant strains. Hygiene still matters, as the vaccine does not protect completely.',
+        de: 'Die DTG und die gemeinsame Arbeitsgruppe Reiseimpfungen von STIKO und DTG raten allen Indien-Reisenden dazu – unabhängig von Reisestil und Reisedauer (ein Expertenkonsens, der über die formale STIKO-Empfehlung hinausgeht). Der Grund ist das hohe Typhus-Risiko auf dem indischen Subkontinent mit zunehmend resistenten Erregern. Hygiene bleibt trotzdem wichtig, denn die Impfung schützt nicht vollständig.',
+        en: 'DTG and the joint STIKO–DTG working group on travel vaccinations advise it for all travellers to India, regardless of travel style and trip length (an expert consensus that goes beyond the formal STIKO recommendation). The reason is the high typhoid risk on the Indian subcontinent with increasingly resistant strains. Hygiene still matters, as the vaccine does not protect completely.',
       },
     },
     {
       q: { de: 'Was passiert, wenn ich aus Afrika nach Indien einreise?', en: 'What happens if I enter India from Africa?' },
       a: {
-        de: 'Wer innerhalb von sechs Tagen vor der Ankunft in einem Gelbfieber-Gebiet war, auch im Transit, muss ab neun Monaten eine Gelbfieberimpfung nachweisen; sonst droht eine Isolation von bis zu sechs Tagen. Maßgeblich sind die Einreisevorschriften des Ziellandes.',
-        en: 'Anyone who was in a yellow fever area within six days before arrival, including in transit, must show proof of yellow fever vaccination from nine months of age; otherwise isolation of up to six days may follow. The entry requirements of the destination country apply.',
+        de: 'Entscheidend ist ein vorheriger Aufenthalt in einem Land auf Indiens Gelbfieber-Liste, etwa Kenia, Äthiopien oder Uganda. Wer innerhalb von sechs Tagen vor der Ankunft in einem solchen Gebiet war, auch im Transit, muss ab neun Monaten eine Gelbfieberimpfung nachweisen; sonst droht eine Isolation von bis zu sechs Tagen. Maßgeblich sind die Einreisevorschriften des Ziellandes.',
+        en: "What matters is a previous stay in a country on India's yellow fever list, such as Kenya, Ethiopia or Uganda. Anyone who was in such an area within six days before arrival, including in transit, must show proof of yellow fever vaccination from nine months of age; otherwise isolation of up to six days may follow. The entry requirements of the destination country apply.",
       },
     },
     {
@@ -698,21 +700,21 @@ const indonesien: ClinicalPage = {
         de: [
           'Standardimpfungen prüfen und auffrischen, insbesondere Masern.',
           'Hepatitis A: für alle Reisenden.',
-          'Polio: vollständiger Schutz; Auffrischung, wenn die letzte Impfung länger als zehn Jahre zurückliegt.',
-          'Tollwut: Auf Bali kommt Tollwut bei Hunden seit Jahren vor; STIKO und DTG stufen das Risiko in Indonesien als hoch ein. Sie empfehlen die vorbeugende Impfung unabhängig von der Reisedauer, wenn die Versorgung nach einem Biss vor Ort nicht gesichert ist oder Tierkontakte wahrscheinlich sind. Wer vorbeugend geimpft ist, braucht nach einem Biss kein – oft schwer erhältliches – Immunglobulin.',
+          'Polio: vollständige Grundimmunisierung und mindestens eine Auffrischimpfung; fehlende Impfungen holen wir nach.',
+          'Tollwut: Auf Bali kommt Tollwut bei Hunden seit Jahren vor; STIKO und DTG stufen das Risiko in Indonesien als hoch ein. Sie empfehlen die vorbeugende Impfung – unabhängig von der Reisedauer –, wenn die Versorgung nach einem Biss vor Ort nicht gesichert ist, bei einfachen Reisebedingungen oder bei Aktivitäten mit erhöhtem Risiko für Tierkontakte, etwa Rad- oder Rollerfahren und Joggen; bei Kindern großzügig. Wer vorbeugend mit mindestens zwei Dosen geimpft ist, braucht nach einem Biss in der Regel kein – oft schwer erhältliches – Immunglobulin mehr, aber trotzdem sofort eine Wundreinigung und zwei weitere Impfungen. Bei geschwächtem Immunsystem gelten andere Regeln.',
           'Typhus: bei einfachen Reisebedingungen, längeren Aufenthalten oder Besuchen bei Familie und Freunden.',
           'Hepatitis B: nach individueller Einschätzung, etwa bei Tattoos, Piercings oder medizinischen Eingriffen.',
-          'Japanische Enzephalitis: landesweit, auch auf Bali, ganzjährig. Empfohlen vor allem bei längeren oder wiederholten Aufenthalten und bei Aufenthalten nahe Reisfeldern oder Schweinehaltung.',
+          'Japanische Enzephalitis: landesweit, auch auf Bali, ganzjährig. Empfohlen vor allem bei Aufenthalten über vier Wochen, wiederholten Reisen, Ausbrüchen und absehbaren Aufenthalten nahe Reisfeldern oder Schweinehaltung – auch außerhalb ländlicher Gebiete.',
           'Dengue und Chikungunya: Impfung nur in bestimmten Situationen. Das klären wir in der Beratung.',
         ],
         en: [
           'Check and boost routine vaccinations, especially measles.',
           'Hepatitis A: for all travellers.',
-          'Polio: complete protection; booster if the last dose was more than ten years ago.',
-          'Rabies: rabies in dogs has been present on Bali for years; STIKO and DTG rate the risk in Indonesia as high. They recommend pre-exposure vaccination regardless of trip length if care after a bite is not assured locally or animal contact is likely. If you are vaccinated in advance, you do not need immunoglobulin – which is often hard to obtain – after a bite.',
+          'Polio: a complete primary course and at least one booster; we catch up on any missing doses.',
+          'Rabies: rabies in dogs has been present on Bali for years; STIKO and DTG rate the risk in Indonesia as high. They recommend pre-exposure vaccination – regardless of trip length – if care after a bite is not assured locally, for basic travel conditions, or for activities with a higher risk of animal contact such as cycling, riding a scooter or jogging; generously for children. If you have had at least two doses of pre-exposure vaccine, you usually no longer need immunoglobulin – which is often hard to obtain – after a bite, but you still need immediate wound cleaning and two further vaccine doses. Different rules apply if your immune system is weakened.',
           'Typhoid: for basic travel conditions, longer stays or visits to family and friends.',
           'Hepatitis B: based on individual assessment, for example for tattoos, piercings or medical procedures.',
-          'Japanese encephalitis: nationwide, including Bali, all year round. Recommended mainly for longer or repeated stays and for stays near rice fields or pig farming.',
+          'Japanese encephalitis: nationwide, including Bali, all year round. Recommended mainly for stays of more than four weeks, repeated trips, outbreaks and foreseeable stays near rice fields or pig farming – including outside rural areas.',
           'Dengue and chikungunya: vaccination only in specific situations. We clarify this in the consultation.',
         ],
       },
@@ -728,15 +730,16 @@ const indonesien: ClinicalPage = {
       list: {
         de: [
           'Geringes Risiko: Bali, Java, Sumatra, Lombok bis Sumbawa einschließlich der Gili-Inseln sowie West-Flores mit Labuan Bajo und der Komodo-Region – die DTG empfiehlt konsequenten Mückenschutz, aber keine vorbeugenden Tabletten. Jakarta und weitere große Städte gelten als malariafrei.',
-          'Mittleres Risiko: unter anderem Kalimantan (Borneo), Ost-Flores, Raja Ampat und die meisten Molukken-Inseln – Mückenschutz; bei Reisen fern ärztlicher Versorgung gegebenenfalls ein Notfallmedikament zur Selbstbehandlung nach ärztlicher Beratung.',
+          'Mittleres Risiko: unter anderem Kalimantan (Borneo), Ost-Flores, Raja Ampat und die meisten Inseln der Provinz Maluku – Mückenschutz. Ist von dort eine ärztliche Malaria-Diagnostik nicht innerhalb von 48 Stunden erreichbar, kann nach ärztlicher Beratung ein Notfallmedikament zur Selbstbehandlung mitgeführt werden. Schwangeren empfiehlt die DTG auch hier eine vorbeugende Tabletteneinnahme.',
           'Hohes Risiko: Westneuguinea (Papua) und die Insel Sumba – hier empfiehlt die DTG zusätzlich eine vorbeugende Tabletteneinnahme.',
         ],
         en: [
           'Low risk: Bali, Java, Sumatra, Lombok to Sumbawa including the Gili Islands, and western Flores with Labuan Bajo and the Komodo region – DTG recommends consistent mosquito protection but no preventive tablets. Jakarta and other large cities are considered malaria-free.',
-          'Moderate risk: among others Kalimantan (Borneo), eastern Flores, Raja Ampat and most of the Maluku Islands – mosquito protection; for trips far from medical care, possibly an emergency standby treatment after medical advice.',
+          'Moderate risk: among others Kalimantan (Borneo), eastern Flores, Raja Ampat and most islands of Maluku province – mosquito protection. If medical malaria testing cannot be reached from there within 48 hours, an emergency standby treatment can be carried after medical advice. For pregnant women, DTG recommends preventive tablets here as well.',
           'High risk: Western New Guinea (Papua) and the island of Sumba – DTG additionally recommends preventive tablets there.',
         ],
       },
+      callout: feverCallout,
       links: [malariaLink],
     },
     {
@@ -745,16 +748,16 @@ const indonesien: ClinicalPage = {
       body: { de: [], en: [] },
       list: {
         de: [
-          'Dengue ganzjährig; bei Reisenden aus Bali wurden zudem einzelne Zika-Infektionen festgestellt. Mückenschutz am Tag ist deshalb wichtig – besonders für Schwangere und Paare mit Kinderwunsch.',
-          'Tollwut: Kontakt zu Hunden und Affen meiden; Bisse und Kratzer sofort ärztlich versorgen lassen.',
+          'Dengue ganzjährig; bei Reiserückkehrern von Bali wurden 2025/2026 zudem einzelne Zika-Infektionen festgestellt. Zika kann in der Schwangerschaft das Kind schädigen und auch sexuell übertragen werden. Mückenschutz am Tag ist deshalb wichtig; Schwangere und Paare mit Kinderwunsch sollten sich vor der Reise ärztlich beraten lassen.',
+          'Tollwut: Kontakt zu Hunden und Affen meiden. Nach einem Biss oder Kratzer die Wunde sofort etwa 15 Minuten mit Seife und Wasser auswaschen und noch am selben Tag ärztliche Hilfe suchen – auch wenn Sie geimpft sind.',
           'Reisedurchfall, Hepatitis A und Typhus: auf Trinkwasser- und Lebensmittelhygiene achten.',
-          'Methanolvergiftungen durch gepanschte alkoholische Getränke auf Bali und Lombok.',
+          'Methanolvergiftungen durch gepanschte alkoholische Getränke auf Bali und Lombok – nur original verschlossene Getränke trinken, bei Cocktails und Spirituosen besonders vorsichtig sein.',
         ],
         en: [
-          'Dengue all year round; individual Zika infections have also been found in travellers returning from Bali. Daytime mosquito protection is therefore important – especially for pregnant women and couples planning a pregnancy.',
-          'Rabies: avoid contact with dogs and monkeys; have bites and scratches treated by a doctor immediately.',
+          'Dengue all year round; in 2025/2026 individual Zika infections were also found in travellers returning from Bali. Zika can harm the unborn child during pregnancy and can also be transmitted sexually. Daytime mosquito protection is therefore important; pregnant women and couples planning a pregnancy should seek medical advice before the trip.',
+          'Rabies: avoid contact with dogs and monkeys. After a bite or scratch, wash the wound immediately with soap and water for about 15 minutes and seek medical help the same day – even if you are vaccinated.',
           "Travellers' diarrhoea, hepatitis A and typhoid: pay attention to drinking water and food hygiene.",
-          'Methanol poisoning from adulterated alcoholic drinks on Bali and Lombok.',
+          'Methanol poisoning from adulterated alcoholic drinks on Bali and Lombok – drink only factory-sealed drinks and take particular care with cocktails and spirits.',
         ],
       },
       links: [{ label: { de: 'Dengue', en: 'Dengue' }, path: '/krankheitsbilder/dengue' }],
@@ -765,8 +768,8 @@ const indonesien: ClinicalPage = {
     {
       q: { de: 'Brauche ich für Bali eine Tollwutimpfung?', en: 'Do I need a rabies vaccination for Bali?' },
       a: {
-        de: 'Auf Bali kommt Tollwut bei Hunden vor, STIKO und DTG stufen das Risiko in Indonesien als hoch ein. Ob eine vorbeugende Impfung sinnvoll ist, hängt von Reisedauer, Aktivitäten und Versorgung vor Ort ab. Nach einem Biss ist in jedem Fall sofort ärztliche Hilfe nötig.',
-        en: 'Rabies occurs in dogs on Bali, and STIKO and DTG rate the risk in Indonesia as high. Whether pre-exposure vaccination makes sense depends on trip length, activities and local care. After a bite, immediate medical help is needed in any case.',
+        de: 'Auf Bali kommt Tollwut bei Hunden vor; STIKO und DTG stufen das Risiko in Indonesien als hoch ein. Die vorbeugende Impfung wird deshalb unabhängig von der Reisedauer empfohlen, wenn die Versorgung nach einem Biss vor Ort nicht gesichert ist, Sie unter einfachen Bedingungen reisen oder Aktivitäten mit erhöhtem Risiko für Tierkontakte planen, etwa Roller- oder Radfahren, Joggen oder Besuche von Affenwäldern. Nach einem Biss oder Kratzer ist in jedem Fall sofort ärztliche Hilfe nötig – auch wenn Sie geimpft sind.',
+        en: 'Rabies occurs in dogs on Bali, and STIKO and DTG rate the risk in Indonesia as high. Pre-exposure vaccination is therefore recommended regardless of trip length if care after a bite is not assured locally, if you travel under basic conditions, or if you plan activities with a higher risk of animal contact, such as riding a scooter or bicycle, jogging or visiting monkey forests. After a bite or scratch, immediate medical help is needed in any case – even if you are vaccinated.',
       },
     },
     {

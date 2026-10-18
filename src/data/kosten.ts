@@ -66,12 +66,12 @@ export const kostenPage: KostenPage = {
   intro: {
     de: [
       'Reisemedizinische Leistungen sind private bzw. individuelle Gesundheitsleistungen und werden nach der GOÄ abgerechnet – Sie erhalten dafür eine nachvollziehbare, einreichbare Rechnung.',
-      'Vor jeder kostenpflichtigen Leistung besprechen wir mit Ihnen den Umfang und die voraussichtlichen Kosten. Reiseimpfungen sind individuelle Gesundheitsleistungen; hierzu treffen wir eine schriftliche Kostenvereinbarung (§ 630c BGB).',
+      'Vor jeder kostenpflichtigen Leistung besprechen wir mit Ihnen den Umfang und die voraussichtlichen Kosten. Reiseimpfungen sind individuelle Gesundheitsleistungen; über die voraussichtlichen Kosten informieren wir Sie vorab schriftlich (§ 630c Abs. 3 BGB).',
       'Die folgenden Beträge sind unverbindliche Richtwerte zur Orientierung. Der endgültige Betrag hängt vom tatsächlichen Aufwand im Einzelfall ab.',
     ],
     en: [
       'Travel-medicine services are private/individual health services and are billed under the GOÄ – you receive a clear, itemised invoice you can submit to your insurer.',
-      'Before any chargeable service we discuss its scope and the expected cost with you. Travel vaccinations are individual health services, for which we put a written cost agreement in place (§ 630c German Civil Code).',
+      'Before any chargeable service we discuss its scope and the expected cost with you. Travel vaccinations are individual health services, and we inform you of the expected costs in writing beforehand (Section 630c(3) German Civil Code).',
       'The amounts below are non-binding guide values for orientation. The final amount depends on the actual effort in each individual case.',
     ],
   },
@@ -222,11 +222,11 @@ export const kostenPage: KostenPage = {
       heading: { de: 'Erstattung durch Ihre Versicherung', en: 'Reimbursement by your insurer' },
       body: {
         de: [
-          'Manche gesetzliche Krankenkassen erstatten Reiseimpfungen freiwillig als Satzungsleistung. Umfang und Bedingungen sind je Kasse sehr unterschiedlich: oft nur Impfstoff und/oder Impfleistung, die Reiseberatung meist nicht; manche Kassen erstatten nur Impfungen aus Kassenpraxen. Private Tarife regeln es individuell.',
+          'Für beruflich oder ausbildungsbedingte Auslandsaufenthalte sind die von der STIKO empfohlenen Reiseimpfungen eine Kassenleistung – allerdings in einer Kassenpraxis, nicht bei uns. Für private Reisen erstatten viele gesetzliche Krankenkassen Reiseimpfungen freiwillig als Satzungsleistung. Umfang und Bedingungen sind je Kasse sehr unterschiedlich: oft nur Impfstoff und/oder Impfleistung, die Reiseberatung meist nicht; manche Kassen erstatten nur Impfungen aus Kassenpraxen. Private Tarife regeln es individuell.',
           'Bitte klären Sie die Erstattung vorab mit Ihrer Kasse. Sie erhalten von uns eine aufgeschlüsselte Rechnung nach GOÄ zum Einreichen.',
         ],
         en: [
-          'Some statutory health insurers reimburse travel vaccinations voluntarily under their statutes. Scope and conditions vary widely: often only the vaccine and/or the vaccination itself, rarely the consultation; some insurers only reimburse vaccinations given in statutory-insurance practices. Private plans handle it individually.',
+          'For stays abroad for work or training, the travel vaccinations recommended by STIKO are a statutory benefit – but in a statutory-insurance practice, not with us. For private trips, many statutory health insurers reimburse travel vaccinations voluntarily under their statutes. Scope and conditions vary widely: often only the vaccine and/or the vaccination itself, rarely the consultation; some insurers only reimburse vaccinations given in statutory-insurance practices. Private plans handle it individually.',
           'Please check reimbursement with your insurer in advance. You will receive an itemised GOÄ invoice from us to submit.',
         ],
       },

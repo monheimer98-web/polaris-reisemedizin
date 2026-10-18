@@ -211,8 +211,8 @@ export const sources = {
     url: 'https://www.gesetze-im-internet.de/sgb_5/__20i.html',
     retrieved: new Date('2026-10-18'),
     note: {
-      de: 'Regelt den Anspruch auf Schutzimpfungen; Reiseimpfungen sind ausgenommen, Krankenkassen können sie per Satzung freiwillig übernehmen.',
-      en: 'Governs entitlement to vaccinations; travel vaccinations are excluded but health insurers may cover them voluntarily under their statutes.',
+      de: 'Regelt den Anspruch auf Schutzimpfungen; Impfungen nur wegen privater Auslandsreisen sind ausgenommen (Ausnahme u. a. Polio), beruflich oder ausbildungsbedingte Reiseimpfungen sind eingeschlossen. Krankenkassen können weitere Impfungen per Satzung übernehmen.',
+      en: 'Governs entitlement to vaccinations; vaccinations needed only for private trips abroad are excluded (exceptions include polio), while travel vaccinations for work- or training-related stays are included. Insurers may cover further vaccinations under their statutes.',
     },
   },
   bgbKosteninformation: {
@@ -757,6 +757,50 @@ export const sources = {
       en: 'Indonesia – health information for travelers',
     },
     url: 'https://wwwnc.cdc.gov/travel/destinations/traveler/none/indonesia',
+    retrieved: new Date('2026-10-18'),
+  },
+  gbaSchutzimpfungsRichtlinie: {
+    publisher: 'Gemeinsamer Bundesausschuss (G-BA)',
+    title: {
+      de: 'Schutzimpfungs-Richtlinie (SI-RL)',
+      en: 'Vaccination Directive (Schutzimpfungs-Richtlinie)',
+    },
+    url: 'https://www.g-ba.de/richtlinien/60/',
+    retrieved: new Date('2026-10-18'),
+    note: {
+      de: 'Regelt, welche Impfungen gesetzlich Versicherte erhalten – inkl. Reiseimpfungen bei beruflich oder ausbildungsbedingten Auslandsaufenthalten.',
+      en: 'Sets out which vaccinations people with statutory insurance receive, including travel vaccinations for work- or training-related stays abroad.',
+    },
+  },
+  lbvNrwBeihilfe: {
+    publisher: 'Landesamt für Besoldung und Versorgung NRW',
+    title: {
+      de: 'Merkblatt zu beihilfefähigen Aufwendungen (01/2026)',
+      en: 'Leaflet on eligible expenses under the NRW allowance rules (01/2026)',
+    },
+    url: 'https://www.finanzverwaltung.nrw.de/system/files/media/document/file/2026_merkblatt-beihilfefaehige-aufwendungen_01_26.pdf',
+    retrieved: new Date('2026-10-18'),
+    note: {
+      de: 'Schutzimpfungen aufgrund privater Auslandsaufenthalte sind beihilfefähig.',
+      en: 'Vaccinations for private stays abroad are eligible.',
+    },
+  },
+  bbhvImpfungen: {
+    publisher: 'Bundesministerium der Justiz',
+    title: {
+      de: '§ 41 und Anlage 13 Bundesbeihilfeverordnung (BBhV) – Früherkennung und Schutzimpfungen',
+      en: 'Section 41 and Annex 13 Federal Allowance Ordinance (BBhV) – screening and vaccinations',
+    },
+    url: 'https://www.gesetze-im-internet.de/bbhv/__41.html',
+    retrieved: new Date('2026-10-18'),
+  },
+  arbmedvvImpfangebot: {
+    publisher: 'Bundesministerium der Justiz',
+    title: {
+      de: '§ 6 Verordnung zur arbeitsmedizinischen Vorsorge (ArbMedVV) – Impfangebot',
+      en: 'Section 6 Ordinance on Occupational Health Care (ArbMedVV) – offer of vaccination',
+    },
+    url: 'https://www.gesetze-im-internet.de/arbmedvv/__6.html',
     retrieved: new Date('2026-10-18'),
   },
 } satisfies Record<string, Source>;
