@@ -100,7 +100,9 @@ export const site = {
      * `lat`/`lng` eintragen. Solange leer, wird `geo` bewusst NICHT ausgegeben
      * (kein erfundener Standort) – analog zu den übrigen Platzhaltern.
      */
-    geo: { lat: '', lng: '' },
+    // OpenStreetMap-Geokodierung der Hausnummer (Nominatim, 18.10.2026).
+    // Bei Gelegenheit gegen den Pin im Google-Unternehmensprofil prüfen.
+    geo: { lat: '51.1229426', lng: '6.9486213' },
     phone: '02173 9990280',
     phoneHref: 'tel:+4921739990280',
     fax: '',
@@ -131,6 +133,15 @@ export const site = {
    * können. Die Anzeige (`openingHours`) bleibt ein Zwei-Spalten-Eintrag,
    * damit alle bestehenden Render-Stellen unverändert funktionieren.
    */
+  /**
+   * Anfahrt-Details, die nur die Praxis selbst sicher kennt. Leere Felder werden
+   * auf der Kontaktseite NICHT angezeigt (kein erfundener Parkplatz/Aufzug).
+   */
+  anfahrt: {
+    parken: { de: '', en: '' },
+    barrierefreiheit: { de: '', en: '' },
+  },
+
   openingHours: [
     { day: { de: 'Termine', en: 'Appointments' }, hours: { de: 'nach Vereinbarung', en: 'by appointment' } },
   ] as OpeningHours[],

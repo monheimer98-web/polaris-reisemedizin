@@ -1,0 +1,46 @@
+---
+/**
+ * Länderseite (Deutsch) — dynamische Route /reiseziele/<region>/<land> aus dem
+ * Länder-Modul. Darstellung über ContentLayout + ClinicalSections (inkl. FAQ und
+ * FAQPage-JSON-LD); identisch zur EN-Variante.
+ */
+import type { GetStaticPaths } from 'astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import ClinicalSections from '../../../components/ClinicalSections.astro';
+import { getLangFromUrl, getLocalizedPath } from '../../../i18n/utils';
+import { getSources } from '../../../data/sources';
+import { countryList, type DestinationCountry } from '../../../data/reiseziele/laender';
+import { regions } from '../../../data/reiseziele/regions';
+
+export const getStaticPaths = (() =>
+  countryList.map((country) => ({
+    params: { region: country.region, land: country.slug },
+    props: { country },
+  }))) satisfies GetStaticPaths;
+
+interface Props {
+  country: DestinationCountry;
+}
+
+const { country } = Astro.props;
+const page = country.page;
+const lang = getLangFromUrl(Astro.url);
+const related = (page.related ?? []).map((item) => ({ label: item.label[lang], path: getLocalizedPath(item.path, lang) }));
+const faq = (page.faq ?? []).map((f) => ({ q: f.q[lang], a: f.a[lang] }));
+const region = regions[country.region];
+const parent = region ? { label: region.name[lang], path: getLocalizedPath(`/reiseziele/${region.slug}`, lang) } : undefined;
+---
+
+<ContentLayout
+  title={page.meta.title[lang]}
+  description={page.meta.description[lang]}
+  eyebrow={page.meta.eyebrow[lang]}
+  lead={page.meta.lead[lang]}
+  lastReviewed={page.lastReviewed}
+  sources={getSources(page.sourceIds)}
+  related={related}
+  faq={faq}
+  parent={parent}
+>
+  <ClinicalSections page={page} />
+</ContentLayout>

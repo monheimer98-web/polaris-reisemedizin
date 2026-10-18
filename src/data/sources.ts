@@ -189,6 +189,41 @@ export const sources = {
       en: 'Joint travel-vaccination recommendations of STIKO, DTG and StAR (published 2 July 2026), including yellow fever boosters, rabies, Japanese encephalitis and typhoid.',
     },
   },
+  goae: {
+    publisher: 'Bundesministerium der Justiz',
+    title: {
+      de: 'Gebührenordnung für Ärzte (GOÄ)',
+      en: 'German Medical Fee Schedule (GOÄ)',
+    },
+    url: 'https://www.gesetze-im-internet.de/go__1982/',
+    retrieved: new Date('2026-10-18'),
+    note: {
+      de: 'Rechtsgrundlage der privatärztlichen Abrechnung, u. a. § 5 (Steigerungsfaktor) und § 10 (Auslagen).',
+      en: 'Legal basis of private medical billing, including § 5 (multiplier) and § 10 (disbursements).',
+    },
+  },
+  sgb5Schutzimpfungen: {
+    publisher: 'Bundesministerium der Justiz',
+    title: {
+      de: '§ 20i SGB V – Leistungen zur Verhütung übertragbarer Krankheiten',
+      en: 'Section 20i SGB V – benefits for the prevention of communicable diseases',
+    },
+    url: 'https://www.gesetze-im-internet.de/sgb_5/__20i.html',
+    retrieved: new Date('2026-10-18'),
+    note: {
+      de: 'Regelt den Anspruch auf Schutzimpfungen; Reiseimpfungen sind ausgenommen, Krankenkassen können sie per Satzung freiwillig übernehmen.',
+      en: 'Governs entitlement to vaccinations; travel vaccinations are excluded but health insurers may cover them voluntarily under their statutes.',
+    },
+  },
+  bgbKosteninformation: {
+    publisher: 'Bundesministerium der Justiz',
+    title: {
+      de: '§ 630c BGB – Informationspflichten (Kosteninformation in Textform)',
+      en: 'Section 630c BGB – duties to inform (written cost information)',
+    },
+    url: 'https://www.gesetze-im-internet.de/bgb/__630c.html',
+    retrieved: new Date('2026-10-18'),
+  },
   peiIxchiqRhb: {
     publisher: 'Paul-Ehrlich-Institut (PEI)',
     title: {
@@ -607,6 +642,122 @@ export const sources = {
       de: 'Zulassung und Fachinformation zu den oralen Impfstoffen (inaktiviert sowie Lebendimpfstoff).',
       en: 'Authorisation and product information for the oral vaccines (inactivated and live).',
     },
+  },
+  dtgReiseimpfungen2026: {
+    publisher: 'DTG / Ständiger Ausschuss Reisemedizin (StAR)',
+    title: {
+      de: 'Reiseimpfungen – Hinweise und Empfehlungen 2026',
+      en: 'Travel vaccinations – guidance and recommendations 2026',
+    },
+    url: 'https://www.dtg.org/images/Reiseimpfungen/Reiseimpfempfehlungen%20DTG-StAR%202026.pdf',
+    retrieved: new Date('2026-10-18'),
+  },
+  stikoReiseLaender2026: {
+    publisher: 'Robert Koch-Institut (RKI) / STIKO, DTG, StAR',
+    title: {
+      de: 'Anhang zum Epidemiologischen Bulletin 27/2026: Ländertabellen zu Reiseimpfungen',
+      en: 'Annex to Epidemiological Bulletin 27/2026: country tables on travel vaccinations',
+    },
+    url: 'https://www.rki.de/DE/Aktuelles/Publikationen/Epidemiologisches-Bulletin/2026/27_26_Anhang.pdf?__blob=publicationFile&v=5',
+    retrieved: new Date('2026-10-18'),
+    note: {
+      de: 'Länderspezifische Impfempfehlungen und Einreisebestimmungen, inkl. WHO-Polio-Statement (Stand 08/2026).',
+      en: 'Country-specific vaccination recommendations and entry requirements, including the WHO polio statement (as of 08/2026).',
+    },
+  },
+  dtgMalariaLaender2026: {
+    publisher: 'DTG / Ständiger Ausschuss Reisemedizin (StAR)',
+    title: {
+      de: 'Landesspezifische Empfehlungen zur Malariaprophylaxe 2026 (Ländertabelle)',
+      en: 'Country-specific malaria prevention recommendations 2026 (country table)',
+    },
+    url: 'https://www.dtg.org/images/Startseite-Download-Box/Laendertabelle%202026.pdf',
+    retrieved: new Date('2026-10-18'),
+  },
+  dtgMalaria2026: {
+    publisher: 'DTG / Ständiger Ausschuss Reisemedizin (StAR)',
+    title: {
+      de: 'Empfehlungen zur Malariaprävention für Reisende 2026',
+      en: 'Malaria prevention recommendations for travellers 2026',
+    },
+    url: 'https://www.dtg.org/images/Startseite-Download-Box/Malaria%20DTG-Empfehlungen%202026.pdf',
+    retrieved: new Date('2026-10-18'),
+  },
+  aaThailand: {
+    publisher: 'Auswärtiges Amt',
+    title: {
+      de: 'Thailand: Reise- und Sicherheitshinweise (Abschnitt Gesundheit)',
+      en: 'Thailand: travel and safety information (health section)',
+    },
+    url: 'https://www.auswaertiges-amt.de/de/service/laender/thailand-node/thailandsicherheit-201558',
+    retrieved: new Date('2026-10-18'),
+  },
+  aaKenia: {
+    publisher: 'Auswärtiges Amt',
+    title: {
+      de: 'Kenia: Reise- und Sicherheitshinweise (Abschnitt Gesundheit)',
+      en: 'Kenya: travel and safety information (health section)',
+    },
+    url: 'https://www.auswaertiges-amt.de/de/service/laender/kenia-node/keniasicherheit/208058',
+    retrieved: new Date('2026-10-18'),
+  },
+  aaTansania: {
+    publisher: 'Auswärtiges Amt',
+    title: {
+      de: 'Tansania: Reise- und Sicherheitshinweise (Abschnitt Gesundheit)',
+      en: 'Tanzania: travel and safety information (health section)',
+    },
+    url: 'https://www.auswaertiges-amt.de/de/reiseundsicherheit/tansaniasicherheit-208662',
+    retrieved: new Date('2026-10-18'),
+  },
+  aaIndien: {
+    publisher: 'Auswärtiges Amt',
+    title: {
+      de: 'Indien: Reise- und Sicherheitshinweise (Abschnitt Gesundheit)',
+      en: 'India: travel and safety information (health section)',
+    },
+    url: 'https://www.auswaertiges-amt.de/de/service/laender/indien-node/indiensicherheit-205998',
+    retrieved: new Date('2026-10-18'),
+  },
+  aaIndonesien: {
+    publisher: 'Auswärtiges Amt',
+    title: {
+      de: 'Indonesien: Reise- und Sicherheitshinweise (Abschnitt Gesundheit)',
+      en: 'Indonesia: travel and safety information (health section)',
+    },
+    url: 'https://www.auswaertiges-amt.de/de/service/laender/indonesien-node/indonesiensicherheit-212396',
+    retrieved: new Date('2026-10-18'),
+  },
+  tansaniaGelbfieberSansibar: {
+    publisher: 'Botschaft der Vereinigten Republik Tansania, Berlin',
+    title: {
+      de: 'Klarstellung zur Gelbfieberimpfung für Reisende nach Sansibar',
+      en: 'Clarification on yellow fever vaccination for travellers to Zanzibar',
+    },
+    url: 'https://www.auswaertiges-amt.de/blob/1603168/4da3bf43c4063cbfa0527bdd16db4149/180220-gelbfieber-sansibar-bo-tansania-berlin-data.pdf',
+    retrieved: new Date('2026-10-18'),
+    note: {
+      de: 'Vom Auswärtigen Amt verlinkte Stellungnahme der Botschaft.',
+      en: 'Embassy statement linked by the German Federal Foreign Office.',
+    },
+  },
+  ecdcChikungunya2026: {
+    publisher: 'European Centre for Disease Prevention and Control (ECDC)',
+    title: {
+      de: 'Chikungunya weltweit – monatliches Lage-Update',
+      en: 'Chikungunya virus disease worldwide overview – monthly update',
+    },
+    url: 'https://www.ecdc.europa.eu/en/chikungunya-monthly',
+    retrieved: new Date('2026-10-18'),
+  },
+  cdcIndonesia: {
+    publisher: 'Centers for Disease Control and Prevention (CDC)',
+    title: {
+      de: 'Indonesien – Gesundheitsinformationen für Reisende',
+      en: 'Indonesia – health information for travelers',
+    },
+    url: 'https://wwwnc.cdc.gov/travel/destinations/traveler/none/indonesia',
+    retrieved: new Date('2026-10-18'),
   },
 } satisfies Record<string, Source>;
 

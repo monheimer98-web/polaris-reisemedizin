@@ -19,6 +19,7 @@ import { BOOKING_PATH } from '../../config/nav';
 import { getSources } from '../../data/sources';
 import { destinationsHub as hub } from '../../data/reiseziele/hub';
 import { regionList } from '../../data/reiseziele/regions';
+import { countryList } from '../../data/reiseziele/laender';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -97,6 +98,23 @@ const factorIcons: Record<string, string> = {
             ))
           }
         </div>
+        {
+          countryList.length > 0 && (
+            <div class="mt-8">
+              <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-soft">{t('content.countriesHeading')}</h3>
+              <div class="mt-3 flex flex-wrap gap-2">
+                {countryList.map((c) => (
+                  <a
+                    href={getLocalizedPath(`/reiseziele/${c.region}/${c.slug}`, lang)}
+                    class="inline-flex items-center rounded-full border border-petrol-200 bg-white px-4 py-2 text-sm font-semibold text-petrol-800 transition-colors hover:border-gold-300 hover:text-petrol-900"
+                  >
+                    {c.name[lang]}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )
+        }
       </section>
 
       {/* Classification: required vs. recommended */}

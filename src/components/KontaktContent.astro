@@ -16,6 +16,7 @@ import KontaktForm from './KontaktForm';
 
 const lang = getLangFromUrl(Astro.url);
 const l = page.labels;
+const a = page.anfahrt;
 const c = page.consent;
 const f = page.form;
 
@@ -169,6 +170,24 @@ const labels = {
       <div class="max-w-3xl">
         <h2 class="font-display text-2xl text-petrol-900 sm:text-3xl">{l.mapHeading[lang]}</h2>
         <p class="mt-3 max-w-prose leading-relaxed text-ink-soft">{l.mapLead[lang]}</p>
+      </div>
+      <div id="anfahrt" class="mt-8 grid gap-6 md:grid-cols-2">
+        <div class="rounded-2xl border border-line bg-white p-6">
+          <h3 class="font-display text-lg text-petrol-900">{a.oepnvTitle[lang]}</h3>
+          <p class="mt-2 leading-relaxed text-ink-soft">{a.oepnv[lang]}</p>
+          <a class="mt-3 inline-block text-sm font-medium text-petrol-800 underline decoration-gold-400 underline-offset-4" href={a.oepnvLinkUrl} target="_blank" rel="noopener">{a.oepnvLinkLabel[lang]}</a>
+        </div>
+        <div class="rounded-2xl border border-line bg-white p-6">
+          <h3 class="font-display text-lg text-petrol-900">{a.autoTitle[lang]}</h3>
+          <p class="mt-2 leading-relaxed text-ink-soft">{a.auto[lang]}</p>
+          <p class="mt-3 text-sm text-ink-soft">{a.etage[lang]}</p>
+          {site.anfahrt.parken[lang] && (
+            <p class="mt-3 text-sm text-ink-soft"><strong class="text-petrol-900">{a.parkenTitle[lang]}:</strong> {site.anfahrt.parken[lang]}</p>
+          )}
+          {site.anfahrt.barrierefreiheit[lang] && (
+            <p class="mt-2 text-sm text-ink-soft"><strong class="text-petrol-900">{a.barrierefreiTitle[lang]}:</strong> {site.anfahrt.barrierefreiheit[lang]}</p>
+          )}
+        </div>
       </div>
       <div class="mt-6">
         <ConsentEmbed

@@ -42,9 +42,13 @@ interface Props {
    * Reisetipps) gedacht; andere Seiten bleiben unverändert.
    */
   printLabel?: string;
+  /** Häufige Fragen der Seite (bereits in der Seitensprache) – erzeugt FAQPage-JSON-LD. */
+  faq?: { q: string; a: string }[];
+  /** Zusätzliche Brotkrumen-Ebene zwischen Hub und Seite (z. B. Region einer Länderseite). */
+  parent?: { label: string; path: string };
 }
 
-const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel } = Astro.props;
+const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel, faq = [], parent } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const bookingHref = getLocalizedPath(BOOKING_PATH, lang) + (bookingType ? `?art=${bookingType}` : '');
 const t = useTranslations(lang);
@@ -57,11 +61,13 @@ const HUB_LABEL_KEY: Record<string, UiKey> = {
   krankheitsbilder: 'nav.diseases',
   leistungen: 'nav.services',
   reiseziele: 'nav.destinations',
+  ratgeber: 'nav.guides',
 };
 const hubKey = HUB_LABEL_KEY[hubSegment];
 const breadcrumbItems = [
   { label: t('nav.home'), path: getLocalizedPath('/', lang) },
   ...(hubKey ? [{ label: t(hubKey), path: getLocalizedPath(`/${hubSegment}`, lang) }] : []),
+  ...(parent ? [parent] : []),
   { label: title },
 ];
 
@@ -87,13 +93,20 @@ const medicalWebPageSchema = {
   isPartOf: { '@id': `${SITE_URL}/#practice` },
   ...(aboutType ? { about: { '@type': aboutType, name: title } } : {}),
 };
+const faqSchema = faq.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    }
+  : undefined;
 
 // „Auf dieser Seite": Sprungmarken automatisch aus dem gerenderten Inhalt.
 // Der Slot wird einmal zu HTML gerendert (deshalb kein zweites <slot/>), daraus
 // werden <section id> + zugehörige <h2> extrahiert. Bewusst nur für die
 // strukturgleichen Hubs (Krankheitsbilder/Leistungen) und erst ab 3 Abschnitten.
 const bodyHtml = await Astro.slots.render('default');
-const TOC_HUBS = new Set(['krankheitsbilder', 'leistungen', 'reiseziele', 'reiseapotheke']);
+const TOC_HUBS = new Set(['krankheitsbilder', 'leistungen', 'reiseziele', 'reiseapotheke', 'ratgeber']);
 const toc: { id: string; label: string }[] = [];
 if (TOC_HUBS.has(hubSegment)) {
   // Im gerenderten HTML sind Zeichen wie & als Entities kodiert (&amp;); nach dem
@@ -120,7 +133,7 @@ const slug = getLogicalPath(Astro.url.pathname).split('/').pop() ?? '';
 const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined;
 ---
 
-<BaseLayout title={title} description={description} image={image} noindex={noindex} schema={medicalWebPageSchema}>
+<BaseLayout title={title} description={description} image={image} noindex={noindex} schema={faqSchema ? [medicalWebPageSchema, faqSchema] : medicalWebPageSchema}>
   <article class:list={[printLabel && 'is-printable']}>
     <PageHero eyebrow={eyebrow} title={title} lead={lead}>
       <Breadcrumbs slot="breadcrumb" items={breadcrumbItems} label={t('content.breadcrumb')} />

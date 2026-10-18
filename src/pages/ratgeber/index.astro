@@ -1,0 +1,44 @@
+---
+/**
+ * Übersicht „Ratgeber" (Deutsch): eigene Ratgeberseiten plus thematisch
+ * passende bestehende Seiten. Sprache aus der URL; identisch zur EN-Variante.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
+import { guides, weitereRatgeber } from '../../data/ratgeber';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const cards = [
+  ...guides.map((g) => ({ title: g.page.meta.title[lang], summary: g.summary[lang], href: getLocalizedPath(`/ratgeber/${g.slug}`, lang), main: true })),
+  ...weitereRatgeber.map((w) => ({ title: w.title[lang], summary: w.summary[lang], href: getLocalizedPath(w.path, lang), main: false })),
+];
+---
+
+<BaseLayout title={t('overview.guidesTitle')} description={t('overview.guidesMeta')}>
+  <article>
+    <PageHero eyebrow={t('nav.guides')} title={t('overview.guidesTitle')} lead={t('overview.guidesLead')} />
+    <div class="u-container pb-16 pt-12 sm:pb-20 sm:pt-16">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          cards.map((c) => (
+            <a
+              href={c.href}
+              class:list={[
+                'group flex flex-col gap-3 rounded-2xl border bg-white p-6 transition-colors hover:border-gold-300',
+                c.main ? 'border-petrol-200' : 'border-line',
+              ]}
+            >
+              <h2 class="font-display text-xl text-petrol-900">{c.title}</h2>
+              <p class="text-ink-soft">{c.summary}</p>
+              <span class="mt-auto text-sm font-semibold text-petrol-800 group-hover:text-petrol-900">{t('content.moreOnTopic')} →</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <CTA />
+  </article>
+</BaseLayout>

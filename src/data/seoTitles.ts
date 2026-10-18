@@ -33,8 +33,8 @@ export const seoTitles: Record<string, Localized> = {
     en: 'Malaria Prevention Advice in Langenfeld | Polaris',
   },
   '/kosten': {
-    de: 'Was kostet eine Reiseimpfung? Preise & Erstattung | Polaris',
-    en: 'Travel Vaccination Costs & Reimbursement | Polaris',
+    de: 'Preise nach GOÄ – Reisemedizin Langenfeld | Polaris',
+    en: 'Fees & Billing – Travel Clinic Langenfeld | Polaris',
   },
   '/termin': {
     de: 'Reiseimpfung in Langenfeld: Termin buchen | Polaris',
@@ -43,6 +43,38 @@ export const seoTitles: Record<string, Localized> = {
   '/kontakt': {
     de: 'Anfahrt & Kontakt – Reisemedizin Langenfeld | Polaris',
     en: 'Directions & Contact – Travel Clinic Langenfeld | Polaris',
+  },
+  '/ratgeber': {
+    de: 'Ratgeber Reiseimpfung & Reisemedizin | Polaris Langenfeld',
+    en: 'Travel Vaccination & Travel Health Guides | Polaris',
+  },
+  '/ratgeber/reiseimpfung-kosten-krankenkasse': {
+    de: 'Was kostet eine Reiseimpfung? Kosten & Kasse | Polaris',
+    en: 'Travel Vaccination Costs & Reimbursement | Polaris',
+  },
+  '/ratgeber/wann-vor-der-reise-impfen': {
+    de: 'Wann vor der Reise impfen? Vorlaufzeiten | Polaris',
+    en: 'When to Get Travel Vaccinations Before a Trip | Polaris',
+  },
+  '/reiseziele/asien/thailand': {
+    de: 'Impfungen für Thailand – Reisemedizin Langenfeld | Polaris',
+    en: 'Thailand Travel Vaccinations | Polaris Langenfeld',
+  },
+  '/reiseziele/asien/indien': {
+    de: 'Impfungen für Indien: Typhus, Hepatitis A & mehr | Polaris',
+    en: 'India Travel Vaccinations | Polaris Langenfeld',
+  },
+  '/reiseziele/asien/indonesien-bali': {
+    de: 'Impfungen für Bali & Indonesien | Polaris Langenfeld',
+    en: 'Bali & Indonesia Travel Vaccinations | Polaris',
+  },
+  '/reiseziele/afrika/kenia': {
+    de: 'Impfungen für Kenia: Gelbfieber, Malaria & mehr | Polaris',
+    en: 'Kenya Travel Vaccinations & Malaria Advice | Polaris',
+  },
+  '/reiseziele/afrika/tansania-sansibar': {
+    de: 'Impfungen für Tansania & Sansibar | Polaris Langenfeld',
+    en: 'Tanzania & Zanzibar Travel Vaccinations | Polaris',
   },
   '/unternehmen': {
     de: 'Reisemedizin für Firmen im Rheinland | Polaris Langenfeld',

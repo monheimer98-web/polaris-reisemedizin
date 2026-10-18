@@ -1,0 +1,39 @@
+---
+/**
+ * Ratgeberseite (Deutsch) — dynamische Route über `getStaticPaths` aus dem
+ * Ratgeber-Modul. Darstellung über ContentLayout + ClinicalSections (inkl.
+ * FAQ-Block und FAQPage-JSON-LD); identisch zur EN-Variante.
+ */
+import type { GetStaticPaths } from 'astro';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import ClinicalSections from '../../components/ClinicalSections.astro';
+import { getLangFromUrl, getLocalizedPath } from '../../i18n/utils';
+import { getSources } from '../../data/sources';
+import { guides, type Guide } from '../../data/ratgeber';
+
+export const getStaticPaths = (() =>
+  guides.map((guide) => ({ params: { slug: guide.slug }, props: { guide } }))) satisfies GetStaticPaths;
+
+interface Props {
+  guide: Guide;
+}
+
+const { guide } = Astro.props;
+const page = guide.page;
+const lang = getLangFromUrl(Astro.url);
+const related = (page.related ?? []).map((item) => ({ label: item.label[lang], path: getLocalizedPath(item.path, lang) }));
+const faq = (page.faq ?? []).map((f) => ({ q: f.q[lang], a: f.a[lang] }));
+---
+
+<ContentLayout
+  title={page.meta.title[lang]}
+  description={page.meta.description[lang]}
+  eyebrow={page.meta.eyebrow[lang]}
+  lead={page.meta.lead[lang]}
+  lastReviewed={page.lastReviewed}
+  sources={getSources(page.sourceIds)}
+  related={related}
+  faq={faq}
+>
+  <ClinicalSections page={page} />
+</ContentLayout>

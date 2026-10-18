@@ -31,6 +31,19 @@ export interface KontaktPage {
     mapHeading: Localized;
     mapLead: Localized;
   };
+  /** „So kommen Sie zu uns": ÖPNV und Auto (Fakten aus OpenStreetMap, Stand 18.10.2026). */
+  anfahrt: {
+    heading: Localized;
+    oepnvTitle: Localized;
+    oepnv: Localized;
+    oepnvLinkLabel: Localized;
+    oepnvLinkUrl: string;
+    autoTitle: Localized;
+    auto: Localized;
+    parkenTitle: Localized;
+    barrierefreiTitle: Localized;
+    etage: Localized;
+  };
   /**
    * Texte des Kontaktformulars (React-Insel `KontaktForm`). Sprachaufgelöst im
    * Astro-Layer und als flaches `KontaktFormStrings`-Objekt an die Insel gereicht.
@@ -124,6 +137,24 @@ export const kontaktPage: KontaktPage = {
       de: 'Unsere Praxis liegt in Langenfeld im Rheinland, zwischen Düsseldorf und Köln. Planen Sie Ihre Anfahrt bequem mit dem Kartendienst. Aus Datenschutzgründen wird die interaktive Karte erst nach Ihrer Einwilligung geladen.',
       en: 'Our practice is in Langenfeld in the Rhineland, between Düsseldorf and Cologne. Plan your journey conveniently with the map service. For data-protection reasons, the interactive map is only loaded after your consent.',
     },
+  },
+  anfahrt: {
+    heading: { de: 'So kommen Sie zu uns', en: 'How to get here' },
+    oepnvTitle: { de: 'Mit Bus und Bahn', en: 'By bus and train' },
+    oepnv: {
+      de: 'Die Bushaltestellen Bahnstraße und Winkelsweg liegen nur 2–3 Gehminuten entfernt; dort halten u. a. die Linien 785, 787 und 790. Die nächsten S-Bahn-Halte sind Langenfeld-Berghausen (ca. 1,8 km) und Langenfeld (Rheinland) (ca. 2,4 km) an der S6 Köln–Düsseldorf–Essen; Langenfeld (Rheinland) ist auch Endhalt der S68 aus Wuppertal. Von dort fahren die Buslinien 785 und 790 nach Richrath.',
+      en: 'The Bahnstraße and Winkelsweg bus stops are just a 2–3 minute walk away; lines 785, 787 and 790, among others, stop there. The nearest suburban rail stations are Langenfeld-Berghausen (approx. 1.8 km) and Langenfeld (Rheinland) (approx. 2.4 km) on the S6 Cologne–Düsseldorf–Essen; Langenfeld (Rheinland) is also the terminus of the S68 from Wuppertal. From there, bus lines 785 and 790 run to Richrath.',
+    },
+    oepnvLinkLabel: { de: 'Aktuelle Verbindungen in der VRR-Fahrplanauskunft', en: 'Current connections in the VRR journey planner' },
+    oepnvLinkUrl: 'https://www.vrr.de/de/fahrplanauskunft/',
+    autoTitle: { de: 'Mit dem Auto', en: 'By car' },
+    auto: {
+      de: 'Die Praxis liegt in Langenfeld-Richrath, nahe den Anschlussstellen Langenfeld-Richrath (A59) und Solingen (A3); auch die A542 ist schnell erreicht. Damit sind wir aus Monheim, Hilden, Leichlingen, Solingen, Leverkusen und dem Düsseldorfer Süden gut erreichbar.',
+      en: 'The practice is in Langenfeld-Richrath, close to the Langenfeld-Richrath (A59) and Solingen (A3) motorway junctions; the A542 is also close by. This makes us easy to reach from Monheim, Hilden, Leichlingen, Solingen, Leverkusen and southern Düsseldorf.',
+    },
+    parkenTitle: { de: 'Parken', en: 'Parking' },
+    barrierefreiTitle: { de: 'Barrierefreiheit', en: 'Accessibility' },
+    etage: { de: 'Die Praxis befindet sich in der 1. Etage.', en: 'The practice is on the 1st floor.' },
   },
   form: {
     sectionHeading: {

@@ -71,6 +71,7 @@ export const primaryNav: NavItem[] = [
 export const footerInfoNav: NavItem[] = [
   { labelKey: 'nav.process', path: '/ablauf' },
   { labelKey: 'nav.destinations', path: '/reiseziele' },
+  { labelKey: 'nav.guides', path: '/ratgeber' },
   { labelKey: 'nav.travelTips', path: '/reisetipps' },
   { labelKey: 'nav.travelKit', path: '/reiseapotheke' },
   { labelKey: 'nav.costs', path: '/kosten' },

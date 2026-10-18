@@ -100,4 +100,6 @@ export interface ClinicalPage {
   lastReviewed: Date;
   /** Optionale Querverweise (z. B. Krankheitsbild ↔ Leistung). */
   related?: RelatedLink[];
+  /** Optionale häufige Fragen (werden als FAQ-Block + FAQPage-JSON-LD ausgegeben). */
+  faq?: { q: Localized; a: Localized }[];
 }
