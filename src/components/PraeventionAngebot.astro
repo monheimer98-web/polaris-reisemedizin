@@ -1,0 +1,86 @@
+---
+/**
+ * Inhalt einer Angebotsseite „Prävention & Lebensstil": Steckbrief (für wen,
+ * Termine, Honorar, Labor, betreuende Ärztin), die Abschnitte der
+ * `ClinicalPage`, „So läuft es ab", Kosten und zuletzt die häufigen Fragen.
+ * Ablauf und Kosten sind echte <section id> mit <h2>, damit „Auf dieser Seite"
+ * sie aufnimmt.
+ */
+import ClinicalSections from './ClinicalSections.astro';
+import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
+import { preventionDoctor } from '../data/praevention';
+import type { PreventionOffer } from '../data/praevention/types';
+
+interface Props {
+  offer: PreventionOffer;
+}
+
+const { offer } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const de = lang === 'de';
+const facts = [
+  { label: de ? 'Für wen' : 'Who it is for', value: offer.facts.forWhom[lang] },
+  { label: de ? 'Termine' : 'Appointments', value: offer.facts.appointments[lang] },
+  { label: de ? 'Ärztliches Honorar' : 'Medical fee', value: offer.facts.fee[lang] },
+  { label: de ? 'Labor' : 'Lab tests', value: offer.facts.lab[lang] },
+];
+const { faq, ...rest } = offer.page;
+---
+
+<section class="mb-12 rounded-2xl border border-petrol-100 bg-white p-6 shadow-[var(--shadow-soft)] sm:p-7" aria-label={de ? 'Steckbrief' : 'At a glance'}>
+  <dl class="grid gap-x-8 gap-y-5 sm:grid-cols-2">
+    {
+      facts.map((f) => (
+        <div>
+          <dt class="text-xs font-semibold uppercase tracking-[0.14em] text-petrol-500">{f.label}</dt>
+          <dd class="mt-1.5 text-[15px] leading-relaxed text-ink">{f.value}</dd>
+        </div>
+      ))
+    }
+  </dl>
+  <p class="mt-6 flex items-center gap-2 border-t border-petrol-100 pt-4 text-sm text-ink-soft">
+    <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400" aria-hidden="true"></span>
+    {preventionDoctor[lang]}
+  </p>
+</section>
+
+<ClinicalSections page={{ ...rest, faq: undefined }} />
+
+<section id="ablauf" class="mt-12 scroll-mt-24 sm:mt-14">
+  <div class="rich-text">
+    <h2>{de ? 'So läuft es ab' : 'How it works'}</h2>
+  </div>
+  <ol class="mt-6 space-y-4">
+    {
+      offer.steps.map((step, i) => (
+        <li class="flex gap-4 rounded-2xl border border-petrol-100 bg-white/70 p-5">
+          <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-petrol-800 text-sm font-semibold text-cream tabular-nums">
+            {i + 1}
+          </span>
+          <div>
+            <p class="font-semibold text-petrol-900">{step.title[lang]}</p>
+            <p class="mt-1 text-ink-soft">{step.text[lang]}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<section id="kosten" class="mt-12 scroll-mt-24 sm:mt-14">
+  <div class="rich-text">
+    <h2>{de ? 'Kosten' : 'Costs'}</h2>
+    {offer.costs[lang].map((p) => <p>{p}</p>)}
+    <p>
+      <a href={getLocalizedPath('/kosten', lang)}>{de ? 'Mehr zu Kosten und Abrechnung' : 'More about fees and billing'}</a>
+    </p>
+  </div>
+</section>
+
+{
+  faq && faq.length > 0 && (
+    <div class="mt-12 sm:mt-14">
+      <ClinicalSections page={{ ...rest, sections: [], faq }} />
+    </div>
+  )
+}

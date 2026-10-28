@@ -7,6 +7,7 @@ import { primaryNav, BOOKING_PATH } from '../config/nav';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import { site } from '../config/site';
 import type { UiKey } from '../i18n/ui';
+import type { NavItem } from '../config/nav';
 import Logo from './Logo.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 
@@ -15,6 +16,10 @@ const t = useTranslations(lang);
 const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const homeHref = getLocalizedPath('/', lang);
 const bookingHref = getLocalizedPath(BOOKING_PATH, lang);
+
+function label(item: NavItem): string {
+  return item.label ? item.label[lang] : t(item.labelKey as UiKey);
+}
 
 function isActive(path: string): boolean {
   const localized = (getLocalizedPath(path, lang).replace(/\/+$/, '') || '/');
@@ -57,16 +62,17 @@ function isActive(path: string): boolean {
       {
         primaryNav.map((item) =>
           item.children?.length ? (
-            <div class="group relative">
+            <div class:list={['group relative', item.area === 'praevention' && 'theme-praevention']}>
               <a
                 href={getLocalizedPath(item.path, lang)}
                 class:list={[
-                  'inline-flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-white',
+                  'inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium transition-colors hover:bg-white 2xl:px-3',
                   isActive(item.path) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
                 ]}
                 aria-current={isActive(item.path) ? 'page' : undefined}
               >
-                {t(item.labelKey as UiKey)}
+                {item.area && <span class="h-1.5 w-1.5 rounded-full bg-petrol-400" aria-hidden="true"></span>}
+                {label(item)}
                 <svg class="h-3.5 w-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                   <path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -83,7 +89,7 @@ function isActive(path: string): boolean {
                         ]}
                         aria-current={isActive(child.path) ? 'page' : undefined}
                       >
-                        {t(child.labelKey as UiKey)}
+                        {label(child)}
                       </a>
                     </li>
                   ))}
@@ -94,12 +100,12 @@ function isActive(path: string): boolean {
             <a
               href={getLocalizedPath(item.path, lang)}
               class:list={[
-                'whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-white',
+                'whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium transition-colors hover:bg-white 2xl:px-3',
                 isActive(item.path) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
               ]}
               aria-current={isActive(item.path) ? 'page' : undefined}
             >
-              {t(item.labelKey as UiKey)}
+              {label(item)}
             </a>
           )
         )
@@ -108,11 +114,12 @@ function isActive(path: string): boolean {
 
     {/* Rechts: Anrufen + Sprache + CTA + Mobile-Toggle */}
     <div class="flex items-center gap-2 sm:gap-3">
-      {/* Klick-zum-Anrufen — kompaktes Icon auf allen Größen (mobil: Tap-to-Call);
-          die Nummer steht im Tooltip/aria-Label sowie in Fußzeile, Kontakt & Termin. */}
+      {/* Klick-zum-Anrufen — kompaktes Icon (mobil: Tap-to-Call); zwischen xl und 2xl
+          ausgeblendet, damit die neunteilige Leiste ab 1280 px in eine Zeile passt.
+          Die Nummer steht außerdem in Fußzeile, Kontakt & Termin. */}
       <a
         href={site.contact.phoneHref}
-        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-petrol-800 transition-colors hover:bg-white"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-petrol-800 transition-colors hover:bg-white xl:hidden 2xl:inline-flex"
         aria-label={`${t('cta.callAria')}: ${site.contact.phone}`}
         title={site.contact.phone}
       >
@@ -127,7 +134,7 @@ function isActive(path: string): boolean {
       <div class="hidden sm:block">
         <LanguageSwitcher />
       </div>
-      <a href={bookingHref} class="btn-gold hidden h-10 px-4 sm:inline-flex" aria-label={t('cta.bookAria')}>
+      <a href={bookingHref} class="btn-gold hidden h-10 shrink-0 whitespace-nowrap px-4 sm:inline-flex" aria-label={t('cta.bookAria')}>
         {t('cta.book')}
       </a>
 
@@ -157,7 +164,7 @@ function isActive(path: string): boolean {
     <nav class="mx-auto flex w-full max-w-7xl flex-col px-5 py-2 sm:px-8" aria-label={t('header.primaryNav')}>
       {
         primaryNav.map((item, i) => (
-          <div class="border-b border-line/50 last:border-b-0">
+          <div class:list={['border-b border-line/50 last:border-b-0', item.area === 'praevention' && 'theme-praevention']}>
             {item.children?.length ? (
               <div>
                 <div class="flex items-center gap-1">
@@ -169,7 +176,7 @@ function isActive(path: string): boolean {
                     ]}
                     aria-current={isActive(item.path) ? 'page' : undefined}
                   >
-                    {t(item.labelKey as UiKey)}
+                    {label(item)}
                   </a>
                   <button
                     type="button"
@@ -195,7 +202,7 @@ function isActive(path: string): boolean {
                           ]}
                           aria-current={isActive(child.path) ? 'page' : undefined}
                         >
-                          {t(child.labelKey as UiKey)}
+                          {label(child)}
                         </a>
                       </li>
                     ))}
@@ -211,7 +218,7 @@ function isActive(path: string): boolean {
                 ]}
                 aria-current={isActive(item.path) ? 'page' : undefined}
               >
-                {t(item.labelKey as UiKey)}
+                {label(item)}
               </a>
             )}
           </div>

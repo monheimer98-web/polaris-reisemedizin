@@ -6,6 +6,7 @@
  */
 import { getLangFromUrl, formatReviewDate } from '../i18n/utils';
 import { kostenPage as page } from '../data/kosten';
+import PraeventionTeaser from './PraeventionTeaser.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const reviewedLabel = lang === 'de' ? 'Stand' : 'Last reviewed';
@@ -68,6 +69,8 @@ const reviewedLabel = lang === 'de' ? 'Stand' : 'Last reviewed';
       }
     </div>
   </section>
+
+  <PraeventionTeaser variant="kosten" />
 
   {/* Hinweise */}
   <section class="u-container pt-12 sm:pt-14">

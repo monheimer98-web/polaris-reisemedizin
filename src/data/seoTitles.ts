@@ -12,6 +12,42 @@ export const seoTitles: Record<string, Localized> = {
     de: 'Reisemedizin & Reiseimpfungen in Langenfeld | Polaris',
     en: 'English-speaking Travel Clinic near Düsseldorf | Polaris',
   },
+  '/praevention': {
+    de: 'Prävention & Lebensstil in Langenfeld | Polaris',
+    en: 'Prevention & Lifestyle Clinic in Langenfeld | Polaris',
+  },
+  '/praevention/praeventions-check': {
+    de: 'Präventions-Check in Langenfeld | Polaris',
+    en: 'Prevention Check-up in Langenfeld | Polaris',
+  },
+  '/praevention/gewicht-und-stoffwechsel': {
+    de: 'Gewicht und Stoffwechsel: ärztliche Begleitung Langenfeld | Polaris',
+    en: 'Weight & Metabolism: Medical Support in Langenfeld | Polaris',
+  },
+  '/praevention/wechseljahre': {
+    de: 'Sprechstunde Wechseljahre in Langenfeld | Polaris',
+    en: 'Menopause Consultation in Langenfeld | Polaris',
+  },
+  '/praevention/kompass-maenner': {
+    de: 'Gesundheits-Check für Männer ab 40 in Langenfeld | Polaris',
+    en: 'Health Check-up for Men over 40 in Langenfeld | Polaris',
+  },
+  '/praevention/werte-einordnen': {
+    de: 'Laborwerte und Smartwatch-Daten einordnen lassen | Polaris',
+    en: 'Lab Results & Smartwatch Data Explained | Polaris Langenfeld',
+  },
+  '/praevention/kompass-60-plus': {
+    de: 'Gesund älter werden: Kompass 60+ in Langenfeld | Polaris',
+    en: 'Healthy Ageing Check-up 60+ in Langenfeld | Polaris',
+  },
+  '/praevention/schlaf-und-jetlag': {
+    de: 'Sprechstunde Schlaf und Jetlag in Langenfeld | Polaris',
+    en: 'Sleep & Jet Lag Consultation in Langenfeld | Polaris',
+  },
+  '/praevention/muskel-kompass': {
+    de: 'Muskel-Kompass 40+: Kraft und Ausdauer in Langenfeld | Polaris',
+    en: 'Muscle Check 40+: Strength & Fitness in Langenfeld | Polaris',
+  },
   '/leistungen/gelbfieberimpfung': {
     de: 'Gelbfieberimpfung in Langenfeld – Termin & Kosten | Polaris',
     en: 'Yellow Fever Vaccination in Langenfeld | Polaris',

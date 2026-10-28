@@ -11,6 +11,7 @@
  * jährlichen Zyklus erneut gegenprüfen (siehe README / Übergabe).
  */
 import type { Locale } from '../config/site';
+import { praeventionQuellen } from './praevention/quellen';
 
 type Loc = Record<Locale, string>;
 
@@ -32,6 +33,8 @@ export interface Source {
  * Gelbfieber (Phase 3), FSME (Phase 4) und Risikogebiete (Phase 5).
  */
 export const sources = {
+  // Prävention & Lebensstil (10/2026) – Quellen in praevention/quellen.ts gepflegt.
+  ...praeventionQuellen,
   rkiGelbfieber: {
     publisher: 'Robert Koch-Institut (RKI)',
     title: {

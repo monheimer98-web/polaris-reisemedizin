@@ -16,6 +16,7 @@ import PrintButton from '../components/PrintButton.astro';
 import SourceList from '../components/SourceList.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import DiseaseFactsBox from '../components/DiseaseFactsBox.astro';
+import PraeventionNav from '../components/PraeventionNav.astro';
 import { getLangFromUrl, useTranslations, formatReviewDate, getLocalizedPath, getLogicalPath, HREFLANG } from '../i18n/utils';
 import { SITE_URL, site } from '../config/site';
 import { BOOKING_PATH } from '../config/nav';
@@ -46,9 +47,19 @@ interface Props {
   faq?: { q: string; a: string }[];
   /** Zusätzliche Brotkrumen-Ebene zwischen Hub und Seite (z. B. Region einer Länderseite). */
   parent?: { label: string; path: string };
+  /**
+   * Bereich „Prävention & Lebensstil": Salbei-Farbwelt (`.theme-praevention`),
+   * Bereichsnavigation unter dem Hero und eigener Text im Abschluss-Band.
+   */
+  area?: 'praevention';
+  /** Slug des aktuellen Angebots für die Bereichsnavigation. */
+  areaCurrent?: string;
+  /** Eigene Texte für das Abschluss-Band (bereits in der Seitensprache). */
+  cta?: { title: string; lead: string; note?: string };
 }
 
-const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel, faq = [], parent } = Astro.props;
+const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel, faq = [], parent, area, areaCurrent, cta } = Astro.props;
+const areaClass = area === 'praevention' ? 'theme-praevention' : undefined;
 const lang = getLangFromUrl(Astro.url);
 const bookingHref = getLocalizedPath(BOOKING_PATH, lang) + (bookingType ? `?art=${bookingType}` : '');
 const t = useTranslations(lang);
@@ -62,6 +73,7 @@ const HUB_LABEL_KEY: Record<string, UiKey> = {
   leistungen: 'nav.services',
   reiseziele: 'nav.destinations',
   ratgeber: 'nav.guides',
+  praevention: 'nav.preventionArea',
 };
 const hubKey = HUB_LABEL_KEY[hubSegment];
 const breadcrumbItems = [
@@ -106,7 +118,7 @@ const faqSchema = faq.length
 // werden <section id> + zugehörige <h2> extrahiert. Bewusst nur für die
 // strukturgleichen Hubs (Krankheitsbilder/Leistungen) und erst ab 3 Abschnitten.
 const bodyHtml = await Astro.slots.render('default');
-const TOC_HUBS = new Set(['krankheitsbilder', 'leistungen', 'reiseziele', 'reiseapotheke', 'ratgeber']);
+const TOC_HUBS = new Set(['krankheitsbilder', 'leistungen', 'reiseziele', 'reiseapotheke', 'ratgeber', 'praevention']);
 const toc: { id: string; label: string }[] = [];
 if (TOC_HUBS.has(hubSegment)) {
   // Im gerenderten HTML sind Zeichen wie & als Entities kodiert (&amp;); nach dem
@@ -134,7 +146,7 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
 ---
 
 <BaseLayout title={title} description={description} image={image} noindex={noindex} schema={faqSchema ? [medicalWebPageSchema, faqSchema] : medicalWebPageSchema}>
-  <article class:list={[printLabel && 'is-printable']}>
+  <article class:list={[printLabel && 'is-printable', areaClass]}>
     <PageHero eyebrow={eyebrow} title={title} lead={lead}>
       <Breadcrumbs slot="breadcrumb" items={breadcrumbItems} label={t('content.breadcrumb')} />
       <div class="no-print mt-8 flex flex-wrap items-center gap-3">
@@ -148,6 +160,8 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
         {' '}{formatReviewDate(lastReviewed, lang)}
       </p>
     </PageHero>
+
+    {area === 'praevention' && <PraeventionNav current={areaCurrent} />}
 
     <div class="u-container-narrow py-14 sm:py-16">
       {
@@ -227,5 +241,7 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
     </div>
   </article>
 
-  <CTA bookingType={bookingType} />
+  <div class={areaClass}>
+    <CTA bookingType={bookingType} title={cta?.title} lead={cta?.lead} note={cta?.note} />
+  </div>
 </BaseLayout>

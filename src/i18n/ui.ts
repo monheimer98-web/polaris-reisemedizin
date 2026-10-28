@@ -9,6 +9,8 @@ export const ui = {
     // Navigation
     'nav.home': 'Start',
     'nav.services': 'Leistungen',
+    'nav.prevention': 'Prävention',
+    'nav.preventionArea': 'Prävention & Lebensstil',
     'nav.diseases': 'Krankheitsbilder',
     'nav.yellowFever': 'Gelbfieber',
     'nav.dengue': 'Dengue-Fieber',
@@ -230,6 +232,8 @@ export const ui = {
     // Navigation
     'nav.home': 'Home',
     'nav.services': 'Services',
+    'nav.prevention': 'Prevention',
+    'nav.preventionArea': 'Prevention & lifestyle',
     'nav.diseases': 'Diseases',
     'nav.yellowFever': 'Yellow fever',
     'nav.dengue': 'Dengue fever',

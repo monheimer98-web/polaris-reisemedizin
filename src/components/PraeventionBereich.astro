@@ -1,0 +1,126 @@
+---
+/**
+ * Bereichsseite „Prävention & Lebensstil" (/praevention): Hero, Bereichs-
+ * navigation, Einstieg nach Lebenslage, Angebote in drei Gruppen, Arbeitsweise,
+ * was wir bewusst nicht anbieten, Abschluss-Band. Alles in `.theme-praevention`
+ * (Salbei); Kopf- und Fußzeile bleiben die der Praxis. Sprache aus der URL.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from './PageHero.astro';
+import PraeventionNav from './PraeventionNav.astro';
+import CTA from './CTA.astro';
+import { getLangFromUrl, getLocalizedPath, useTranslations } from '../i18n/utils';
+import { BOOKING_PATH } from '../config/nav';
+import {
+  preventionDoctor,
+  preventionEntryPoints,
+  preventionGroups,
+  preventionHub as hub,
+  preventionOffers,
+  preventionPath,
+} from '../data/praevention';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const groups = preventionGroups
+  .map((g) => ({ ...g, offers: preventionOffers.filter((o) => o.group === g.id) }))
+  .filter((g) => g.offers.length > 0);
+const entryPoints = preventionEntryPoints.filter((e) => preventionOffers.some((o) => o.slug === e.slug));
+---
+
+<BaseLayout title={hub.meta.title[lang]} description={hub.meta.description[lang]}>
+  <div class="theme-praevention">
+    <PageHero eyebrow={hub.meta.eyebrow[lang]} title={hub.meta.title[lang]} lead={hub.meta.lead[lang]}>
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href={getLocalizedPath(BOOKING_PATH, lang)} class="btn-gold" aria-label={t('cta.bookAria')}>{t('cta.book')}</a>
+        <a href="#angebote" class="btn-ghost">{lang === 'de' ? 'Angebote ansehen' : 'View services'}</a>
+      </div>
+      <p class="mt-6 flex items-center gap-2 text-sm text-ink-soft">
+        <span class="h-1.5 w-1.5 rounded-full bg-gold-400" aria-hidden="true"></span>
+        {preventionDoctor[lang]}
+      </p>
+    </PageHero>
+
+    <PraeventionNav />
+
+    <section class="u-container py-14 sm:py-16" aria-labelledby="einstieg">
+      <h2 id="einstieg" class="text-2xl sm:text-3xl">{hub.entryTitle[lang]}</h2>
+      <ul class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          entryPoints.map((e) => (
+            <li>
+              <a
+                href={getLocalizedPath(preventionPath(e.slug), lang)}
+                class="group flex h-full items-center justify-between gap-3 rounded-2xl border border-petrol-100 bg-white px-5 py-4 font-medium text-petrol-900 shadow-[var(--shadow-soft)] transition-colors hover:border-gold-300"
+              >
+                <span>{e.label[lang]}</span>
+                <svg class="h-4 w-4 shrink-0 text-gold-500 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section id="angebote" class="scroll-mt-24 border-y border-petrol-100 bg-petrol-50/60 py-14 sm:py-16">
+      <div class="u-container space-y-14">
+        {
+          groups.map((g) => (
+            <div>
+              <p class="eyebrow"><span class="rule-gold" />{g.title[lang]}</p>
+              <p class="mt-3 max-w-2xl text-ink-soft">{g.lead[lang]}</p>
+              <ul class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {g.offers.map((o) => (
+                  <li>
+                    <a
+                      href={getLocalizedPath(preventionPath(o.slug), lang)}
+                      class="card group flex h-full flex-col transition-shadow hover:shadow-[var(--shadow-card-hover)]"
+                    >
+                      <h3 class="text-xl">{o.shortName[lang]}</h3>
+                      <p class="mt-3 flex-1 text-ink-soft">{o.teaser[lang]}</p>
+                      <p class="mt-5 text-sm font-medium text-petrol-700">{o.facts.fee[lang]}</p>
+                      <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-petrol-800">
+                        {lang === 'de' ? 'Mehr erfahren' : 'Learn more'}
+                        <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                          <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="u-container py-14 sm:py-16" aria-labelledby="arbeitsweise">
+      <h2 id="arbeitsweise" class="text-2xl sm:text-3xl">{hub.principlesTitle[lang]}</h2>
+      <ul class="mt-8 grid gap-6 sm:grid-cols-2">
+        {
+          hub.principles.map((p) => (
+            <li class="rounded-2xl border border-petrol-100 bg-white/70 p-6">
+              <p class="font-display text-lg font-semibold text-petrol-900">{p.title[lang]}</p>
+              <p class="mt-2 text-ink-soft">{p.text[lang]}</p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-12 max-w-3xl rich-text">
+        <h2>{hub.notOfferedTitle[lang]}</h2>
+        <ul>
+          {hub.notOffered[lang].map((item) => <li>{item}</li>)}
+        </ul>
+        <p>
+          <a href={getLocalizedPath('/kosten', lang)}>{lang === 'de' ? 'Kosten und Abrechnung' : 'Fees and billing'}</a>
+        </p>
+      </div>
+    </section>
+
+    <CTA title={hub.ctaTitle[lang]} lead={hub.ctaLead[lang]} note={hub.ctaNote[lang]} />
+  </div>
+</BaseLayout>

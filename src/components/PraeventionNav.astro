@@ -1,0 +1,50 @@
+---
+/**
+ * Bereichsnavigation „Prävention & Lebensstil": eine ruhige Pillenleiste unter
+ * dem Seiten-Hero (Übersicht + alle buchbaren Angebote). Steht innerhalb von
+ * `.theme-praevention` und erscheint deshalb in Salbei. Auf schmalen
+ * Bildschirmen horizontal scrollbar, ohne die Seite zu verbreitern.
+ */
+import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
+import { PREVENTION_PATH, preventionOffers, preventionPath } from '../data/praevention';
+
+interface Props {
+  /** Slug des aktuellen Angebots; leer auf der Bereichsseite. */
+  current?: string;
+}
+
+const { current } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const items = [
+  { label: lang === 'de' ? 'Übersicht' : 'Overview', path: PREVENTION_PATH, active: !current },
+  ...preventionOffers.map((o) => ({ label: o.shortName[lang], path: preventionPath(o.slug), active: o.slug === current })),
+];
+---
+
+<nav
+  class="no-print border-b border-petrol-100 bg-petrol-50/70"
+  aria-label={lang === 'de' ? 'Bereich Prävention & Lebensstil' : 'Prevention & lifestyle section'}
+>
+  <div class="u-container">
+    <ul class="-mx-1 flex gap-1.5 overflow-x-auto py-3 [scrollbar-width:none]">
+      {
+        items.map((item) => (
+          <li class="shrink-0">
+            <a
+              href={getLocalizedPath(item.path, lang)}
+              class:list={[
+                'inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors',
+                item.active
+                  ? 'bg-petrol-800 text-cream'
+                  : 'text-petrol-800 hover:bg-white hover:text-petrol-900',
+              ]}
+              aria-current={item.active ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
