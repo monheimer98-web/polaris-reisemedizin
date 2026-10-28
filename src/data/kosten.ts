@@ -105,8 +105,8 @@ export const kostenPage: KostenPage = {
         {
           service: { de: 'Jede weitere mitreisende Person', en: 'Each additional travelling person' },
           detail: {
-            de: 'Eigene Beratung und eigener Plan im selben Termin – als ganz normale, einzeln einreichbare Rechnung (gleiches Reiseziel, bis zu sechs Personen).',
-            en: 'Own consultation and own plan in the same appointment – as a regular, individually submittable invoice (same destination, up to six people).',
+            de: 'Eigene Beratung und eigener Plan im selben Termin – als ganz normale, einzeln einreichbare Rechnung (gleiches Reiseziel, bis zu sechs Mitreisende).',
+            en: 'Own consultation and own plan in the same appointment – as a regular, individually submittable invoice (same destination, up to six companions).',
           },
           price: { de: 'ca. 28 €', en: 'approx. €28' },
         },
@@ -165,6 +165,14 @@ export const kostenPage: KostenPage = {
           price: { de: 'ab der 3.: zzgl. ca. 3–7 €', en: 'from the 3rd: plus approx. €3–7' },
         },
         {
+          service: { de: 'Termin am Samstag', en: 'Appointment on a Saturday' },
+          detail: {
+            de: 'Für Termine am Samstag sieht die GOÄ einen Zuschlag vor.',
+            en: 'For appointments on a Saturday, the GOÄ provides for a surcharge.',
+          },
+          price: { de: 'zzgl. ca. 6 €', en: 'plus approx. €6' },
+        },
+        {
           service: { de: 'Neuer Impfausweis (falls noch keiner vorhanden)', en: 'New vaccination certificate (if you don’t have one yet)' },
           detail: {
             de: 'Ausstellung eines neuen Impfausweises.',
@@ -178,8 +186,8 @@ export const kostenPage: KostenPage = {
       id: 'impfstoffe',
       heading: { de: 'Impfstoffe', en: 'Vaccines' },
       note: {
-        de: 'Impfstoffe geben wir immer 1:1 zum Einkaufspreis weiter – ohne Aufschlag, wir verdienen daran nichts. Häufig benötigte Reiseimpfstoffe sowie den FSME- und den Gelbfieber-Impfstoff halten wir vorrätig – dann impfen wir auf Wunsch direkt im Termin. Seltener benötigte Impfstoffe besprechen wir in der Beratung; sie besorgen wir bzw. Sie erhalten ein Privatrezept für die Apotheke, und wir impfen beim nächsten Termin.',
-        en: 'We always pass on vaccines 1:1 at cost – without mark-up, we make nothing on them. We keep commonly needed travel vaccines as well as the TBE and yellow-fever vaccines in stock – so we can vaccinate you directly in the appointment if you wish. Less commonly needed vaccines are discussed during the consultation; we obtain them or you receive a private prescription for the pharmacy, and we vaccinate at the next appointment.',
+        de: 'Impfstoffe berechnen wir – wie in der GOÄ vorgesehen – 1:1 zum Einkaufspreis, ohne Aufschlag. Häufig benötigte Reiseimpfstoffe sowie den FSME- und den Gelbfieber-Impfstoff halten wir vorrätig – dann impfen wir auf Wunsch direkt im Termin. Seltener benötigte Impfstoffe besprechen wir in der Beratung; sie besorgen wir bzw. Sie erhalten ein Privatrezept für die Apotheke, und wir impfen beim nächsten Termin.',
+        en: 'As provided for in the GOÄ, we charge vaccines 1:1 at cost, without mark-up. We keep commonly needed travel vaccines as well as the TBE and yellow-fever vaccines in stock – so we can vaccinate you directly in the appointment if you wish. Less commonly needed vaccines are discussed during the consultation; we obtain them or you receive a private prescription for the pharmacy, and we vaccinate at the next appointment.',
       },
       items: [
         {
@@ -211,8 +219,8 @@ export const kostenPage: KostenPage = {
         {
           service: { de: 'Gelbfieberimpfung inkl. internationalem Impfnachweis (ICVP)', en: 'Yellow-fever vaccination incl. international certificate (ICVP)' },
           detail: {
-            de: 'Ärztliches Honorar für Aufklärung, kurze Impf-Untersuchung, Impfung und internationalen Impfnachweis. Den Gelbfieber-Impfstoff geben wir 1:1 zum Einkaufspreis weiter, ohne Aufschlag – derzeit ca. 73 €. Insgesamt also rund 110 €.',
-            en: 'Medical fee for the briefing, a brief pre-vaccination check, the vaccination and the international certificate. We pass on the yellow-fever vaccine 1:1 at cost, without mark-up – currently approx. €73. In total roughly €110.',
+            de: 'Ärztliches Honorar für Aufklärung, kurze Impf-Untersuchung, Impfung und internationalen Impfnachweis. Den Gelbfieber-Impfstoff berechnen wir wie in der GOÄ vorgesehen 1:1 zum Einkaufspreis – derzeit ca. 73 €. Insgesamt also rund 110 €.',
+            en: 'Medical fee for the briefing, a brief pre-vaccination check, the vaccination and the international certificate. As provided for in the GOÄ, we charge the yellow-fever vaccine 1:1 at cost – currently approx. €73. In total roughly €110.',
           },
           price: { de: 'ca. 38 € + Impfstoff (derzeit ca. 73 €)', en: 'approx. €38 + vaccine (currently approx. €73)' },
         },

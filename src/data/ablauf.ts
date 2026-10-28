@@ -31,10 +31,10 @@ export const processPage: ClinicalPage = {
       heading: { de: 'Was Sie erwartet', en: 'What to expect' },
       body: {
         de: [
-          'Im Mittelpunkt steht Ihre konkrete Reise. Wir bewerten das gesundheitliche Risiko anhand aktueller, offizieller Quellen und besprechen sinnvolle und gegebenenfalls vorgeschriebene Impfungen. Für die meisten Impfungen erhalten Sie ein Privatrezept und kommen zum Impfen wieder; FSME und Gelbfieber können wir vor Ort direkt durchführen. Den Abschluss bildet die ordnungsgemäße Dokumentation Ihres Impfschutzes.',
+          'Im Mittelpunkt steht Ihre konkrete Reise. Wir bewerten das gesundheitliche Risiko anhand aktueller, offizieller Quellen und besprechen sinnvolle und gegebenenfalls vorgeschriebene Impfungen. Häufig benötigte Impfstoffe haben wir vorrätig und impfen auf Wunsch direkt im Termin; für seltener benötigte erhalten Sie ein Privatrezept oder wir besorgen sie, und Sie kommen zum Impfen wieder. Den Abschluss bildet die ordnungsgemäße Dokumentation Ihres Impfschutzes.',
         ],
         en: [
-          'Your specific trip is the focus. We assess the health risk using current official sources and discuss advisable and any legally required vaccinations. For most vaccinations you receive a private prescription and return for the injection; TBE and yellow fever we can administer directly on site. Finally, we document your vaccination protection properly.',
+          'Your specific trip is the focus. We assess the health risk using current official sources and discuss advisable and any legally required vaccinations. Commonly needed vaccines we keep in stock and can give directly in the appointment; for less common ones you receive a private prescription or we obtain them, and you return for the vaccination. Finally, we document your vaccination protection properly.',
         ],
       },
       list: {

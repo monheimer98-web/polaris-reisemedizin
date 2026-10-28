@@ -207,8 +207,8 @@ export const bookingPage: BookingPage = {
       en: 'Which appointment is right for you?',
     },
     lead: {
-      de: 'Nennen Sie uns bei der Terminvereinbarung die passende Terminart. Im Zweifel ist die reisemedizinische Beratung der richtige Einstieg – sie bildet die Grundlage für alle weiteren Schritte.',
-      en: 'Just let us know the matching appointment type when you get in touch. If in doubt, the travel-medicine consultation is the right starting point – it forms the basis for every further step.',
+      de: 'Wählen Sie bei der Buchung die passende Terminart. Im Zweifel ist die reisemedizinische Beratung der richtige Einstieg – sie bildet die Grundlage für alle weiteren Schritte.',
+      en: 'Choose the matching appointment type when booking. If in doubt, the travel-medicine consultation is the right starting point – it forms the basis for every further step.',
     },
     recommendedLabel: {
       de: 'Empfohlener Start',
@@ -298,8 +298,8 @@ export const bookingPage: BookingPage = {
         },
         duration: { de: 'ca. 10 Minuten', en: 'approx. 10 minutes' },
         description: {
-          de: 'Gelbfieberimpfung inklusive internationalem Impfnachweis (ICVP) – in einem Termin bei uns vor Ort. Den Impfstoff halten wir vorrätig und geben ihn 1:1 zum Einkaufspreis weiter (derzeit ca. 73 €).',
-          en: 'Yellow-fever vaccination including the international certificate (ICVP) – in a single appointment on site. We keep the vaccine in stock and pass it on 1:1 at cost (currently approx. €73).',
+          de: 'Gelbfieberimpfung inklusive internationalem Impfnachweis (ICVP) – in einem Termin bei uns vor Ort. Den Impfstoff halten wir vorrätig und berechnen ihn 1:1 zum Einkaufspreis (derzeit ca. 73 €).',
+          en: 'Yellow-fever vaccination including the international certificate (ICVP) – in a single appointment on site. We keep the vaccine in stock and charge it 1:1 at cost (currently approx. €73).',
         },
         price: { de: 'ca. 38 € + Impfstoff (ca. 73 €)', en: 'approx. €38 + vaccine (approx. €73)' },
         enabled: true,
