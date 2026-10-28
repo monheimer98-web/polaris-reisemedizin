@@ -153,25 +153,25 @@ export const bookingPage: BookingPage = {
       en: 'Arrange an appointment',
     },
     description: {
-      de: 'Vereinbaren Sie Ihren Termin für die reisemedizinische Beratung und Impfung – telefonisch oder per E-Mail, direkt mit unserer Praxis.',
-      en: 'Arrange your appointment for travel-medicine advice and vaccination – by phone or email, directly with our practice.',
+      de: 'Buchen Sie Ihren Termin für reisemedizinische Beratung und Impfung online mit sofortiger Bestätigung – oder telefonisch und per E-Mail.',
+      en: 'Book your appointment for travel-medicine advice and vaccination online with instant confirmation – or by phone and email.',
     },
     eyebrow: {
       de: 'Terminbuchung',
       en: 'Appointments',
     },
     lead: {
-      de: 'Vereinbaren Sie Ihren Termin für Beratung und Impfung ganz unkompliziert telefonisch oder per E-Mail – Sie erreichen unsere Praxis direkt.',
-      en: 'Arrange your appointment for advice and vaccination simply by phone or email – you reach our practice directly.',
+      de: 'Buchen Sie Ihren Termin für Beratung und Impfung direkt online – mit sofortiger Bestätigung per E-Mail. Lieber persönlich? Rufen Sie uns an oder schreiben Sie uns.',
+      en: 'Book your appointment for advice and vaccination directly online – with instant confirmation by email. Prefer to talk? Call or write to us.',
     },
   },
   intro: {
     de: [
-      'Wählen Sie im Buchungstool Ihre Terminart und einen Wunschtermin – wir prüfen die Verfügbarkeit und bestätigen den Termin persönlich. Lieber telefonisch oder per E-Mail? Auch das ist jederzeit möglich.',
+      'Wählen Sie im Buchungstool Ihre Terminart und einen freien Termin. Sie erhalten sofort eine Bestätigung per E-Mail mit einem Link zum kostenlosen Absagen. Lieber telefonisch oder per E-Mail? Auch das ist jederzeit möglich.',
       'Bitte planen Sie ausreichend Vorlauf ein – einige Reiseimpfungen sollten rechtzeitig vor der Abreise erfolgen.',
     ],
     en: [
-      'Choose your appointment type and a preferred time in the booking tool – we check availability and confirm the appointment personally. Prefer phone or email? That works just as well, any time.',
+      'Choose your appointment type and a free slot in the booking tool. You will receive an instant confirmation by email with a link to cancel free of charge. Prefer phone or email? That works just as well, any time.',
       'Please allow enough lead time – some travel vaccinations should be given well before departure.',
     ],
   },
@@ -235,12 +235,12 @@ export const bookingPage: BookingPage = {
           de: 'Reisemedizinische Beratung',
           en: 'Travel-medicine consultation',
         },
-        duration: { de: 'ca. 20 Minuten', en: 'approx. 20 minutes' },
+        duration: { de: 'ca. 15–20 Minuten', en: 'approx. 15–20 minutes' },
         description: {
-          de: 'Ausführliche Beratung für Fernreisen, mehrere Länder oder eine besondere Vorgeschichte – mit persönlichem, schriftlichem Impf- und Reiseplan. Den Plan erhalten Sie unabhängig von einer späteren Impfung.',
-          en: 'An in-depth consultation for long-haul trips, multiple countries or a particular medical history – with a personal written vaccination and travel plan. You receive the plan regardless of any later vaccination.',
+          de: 'Ausführliche Beratung für Fernreisen, mehrere Länder oder eine besondere Vorgeschichte – mit persönlichem, schriftlichem Impf- und Reiseplan. Ist der Impfstoff vorrätig, impfen wir auf Wunsch direkt im Termin (dann ca. 50 € + Impfstoff).',
+          en: 'An in-depth consultation for long-haul trips, multiple countries or a particular medical history – with a personal written vaccination and travel plan. If the vaccine is in stock, we can vaccinate you directly in the appointment (then approx. €50 + vaccine).',
         },
-        price: { de: 'ca. 50 €', en: 'approx. €50' },
+        price: { de: 'ca. 38 €', en: 'approx. €38' },
         recommended: true,
         enabled: true,
       },
@@ -268,10 +268,10 @@ export const bookingPage: BookingPage = {
         },
         duration: { de: 'ca. 15 Minuten', en: 'approx. 15 minutes' },
         description: {
-          de: 'Gezielte Beratung, wenn Sie speziell zu Malariaschutz oder Höhenmedizin Fragen haben – auf Wunsch mit Privatrezept für ein Notfallset.',
-          en: 'Targeted advice if you have specific questions about malaria protection or altitude medicine – with a private prescription for a stand-by kit on request.',
+          de: 'Gezielte Beratung, wenn Sie speziell zu Malariaschutz oder Höhenmedizin Fragen haben – mit persönlichem, schriftlichem Plan und auf Wunsch mit Privatrezept für ein Notfallset. Malaria allein ca. 28 €, Höhenmedizin bzw. beides ca. 38 €.',
+          en: 'Targeted advice if you have specific questions about malaria protection or altitude medicine – with a personal written plan and a private prescription for a stand-by kit on request. Malaria only approx. €28, altitude or both approx. €38.',
         },
-        price: { de: 'ca. 20 €', en: 'approx. €20' },
+        price: { de: 'ab ca. 28 €', en: 'from approx. €28' },
         enabled: true,
       },
       {
@@ -283,10 +283,10 @@ export const bookingPage: BookingPage = {
         },
         duration: { de: 'ca. 10 Minuten', en: 'approx. 10 minutes' },
         description: {
-          de: 'Die eigentliche Impfung nach Ihrem Impfplan: Sie bringen den Impfstoff per Privatrezept aus der Apotheke mit. FSME und Gelbfieber halten wir vor Ort vorrätig und impfen sie direkt in einem Termin.',
-          en: 'The vaccination itself, following your plan: you bring the vaccine from the pharmacy via private prescription. TBE and yellow fever are kept in stock on site and given directly in a single appointment.',
+          de: 'Die Impfung nach Ihrem Impfplan. Häufig benötigte Impfstoffe sowie FSME und Gelbfieber halten wir vorrätig; seltener benötigte besorgen wir bzw. Sie bringen sie per Privatrezept aus der Apotheke mit. Folgedosen derselben Impfserie innerhalb eines Monats sind günstiger.',
+          en: 'The vaccination following your plan. We keep commonly needed vaccines as well as TBE and yellow fever in stock; less common ones we obtain, or you bring them from the pharmacy via private prescription. Follow-up doses of the same series within one month cost less.',
         },
-        price: { de: 'ca. 20 € + Impfstoff', en: 'approx. €20 + vaccine' },
+        price: { de: 'ca. 32 € + Impfstoff', en: 'approx. €32 + vaccine' },
         enabled: true,
       },
       {
@@ -298,8 +298,8 @@ export const bookingPage: BookingPage = {
         },
         duration: { de: 'ca. 10 Minuten', en: 'approx. 10 minutes' },
         description: {
-          de: 'Gelbfieberimpfung inklusive internationalem Impfnachweis (ICVP) – in einem Termin bei uns vor Ort. Den Impfstoff (Stamaril®) halten wir vorrätig.',
-          en: 'Yellow-fever vaccination including the international certificate (ICVP) – in a single appointment on site. We keep the vaccine (Stamaril®) in stock.',
+          de: 'Gelbfieberimpfung inklusive internationalem Impfnachweis (ICVP) – in einem Termin bei uns vor Ort. Den Impfstoff halten wir vorrätig.',
+          en: 'Yellow-fever vaccination including the international certificate (ICVP) – in a single appointment on site. We keep the vaccine in stock.',
         },
         price: { de: 'ca. 38 € + Impfstoff', en: 'approx. €38 + vaccine' },
         enabled: true,

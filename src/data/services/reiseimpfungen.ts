@@ -88,10 +88,12 @@ export const reiseimpfungenService: ClinicalPage = {
       body: {
         de: [
           'Einzelne Länder verlangen bei der Einreise einen Impfnachweis. Am bekanntesten ist die Gelbfieberimpfung, die im Internationalen Impfausweis (ICVP) bescheinigt wird und nur in einer staatlich autorisierten Gelbfieberimpfstelle erfolgen darf. Für bestimmte Reisen – etwa die Pilgerfahrt nach Saudi-Arabien – kann eine Meningokokken-Impfung vorgeschrieben sein.',
+          'Polio: Wegen der weltweiten Polio-Lage gelten WHO-Sonderregeln. Bei längeren Aufenthalten (über vier Wochen) in betroffenen Ländern – etwa Pakistan oder Afghanistan – kann bei der Ausreise der Nachweis einer Polio-Impfung verlangt werden, die zwischen vier Wochen und zwölf Monaten zurückliegt. Für Reisen in Polio-Risikogebiete prüfen wir Ihren Impfschutz und frischen bei Bedarf auf.',
           'Einreisebestimmungen ändern sich. Maßgeblich sind die offiziellen Vorgaben des Ziellandes; wir prüfen mit Ihnen die aktuelle Lage und verweisen auf die Hinweise des Auswärtigen Amts und der WHO.',
         ],
         en: [
           'Some countries require proof of vaccination on entry. The best known is the yellow fever vaccination, which is certified in the International Certificate of Vaccination (ICVP) and may only be administered at a state-authorised yellow fever vaccination centre. For certain trips – such as the pilgrimage to Saudi Arabia – a meningococcal vaccination may be required.',
+          'Polio: because of the global polio situation, special WHO rules apply. For longer stays (over four weeks) in affected countries – such as Pakistan or Afghanistan – proof of a polio vaccination given between four weeks and twelve months earlier may be required on departure. For travel to polio risk areas we check your protection and give a booster if needed.',
           'Entry requirements change. The official requirements of the destination country are decisive; we check the current situation with you and refer to the information from the Federal Foreign Office and the WHO.',
         ],
       },
@@ -109,11 +111,11 @@ export const reiseimpfungenService: ClinicalPage = {
       heading: { de: 'Lebend- und Totimpfstoffe', en: 'Live and inactivated vaccines' },
       body: {
         de: [
-          'Man unterscheidet Totimpfstoffe (mit abgetöteten Erregern oder Erregerbestandteilen) und Lebendimpfstoffe (mit abgeschwächten, vermehrungsfähigen Erregern). Diese Unterscheidung ist wichtig: Lebendimpfstoffe – etwa gegen Gelbfieber oder Masern – sind bei stark geschwächtem Immunsystem oder in der Schwangerschaft in der Regel nicht geeignet und müssen mitunter zeitlich aufeinander abgestimmt werden.',
+          'Man unterscheidet Totimpfstoffe (mit abgetöteten Erregern oder Erregerbestandteilen) und Lebendimpfstoffe (mit abgeschwächten, vermehrungsfähigen Erregern). Diese Unterscheidung ist wichtig: Lebendimpfstoffe – etwa gegen Gelbfieber oder Masern – sind bei stark geschwächtem Immunsystem oder in der Schwangerschaft in der Regel nicht geeignet. Mehrere Lebendimpfstoffe werden entweder am selben Tag oder im Abstand von mindestens vier Wochen gegeben.',
           'Gerade deshalb steht die individuelle Beratung am Anfang: Wir berücksichtigen Ihren Gesundheitszustand und planen die Reihenfolge der Impfungen sinnvoll.',
         ],
         en: [
-          'A distinction is made between inactivated vaccines (containing killed pathogens or pathogen components) and live vaccines (containing weakened, replication-competent pathogens). This distinction matters: live vaccines – for example against yellow fever or measles – are generally not suitable for a severely weakened immune system or during pregnancy and sometimes have to be coordinated in timing.',
+          'A distinction is made between inactivated vaccines (containing killed pathogens or pathogen components) and live vaccines (containing weakened, replication-competent pathogens). This distinction matters: live vaccines – for example against yellow fever or measles – are generally not suitable for a severely weakened immune system or during pregnancy. Several live vaccines are given either on the same day or at least four weeks apart.',
           'This is precisely why the individual consultation comes first: we take your state of health into account and plan a sensible sequence of vaccinations.',
         ],
       },
@@ -123,11 +125,11 @@ export const reiseimpfungenService: ClinicalPage = {
       heading: { de: 'So gehen wir vor', en: 'How we proceed' },
       body: {
         de: [
-          'Am Anfang steht die reisemedizinische Beratung mit einem schriftlichen Impfplan. Für die empfohlenen Impfungen erhalten Sie in der Regel ein Privatrezept und holen den Impfstoff gekühlt in der Apotheke; die Impfung selbst erfolgt dann in einem Folgetermin. Den FSME- und den Gelbfieber-Impfstoff halten wir vor Ort vorrätig – FSME und Gelbfieber sind daher direkt in einem Termin buchbar.',
+          'Am Anfang steht die reisemedizinische Beratung mit einem schriftlichen Impfplan. Häufig benötigte Reiseimpfstoffe halten wir vorrätig – dann impfen wir auf Wunsch direkt im Beratungstermin. Seltener benötigte Impfstoffe besorgen wir bzw. Sie erhalten ein Privatrezept, und die Impfung erfolgt in einem Folgetermin. FSME und Gelbfieber sind direkt in einem Termin buchbar.',
           'Mehrere fällige Impfungen lassen sich häufig im selben Termin kombinieren – was sinnvoll und verträglich ist, besprechen wir mit Ihnen.',
         ],
         en: [
-          'It all starts with the travel-medicine consultation and a written vaccination plan. For the recommended vaccinations you usually receive a private prescription and collect the refrigerated vaccine at the pharmacy; the vaccination itself then takes place at a follow-up appointment. The TBE and yellow fever vaccines we keep in stock on site – so both can be booked directly in a single appointment.',
+          'It all starts with the travel-medicine consultation and a written vaccination plan. We keep commonly needed travel vaccines in stock – so we can vaccinate you directly in the consultation appointment if you wish. Less commonly needed vaccines we obtain, or you receive a private prescription, and the vaccination takes place at a follow-up appointment. TBE and yellow fever can be booked directly in a single appointment.',
           'Several due vaccinations can often be combined in the same appointment – we discuss with you what is sensible and well tolerated.',
         ],
       },

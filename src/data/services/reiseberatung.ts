@@ -74,22 +74,22 @@ export const reiseberatungService: ClinicalPage = {
         variant: 'important',
         title: { de: 'Beratung unabhängig von der Impfung', en: 'Consultation independent of vaccination' },
         text: {
-          de: 'Die Beratung und der schriftliche Plan sind eine eigenständige Leistung – sie stehen Ihnen unabhängig davon zu, ob Sie sich später impfen lassen. So erhalten Sie eine neutrale, auf Ihren Nutzen ausgerichtete Empfehlung.',
-          en: 'The consultation and the written plan are a service in their own right – you receive them regardless of whether you are vaccinated afterwards. This ensures a neutral recommendation focused on your benefit.',
+          de: 'Die Beratung und der schriftliche Plan sind eine eigenständige Leistung – sie stehen Ihnen unabhängig davon zu, ob Sie sich später impfen lassen. So erhalten Sie eine Empfehlung, die sich an Ihrer Reise orientiert.',
+          en: 'The consultation and the written plan are a service in their own right – you receive them regardless of whether you are vaccinated afterwards. This way you receive a recommendation based on your trip.',
         },
       },
     },
     {
       id: 'ablauf',
-      heading: { de: 'Beratung und Impfung – getrennte Termine', en: 'Consultation and vaccination – separate appointments' },
+      heading: { de: 'Beratung und Impfung – direkt oder an Folgeterminen', en: 'Consultation and vaccination – directly or at follow-up appointments' },
       body: {
         de: [
-          'Wir trennen bewusst die Beratung von der Impfung. Im ersten Termin beraten wir Sie ausführlich und erstellen Ihren Plan. Anstehende Impfungen vereinbaren wir – soweit medizinisch sinnvoll – als gesonderte Folgetermine.',
-          'Für die meisten Reiseimpfungen erhalten Sie ein Privatrezept und holen den Impfstoff gekühlt in der Apotheke; den FSME- und den Gelbfieber-Impfstoff halten wir vor Ort vorrätig. Der zeitliche Abstand erlaubt zudem eine in Ruhe getroffene Entscheidung. Reisen Sie kurzfristig, stimmen wir das Vorgehen direkt auf Ihren Zeitrahmen ab.',
+          'Im ersten Termin beraten wir Sie ausführlich und erstellen Ihren Plan. Ist der Impfstoff vorrätig, impfen wir auf Wunsch direkt im Anschluss; weitere Dosen und nicht vorrätige Impfstoffe vereinbaren wir als Folgetermine.',
+          'Häufig benötigte Reiseimpfstoffe sowie den FSME- und den Gelbfieber-Impfstoff halten wir vorrätig. Seltener benötigte Impfstoffe besorgen wir bzw. Sie erhalten ein Privatrezept für die Apotheke. Reisen Sie kurzfristig, stimmen wir das Vorgehen direkt auf Ihren Zeitrahmen ab.',
         ],
         en: [
-          'We deliberately separate the consultation from the vaccination. In the first appointment we advise you in detail and prepare your plan. Any vaccinations are arranged – where medically sensible – as separate follow-up appointments.',
-          'For most travel vaccinations you receive a private prescription and collect the refrigerated vaccine at the pharmacy; the TBE and yellow fever vaccines we keep in stock on site. The time interval also allows for a decision made calmly. If you are travelling at short notice, we adapt the approach directly to your timeframe.',
+          'In the first appointment we advise you in detail and prepare your plan. If the vaccine is in stock, we can vaccinate you directly afterwards; further doses and vaccines not in stock are arranged as follow-up appointments.',
+          'We keep commonly needed travel vaccines as well as the TBE and yellow fever vaccines in stock. Less commonly needed vaccines we obtain, or you receive a private prescription for the pharmacy. If you are travelling at short notice, we adapt the approach directly to your timeframe.',
         ],
       },
     },
@@ -120,7 +120,7 @@ export const reiseberatungService: ClinicalPage = {
       heading: { de: 'Gemeinsam reisen', en: 'Travelling together' },
       body: {
         de: [
-          'Reisen Sie zu mehrt zum selben Ziel, beraten wir Sie gern gemeinsam. Jede Person erhält dabei eine eigene Beratung und einen eigenen Impf- und Reiseplan, denn Vorerkrankungen, Impfstatus und Verträglichkeit sind individuell.',
+          'Reisen Sie zu mehreren zum selben Ziel, beraten wir Sie gern gemeinsam. Jede Person erhält dabei eine eigene Beratung und einen eigenen Impf- und Reiseplan, denn Vorerkrankungen, Impfstatus und Verträglichkeit sind individuell.',
           'Sprechen Sie uns bei der Terminbuchung einfach an, damit wir genügend Zeit einplanen.',
         ],
         en: [
