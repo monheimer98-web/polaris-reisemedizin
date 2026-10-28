@@ -12,8 +12,8 @@ export const dengueDisease: ClinicalPage = {
   meta: {
     title: { de: 'Dengue-Fieber', en: 'Dengue fever' },
     description: {
-      de: 'Dengue-Fieber – Erreger, Übertragung durch tagaktive Stechmücken, Verbreitung, Krankheitsverlauf, Impfung (Qdenga®) und Vorbeugung.',
-      en: 'Dengue fever – pathogen, transmission by day-biting mosquitoes, distribution, course of disease, vaccination (Qdenga®) and prevention.',
+      de: 'Dengue-Fieber – Erreger, Übertragung durch tagaktive Stechmücken, Verbreitung, Krankheitsverlauf, Impfung und Vorbeugung.',
+      en: 'Dengue fever – pathogen, transmission by day-biting mosquitoes, distribution, course of disease, vaccination and prevention.',
     },
     eyebrow: { de: 'Krankheitsbild', en: 'Disease' },
     lead: {
@@ -105,12 +105,12 @@ export const dengueDisease: ClinicalPage = {
       heading: { de: 'Schutzimpfung', en: 'Vaccination' },
       body: {
         de: [
-          'Seit Ende 2022 ist in der EU der Impfstoff Qdenga® zugelassen – ein abgeschwächter Lebendimpfstoff, der gegen alle vier Serotypen gerichtet ist und ab dem Alter von vier Jahren angewendet werden kann. Die Grundimmunisierung besteht aus zwei Dosen im Abstand von drei Monaten.',
+          'Seit Ende 2022 ist in der EU ein Dengue-Impfstoff zugelassen – ein abgeschwächter Lebendimpfstoff, der gegen alle vier Serotypen gerichtet ist und ab dem Alter von vier Jahren angewendet werden kann. Die Grundimmunisierung besteht aus zwei Dosen im Abstand von drei Monaten.',
           'Die Ständige Impfkommission (STIKO) empfiehlt die Dengue-Impfung als Reiseimpfung gezielt für Personen ab vier Jahren mit einer labordiagnostisch gesicherten früheren Dengue-Infektion, die erneut in ein Gebiet mit erhöhtem Expositionsrisiko reisen (z. B. längerer Aufenthalt oder aktueller Ausbruch). Eine Testung vor der Impfung wird nicht empfohlen; nach der Impfung bitten wir Sie um 30 Minuten Beobachtung. Hintergrund ist, dass eine zweite Dengue-Infektion schwerer verlaufen kann; für Menschen ohne frühere Infektion ist die Datenlage begrenzt, weshalb die STIKO hier keine generelle Impfung empfiehlt.',
           'Nicht geimpft werden sollte in der Schwangerschaft und Stillzeit sowie bei geschwächtem Immunsystem (Immundefekt oder immunsupprimierende Behandlung). Ob eine Impfung für Sie sinnvoll und möglich ist, klären wir individuell im reisemedizinischen Beratungsgespräch – auf Grundlage Ihres Reiseziels, Ihrer Vorgeschichte und der aktuellen Empfehlungen.',
         ],
         en: [
-          'Since late 2022, the vaccine Qdenga® has been authorised in the EU – a live-attenuated vaccine directed against all four serotypes that can be used from the age of four. Primary immunisation consists of two doses three months apart.',
+          'Since late 2022, a dengue vaccine has been authorised in the EU – a live-attenuated vaccine directed against all four serotypes that can be used from the age of four. Primary immunisation consists of two doses three months apart.',
           'The German Standing Committee on Vaccination (STIKO) recommends dengue vaccination as a travel vaccination specifically for people aged four and over with a laboratory-confirmed previous dengue infection who are travelling again to an area with increased exposure risk (e.g. a longer stay or a current outbreak). Testing before vaccination is not recommended; after vaccination we ask you to stay for 30 minutes of observation. The background is that a second dengue infection can take a more severe course; for people without a previous infection the evidence is limited, which is why STIKO does not recommend general vaccination here.',
           'Vaccination should not be given during pregnancy and breastfeeding or in the case of a weakened immune system (immunodeficiency or immunosuppressive treatment). Whether vaccination is sensible and possible for you is something we clarify individually in the travel-medicine consultation – based on your destination, your history and the current recommendations.',
         ],

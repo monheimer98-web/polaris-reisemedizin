@@ -76,8 +76,8 @@ export const sources = {
     url: 'https://www.pei.de/DE/arzneimittel/impfstoffe/gelbfieber/gelbfieber-node.html',
     retrieved: new Date('2026-05-15'),
     note: {
-      de: 'Zulassung und Fachinformation zu Stamaril® (Lebendimpfstoff, Stamm 17D-204).',
-      en: 'Authorisation and product information for Stamaril® (live vaccine, strain 17D-204).',
+      de: 'Zulassung und Fachinformation zum Gelbfieber-Impfstoff (Lebendimpfstoff, Stamm 17D-204).',
+      en: 'Authorisation and product information for the yellow-fever vaccine (live vaccine, strain 17D-204).',
     },
   },
   dtgReiseimpfungen: {
@@ -133,8 +133,8 @@ export const sources = {
     url: 'https://www.pei.de/DE/arzneimittel/impfstoffe/fsme/fsme-node.html',
     retrieved: new Date('2026-05-15'),
     note: {
-      de: 'Zulassung und Fachinformation zu FSME-Immun® und Encepur®.',
-      en: 'Authorisation and product information for FSME-Immun® and Encepur®.',
+      de: 'Zulassung und Fachinformation zu den FSME-Impfstoffen.',
+      en: 'Authorisation and product information for the TBE vaccines.',
     },
   },
   whoYellowFeverCountries: {
@@ -310,8 +310,8 @@ export const sources = {
   stikoDengue: {
     publisher: 'Robert Koch-Institut (RKI) / STIKO',
     title: {
-      de: 'STIKO-Empfehlung zur Dengue-Impfung (Qdenga®)',
-      en: 'STIKO recommendation on dengue vaccination (Qdenga®)',
+      de: 'STIKO-Empfehlung zur Dengue-Impfung',
+      en: 'STIKO recommendation on dengue vaccination',
     },
     url: 'https://www.rki.de/SharedDocs/FAQs/DE/Dengue/FAQ-Liste.html',
     retrieved: new Date('2026-10-17'),
@@ -323,8 +323,8 @@ export const sources = {
   emaQdenga: {
     publisher: 'European Medicines Agency (EMA)',
     title: {
-      de: 'Qdenga® (Dengue-Impfstoff, tetravalent, attenuiert) – EPAR/Produktinformation',
-      en: 'Qdenga® (dengue tetravalent vaccine, live, attenuated) – EPAR/product information',
+      de: 'Dengue-Impfstoff (tetravalent, attenuiert) – EPAR/Produktinformation',
+      en: 'Dengue vaccine (tetravalent, live, attenuated) – EPAR/product information',
     },
     url: 'https://www.ema.europa.eu/en/medicines/human/EPAR/qdenga',
     retrieved: new Date('2026-06-12'),
@@ -371,8 +371,8 @@ export const sources = {
   emaIxchiq: {
     publisher: 'European Medicines Agency (EMA)',
     title: {
-      de: 'Ixchiq® (Chikungunya-Impfstoff, lebend-attenuiert) – EPAR/Produktinformation',
-      en: 'Ixchiq® (chikungunya vaccine, live, attenuated) – EPAR/product information',
+      de: 'Chikungunya-Impfstoff (lebend-attenuiert) – EPAR/Produktinformation',
+      en: 'Chikungunya vaccine (live, attenuated) – EPAR/product information',
     },
     url: 'https://www.ema.europa.eu/en/medicines/human/EPAR/ixchiq',
     retrieved: new Date('2026-06-12'),
@@ -384,8 +384,8 @@ export const sources = {
   emaVimkunya: {
     publisher: 'European Medicines Agency (EMA)',
     title: {
-      de: 'Vimkunya® (Chikungunya-Impfstoff, VLP/nicht-lebend) – EPAR/Produktinformation',
-      en: 'Vimkunya® (chikungunya vaccine, VLP/non-live) – EPAR/product information',
+      de: 'Chikungunya-Impfstoff (VLP, nicht lebend) – EPAR/Produktinformation',
+      en: 'Chikungunya vaccine (VLP, non-live) – EPAR/product information',
     },
     url: 'https://www.ema.europa.eu/en/medicines/human/EPAR/vimkunya',
     retrieved: new Date('2026-06-12'),
@@ -565,8 +565,8 @@ export const sources = {
     url: 'https://www.pei.de/DE/arzneimittel/impfstoffe/japanische-enzephalitis/japanische-enzephalitis-node.html',
     retrieved: new Date('2026-06-12'),
     note: {
-      de: 'Zulassung und Fachinformation zum inaktivierten Totimpfstoff (IXIARO®).',
-      en: 'Authorisation and product information for the inactivated vaccine (IXIARO®).',
+      de: 'Zulassung und Fachinformation zum inaktivierten Totimpfstoff gegen Japanische Enzephalitis.',
+      en: 'Authorisation and product information for the inactivated Japanese encephalitis vaccine.',
     },
   },
   rkiMeningokokken: {

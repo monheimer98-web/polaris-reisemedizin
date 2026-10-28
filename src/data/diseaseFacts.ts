@@ -42,8 +42,8 @@ export const diseaseFacts: Record<string, DiseaseFacts> = {
     transmission: { de: 'Tagaktive Aedes-Mücken', en: 'Day-active Aedes mosquitoes' },
     regions: { de: 'Tropen und Subtropen weltweit', en: 'Tropics and subtropics worldwide' },
     vaccine: {
-      de: 'Ja – Lebendimpfstoff (Qdenga®); nach individueller Indikation',
-      en: 'Yes – live vaccine (Qdenga®); based on individual indication',
+      de: 'Ja – Lebendimpfstoff; nach individueller Indikation',
+      en: 'Yes – live vaccine; based on individual indication',
     },
     note: {
       de: 'Keine ursächliche Therapie; tagsüber konsequenter Mückenschutz',
