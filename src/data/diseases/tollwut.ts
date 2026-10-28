@@ -92,11 +92,11 @@ export const tollwutDisease: ClinicalPage = {
       heading: { de: 'Verhalten nach Tierkontakt', en: 'What to do after animal contact' },
       body: {
         de: [
-          'Jeder Biss, Kratzer oder Schleimhautkontakt mit einem möglicherweise infizierten Tier in einem Risikogebiet ist ein Notfall. Die Wunde sollte sofort und gründlich – etwa 15 Minuten – mit Wasser und Seife gewaschen und anschließend desinfiziert werden.',
+          'Jeder Biss, Kratzer oder Schleimhautkontakt mit einem möglicherweise infizierten Tier in einem Risikogebiet ist ein Notfall. Die Wunde sollte sofort und gründlich – mindestens 15 Minuten – mit Wasser und Seife gewaschen und anschließend desinfiziert werden.',
           'Unmittelbar danach ist ärztliche Hilfe vor Ort aufzusuchen, um eine Schutzbehandlung nach Risikokontakt (Postexpositionsprophylaxe) einzuleiten. Diese ist auch dann notwendig, wenn die Wunde klein erscheint, und gilt unabhängig davon, ob zuvor geimpft wurde. Rechtzeitig begonnen, ist diese Schutzbehandlung nahezu immer wirksam.',
         ],
         en: [
-          'Any bite, scratch or mucous-membrane contact with a potentially infected animal in a risk area is an emergency. The wound should be washed immediately and thoroughly – for about 15 minutes – with soap and water and then disinfected.',
+          'Any bite, scratch or mucous-membrane contact with a potentially infected animal in a risk area is an emergency. The wound should be washed immediately and thoroughly – for at least 15 minutes – with soap and water and then disinfected.',
           'Immediately afterwards, seek local medical help to start protective treatment after risk contact (post-exposure prophylaxis). This is necessary even if the wound appears small, and applies regardless of whether vaccination was given beforehand. Started in time, this protective treatment is almost always effective.',
         ],
       },

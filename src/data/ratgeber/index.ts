@@ -5,6 +5,9 @@
 import type { ClinicalPage, Localized } from '../types';
 import { kostenErstattungGuide } from './kosten-erstattung';
 import { wannImpfenGuide } from './wann-impfen';
+import { gelbfieberKostenGuide, gelbfieberKostenSummary } from './gelbfieber-kosten';
+import { tollwutImpfungGuide, tollwutImpfungSummary } from './tollwut-impfung';
+import { malariaRezeptGuide, malariaRezeptSummary } from './malaria-rezept';
 
 export interface Guide {
   /** URL-Slug unter /ratgeber/ (DE und EN gleich). */
@@ -29,6 +32,21 @@ export const guides: Guide[] = [
       en: 'Ideal lead time, vaccination schedules at a glance and what still makes sense shortly before departure.',
     },
     page: wannImpfenGuide,
+  },
+  {
+    slug: 'gelbfieberimpfung-kosten',
+    summary: gelbfieberKostenSummary,
+    page: gelbfieberKostenGuide,
+  },
+  {
+    slug: 'tollwutimpfung-vor-der-reise',
+    summary: tollwutImpfungSummary,
+    page: tollwutImpfungGuide,
+  },
+  {
+    slug: 'malaria-tabletten-rezept',
+    summary: malariaRezeptSummary,
+    page: malariaRezeptGuide,
   },
 ];
 

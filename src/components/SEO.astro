@@ -4,7 +4,7 @@
  * OpenGraph/Twitter sowie JSON-LD (MedicalClinic) aus der Praxis-Konfiguration.
  */
 import { site, SITE_URL, DEFAULT_LOCALE, type Locale } from '../config/site';
-import { getAlternateLanguages, getLogicalPath, withBase, HREFLANG } from '../i18n/utils';
+import { getAlternateLanguages, getLocalizedPath, getLogicalPath, withBase, HREFLANG } from '../i18n/utils';
 import { seoTitles } from '../data/seoTitles';
 
 interface Props {
@@ -62,7 +62,7 @@ const clinicSchema = {
   '@context': 'https://schema.org',
   '@type': 'MedicalClinic',
   '@id': `${homeUrl}#practice`,
-  name: `${site.brand.name} – Privatpraxis für Reise- und Impfmedizin`,
+  name: `${site.brand.name} – Privatpraxis für Reisemedizin, Impfungen und Prävention`,
   alternateName: site.brand.name,
   description,
   url: homeUrl,
@@ -100,6 +100,18 @@ const clinicSchema = {
         })),
       }
     : {}),
+  isAcceptingNewPatients: true,
+  potentialAction: {
+    '@type': 'ReserveAction',
+    name: lang === 'de' ? 'Termin online buchen' : 'Book an appointment online',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: new URL(getLocalizedPath('/termin', lang), SITE_URL).href,
+      inLanguage: lang === 'de' ? 'de' : 'en',
+      actionPlatform: ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform'],
+    },
+    result: { '@type': 'Reservation', name: lang === 'de' ? 'Arzttermin' : 'Medical appointment' },
+  },
   availableService: [
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Reisemedizinische Beratung' : 'Travel-medicine consultation' },
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Reiseimpfungen' : 'Travel vaccinations' },

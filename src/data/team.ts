@@ -44,7 +44,7 @@ export const teamPage: TeamPage = {
       en: 'Our practice',
     },
     description: {
-      de: 'Lernen Sie unsere Praxis für Reise- und Impfmedizin kennen – mit ärztlicher Beratung auf Grundlage gesicherter Fachquellen.',
+      de: 'Lernen Sie unsere Privatpraxis für Reisemedizin, Impfungen und Prävention kennen – mit ärztlicher Beratung auf Grundlage gesicherter Fachquellen.',
       en: 'Get to know our travel and vaccination medicine practice – with medical advice grounded in trusted professional sources.',
     },
     eyebrow: {
@@ -58,7 +58,7 @@ export const teamPage: TeamPage = {
   },
   intro: {
     de: [
-      'Unsere Praxis ist auf Reise- und Impfmedizin spezialisiert. Wir beraten Sie vor Reisen in Risikogebiete, führen die empfohlenen und vorgeschriebenen Impfungen durch und stellen die erforderlichen Nachweise aus – darunter den internationalen Impfnachweis für Gelbfieber.',
+      'Unsere Praxis ist auf Reisemedizin und Impfungen spezialisiert. Wir beraten Sie vor Reisen in Risikogebiete, führen die empfohlenen und vorgeschriebenen Impfungen durch und stellen die erforderlichen Nachweise aus – darunter den internationalen Impfnachweis für Gelbfieber.',
       'Dabei nehmen wir uns Zeit: Sie sollen in Ruhe fragen können und am Ende genau wissen, welche Impfungen und Vorkehrungen für Ihre Reise sinnvoll sind.',
     ],
     en: [

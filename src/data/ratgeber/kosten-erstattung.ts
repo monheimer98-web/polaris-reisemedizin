@@ -56,11 +56,11 @@ export const kostenErstattungGuide: ClinicalPage = {
       heading: { de: 'Was Impfstoffe kosten', en: 'What vaccines cost' },
       body: {
         de: [
-          'Der größte Posten ist oft der Impfstoff. Die Apothekenpreise reichen je nach Impfstoff von rund 30 Euro bis über 100 Euro pro Dosis, und manche Impfungen brauchen zwei oder drei Dosen. In der Apotheke kostet der Gelbfieber-Impfstoff derzeit rund 72 Euro (Stand: Oktober 2026); bei uns wird er zum tatsächlichen Bezugspreis berechnet.',
+          'Der größte Posten ist oft der Impfstoff. Die Apothekenpreise reichen je nach Impfstoff von rund 30 Euro bis über 100 Euro pro Dosis, und manche Impfungen brauchen zwei oder drei Dosen. In der Apotheke kostet der Gelbfieber-Impfstoff derzeit rund 73 Euro (Stand: Oktober 2026); bei uns wird er zum tatsächlichen Bezugspreis berechnet.',
           'Wir planen nur die Impfungen, die für Ihre Reise sinnvoll sind, und sagen Ihnen auch, worauf Sie verzichten können.',
         ],
         en: [
-          'The largest item is often the vaccine. Depending on the vaccine, pharmacy prices range from around 30 euros to over 100 euros per dose, and some vaccinations need two or three doses. At the pharmacy the yellow fever vaccine currently costs around 72 euros (as of October 2026); we charge it at the actual purchase price.',
+          'The largest item is often the vaccine. Depending on the vaccine, pharmacy prices range from around 30 euros to over 100 euros per dose, and some vaccinations need two or three doses. At the pharmacy the yellow fever vaccine currently costs around 73 euros (as of October 2026); we charge it at the actual purchase price.',
           'We only plan the vaccinations that make sense for your trip – and we also tell you what you can do without.',
         ],
       },

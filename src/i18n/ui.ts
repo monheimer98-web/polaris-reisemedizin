@@ -83,7 +83,7 @@ export const ui = {
     'footer.rights': 'Alle Rechte vorbehalten.',
 
     // Startseite — Hero
-    'home.eyebrow': 'Privatpraxis für Reise- & Impfmedizin',
+    'home.eyebrow': 'Privatpraxis für Reisemedizin, Impfungen & Prävention',
     'home.heroTitle': 'Gut vorbereitet reisen.',
     'home.heroLead':
       'Ihre reisemedizinische Privatpraxis in Langenfeld: persönliche Beratung, Reiseimpfungen und Vorsorge – ärztlich fundiert und auf dem aktuellen Stand der Wissenschaft.',
@@ -304,7 +304,7 @@ export const ui = {
     'footer.rights': 'All rights reserved.',
 
     // Home — hero
-    'home.eyebrow': 'Private practice for travel & vaccination medicine',
+    'home.eyebrow': 'Private practice for travel medicine, vaccinations & prevention',
     'home.heroTitle': 'Travel well prepared.',
     'home.heroLead':
       'Your travel-medicine private practice in Langenfeld: personal advice, travel vaccinations and prevention – medically grounded and based on the current state of science.',

@@ -14,6 +14,18 @@ import type { Locale } from '../config/site';
 
 type Loc = Record<Locale, string>;
 
+import { vietnamQuellen } from './reiseziele/laender/vietnam';
+import { sriLankaQuellen } from './reiseziele/laender/sri-lanka';
+import { philippinenQuellen } from './reiseziele/laender/philippinen';
+import { brasilienQuellen } from './reiseziele/laender/brasilien';
+import { peruQuellen } from './reiseziele/laender/peru';
+import { mexikoQuellen } from './reiseziele/laender/mexiko';
+import { suedafrikaQuellen } from './reiseziele/laender/suedafrika';
+import { dominikanischeRepublikQuellen } from './reiseziele/laender/dominikanische-republik';
+import { gelbfieberKostenQuellen } from './ratgeber/gelbfieber-kosten';
+import { tollwutImpfungQuellen } from './ratgeber/tollwut-impfung';
+import { malariaRezeptQuellen } from './ratgeber/malaria-rezept';
+
 export interface Source {
   /** Herausgeber/Institution, z. B. „WHO", „Robert Koch-Institut (RKI)". */
   publisher: string;
@@ -182,7 +194,7 @@ export const sources = {
       de: 'Empfehlungen zu Reiseimpfungen – Epidemiologisches Bulletin 27/2026',
       en: 'Recommendations on travel vaccinations – Epidemiological Bulletin 27/2026',
     },
-    url: 'https://www.rki.de/DE/Aktuelles/Publikationen/Epidemiologisches-Bulletin/2026/27_26.pdf',
+    url: 'https://www.rki.de/DE/Aktuelles/Publikationen/Epidemiologisches-Bulletin/2026/27_26.pdf?__blob=publicationFile',
     retrieved: new Date('2026-10-17'),
     note: {
       de: 'Gemeinsame Reiseimpfempfehlungen von STIKO, DTG und StAR (veröffentlicht 02.07.2026), u. a. zu Gelbfieber-Auffrischung, Tollwut, Japanischer Enzephalitis und Typhus.',
@@ -803,6 +815,18 @@ export const sources = {
     url: 'https://www.gesetze-im-internet.de/arbmedvv/__6.html',
     retrieved: new Date('2026-10-18'),
   },
+  // Neue Länderseiten und Ratgeber (10/2026) – Quellen in den jeweiligen Dateien gepflegt.
+  ...vietnamQuellen,
+  ...sriLankaQuellen,
+  ...philippinenQuellen,
+  ...brasilienQuellen,
+  ...peruQuellen,
+  ...mexikoQuellen,
+  ...suedafrikaQuellen,
+  ...dominikanischeRepublikQuellen,
+  ...gelbfieberKostenQuellen,
+  ...tollwutImpfungQuellen,
+  ...malariaRezeptQuellen,
 } satisfies Record<string, Source>;
 
 /** Zitierbare Quellen-ID (Union aller registrierten Quellen). */

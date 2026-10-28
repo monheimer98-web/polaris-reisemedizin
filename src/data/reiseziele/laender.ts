@@ -5,7 +5,7 @@
  * Malaria-Vorbeugung nur als „vorbeugende Tabletteneinnahme" beschrieben.
  * Einreise- und Ausbruchslagen ändern sich – jährlich und anlassbezogen prüfen.
  */
-import type { ClinicalPage, ContentSection, Localized, SectionCallout } from '../types';
+import type { ClinicalPage, Localized } from '../types';
 
 export interface DestinationCountry {
   /** URL-Slug unter /reiseziele/<region>/ (DE und EN gleich). */
@@ -16,55 +16,17 @@ export interface DestinationCountry {
   page: ClinicalPage;
 }
 
-const REVIEWED = new Date('2026-10-18');
-
-const entryRulesCallout: SectionCallout = {
-  variant: 'important',
-  title: { de: 'Einreisevorschriften prüfen', en: 'Check the entry requirements' },
-  text: {
-    de: 'Maßgeblich sind die Einreisevorschriften des Ziellandes. Prüfen Sie vor der Abreise die aktuellen Hinweise des Auswärtigen Amts – besonders bei Kombinationsreisen und langen Umstiegen.',
-    en: 'The entry requirements of the destination country apply. Check the current advice of the German Federal Foreign Office before departure – especially for combined trips and long layovers.',
-  },
-};
-
-const feverCallout: SectionCallout = {
-  variant: 'caution',
-  title: { de: 'Fieber nach der Reise', en: 'Fever after the trip' },
-  text: {
-    de: 'Fieber während einer Reise in ein Malariagebiet oder bis zu mehreren Monaten danach muss sofort ärztlich abgeklärt werden – auch wenn Sie vorbeugend Tabletten eingenommen haben. Weisen Sie dabei auf Ihre Reise hin.',
-    en: 'Fever during a trip to a malaria area or up to several months afterwards must be checked by a doctor immediately – even if you took preventive tablets. Mention your trip.',
-  },
-};
-
-const malariaLink = { label: { de: 'Malaria-Beratung', en: 'Malaria advice' }, path: '/leistungen/malaria' };
-const yellowFeverLink = { label: { de: 'Gelbfieberimpfung', en: 'Yellow fever vaccination' }, path: '/leistungen/gelbfieberimpfung' };
-const rabiesLink = { label: { de: 'Tollwut', en: 'Rabies' }, path: '/krankheitsbilder/tollwut' };
-const jeLink = { label: { de: 'Japanische Enzephalitis', en: 'Japanese encephalitis' }, path: '/krankheitsbilder/japanische-enzephalitis' };
-const typhoidLink = { label: { de: 'Typhus', en: 'Typhoid' }, path: '/krankheitsbilder/typhus' };
-const altitudeLink = { label: { de: 'Höhenmedizin', en: 'Altitude medicine' }, path: '/leistungen/hoehenmedizin' };
-
-/** Gemeinsamer Abschlussabschnitt „Reise planen". */
-function planningSection(extra?: Localized): ContentSection {
-  return {
-    id: 'planung',
-    heading: { de: 'Reise planen', en: 'Planning your trip' },
-    body: {
-      de: [
-        'In unserer reisemedizinischen Sprechstunde in Langenfeld prüfen wir Ihren Impfpass und stellen einen Impf- und Vorsorgeplan für Ihre gesamte Route zusammen – idealerweise sechs bis acht Wochen vor der Abreise. Auch kurzfristig ist noch einiges möglich.',
-        ...(extra ? [extra.de] : []),
-      ],
-      en: [
-        'In our travel medicine clinic in Langenfeld we review your vaccination record and draw up a vaccination and prevention plan for your entire route – ideally six to eight weeks before departure. Even at short notice a lot is still possible.',
-        ...(extra ? [extra.en] : []),
-      ],
-    },
-    links: [
-      { label: { de: 'Wann vor der Reise impfen?', en: 'When to get vaccinated?' }, path: '/ratgeber/wann-vor-der-reise-impfen' },
-      { label: { de: 'Kosten & Erstattung', en: 'Costs & reimbursement' }, path: '/ratgeber/reiseimpfung-kosten-krankenkasse' },
-      { label: { de: 'Termin buchen', en: 'Book an appointment' }, path: '/termin' },
-    ],
-  };
-}
+import {
+  REVIEWED, entryRulesCallout, feverCallout, malariaLink, yellowFeverLink, rabiesLink, jeLink, typhoidLink, altitudeLink, planningSection,
+} from './laenderBausteine';
+import { vietnam } from './laender/vietnam';
+import { sriLanka } from './laender/sri-lanka';
+import { philippinen } from './laender/philippinen';
+import { brasilien } from './laender/brasilien';
+import { peru } from './laender/peru';
+import { mexiko } from './laender/mexiko';
+import { suedafrika } from './laender/suedafrika';
+import { dominikanischeRepublik } from './laender/dominikanische-republik';
 
 // ---------------------------------------------------------------------------
 // Thailand
@@ -164,14 +126,14 @@ const thailand: ClinicalPage = {
       list: {
         de: [
           'Dengue ganzjährig, vor allem in der Regenzeit – Mückenschutz auch tagsüber.',
-          'Tollwut: Kontakt zu Hunden, Katzen und Affen meiden. Nach einem Biss oder Kratzer die Wunde sofort etwa 15 Minuten mit Seife und Wasser auswaschen und noch am selben Tag ärztliche Hilfe suchen – auch wenn Sie geimpft sind.',
+          'Tollwut: Kontakt zu Hunden, Katzen und Affen meiden. Nach einem Biss oder Kratzer die Wunde sofort mindestens 15 Minuten mit Seife und Wasser auswaschen und noch am selben Tag ärztliche Hilfe suchen – auch wenn Sie geimpft sind.',
           'Reisedurchfall, Hepatitis A und Typhus: auf Trinkwasser- und Lebensmittelhygiene achten.',
           'Leptospirose und Melioidose nach Kontakt mit Süßwasser, Schlamm oder Erde, besonders nach Überschwemmungen.',
           'Luftverschmutzung in Bangkok und Chiang Mai, vor allem in der Trockenzeit von November bis April.',
         ],
         en: [
           'Dengue all year round, especially in the rainy season – mosquito protection during the day as well.',
-          'Rabies: avoid contact with dogs, cats and monkeys. After a bite or scratch, wash the wound immediately with soap and water for about 15 minutes and seek medical help the same day – even if you are vaccinated.',
+          'Rabies: avoid contact with dogs, cats and monkeys. After a bite or scratch, wash the wound immediately with soap and water for at least 15 minutes and seek medical help the same day – even if you are vaccinated.',
           "Travellers' diarrhoea, hepatitis A and typhoid: pay attention to drinking water and food hygiene.",
           'Leptospirosis and melioidosis after contact with fresh water, mud or soil, especially after flooding.',
           'Air pollution in Bangkok and Chiang Mai, especially in the dry season from November to April.',
@@ -612,14 +574,14 @@ const indien: ClinicalPage = {
         de: [
           'Reisedurchfall, Hepatitis A und E sowie Typhus: auf Trinkwasser- und Lebensmittelhygiene achten.',
           'Dengue, Chikungunya und Japanische Enzephalitis, vor allem während und nach dem Monsun – Mückenschutz auch tagsüber.',
-          'Tollwut: Streunende Hunde sind häufig; Tierkontakt meiden. Nach einem Biss oder Kratzer die Wunde sofort etwa 15 Minuten mit Seife und Wasser auswaschen und noch am selben Tag ärztliche Hilfe suchen – auch wenn Sie geimpft sind.',
+          'Tollwut: Streunende Hunde sind häufig; Tierkontakt meiden. Nach einem Biss oder Kratzer die Wunde sofort mindestens 15 Minuten mit Seife und Wasser auswaschen und noch am selben Tag ärztliche Hilfe suchen – auch wenn Sie geimpft sind.',
           'Starke Luftverschmutzung in den Metropolen, vor allem in den Wintermonaten.',
           'Höhenkrankheit beim Trekking im Himalaya.',
         ],
         en: [
           "Travellers' diarrhoea, hepatitis A and E, and typhoid: pay attention to drinking water and food hygiene.",
           'Dengue, chikungunya and Japanese encephalitis, especially during and after the monsoon – mosquito protection during the day as well.',
-          'Rabies: stray dogs are common; avoid animal contact. After a bite or scratch, wash the wound immediately with soap and water for about 15 minutes and seek medical help the same day – even if you are vaccinated.',
+          'Rabies: stray dogs are common; avoid animal contact. After a bite or scratch, wash the wound immediately with soap and water for at least 15 minutes and seek medical help the same day – even if you are vaccinated.',
           'Severe air pollution in the major cities, especially in the winter months.',
           'Altitude sickness when trekking in the Himalayas.',
         ],
@@ -749,13 +711,13 @@ const indonesien: ClinicalPage = {
       list: {
         de: [
           'Dengue ganzjährig; bei Reiserückkehrern von Bali wurden 2025/2026 zudem einzelne Zika-Infektionen festgestellt. Zika kann in der Schwangerschaft das Kind schädigen und auch sexuell übertragen werden. Mückenschutz am Tag ist deshalb wichtig; Schwangere und Paare mit Kinderwunsch sollten sich vor der Reise ärztlich beraten lassen.',
-          'Tollwut: Kontakt zu Hunden und Affen meiden. Nach einem Biss oder Kratzer die Wunde sofort etwa 15 Minuten mit Seife und Wasser auswaschen und noch am selben Tag ärztliche Hilfe suchen – auch wenn Sie geimpft sind.',
+          'Tollwut: Kontakt zu Hunden und Affen meiden. Nach einem Biss oder Kratzer die Wunde sofort mindestens 15 Minuten mit Seife und Wasser auswaschen und noch am selben Tag ärztliche Hilfe suchen – auch wenn Sie geimpft sind.',
           'Reisedurchfall, Hepatitis A und Typhus: auf Trinkwasser- und Lebensmittelhygiene achten.',
           'Methanolvergiftungen durch gepanschte alkoholische Getränke auf Bali und Lombok – nur original verschlossene Getränke trinken, bei Cocktails und Spirituosen besonders vorsichtig sein.',
         ],
         en: [
           'Dengue all year round; in 2025/2026 individual Zika infections were also found in travellers returning from Bali. Zika can harm the unborn child during pregnancy and can also be transmitted sexually. Daytime mosquito protection is therefore important; pregnant women and couples planning a pregnancy should seek medical advice before the trip.',
-          'Rabies: avoid contact with dogs and monkeys. After a bite or scratch, wash the wound immediately with soap and water for about 15 minutes and seek medical help the same day – even if you are vaccinated.',
+          'Rabies: avoid contact with dogs and monkeys. After a bite or scratch, wash the wound immediately with soap and water for at least 15 minutes and seek medical help the same day – even if you are vaccinated.',
           "Travellers' diarrhoea, hepatitis A and typhoid: pay attention to drinking water and food hygiene.",
           'Methanol poisoning from adulterated alcoholic drinks on Bali and Lombok – drink only factory-sealed drinks and take particular care with cocktails and spirits.',
         ],
@@ -801,6 +763,14 @@ export const countryList: DestinationCountry[] = [
   { slug: 'indien', region: 'asien', name: { de: 'Indien', en: 'India' }, page: indien },
   { slug: 'kenia', region: 'afrika', name: { de: 'Kenia', en: 'Kenya' }, page: kenia },
   { slug: 'tansania-sansibar', region: 'afrika', name: { de: 'Tansania & Sansibar', en: 'Tanzania & Zanzibar' }, page: tansania },
+  { slug: 'vietnam', region: 'asien', name: { de: 'Vietnam', en: 'Vietnam' }, page: vietnam },
+  { slug: 'sri-lanka', region: 'asien', name: { de: 'Sri Lanka', en: 'Sri Lanka' }, page: sriLanka },
+  { slug: 'philippinen', region: 'asien', name: { de: 'Philippinen', en: 'Philippines' }, page: philippinen },
+  { slug: 'brasilien', region: 'lateinamerika', name: { de: 'Brasilien', en: 'Brazil' }, page: brasilien },
+  { slug: 'peru', region: 'lateinamerika', name: { de: 'Peru', en: 'Peru' }, page: peru },
+  { slug: 'mexiko', region: 'lateinamerika', name: { de: 'Mexiko', en: 'Mexico' }, page: mexiko },
+  { slug: 'suedafrika', region: 'afrika', name: { de: 'Südafrika', en: 'South Africa' }, page: suedafrika },
+  { slug: 'dominikanische-republik', region: 'lateinamerika', name: { de: 'Dominikanische Republik', en: 'Dominican Republic' }, page: dominikanischeRepublik },
 ];
 
 export function countriesOfRegion(region: string): DestinationCountry[] {

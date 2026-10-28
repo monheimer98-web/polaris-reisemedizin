@@ -76,6 +76,50 @@ export const seoTitles: Record<string, Localized> = {
     de: 'Impfungen für Tansania & Sansibar | Polaris Langenfeld',
     en: 'Tanzania & Zanzibar Travel Vaccinations | Polaris',
   },
+  '/reiseziele/asien/vietnam': {
+    de: 'Impfungen für Vietnam – Reisemedizin Langenfeld | Polaris',
+    en: 'Vietnam Travel Vaccinations | Polaris Langenfeld',
+  },
+  '/reiseziele/asien/sri-lanka': {
+    de: 'Impfungen für Sri Lanka: Tollwut, Dengue & mehr | Polaris',
+    en: 'Sri Lanka Travel Vaccinations | Polaris Langenfeld',
+  },
+  '/reiseziele/asien/philippinen': {
+    de: 'Impfungen für die Philippinen | Polaris Langenfeld',
+    en: 'Philippines Travel Vaccinations | Polaris Langenfeld',
+  },
+  '/reiseziele/lateinamerika/brasilien': {
+    de: 'Impfungen für Brasilien: Gelbfieber & Malaria | Polaris',
+    en: 'Brazil Travel Vaccinations & Yellow Fever | Polaris',
+  },
+  '/reiseziele/lateinamerika/peru': {
+    de: 'Impfungen für Peru: Gelbfieber, Höhe & Malaria | Polaris',
+    en: 'Peru Travel Vaccinations & Altitude Advice | Polaris',
+  },
+  '/reiseziele/lateinamerika/mexiko': {
+    de: 'Impfungen für Mexiko – Reisemedizin Langenfeld | Polaris',
+    en: 'Mexico Travel Vaccinations | Polaris Langenfeld',
+  },
+  '/reiseziele/afrika/suedafrika': {
+    de: 'Impfungen für Südafrika: Gelbfieber & Malaria | Polaris',
+    en: 'South Africa Travel Vaccinations & Malaria | Polaris',
+  },
+  '/reiseziele/lateinamerika/dominikanische-republik': {
+    de: 'Impfungen für die Dominikanische Republik | Polaris',
+    en: 'Dominican Republic Travel Vaccinations | Polaris',
+  },
+  '/ratgeber/gelbfieberimpfung-kosten': {
+    de: 'Gelbfieberimpfung: Kosten & Gültigkeit | Polaris Langenfeld',
+    en: 'Yellow Fever Vaccination: Cost & Validity | Polaris',
+  },
+  '/ratgeber/tollwutimpfung-vor-der-reise': {
+    de: 'Tollwutimpfung vor der Reise: Schema & Kosten | Polaris',
+    en: 'Rabies Vaccination Before Travel | Polaris Langenfeld',
+  },
+  '/ratgeber/malaria-tabletten-rezept': {
+    de: 'Malaria-Tabletten: Rezept & Beratung in Langenfeld | Polaris',
+    en: 'Malaria Tablets: Prescription & Advice | Polaris',
+  },
   '/unternehmen': {
     de: 'Reisemedizin für Firmen im Rheinland | Polaris Langenfeld',
     en: 'Travel Medicine for Companies in the Rhineland | Polaris',

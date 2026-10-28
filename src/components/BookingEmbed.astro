@@ -47,12 +47,16 @@ const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
     const fallback = mount.dataset.fallback || '';
     const title = mount.dataset.title || 'Terminbuchung';
 
+    // Terminart aus der Seiten-URL (?art=<id>, z. B. von einer Leistungsseite)
+    // an die Buchung weitergeben, damit sie dort vorausgewählt ist.
+    const art = (new URLSearchParams(window.location.search).get('art') || '').replace(/[^a-z0-9-]/g, '');
+
     function basisAus(u: string): string {
       try { return new URL(u).origin; } catch { return u.replace(/\/(buchung|mobil).*$/, ''); }
     }
 
     function baueIframe(basis: string) {
-      const src = basis.replace(/\/+$/, '') + '/buchung?embed=1';
+      const src = basis.replace(/\/+$/, '') + '/buchung?embed=1' + (art ? '&art=' + art : '');
       let origin = '';
       try { origin = new URL(src).origin; } catch { origin = ''; }
       const frame = document.createElement('iframe');
@@ -84,7 +88,7 @@ const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
       // unzuverlässig ist (leerer Rahmen). WICHTIG: inline stylen – dynamisch
       // erzeugte Elemente bekommen kein Astro-Scope-Attribut, scoped-CSS greift
       // hier NICHT.
-      const url = basis.replace(/\/+$/, '') + '/buchung';
+      const url = basis.replace(/\/+$/, '') + '/buchung' + (art ? '?art=' + art : '');
       const wrap = document.createElement('div');
       wrap.style.cssText =
         'min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:36px 24px;';
