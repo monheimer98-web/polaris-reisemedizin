@@ -113,16 +113,16 @@ export const kostenPage: KostenPage = {
         {
           service: { de: 'Malaria- oder Höhenberatung (allein)', en: 'Malaria or altitude consultation (on its own)' },
           detail: {
-            de: 'Kurze, gezielte Beratung nur zum Malariaschutz oder nur zur Höhenmedizin – mit persönlichem, schriftlichem Plan und auf Wunsch mit Privatrezept.',
-            en: 'A short, focused consultation on malaria protection only or altitude medicine only – with a personal written plan and a private prescription on request.',
+            de: 'Kurze, gezielte Beratung nur zum Malariaschutz oder nur zur Höhenmedizin – mit persönlichem Einnahme- und Schutzplan zum Mitnehmen und auf Wunsch mit Privatrezept.',
+            en: 'A short, focused consultation on malaria protection only or altitude medicine only – with a personal medication and protection plan to take home and a private prescription on request.',
           },
           price: { de: 'ca. 28 €', en: 'approx. €28' },
         },
         {
           service: { de: 'Malaria und Höhe zusammen', en: 'Malaria and altitude together' },
           detail: {
-            de: 'Eingehende Beratung zu Malariaschutz und Höhenmedizin in einem Termin – mit persönlichem, schriftlichem Plan und auf Wunsch mit Privatrezept.',
-            en: 'An in-depth consultation on malaria protection and altitude medicine in one appointment – with a personal written plan and a private prescription on request.',
+            de: 'Eingehende Beratung zu Malariaschutz und Höhenmedizin in einem Termin – mit persönlichem Einnahme- und Schutzplan zum Mitnehmen und auf Wunsch mit Privatrezept.',
+            en: 'An in-depth consultation on malaria protection and altitude medicine in one appointment – with a personal medication and protection plan to take home and a private prescription on request.',
           },
           price: { de: 'ca. 38 €', en: 'approx. €38' },
         },
@@ -165,12 +165,12 @@ export const kostenPage: KostenPage = {
           price: { de: 'ab der 3.: zzgl. ca. 3 bzw. 7 €', en: 'from the 3rd: plus approx. €3 or €7' },
         },
         {
-          service: { de: 'Termin am Samstag', en: 'Appointment on a Saturday' },
+          service: { de: 'Termin am Samstag, Sonn- oder Feiertag', en: 'Appointment on a Saturday, Sunday or public holiday' },
           detail: {
-            de: 'Für Termine am Samstag sieht die GOÄ einen Zuschlag vor.',
-            en: 'For appointments on a Saturday, the GOÄ provides for a surcharge.',
+            de: 'Für Termine am Wochenende und an Feiertagen sieht die GOÄ einen Zuschlag vor: samstags ca. 6 €, an Sonn- und Feiertagen ca. 13 €.',
+            en: 'For appointments at weekends and on public holidays, the GOÄ provides for a surcharge: approx. €6 on Saturdays, approx. €13 on Sundays and public holidays.',
           },
-          price: { de: 'zzgl. ca. 6 €', en: 'plus approx. €6' },
+          price: { de: 'zzgl. ca. 6 € bzw. 13 €', en: 'plus approx. €6 or €13' },
         },
         {
           service: { de: 'Neuer Impfausweis (falls noch keiner vorhanden)', en: 'New vaccination certificate (if you don’t have one yet)' },

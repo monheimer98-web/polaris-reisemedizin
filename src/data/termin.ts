@@ -268,8 +268,8 @@ export const bookingPage: BookingPage = {
         },
         duration: { de: 'ca. 15 Minuten', en: 'approx. 15 minutes' },
         description: {
-          de: 'Gezielte Beratung, wenn Sie speziell zu Malariaschutz oder Höhenmedizin Fragen haben – mit persönlichem, schriftlichem Plan und auf Wunsch mit Privatrezept für ein Notfallset. Malaria oder Höhe allein ca. 28 €, beides zusammen ca. 38 €.',
-          en: 'Targeted advice if you have specific questions about malaria protection or altitude medicine – with a personal written plan and a private prescription for a stand-by kit on request. Malaria or altitude only approx. €28, both together approx. €38.',
+          de: 'Gezielte Beratung, wenn Sie speziell zu Malariaschutz oder Höhenmedizin Fragen haben – mit persönlichem Einnahme- und Schutzplan zum Mitnehmen und auf Wunsch mit Privatrezept für ein Notfallset. Malaria oder Höhe allein ca. 28 €, beides zusammen ca. 38 €.',
+          en: 'Targeted advice if you have specific questions about malaria protection or altitude medicine – with a personal medication and protection plan to take home and a private prescription for a stand-by kit on request. Malaria or altitude only approx. €28, both together approx. €38.',
         },
         price: { de: 'ab ca. 28 €', en: 'from approx. €28' },
         enabled: true,
