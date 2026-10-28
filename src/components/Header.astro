@@ -3,7 +3,7 @@
  * Globale Kopfzeile: Marke, Hauptnavigation (mit Untermenüs), Sprachumschalter
  * und Buchungs-CTA. Mobil als zugängliches Off-Canvas-Menü.
  */
-import { primaryNav, BOOKING_PATH } from '../config/nav';
+import { primaryNav, navPaths, BOOKING_PATH } from '../config/nav';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import { site } from '../config/site';
 import type { UiKey } from '../i18n/ui';
@@ -21,10 +21,24 @@ function label(item: NavItem): string {
   return item.label ? item.label[lang] : t(item.labelKey as UiKey);
 }
 
+function localPath(path: string): string {
+  return getLocalizedPath(path, lang).replace(/\/+$/, '') || '/';
+}
+
 function isActive(path: string): boolean {
-  const localized = (getLocalizedPath(path, lang).replace(/\/+$/, '') || '/');
+  const localized = localPath(path);
   if (localized === '/') return currentPath === '/';
   return currentPath === localized || currentPath.startsWith(localized + '/');
+}
+
+/** Hauptpunkt aktiv, wenn die aktuelle Seite zu ihm oder einer seiner Gruppen gehört. */
+function isActiveItem(item: NavItem): boolean {
+  return navPaths(item).some(isActive);
+}
+
+/** Einträge, deren Kinder selbst Gruppen sind (Spalten-Menü). */
+function hasGroups(item: NavItem): boolean {
+  return (item.children ?? []).some((c) => (c.children ?? []).length > 0);
 }
 ---
 
@@ -55,9 +69,10 @@ function isActive(path: string): boolean {
       </span>
     </a>
 
-    {/* Desktop-Navigation — erst ab xl (≥1280px), da die achtteilige, zweisprachige
-        Leiste (Marke + Tagline + Untermenüs + Sprache + CTA) darunter zu breit wird
-        und im EN-Layout sonst überliefe. Zwischen lg und xl greift das Off-Canvas-Menü. */}
+    {/* Desktop-Navigation — erst ab xl (≥1280px). Zwei gleichrangige Bereiche
+        (Reisemedizin, Prävention & Lebensstil), dazu Firmen, Kosten, Praxis.
+        Einträge mit Gruppen (Reisemedizin) öffnen ein Spalten-Menü; der
+        Präventionsbereich trägt seine Salbei-Farbwelt schon in der Leiste. */}
     <nav class="hidden items-center gap-1 xl:flex" aria-label={t('header.primaryNav')}>
       {
         primaryNav.map((item) =>
@@ -66,10 +81,10 @@ function isActive(path: string): boolean {
               <a
                 href={getLocalizedPath(item.path, lang)}
                 class:list={[
-                  'inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium transition-colors hover:bg-white 2xl:px-3',
-                  isActive(item.path) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
+                  'inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-white',
+                  isActiveItem(item) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
                 ]}
-                aria-current={isActive(item.path) ? 'page' : undefined}
+                aria-current={isActiveItem(item) ? 'page' : undefined}
               >
                 {item.area && <span class="h-1.5 w-1.5 rounded-full bg-petrol-400" aria-hidden="true"></span>}
                 {label(item)}
@@ -77,30 +92,61 @@ function isActive(path: string): boolean {
                   <path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </a>
-              <div class="invisible absolute left-0 top-full z-30 min-w-[15rem] pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                <ul class="overflow-hidden rounded-2xl border border-line bg-white p-1.5 shadow-[var(--shadow-card)]">
-                  {item.children.map((child) => (
-                    <li>
-                      <a
-                        href={getLocalizedPath(child.path, lang)}
-                        class:list={[
-                          'block rounded-xl px-3.5 py-2.5 text-sm transition-colors hover:bg-cream',
-                          isActive(child.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
-                        ]}
-                        aria-current={isActive(child.path) ? 'page' : undefined}
-                      >
-                        {label(child)}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+              <div class="invisible absolute left-0 top-full z-30 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                {hasGroups(item) ? (
+                  <div class="grid w-[44rem] grid-cols-3 gap-2 rounded-2xl border border-line bg-white p-3 shadow-[var(--shadow-card)]">
+                    {item.children.map((group) => (
+                      <div>
+                        <a
+                          href={getLocalizedPath(group.path, lang)}
+                          class="block rounded-xl px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-petrol-500 hover:bg-cream hover:text-petrol-800"
+                        >
+                          {label(group)}
+                        </a>
+                        <ul>
+                          {(group.children ?? []).map((child) => (
+                            <li>
+                              <a
+                                href={getLocalizedPath(child.path, lang)}
+                                class:list={[
+                                  'block rounded-xl px-3.5 py-1.5 text-sm transition-colors hover:bg-cream',
+                                  isActive(child.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
+                                ]}
+                                aria-current={isActive(child.path) ? 'page' : undefined}
+                              >
+                                {label(child)}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <ul class="min-w-[15rem] overflow-hidden rounded-2xl border border-line bg-white p-1.5 shadow-[var(--shadow-card)]">
+                    {item.children.map((child) => (
+                      <li>
+                        <a
+                          href={getLocalizedPath(child.path, lang)}
+                          class:list={[
+                            'block rounded-xl px-3.5 py-2.5 text-sm transition-colors hover:bg-cream',
+                            currentPath === localPath(child.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
+                          ]}
+                          aria-current={currentPath === localPath(child.path) ? 'page' : undefined}
+                        >
+                          {label(child)}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           ) : (
             <a
               href={getLocalizedPath(item.path, lang)}
               class:list={[
-                'whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium transition-colors hover:bg-white 2xl:px-3',
+                'whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-white',
                 isActive(item.path) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
               ]}
               aria-current={isActive(item.path) ? 'page' : undefined}
@@ -114,12 +160,11 @@ function isActive(path: string): boolean {
 
     {/* Rechts: Anrufen + Sprache + CTA + Mobile-Toggle */}
     <div class="flex items-center gap-2 sm:gap-3">
-      {/* Klick-zum-Anrufen — kompaktes Icon (mobil: Tap-to-Call); zwischen xl und 2xl
-          ausgeblendet, damit die neunteilige Leiste ab 1280 px in eine Zeile passt.
-          Die Nummer steht außerdem in Fußzeile, Kontakt & Termin. */}
+      {/* Klick-zum-Anrufen — kompaktes Icon auf allen Größen (mobil: Tap-to-Call);
+          die Nummer steht im Tooltip/aria-Label sowie in Fußzeile, Kontakt & Termin. */}
       <a
         href={site.contact.phoneHref}
-        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-petrol-800 transition-colors hover:bg-white xl:hidden 2xl:inline-flex"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-petrol-800 transition-colors hover:bg-white"
         aria-label={`${t('cta.callAria')}: ${site.contact.phone}`}
         title={site.contact.phone}
       >
@@ -171,11 +216,12 @@ function isActive(path: string): boolean {
                   <a
                     href={getLocalizedPath(item.path, lang)}
                     class:list={[
-                      'flex-1 rounded-lg px-2 py-3 text-[0.95rem] font-semibold transition-colors',
-                      isActive(item.path) ? 'text-petrol-900' : 'text-ink hover:text-petrol-900',
+                      'flex flex-1 items-center gap-2 rounded-lg px-2 py-3 text-[0.95rem] font-semibold transition-colors',
+                      isActiveItem(item) ? 'text-petrol-900' : 'text-ink hover:text-petrol-900',
                     ]}
-                    aria-current={isActive(item.path) ? 'page' : undefined}
+                    aria-current={isActiveItem(item) ? 'page' : undefined}
                   >
+                    {item.area && <span class="h-1.5 w-1.5 rounded-full bg-petrol-400" aria-hidden="true"></span>}
                     {label(item)}
                   </a>
                   <button
@@ -192,15 +238,19 @@ function isActive(path: string): boolean {
                 </div>
                 <div id={`submenu-${i}`} class="submenu hidden">
                   <ul class="mb-2 ml-3 flex flex-col border-l border-petrol-100 pl-3">
-                    {item.children.map((child) => (
+                    {(hasGroups(item) ? item.children.flatMap((g) => [{ ...g, heading: true }, ...(g.children ?? [])]) : item.children).map((child) => (
                       <li>
                         <a
                           href={getLocalizedPath(child.path, lang)}
                           class:list={[
-                            'block rounded-lg px-2 py-2 text-sm transition-colors',
-                            isActive(child.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
+                            'block rounded-lg px-2 transition-colors',
+                            'heading' in child
+                              ? 'pt-3 pb-1 text-xs font-semibold uppercase tracking-[0.14em] text-petrol-500'
+                              : isActive(child.path)
+                                ? 'py-2 text-sm font-semibold text-petrol-900'
+                                : 'py-2 text-sm text-ink-soft hover:text-petrol-900',
                           ]}
-                          aria-current={isActive(child.path) ? 'page' : undefined}
+                          aria-current={!('heading' in child) && isActive(child.path) ? 'page' : undefined}
                         >
                           {label(child)}
                         </a>

@@ -3,7 +3,7 @@
  * Globale Fußzeile: Marke, Navigationsspalten, Kontakt & Sprechzeiten,
  * rechtliche Links sowie medizinischer Disclaimer und Quellenhinweis.
  */
-import { primaryNav, footerInfoNav, legalNav, BOOKING_PATH } from '../config/nav';
+import { travelServicesNav, diseasesNav, footerInfoNav, legalNav, BOOKING_PATH } from '../config/nav';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import { site } from '../config/site';
 import type { UiKey } from '../i18n/ui';
@@ -13,8 +13,8 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const year = new Date().getFullYear();
 
-const servicesItem = primaryNav.find((i) => i.path === '/leistungen');
-const diseasesItem = primaryNav.find((i) => i.path === '/krankheitsbilder');
+const servicesItem = travelServicesNav;
+const diseasesItem = diseasesNav;
 const infoLinks = footerInfoNav;
 ---
 

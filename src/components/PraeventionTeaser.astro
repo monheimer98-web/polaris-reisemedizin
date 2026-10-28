@@ -1,71 +1,39 @@
 ---
 /**
- * Hinweis auf den Bereich „Prävention & Lebensstil", als Salbei-Band auf der
- * Startseite (`variant="home"`) oder als Preisübersicht der jetzt buchbaren
- * Angebote auf „Kosten & Abrechnung" (`variant="kosten"`). Sprache aus der URL.
+ * Preisübersicht der jetzt buchbaren Angebote „Prävention & Lebensstil" auf
+ * „Kosten & Abrechnung", als Salbei-Band (Beträge aus den Angebotsdaten).
+ * Sprache aus der URL.
  */
 import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
-import { PREVENTION_PATH, preventionHub, preventionOffers, preventionPath } from '../data/praevention';
+import { preventionHub, preventionOffers, preventionPath } from '../data/praevention';
 
-interface Props {
-  variant: 'home' | 'kosten';
-}
-
-const { variant } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const de = lang === 'de';
 ---
 
-<section class:list={['theme-praevention u-container', variant === 'home' ? 'pb-16 sm:pb-20' : 'pt-12 sm:pt-14']}>
+<section class="theme-praevention u-container pt-12 sm:pt-14">
   <div class="rounded-3xl border border-petrol-100 bg-petrol-50/80 p-6 sm:p-10">
     <p class="eyebrow"><span class="rule-gold"></span>{de ? 'Prävention & Lebensstil' : 'Prevention & lifestyle'}</p>
-    {
-      variant === 'home' ? (
-        <>
-          <h2 class="mt-4 text-2xl sm:text-3xl">
-            {de ? 'Prävention mit Zeit und schriftlichem Plan' : 'Prevention with time and a written plan'}
-          </h2>
-          <p class="mt-3 max-w-2xl text-ink-soft">
-            {de
-              ? 'Präventions-Check, Begleitung bei Gewicht und Stoffwechsel, Sprechstunde Wechseljahre und das Einordnen Ihrer Werte: ärztlich, mit Zeit und schriftlichem Plan.'
-              : 'Prevention check-up, support for weight and metabolism, a menopause consultation and help making sense of your results: medical, with time and a written plan.'}
-          </p>
-          <ul class="mt-6 flex flex-wrap gap-2">
-            {preventionOffers.map((o) => (
-              <li>
-                <a
-                  href={getLocalizedPath(preventionPath(o.slug), lang)}
-                  class="inline-flex rounded-full border border-petrol-100 bg-white px-3.5 py-1.5 text-sm font-medium text-petrol-800 transition-colors hover:border-gold-300"
-                >
-                  {o.shortName[lang]}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <a href={getLocalizedPath(PREVENTION_PATH, lang)} class="btn-primary mt-7">
-            {de ? 'Zum Bereich Prävention & Lebensstil' : 'Go to prevention & lifestyle'}
-          </a>
-        </>
-      ) : (
-        <>
-          <h2 class="mt-4 text-2xl sm:text-3xl">{de ? 'Preise Prävention & Lebensstil' : 'Fees for prevention & lifestyle'}</h2>
-          <p class="mt-3 max-w-2xl text-ink-soft">{preventionHub.ctaNote[lang]}</p>
-          <dl class="mt-6 divide-y divide-petrol-100 rounded-2xl border border-petrol-100 bg-white">
-            {preventionOffers.map((o) => (
-              <div class="grid gap-1 px-5 py-4 sm:grid-cols-[14rem_1fr] sm:gap-6">
-                <dt>
-                  <a href={getLocalizedPath(preventionPath(o.slug), lang)} class="font-semibold text-petrol-900 underline decoration-gold-400/50 underline-offset-4">
-                    {o.shortName[lang]}
-                  </a>
-                </dt>
-                <dd class="text-sm leading-relaxed text-ink-soft">
-                  {o.facts.fee[lang]}. {de ? 'Labor' : 'Lab'}: {o.facts.lab[lang]}.
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </>
-      )
-    }
+    <h2 class="mt-4 text-2xl sm:text-3xl">{de ? 'Preise Prävention & Lebensstil' : 'Fees for prevention & lifestyle'}</h2>
+    <p class="mt-3 max-w-2xl text-ink-soft">{preventionHub.ctaNote[lang]}</p>
+    <dl class="mt-6 divide-y divide-petrol-100 rounded-2xl border border-petrol-100 bg-white">
+      {
+        preventionOffers.map((o) => (
+          <div class="grid gap-1 px-5 py-4 sm:grid-cols-[14rem_1fr] sm:gap-6">
+            <dt>
+              <a
+                href={getLocalizedPath(preventionPath(o.slug), lang)}
+                class="font-semibold text-petrol-900 underline decoration-gold-400/50 underline-offset-4"
+              >
+                {o.shortName[lang]}
+              </a>
+            </dt>
+            <dd class="text-sm leading-relaxed text-ink-soft">
+              {o.facts.fee[lang]}. {de ? 'Labor' : 'Lab'}: {o.facts.lab[lang]}.
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
   </div>
 </section>

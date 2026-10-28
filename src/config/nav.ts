@@ -20,64 +20,92 @@ export interface NavItem {
   area?: 'praevention';
 }
 
+/** Reise-Leistungen (Gruppe „Leistungen" im Bereich Reisemedizin, Footer-Spalte). */
+export const travelServicesNav: NavItem = {
+  labelKey: 'nav.services',
+  path: '/leistungen',
+  children: [
+    { labelKey: 'nav.consultation', path: '/leistungen/reiseberatung' },
+    { labelKey: 'nav.travelVaccinations', path: '/leistungen/reiseimpfungen' },
+    { labelKey: 'nav.yellowFeverVaccination', path: '/leistungen/gelbfieberimpfung' },
+    { labelKey: 'nav.fsmeVaccination', path: '/leistungen/fsme-impfung' },
+    { labelKey: 'nav.malaria', path: '/leistungen/malaria' },
+    { labelKey: 'nav.altitude', path: '/leistungen/hoehenmedizin' },
+  ],
+};
+
+export const destinationsNav: NavItem = {
+  labelKey: 'nav.destinations',
+  path: '/reiseziele',
+  children: [
+    { labelKey: 'nav.destAfrica', path: '/reiseziele/afrika' },
+    { labelKey: 'nav.destAsia', path: '/reiseziele/asien' },
+    { labelKey: 'nav.destLatinAmerica', path: '/reiseziele/lateinamerika' },
+    { labelKey: 'nav.destMiddleEast', path: '/reiseziele/naher-osten-nordafrika' },
+    { labelKey: 'nav.destEurope', path: '/reiseziele/europa' },
+    { labelKey: 'nav.destOceania', path: '/reiseziele/ozeanien' },
+  ],
+};
+
+export const diseasesNav: NavItem = {
+  labelKey: 'nav.diseases',
+  path: '/krankheitsbilder',
+  children: [
+    { labelKey: 'nav.yellowFever', path: '/krankheitsbilder/gelbfieber' },
+    { labelKey: 'nav.dengue', path: '/krankheitsbilder/dengue' },
+    { labelKey: 'nav.chikungunya', path: '/krankheitsbilder/chikungunya' },
+    { labelKey: 'nav.fsme', path: '/krankheitsbilder/fsme' },
+    { labelKey: 'nav.hepatitisA', path: '/krankheitsbilder/hepatitis-a' },
+    { labelKey: 'nav.hepatitisB', path: '/krankheitsbilder/hepatitis-b' },
+    { labelKey: 'nav.typhus', path: '/krankheitsbilder/typhus' },
+    { labelKey: 'nav.rabies', path: '/krankheitsbilder/tollwut' },
+    { labelKey: 'nav.japaneseEncephalitis', path: '/krankheitsbilder/japanische-enzephalitis' },
+    { labelKey: 'nav.meningococcal', path: '/krankheitsbilder/meningokokken' },
+    { labelKey: 'nav.cholera', path: '/krankheitsbilder/cholera' },
+    { labelKey: 'nav.riskAreas', path: '/risikogebiete' },
+  ],
+};
+
+/**
+ * Hauptnavigation: zwei gleichrangige Bereiche der einen Praxis
+ * („Reisemedizin" mit Leistungen, Reisezielen und Krankheitsbildern als
+ * Gruppen; „Prävention & Lebensstil" mit eigener Farbwelt), dazu Firmen,
+ * Kosten und Praxis. Gruppen (Einträge mit eigenen `children`) erscheinen am
+ * Desktop als Spalten, mobil als Zwischenüberschriften.
+ */
 export const primaryNav: NavItem[] = [
   {
-    labelKey: 'nav.services',
+    labelKey: 'nav.travelMedicine',
     path: '/leistungen',
-    children: [
-      { labelKey: 'nav.consultation', path: '/leistungen/reiseberatung' },
-      { labelKey: 'nav.travelVaccinations', path: '/leistungen/reiseimpfungen' },
-      { labelKey: 'nav.yellowFeverVaccination', path: '/leistungen/gelbfieberimpfung' },
-      { labelKey: 'nav.fsmeVaccination', path: '/leistungen/fsme-impfung' },
-      { labelKey: 'nav.malaria', path: '/leistungen/malaria' },
-      { labelKey: 'nav.altitude', path: '/leistungen/hoehenmedizin' },
-    ],
+    children: [travelServicesNav, destinationsNav, diseasesNav],
   },
   {
-    labelKey: 'nav.prevention',
+    labelKey: 'nav.preventionArea',
     path: PREVENTION_PATH,
     area: 'praevention',
     children: [
-      { labelKey: 'nav.preventionArea', path: PREVENTION_PATH },
+      { labelKey: 'nav.preventionArea', label: { de: 'Übersicht', en: 'Overview' }, path: PREVENTION_PATH },
       ...preventionOffers.map((o) => ({ labelKey: 'nav.preventionArea', label: o.shortName, path: preventionPath(o.slug) })),
     ],
   },
-  {
-    labelKey: 'nav.diseases',
-    path: '/krankheitsbilder',
-    children: [
-      { labelKey: 'nav.yellowFever', path: '/krankheitsbilder/gelbfieber' },
-      { labelKey: 'nav.dengue', path: '/krankheitsbilder/dengue' },
-      { labelKey: 'nav.chikungunya', path: '/krankheitsbilder/chikungunya' },
-      { labelKey: 'nav.fsme', path: '/krankheitsbilder/fsme' },
-      { labelKey: 'nav.hepatitisA', path: '/krankheitsbilder/hepatitis-a' },
-      { labelKey: 'nav.hepatitisB', path: '/krankheitsbilder/hepatitis-b' },
-      { labelKey: 'nav.typhus', path: '/krankheitsbilder/typhus' },
-      { labelKey: 'nav.rabies', path: '/krankheitsbilder/tollwut' },
-      { labelKey: 'nav.japaneseEncephalitis', path: '/krankheitsbilder/japanische-enzephalitis' },
-      { labelKey: 'nav.meningococcal', path: '/krankheitsbilder/meningokokken' },
-      { labelKey: 'nav.cholera', path: '/krankheitsbilder/cholera' },
-      { labelKey: 'nav.riskAreas', path: '/risikogebiete' },
-    ],
-  },
-  {
-    labelKey: 'nav.destinations',
-    path: '/reiseziele',
-    children: [
-      { labelKey: 'nav.destAfrica', path: '/reiseziele/afrika' },
-      { labelKey: 'nav.destAsia', path: '/reiseziele/asien' },
-      { labelKey: 'nav.destLatinAmerica', path: '/reiseziele/lateinamerika' },
-      { labelKey: 'nav.destMiddleEast', path: '/reiseziele/naher-osten-nordafrika' },
-      { labelKey: 'nav.destEurope', path: '/reiseziele/europa' },
-      { labelKey: 'nav.destOceania', path: '/reiseziele/ozeanien' },
-    ],
-  },
-  { labelKey: 'nav.process', path: '/ablauf' },
-  { labelKey: 'nav.costs', path: '/kosten' },
   { labelKey: 'nav.business', path: '/unternehmen' },
-  { labelKey: 'nav.team', path: '/team' },
-  { labelKey: 'nav.contact', path: '/kontakt' },
+  { labelKey: 'nav.costs', path: '/kosten' },
+  {
+    labelKey: 'nav.team',
+    path: '/team',
+    children: [
+      { labelKey: 'nav.team', label: { de: 'Team', en: 'Team' }, path: '/team' },
+      { labelKey: 'nav.process', path: '/ablauf' },
+      { labelKey: 'nav.faq', path: '/faq' },
+      { labelKey: 'nav.contact', path: '/kontakt' },
+    ],
+  },
 ];
+
+/** Alle Pfade eines Eintrags einschließlich Gruppen (für „aktiv"-Markierung). */
+export function navPaths(item: NavItem): string[] {
+  return [item.path, ...(item.children ?? []).flatMap(navPaths)];
+}
 
 /**
  * Footer-Spalte „Information" — kuratierte Sekundärlinks (inkl. FAQ, das bewusst
