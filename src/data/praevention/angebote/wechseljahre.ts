@@ -8,7 +8,7 @@ import { honorar, euroDe, euroEn } from '../preise';
 
 export const wechseljahre: PreventionOffer = {
   slug: 'wechseljahre',
-  bookingType: 'praevention-wechseljahre',
+  bookingType: 'p-wj-erst',
   group: 'begleitung',
   stage: 1,
   shortName: { de: 'Wechseljahre', en: 'Menopause' },

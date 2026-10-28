@@ -8,7 +8,7 @@ import { honorar, labor, euroDe, euroEn } from '../preise';
 
 export const praeventionsCheck: PreventionOffer = {
   slug: 'praeventions-check',
-  bookingType: 'praevention-check',
+  bookingType: 'p-kompass',
   group: 'checks',
   stage: 1,
   shortName: { de: 'Präventions-Check', en: 'Prevention check-up' },

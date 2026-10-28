@@ -8,7 +8,7 @@ import { honorar, euroDe, euroEn } from '../preise';
 
 export const werteEinordnen: PreventionOffer = {
   slug: 'werte-einordnen',
-  bookingType: 'praevention-werte',
+  bookingType: 'p-werte',
   group: 'einordnen',
   stage: 1,
   shortName: { de: 'Werte einordnen', en: 'Making sense of results' },

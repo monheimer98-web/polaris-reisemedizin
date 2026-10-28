@@ -8,7 +8,7 @@ import { honorar, euroDe, euroEn } from '../preise';
 
 export const muskelKompass: PreventionOffer = {
   slug: 'muskel-kompass',
-  bookingType: 'praevention-muskel',
+  bookingType: 'p-muskel',
   group: 'checks',
   stage: 2,
   shortName: { de: 'Muskel-Kompass 40+', en: 'Muscle compass 40+' },

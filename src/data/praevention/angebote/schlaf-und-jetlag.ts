@@ -9,7 +9,7 @@ import { honorar, labor, euroDe, euroEn } from '../preise';
 
 export const schlafUndJetlag: PreventionOffer = {
   slug: 'schlaf-und-jetlag',
-  bookingType: 'praevention-schlaf',
+  bookingType: 'p-schlaf-erst',
   group: 'begleitung',
   stage: 2,
   shortName: { de: 'Schlaf, Energie & Jetlag', en: 'Sleep, energy & jet lag' },

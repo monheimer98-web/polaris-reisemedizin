@@ -8,7 +8,7 @@ import { honorar, labor, euroDe, euroEn } from '../preise';
 
 export const kompassMaenner: PreventionOffer = {
   slug: 'kompass-maenner',
-  bookingType: 'praevention-maenner',
+  bookingType: 'p-maenner',
   group: 'checks',
   stage: 1,
   shortName: { de: 'Kompass für Männer 40+', en: 'Compass for men 40+' },

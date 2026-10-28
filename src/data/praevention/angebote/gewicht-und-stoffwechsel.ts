@@ -12,7 +12,7 @@ const start = honorar.blutentnahme + honorar.gewichtStart;
 
 export const gewichtUndStoffwechsel: PreventionOffer = {
   slug: 'gewicht-und-stoffwechsel',
-  bookingType: 'praevention-gewicht-start',
+  bookingType: 'p-gew-start',
   group: 'begleitung',
   stage: 1,
   shortName: { de: 'Gewicht & Stoffwechsel', en: 'Weight & metabolism' },
