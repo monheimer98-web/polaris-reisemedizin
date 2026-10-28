@@ -31,6 +31,19 @@
   --color-gold-800: #4f3a1f;
   --color-gold-900: #2c2012;
 
+  /* — Bereich „Prävention & Lebensstil": Salbei (eigene Farbwelt neben
+       Petrol/Gold). Text ab Stufe 500 erfüllt WCAG AA auf Creme und Weiß. — */
+  --color-salbei-50: #f1f5ef;
+  --color-salbei-100: #dfe9dc;
+  --color-salbei-200: #bfd3ba;
+  --color-salbei-300: #97b591;
+  --color-salbei-400: #6f9469;
+  --color-salbei-500: #517650;
+  --color-salbei-600: #405f40;
+  --color-salbei-700: #344e35;
+  --color-salbei-800: #29402c; /* Bereichsbasis */
+  --color-salbei-900: #1b2c1e;
+
   /* — Warme Neutraltöne — */
   --color-cream: #f7f5f0;
   --color-sand: #efece4;
@@ -217,6 +230,28 @@
   .rich-text strong {
     @apply font-semibold text-petrol-900;
   }
+}
+
+/* ------------------------------------------------------------------ *
+ * Bereich „Prävention & Lebensstil"
+ * Die Utilities lesen die Farb-Variablen zur Laufzeit. Innerhalb von
+ * `.theme-praevention` zeigen die Petrol-Stufen deshalb auf Salbei: Hero,
+ * Überschriften, Buttons, Rahmen und Abschluss-Band wechseln die Farbwelt,
+ * ohne dass Komponenten doppelt gepflegt werden. Gold bleibt der gemeinsame
+ * Markenakzent (Leitstern); Kopf- und Fußzeile bleiben Petrol – es ist
+ * dieselbe Praxis.
+ * ------------------------------------------------------------------ */
+.theme-praevention {
+  --color-petrol-50: var(--color-salbei-50);
+  --color-petrol-100: var(--color-salbei-100);
+  --color-petrol-200: var(--color-salbei-200);
+  --color-petrol-300: var(--color-salbei-300);
+  --color-petrol-400: var(--color-salbei-400);
+  --color-petrol-500: var(--color-salbei-500);
+  --color-petrol-600: var(--color-salbei-600);
+  --color-petrol-700: var(--color-salbei-700);
+  --color-petrol-800: var(--color-salbei-800);
+  --color-petrol-900: var(--color-salbei-900);
 }
 
 /* ------------------------------------------------------------------ *
