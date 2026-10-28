@@ -178,8 +178,8 @@ export const kostenPage: KostenPage = {
       id: 'impfstoffe',
       heading: { de: 'Impfstoffe', en: 'Vaccines' },
       note: {
-        de: 'Häufig benötigte Reiseimpfstoffe sowie den FSME- und den Gelbfieber-Impfstoff halten wir vorrätig – dann impfen wir auf Wunsch direkt im Termin. Seltener benötigte Impfstoffe besprechen wir in der Beratung; sie besorgen wir bzw. Sie erhalten ein Privatrezept für die Apotheke, und wir impfen beim nächsten Termin.',
-        en: 'We keep commonly needed travel vaccines as well as the TBE and yellow-fever vaccines in stock – so we can vaccinate you directly in the appointment if you wish. Less commonly needed vaccines are discussed during the consultation; we obtain them or you receive a private prescription for the pharmacy, and we vaccinate at the next appointment.',
+        de: 'Impfstoffe geben wir immer 1:1 zum Einkaufspreis weiter – ohne Aufschlag, wir verdienen daran nichts. Häufig benötigte Reiseimpfstoffe sowie den FSME- und den Gelbfieber-Impfstoff halten wir vorrätig – dann impfen wir auf Wunsch direkt im Termin. Seltener benötigte Impfstoffe besprechen wir in der Beratung; sie besorgen wir bzw. Sie erhalten ein Privatrezept für die Apotheke, und wir impfen beim nächsten Termin.',
+        en: 'We always pass on vaccines 1:1 at cost – without mark-up, we make nothing on them. We keep commonly needed travel vaccines as well as the TBE and yellow-fever vaccines in stock – so we can vaccinate you directly in the appointment if you wish. Less commonly needed vaccines are discussed during the consultation; we obtain them or you receive a private prescription for the pharmacy, and we vaccinate at the next appointment.',
       },
       items: [
         {
@@ -211,10 +211,10 @@ export const kostenPage: KostenPage = {
         {
           service: { de: 'Gelbfieberimpfung inkl. internationalem Impfnachweis (ICVP)', en: 'Yellow-fever vaccination incl. international certificate (ICVP)' },
           detail: {
-            de: 'Ärztliches Honorar für Aufklärung, kurze Impf-Untersuchung, Impfung und internationalen Impfnachweis. Der Gelbfieber-Impfstoff wird gesondert als Auslage berechnet.',
-            en: 'Medical fee for the briefing, a brief pre-vaccination check, the vaccination and the international certificate. The yellow-fever vaccine is billed separately as a disbursement.',
+            de: 'Ärztliches Honorar für Aufklärung, kurze Impf-Untersuchung, Impfung und internationalen Impfnachweis. Den Gelbfieber-Impfstoff geben wir 1:1 zum Einkaufspreis weiter, ohne Aufschlag – derzeit ca. 73 €. Insgesamt also rund 110 €.',
+            en: 'Medical fee for the briefing, a brief pre-vaccination check, the vaccination and the international certificate. We pass on the yellow-fever vaccine 1:1 at cost, without mark-up – currently approx. €73. In total roughly €110.',
           },
-          price: { de: 'ca. 38 € + Impfstoff', en: 'approx. €38 + vaccine' },
+          price: { de: 'ca. 38 € + Impfstoff (derzeit ca. 73 €)', en: 'approx. €38 + vaccine (currently approx. €73)' },
         },
       ],
     },

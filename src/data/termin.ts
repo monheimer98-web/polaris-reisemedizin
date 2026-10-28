@@ -298,10 +298,10 @@ export const bookingPage: BookingPage = {
         },
         duration: { de: 'ca. 10 Minuten', en: 'approx. 10 minutes' },
         description: {
-          de: 'Gelbfieberimpfung inklusive internationalem Impfnachweis (ICVP) – in einem Termin bei uns vor Ort. Den Impfstoff halten wir vorrätig.',
-          en: 'Yellow-fever vaccination including the international certificate (ICVP) – in a single appointment on site. We keep the vaccine in stock.',
+          de: 'Gelbfieberimpfung inklusive internationalem Impfnachweis (ICVP) – in einem Termin bei uns vor Ort. Den Impfstoff halten wir vorrätig und geben ihn 1:1 zum Einkaufspreis weiter (derzeit ca. 73 €).',
+          en: 'Yellow-fever vaccination including the international certificate (ICVP) – in a single appointment on site. We keep the vaccine in stock and pass it on 1:1 at cost (currently approx. €73).',
         },
-        price: { de: 'ca. 38 € + Impfstoff', en: 'approx. €38 + vaccine' },
+        price: { de: 'ca. 38 € + Impfstoff (ca. 73 €)', en: 'approx. €38 + vaccine (approx. €73)' },
         enabled: true,
       },
     ],
