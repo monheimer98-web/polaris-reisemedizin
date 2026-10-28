@@ -195,6 +195,10 @@ export const site = {
   yellowFever: {
     /** Zuständige Behörde / Bundesland, das die Impfstelle autorisiert hat. */
     authority: 'Ministerium für Arbeit, Gesundheit und Soziales des Landes Nordrhein-Westfalen (MAGS NRW)',
+    /** Zulassungsnummer laut Bescheid. */
+    approvalNumber: '867',
+    /** Datum des Bescheids (TT.MM.JJJJ); solange leer, wird es im Impressum nicht angezeigt. */
+    approvalDate: '15.12.2025',
   },
 
   /**

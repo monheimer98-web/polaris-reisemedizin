@@ -89,10 +89,10 @@ export const kostenPage: KostenPage = {
         {
           service: { de: 'Reisemedizinische Beratung – Fernreise oder mehrere Länder', en: 'Travel-medicine consultation – long-haul or multiple countries' },
           detail: {
-            de: 'Ausführliche Beratung (ab etwa 20 Minuten) für Fernreisen, mehrere Länder oder eine besondere Vorgeschichte – inklusive Malaria-Rezept, falls sinnvoll, und schriftlichem Impf- und Reiseplan.',
-            en: 'An in-depth consultation (from around 20 minutes) for long-haul trips, multiple countries or a particular medical history – including a malaria prescription where useful and a written vaccination and travel plan.',
+            de: 'Eingehende Beratung (ca. 15–20 Minuten) für Fernreisen, mehrere Länder oder eine besondere Vorgeschichte – mit persönlichem, schriftlichem Reise- und Impfplan und, falls sinnvoll, Malaria-Rezept.',
+            en: 'An in-depth consultation (approx. 15–20 minutes) for long-haul trips, multiple countries or a particular medical history – with a personal written travel and vaccination plan and, where useful, a malaria prescription.',
           },
-          price: { de: 'ca. 50 €', en: 'approx. €50' },
+          price: { de: 'ca. 38 €', en: 'approx. €38' },
         },
         {
           service: { de: 'Reiseberatung kompakt (Europa)', en: 'Compact travel consultation (Europe)' },
@@ -105,32 +105,48 @@ export const kostenPage: KostenPage = {
         {
           service: { de: 'Jede weitere mitreisende Person', en: 'Each additional travelling person' },
           detail: {
-            de: 'Eigene Beratung und eigener Impfplan im selben Termin – als ganz normale, einzeln einreichbare Rechnung (gleiches Reiseziel, bis zu sechs Personen).',
-            en: 'Own consultation and own vaccination plan in the same appointment – as a regular, individually submittable invoice (same destination, up to six people).',
+            de: 'Eigene Beratung und eigener Plan im selben Termin – als ganz normale, einzeln einreichbare Rechnung (gleiches Reiseziel, bis zu sechs Mitreisende).',
+            en: 'Own consultation and own plan in the same appointment – as a regular, individually submittable invoice (same destination, up to six companions).',
           },
           price: { de: 'ca. 28 €', en: 'approx. €28' },
         },
         {
-          service: { de: 'Fokus-Beratung Malaria oder Höhenmedizin', en: 'Focused malaria or altitude consultation' },
+          service: { de: 'Malaria- oder Höhenberatung (allein)', en: 'Malaria or altitude consultation (on its own)' },
           detail: {
-            de: 'Wenn Sie gezielt nur zum Malariaschutz oder zur Höhenmedizin beraten werden möchten – auf Wunsch mit Privatrezept.',
-            en: 'If you would like advice specifically on malaria protection or altitude medicine only – with a private prescription on request.',
+            de: 'Kurze, gezielte Beratung nur zum Malariaschutz oder nur zur Höhenmedizin – mit persönlichem, schriftlichem Plan und auf Wunsch mit Privatrezept.',
+            en: 'A short, focused consultation on malaria protection only or altitude medicine only – with a personal written plan and a private prescription on request.',
           },
-          price: { de: 'ca. 20 €', en: 'approx. €20' },
+          price: { de: 'ca. 28 €', en: 'approx. €28' },
+        },
+        {
+          service: { de: 'Malaria und Höhe zusammen', en: 'Malaria and altitude together' },
+          detail: {
+            de: 'Eingehende Beratung zu Malariaschutz und Höhenmedizin in einem Termin – mit persönlichem, schriftlichem Plan und auf Wunsch mit Privatrezept.',
+            en: 'An in-depth consultation on malaria protection and altitude medicine in one appointment – with a personal written plan and a private prescription on request.',
+          },
+          price: { de: 'ca. 38 €', en: 'approx. €38' },
         },
       ],
     },
     {
       id: 'impftermine',
-      heading: { de: 'Impftermine', en: 'Vaccination appointments' },
+      heading: { de: 'Impfungen', en: 'Vaccinations' },
       items: [
         {
-          service: { de: 'Folge-Impftermin (nach Ihrem Impfplan)', en: 'Follow-up vaccination appointment (per your plan)' },
+          service: { de: 'Beratung und Impfung im selben Termin', en: 'Consultation and vaccination in one appointment' },
           detail: {
-            de: 'Die eigentliche Impfung nach Ihrem Impfplan: Aufklärung, Impfung und Eintrag in den Impfausweis. Den Impfstoff bringen Sie per Privatrezept aus der Apotheke mit.',
-            en: 'The vaccination itself, following your plan: briefing, injection and entry in your vaccination certificate. You bring the vaccine from the pharmacy via private prescription.',
+            de: 'Ist der Impfstoff bei uns vorrätig, impfen wir auf Wunsch direkt im Anschluss an die Beratung – mit Reiseplan, kurzer Impf-Untersuchung und Impfung. Gilt für bis zu zwei Impfungen.',
+            en: 'If the vaccine is in stock, we can vaccinate you directly after the consultation – including the travel plan, a brief pre-vaccination check and the vaccination. Applies to up to two vaccinations.',
           },
-          price: { de: 'ca. 20 €', en: 'approx. €20' },
+          price: { de: 'ca. 50 € + Impfstoff', en: 'approx. €50 + vaccine' },
+        },
+        {
+          service: { de: 'Impftermin (nach Ihrer Beratung)', en: 'Vaccination appointment (after your consultation)' },
+          detail: {
+            de: 'Die Impfung nach Ihrem Impfplan: Aufklärung, kurze Impf-Untersuchung, Impfung und Eintrag in den Impfausweis. Folgedosen derselben Impfserie innerhalb eines Monats berechnen wir günstiger.',
+            en: 'The vaccination following your plan: briefing, a brief pre-vaccination check, injection and entry in your vaccination certificate. Follow-up doses of the same series within one month are charged at a lower rate.',
+          },
+          price: { de: 'ca. 32 € + Impfstoff', en: 'approx. €32 + vaccine' },
         },
         {
           service: { de: 'FSME-Impfung direkt (vor Ort, ein Termin)', en: 'TBE vaccination directly (on site, one appointment)' },
@@ -141,12 +157,20 @@ export const kostenPage: KostenPage = {
           price: { de: 'ca. 32 € + Impfstoff', en: 'approx. €32 + vaccine' },
         },
         {
-          service: { de: 'Jede weitere Impfung am selben Tag', en: 'Each additional vaccination on the same day' },
+          service: { de: 'Mehrere Impfungen im selben Termin', en: 'Several vaccinations in the same appointment' },
           detail: {
-            de: 'Wenn mehrere Impfungen in einem Termin zusammengefasst werden.',
-            en: 'When several vaccinations are combined in one appointment.',
+            de: 'Eine zweite Impfung im selben Termin kostet kein zusätzliches Honorar. Die dritte Impfung kostet ca. 3 € mehr, jede weitere ca. 7 €.',
+            en: 'A second vaccination in the same appointment carries no additional fee. The third costs approx. €3 more, each further one approx. €7.',
           },
-          price: { de: 'zzgl. ca. 7 €', en: 'plus approx. €7' },
+          price: { de: 'ab der 3.: zzgl. ca. 3 bzw. 7 €', en: 'from the 3rd: plus approx. €3 or €7' },
+        },
+        {
+          service: { de: 'Termin am Samstag', en: 'Appointment on a Saturday' },
+          detail: {
+            de: 'Für Termine am Samstag sieht die GOÄ einen Zuschlag vor.',
+            en: 'For appointments on a Saturday, the GOÄ provides for a surcharge.',
+          },
+          price: { de: 'zzgl. ca. 6 €', en: 'plus approx. €6' },
         },
         {
           service: { de: 'Neuer Impfausweis (falls noch keiner vorhanden)', en: 'New vaccination certificate (if you don’t have one yet)' },
@@ -162,25 +186,25 @@ export const kostenPage: KostenPage = {
       id: 'impfstoffe',
       heading: { de: 'Impfstoffe', en: 'Vaccines' },
       note: {
-        de: 'Für die meisten Reiseimpfungen erhalten Sie ein Privatrezept und holen den Impfstoff gekühlt in der Apotheke. Den FSME- und den Gelbfieber-Impfstoff halten wir vor Ort vorrätig.',
-        en: 'For most travel vaccinations you receive a private prescription and collect the refrigerated vaccine at the pharmacy. We keep the TBE and yellow-fever vaccines in stock on site.',
+        de: 'Impfstoffe berechnen wir – wie in der GOÄ vorgesehen – 1:1 zum Einkaufspreis, ohne Aufschlag. Häufig benötigte Reiseimpfstoffe sowie den FSME- und den Gelbfieber-Impfstoff halten wir vorrätig – dann impfen wir auf Wunsch direkt im Termin. Seltener benötigte Impfstoffe besprechen wir in der Beratung; sie besorgen wir bzw. Sie erhalten ein Privatrezept für die Apotheke, und wir impfen beim nächsten Termin.',
+        en: 'As provided for in the GOÄ, we charge vaccines 1:1 at cost, without mark-up. We keep commonly needed travel vaccines as well as the TBE and yellow-fever vaccines in stock – so we can vaccinate you directly in the appointment if you wish. Less commonly needed vaccines are discussed during the consultation; we obtain them or you receive a private prescription for the pharmacy, and we vaccinate at the next appointment.',
       },
       items: [
         {
-          service: { de: 'Impfstoff per Privatrezept', en: 'Vaccine via private prescription' },
+          service: { de: 'Vorrätiger Impfstoff', en: 'Vaccine in stock' },
           detail: {
-            de: 'Den Impfstoff bezahlen Sie direkt in der Apotheke – er erscheint nicht auf unserer Rechnung. Der Preis hängt vom jeweiligen Impfstoff ab.',
-            en: 'You pay for the vaccine directly at the pharmacy – it does not appear on our invoice. The price depends on the respective vaccine.',
-          },
-          price: { de: 'Apothekenpreis', en: 'pharmacy price' },
-        },
-        {
-          service: { de: 'FSME- und Gelbfieber-Impfstoff (vor Ort)', en: 'TBE and yellow-fever vaccine (on site)' },
-          detail: {
-            de: 'Den FSME- und den Gelbfieber-Impfstoff halten wir vor Ort vorrätig und berechnen den Impfstoff zum Bezugspreis (Auslage nach § 10 GOÄ).',
-            en: 'We keep the TBE and yellow-fever vaccines in stock on site and charge the vaccine at cost (disbursement under § 10 GOÄ).',
+            de: 'Häufig benötigte Reiseimpfstoffe, FSME und Gelbfieber: Wir berechnen den Impfstoff zum tatsächlichen Bezugspreis ohne Aufschlag (Auslage nach § 10 GOÄ).',
+            en: 'Commonly needed travel vaccines, TBE and yellow fever: we charge the vaccine at the actual cost price without mark-up (disbursement under § 10 GOÄ).',
           },
           price: { de: 'nach Bezugspreis', en: 'at cost price' },
+        },
+        {
+          service: { de: 'Impfstoff per Privatrezept', en: 'Vaccine via private prescription' },
+          detail: {
+            de: 'Seltener benötigte Impfstoffe: Den Impfstoff bezahlen Sie direkt in der Apotheke – er erscheint nicht auf unserer Rechnung. Der Preis hängt vom jeweiligen Impfstoff ab.',
+            en: 'Less commonly needed vaccines: you pay for the vaccine directly at the pharmacy – it does not appear on our invoice. The price depends on the respective vaccine.',
+          },
+          price: { de: 'Apothekenpreis', en: 'pharmacy price' },
         },
       ],
     },
@@ -188,17 +212,17 @@ export const kostenPage: KostenPage = {
       id: 'gelbfieber',
       heading: { de: 'Gelbfieberimpfung', en: 'Yellow-fever vaccination' },
       note: {
-        de: 'Als staatlich autorisierte Gelbfieberimpfstelle führen wir die Gelbfieberimpfung bei uns vor Ort durch und stellen den international gültigen Impfnachweis (ICVP) aus – in einem Termin bei uns vor Ort.',
-        en: 'As a state-authorised yellow-fever centre, we carry out the yellow-fever vaccination on site and issue the internationally valid certificate (ICVP) – in a single appointment on site.',
+        de: 'Als staatlich autorisierte Gelbfieberimpfstelle führen wir die Gelbfieberimpfung bei uns vor Ort durch und stellen den international gültigen Impfnachweis (ICVP) aus – in einem Termin bei uns vor Ort, auf Wunsch auch direkt im Rahmen der Reiseberatung.',
+        en: 'As a state-authorised yellow-fever centre, we carry out the yellow-fever vaccination on site and issue the internationally valid certificate (ICVP) – in a single appointment on site, or directly as part of your travel consultation if you wish.',
       },
       items: [
         {
           service: { de: 'Gelbfieberimpfung inkl. internationalem Impfnachweis (ICVP)', en: 'Yellow-fever vaccination incl. international certificate (ICVP)' },
           detail: {
-            de: 'Ärztliches Honorar für Aufklärung, Impfung und ICVP-Eintrag. Der Gelbfieber-Impfstoff wird gesondert als Auslage berechnet.',
-            en: 'Medical fee for the briefing, vaccination and ICVP entry. The yellow-fever vaccine is billed separately as a disbursement.',
+            de: 'Ärztliches Honorar für Aufklärung, kurze Impf-Untersuchung, Impfung und internationalen Impfnachweis. Den Gelbfieber-Impfstoff berechnen wir wie in der GOÄ vorgesehen 1:1 zum Einkaufspreis – derzeit ca. 73 €. Insgesamt also rund 110 €.',
+            en: 'Medical fee for the briefing, a brief pre-vaccination check, the vaccination and the international certificate. As provided for in the GOÄ, we charge the yellow-fever vaccine 1:1 at cost – currently approx. €73. In total roughly €110.',
           },
-          price: { de: 'ca. 38 € + Impfstoff', en: 'approx. €38 + vaccine' },
+          price: { de: 'ca. 38 € + Impfstoff (derzeit ca. 73 €)', en: 'approx. €38 + vaccine (currently approx. €73)' },
         },
       ],
     },
@@ -249,5 +273,5 @@ export const kostenPage: KostenPage = {
     en: 'All amounts are non-binding guide values under the GOÄ and do not replace an individual cost estimate. We agree the binding scope and costs with you before treatment.',
   },
 
-  lastReviewed: new Date('2026-07-04'),
+  lastReviewed: new Date('2026-10-28'),
 };

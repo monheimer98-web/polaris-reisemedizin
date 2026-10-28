@@ -31,10 +31,10 @@ export const processPage: ClinicalPage = {
       heading: { de: 'Was Sie erwartet', en: 'What to expect' },
       body: {
         de: [
-          'Im Mittelpunkt steht Ihre konkrete Reise. Wir bewerten das gesundheitliche Risiko anhand aktueller, offizieller Quellen und besprechen sinnvolle und gegebenenfalls vorgeschriebene Impfungen. Für die meisten Impfungen erhalten Sie ein Privatrezept und kommen zum Impfen wieder; FSME und Gelbfieber können wir vor Ort direkt durchführen. Den Abschluss bildet die ordnungsgemäße Dokumentation Ihres Impfschutzes.',
+          'Im Mittelpunkt steht Ihre konkrete Reise. Wir bewerten das gesundheitliche Risiko anhand aktueller, offizieller Quellen und besprechen sinnvolle und gegebenenfalls vorgeschriebene Impfungen. Häufig benötigte Impfstoffe haben wir vorrätig und impfen auf Wunsch direkt im Termin; für seltener benötigte erhalten Sie ein Privatrezept oder wir besorgen sie, und Sie kommen zum Impfen wieder. Den Abschluss bildet die ordnungsgemäße Dokumentation Ihres Impfschutzes.',
         ],
         en: [
-          'Your specific trip is the focus. We assess the health risk using current official sources and discuss advisable and any legally required vaccinations. For most vaccinations you receive a private prescription and return for the injection; TBE and yellow fever we can administer directly on site. Finally, we document your vaccination protection properly.',
+          'Your specific trip is the focus. We assess the health risk using current official sources and discuss advisable and any legally required vaccinations. Commonly needed vaccines we keep in stock and can give directly in the appointment; for less common ones you receive a private prescription or we obtain them, and you return for the vaccination. Finally, we document your vaccination protection properly.',
         ],
       },
       list: {
@@ -98,23 +98,23 @@ export const processPage: ClinicalPage = {
     },
     {
       id: 'termine',
-      heading: { de: 'Beratung und Impfung – oft zwei Schritte', en: 'Consultation and vaccination – often two steps' },
+      heading: { de: 'Beratung und Impfung – direkt oder in zwei Schritten', en: 'Consultation and vaccination – directly or in two steps' },
       body: {
         de: [
           'Am Anfang steht die ausführliche Beratung mit dem schriftlichen Impf- und Reiseplan. Sie bildet die Grundlage für alle weiteren Schritte.',
-          'Für die meisten Reiseimpfungen erhalten Sie anschließend ein Privatrezept, holen den Impfstoff gekühlt in der Apotheke und kommen zum Impftermin wieder. Den FSME- und den Gelbfieber-Impfstoff halten wir vor Ort vorrätig – FSME und Gelbfieber können wir daher direkt im Termin impfen. So sind oft zwei Schritte sinnvoll: zuerst die Beratung, dann das Impfen.',
+          'Häufig benötigte Reiseimpfstoffe sowie den FSME- und den Gelbfieber-Impfstoff halten wir vorrätig – dann impfen wir auf Wunsch direkt im Beratungstermin. Seltener benötigte Impfstoffe besprechen wir mit Ihnen, besorgen sie bzw. Sie erhalten ein Privatrezept für die Apotheke, und wir impfen beim nächsten Termin.',
         ],
         en: [
           'It all starts with the in-depth consultation and the written vaccination and travel plan. This forms the basis for every further step.',
-          'For most travel vaccinations you then receive a private prescription, collect the refrigerated vaccine at the pharmacy and return for the vaccination appointment. The TBE and yellow fever vaccines we keep in stock on site – so both can be given directly during the appointment. Two steps therefore often make sense: first the consultation, then the vaccination.',
+          'We keep commonly needed travel vaccines as well as the TBE and yellow fever vaccines in stock – so we can vaccinate you directly in the consultation appointment if you wish. Less commonly needed vaccines are discussed with you; we obtain them or you receive a private prescription for the pharmacy, and we vaccinate at the next appointment.',
         ],
       },
       callout: {
         variant: 'info',
-        title: { de: 'Warum getrennte Termine?', en: 'Why separate appointments?' },
+        title: { de: 'Wann ist ein zweiter Termin nötig?', en: 'When is a second appointment needed?' },
         text: {
-          de: 'Den Impfstoff holen Sie für die meisten Reiseimpfungen per Privatrezept gekühlt in der Apotheke – das bedeutet meist einen zweiten Termin. Bitte transportieren Sie den Impfstoff in einer Kühltasche direkt zu uns. FSME und Gelbfieber halten wir vor Ort vorrätig – hier genügt ein Termin.',
-          en: 'For most travel vaccinations you collect the refrigerated vaccine at the pharmacy via private prescription – this usually means a second appointment. Please bring the vaccine straight to us in a cool bag. TBE and yellow fever we keep in stock on site – here a single appointment is enough.',
+          de: 'Wenn ein Impfstoff nicht vorrätig ist oder eine Impfung mehrere Dosen braucht. Holen Sie einen Impfstoff per Privatrezept in der Apotheke, transportieren Sie ihn bitte in einer Kühltasche direkt zu uns. Vorrätige Impfstoffe, FSME und Gelbfieber impfen wir direkt – hier genügt ein Termin.',
+          en: 'When a vaccine is not in stock or a vaccination needs several doses. If you collect a vaccine at the pharmacy via private prescription, please bring it straight to us in a cool bag. Vaccines in stock, TBE and yellow fever we give directly – here a single appointment is enough.',
         },
       },
     },

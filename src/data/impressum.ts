@@ -44,6 +44,8 @@ export interface ImpressumPage {
     yellowFeverHeading: Localized;
     yellowFeverIntro: Localized;
     yellowFeverAuthorityLabel: Localized;
+    yellowFeverNumberLabel: Localized;
+    yellowFeverDateLabel: Localized;
     insuranceHeading: Localized;
     insurerLabel: Localized;
     insuranceScopeLabel: Localized;
@@ -139,6 +141,14 @@ export const impressumPage: ImpressumPage = {
     yellowFeverAuthorityLabel: {
       de: 'Autorisierende Behörde',
       en: 'Authorising body',
+    },
+    yellowFeverNumberLabel: {
+      de: 'Zulassungsnummer',
+      en: 'Authorisation number',
+    },
+    yellowFeverDateLabel: {
+      de: 'Datum der Zulassung',
+      en: 'Date of authorisation',
     },
     insuranceHeading: {
       de: 'Berufshaftpflichtversicherung',

@@ -33,12 +33,12 @@ export const kostenErstattungGuide: ClinicalPage = {
         de: [
           'Ärztliche Beratung: Wir prüfen Reiseroute, Gesundheitszustand und Impfpass. Am Ende steht ein schriftlicher Impf- und Reiseplan.',
           'Impfleistung: Aufklärung, Impfung und Eintrag in den Impfausweis – je Termin und je Impfung.',
-          'Impfstoff: Ihn bezahlen Sie meist direkt in der Apotheke (Privatrezept). Den FSME- und den Gelbfieber-Impfstoff halten wir vor Ort vorrätig und berechnen ihn als Auslage zum tatsächlichen Bezugspreis (§ 10 GOÄ).',
+          'Impfstoff: Vorrätige Impfstoffe (häufig benötigte Reiseimpfstoffe, FSME, Gelbfieber) berechnen wir als Auslage zum tatsächlichen Bezugspreis (§ 10 GOÄ). Seltener benötigte Impfstoffe bezahlen Sie per Privatrezept direkt in der Apotheke.',
         ],
         en: [
           'Medical consultation: we review your route, your health and your vaccination record, and you receive a written vaccination and travel plan.',
           'Vaccination: informed consent, injection and entry in your vaccination certificate – per appointment and per vaccination.',
-          'Vaccine: you usually pay for it directly at the pharmacy (private prescription). We keep the TBE and yellow fever vaccines in stock and charge them as a disbursement at the actual purchase price (Section 10 GOÄ).',
+          'Vaccine: vaccines in stock (commonly needed travel vaccines, TBE, yellow fever) we charge as a disbursement at the actual purchase price (Section 10 GOÄ). Less commonly needed vaccines you pay for directly at the pharmacy via private prescription.',
         ],
       },
       callout: {

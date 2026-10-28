@@ -174,6 +174,22 @@ const hasInsurer = (() => {
             <dt class="text-xs font-semibold uppercase tracking-wider text-gold-700">{l.yellowFeverAuthorityLabel[lang]}</dt>
             <dd class="mt-1 leading-relaxed text-ink-soft">{site.yellowFever.authority}</dd>
           </div>
+          {
+            site.yellowFever.approvalNumber && (
+              <div>
+                <dt class="text-xs font-semibold uppercase tracking-wider text-gold-700">{l.yellowFeverNumberLabel[lang]}</dt>
+                <dd class="mt-1 leading-relaxed text-ink-soft">{site.yellowFever.approvalNumber}</dd>
+              </div>
+            )
+          }
+          {
+            site.yellowFever.approvalDate && (
+              <div>
+                <dt class="text-xs font-semibold uppercase tracking-wider text-gold-700">{l.yellowFeverDateLabel[lang]}</dt>
+                <dd class="mt-1 leading-relaxed text-ink-soft">{site.yellowFever.approvalDate}</dd>
+              </div>
+            )
+          }
         </dl>
       </section>
 
