@@ -20,9 +20,11 @@ interface Props {
   embedUrl?: string;
   /** Zugänglicher Titel des iframes (Screenreader). */
   title: string;
+  /** Nur die Terminarten dieses Bereichs zeigen (`/buchung?bereich=…`). */
+  bereich?: string;
 }
 
-const { embedUrl = '', title } = Astro.props;
+const { embedUrl = '', title, bereich = '' } = Astro.props;
 // Pfad zur selbst-aktualisierenden Adress-Datei (respektiert den Pages-Unterpfad).
 const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
 ---
@@ -32,7 +34,8 @@ const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
     class="booking-embed-mount"
     data-json={jsonUrl}
     data-fallback={embedUrl}
-    data-title={title}>
+    data-title={title}
+    data-bereich={bereich}>
     <div class="booking-embed-lade" role="status">Buchung wird geladen …</div>
   </div>
 </div>
@@ -46,13 +49,15 @@ const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
     const jsonUrl = mount.dataset.json || 'app-url.json';
     const fallback = mount.dataset.fallback || '';
     const title = mount.dataset.title || 'Terminbuchung';
+    const bereich = mount.dataset.bereich || '';
+    const bereichParam = bereich ? 'bereich=' + encodeURIComponent(bereich) : '';
 
     function basisAus(u: string): string {
       try { return new URL(u).origin; } catch { return u.replace(/\/(buchung|mobil).*$/, ''); }
     }
 
     function baueIframe(basis: string) {
-      const src = basis.replace(/\/+$/, '') + '/buchung?embed=1';
+      const src = basis.replace(/\/+$/, '') + '/buchung?embed=1' + (bereichParam ? '&' + bereichParam : '');
       let origin = '';
       try { origin = new URL(src).origin; } catch { origin = ''; }
       const frame = document.createElement('iframe');
@@ -84,7 +89,7 @@ const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
       // unzuverlässig ist (leerer Rahmen). WICHTIG: inline stylen – dynamisch
       // erzeugte Elemente bekommen kein Astro-Scope-Attribut, scoped-CSS greift
       // hier NICHT.
-      const url = basis.replace(/\/+$/, '') + '/buchung';
+      const url = basis.replace(/\/+$/, '') + '/buchung' + (bereichParam ? '?' + bereichParam : '');
       const wrap = document.createElement('div');
       wrap.style.cssText =
         'min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:36px 24px;';

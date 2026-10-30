@@ -14,12 +14,14 @@ interface Props {
   title?: string;
   lead?: string;
   note?: string;
+  /** Eigene Terminseite (Bereich Prävention); sonst die allgemeine. */
+  bookingPath?: string;
 }
 
-const { bookingType, title, lead, note } = Astro.props;
+const { bookingType, title, lead, note, bookingPath = BOOKING_PATH } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const bookingHref = getLocalizedPath(BOOKING_PATH, lang) + (bookingType ? `?art=${bookingType}` : '');
+const bookingHref = getLocalizedPath(bookingPath, lang) + (bookingType ? `?art=${bookingType}` : '');
 ---
 
 <section class="no-print u-container pb-20 sm:pb-24">

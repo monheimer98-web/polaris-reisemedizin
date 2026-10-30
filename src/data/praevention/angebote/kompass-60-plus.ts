@@ -26,8 +26,8 @@ export const kompass60Plus: PreventionOffer = {
       en: 'Lab appointment approx. 10 min, main appointment approx. 60 min; vaccinations in the same appointment on request.',
     },
     fee: {
-      de: `${euroDe(honorar.check)} nach GOÄ, einschließlich Blutentnahme; Impfung im Termin ${euroDe(honorar.impfung)} zzgl. Impfstoff`,
-      en: `${euroEn(honorar.check)} under the GOÄ, including the blood draw; vaccination during the appointment ${euroEn(honorar.impfung)} plus vaccine`,
+      de: `${euroDe(honorar.check)} nach GOÄ für Untersuchung, Plan und Blutentnahme, plus Laborkosten; Impfung im Termin ${euroDe(honorar.impfung)} zzgl. Impfstoff`,
+      en: `${euroEn(honorar.check)} under the GOÄ for examination, plan and blood draw, plus lab costs; vaccination during the appointment ${euroEn(honorar.impfung)} plus vaccine`,
     },
     lab: {
       de: `ca. ${euroDe(labor.check60)}, direkt vom Labor`,
@@ -67,11 +67,11 @@ export const kompass60Plus: PreventionOffer = {
   costs: {
     de: [
       `Ärztliches Honorar nach GOÄ (Regelsatz): ${euroDe(honorar.check)} einschließlich Blutentnahme. Impfungen im selben Termin ${euroDe(honorar.impfung)} (jede weitere ${euroDe(honorar.weitereImpfung)}) zzgl. Impfstoff.`,
-      `Labor ca. ${euroDe(labor.check60)} direkt vom Labor. Gesetzlich Versicherte erhalten die von der STIKO empfohlenen Impfungen in der Regel ohne Zuzahlung in ihrer Hausarztpraxis.`,
+      `Dazu kommen die Laborkosten von ca. ${euroDe(labor.check60)}, eigene Rechnung vom Labor. Gesetzlich Versicherte erhalten die von der STIKO empfohlenen Impfungen in der Regel ohne Zuzahlung in ihrer Hausarztpraxis.`,
     ],
     en: [
       `Medical fee under the GOÄ (standard rate): ${euroEn(honorar.check)} including the blood draw. Vaccinations in the same appointment ${euroEn(honorar.impfung)} (each further one ${euroEn(honorar.weitereImpfung)}) plus vaccine.`,
-      `Lab approx. ${euroEn(labor.check60)} billed directly by the laboratory. People with statutory insurance usually receive STIKO-recommended vaccinations without co-payment from their GP.`,
+      `Lab costs of approx. ${euroEn(labor.check60)} come on top, with a separate invoice from the laboratory. People with statutory insurance usually receive STIKO-recommended vaccinations without co-payment from their GP.`,
     ],
   },
   page: {

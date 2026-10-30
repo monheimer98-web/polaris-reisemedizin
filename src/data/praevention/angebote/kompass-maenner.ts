@@ -26,8 +26,8 @@ export const kompassMaenner: PreventionOffer = {
       en: 'Lab appointment approx. 10 min in the morning, main appointment approx. 60 min 3–7 days later.',
     },
     fee: {
-      de: `${euroDe(honorar.check)} nach GOÄ, einschließlich Blutentnahme`,
-      en: `${euroEn(honorar.check)} under the GOÄ, including the blood draw`,
+      de: `${euroDe(honorar.check)} nach GOÄ für Untersuchung, Plan und Blutentnahme, plus Laborkosten`,
+      en: `${euroEn(honorar.check)} under the GOÄ for examination, plan and blood draw, plus lab costs`,
     },
     lab: {
       de: `ca. ${euroDe(labor.maenner)} mit einmaliger Lp(a)-Bestimmung, direkt vom Labor; weitere Werte nur nach Beratung`,
@@ -60,11 +60,11 @@ export const kompassMaenner: PreventionOffer = {
   costs: {
     de: [
       `Ärztliches Honorar nach GOÄ (Regelsatz): ${euroDe(honorar.check)} für Blutentnahme, Untersuchung, Risikoeinschätzung, Beratung und schriftlichen Plan.`,
-      `Labor ca. ${euroDe(labor.maenner)} direkt vom Labor; weitere Werte nur nach Beratung. Die voraussichtlichen Kosten nennen wir Ihnen vorab schriftlich.`,
+      `Dazu kommen die Laborkosten von ca. ${euroDe(labor.maenner)}, eigene Rechnung vom Labor; weitere Werte nur nach Beratung. Die voraussichtlichen Kosten nennen wir Ihnen vorab schriftlich.`,
     ],
     en: [
       `Medical fee under the GOÄ (standard rate): ${euroEn(honorar.check)} for blood draw, examination, risk assessment, advice and a written plan.`,
-      `Lab approx. ${euroEn(labor.maenner)} billed directly by the laboratory; further tests only after advice. We tell you the expected costs in writing beforehand.`,
+      `Lab costs of approx. ${euroEn(labor.maenner)} come on top, with a separate invoice from the laboratory; further tests only after advice. We tell you the expected costs in writing beforehand.`,
     ],
   },
   page: {

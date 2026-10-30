@@ -26,12 +26,12 @@ export const praeventionsCheck: PreventionOffer = {
       en: 'Lab appointment approx. 10 min in the morning, main appointment approx. 60 min 3–7 days later.',
     },
     fee: {
-      de: `${euroDe(honorar.check)} nach GOÄ, einschließlich Blutentnahme`,
-      en: `${euroEn(honorar.check)} under the German fee schedule (GOÄ), including the blood draw`,
+      de: `${euroDe(honorar.check)} nach GOÄ für Untersuchung, Plan und Blutentnahme, plus Laborkosten`,
+      en: `${euroEn(honorar.check)} under the German fee schedule (GOÄ) for examination, plan and blood draw, plus lab costs`,
     },
     lab: {
-      de: `ca. ${euroDe(labor.check)}, mit einmaliger Lp(a)-Bestimmung ca. ${euroDe(labor.checkMitLpa)}, direkt vom Labor`,
-      en: `approx. ${euroEn(labor.check)}, with a one-off Lp(a) test approx. ${euroEn(labor.checkMitLpa)}, billed directly by the laboratory`,
+      de: `ca. ${euroDe(labor.check)}, mit einmaliger Lp(a)-Bestimmung ca. ${euroDe(labor.checkMitLpa)}, eigene Rechnung vom Labor`,
+      en: `approx. ${euroEn(labor.check)}, with a one-off Lp(a) test approx. ${euroEn(labor.checkMitLpa)}, separate invoice from the laboratory`,
     },
   },
   steps: [
@@ -67,12 +67,12 @@ export const praeventionsCheck: PreventionOffer = {
   costs: {
     de: [
       `Ärztliches Honorar nach GOÄ (Regelsatz): ${euroDe(honorar.check)} für Blutentnahme, Untersuchung, Risikoeinschätzung, Beratung und schriftlichen Präventionsplan. Ein Verlaufstermin nach einigen Monaten kostet ${euroDe(honorar.gespraech)}.`,
-      `Das Labor berechnet seine Leistungen direkt: ca. ${euroDe(labor.check)}, mit einmaliger Lp(a)-Bestimmung ca. ${euroDe(labor.checkMitLpa)}. Die voraussichtlichen Kosten nennen wir Ihnen vorab schriftlich.`,
+      `Dazu kommen die Laborkosten: Das Labor untersucht Ihre Blutprobe und schickt Ihnen dafür eine eigene Rechnung, ca. ${euroDe(labor.check)}, mit einmaliger Lp(a)-Bestimmung ca. ${euroDe(labor.checkMitLpa)}. Die voraussichtlichen Kosten nennen wir Ihnen vorab schriftlich.`,
       'Private Krankenversicherungen und Beihilfe erstatten Gesundheitsuntersuchungen je nach Tarif, häufig in den Abständen des gesetzlichen Check-ups (ab 35 Jahren alle drei Jahre). Bitte klären Sie die Erstattung vorab.',
     ],
     en: [
       `Medical fee under the GOÄ (standard rate): ${euroEn(honorar.check)} for blood draw, examination, risk assessment, advice and a written prevention plan. A follow-up appointment after a few months costs ${euroEn(honorar.gespraech)}.`,
-      `The laboratory bills its services directly: approx. ${euroEn(labor.check)}, with a one-off Lp(a) test approx. ${euroEn(labor.checkMitLpa)}. We tell you the expected costs in writing beforehand.`,
+      `Lab costs come on top: the laboratory analyses your blood sample and sends you its own invoice, approx. ${euroEn(labor.check)}, with a one-off Lp(a) test approx. ${euroEn(labor.checkMitLpa)}. We tell you the expected costs in writing beforehand.`,
       'Private health insurers and civil-service allowances (Beihilfe) reimburse health check-ups depending on the tariff, often at the intervals of the statutory check-up (every three years from age 35). Please check reimbursement in advance.',
     ],
   },

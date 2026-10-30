@@ -45,7 +45,9 @@ export const labor = {
   checkMitLpa: 47,
   check60: 31,
   maenner: 47,
-  /** Start mit TSH (S3-Leitlinie), Verlauf nach 3 und 12 Monaten */
+  /** Start mit TSH (S3-Leitlinie) */
+  gewichtStart: 56,
+  /** Start, Verlauf nach 3 und 12 Monaten */
   gewichtJahr: 110,
   muedigkeit: 48,
 } as const;

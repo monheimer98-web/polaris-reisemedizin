@@ -13,6 +13,7 @@ import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
 import { site } from '../config/site';
 import { bookingPage as page } from '../data/termin';
 import BookingEmbed from './BookingEmbed.astro';
+import { PREVENTION_BOOKING_PATH } from '../data/praevention';
 
 const lang = getLangFromUrl(Astro.url);
 ---
@@ -28,6 +29,12 @@ const lang = getLangFromUrl(Astro.url);
         </p>
         <h1 class="mt-5 font-display text-4xl text-petrol-900 sm:text-5xl">{page.meta.title[lang]}</h1>
         <p class="mt-5 text-lg leading-relaxed text-ink-soft">{page.meta.lead[lang]}</p>
+        <p class="theme-praevention mt-5 text-sm text-ink-soft">
+          {lang === 'de' ? 'Im falschen Bereich gelandet? ' : 'In the wrong section? '}
+          <a href={getLocalizedPath(PREVENTION_BOOKING_PATH, lang)} class="font-semibold text-petrol-700 underline decoration-gold-400/50 underline-offset-4">
+            {lang === 'de' ? 'Termine für Prävention & Lebensstil finden Sie hier.' : 'Appointments for prevention & lifestyle are here.'}
+          </a>
+        </p>
       </div>
     </div>
   </header>

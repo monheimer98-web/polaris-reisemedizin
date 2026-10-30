@@ -30,12 +30,12 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
       en: 'Lab appointment approx. 10 min, start approx. 45 min, plan appointment with nutrition plan approx. 30 min, then follow-ups of approx. 15–20 min about monthly; approx. 10–12 appointments in the first year.',
     },
     fee: {
-      de: `Start mit Blutentnahme ${euroDe(start)}, Plantermin ${euroDe(honorar.gewichtPlan)}, Verlauf ${euroDe(honorar.verlauf)} (GOÄ, je Termin)`,
-      en: `Start with blood draw ${euroEn(start)}, plan appointment ${euroEn(honorar.gewichtPlan)}, follow-up ${euroEn(honorar.verlauf)} (GOÄ, per appointment)`,
+      de: `Start einschließlich Blutabnahme ${euroDe(start)}, die Untersuchung der Blutprobe im Labor kostet extra (ca. ${euroDe(labor.gewichtStart)}); Plantermin ${euroDe(honorar.gewichtPlan)}, Verlauf ${euroDe(honorar.verlauf)} (GOÄ, je Termin)`,
+      en: `Start including the blood draw ${euroEn(start)}, analysing the sample in the laboratory costs extra (approx. ${euroEn(labor.gewichtStart)}); plan appointment ${euroEn(honorar.gewichtPlan)}, follow-up ${euroEn(honorar.verlauf)} (GOÄ, per appointment)`,
     },
     lab: {
-      de: `zu Beginn sowie nach 3 und 12 Monaten, zusammen ca. ${euroDe(labor.gewichtJahr)} im ersten Jahr, direkt vom Labor`,
-      en: `at the start and after 3 and 12 months, together approx. ${euroEn(labor.gewichtJahr)} in the first year, billed directly by the laboratory`,
+      de: `zu Beginn sowie nach 3 und 12 Monaten, zusammen ca. ${euroDe(labor.gewichtJahr)} im ersten Jahr, eigene Rechnung vom Labor`,
+      en: `at the start and after 3 and 12 months, together approx. ${euroEn(labor.gewichtJahr)} in the first year, separate invoice from the laboratory`,
     },
   },
   steps: [
@@ -71,12 +71,12 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
   costs: {
     de: [
       `Jeder Termin wird einzeln nach GOÄ (Regelsatz) abgerechnet – ohne Pakete, Monatsbeiträge oder Vorauszahlung: Start mit Blutentnahme ${euroDe(start)}, Plantermin mit persönlichem Ernährungsplan ${euroDe(honorar.gewichtPlan)}, Verlaufstermin ${euroDe(honorar.verlauf)}, Halbjahres- und Jahresbilanz je ${euroDe(honorar.bilanz)}.`,
-      `Ein erstes Jahr mit 10 bis 12 Terminen kostet ca. 330–400 € ärztliches Honorar, dazu Labor von ca. ${euroDe(labor.gewichtJahr)} direkt vom Labor. Sie erhalten vorab eine schriftliche Kostenschätzung und zahlen nur, was stattfindet.`,
+      `Ein erstes Jahr mit 10 bis 12 Terminen kostet ca. 330–400 € ärztliches Honorar, dazu Laborkosten von ca. ${euroDe(labor.gewichtJahr)} mit eigener Rechnung vom Labor. Sie erhalten vorab eine schriftliche Kostenschätzung und zahlen nur, was stattfindet.`,
       'Private Krankenversicherungen und Beihilfe erstatten ärztliche Behandlungen je nach Tarif und Diagnose. Gesetzlich Versicherte zahlen die Termine selbst. Bitte klären Sie die Erstattung vorab.',
     ],
     en: [
       `Each appointment is billed individually under the GOÄ (standard rate) – no packages, monthly fees or prepayment: start with blood draw ${euroEn(start)}, plan appointment with personal nutrition plan ${euroEn(honorar.gewichtPlan)}, follow-up ${euroEn(honorar.verlauf)}, six-month and annual review ${euroEn(honorar.bilanz)} each.`,
-      `A first year with 10 to 12 appointments costs approx. €330–400 in medical fees, plus approx. ${euroEn(labor.gewichtJahr)} billed directly by the laboratory. You receive a written cost estimate beforehand and only pay for what takes place.`,
+      `A first year with 10 to 12 appointments costs approx. €330–400 in medical fees, plus lab costs of approx. ${euroEn(labor.gewichtJahr)} with a separate invoice from the laboratory. You receive a written cost estimate beforehand and only pay for what takes place.`,
       'Private health insurers and Beihilfe reimburse medical treatment depending on the tariff and diagnosis. People with statutory insurance pay for the appointments themselves. Please check reimbursement in advance.',
     ],
   },

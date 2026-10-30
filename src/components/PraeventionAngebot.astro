@@ -22,7 +22,7 @@ const facts = [
   { label: de ? 'Für wen' : 'Who it is for', value: offer.facts.forWhom[lang] },
   { label: de ? 'Termine' : 'Appointments', value: offer.facts.appointments[lang] },
   { label: de ? 'Ärztliches Honorar' : 'Medical fee', value: offer.facts.fee[lang] },
-  { label: de ? 'Labor' : 'Lab tests', value: offer.facts.lab[lang] },
+  { label: de ? 'Zusätzlich: Laborkosten' : 'Additional: lab costs', value: offer.facts.lab[lang] },
 ];
 const { faq, ...rest } = offer.page;
 ---

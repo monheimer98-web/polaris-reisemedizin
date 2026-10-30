@@ -15,6 +15,13 @@ import { schlafUndJetlag } from './angebote/schlaf-und-jetlag';
 import { werteEinordnen } from './angebote/werte-einordnen';
 
 export const PREVENTION_PATH = '/praevention';
+/** Eigene Terminseite des Bereichs; Reise-Terminarten erscheinen hier nicht. */
+export const PREVENTION_BOOKING_PATH = '/praevention/termin';
+/**
+ * Online-Buchung der Präventions-Terminarten an? Erst mit dem App-Update
+ * (`/buchung?bereich=praevention`) einschalten; bis dahin Telefon und E-Mail.
+ */
+export const preventionOnlineBooking = false;
 
 /** Alle vorbereiteten Angebote (auch Stufe 2). */
 export const allPreventionOffers: PreventionOffer[] = [
@@ -144,7 +151,7 @@ export const preventionHub = {
     en: 'Choose the right service when booking. Not sure? Call us and we will help you get started.',
   },
   ctaNote: {
-    de: 'Polaris ist eine Privatpraxis. Abrechnung nach GOÄ, Labor direkt vom Labor.',
-    en: 'Polaris is a private practice. Fees under the GOÄ; lab tests are billed directly by the laboratory.',
+    de: 'Polaris ist eine Privatpraxis. Abrechnung nach GOÄ. Laborkosten kommen je nach Angebot hinzu; das Labor rechnet sie direkt mit Ihnen ab.',
+    en: 'Polaris is a private practice. Fees under the GOÄ. Depending on the service, lab costs are added; the laboratory bills them directly to you.',
   },
 };

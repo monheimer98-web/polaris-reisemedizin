@@ -20,6 +20,7 @@ import PraeventionNav from '../components/PraeventionNav.astro';
 import { getLangFromUrl, useTranslations, formatReviewDate, getLocalizedPath, getLogicalPath, HREFLANG } from '../i18n/utils';
 import { SITE_URL, site } from '../config/site';
 import { BOOKING_PATH } from '../config/nav';
+import { PREVENTION_BOOKING_PATH } from '../data/praevention';
 import { diseaseFacts } from '../data/diseaseFacts';
 import type { UiKey } from '../i18n/ui';
 import type { SourceWithId } from '../data/sources';
@@ -61,7 +62,8 @@ interface Props {
 const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel, faq = [], parent, area, areaCurrent, cta } = Astro.props;
 const areaClass = area === 'praevention' ? 'theme-praevention' : undefined;
 const lang = getLangFromUrl(Astro.url);
-const bookingHref = getLocalizedPath(BOOKING_PATH, lang) + (bookingType ? `?art=${bookingType}` : '');
+const bookingPath = area === 'praevention' ? PREVENTION_BOOKING_PATH : BOOKING_PATH;
+const bookingHref = getLocalizedPath(bookingPath, lang) + (bookingType ? `?art=${bookingType}` : '');
 const t = useTranslations(lang);
 
 // Brotkrumen aus dem URL-Pfad: Start › <Hub> › <aktuelle Seite>.
@@ -242,6 +244,6 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
   </article>
 
   <div class={areaClass}>
-    <CTA bookingType={bookingType} title={cta?.title} lead={cta?.lead} note={cta?.note} />
+    <CTA bookingType={bookingType} title={cta?.title} lead={cta?.lead} note={cta?.note} bookingPath={bookingPath} />
   </div>
 </BaseLayout>

@@ -1,0 +1,83 @@
+---
+/**
+ * Terminseite des Bereichs „Prävention & Lebensstil" (/praevention/termin):
+ * zeigt nur Präventions-Termine, Reise-Terminarten bleiben auf /termin. Solange
+ * die App die Präventions-Terminarten noch nicht kennt
+ * (`preventionOnlineBooking = false`), läuft die Vereinbarung über Telefon und
+ * E-Mail statt über das Buchungstool. Sprache aus der URL.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from './PageHero.astro';
+import PraeventionNav from './PraeventionNav.astro';
+import BookingEmbed from './BookingEmbed.astro';
+import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
+import { BOOKING_PATH } from '../config/nav';
+import { site } from '../config/site';
+import { preventionDoctor, preventionHub, preventionOffers, preventionOnlineBooking, preventionPath } from '../data/praevention';
+
+const lang = getLangFromUrl(Astro.url);
+const de = lang === 'de';
+const title = de ? 'Termin für Prävention & Lebensstil' : 'Appointment for prevention & lifestyle';
+const lead = de
+  ? 'Wählen Sie Ihr Angebot. Wenn Blutwerte dazugehören, vereinbaren wir zwei Termine: zuerst die kurze Blutentnahme, einige Tage später das Gespräch mit allen Werten.'
+  : 'Choose your service. If blood tests are part of it, we arrange two appointments: first the short blood draw, a few days later the consultation with all results.';
+---
+
+<BaseLayout title={title} description={lead} noindex>
+  <div class="theme-praevention">
+    <PageHero eyebrow={de ? 'Prävention & Lebensstil' : 'Prevention & lifestyle'} title={title} lead={lead}>
+      <p class="mt-6 text-sm text-ink-soft">
+        {de ? 'Im falschen Bereich gelandet? ' : 'In the wrong section? '}
+        <a href={getLocalizedPath(BOOKING_PATH, lang)} class="font-semibold text-petrol-700 underline decoration-gold-400/50 underline-offset-4">
+          {de ? 'Termine für Reisemedizin und Impfungen finden Sie hier.' : 'Appointments for travel medicine and vaccinations are here.'}
+        </a>
+      </p>
+    </PageHero>
+
+    <PraeventionNav current="termin" />
+
+    <section class="u-container py-14 sm:py-16">
+      {
+        preventionOnlineBooking ? (
+          <BookingEmbed embedUrl={site.booking.embedUrl} title={title} bereich="praevention" />
+        ) : (
+          <div class="card max-w-3xl">
+            <h2 class="text-2xl">{de ? 'Termin vereinbaren' : 'Arrange an appointment'}</h2>
+            <p class="mt-3 text-ink-soft">
+              {de
+                ? 'Die Online-Buchung für diesen Bereich richten wir gerade ein. Rufen Sie uns bitte an oder schreiben Sie uns; wir finden gemeinsam den passenden Termin.'
+                : 'We are currently setting up online booking for this section. Please call or e-mail us and we will find a suitable appointment together.'}
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href={site.contact.phoneHref} class="btn-primary">{site.contact.phone}</a>
+              <a href={site.contact.emailHref} class="btn-ghost">{site.contact.email}</a>
+            </div>
+          </div>
+        )
+      }
+    </section>
+
+    <section class="u-container pb-16 sm:pb-20">
+      <h2 class="text-2xl sm:text-3xl">{de ? 'Unsere Angebote' : 'Our services'}</h2>
+      <ul class="mt-6 divide-y divide-petrol-100 rounded-2xl border border-petrol-100 bg-white">
+        {
+          preventionOffers.map((o) => (
+            <li class="grid gap-1 px-5 py-4 sm:grid-cols-[14rem_1fr] sm:gap-6">
+              <a
+                href={getLocalizedPath(preventionPath(o.slug), lang)}
+                class="font-semibold text-petrol-900 underline decoration-gold-400/50 underline-offset-4"
+              >
+                {o.shortName[lang]}
+              </a>
+              <div class="text-sm leading-relaxed text-ink-soft">
+                <p>{o.facts.appointments[lang]}</p>
+                <p class="mt-1">{o.facts.fee[lang]}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-5 max-w-3xl text-sm text-ink-soft">{preventionHub.ctaNote[lang]} {preventionDoctor[lang]}</p>
+    </section>
+  </div>
+</BaseLayout>

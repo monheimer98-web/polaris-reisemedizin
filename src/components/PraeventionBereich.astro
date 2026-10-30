@@ -10,8 +10,8 @@ import PageHero from './PageHero.astro';
 import PraeventionNav from './PraeventionNav.astro';
 import CTA from './CTA.astro';
 import { getLangFromUrl, getLocalizedPath, useTranslations } from '../i18n/utils';
-import { BOOKING_PATH } from '../config/nav';
 import {
+  PREVENTION_BOOKING_PATH,
   preventionDoctor,
   preventionEntryPoints,
   preventionGroups,
@@ -32,7 +32,7 @@ const entryPoints = preventionEntryPoints.filter((e) => preventionOffers.some((o
   <div class="theme-praevention">
     <PageHero eyebrow={hub.meta.eyebrow[lang]} title={hub.meta.title[lang]} lead={hub.meta.lead[lang]}>
       <div class="mt-8 flex flex-wrap items-center gap-3">
-        <a href={getLocalizedPath(BOOKING_PATH, lang)} class="btn-gold" aria-label={t('cta.bookAria')}>{t('cta.book')}</a>
+        <a href={getLocalizedPath(PREVENTION_BOOKING_PATH, lang)} class="btn-gold" aria-label={t('cta.bookAria')}>{t('cta.book')}</a>
         <a href="#angebote" class="btn-ghost">{lang === 'de' ? 'Angebote ansehen' : 'View services'}</a>
       </div>
       <p class="mt-6 flex items-center gap-2 text-sm text-ink-soft">
@@ -121,6 +121,6 @@ const entryPoints = preventionEntryPoints.filter((e) => preventionOffers.some((o
       </div>
     </section>
 
-    <CTA title={hub.ctaTitle[lang]} lead={hub.ctaLead[lang]} note={hub.ctaNote[lang]} />
+    <CTA title={hub.ctaTitle[lang]} lead={hub.ctaLead[lang]} note={hub.ctaNote[lang]} bookingPath={PREVENTION_BOOKING_PATH} />
   </div>
 </BaseLayout>
