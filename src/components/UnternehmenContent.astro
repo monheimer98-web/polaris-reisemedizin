@@ -2,14 +2,16 @@
 /**
  * Inhalt der Seite „Reisemedizin für Unternehmen" (B2B). Selbsttragend:
  * Sprache aus der URL, Inhalt aus `unternehmenPage`. Schließt mit einem
- * Kontakt-Band (→ /kontakt) statt der allgemeinen Termin-CTA, da B2B-Anfragen
- * persönlich abgestimmt werden.
+ * Kontakt-Band (Telefon, → /kontakt) statt der allgemeinen Termin-CTA, da
+ * Firmentermine telefonisch vereinbart werden.
  */
+import { site } from '../config/site';
 import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
 import { unternehmenPage as page } from '../data/unternehmen';
 
 const lang = getLangFromUrl(Astro.url);
 const contactHref = getLocalizedPath('/kontakt', lang);
+const costsHref = getLocalizedPath('/kosten', lang);
 ---
 
 <article>
@@ -23,6 +25,7 @@ const contactHref = getLocalizedPath('/kontakt', lang);
         </p>
         <h1 class="mt-5 font-display text-4xl text-petrol-900 sm:text-5xl">{page.meta.title[lang]}</h1>
         <p class="mt-5 text-lg leading-relaxed text-ink-soft">{page.meta.lead[lang]}</p>
+        <p class="mt-4 font-semibold text-petrol-800">{page.meta.approval[lang]}</p>
       </div>
     </div>
   </header>
@@ -82,6 +85,11 @@ const contactHref = getLocalizedPath('/kontakt', lang);
       <h2 class="font-display text-2xl text-petrol-900 sm:text-3xl">{page.billing.heading[lang]}</h2>
       <div class="mt-4 space-y-4 leading-relaxed text-ink-soft">
         {page.billing.body[lang].map((paragraph) => <p>{paragraph}</p>)}
+        <p>
+          <a href={costsHref} class="font-medium text-petrol-700 underline underline-offset-4 hover:text-petrol-900">
+            {page.billing.costsLink[lang]}
+          </a>
+        </p>
       </div>
     </div>
 
@@ -91,8 +99,14 @@ const contactHref = getLocalizedPath('/kontakt', lang);
         <div class="max-w-xl">
           <h2 class="font-display text-2xl text-cream sm:text-3xl">{page.contact.heading[lang]}</h2>
           <p class="mt-3 leading-relaxed text-cream/80">{page.contact.text[lang]}</p>
+          <p class="mt-2 leading-relaxed text-cream/80">{page.contact.person[lang]}</p>
         </div>
-        <a href={contactHref} class="btn-gold shrink-0">{page.contact.cta[lang]}</a>
+        <div class="flex shrink-0 flex-col items-start gap-3 sm:items-end">
+          <a href={site.contact.phoneHref} class="btn-gold">{site.contact.phone}</a>
+          <a href={contactHref} class="text-sm text-cream/80 underline underline-offset-4 hover:text-cream">
+            {page.contact.writeLink[lang]}
+          </a>
+        </div>
       </div>
     </div>
   </section>
