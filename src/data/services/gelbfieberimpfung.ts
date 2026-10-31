@@ -9,8 +9,8 @@ export const gelbfieberimpfungService: ClinicalPage = {
   meta: {
     title: { de: 'Gelbfieberimpfung', en: 'Yellow fever vaccination' },
     description: {
-      de: 'Gelbfieberimpfung in unserer staatlich autorisierten Impfstelle: Impfstoff, Schutzdauer, internationaler Impfnachweis, Eignung und Ablauf.',
-      en: 'Yellow fever vaccination at our state-authorised centre: vaccine, duration of protection, international certificate, suitability and procedure.',
+      de: 'Gelbfieberimpfung in Langenfeld, gut erreichbar aus Monheim, Hilden und Solingen: staatlich autorisierte Impfstelle, internationaler Impfnachweis, Eignung und Ablauf.',
+      en: 'Yellow fever vaccination in Langenfeld, easy to reach from Monheim, Hilden and Solingen: state-authorised centre, international certificate, suitability and procedure.',
     },
     eyebrow: { de: 'Leistung', en: 'Service' },
     lead: {
@@ -135,6 +135,20 @@ export const gelbfieberimpfungService: ClinicalPage = {
         ],
       },
     },
+    {
+      id: 'anfahrt',
+      heading: { de: 'Aus Monheim, Hilden und der Umgebung', en: 'From Monheim, Hilden and the surrounding area' },
+      body: {
+        de: [
+          'Unsere Gelbfieberimpfstelle liegt am Leipziger Weg 5 (1. Etage) in Langenfeld-Richrath, nahe den Anschlussstellen Langenfeld-Richrath (A59) und Solingen (A3). Damit sind wir auch aus Monheim am Rhein, Hilden, Leichlingen, Solingen und Leverkusen gut erreichbar.',
+          'Sprechstunden finden nach Vereinbarung statt; Termine buchen Sie online oder telefonisch.',
+        ],
+        en: [
+          'Our yellow fever vaccination centre is at Leipziger Weg 5 (1st floor) in Langenfeld-Richrath, close to the Langenfeld-Richrath (A59) and Solingen (A3) motorway junctions. This makes us easy to reach from Monheim am Rhein, Hilden, Leichlingen, Solingen and Leverkusen as well.',
+          'Consultations are by appointment; you can book online or by phone.',
+        ],
+      },
+    },
   ],
   sourceIds: ['stikoReise2026', 'peiGelbfieber', 'whoPositionPaper', 'rkiGelbfieber', 'dtgReiseimpfungen', 'auswaertigesAmt'],
   lastReviewed: new Date('2026-05-15'),
@@ -146,6 +160,10 @@ export const gelbfieberimpfungService: ClinicalPage = {
     {
       label: { de: 'Risikogebiete & Pflichtländer', en: 'Risk areas & entry requirements' },
       path: '/risikogebiete',
+    },
+    {
+      label: { de: 'Kontakt & Anfahrt', en: 'Contact & directions' },
+      path: '/kontakt',
     },
   ],
 };

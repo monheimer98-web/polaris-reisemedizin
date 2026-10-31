@@ -74,6 +74,7 @@ const clinicSchema = {
   // damit Suchmaschinen den regionalen Bezug (Langenfeld/Rheinland) erkennen.
   areaServed: [
     { '@type': 'City', name: site.contact.city },
+    ...['Monheim am Rhein', 'Hilden', 'Leichlingen', 'Solingen', 'Leverkusen'].map((name) => ({ '@type': 'City', name })),
     { '@type': 'State', name: site.contact.region[lang] },
     { '@type': 'Country', name: site.contact.country[lang] },
   ],
