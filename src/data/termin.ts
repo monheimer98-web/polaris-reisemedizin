@@ -31,7 +31,7 @@ export interface AppointmentType {
   price?: Localized;
   /** Empfohlener Einstieg (Beratung zuerst) – wird hervorgehoben. */
   recommended?: boolean;
-  /** Buchbar? (alle aktiv – Gelbfieber ist als autorisierte Impfstelle vor Ort buchbar) */
+  /** Buchbar? (alle aktiv – Gelbfieber ist als zugelassene Impfstelle vor Ort buchbar) */
   enabled: boolean;
 }
 

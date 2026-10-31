@@ -93,10 +93,10 @@ export const teamPage: TeamPage = {
     },
     {
       icon: 'shield',
-      title: { de: 'Autorisierte Gelbfieberimpfstelle', en: 'Authorised yellow-fever centre' },
+      title: { de: 'Zugelassene Gelbfieber-Impfstelle', en: 'Approved yellow-fever centre' },
       text: {
-        de: 'Als staatlich autorisierte Gelbfieberimpfstelle dürfen wir die Gelbfieberimpfung durchführen und den international gültigen Impfnachweis ausstellen.',
-        en: 'As a state-authorised yellow fever vaccination centre, we may administer the yellow fever vaccination and issue the internationally valid certificate.',
+        de: 'Als staatlich zugelassene Gelbfieber-Impfstelle dürfen wir die Gelbfieberimpfung durchführen und den international gültigen Impfnachweis ausstellen.',
+        en: 'As a state-approved yellow fever vaccination centre, we may administer the yellow fever vaccination and issue the internationally valid certificate.',
       },
     },
     {
@@ -123,11 +123,11 @@ export const teamPage: TeamPage = {
   practiceBody: {
     de: [
       'Bei uns sollen Sie sich vom ersten Moment an gut aufgehoben fühlen. Wir beraten Reisende sorgfältig und unabhängig und richten jede Empfehlung an Ihrer konkreten Reise aus.',
-      'Die Praxis ist als staatlich autorisierte Gelbfieberimpfstelle zugelassen und führt Reiseimpfungen wie die Gelbfieber- und die FSME-Impfung durch. Termine buchen Sie online, telefonisch oder per E-Mail; die persönliche Beratung findet in Ruhe vor Ort statt.',
+      'Die Praxis ist staatlich zugelassene Gelbfieber-Impfstelle und führt Reiseimpfungen wie die Gelbfieber- und die FSME-Impfung durch. Termine buchen Sie online, telefonisch oder per E-Mail; die persönliche Beratung findet in Ruhe vor Ort statt.',
     ],
     en: [
       'From the very first moment, you should feel in good hands with us. We advise travellers carefully and independently and tailor every recommendation to your specific trip.',
-      'The practice is licensed as a state-authorised yellow fever vaccination centre and provides travel vaccinations such as the yellow fever and TBE vaccination. You can book appointments online, by phone or email; the personal consultation takes place, unhurried, on site.',
+      'The practice is a state-approved yellow fever vaccination centre and provides travel vaccinations such as the yellow fever and TBE vaccination. You can book appointments online, by phone or email; the personal consultation takes place, unhurried, on site.',
     ],
   },
 };

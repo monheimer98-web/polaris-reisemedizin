@@ -87,22 +87,22 @@ export const reiseimpfungenService: ClinicalPage = {
       heading: { de: 'Pflichtimpfungen & internationaler Nachweis', en: 'Mandatory vaccinations & the international certificate' },
       body: {
         de: [
-          'Einzelne Länder verlangen bei der Einreise einen Impfnachweis. Am bekanntesten ist die Gelbfieberimpfung, die im Internationalen Impfausweis (ICVP) bescheinigt wird und nur in einer staatlich autorisierten Gelbfieberimpfstelle erfolgen darf. Für bestimmte Reisen – etwa die Pilgerfahrt nach Saudi-Arabien – kann eine Meningokokken-Impfung vorgeschrieben sein.',
+          'Einzelne Länder verlangen bei der Einreise einen Impfnachweis. Am bekanntesten ist die Gelbfieberimpfung, die im Internationalen Impfausweis (ICVP) bescheinigt wird und nur in einer staatlich zugelassenen Gelbfieber-Impfstelle erfolgen darf. Für bestimmte Reisen – etwa die Pilgerfahrt nach Saudi-Arabien – kann eine Meningokokken-Impfung vorgeschrieben sein.',
           'Polio: Wegen der weltweiten Polio-Lage gelten WHO-Sonderregeln. Bei längeren Aufenthalten (über vier Wochen) in betroffenen Ländern – etwa Pakistan oder Afghanistan – kann bei der Ausreise der Nachweis einer Polio-Impfung verlangt werden, die zwischen vier Wochen und zwölf Monaten zurückliegt. Für Reisen in Polio-Risikogebiete prüfen wir Ihren Impfschutz und frischen bei Bedarf auf.',
           'Einreisebestimmungen ändern sich. Maßgeblich sind die offiziellen Vorgaben des Ziellandes; wir prüfen mit Ihnen die aktuelle Lage und verweisen auf die Hinweise des Auswärtigen Amts und der WHO.',
         ],
         en: [
-          'Some countries require proof of vaccination on entry. The best known is the yellow fever vaccination, which is certified in the International Certificate of Vaccination (ICVP) and may only be administered at a state-authorised yellow fever vaccination centre. For certain trips – such as the pilgrimage to Saudi Arabia – a meningococcal vaccination may be required.',
+          'Some countries require proof of vaccination on entry. The best known is the yellow fever vaccination, which is certified in the International Certificate of Vaccination (ICVP) and may only be administered at a state-approved yellow fever vaccination centre. For certain trips – such as the pilgrimage to Saudi Arabia – a meningococcal vaccination may be required.',
           'Polio: because of the global polio situation, special WHO rules apply. For longer stays (over four weeks) in affected countries – such as Pakistan or Afghanistan – proof of a polio vaccination given between four weeks and twelve months earlier may be required on departure. For travel to polio risk areas we check your protection and give a booster if needed.',
           'Entry requirements change. The official requirements of the destination country are decisive; we check the current situation with you and refer to the information from the Federal Foreign Office and the WHO.',
         ],
       },
       callout: {
         variant: 'important',
-        title: { de: 'Gelbfieber nur in autorisierter Impfstelle', en: 'Yellow fever only at an authorised centre' },
+        title: { de: 'Gelbfieber nur in zugelassener Impfstelle', en: 'Yellow fever only at an approved centre' },
         text: {
-          de: 'Der gültige internationale Gelbfieber-Nachweis darf ausschließlich in einer staatlich autorisierten Impfstelle ausgestellt werden und wird erst zehn Tage nach der Impfung wirksam. Details finden Sie auf unserer Seite zur Gelbfieberimpfung.',
-          en: 'The valid international yellow fever certificate may only be issued at a state-authorised centre and only takes effect ten days after vaccination. Details can be found on our yellow fever vaccination page.',
+          de: 'Der gültige internationale Gelbfieber-Nachweis darf ausschließlich in einer staatlich zugelassenen Impfstelle ausgestellt werden und wird erst zehn Tage nach der Impfung wirksam. Details finden Sie auf unserer Seite zur Gelbfieberimpfung.',
+          en: 'The valid international yellow fever certificate may only be issued at a state-approved centre and only takes effect ten days after vaccination. Details can be found on our yellow fever vaccination page.',
         },
       },
     },

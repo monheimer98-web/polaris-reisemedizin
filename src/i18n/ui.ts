@@ -90,11 +90,11 @@ export const ui = {
     'home.heroTitle': 'Gut vorbereitet reisen.',
     'home.heroLead':
       'Ihre reisemedizinische Privatpraxis in Langenfeld: persönliche Beratung, Reiseimpfungen und Vorsorge – ärztlich fundiert und auf dem aktuellen Stand der Wissenschaft.',
-    'home.badgeYellowFever': 'Staatlich autorisierte Gelbfieberimpfstelle',
+    'home.badgeYellowFever': 'Staatlich zugelassene Gelbfieber-Impfstelle',
 
     // Startseite — Vertrauensleiste
     'trust.ariaLabel': 'Vertrauen und Qualität',
-    'trust.authorizedTitle': 'Autorisierte Gelbfieberimpfstelle',
+    'trust.authorizedTitle': 'Zugelassene Gelbfieber-Impfstelle',
     'trust.authorizedText':
       'Staatlich zugelassen für die Gelbfieberimpfung – inklusive international gültigem Eintrag im Impfausweis.',
     'trust.specialistTitle': 'Ärztlich fundiert',
@@ -123,7 +123,7 @@ export const ui = {
       'Lebendimpfung mit international lebenslang gültigem Impfnachweis (ICVP) – in einigen Ländern Voraussetzung für die Einreise.',
     'home.serviceYfFact1': 'Lebendimpfstoff, zugelassen ab 9 Monaten',
     'home.serviceYfFact2': 'International gültiger Impfeintrag ab Tag 10',
-    'home.serviceYfFact3': 'Nur in autorisierten Impfstellen möglich',
+    'home.serviceYfFact3': 'Nur in zugelassenen Impfstellen möglich',
     'home.serviceFsmeTitle': 'FSME-Impfung',
     'home.serviceFsmeText':
       'Schutz vor der von Zecken übertragenen Frühsommer-Meningoenzephalitis – relevant in vielen Regionen Deutschlands und Europas.',
@@ -314,11 +314,11 @@ export const ui = {
     'home.heroTitle': 'Travel well prepared.',
     'home.heroLead':
       'Your travel-medicine private practice in Langenfeld: personal advice, travel vaccinations and prevention – medically grounded and based on the current state of science.',
-    'home.badgeYellowFever': 'State-authorised yellow fever vaccination centre',
+    'home.badgeYellowFever': 'State-approved yellow fever vaccination centre',
 
     // Home — trust bar
     'trust.ariaLabel': 'Trust and quality',
-    'trust.authorizedTitle': 'Authorised yellow fever centre',
+    'trust.authorizedTitle': 'Approved yellow fever centre',
     'trust.authorizedText':
       'State-approved for the yellow fever vaccination – including the internationally valid entry in your vaccination certificate.',
     'trust.specialistTitle': 'Physician-led',
@@ -347,7 +347,7 @@ export const ui = {
       'Live vaccination with an international certificate (ICVP) valid for life – a condition of entry in some countries.',
     'home.serviceYfFact1': 'Live vaccine, approved from 9 months of age',
     'home.serviceYfFact2': 'Internationally valid certificate from day 10',
-    'home.serviceYfFact3': 'Only available at authorised vaccination centres',
+    'home.serviceYfFact3': 'Only available at approved vaccination centres',
     'home.serviceFsmeTitle': 'TBE vaccination',
     'home.serviceFsmeText':
       'Protection against tick-borne encephalitis (TBE/FSME) – relevant in many regions of Germany and Europe.',

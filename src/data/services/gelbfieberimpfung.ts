@@ -9,13 +9,13 @@ export const gelbfieberimpfungService: ClinicalPage = {
   meta: {
     title: { de: 'Gelbfieberimpfung', en: 'Yellow fever vaccination' },
     description: {
-      de: 'Gelbfieberimpfung in unserer staatlich autorisierten Impfstelle: Impfstoff, Schutzdauer, internationaler Impfnachweis, Eignung und Ablauf.',
-      en: 'Yellow fever vaccination at our state-authorised centre: vaccine, duration of protection, international certificate, suitability and procedure.',
+      de: 'Gelbfieberimpfung in unserer staatlich zugelassenen Impfstelle: Impfstoff, Schutzdauer, internationaler Impfnachweis, Eignung und Ablauf.',
+      en: 'Yellow fever vaccination at our state-approved centre: vaccine, duration of protection, international certificate, suitability and procedure.',
     },
     eyebrow: { de: 'Leistung', en: 'Service' },
     lead: {
-      de: 'Als staatlich autorisierte Gelbfieberimpfstelle beraten wir Sie individuell zu Ihrer Reise und führen die Impfung fachgerecht durch. Hier erfahren Sie, wie die Impfung abläuft und was Sie beachten sollten.',
-      en: 'As a state-authorised yellow fever vaccination centre, we advise you individually about your trip and carry out the vaccination professionally. Here you can read how the vaccination works and what to bear in mind.',
+      de: 'Als staatlich zugelassene Gelbfieber-Impfstelle beraten wir Sie individuell zu Ihrer Reise und führen die Impfung fachgerecht durch. Hier erfahren Sie, wie die Impfung abläuft und was Sie beachten sollten.',
+      en: 'As a state-approved yellow fever vaccination centre, we advise you individually about your trip and carry out the vaccination professionally. Here you can read how the vaccination works and what to bear in mind.',
     },
   },
   sections: [
@@ -42,14 +42,14 @@ export const gelbfieberimpfungService: ClinicalPage = {
       },
     },
     {
-      id: 'autorisierung',
-      heading: { de: 'Autorisierte Impfstelle', en: 'Authorised vaccination centre' },
+      id: 'zulassung',
+      heading: { de: 'Zugelassene Impfstelle', en: 'Approved vaccination centre' },
       body: {
         de: [
-          'In Deutschland dürfen die Gelbfieberimpfung und die Ausstellung des international gültigen Impfnachweises ausschließlich von staatlich autorisierten Gelbfieberimpfstellen vorgenommen werden. Unsere Praxis verfügt über diese Zulassung.',
+          'In Deutschland dürfen die Gelbfieberimpfung und die Ausstellung des international gültigen Impfnachweises ausschließlich von staatlich zugelassenen Gelbfieber-Impfstellen vorgenommen werden. Unsere Praxis verfügt über diese Zulassung.',
         ],
         en: [
-          'In Germany, the yellow fever vaccination and the issuing of the internationally valid certificate may only be carried out by state-authorised yellow fever vaccination centres. Our practice holds this authorisation.',
+          'In Germany, the yellow fever vaccination and the issuing of the internationally valid certificate may only be carried out by state-approved yellow fever vaccination centres. Our practice holds this approval.',
         ],
       },
     },
