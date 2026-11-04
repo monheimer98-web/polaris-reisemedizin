@@ -1,0 +1,130 @@
+---
+/**
+ * Seite „Beispielkosten Prävention" (/praevention/kosten): warum es keinen
+ * Festpreis gibt, Beispielrechnungen je Angebot (Honorar und Labor getrennt),
+ * Labor, Erstattung, häufige Fragen. Nur Beispiele für Angebote, die schon
+ * eine Seite haben. Sprache aus der URL.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from './PageHero.astro';
+import PraeventionNav from './PraeventionNav.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import CTA from './CTA.astro';
+import { getLangFromUrl, getLocalizedPath, useTranslations } from '../i18n/utils';
+import { PREVENTION_BOOKING_PATH, PREVENTION_PATH, preventionDoctor, preventionHub, preventionOffers, preventionPath } from '../data/praevention';
+import { beispielkostenSeite as seite, beispielrechnungen } from '../data/praevention/beispielkosten';
+import { euroDe, euroEn } from '../data/praevention/preise';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const de = lang === 'de';
+const euro = de ? euroDe : euroEn;
+const beispiele = beispielrechnungen
+  .map((b) => ({ ...b, offer: preventionOffers.find((o) => o.slug === b.slug) }))
+  .filter((b) => b.offer);
+const crumbs = [
+  { label: t('nav.home'), path: getLocalizedPath('/', lang) },
+  { label: t('nav.preventionArea'), path: getLocalizedPath(PREVENTION_PATH, lang) },
+  { label: de ? 'Beispielkosten' : 'Example fees' },
+];
+---
+
+<BaseLayout title={seite.meta.title[lang]} description={seite.meta.description[lang]}>
+  <div class="theme-praevention">
+    <PageHero eyebrow={seite.meta.eyebrow[lang]} title={seite.meta.title[lang]} lead={seite.meta.lead[lang]}>
+      <Breadcrumbs slot="breadcrumb" items={crumbs} label={t('content.breadcrumb')} />
+    </PageHero>
+
+    <PraeventionNav current="kosten" />
+
+    <div class="u-container py-14 sm:py-16">
+      <section class="max-w-3xl rich-text" aria-labelledby="warum">
+        <h2 id="warum">{seite.warumTitle[lang]}</h2>
+        {seite.warum[lang].map((p) => <p>{p}</p>)}
+      </section>
+
+      <section class="mt-12 sm:mt-14" aria-labelledby="beispiele">
+        <div class="rich-text">
+          <h2 id="beispiele">{seite.beispieleTitle[lang]}</h2>
+        </div>
+        <ul class="mt-6 grid gap-5 lg:grid-cols-2">
+          {
+            beispiele.map((b) => (
+              <li id={b.slug} class="flex scroll-mt-24 flex-col rounded-2xl border border-petrol-100 bg-white p-6 shadow-[var(--shadow-soft)]">
+                <h3 class="text-xl">
+                  <a
+                    href={getLocalizedPath(preventionPath(b.slug), lang)}
+                    class="underline decoration-gold-400/50 underline-offset-4"
+                  >
+                    {b.title[lang]}
+                  </a>
+                </h3>
+                <table class="mt-4 w-full text-[15px]">
+                  <caption class="sr-only">{de ? `Beispielrechnung ${b.title.de}` : `Example bill ${b.title.en}`}</caption>
+                  <tbody class="divide-y divide-petrol-100">
+                    {b.posten.map((p) => (
+                      <tr>
+                        <th scope="row" class="py-2 pr-4 text-left font-normal text-ink-soft">{p.label[lang]}</th>
+                        <td class="whitespace-nowrap py-2 text-right tabular-nums text-ink">{euro(p.betrag)}</td>
+                      </tr>
+                    ))}
+                    <tr>
+                      <th scope="row" class="py-2 pr-4 text-left font-semibold text-petrol-900">
+                        {de ? 'Ärztliches Honorar zusammen' : 'Medical fees together'}
+                      </th>
+                      <td class="whitespace-nowrap py-2 text-right font-semibold tabular-nums text-petrol-900">{euro(b.praxis)}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p class="mt-4 text-[15px] text-ink-soft">
+                  <span class="font-semibold text-petrol-900">{de ? 'Labor, eigene Rechnung: ' : 'Laboratory, separate invoice: '}</span>
+                  {b.labor[lang]}
+                </p>
+                {b.hinweis && <p class="mt-2 text-sm text-ink-soft">{b.hinweis[lang]}</p>}
+                <p class="mt-auto pt-4 font-medium text-petrol-800">
+                  {de ? 'Typisch: ' : 'Typically: '}
+                  {b.typisch[lang]}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-5 max-w-3xl text-sm text-ink-soft">{seite.fussnote[lang]}</p>
+      </section>
+
+      <section class="mt-12 max-w-3xl rich-text sm:mt-14" aria-labelledby="labor">
+        <h2 id="labor">{seite.laborTitle[lang]}</h2>
+        {seite.laborText[lang].map((p) => <p>{p}</p>)}
+        <h2 id="erstattung">{seite.erstattungTitle[lang]}</h2>
+        {seite.erstattung[lang].map((p) => <p>{p}</p>)}
+        <p>
+          <a href={getLocalizedPath('/kosten', lang)}>{de ? 'Kosten und Abrechnung der Praxis' : 'Practice fees and billing'}</a>
+        </p>
+      </section>
+
+      <section id="fragen" class="mt-12 max-w-3xl scroll-mt-24 sm:mt-14">
+        <div class="rich-text">
+          <h2>{t('content.faqHeading')}</h2>
+        </div>
+        <div class="mt-4 divide-y divide-petrol-100 rounded-2xl border border-petrol-100 bg-white">
+          {
+            seite.faq.map((item) => (
+              <details class="group px-5 py-4">
+                <summary class="cursor-pointer list-none font-semibold text-petrol-900 marker:hidden">
+                  <span class="flex items-start justify-between gap-4">
+                    {item.q[lang]}
+                    <span class="mt-0.5 text-gold-600 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </span>
+                </summary>
+                <p class="mt-3 text-ink-soft">{item.a[lang]}</p>
+              </details>
+            ))
+          }
+        </div>
+        <p class="mt-6 text-sm text-ink-soft">{preventionDoctor[lang]}</p>
+      </section>
+    </div>
+
+    <CTA title={preventionHub.ctaTitle[lang]} lead={preventionHub.ctaLead[lang]} note={preventionHub.ctaNote[lang]} bookingPath={PREVENTION_BOOKING_PATH} />
+  </div>
+</BaseLayout>

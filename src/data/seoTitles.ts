@@ -17,32 +17,40 @@ export const seoTitles: Record<string, Localized> = {
     en: 'Travel Medicine & Vaccinations in Langenfeld | Polaris',
   },
   '/praevention': {
-    de: 'Prävention & Lebensstil in Langenfeld | Polaris',
-    en: 'Prevention & Lifestyle Clinic in Langenfeld | Polaris',
+    de: 'Prävention & Check-ups in Langenfeld | Polaris',
+    en: 'Preventive Health & Check-ups in Langenfeld | Polaris',
   },
-  '/praevention/praeventions-check': {
-    de: 'Präventions-Check in Langenfeld | Polaris',
-    en: 'Prevention Check-up in Langenfeld | Polaris',
+  '/praevention/gesundheitscheck': {
+    de: 'Gesundheitscheck privat in Langenfeld | Polaris',
+    en: 'Private Health Check-up in Langenfeld | Polaris',
   },
   '/praevention/gewicht-und-stoffwechsel': {
-    de: 'Gewicht und Stoffwechsel: ärztliche Begleitung Langenfeld | Polaris',
-    en: 'Weight & Metabolism: Medical Support in Langenfeld | Polaris',
+    de: 'Gewicht ärztlich begleitet in Langenfeld | Polaris',
+    en: 'Weight & Metabolic Health, Medically Guided | Polaris',
   },
   '/praevention/wechseljahre': {
     de: 'Sprechstunde Wechseljahre in Langenfeld | Polaris',
     en: 'Menopause Consultation in Langenfeld | Polaris',
   },
-  '/praevention/kompass-maenner': {
-    de: 'Gesundheits-Check für Männer ab 40 in Langenfeld | Polaris',
-    en: 'Health Check-up for Men over 40 in Langenfeld | Polaris',
+  '/praevention/maenner-check-up': {
+    de: 'Check-up für Männer ab 40 in Langenfeld | Polaris',
+    en: 'Men’s Health Check-up 40+ in Langenfeld | Polaris',
   },
-  '/praevention/werte-einordnen': {
-    de: 'Laborwerte und Smartwatch-Daten einordnen lassen | Polaris',
-    en: 'Lab Results & Smartwatch Data Explained | Polaris Langenfeld',
+  '/praevention/blutwerte-besprechen': {
+    de: 'Blutwerte erklären lassen in Langenfeld | Polaris',
+    en: 'Blood Test Results Explained in Langenfeld | Polaris',
   },
-  '/praevention/kompass-60-plus': {
-    de: 'Gesund älter werden: Kompass 60+ in Langenfeld | Polaris',
-    en: 'Healthy Ageing Check-up 60+ in Langenfeld | Polaris',
+  '/praevention/check-up-60-plus': {
+    de: 'Gesund älter werden: Check-up 60+ in Langenfeld | Polaris',
+    en: 'Health Check-up 60+ in Langenfeld | Polaris',
+  },
+  '/praevention/kosten': {
+    de: 'Kosten Gesundheitscheck & Prävention nach GOÄ | Polaris',
+    en: 'Preventive Care: Example Fees under the GOÄ | Polaris',
+  },
+  '/praevention/termin': {
+    de: 'Termin Prävention & Check-up in Langenfeld | Polaris',
+    en: 'Book a Prevention Appointment in Langenfeld | Polaris',
   },
   '/praevention/schlaf-und-jetlag': {
     de: 'Sprechstunde Schlaf und Jetlag in Langenfeld | Polaris',

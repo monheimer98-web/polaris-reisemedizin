@@ -1,14 +1,14 @@
 ---
 /**
  * Inhalt einer Angebotsseite „Prävention & Lebensstil": Steckbrief (für wen,
- * Termine, Honorar, Labor, betreuende Ärztin), die Abschnitte der
+ * Termine, Honorar, Labor, ärztliches Team), die Abschnitte der
  * `ClinicalPage`, „So läuft es ab", Kosten und zuletzt die häufigen Fragen.
  * Ablauf und Kosten sind echte <section id> mit <h2>, damit „Auf dieser Seite"
  * sie aufnimmt.
  */
 import ClinicalSections from './ClinicalSections.astro';
 import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
-import { preventionDoctor } from '../data/praevention';
+import { PREVENTION_COSTS_PATH, preventionDoctor } from '../data/praevention';
 import type { PreventionOffer } from '../data/praevention/types';
 
 interface Props {
@@ -72,7 +72,9 @@ const { faq, ...rest } = offer.page;
     <h2>{de ? 'Kosten' : 'Costs'}</h2>
     {offer.costs[lang].map((p) => <p>{p}</p>)}
     <p>
-      <a href={getLocalizedPath('/kosten', lang)}>{de ? 'Mehr zu Kosten und Abrechnung' : 'More about fees and billing'}</a>
+      <a href={getLocalizedPath(PREVENTION_COSTS_PATH, lang) + '#' + offer.slug}>{de ? `Beispielkosten ${offer.shortName.de}` : `Example fees: ${offer.shortName.en}`}</a>
+      {' · '}
+      <a href={getLocalizedPath('/kosten', lang)}>{de ? 'Kosten und Abrechnung der Praxis' : 'Practice fees and billing'}</a>
     </p>
   </div>
 </section>

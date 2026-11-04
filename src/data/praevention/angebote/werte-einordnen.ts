@@ -4,14 +4,14 @@
  * Herstellernamen, keine Diagnose per Uhr, keine „Optimalwerte".
  */
 import type { PreventionOffer } from '../types';
-import { honorar, euroDe, euroEn } from '../preise';
+import { honorar, caDe, caEn, euroDe, euroEn } from '../preise';
 
 export const werteEinordnen: PreventionOffer = {
-  slug: 'werte-einordnen',
-  bookingType: 'p-werte',
+  slug: 'blutwerte-besprechen',
+  bookingType: 'pv-e2',
   group: 'einordnen',
   stage: 1,
-  shortName: { de: 'Werte einordnen', en: 'Making sense of results' },
+  shortName: { de: 'Blutwerte besprechen', en: 'Blood results explained' },
   teaser: {
     de: 'Befunde aus dem Online-Labor, Meldungen der Smartwatch, Selbsttests und Nahrungsergänzung: Was bedeutet das, und folgt daraus etwas?',
     en: 'Results from online labs, smartwatch alerts, home tests and supplements: what do they mean, and does anything follow from them?',
@@ -26,8 +26,8 @@ export const werteEinordnen: PreventionOffer = {
       en: 'approx. 20–30 min; approx. 25–35 min with a related examination.',
     },
     fee: {
-      de: `${euroDe(honorar.planTermin)} nach GOÄ, mit Untersuchung ${euroDe(honorar.bilanz)}`,
-      en: `${euroEn(honorar.planTermin)} under the GOÄ, with examination ${euroEn(honorar.bilanz)}`,
+      de: `Je nachdem, was Sie brauchen, nach GOÄ. Typisch für das Gespräch mit Werte-Bogen: ${caDe(honorar.planTermin)}, mit Untersuchung ${caDe(honorar.bilanz)}.`,
+      en: `Depending on what you need, under the GOÄ. Typically for the consultation with results sheet: ${caEn(honorar.planTermin)}, with examination ${caEn(honorar.bilanz)}.`,
     },
     lab: {
       de: 'meist keins; nur gezielt, wenn sich daraus etwas ableitet',
@@ -70,12 +70,12 @@ export const werteEinordnen: PreventionOffer = {
   page: {
     meta: {
       title: {
-        de: 'Werte einordnen: Laborbefunde, Smartwatch-Daten und Selbsttests verständlich erklärt',
-        en: 'Making sense of your results: lab reports, smartwatch data and home tests explained',
+        de: 'Blutwerte besprechen: Laborbefunde und Smartwatch-Daten verständlich erklärt',
+        en: 'Discussing your blood results: lab reports and smartwatch data explained',
       },
       description: {
-        de: 'Laborwerte, Smartwatch-Meldungen und Selbsttests in Langenfeld ärztlich einordnen lassen: Was bedeutet der Wert, wie zuverlässig ist er, folgt daraus etwas? Mit schriftlichem Werte-Bogen.',
-        en: 'Have lab results, smartwatch alerts and home tests assessed by a doctor in Langenfeld: what does a result mean, how reliable is it, does anything follow from it? With a written results sheet.',
+        de: 'Befund vom Online-Labor, aus der Apotheke oder eine Smartwatch-Meldung? Wir erklären, was der Wert aussagt und ob etwas daraus folgt. In Langenfeld.',
+        en: 'Results from an online lab, a pharmacy or a smartwatch alert? We explain what the value means and whether anything follows from it. In Langenfeld.',
       },
       eyebrow: { de: 'Prävention & Lebensstil', en: 'Prevention & lifestyle' },
       lead: {
@@ -163,8 +163,8 @@ export const werteEinordnen: PreventionOffer = {
     sourceIds: ['escPraevention2021', 'nvlHypertonie', 'dgeEmpfehlungen'],
     lastReviewed: new Date('2026-10-28'),
     related: [
-      { label: { de: 'Präventions-Check', en: 'Prevention check-up' }, path: '/praevention/praeventions-check' },
-      { label: { de: 'Kompass für Männer 40+', en: 'Compass for men 40+' }, path: '/praevention/kompass-maenner' },
+      { label: { de: 'Gesundheitscheck', en: 'Health check-up' }, path: '/praevention/gesundheitscheck' },
+      { label: { de: 'Check-up Männer 40+', en: 'Men’s check-up 40+' }, path: '/praevention/maenner-check-up' },
       { label: { de: 'Schlaf, Energie & Jetlag', en: 'Sleep, energy & jet lag' }, path: '/praevention/schlaf-und-jetlag' },
     ],
     faq: [

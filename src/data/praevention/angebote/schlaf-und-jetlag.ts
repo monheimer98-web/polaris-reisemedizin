@@ -9,7 +9,7 @@ import { honorar, labor, euroDe, euroEn } from '../preise';
 
 export const schlafUndJetlag: PreventionOffer = {
   slug: 'schlaf-und-jetlag',
-  bookingType: 'p-schlaf-erst',
+  bookingType: 'pv-e4',
   group: 'begleitung',
   stage: 2,
   shortName: { de: 'Schlaf, Energie & Jetlag', en: 'Sleep, energy & jet lag' },
@@ -146,9 +146,9 @@ export const schlafUndJetlag: PreventionOffer = {
     sourceIds: ['awmfInsomnie', 'awmfMuedigkeit', 'awmfSchlafapnoe'],
     lastReviewed: new Date('2026-10-28'),
     related: [
-      { label: { de: 'Wechseljahre', en: 'Menopause' }, path: '/praevention/wechseljahre' },
+      { label: { de: 'Sprechstunde Wechseljahre', en: 'Menopause consultation' }, path: '/praevention/wechseljahre' },
       { label: { de: 'Reisemedizinische Beratung', en: 'Travel health consultation' }, path: '/leistungen/reiseberatung' },
-      { label: { de: 'Werte einordnen', en: 'Making sense of your results' }, path: '/praevention/werte-einordnen' },
+      { label: { de: 'Blutwerte besprechen', en: 'Blood results explained' }, path: '/praevention/blutwerte-besprechen' },
     ],
     faq: [
       {

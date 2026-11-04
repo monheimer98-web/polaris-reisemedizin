@@ -4,14 +4,15 @@
  * PSA/Prostata, ohne „Testosteron", „Männerarzt" oder „Manager-Check-up".
  */
 import type { PreventionOffer } from '../types';
-import { honorar, labor, euroDe, euroEn } from '../preise';
+import { labor, termin, weg, euroDe, euroEn } from '../preise';
+import { blutabnahmeSchritt, bezahlenAbsatz, frageDreiTermine, honorarDreischritt, kurzterminSchritt, termineDreischritt } from '../ablauf';
 
 export const kompassMaenner: PreventionOffer = {
-  slug: 'kompass-maenner',
-  bookingType: 'p-maenner',
+  slug: 'maenner-check-up',
+  bookingType: 'pv-v2',
   group: 'checks',
   stage: 1,
-  shortName: { de: 'Kompass für Männer 40+', en: 'Compass for men 40+' },
+  shortName: { de: 'Check-up Männer 40+', en: 'Men’s check-up 40+' },
   teaser: {
     de: 'Herz, Stoffwechsel, Schlaf und Muskeln – sachlich eingeordnet, mit drei Prioritäten, die sich umsetzen lassen.',
     en: 'Heart, metabolism, sleep and muscles – assessed objectively, with three priorities you can act on.',
@@ -21,63 +22,56 @@ export const kompassMaenner: PreventionOffer = {
       de: 'Männer etwa zwischen 40 und 65, die wissen möchten, wo sie stehen.',
       en: 'Men aged roughly 40 to 65 who want to know where they stand.',
     },
-    appointments: {
-      de: 'Labortermin ca. 10 Min. am Morgen, 3–7 Tage später Haupttermin ca. 60 Min.',
-      en: 'Lab appointment approx. 10 min in the morning, main appointment approx. 60 min 3–7 days later.',
-    },
-    fee: {
-      de: `${euroDe(honorar.check)} nach GOÄ für Untersuchung, Plan und Blutentnahme, plus Laborkosten`,
-      en: `${euroEn(honorar.check)} under the GOÄ for examination, plan and blood draw, plus lab costs`,
-    },
+    appointments: termineDreischritt('45'),
+    fee: honorarDreischritt,
     lab: {
       de: `ca. ${euroDe(labor.maenner)} mit einmaliger Lp(a)-Bestimmung, direkt vom Labor; weitere Werte nur nach Beratung`,
       en: `approx. ${euroEn(labor.maenner)} including a one-off Lp(a) test, billed directly by the laboratory; further tests only after advice`,
     },
   },
   steps: [
+    kurzterminSchritt,
     {
-      title: { de: 'Buchen und Fragebogen', en: 'Book and questionnaire' },
+      ...blutabnahmeSchritt,
       text: {
-        de: 'Mit der Buchung legen wir Labortermin und Haupttermin an. Der Fragebogen fragt auch nach Schlaf, Schnarchen und Tagesmüdigkeit.',
-        en: 'When you book, we schedule the lab appointment and the main appointment. The questionnaire also asks about sleep, snoring and daytime tiredness.',
+        de: 'Kurz und früh am Tag, damit es vor der Arbeit passt. Für manche Werte gelten feste Zeiten, etwa nüchtern am Morgen; das sagen wir Ihnen im Kurztermin.',
+        en: 'Short and early in the day so that it fits before work. Some tests need fixed times, for example fasting in the morning; we tell you in the short appointment.',
       },
     },
     {
-      title: { de: 'Labortermin am Morgen', en: 'Morning lab appointment' },
+      title: { de: 'Befundtermin mit Plan', en: 'Results appointment with plan' },
       text: {
-        de: 'Kurz und früh am Tag, damit es vor der Arbeit passt. Welche Werte sinnvoll sind, besprechen wir vorher.',
-        en: 'Short and early in the day so that it fits before work. We discuss beforehand which tests make sense.',
-      },
-    },
-    {
-      title: { de: 'Haupttermin mit Plan', en: 'Main appointment with plan' },
-      text: {
-        de: 'Untersuchung, Herz-Kreislauf-Risiko nach Leitlinie, Schlaf, Bewegung und Alltag. Sie gehen mit einem schriftlichen Plan und drei Prioritäten nach Hause.',
-        en: 'Examination, cardiovascular risk according to the guideline, sleep, activity and everyday life. You leave with a written plan and three priorities.',
+        de: 'Etwa eine Woche später: Untersuchung, Herz-Kreislauf-Risiko nach Leitlinie, Schlaf, Bewegung und Alltag. Vorher füllen Sie einen Fragebogen aus, der auch nach Schlaf, Schnarchen und Tagesmüdigkeit fragt. Sie gehen mit einem schriftlichen Plan und drei Prioritäten nach Hause.',
+        en: 'About a week later: examination, cardiovascular risk according to the guideline, sleep, activity and everyday life. Beforehand you complete a questionnaire that also asks about sleep, snoring and daytime tiredness. You leave with a written plan and three priorities.',
       },
     },
   ],
   costs: {
     de: [
-      `Ärztliches Honorar nach GOÄ (Regelsatz): ${euroDe(honorar.check)} für Blutentnahme, Untersuchung, Risikoeinschätzung, Beratung und schriftlichen Plan.`,
-      `Dazu kommen die Laborkosten von ca. ${euroDe(labor.maenner)}, eigene Rechnung vom Labor; weitere Werte nur nach Beratung. Die voraussichtlichen Kosten nennen wir Ihnen vorab schriftlich.`,
+      `Ärztliches Honorar nach GOÄ (Regelsatz), je Termin: Kurztermin ${euroDe(termin.kurz)}, Blutabnahme ${euroDe(termin.blutabnahme)}, Befundtermin mit Untersuchung, Risikoeinschätzung, Beratung und schriftlichem Plan ${euroDe(termin.befundCheck)}. Zusammen ${euroDe(weg.check)}.`,
+      `Dazu kommen die Laborkosten von ca. ${euroDe(labor.maenner)}, eigene Rechnung vom Labor. Weitere Werte nur, wenn wir sie im Kurztermin gemeinsam für sinnvoll halten; mit allen Zusatzwerten höchstens ca. ${euroDe(labor.maennerMax)}. Braucht ein Wert eine zweite Blutabnahme, kostet sie nochmals ${euroDe(termin.blutabnahme)}.`,
+      bezahlenAbsatz.de,
     ],
     en: [
-      `Medical fee under the GOÄ (standard rate): ${euroEn(honorar.check)} for blood draw, examination, risk assessment, advice and a written plan.`,
-      `Lab costs of approx. ${euroEn(labor.maenner)} come on top, with a separate invoice from the laboratory; further tests only after advice. We tell you the expected costs in writing beforehand.`,
+      `Medical fee under the GOÄ (standard rate), per appointment: short appointment ${euroEn(termin.kurz)}, blood sample ${euroEn(termin.blutabnahme)}, results appointment with examination, risk assessment, advice and a written plan ${euroEn(termin.befundCheck)}. Together ${euroEn(weg.check)}.`,
+      `Lab costs of approx. ${euroEn(labor.maenner)} come on top, with a separate invoice from the laboratory. Further tests only if we agree in the short appointment that they make sense; with all additional tests at most approx. ${euroEn(labor.maennerMax)}. If a test needs a second blood sample, it costs another ${euroEn(termin.blutabnahme)}.`,
+      bezahlenAbsatz.en,
     ],
   },
   page: {
     meta: {
-      title: { de: 'Kompass für Männer 40+: Herz, Stoffwechsel und Schlaf', en: 'Compass for men 40+: heart, metabolism and sleep' },
+      title: {
+        de: 'Check-up für Männer ab 40: Herz, Stoffwechsel und Schlaf',
+        en: 'Check-up for men over 40: heart, metabolism and sleep',
+      },
       description: {
-        de: 'Gesundheits-Check für Männer ab 40 in Langenfeld: Blutdruck, Blutfette, Blutzucker, Schlaf und Muskeln – mit schriftlichem Plan. Honorar nach GOÄ, Termine früh am Morgen.',
-        en: 'Health check-up for men over 40 in Langenfeld: blood pressure, lipids, blood sugar, sleep and muscles – with a written plan. Fees under the GOÄ, early-morning appointments.',
+        de: 'Blutdruck, Blutfette, Blutzucker, Schlaf und Schnarchen, Muskeln: Check-up für Männer ab 40 mit Plan und drei Prioritäten. Privatpraxis Langenfeld.',
+        en: 'Blood pressure, lipids, blood sugar, sleep and snoring, muscles: a check-up for men over 40 with a written plan and three priorities. Langenfeld.',
       },
       eyebrow: { de: 'Prävention & Lebensstil', en: 'Prevention & lifestyle' },
       lead: {
-        de: 'Männer ab 40 haben ein höheres Risiko für Herz-Kreislauf-Erkrankungen, als viele denken, und nächtliche Atemaussetzer bleiben oft lange unbemerkt. Im Kompass für Männer sehen wir uns Blutdruck, Blutfette, Blutzucker, Schlaf, Bewegung und Ihren Alltag an und vereinbaren mit Ihnen drei Prioritäten, die sich umsetzen lassen.',
-        en: 'Men over 40 are at higher risk of cardiovascular disease than many think, and breathing pauses at night often go unnoticed for a long time. In the Compass for men we look at blood pressure, lipids, blood sugar, sleep, activity and your everyday life and agree three priorities you can act on.',
+        de: 'Männer ab 40 haben ein höheres Risiko für Herz-Kreislauf-Erkrankungen, als viele denken, und nächtliche Atemaussetzer bleiben oft lange unbemerkt. Im Check-up für Männer sehen wir uns Blutdruck, Blutfette, Blutzucker, Schlaf, Bewegung und Ihren Alltag an und vereinbaren mit Ihnen drei Prioritäten, die sich umsetzen lassen.',
+        en: 'Men over 40 are at higher risk of cardiovascular disease than many think, and breathing pauses at night often go unnoticed for a long time. In the men’s check-up we look at blood pressure, lipids, blood sugar, sleep, activity and your everyday life and agree three priorities you can act on.',
       },
     },
     sections: [
@@ -143,24 +137,25 @@ export const kompassMaenner: PreventionOffer = {
     sourceIds: ['escPraevention2021', 'easLpa2022', 'awmfSchlafapnoe', 'whoBewegung2020', 'nvlHypertonie'],
     lastReviewed: new Date('2026-10-28'),
     related: [
-      { label: { de: 'Präventions-Check', en: 'Prevention check-up' }, path: '/praevention/praeventions-check' },
+      { label: { de: 'Gesundheitscheck', en: 'Health check-up' }, path: '/praevention/gesundheitscheck' },
       { label: { de: 'Muskel-Kompass 40+', en: 'Muscle compass 40+' }, path: '/praevention/muskel-kompass' },
       { label: { de: 'Schlaf, Energie & Jetlag', en: 'Sleep, energy & jet lag' }, path: '/praevention/schlaf-und-jetlag' },
-      { label: { de: 'Werte einordnen', en: 'Making sense of your results' }, path: '/praevention/werte-einordnen' },
+      { label: { de: 'Blutwerte besprechen', en: 'Blood results explained' }, path: '/praevention/blutwerte-besprechen' },
     ],
     faq: [
+      frageDreiTermine,
       {
-        q: { de: 'Was unterscheidet den Kompass für Männer vom Präventions-Check?', en: 'How does it differ from the prevention check-up?' },
+        q: { de: 'Was unterscheidet den Check-up für Männer vom Gesundheitscheck?', en: 'How does it differ from the health check-up?' },
         a: {
-          de: 'Der Kern ist gleich. Im Kompass für Männer achten wir zusätzlich auf Schlaf und nächtliche Atemaussetzer, Muskeln und die typischen Fragen von Männern ab 40.',
-          en: 'The core is the same. In the Compass for men we also focus on sleep and breathing pauses at night, muscles and the typical questions of men over 40.',
+          de: 'Der Kern ist gleich. Im Check-up für Männer achten wir zusätzlich auf Schlaf und nächtliche Atemaussetzer, Muskeln und die typischen Fragen von Männern ab 40.',
+          en: 'The core is the same. In the men’s check-up we also focus on sleep and breathing pauses at night, muscles and the typical questions of men over 40.',
         },
       },
       {
         q: { de: 'Kann ich vor der Arbeit kommen?', en: 'Can I come before work?' },
         a: {
-          de: 'Ja. Die Labortermine liegen morgens. Für den Haupttermin gibt es auch Zeiten am späten Nachmittag.',
-          en: 'Yes. Lab appointments are in the morning. For the main appointment there are also late-afternoon slots.',
+          de: 'Ja. Die Blutabnahme liegt morgens, den Kurztermin können Sie auch am Telefon oder per Video wahrnehmen. Für den Befundtermin gibt es auch Zeiten am späten Nachmittag.',
+          en: 'Yes. The blood sample is taken in the morning, and you can have the short appointment by phone or video. For the results appointment there are also late-afternoon slots.',
         },
       },
     ],

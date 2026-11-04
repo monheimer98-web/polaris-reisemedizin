@@ -8,7 +8,7 @@ import { honorar, euroDe, euroEn } from '../preise';
 
 export const muskelKompass: PreventionOffer = {
   slug: 'muskel-kompass',
-  bookingType: 'p-muskel',
+  bookingType: 'pv-e3',
   group: 'checks',
   stage: 2,
   shortName: { de: 'Muskel-Kompass 40+', en: 'Muscle compass 40+' },
@@ -136,8 +136,8 @@ export const muskelKompass: PreventionOffer = {
     lastReviewed: new Date('2026-10-28'),
     related: [
       { label: { de: 'Gewicht & Stoffwechsel', en: 'Weight & metabolism' }, path: '/praevention/gewicht-und-stoffwechsel' },
-      { label: { de: 'Wechseljahre', en: 'Menopause' }, path: '/praevention/wechseljahre' },
-      { label: { de: 'Kompass 60+', en: 'Compass 60+' }, path: '/praevention/kompass-60-plus' },
+      { label: { de: 'Sprechstunde Wechseljahre', en: 'Menopause consultation' }, path: '/praevention/wechseljahre' },
+      { label: { de: 'Check-up 60+', en: 'Check-up 60+' }, path: '/praevention/check-up-60-plus' },
     ],
     faq: [
       {

@@ -1,0 +1,243 @@
+/**
+ * Seite „Beispielkosten Prävention" (/praevention/kosten). Ersetzt die festen
+ * Beträge auf Karten und Buchungsseite (Nickis Vorgabe vom 04.11.2026: kein
+ * Lockpreis, „Kosten je nachdem, was benötigt wird"). Alle Beträge kommen aus
+ * `preise.ts`; Regeln nach team-2026-11-04/kosten-goae.md 4.2: kein „ab",
+ * kein „nur", kein Kurztermin-Betrag als Aufmacher, nie „inklusive Labor".
+ * Stufe-2-Angebote (Schlaf, Muskel) erscheinen erst, wenn sie online gehen.
+ */
+import type { Localized } from '../types';
+import { honorar, labor, termin, weg, euroDe, euroEn } from './preise';
+
+export interface BeispielPosten {
+  label: Localized;
+  betrag: number;
+}
+
+export interface Beispielrechnung {
+  /** Slug des Angebots (Link auf die Angebotsseite). */
+  slug: string;
+  title: Localized;
+  posten: BeispielPosten[];
+  /** Ärztliches Honorar aller Posten zusammen. */
+  praxis: number;
+  labor: Localized;
+  typisch: Localized;
+  hinweis?: Localized;
+}
+
+const ganz = (b: number) => Math.round(b);
+
+const dreischritt: BeispielPosten[] = [
+  { label: { de: 'Kurztermin: welche Werte sinnvoll sind', en: 'Short appointment: which tests make sense' }, betrag: termin.kurz },
+  { label: { de: 'Blutabnahme am Morgen', en: 'Blood sample in the morning' }, betrag: termin.blutabnahme },
+  {
+    label: { de: 'Befundtermin: Untersuchung, Beratung, schriftlicher Plan', en: 'Results appointment: examination, advice, written plan' },
+    betrag: termin.befundCheck,
+  },
+];
+
+export const beispielrechnungen: Beispielrechnung[] = [
+  {
+    slug: 'gesundheitscheck',
+    title: { de: 'Gesundheitscheck', en: 'Health check-up' },
+    posten: dreischritt,
+    praxis: weg.check,
+    labor: {
+      de: `ca. ${euroDe(labor.check)}, beim ersten Check mit einmaliger Lp(a)-Bestimmung ca. ${euroDe(labor.checkMitLpa)}`,
+      en: `approx. ${euroEn(labor.check)}, at the first check-up with a one-off Lp(a) test approx. ${euroEn(labor.checkMitLpa)}`,
+    },
+    typisch: {
+      de: `ca. ${ganz(weg.check + labor.check)}–${ganz(weg.check + labor.checkMitLpa)} € zusammen`,
+      en: `approx. €${ganz(weg.check + labor.check)}–${ganz(weg.check + labor.checkMitLpa)} in total`,
+    },
+  },
+  {
+    slug: 'maenner-check-up',
+    title: { de: 'Check-up Männer 40+', en: 'Men’s check-up 40+' },
+    posten: dreischritt,
+    praxis: weg.check,
+    labor: {
+      de: `ca. ${euroDe(labor.maenner)}; weitere Werte nur nach gemeinsamer Beratung, dann bis ca. ${euroDe(labor.maennerMax)}`,
+      en: `approx. ${euroEn(labor.maenner)}; further tests only after joint advice, then up to approx. ${euroEn(labor.maennerMax)}`,
+    },
+    typisch: {
+      de: `ca. ${ganz(weg.check + labor.maenner)} € zusammen, mit allen Zusatzwerten und zweiter Blutabnahme bis ca. ${ganz(weg.check + termin.blutabnahme + labor.maennerMax)} €`,
+      en: `approx. €${ganz(weg.check + labor.maenner)} in total, with all additional tests and a second blood sample up to approx. €${ganz(weg.check + termin.blutabnahme + labor.maennerMax)}`,
+    },
+    hinweis: {
+      de: `Braucht ein Wert eine zweite Blutabnahme, kostet sie ${euroDe(termin.blutabnahme)}.`,
+      en: `If a test needs a second blood sample, it costs ${euroEn(termin.blutabnahme)}.`,
+    },
+  },
+  {
+    slug: 'check-up-60-plus',
+    title: { de: 'Check-up 60+', en: 'Check-up 60+' },
+    posten: dreischritt,
+    praxis: weg.check,
+    labor: {
+      de: `ca. ${euroDe(labor.check)}, mit einmaliger Lp(a)-Bestimmung ca. ${euroDe(labor.checkMitLpa)}; weitere Werte nur bei Anlass`,
+      en: `approx. ${euroEn(labor.check)}, with a one-off Lp(a) test approx. ${euroEn(labor.checkMitLpa)}; further tests only if there is a reason`,
+    },
+    typisch: {
+      de: `ca. ${ganz(weg.check + labor.check)}–${ganz(weg.check + labor.checkMitLpa)} € zusammen, ohne Impfungen`,
+      en: `approx. €${ganz(weg.check + labor.check)}–${ganz(weg.check + labor.checkMitLpa)} in total, without vaccinations`,
+    },
+    hinweis: {
+      de: `Impfung im Befundtermin ${euroDe(honorar.impfung)}, jede weitere ${euroDe(honorar.weitereImpfung)}, zuzüglich Impfstoff.`,
+      en: `Vaccination in the results appointment ${euroEn(honorar.impfung)}, each further one ${euroEn(honorar.weitereImpfung)}, plus vaccine.`,
+    },
+  },
+  {
+    slug: 'gewicht-und-stoffwechsel',
+    title: { de: 'Gewicht & Stoffwechsel, erster Monat', en: 'Weight & metabolism, first month' },
+    posten: [
+      { label: { de: 'Kurztermin mit Messung: welche Werte sinnvoll sind', en: 'Short appointment with measurements: which tests make sense' }, betrag: termin.kurzMitMessung },
+      { label: { de: 'Blutabnahme am Morgen', en: 'Blood sample in the morning' }, betrag: termin.blutabnahme },
+      { label: { de: 'Start mit allen Werten und Behandlungsplan', en: 'Start with all results and treatment plan' }, betrag: termin.befundGewicht },
+      { label: { de: 'Plantermin mit Ernährungsplan', en: 'Plan appointment with nutrition plan' }, betrag: termin.ernaehrungsplan },
+    ],
+    praxis: weg.gewichtMonat1,
+    labor: {
+      de: `ca. ${labor.gewichtStart}–${euroDe(labor.gewichtStartMitTsh)}`,
+      en: `approx. ${euroEn(labor.gewichtStart)}–${euroEn(labor.gewichtStartMitTsh)}`,
+    },
+    typisch: {
+      de: `ca. ${ganz(weg.gewichtMonat1 + labor.gewichtStart)}–${ganz(weg.gewichtMonat1 + labor.gewichtStartMitTsh)} € im ersten Monat`,
+      en: `approx. €${ganz(weg.gewichtMonat1 + labor.gewichtStart)}–${ganz(weg.gewichtMonat1 + labor.gewichtStartMitTsh)} in the first month`,
+    },
+    hinweis: {
+      de: `Danach Verlaufstermine je ${euroDe(honorar.verlauf)} in der Praxis, per Video ${euroDe(honorar.gespraech)}. Ein typisches erstes Jahr: ca. ${ganz(weg.gewichtJahr)} € Honorar und ca. ${labor.gewichtJahrVon}–${labor.gewichtJahrBis} € Labor.`,
+      en: `After that, follow-ups of ${euroEn(honorar.verlauf)} each at the practice, ${euroEn(honorar.gespraech)} by video. A typical first year: approx. €${ganz(weg.gewichtJahr)} in fees and approx. €${labor.gewichtJahrVon}–${labor.gewichtJahrBis} for the laboratory.`,
+    },
+  },
+  {
+    slug: 'wechseljahre',
+    title: { de: 'Sprechstunde Wechseljahre, erstes Jahr', en: 'Menopause consultation, first year' },
+    posten: [
+      { label: { de: 'Erstgespräch mit Untersuchung', en: 'First consultation with examination' }, betrag: honorar.erstgespraech },
+      { label: { de: 'Plantermin mit schriftlichem Plan', en: 'Plan appointment with written plan' }, betrag: honorar.planTermin },
+      { label: { de: 'Verlaufstermin nach 8–12 Wochen', en: 'Follow-up after 8–12 weeks' }, betrag: honorar.verlauf },
+      { label: { de: 'Verlaufstermin nach 6 Monaten', en: 'Follow-up after 6 months' }, betrag: honorar.verlauf },
+    ],
+    praxis: weg.wechseljahreJahr,
+    labor: {
+      de: `meist keins; wenn für Ihre Frage nötig, bis ca. ${euroDe(labor.wechseljahreBis)} und ${euroDe(termin.blutabnahme)} für die Blutabnahme`,
+      en: `usually none; if needed for your question, up to approx. ${euroEn(labor.wechseljahreBis)} plus ${euroEn(termin.blutabnahme)} for the blood sample`,
+    },
+    typisch: {
+      de: `ca. ${ganz(weg.wechseljahreJahr)} € im ersten Jahr, mit Labor bis ca. ${ganz(weg.wechseljahreJahr + termin.blutabnahme + labor.wechseljahreBis)} €`,
+      en: `approx. €${ganz(weg.wechseljahreJahr)} in the first year, with lab tests up to approx. €${ganz(weg.wechseljahreJahr + termin.blutabnahme + labor.wechseljahreBis)}`,
+    },
+  },
+  {
+    slug: 'blutwerte-besprechen',
+    title: { de: 'Blutwerte besprechen', en: 'Discuss your blood results' },
+    posten: [{ label: { de: 'Gespräch mit schriftlichem Werte-Bogen', en: 'Consultation with written results sheet' }, betrag: honorar.planTermin }],
+    praxis: honorar.planTermin,
+    labor: {
+      de: 'meist keins; Sie bringen Ihre Werte mit',
+      en: 'usually none; you bring your results with you',
+    },
+    typisch: {
+      de: `ca. ${ganz(honorar.planTermin)} €, mit befundbezogener Untersuchung ca. ${ganz(honorar.bilanz)} €`,
+      en: `approx. €${ganz(honorar.planTermin)}, with a related examination approx. €${ganz(honorar.bilanz)}`,
+    },
+    hinweis: {
+      de: `Befundbezogene Untersuchung heißt zum Beispiel Blutdruck messen nach einem Hinweis Ihrer Uhr; dann ${euroDe(honorar.bilanz)} statt ${euroDe(honorar.planTermin)}.`,
+      en: `A related examination means, for example, measuring blood pressure after an alert from your watch; then ${euroEn(honorar.bilanz)} instead of ${euroEn(honorar.planTermin)}.`,
+    },
+  },
+];
+
+export const beispielkostenSeite = {
+  meta: {
+    title: { de: 'Was kostet Prävention bei Polaris? Beispielkosten nach GOÄ', en: 'What does preventive care cost at Polaris? Example fees under the GOÄ' },
+    description: {
+      de: 'Kosten je nachdem, was Sie brauchen: Beispielrechnungen nach GOÄ für Gesundheitscheck, Blutwerte, Wechseljahre und Gewicht, Honorar und Labor getrennt.',
+      en: 'Costs depend on what you need: example bills under the GOÄ for check-ups, blood results, menopause and weight, with medical fees and lab costs shown separately.',
+    },
+    eyebrow: { de: 'Prävention & Lebensstil', en: 'Prevention & lifestyle' },
+    lead: {
+      de: 'Bei uns gibt es keine Pakete und keinen Festpreis. Was es kostet, hängt davon ab, was Sie brauchen. Damit Sie trotzdem planen können, zeigen wir hier typische Beispiele.',
+      en: 'We have no packages and no fixed price. What it costs depends on what you need. So that you can still plan, we show typical examples here.',
+    },
+  },
+  warumTitle: { de: 'Warum es keinen Festpreis gibt', en: 'Why there is no fixed price' },
+  warum: {
+    de: [
+      'Ärztliche Leistungen rechnen wir nach der Gebührenordnung für Ärzte (GOÄ) ab, und zwar je Termin und nur für das, was stattfindet. Pauschalpreise erlaubt die GOÄ nicht.',
+      'Bei Angeboten mit Blutwerten beginnen wir mit einem Kurztermin. Dort legen wir gemeinsam fest, welche Werte bei Ihnen etwas aussagen. Vor der Blutabnahme erhalten Sie die voraussichtlichen Kosten schriftlich. Wenn Sie danach nicht weitermachen möchten, zahlen Sie nur den Kurztermin.',
+      'Bezahlt wird einmal, im Termin mit Ihren Ergebnissen, mit Karte. Sie erhalten für jeden Termin eine eigene Rechnung, die Sie bei Ihrer Versicherung einreichen können.',
+    ],
+    en: [
+      'We bill medical services under the German fee schedule for doctors (GOÄ), per appointment and only for what takes place. The GOÄ does not allow flat-rate prices.',
+      'For services with blood tests we start with a short appointment. There we decide together which tests tell us something in your case. You receive the expected costs in writing before any blood is taken. If you decide not to continue, you only pay for the short appointment.',
+      'You pay once, at the appointment where we discuss your results, by card. You receive a separate invoice for each appointment, which you can submit to your insurer.',
+    ],
+  },
+  beispieleTitle: { de: 'Beispiele', en: 'Examples' },
+  laborTitle: { de: 'Laborkosten', en: 'Lab costs' },
+  laborText: {
+    de: [
+      'Die Blutwerte bestimmt ein ärztliches Labor. Es stellt Ihnen seine Rechnung selbst. Deshalb nennen wir die Laborkosten getrennt und als Spanne: Sie hängen davon ab, welche Werte wir gemeinsam auswählen.',
+      'Werte, die für Ihre Entscheidung nichts ändern, bestimmen wir nicht. Ein „Komplettlabor“ bieten wir bewusst nicht an.',
+    ],
+    en: [
+      'Blood tests are carried out by a medical laboratory. It sends you its own invoice. That is why we show lab costs separately and as a range: they depend on which tests we choose together.',
+      'We do not measure values that would not change your decision. We deliberately do not offer a “full blood panel”.',
+    ],
+  },
+  erstattungTitle: { de: 'Was die Versicherung erstattet', en: 'What your insurance reimburses' },
+  erstattung: {
+    de: [
+      'Private Krankenversicherung und Beihilfe erstatten je nach Tarif. Vorsorge außerhalb der gesetzlichen Programme übernehmen viele Tarife nur teilweise. Leistungen, die Sie ohne medizinischen Anlass wünschen, kennzeichnen wir auf der Rechnung; sie werden meist nicht erstattet.',
+      'Gesetzlich Versicherte zahlen bei uns selbst. Die Gesundheitsuntersuchung der Krankenkasse und die von der STIKO empfohlenen Impfungen erhalten Sie in Ihrer Hausarztpraxis in der Regel ohne Zuzahlung.',
+    ],
+    en: [
+      'Private health insurance and Beihilfe reimburse depending on the tariff. Many tariffs only partly cover prevention outside the statutory programmes. We mark services you request without a medical reason on the invoice; they are usually not reimbursed.',
+      'People with statutory insurance pay themselves. The health check offered by statutory insurers and STIKO-recommended vaccinations are usually available from your GP without co-payment.',
+    ],
+  },
+  fussnote: {
+    de: 'Beispiele zum Regelsatz der GOÄ, Stand November 2026. Berechnet wird nur, was stattfindet; weniger Termine oder Werte kosten weniger. Laborkosten stellt das Labor selbst in Rechnung. Keine Umsatzsteuer.',
+    en: 'Examples at the standard GOÄ rate, as of November 2026. You only pay for what takes place; fewer appointments or tests cost less. The laboratory invoices lab costs itself. No VAT.',
+  },
+  faq: [
+    {
+      q: { de: 'Was kostet ein Check-up als Selbstzahler?', en: 'What does a self-pay check-up cost?' },
+      a: {
+        de: `Bei uns gibt es keinen Paketpreis. Für den Gesundheitscheck mit drei Terminen sind es typisch ca. ${ganz(weg.check)} € ärztliches Honorar nach GOÄ, dazu ca. ${labor.check}–${labor.checkMitLpa} € Laborkosten, die das Labor selbst berechnet. Wie viel es bei Ihnen wird, hängt davon ab, welche Werte wir gemeinsam für sinnvoll halten.`,
+        en: `We have no package price. For the health check-up with three appointments it is typically approx. €${ganz(weg.check)} in medical fees under the GOÄ, plus approx. €${labor.check}–${labor.checkMitLpa} in lab costs invoiced by the laboratory. How much it is for you depends on which tests we agree make sense.`,
+      },
+    },
+    {
+      q: { de: 'Was kostet die Bestimmung von Lipoprotein(a)?', en: 'What does a lipoprotein(a) test cost?' },
+      a: {
+        de: `Beim Labor ca. ${labor.checkMitLpa - labor.check} €. Der Wert ist weitgehend erblich und muss in der Regel nur einmal bestimmt werden. Ob er für Sie sinnvoll ist, besprechen wir im Kurztermin.`,
+        en: `Approx. €${labor.checkMitLpa - labor.check} at the laboratory. The value is largely inherited and usually only needs to be measured once. Whether it makes sense for you is something we discuss in the short appointment.`,
+      },
+    },
+    {
+      q: { de: 'Warum nennen Sie keinen Festpreis?', en: 'Why do you not quote a fixed price?' },
+      a: {
+        de: 'Weil die GOÄ je Leistung abrechnet und Pauschalen nicht erlaubt. Und weil nicht jeder dieselben Werte braucht. So zahlen Sie nur, was bei Ihnen stattfindet, und kennen die voraussichtlichen Kosten vor der Blutabnahme.',
+        en: 'Because the GOÄ bills per service and does not allow flat rates. And because not everyone needs the same tests. That way you only pay for what takes place, and you know the expected costs before any blood is taken.',
+      },
+    },
+    {
+      q: { de: 'Wer stellt die Laborrechnung, und was erstattet die private Krankenversicherung?', en: 'Who issues the lab invoice, and what does private health insurance reimburse?' },
+      a: {
+        de: 'Die Laborrechnung kommt direkt vom Labor. Private Krankenversicherung und Beihilfe erstatten je nach Tarif; fragen Sie im Zweifel vorher dort nach. Unsere Rechnungen und die Kosteninformation helfen Ihnen dabei.',
+        en: 'The lab invoice comes directly from the laboratory. Private health insurance and Beihilfe reimburse depending on the tariff; if in doubt, ask them beforehand. Our invoices and cost information help you with this.',
+      },
+    },
+    {
+      q: { de: 'Muss ich vorher bezahlen?', en: 'Do I have to pay in advance?' },
+      a: {
+        de: 'Nein. Es gibt keine Vorkasse und keine Anzahlung. Bezahlt wird einmal, im Termin mit Ihren Ergebnissen, mit Karte.',
+        en: 'No. There is no prepayment and no deposit. You pay once, at the appointment where we discuss your results, by card.',
+      },
+    },
+  ],
+};

@@ -1,17 +1,21 @@
 ---
 /**
  * Bereichsseite „Prävention & Lebensstil" (/praevention): Hero, Bereichs-
- * navigation, Einstieg nach Lebenslage, Angebote in drei Gruppen, Arbeitsweise,
- * was wir bewusst nicht anbieten, Abschluss-Band. Alles in `.theme-praevention`
+ * navigation, Einstieg nach Lebenslage, Angebote in drei Gruppen (ohne feste
+ * Beträge, Hinweis auf die Beispielkosten), Arbeitsweise, was wir bewusst nicht
+ * anbieten, häufige Fragen, Abschluss-Band. Alles in `.theme-praevention`
  * (Salbei); Kopf- und Fußzeile bleiben die der Praxis. Sprache aus der URL.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from './PageHero.astro';
 import PraeventionNav from './PraeventionNav.astro';
 import CTA from './CTA.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
 import { getLangFromUrl, getLocalizedPath, useTranslations } from '../i18n/utils';
 import {
   PREVENTION_BOOKING_PATH,
+  PREVENTION_COSTS_PATH,
+  preventionCostNote,
   preventionDoctor,
   preventionEntryPoints,
   preventionGroups,
@@ -26,11 +30,13 @@ const groups = preventionGroups
   .map((g) => ({ ...g, offers: preventionOffers.filter((o) => o.group === g.id) }))
   .filter((g) => g.offers.length > 0);
 const entryPoints = preventionEntryPoints.filter((e) => preventionOffers.some((o) => o.slug === e.slug));
+const crumbs = [{ label: t('nav.home'), path: getLocalizedPath('/', lang) }, { label: t('nav.preventionArea') }];
 ---
 
 <BaseLayout title={hub.meta.title[lang]} description={hub.meta.description[lang]}>
   <div class="theme-praevention">
     <PageHero eyebrow={hub.meta.eyebrow[lang]} title={hub.meta.title[lang]} lead={hub.meta.lead[lang]}>
+      <Breadcrumbs slot="breadcrumb" items={crumbs} label={t('content.breadcrumb')} />
       <div class="mt-8 flex flex-wrap items-center gap-3">
         <a href={getLocalizedPath(PREVENTION_BOOKING_PATH, lang)} class="btn-gold" aria-label={t('cta.bookAria')}>{t('cta.book')}</a>
         <a href="#angebote" class="btn-ghost">{lang === 'de' ? 'Angebote ansehen' : 'View services'}</a>
@@ -80,7 +86,6 @@ const entryPoints = preventionEntryPoints.filter((e) => preventionOffers.some((o
                     >
                       <h3 class="text-xl">{o.shortName[lang]}</h3>
                       <p class="mt-3 flex-1 text-ink-soft">{o.teaser[lang]}</p>
-                      <p class="mt-5 text-sm font-medium text-petrol-700">{o.facts.fee[lang]}</p>
                       <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-petrol-800">
                         {lang === 'de' ? 'Mehr erfahren' : 'Learn more'}
                         <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
@@ -94,6 +99,15 @@ const entryPoints = preventionEntryPoints.filter((e) => preventionOffers.some((o
             </div>
           ))
         }
+        <p class="max-w-3xl text-sm text-ink-soft">
+          {preventionCostNote[lang]}{' '}
+          <a
+            href={getLocalizedPath(PREVENTION_COSTS_PATH, lang)}
+            class="font-semibold text-petrol-800 underline decoration-gold-400/50 underline-offset-4"
+          >
+            {lang === 'de' ? 'Beispielkosten ansehen' : 'View example fees'}
+          </a>
+        </p>
       </div>
     </section>
 
@@ -116,8 +130,31 @@ const entryPoints = preventionEntryPoints.filter((e) => preventionOffers.some((o
           {hub.notOffered[lang].map((item) => <li>{item}</li>)}
         </ul>
         <p>
+          <a href={getLocalizedPath(PREVENTION_COSTS_PATH, lang)}>{lang === 'de' ? 'Beispielkosten Prävention' : 'Example fees for preventive care'}</a>
+          {' · '}
           <a href={getLocalizedPath('/kosten', lang)}>{lang === 'de' ? 'Kosten und Abrechnung' : 'Fees and billing'}</a>
         </p>
+      </div>
+
+      <div id="fragen" class="mt-12 max-w-3xl scroll-mt-24">
+        <div class="rich-text">
+          <h2>{hub.faqTitle[lang]}</h2>
+        </div>
+        <div class="mt-4 divide-y divide-petrol-100 rounded-2xl border border-petrol-100 bg-white">
+          {
+            hub.faq.map((item) => (
+              <details class="group px-5 py-4">
+                <summary class="cursor-pointer list-none font-semibold text-petrol-900 marker:hidden">
+                  <span class="flex items-start justify-between gap-4">
+                    {item.q[lang]}
+                    <span class="mt-0.5 text-gold-600 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </span>
+                </summary>
+                <p class="mt-3 text-ink-soft">{item.a[lang]}</p>
+              </details>
+            ))
+          }
+        </div>
       </div>
     </section>
 

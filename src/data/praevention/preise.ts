@@ -2,21 +2,46 @@
  * Ärztliches Honorar der Präventionsangebote nach GOÄ zum Regelsatz
  * (ärztliche Leistungen 2,3; Blutentnahme Nr. 250 1,8), ohne Steigerung und
  * ohne Honorarvereinbarung. Eine Stelle für alle Beträge der Präventionsseiten,
- * damit Website, App-Schnellwahl und Preisliste gleich bleiben. Nr. 3 steht nur
- * allein oder neben Untersuchungsziffern (Legende Nr. 3), deshalb 1 + 75 statt
- * 3 + 75. Labor rechnet das Labor direkt ab; Laborbeträge sind gerundete
- * Richtwerte (Faktor 1,15).
+ * damit Website, Beispielkosten, App-Schnellwahl und Preisliste gleich bleiben.
+ * Labor rechnet das Labor direkt ab; Laborbeträge sind gerundete Richtwerte
+ * (Faktor 1,15).
  *
- * Stand: Preisliste der GOÄ-Prüfung vom 28.10.2026 (Entwurf, vor
- * Veröffentlichung mit der Abrechnungsstelle abgleichen).
+ * Stand 04.11.2026: Ablauf bei Angeboten mit Blutwerten „Kurztermin →
+ * Blutabnahme → Befundtermin“ (team-2026-11-04/kosten-goae.md). Nr. 3 steht
+ * nur allein oder neben Untersuchungsziffern (Legende Nr. 3), deshalb im
+ * Befundtermin Nr. 1 oder Nr. 29 neben Nr. 75. Entwurf, vor Veröffentlichung
+ * mit der Abrechnungsstelle abgleichen.
  */
+
+/** Summe auf den Cent gerundet (Gleitkomma). */
+function summe(...betraege: number[]): number {
+  return Math.round(betraege.reduce((s, b) => s + b, 0) * 100) / 100;
+}
+
+/** Einzelne Termine im Ablauf mit Blutwerten. */
+export const termin = {
+  /** Nr. 3 – Kurztermin ab 10 Minuten: welche Werte, warum, was sie kosten */
+  kurz: 20.11,
+  /** Nr. 3 + 5 – Kurztermin mit gezielter Messung (Gewicht, Taille, Blutdruck) */
+  kurzMitMessung: 30.83,
+  /** Nr. 1 + 250 – Kurztermin mit Blutabnahme in derselben Sitzung (Option bei weitem Weg) */
+  kurzMitBlut: 14.92,
+  /** Nr. 250 – Blutabnahme im Laborfenster */
+  blutabnahme: 4.2,
+  /** Nr. 29 + 75 – Befundtermin: Gesundheitsuntersuchung und schriftlicher Plan */
+  befundCheck: 76.42,
+  /** Nr. 1 + 8 + 75 – Gewicht: Befund- und Starttermin mit Ganzkörperstatus und Plan */
+  befundGewicht: 63.01,
+  /** Nr. 1 + 76 – Gewicht: individueller Ernährungsplan */
+  ernaehrungsplan: 20.1,
+} as const;
+
+/** Beträge einzelner Termine außerhalb des Ablaufs mit Blutwerten. */
 export const honorar = {
-  /** Nr. 250 – Blutentnahme im Laborfenster */
-  blutentnahme: 4.2,
+  /** Nr. 250 – Blutentnahme */
+  blutentnahme: termin.blutabnahme,
   /** Nr. 3 – Befund- oder Folgegespräch ab 10 Minuten, auch telefonisch */
   gespraech: 20.11,
-  /** Nr. 250 → Nr. 29 + 75 – Kompass: Labortermin, dann Haupttermin mit Plan */
-  check: 80.62,
   /** Nr. 375 – Impfung im selben Termin */
   impfung: 10.72,
   /** Nr. 377 – jede weitere Impfung im selben Termin */
@@ -29,27 +54,47 @@ export const honorar = {
   verlauf: 30.83,
   /** Nr. 1 + 5 + 75 – Termin mit Untersuchung und schriftlichem Bericht */
   bilanz: 38.87,
-  /** Nr. 3 + 8 – Gewicht: Start mit Ganzkörperuntersuchung */
-  gewichtStart: 54.97,
-  /** Nr. 1 + 75 + 76 – Gewicht: Plantermin mit Behandlungs- und Ernährungsplan */
-  gewichtPlan: 37.53,
   /** Nr. 1 + 7 + 75 – Muskel-Kompass */
   muskel: 49.6,
   /** Nr. 1 + 7 + 250 – Abklärung Müdigkeit mit Untersuchung und Blutentnahme */
   abklaerung: 36.37,
 } as const;
 
-/** Richtwerte Labor (direkt vom Labor, Faktor 1,15), gerundet. */
+/** Ganze Wege, wie sie die Beispielkosten zeigen (Praxis, ohne Labor). */
+export const weg = {
+  /** Check, Männer 40+, 60+: Kurztermin, Blutabnahme, Befundtermin */
+  check: summe(termin.kurz, termin.blutabnahme, termin.befundCheck),
+  /** Gewicht, erster Monat: Kurztermin mit Messung, Blutabnahme, Befund und Start */
+  gewichtStart: summe(termin.kurzMitMessung, termin.blutabnahme, termin.befundGewicht),
+  /** Gewicht, erster Monat mit Ernährungsplan */
+  gewichtMonat1: summe(termin.kurzMitMessung, termin.blutabnahme, termin.befundGewicht, termin.ernaehrungsplan),
+  /** Gewicht, typisches erstes Jahr (kosten-goae.md 2.2) */
+  gewichtJahr: 336.99,
+  /** Wechseljahre, erstes Jahr: Erstgespräch, Plantermin, zwei Verläufe */
+  wechseljahreJahr: summe(honorar.erstgespraech, honorar.planTermin, honorar.verlauf, honorar.verlauf),
+} as const;
+
+/** Richtwerte Labor (direkt vom Labor, Faktor 1,15), gerundet (medizin-labor.md 4). */
 export const labor = {
+  /** Blutfette, HbA1c, Kreatinin */
   check: 27,
+  /** dazu einmal im Leben Lp(a) */
   checkMitLpa: 47,
-  check60: 31,
+  /** Männer 40+ mit einmaligem Lp(a) */
   maenner: 47,
-  /** Start mit TSH (S3-Leitlinie) */
-  gewichtStart: 56,
-  /** Start, Verlauf nach 3 und 12 Monaten */
-  gewichtJahr: 110,
-  muedigkeit: 48,
+  /** Männer mit allen Zusatzwerten nach Beratung (zweimal Testosteron, PSA) */
+  maennerMax: 140,
+  /** Gewicht: Blutfette, HbA1c, Kreatinin, Leberwerte, kleines Blutbild */
+  gewichtStart: 36,
+  /** dasselbe ab BMI 30 mit TSH */
+  gewichtStartMitTsh: 53,
+  /** erstes Jahr: Start, nach 3 und nach 12 Monaten */
+  gewichtJahrVon: 92,
+  gewichtJahrBis: 109,
+  /** Abklärung Müdigkeit nach DEGAM, mit Differenzierung und Leberwert */
+  muedigkeit: 52,
+  /** Wechseljahre: meist keins, bei Anlass bis ca. */
+  wechseljahreBis: 82,
 } as const;
 
 /** „80,62 €" */
@@ -62,4 +107,14 @@ export function euroDe(betrag: number): string {
 export function euroEn(betrag: number): string {
   const ganz = Number.isInteger(betrag);
   return `€${betrag.toLocaleString('en-GB', { minimumFractionDigits: ganz ? 0 : 2, maximumFractionDigits: 2 })}`;
+}
+
+/** Gerundet auf ganze Euro für „ca."-Angaben: „ca. 101 €" */
+export function caDe(betrag: number): string {
+  return `ca. ${Math.round(betrag)} €`;
+}
+
+/** „approx. €101" */
+export function caEn(betrag: number): string {
+  return `approx. €${Math.round(betrag)}`;
 }

@@ -4,28 +4,76 @@
  * zeigt nur Präventions-Termine, Reise-Terminarten bleiben auf /termin. Solange
  * die App die Präventions-Terminarten noch nicht kennt
  * (`preventionOnlineBooking = false`), läuft die Vereinbarung über Telefon und
- * E-Mail statt über das Buchungstool. Sprache aus der URL.
+ * E-Mail statt über das Buchungstool. Indexierbar (eigener Inhalt: was zuerst
+ * buchen, Ablauf in drei Schritten); keine festen Beträge, sondern Hinweis auf
+ * die Beispielkosten. Sprache aus der URL.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from './PageHero.astro';
 import PraeventionNav from './PraeventionNav.astro';
 import BookingEmbed from './BookingEmbed.astro';
-import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
+import Breadcrumbs from './Breadcrumbs.astro';
+import { getLangFromUrl, getLocalizedPath, useTranslations } from '../i18n/utils';
 import { BOOKING_PATH } from '../config/nav';
 import { site } from '../config/site';
-import { preventionDoctor, preventionHub, preventionOffers, preventionOnlineBooking, preventionPath } from '../data/praevention';
+import {
+  PREVENTION_COSTS_PATH,
+  PREVENTION_PATH,
+  preventionCostNote,
+  preventionDoctor,
+  preventionHub,
+  preventionOffers,
+  preventionOnlineBooking,
+  preventionPath,
+} from '../data/praevention';
 
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const de = lang === 'de';
 const title = de ? 'Termin für Prävention & Lebensstil' : 'Appointment for prevention & lifestyle';
 const lead = de
-  ? 'Wählen Sie Ihr Angebot. Wenn Blutwerte dazugehören, vereinbaren wir zwei Termine: zuerst die kurze Blutentnahme, einige Tage später das Gespräch mit allen Werten.'
-  : 'Choose your service. If blood tests are part of it, we arrange two appointments: first the short blood draw, a few days later the consultation with all results.';
+  ? 'Wählen Sie Ihr Angebot. Wenn Blutwerte dazugehören, buchen Sie zuerst den Kurztermin, auch am Telefon oder per Video. Dort legen wir die Werte fest; Blutabnahme und Befundtermin vereinbaren wir danach mit Ihnen.'
+  : 'Choose your service. If blood tests are part of it, first book the short appointment, also by phone or video. There we decide on the tests; we then arrange the blood sample and the results appointment with you.';
+const description = de
+  ? 'Termin für Gesundheitscheck, Check-up, Gewicht & Stoffwechsel, Wechseljahre oder Blutwerte in Langenfeld: was Sie zuerst buchen und wie die Termine ablaufen.'
+  : 'Appointment for a health check-up, weight & metabolism, menopause or blood results in Langenfeld: what to book first and how the appointments work.';
+const schritte = de
+  ? [
+      { titel: 'Kurztermin', text: 'Ca. 15 Minuten in der Praxis, am Telefon oder per Video. Wir legen fest, welche Werte sinnvoll sind, und Sie erhalten die voraussichtlichen Kosten schriftlich.' },
+      { titel: 'Blutabnahme', text: 'Ca. 10 Minuten am Morgen. Bei weitem Weg auf Wunsch direkt nach einem Kurztermin in der Praxis.' },
+      { titel: 'Befundtermin', text: 'Etwa eine Woche später in der Praxis: alle Ergebnisse, Untersuchung und Ihr schriftlicher Plan. Bezahlt wird einmal, mit Karte.' },
+    ]
+  : [
+      { titel: 'Short appointment', text: 'About 15 minutes at the practice, by phone or by video. We decide which tests make sense, and you receive the expected costs in writing.' },
+      { titel: 'Blood sample', text: 'About 10 minutes in the morning. If you have a long way, on request straight after a short appointment at the practice.' },
+      { titel: 'Results appointment', text: 'About a week later at the practice: all results, examination and your written plan. You pay once, by card.' },
+    ];
+const faq = de
+  ? [
+      { q: 'Was buche ich zuerst?', a: 'Beim Gesundheitscheck, den Check-ups und bei Gewicht & Stoffwechsel den Kurztermin. Für die Sprechstunde Wechseljahre und für mitgebrachte Blutwerte buchen Sie direkt das Gespräch.' },
+      { q: 'Warum drei Termine?', a: 'Damit wir nur messen, was für Sie etwas ändert, und Sie die Kosten kennen, bevor Blut abgenommen wird. Im Befundtermin liegen dann alle Ergebnisse vor. Den Kurztermin können Sie auch am Telefon oder per Video wahrnehmen; in die Praxis kommen Sie dann nur zweimal.' },
+      { q: 'Muss ich zur Blutabnahme nüchtern kommen?', a: 'In der Regel nicht. Wenn ein Wert es erfordert, sagen wir es Ihnen im Kurztermin.' },
+      { q: 'Kann ich Befunde vorher schicken?', a: 'Bitte bringen Sie vorhandene Befunde zum Termin mit. Schicken Sie Gesundheitsdaten bitte nicht per E-Mail.' },
+      { q: 'Kann ich telefonisch buchen?', a: 'Ja. Rufen Sie uns an, wir finden gemeinsam den passenden Termin.' },
+    ]
+  : [
+      { q: 'What do I book first?', a: 'For the health check-up, the check-ups and weight & metabolism, the short appointment. For the menopause consultation and for results you bring with you, book the consultation directly.' },
+      { q: 'Why three appointments?', a: 'So that we only measure what makes a difference for you, and you know the costs before any blood is taken. All results are then ready for the results appointment. You can also have the short appointment by phone or video; you then only come to the practice twice.' },
+      { q: 'Do I need to fast for the blood sample?', a: 'Usually not. If a test requires it, we tell you in the short appointment.' },
+      { q: 'Can I send results in advance?', a: 'Please bring existing results to the appointment. Please do not send health data by e-mail.' },
+      { q: 'Can I book by phone?', a: 'Yes. Call us and we will find a suitable appointment together.' },
+    ];
+const crumbs = [
+  { label: t('nav.home'), path: getLocalizedPath('/', lang) },
+  { label: t('nav.preventionArea'), path: getLocalizedPath(PREVENTION_PATH, lang) },
+  { label: de ? 'Termin' : 'Appointment' },
+];
 ---
 
-<BaseLayout title={title} description={lead} noindex>
+<BaseLayout title={title} description={description}>
   <div class="theme-praevention">
     <PageHero eyebrow={de ? 'Prävention & Lebensstil' : 'Prevention & lifestyle'} title={title} lead={lead}>
+      <Breadcrumbs slot="breadcrumb" items={crumbs} label={t('content.breadcrumb')} />
       <p class="mt-6 text-sm text-ink-soft">
         {de ? 'Im falschen Bereich gelandet? ' : 'In the wrong section? '}
         <a href={getLocalizedPath(BOOKING_PATH, lang)} class="font-semibold text-petrol-700 underline decoration-gold-400/50 underline-offset-4">
@@ -57,7 +105,26 @@ const lead = de
       }
     </section>
 
-    <section class="u-container pb-16 sm:pb-20">
+    <section class="u-container pb-14 sm:pb-16" aria-labelledby="ablauf">
+      <h2 id="ablauf" class="text-2xl sm:text-3xl">{de ? 'So läuft es mit Blutwerten ab' : 'How it works with blood tests'}</h2>
+      <ol class="mt-6 grid gap-4 md:grid-cols-3">
+        {
+          schritte.map((s, i) => (
+            <li class="flex gap-4 rounded-2xl border border-petrol-100 bg-white/70 p-5">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-petrol-800 text-sm font-semibold text-cream tabular-nums">
+                {i + 1}
+              </span>
+              <div>
+                <p class="font-semibold text-petrol-900">{s.titel}</p>
+                <p class="mt-1 text-ink-soft">{s.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="u-container pb-14 sm:pb-16">
       <h2 class="text-2xl sm:text-3xl">{de ? 'Unsere Angebote' : 'Our services'}</h2>
       <ul class="mt-6 divide-y divide-petrol-100 rounded-2xl border border-petrol-100 bg-white">
         {
@@ -69,15 +136,44 @@ const lead = de
               >
                 {o.shortName[lang]}
               </a>
-              <div class="text-sm leading-relaxed text-ink-soft">
-                <p>{o.facts.appointments[lang]}</p>
-                <p class="mt-1">{o.facts.fee[lang]}</p>
-              </div>
+              <p class="text-sm leading-relaxed text-ink-soft">{o.facts.appointments[lang]}</p>
             </li>
           ))
         }
       </ul>
-      <p class="mt-5 max-w-3xl text-sm text-ink-soft">{preventionHub.ctaNote[lang]} {preventionDoctor[lang]}</p>
+      <p class="mt-5 max-w-3xl text-sm text-ink-soft">
+        {preventionCostNote[lang]}{' '}
+        <a
+          href={getLocalizedPath(PREVENTION_COSTS_PATH, lang)}
+          class="font-semibold text-petrol-800 underline decoration-gold-400/50 underline-offset-4"
+        >
+          {de ? 'Beispielkosten ansehen' : 'View example fees'}
+        </a>
+      </p>
+      <p class="mt-3 max-w-3xl text-sm text-ink-soft">{preventionHub.ctaNote[lang]} {preventionDoctor[lang]}</p>
+    </section>
+
+    <section id="fragen" class="u-container scroll-mt-24 pb-16 sm:pb-20">
+      <div class="max-w-3xl">
+        <div class="rich-text">
+          <h2>{t('content.faqHeading')}</h2>
+        </div>
+        <div class="mt-4 divide-y divide-petrol-100 rounded-2xl border border-petrol-100 bg-white">
+          {
+            faq.map((item) => (
+              <details class="group px-5 py-4">
+                <summary class="cursor-pointer list-none font-semibold text-petrol-900 marker:hidden">
+                  <span class="flex items-start justify-between gap-4">
+                    {item.q}
+                    <span class="mt-0.5 text-gold-600 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </span>
+                </summary>
+                <p class="mt-3 text-ink-soft">{item.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
     </section>
   </div>
 </BaseLayout>

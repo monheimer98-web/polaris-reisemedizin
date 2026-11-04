@@ -10,7 +10,7 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
 import PraeventionAngebot from '../../../components/PraeventionAngebot.astro';
 import { getLangFromUrl, getLocalizedPath } from '../../../i18n/utils';
 import { getSources } from '../../../data/sources';
-import { preventionHub, preventionOffers } from '../../../data/praevention';
+import { allPreventionOffers, preventionHub, preventionOffers, preventionPath } from '../../../data/praevention';
 import type { PreventionOffer } from '../../../data/praevention/types';
 
 export const getStaticPaths = (() =>
@@ -23,7 +23,11 @@ interface Props {
 const { offer } = Astro.props;
 const page = offer.page;
 const lang = getLangFromUrl(Astro.url);
-const related = (page.related ?? []).map((item) => ({ label: item.label[lang], path: getLocalizedPath(item.path, lang) }));
+// Stufe-2-Angebote haben noch keine Seite: Links dorthin weglassen (sonst 404).
+const unveroeffentlicht = new Set(allPreventionOffers.filter((o) => o.stage !== 1).map((o) => preventionPath(o.slug)));
+const related = (page.related ?? [])
+  .filter((item) => !unveroeffentlicht.has(item.path))
+  .map((item) => ({ label: item.label[lang], path: getLocalizedPath(item.path, lang) }));
 const faq = (page.faq ?? []).map((f) => ({ q: f.q[lang], a: f.a[lang] }));
 ---
 

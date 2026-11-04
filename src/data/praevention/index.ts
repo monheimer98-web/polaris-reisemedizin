@@ -17,6 +17,8 @@ import { werteEinordnen } from './angebote/werte-einordnen';
 export const PREVENTION_PATH = '/praevention';
 /** Eigene Terminseite des Bereichs; Reise-Terminarten erscheinen hier nicht. */
 export const PREVENTION_BOOKING_PATH = '/praevention/termin';
+/** Beispielkosten statt Festbeträgen auf Karten und Terminseite. */
+export { BEISPIELKOSTEN_PATH as PREVENTION_COSTS_PATH } from './ablauf';
 /**
  * Online-Buchung der Präventions-Terminarten an? Erst mit dem App-Update
  * (`/buchung?bereich=praevention`) einschalten; bis dahin Telefon und E-Mail.
@@ -42,10 +44,19 @@ export function preventionPath(slug: string): string {
   return `${PREVENTION_PATH}/${slug}`;
 }
 
-/** Wer die Sprechstunde betreut (Satz auf jeder Präventionsseite). */
+/**
+ * Wer die Sprechstunde betreut (Satz auf jeder Präventionsseite). Neutral, ohne
+ * Namen: wen wir nach außen nennen, entscheidet Nicki (Entscheidungs-PDF).
+ */
 export const preventionDoctor: Localized = {
-  de: 'Die Sprechstunde betreut Nicole Ziegler, Ärztin.',
-  en: 'Consultations are provided by Nicole Ziegler, physician.',
+  de: 'Die Sprechstunde betreut unser ärztliches Team.',
+  en: 'Consultations are provided by our medical team.',
+};
+
+/** Satz unter Karten und Terminliste statt fester Beträge (kosten-goae.md 4.3). */
+export const preventionCostNote: Localized = {
+  de: 'Kosten: je nach Leistung, abgerechnet nach der Gebührenordnung für Ärzte (GOÄ). Welche Werte für Sie sinnvoll sind, besprechen wir im Kurztermin. Vor der Blutentnahme erhalten Sie die voraussichtlichen Kosten schriftlich.',
+  en: 'Costs: depending on the service, billed under the German fee schedule for doctors (GOÄ). We discuss which tests make sense for you in the short appointment. You receive the expected costs in writing before any blood is taken.',
 };
 
 export const preventionGroups: { id: PreventionGroup; title: Localized; lead: Localized }[] = [
@@ -61,8 +72,8 @@ export const preventionGroups: { id: PreventionGroup; title: Localized; lead: Lo
     id: 'begleitung',
     title: { de: 'Begleitung über Monate', en: 'Support over several months' },
     lead: {
-      de: 'Feste Termine, eine Ärztin, die Ihre Geschichte kennt, und ein Verlauf, der zeigt, was sich verändert.',
-      en: 'Fixed appointments, a doctor who knows your story and a record that shows what is changing.',
+      de: 'Feste Termine, dieselbe ärztliche Ansprechperson und ein Verlauf, der zeigt, was sich verändert.',
+      en: 'Fixed appointments, the same doctor each time and a record that shows what is changing.',
     },
   },
   {
@@ -77,20 +88,20 @@ export const preventionGroups: { id: PreventionGroup; title: Localized; lead: Lo
 
 /** „Wo fange ich an?" – Einstieg nach Lebenslage. */
 export const preventionEntryPoints: { label: Localized; slug: string }[] = [
-  { label: { de: 'Ich möchte wissen, wo ich stehe', en: 'I want to know where I stand' }, slug: 'praeventions-check' },
+  { label: { de: 'Ich möchte wissen, wo ich stehe', en: 'I want to know where I stand' }, slug: 'gesundheitscheck' },
   { label: { de: 'Ich habe schon vieles probiert, um abzunehmen', en: 'I have tried a lot to lose weight' }, slug: 'gewicht-und-stoffwechsel' },
   { label: { de: 'Ich bin über 40 und merke die Wechseljahre', en: 'I am over 40 and notice menopause' }, slug: 'wechseljahre' },
-  { label: { de: 'Ich habe Werte oder eine Smartwatch-Meldung', en: 'I have results or a smartwatch alert' }, slug: 'werte-einordnen' },
-  { label: { de: 'Ich bin 60 oder älter und möchte fit bleiben', en: 'I am 60 or older and want to stay fit' }, slug: 'kompass-60-plus' },
-  { label: { de: 'Ich bin Mann, über 40 und will es genau wissen', en: 'I am a man over 40 and want to know exactly' }, slug: 'kompass-maenner' },
+  { label: { de: 'Ich habe Werte oder eine Smartwatch-Meldung', en: 'I have results or a smartwatch alert' }, slug: 'blutwerte-besprechen' },
+  { label: { de: 'Ich bin 60 oder älter und möchte fit bleiben', en: 'I am 60 or older and want to stay fit' }, slug: 'check-up-60-plus' },
+  { label: { de: 'Ich bin Mann, über 40 und will es genau wissen', en: 'I am a man over 40 and want to know exactly' }, slug: 'maenner-check-up' },
 ];
 
 export const preventionHub = {
   meta: {
-    title: { de: 'Prävention & Lebensstil: Orientierung für Ihre Gesundheit', en: 'Prevention & lifestyle: guidance for your health' },
+    title: { de: 'Prävention & Lebensstil in Langenfeld: Orientierung für Ihre Gesundheit', en: 'Prevention & lifestyle in Langenfeld: guidance for your health' },
     description: {
-      de: 'Prävention & Lebensstil bei Polaris in Langenfeld: Präventions-Check, Begleitung bei Gewicht und Stoffwechsel, Sprechstunde Wechseljahre, Schlaf und Muskeln – ärztlich, mit Zeit und schriftlichem Plan.',
-      en: 'Prevention & lifestyle at Polaris in Langenfeld: prevention check-up, support for weight and metabolism, menopause consultation, sleep and muscles – medical, with time and a written plan.',
+      de: 'Gesundheitscheck, Blutwerte besprechen, Sprechstunde Wechseljahre, Gewicht & Stoffwechsel: ärztlich, mit Zeit und Plan. Privatpraxis in Langenfeld.',
+      en: 'Health check-up, blood results, menopause consultation, weight & metabolism: medical care with time and a written plan. Private practice in Langenfeld.',
     },
     eyebrow: { de: 'Ein Bereich der Praxis Polaris', en: 'Part of the Polaris practice' },
     lead: {
@@ -108,10 +119,10 @@ export const preventionHub = {
       },
     },
     {
-      title: { de: 'Labor zuerst', en: 'Lab tests first' },
+      title: { de: 'Erst besprechen, dann messen', en: 'Discuss first, then measure' },
       text: {
-        de: 'Bei den Checks nehmen wir morgens kurz Blut ab. Im Haupttermin liegen dann alle Werte vor, und Ihr Plan wird im Termin fertig.',
-        en: 'For check-ups we take a quick blood sample in the morning. All results are then ready for the main appointment, and your plan is finished during it.',
+        de: 'Bei Angeboten mit Blutwerten beginnen wir mit einem Kurztermin, auch am Telefon oder per Video. Dort legen wir die Werte fest. Morgens nehmen wir kurz Blut ab, und im Befundtermin liegen alle Ergebnisse vor.',
+        en: 'For services with blood tests we start with a short appointment, also by phone or video. There we decide on the tests. We take a quick blood sample in the morning, and all results are ready for the results appointment.',
       },
     },
     {
@@ -122,10 +133,10 @@ export const preventionHub = {
       },
     },
     {
-      title: { de: 'Preise offen nach GOÄ', en: 'Transparent fees under the GOÄ' },
+      title: { de: 'Kosten je nach Bedarf, vorher schriftlich', en: 'Costs as needed, in writing beforehand' },
       text: {
-        de: 'Jeder Termin wird einzeln nach der Gebührenordnung abgerechnet – ohne Pakete, Abos oder Vorkasse. Die Kosten nennen wir Ihnen vorab schriftlich.',
-        en: 'Each appointment is billed individually under the German fee schedule – no packages, subscriptions or prepayment. We tell you the costs in writing beforehand.',
+        de: 'Jeder Termin wird einzeln nach der Gebührenordnung abgerechnet, ohne Pakete, Abos oder Vorkasse. Die voraussichtlichen Kosten erhalten Sie vorab schriftlich, bezahlt wird einmal mit Karte.',
+        en: 'Each appointment is billed individually under the German fee schedule, with no packages, subscriptions or prepayment. You receive the expected costs in writing beforehand and pay once by card.',
       },
     },
   ],
@@ -151,7 +162,42 @@ export const preventionHub = {
     en: 'Choose the right service when booking. Not sure? Call us and we will help you get started.',
   },
   ctaNote: {
-    de: 'Polaris ist eine Privatpraxis. Abrechnung nach GOÄ. Laborkosten kommen je nach Angebot hinzu; das Labor rechnet sie direkt mit Ihnen ab.',
-    en: 'Polaris is a private practice. Fees under the GOÄ. Depending on the service, lab costs are added; the laboratory bills them directly to you.',
+    de: 'Polaris ist eine Privatpraxis. Kosten je nach Leistung nach GOÄ. Laborkosten kommen je nach Angebot hinzu; das Labor rechnet sie direkt mit Ihnen ab.',
+    en: 'Polaris is a private practice. Costs depend on the service, under the GOÄ. Depending on the service, lab costs are added; the laboratory bills them directly to you.',
   },
+  faqTitle: { de: 'Häufige Fragen', en: 'Frequently asked questions' },
+  faq: [
+    {
+      q: { de: 'Ich bin gesetzlich versichert. Kann ich trotzdem kommen?', en: 'I have statutory health insurance. Can I still come?' },
+      a: {
+        de: 'Ja, als Selbstzahlerin oder Selbstzahler. Leistungen Ihrer Krankenkasse, etwa die Gesundheitsuntersuchung oder empfohlene Impfungen, erhalten Sie weiter in Ihrer Hausarztpraxis.',
+        en: 'Yes, as a self-paying patient. Services covered by your health insurer, such as the statutory health check or recommended vaccinations, remain available from your GP.',
+      },
+    },
+    {
+      q: { de: 'Brauche ich eine Überweisung?', en: 'Do I need a referral?' },
+      a: { de: 'Nein.', en: 'No.' },
+    },
+    {
+      q: { de: 'Was buche ich zuerst?', en: 'What do I book first?' },
+      a: {
+        de: 'Beim Gesundheitscheck, den Check-ups und bei Gewicht & Stoffwechsel buchen Sie zuerst den Kurztermin. Die Blutabnahme und den Befundtermin vereinbaren wir danach mit Ihnen. Für die Sprechstunde Wechseljahre und für mitgebrachte Blutwerte buchen Sie direkt das Gespräch.',
+        en: 'For the health check-up, the check-ups and weight & metabolism, you first book the short appointment. We then arrange the blood sample and the results appointment with you. For the menopause consultation and for results you bring with you, book the consultation directly.',
+      },
+    },
+    {
+      q: { de: 'Was kostet ein Termin?', en: 'What does an appointment cost?' },
+      a: {
+        de: 'Das hängt davon ab, was Sie brauchen. Wir rechnen je Termin nach der GOÄ ab und nennen Ihnen die voraussichtlichen Kosten vorher schriftlich. Typische Beispiele finden Sie auf unserer Seite mit Beispielkosten.',
+        en: 'That depends on what you need. We bill per appointment under the GOÄ and tell you the expected costs in writing beforehand. You can find typical examples on our page with example fees.',
+      },
+    },
+    {
+      q: { de: 'Ersetzt Polaris meine Hausarztpraxis?', en: 'Does Polaris replace my GP?' },
+      a: {
+        de: 'Nein, wir ergänzen sie. Auf Wunsch schicken wir Ihrer Hausarztpraxis einen Bericht.',
+        en: 'No, we complement your GP. On request we send your GP a report.',
+      },
+    },
+  ],
 };

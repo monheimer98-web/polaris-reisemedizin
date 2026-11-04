@@ -4,14 +4,14 @@
  * kein „Hormonstatus", gynäkologische Vorsorge bleibt bei der Frauenarztpraxis.
  */
 import type { PreventionOffer } from '../types';
-import { honorar, euroDe, euroEn } from '../preise';
+import { honorar, weg, caDe, caEn, euroDe, euroEn } from '../preise';
 
 export const wechseljahre: PreventionOffer = {
   slug: 'wechseljahre',
-  bookingType: 'p-wj-erst',
+  bookingType: 'pv-e1',
   group: 'begleitung',
   stage: 1,
-  shortName: { de: 'Wechseljahre', en: 'Menopause' },
+  shortName: { de: 'Sprechstunde Wechseljahre', en: 'Menopause consultation' },
   teaser: {
     de: 'Zeit für Ihre Fragen: Beschwerden strukturiert erfassen, Herz, Knochen, Muskeln und Schlaf mitdenken, Möglichkeiten sachlich besprechen.',
     en: 'Time for your questions: a structured look at symptoms, heart, bones, muscles and sleep, with your options explained objectively.',
@@ -26,8 +26,8 @@ export const wechseljahre: PreventionOffer = {
       en: 'First consultation approx. 45–60 min, plan appointment approx. 20–30 min after 1–3 weeks, follow-ups approx. 20 min after 8–12 weeks and after 6 months.',
     },
     fee: {
-      de: `Erstgespräch mit Untersuchung ${euroDe(honorar.erstgespraech)}, Plantermin ${euroDe(honorar.planTermin)}, Verlauf ${euroDe(honorar.verlauf)} (GOÄ)`,
-      en: `First consultation with examination ${euroEn(honorar.erstgespraech)}, plan appointment ${euroEn(honorar.planTermin)}, follow-up ${euroEn(honorar.verlauf)} (GOÄ)`,
+      de: `Je nachdem, was Sie brauchen, nach GOÄ und je Termin. Typisch für das erste Jahr mit vier Terminen: ${caDe(weg.wechseljahreJahr)}.`,
+      en: `Depending on what you need, under the GOÄ and per appointment. Typically for the first year with four appointments: ${caEn(weg.wechseljahreJahr)}.`,
     },
     lab: {
       de: 'nur bei Bedarf, direkt vom Labor; keine routinemäßigen Hormonwerte',
@@ -66,22 +66,25 @@ export const wechseljahre: PreventionOffer = {
   ],
   costs: {
     de: [
-      `Abrechnung je Termin nach GOÄ (Regelsatz): Erstgespräch mit Untersuchung ${euroDe(honorar.erstgespraech)}, Plantermin mit schriftlichem Plan ${euroDe(honorar.planTermin)}, Verlaufstermin ${euroDe(honorar.verlauf)}, Jahresgespräch ${euroDe(honorar.erstgespraech)}. Ein erstes Jahr mit Erstgespräch, Plan und zwei Verläufen kostet ca. 131 €.`,
+      `Abrechnung je Termin nach GOÄ (Regelsatz): Erstgespräch mit Untersuchung ${euroDe(honorar.erstgespraech)}, Plantermin mit schriftlichem Plan ${euroDe(honorar.planTermin)}, Verlaufstermin ${euroDe(honorar.verlauf)}, Jahresgespräch ${euroDe(honorar.erstgespraech)}. Ein erstes Jahr mit Erstgespräch, Plan und zwei Verläufen kostet ${caDe(weg.wechseljahreJahr)}.`,
       'Laborwerte nur, wenn sie für Ihre Fragestellung nötig sind; das Labor berechnet sie direkt. Vor dem Termin erhalten Sie eine Kosteninformation.',
       'Die Behandlung von Wechseljahresbeschwerden ist ärztliche Heilbehandlung. Private Krankenversicherungen und Beihilfe erstatten sie je nach Tarif; gesetzlich Versicherte zahlen selbst.',
     ],
     en: [
-      `Billed per appointment under the GOÄ (standard rate): first consultation with examination ${euroEn(honorar.erstgespraech)}, plan appointment with written plan ${euroEn(honorar.planTermin)}, follow-up appointment ${euroEn(honorar.verlauf)}, annual review ${euroEn(honorar.erstgespraech)}. A first year with first consultation, plan and two follow-ups costs approx. €131.`,
+      `Billed per appointment under the GOÄ (standard rate): first consultation with examination ${euroEn(honorar.erstgespraech)}, plan appointment with written plan ${euroEn(honorar.planTermin)}, follow-up appointment ${euroEn(honorar.verlauf)}, annual review ${euroEn(honorar.erstgespraech)}. A first year with first consultation, plan and two follow-ups costs ${caEn(weg.wechseljahreJahr)}.`,
       'Lab tests only when needed for your question; the laboratory bills them directly. You receive a cost overview before the appointment.',
       'Treating menopausal symptoms is medical treatment. Private health insurers and Beihilfe reimburse it depending on the tariff; people with statutory insurance pay themselves.',
     ],
   },
   page: {
     meta: {
-      title: { de: 'Wechseljahre: Orientierung, Zeit und ein Plan', en: 'Menopause: guidance, time and a plan' },
+      title: {
+        de: 'Sprechstunde Wechseljahre: Orientierung, Zeit und ein Plan',
+        en: 'Menopause consultation: guidance, time and a plan',
+      },
       description: {
-        de: 'Sprechstunde Wechseljahre in Langenfeld: Beschwerden strukturiert erfassen, Herz, Knochen und Schlaf mitdenken, Möglichkeiten nach Leitlinie besprechen. Mit schriftlichem Plan.',
-        en: 'Menopause consultation in Langenfeld: a structured look at symptoms, heart, bones and sleep, and guideline-based options explained. With a written plan.',
+        de: 'Hitzewallungen, Schlaf, Stimmung, Gewicht: ärztliche Sprechstunde mit Zeit, Möglichkeiten nach Leitlinie und schriftlichem Plan. Privatpraxis Langenfeld.',
+        en: 'Hot flushes, sleep, mood, weight: a medical consultation with time, guideline-based options and a written plan. Private practice in Langenfeld.',
       },
       eyebrow: { de: 'Prävention & Lebensstil', en: 'Prevention & lifestyle' },
       lead: {
@@ -184,7 +187,7 @@ export const wechseljahre: PreventionOffer = {
       { label: { de: 'Schlaf, Energie & Jetlag', en: 'Sleep, energy & jet lag' }, path: '/praevention/schlaf-und-jetlag' },
       { label: { de: 'Muskel-Kompass 40+', en: 'Muscle compass 40+' }, path: '/praevention/muskel-kompass' },
       { label: { de: 'Gewicht & Stoffwechsel', en: 'Weight & metabolism' }, path: '/praevention/gewicht-und-stoffwechsel' },
-      { label: { de: 'Präventions-Check', en: 'Prevention check-up' }, path: '/praevention/praeventions-check' },
+      { label: { de: 'Gesundheitscheck', en: 'Health check-up' }, path: '/praevention/gesundheitscheck' },
     ],
     faq: [
       {

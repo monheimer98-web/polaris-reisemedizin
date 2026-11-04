@@ -18,7 +18,8 @@ export interface PreventionOffer {
   /** Pfadsegment unter /praevention/ (Deutsch und Englisch gleich). */
   slug: string;
   /**
-   * Terminart-ID der praxis-app. Die Präventions-Terminarten legt erst das
+   * Terminart-ID der praxis-app (neutral `pv-…`, damit Kalender, Erinnerung
+   * und Storno-Seite kein Thema verraten). Die Präventions-Terminarten legt erst das
    * App-Update an; bis dahin ignoriert das Buchungsformular die Vorbelegung.
    */
   bookingType: string;

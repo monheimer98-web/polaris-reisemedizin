@@ -6,13 +6,12 @@
  * (§ 10 HWG; BGH I ZR 74/25: schon die erkennbare Wirkstoffklasse genügt).
  */
 import type { PreventionOffer } from '../types';
-import { honorar, labor, euroDe, euroEn } from '../preise';
-
-const start = honorar.blutentnahme + honorar.gewichtStart;
+import { honorar, labor, termin, weg, caDe, caEn, euroDe, euroEn } from '../preise';
+import { bezahlenAbsatz } from '../ablauf';
 
 export const gewichtUndStoffwechsel: PreventionOffer = {
   slug: 'gewicht-und-stoffwechsel',
-  bookingType: 'p-gew-start',
+  bookingType: 'pv-v4',
   group: 'begleitung',
   stage: 1,
   shortName: { de: 'Gewicht & Stoffwechsel', en: 'Weight & metabolism' },
@@ -26,38 +25,45 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
       en: 'Adults with excess weight or raised metabolic values – including those who have already tried a lot.',
     },
     appointments: {
-      de: 'Labortermin ca. 10 Min., Start ca. 45 Min., Plantermin mit Ernährungsplan ca. 30 Min., danach Verlaufstermine ca. 15–20 Min. etwa monatlich; ca. 10–12 Termine im ersten Jahr.',
-      en: 'Lab appointment approx. 10 min, start approx. 45 min, plan appointment with nutrition plan approx. 30 min, then follow-ups of approx. 15–20 min about monthly; approx. 10–12 appointments in the first year.',
+      de: 'Kurztermin ca. 20 Min. in der Praxis, Blutabnahme ca. 10 Min. am Morgen, Start mit allen Werten ca. 45 Min., Plantermin mit Ernährungsplan ca. 20 Min., danach Verlaufstermine ca. 15–20 Min. etwa monatlich; ca. 10–12 Termine im ersten Jahr.',
+      en: 'Short appointment approx. 20 min at the practice, blood sample approx. 10 min in the morning, start with all results approx. 45 min, plan appointment with nutrition plan approx. 20 min, then follow-ups of approx. 15–20 min about monthly; approx. 10–12 appointments in the first year.',
     },
     fee: {
-      de: `Start einschließlich Blutabnahme ${euroDe(start)}, die Untersuchung der Blutprobe im Labor kostet extra (ca. ${euroDe(labor.gewichtStart)}); Plantermin ${euroDe(honorar.gewichtPlan)}, Verlauf ${euroDe(honorar.verlauf)} (GOÄ, je Termin)`,
-      en: `Start including the blood draw ${euroEn(start)}, analysing the sample in the laboratory costs extra (approx. ${euroEn(labor.gewichtStart)}); plan appointment ${euroEn(honorar.gewichtPlan)}, follow-up ${euroEn(honorar.verlauf)} (GOÄ, per appointment)`,
+      de: `Je nachdem, was Sie brauchen, nach GOÄ und je Termin. Typisch für den ersten Monat mit Ernährungsplan: ${caDe(weg.gewichtMonat1)}; ein Verlaufstermin ${euroDe(honorar.verlauf)}.`,
+      en: `Depending on what you need, under the GOÄ and per appointment. Typically for the first month with nutrition plan: ${caEn(weg.gewichtMonat1)}; a follow-up ${euroEn(honorar.verlauf)}.`,
     },
     lab: {
-      de: `zu Beginn sowie nach 3 und 12 Monaten, zusammen ca. ${euroDe(labor.gewichtJahr)} im ersten Jahr, eigene Rechnung vom Labor`,
-      en: `at the start and after 3 and 12 months, together approx. ${euroEn(labor.gewichtJahr)} in the first year, separate invoice from the laboratory`,
+      de: `zu Beginn ca. ${labor.gewichtStart}–${euroDe(labor.gewichtStartMitTsh)}, mit den Kontrollen nach 3 und 12 Monaten ca. ${labor.gewichtJahrVon}–${euroDe(labor.gewichtJahrBis)} im ersten Jahr, eigene Rechnung vom Labor`,
+      en: `approx. ${euroEn(labor.gewichtStart)}–${euroEn(labor.gewichtStartMitTsh)} at the start, including the checks after 3 and 12 months approx. €${labor.gewichtJahrVon}–${euroEn(labor.gewichtJahrBis)} in the first year, separate invoice from the laboratory`,
     },
   },
   steps: [
     {
-      title: { de: 'Fragebogen und Labortermin', en: 'Questionnaire and lab appointment' },
+      title: { de: 'Kurztermin: Messung und Werteauswahl', en: 'Short appointment: measurements and choice of tests' },
       text: {
-        de: 'Vorab erzählen Sie uns Ihre Gewichtsgeschichte: was Sie schon versucht haben, was geholfen hat und was nicht. Im kurzen Labortermin nehmen wir Blut ab.',
-        en: 'Beforehand you tell us your weight history: what you have tried, what helped and what did not. In the short lab appointment we take a blood sample.',
+        de: 'Etwa 20 Minuten in der Praxis. Wir messen Gewicht, Taille und Blutdruck, besprechen kurz, warum Sie kommen, und legen fest, welche Blutwerte für Ihren Plan nötig sind. Die voraussichtlichen Kosten erhalten Sie danach schriftlich.',
+        en: 'About 20 minutes at the practice. We measure weight, waist and blood pressure, briefly discuss why you have come and decide which blood tests your plan needs. You then receive the expected costs in writing.',
+      },
+    },
+    {
+      title: { de: 'Blutabnahme am Morgen', en: 'Blood sample in the morning' },
+      text: {
+        de: 'Ein kurzer Termin von etwa 10 Minuten in unserem Laborfenster. Vorab erzählen Sie uns im Fragebogen Ihre Gewichtsgeschichte: was Sie schon versucht haben, was geholfen hat und was nicht.',
+        en: 'A short appointment of about 10 minutes in our lab window. Beforehand you tell us your weight history in the questionnaire: what you have tried, what helped and what did not.',
       },
     },
     {
       title: { de: 'Start mit allen Werten', en: 'Start with all results' },
       text: {
-        de: 'Wir untersuchen Sie, messen Gewicht, Taille, Blutdruck und Muskelkraft und sehen auf Leber, Blutzucker, Blutfette, Schlaf und Medikamente, die das Gewicht beeinflussen können.',
-        en: 'We examine you, measure weight, waist, blood pressure and muscle strength, and look at liver, blood sugar, lipids, sleep and medicines that can affect weight.',
+        de: 'Wir untersuchen Sie gründlich, sehen auf Leber, Blutzucker, Blutfette, Schlaf und Medikamente, die das Gewicht beeinflussen können, und legen realistische Ziele fest – nicht nur für die Waage, sondern auch für Taille, Blutdruck, Blutzucker und Kraft. Sie erhalten Ihren schriftlichen Behandlungsplan.',
+        en: 'We examine you thoroughly, look at liver, blood sugar, lipids, sleep and medicines that can affect weight, and set realistic goals – not only for the scales, but also for waist, blood pressure, blood sugar and strength. You receive your written treatment plan.',
       },
     },
     {
       title: { de: 'Ernährungsprotokoll und Plantermin', en: 'Food diary and plan appointment' },
       text: {
-        de: 'Sie schreiben eine Woche lang auf, was Sie essen und trinken. Im Plantermin legen wir realistische Ziele fest – nicht nur für die Waage, sondern auch für Taille, Blutdruck, Blutzucker und Kraft – und Sie erhalten Ihren persönlichen Ernährungsplan mit Beispielen aus Ihrem Alltag.',
-        en: 'For one week you note what you eat and drink. In the plan appointment we set realistic goals – not only for the scales, but also for waist, blood pressure, blood sugar and strength – and you receive your personal nutrition plan with examples from your everyday life.',
+        de: 'Sie schreiben drei Tage lang auf, was Sie essen und trinken. Im Plantermin erhalten Sie Ihren persönlichen Ernährungsplan mit Beispielen aus Ihrem Alltag.',
+        en: 'For three days you note what you eat and drink. In the plan appointment you receive your personal nutrition plan with examples from your everyday life.',
       },
     },
     {
@@ -70,13 +76,15 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
   ],
   costs: {
     de: [
-      `Jeder Termin wird einzeln nach GOÄ (Regelsatz) abgerechnet – ohne Pakete, Monatsbeiträge oder Vorauszahlung: Start mit Blutentnahme ${euroDe(start)}, Plantermin mit persönlichem Ernährungsplan ${euroDe(honorar.gewichtPlan)}, Verlaufstermin ${euroDe(honorar.verlauf)}, Halbjahres- und Jahresbilanz je ${euroDe(honorar.bilanz)}.`,
-      `Ein erstes Jahr mit 10 bis 12 Terminen kostet ca. 330–400 € ärztliches Honorar, dazu Laborkosten von ca. ${euroDe(labor.gewichtJahr)} mit eigener Rechnung vom Labor. Sie erhalten vorab eine schriftliche Kostenschätzung und zahlen nur, was stattfindet.`,
+      `Jeder Termin wird einzeln nach GOÄ (Regelsatz) abgerechnet: Kurztermin mit Messung ${euroDe(termin.kurzMitMessung)}, Blutabnahme ${euroDe(termin.blutabnahme)}, Start mit Untersuchung und schriftlichem Behandlungsplan ${euroDe(termin.befundGewicht)}, Plantermin mit persönlichem Ernährungsplan ${euroDe(termin.ernaehrungsplan)}. Der erste Monat kostet damit ${euroDe(weg.gewichtMonat1)}. Danach Verlaufstermin ${euroDe(honorar.verlauf)}, Halbjahres- und Jahresbilanz je ${euroDe(honorar.bilanz)}.`,
+      `Ein typisches erstes Jahr mit 10 bis 12 Terminen kostet ${caDe(weg.gewichtJahr)} ärztliches Honorar, dazu Laborkosten von ca. ${labor.gewichtJahrVon}–${euroDe(labor.gewichtJahrBis)} mit eigener Rechnung vom Labor.`,
+      bezahlenAbsatz.de,
       'Private Krankenversicherungen und Beihilfe erstatten ärztliche Behandlungen je nach Tarif und Diagnose. Gesetzlich Versicherte zahlen die Termine selbst. Bitte klären Sie die Erstattung vorab.',
     ],
     en: [
-      `Each appointment is billed individually under the GOÄ (standard rate) – no packages, monthly fees or prepayment: start with blood draw ${euroEn(start)}, plan appointment with personal nutrition plan ${euroEn(honorar.gewichtPlan)}, follow-up ${euroEn(honorar.verlauf)}, six-month and annual review ${euroEn(honorar.bilanz)} each.`,
-      `A first year with 10 to 12 appointments costs approx. €330–400 in medical fees, plus lab costs of approx. ${euroEn(labor.gewichtJahr)} with a separate invoice from the laboratory. You receive a written cost estimate beforehand and only pay for what takes place.`,
+      `Each appointment is billed individually under the GOÄ (standard rate): short appointment with measurements ${euroEn(termin.kurzMitMessung)}, blood sample ${euroEn(termin.blutabnahme)}, start with examination and written treatment plan ${euroEn(termin.befundGewicht)}, plan appointment with personal nutrition plan ${euroEn(termin.ernaehrungsplan)}. The first month therefore costs ${euroEn(weg.gewichtMonat1)}. After that a follow-up costs ${euroEn(honorar.verlauf)}, the six-month and annual review ${euroEn(honorar.bilanz)} each.`,
+      `A typical first year with 10 to 12 appointments costs ${caEn(weg.gewichtJahr)} in medical fees, plus lab costs of approx. €${labor.gewichtJahrVon}–${euroEn(labor.gewichtJahrBis)} with a separate invoice from the laboratory.`,
+      bezahlenAbsatz.en,
       'Private health insurers and Beihilfe reimburse medical treatment depending on the tariff and diagnosis. People with statutory insurance pay for the appointments themselves. Please check reimbursement in advance.',
     ],
   },
@@ -84,8 +92,8 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
     meta: {
       title: { de: 'Gewicht & Stoffwechsel: ärztlich begleitet, Schritt für Schritt', en: 'Weight & metabolism: medical support, step by step' },
       description: {
-        de: 'Ärztliche Begleitung bei Gewicht und Stoffwechsel in Langenfeld: Start-Check mit Laborwerten, Ernährungsplan, Muskelkraft und regelmäßige Termine über 6–12 Monate. Abrechnung je Termin nach GOÄ.',
-        en: 'Medical support for weight and metabolism in Langenfeld: start check with lab tests, nutrition plan, muscle strength and regular appointments over 6–12 months. Billed per appointment under the GOÄ.',
+        de: 'Ärztliche Begleitung bei Gewicht und Stoffwechsel über Monate: Werte, Ernährung mit genug Eiweiß, Muskeln, feste Termine. Privatpraxis in Langenfeld.',
+        en: 'Medical support for weight and metabolic health over several months: blood values, diet with enough protein, muscles and fixed appointments.',
       },
       eyebrow: { de: 'Prävention & Lebensstil', en: 'Prevention & lifestyle' },
       lead: {
@@ -172,8 +180,8 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
     lastReviewed: new Date('2026-10-28'),
     related: [
       { label: { de: 'Muskel-Kompass 40+', en: 'Muscle compass 40+' }, path: '/praevention/muskel-kompass' },
-      { label: { de: 'Präventions-Check', en: 'Prevention check-up' }, path: '/praevention/praeventions-check' },
-      { label: { de: 'Wechseljahre', en: 'Menopause' }, path: '/praevention/wechseljahre' },
+      { label: { de: 'Gesundheitscheck', en: 'Health check-up' }, path: '/praevention/gesundheitscheck' },
+      { label: { de: 'Sprechstunde Wechseljahre', en: 'Menopause consultation' }, path: '/praevention/wechseljahre' },
       { label: { de: 'Kosten & Abrechnung', en: 'Fees & billing' }, path: '/kosten' },
     ],
     faq: [

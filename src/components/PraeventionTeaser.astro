@@ -1,11 +1,11 @@
 ---
 /**
- * Preisübersicht der jetzt buchbaren Angebote „Prävention & Lebensstil" auf
- * „Kosten & Abrechnung", als Salbei-Band (Beträge aus den Angebotsdaten).
- * Sprache aus der URL.
+ * Hinweis auf „Prävention & Lebensstil" auf „Kosten & Abrechnung", als
+ * Salbei-Band: typische Kosten je Angebot (ohne Lockpreis) und Link auf die
+ * Beispielkosten. Sprache aus der URL.
  */
 import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
-import { preventionHub, preventionOffers, preventionPath } from '../data/praevention';
+import { PREVENTION_COSTS_PATH, preventionHub, preventionOffers, preventionPath } from '../data/praevention';
 
 const lang = getLangFromUrl(Astro.url);
 const de = lang === 'de';
@@ -14,7 +14,7 @@ const de = lang === 'de';
 <section class="theme-praevention u-container pt-12 sm:pt-14">
   <div class="rounded-3xl border border-petrol-100 bg-petrol-50/80 p-6 sm:p-10">
     <p class="eyebrow"><span class="rule-gold"></span>{de ? 'Prävention & Lebensstil' : 'Prevention & lifestyle'}</p>
-    <h2 class="mt-4 text-2xl sm:text-3xl">{de ? 'Preise Prävention & Lebensstil' : 'Fees for prevention & lifestyle'}</h2>
+    <h2 class="mt-4 text-2xl sm:text-3xl">{de ? 'Kosten Prävention & Lebensstil' : 'Costs for prevention & lifestyle'}</h2>
     <p class="mt-3 max-w-2xl text-ink-soft">{preventionHub.ctaNote[lang]}</p>
     <dl class="mt-6 divide-y divide-petrol-100 rounded-2xl border border-petrol-100 bg-white">
       {
@@ -29,11 +29,16 @@ const de = lang === 'de';
               </a>
             </dt>
             <dd class="text-sm leading-relaxed text-ink-soft">
-              {o.facts.fee[lang]}. {de ? 'Zusätzlich Laborkosten' : 'Additional lab costs'}: {o.facts.lab[lang]}.
+              {o.facts.fee[lang]} {de ? 'Zusätzlich Laborkosten' : 'Additional lab costs'}: {o.facts.lab[lang]}.
             </dd>
           </div>
         ))
       }
     </dl>
+    <p class="mt-6">
+      <a href={getLocalizedPath(PREVENTION_COSTS_PATH, lang)} class="btn-ghost">
+        {de ? 'Beispielkosten für Gesundheitscheck, Wechseljahre und Gewicht' : 'Example fees for check-ups, menopause and weight'}
+      </a>
+    </p>
   </div>
 </section>

@@ -1,17 +1,18 @@
 /**
- * Polaris Kompass – Präventions-Check (DE/EN). Ablauf „Labor zuerst":
- * kurzer Labortermin, einige Tage später Haupttermin mit allen Werten und Plan.
+ * Polaris Kompass – Präventions-Check (DE/EN). Ablauf seit 04.11.2026:
+ * Kurztermin (welche Werte, Kosten), Blutabnahme, Befundtermin mit Plan.
  * Ohne Ganzkörper-Screening, ohne Komplettlabor, ohne Heilversprechen.
  */
 import type { PreventionOffer } from '../types';
-import { honorar, labor, euroDe, euroEn } from '../preise';
+import { labor, termin, weg, euroDe, euroEn } from '../preise';
+import { blutabnahmeSchritt, bezahlenAbsatz, frageDreiTermine, honorarDreischritt, kurzterminSchritt, termineDreischritt } from '../ablauf';
 
 export const praeventionsCheck: PreventionOffer = {
-  slug: 'praeventions-check',
-  bookingType: 'p-kompass',
+  slug: 'gesundheitscheck',
+  bookingType: 'pv-v1',
   group: 'checks',
   stage: 1,
-  shortName: { de: 'Präventions-Check', en: 'Prevention check-up' },
+  shortName: { de: 'Gesundheitscheck', en: 'Health check-up' },
   teaser: {
     de: 'Blutdruck, Blutfette, Blutzucker, Niere, Lebensstil und Impfschutz – eingeordnet in einen schriftlichen Plan mit drei Prioritäten.',
     en: 'Blood pressure, blood lipids, blood sugar, kidneys, lifestyle and vaccinations – summed up in a written plan with three priorities.',
@@ -21,39 +22,21 @@ export const praeventionsCheck: PreventionOffer = {
       de: 'Erwachsene ohne Beschwerden, die wissen möchten, wo sie stehen – besonders ab etwa 35 Jahren.',
       en: 'Adults without symptoms who want to know where they stand – especially from about 35.',
     },
-    appointments: {
-      de: 'Labortermin ca. 10 Min. am Morgen, 3–7 Tage später Haupttermin ca. 60 Min.',
-      en: 'Lab appointment approx. 10 min in the morning, main appointment approx. 60 min 3–7 days later.',
-    },
-    fee: {
-      de: `${euroDe(honorar.check)} nach GOÄ für Untersuchung, Plan und Blutentnahme, plus Laborkosten`,
-      en: `${euroEn(honorar.check)} under the German fee schedule (GOÄ) for examination, plan and blood draw, plus lab costs`,
-    },
+    appointments: termineDreischritt('45'),
+    fee: honorarDreischritt,
     lab: {
       de: `ca. ${euroDe(labor.check)}, mit einmaliger Lp(a)-Bestimmung ca. ${euroDe(labor.checkMitLpa)}, eigene Rechnung vom Labor`,
       en: `approx. ${euroEn(labor.check)}, with a one-off Lp(a) test approx. ${euroEn(labor.checkMitLpa)}, separate invoice from the laboratory`,
     },
   },
   steps: [
+    kurzterminSchritt,
+    blutabnahmeSchritt,
     {
-      title: { de: 'Online buchen und Fragebogen ausfüllen', en: 'Book online and complete the questionnaire' },
+      title: { de: 'Befundtermin mit allen Werten', en: 'Results appointment with all values' },
       text: {
-        de: 'Sie buchen den Check und beantworten vorab einen Fragebogen zu Familie, Bewegung, Ernährung, Schlaf und Ihren Zielen. Vor dem Termin erhalten Sie eine Kosteninformation.',
-        en: 'You book the check-up and answer a questionnaire on family history, activity, diet, sleep and your goals. Before the appointment you receive an overview of the expected costs.',
-      },
-    },
-    {
-      title: { de: 'Labortermin am Morgen', en: 'Morning lab appointment' },
-      text: {
-        de: 'Kurzer Termin im Laborfenster: Wir gehen den Fragebogen durch, besprechen, welche Werte sinnvoll sind, und nehmen Blut ab. Sie müssen in der Regel nicht nüchtern sein.',
-        en: 'A short appointment in our lab window: we go through the questionnaire, discuss which values make sense and take a blood sample. You usually do not need to fast.',
-      },
-    },
-    {
-      title: { de: 'Haupttermin mit allen Werten', en: 'Main appointment with all results' },
-      text: {
-        de: 'Einige Tage später liegen alle Werte vor. Wir untersuchen Sie, messen Blutdruck und Taillenumfang, schätzen Ihr Herz-Kreislauf-Risiko ein und besprechen, was für Sie zählt.',
-        en: 'A few days later all results are available. We examine you, measure blood pressure and waist circumference, estimate your cardiovascular risk and discuss what matters for you.',
+        de: 'Etwa eine Woche später liegen alle Werte vor. Vorher füllen Sie einen Fragebogen zu Familie, Bewegung, Ernährung, Schlaf und Ihren Zielen aus. Wir untersuchen Sie, messen Blutdruck und Taillenumfang, schätzen Ihr Herz-Kreislauf-Risiko ein und besprechen, was für Sie zählt.',
+        en: 'About a week later all results are available. Beforehand you complete a questionnaire on family history, activity, diet, sleep and your goals. We examine you, measure blood pressure and waist circumference, estimate your cardiovascular risk and discuss what matters for you.',
       },
     },
     {
@@ -66,27 +49,32 @@ export const praeventionsCheck: PreventionOffer = {
   ],
   costs: {
     de: [
-      `Ärztliches Honorar nach GOÄ (Regelsatz): ${euroDe(honorar.check)} für Blutentnahme, Untersuchung, Risikoeinschätzung, Beratung und schriftlichen Präventionsplan. Ein Verlaufstermin nach einigen Monaten kostet ${euroDe(honorar.gespraech)}.`,
-      `Dazu kommen die Laborkosten: Das Labor untersucht Ihre Blutprobe und schickt Ihnen dafür eine eigene Rechnung, ca. ${euroDe(labor.check)}, mit einmaliger Lp(a)-Bestimmung ca. ${euroDe(labor.checkMitLpa)}. Die voraussichtlichen Kosten nennen wir Ihnen vorab schriftlich.`,
+      `Ärztliches Honorar nach GOÄ (Regelsatz), je Termin: Kurztermin ${euroDe(termin.kurz)}, Blutabnahme ${euroDe(termin.blutabnahme)}, Befundtermin mit Untersuchung, Risikoeinschätzung, Beratung und schriftlichem Plan ${euroDe(termin.befundCheck)}. Zusammen ${euroDe(weg.check)}. Ein Verlaufsgespräch nach einigen Monaten kostet ${euroDe(termin.kurz)}.`,
+      `Dazu kommen die Laborkosten: Das Labor untersucht Ihre Blutprobe und schickt Ihnen dafür eine eigene Rechnung, ca. ${euroDe(labor.check)}, mit einmaliger Lp(a)-Bestimmung ca. ${euroDe(labor.checkMitLpa)}. Weitere Werte nur, wenn wir sie im Kurztermin gemeinsam für sinnvoll halten.`,
+      bezahlenAbsatz.de,
       'Private Krankenversicherungen und Beihilfe erstatten Gesundheitsuntersuchungen je nach Tarif, häufig in den Abständen des gesetzlichen Check-ups (ab 35 Jahren alle drei Jahre). Bitte klären Sie die Erstattung vorab.',
     ],
     en: [
-      `Medical fee under the GOÄ (standard rate): ${euroEn(honorar.check)} for blood draw, examination, risk assessment, advice and a written prevention plan. A follow-up appointment after a few months costs ${euroEn(honorar.gespraech)}.`,
-      `Lab costs come on top: the laboratory analyses your blood sample and sends you its own invoice, approx. ${euroEn(labor.check)}, with a one-off Lp(a) test approx. ${euroEn(labor.checkMitLpa)}. We tell you the expected costs in writing beforehand.`,
+      `Medical fee under the GOÄ (standard rate), per appointment: short appointment ${euroEn(termin.kurz)}, blood sample ${euroEn(termin.blutabnahme)}, results appointment with examination, risk assessment, advice and a written plan ${euroEn(termin.befundCheck)}. Together ${euroEn(weg.check)}. A follow-up conversation after a few months costs ${euroEn(termin.kurz)}.`,
+      `Lab costs come on top: the laboratory analyses your blood sample and sends you its own invoice, approx. ${euroEn(labor.check)}, with a one-off Lp(a) test approx. ${euroEn(labor.checkMitLpa)}. Further tests only if we agree in the short appointment that they make sense.`,
+      bezahlenAbsatz.en,
       'Private health insurers and civil-service allowances (Beihilfe) reimburse health check-ups depending on the tariff, often at the intervals of the statutory check-up (every three years from age 35). Please check reimbursement in advance.',
     ],
   },
   page: {
     meta: {
       title: {
-        de: 'Polaris Kompass: Ihr Präventions-Check für Herz, Stoffwechsel und Lebensstil',
-        en: 'Polaris Compass: your prevention check-up for heart, metabolism and lifestyle',
+        de: 'Gesundheitscheck: Herz, Stoffwechsel und Lebensstil mit Plan',
+        en: 'Health check-up: heart, metabolism and lifestyle with a plan',
       },
       description: {
-        de: 'Präventions-Check in Langenfeld: Blutdruck, Blutfette, Blutzucker, Nierenwerte, Lebensstil und Impfschutz – mit schriftlichem Plan. Honorar nach GOÄ, Termine online.',
-        en: 'Prevention check-up in Langenfeld: blood pressure, lipids, blood sugar, kidney function, lifestyle and vaccinations – with a written plan. Fees under the GOÄ, book online.',
+        de: 'Für Privatversicherte und Selbstzahler: Blutdruck, Blutfette, Langzeitzucker, Lp(a) nach Bedarf, Lebensstil. Ärztlich eingeordnet, mit schriftlichem Plan.',
+        en: 'For privately insured and self-paying patients: blood pressure, lipids, long-term blood sugar, Lp(a) if useful and lifestyle, with a written plan.',
       },
-      eyebrow: { de: 'Prävention & Lebensstil', en: 'Prevention & lifestyle' },
+      eyebrow: {
+        de: 'Polaris Kompass',
+        en: 'Polaris Compass',
+      },
       lead: {
         de: 'Viele Menschen fühlen sich gesund und möchten wissen, wo sie stehen. Im Polaris Kompass sehen wir uns die Faktoren an, die für Herz, Gefäße und Stoffwechsel nach heutigem Wissen besonders zählen. Am Ende erhalten Sie einen schriftlichen Plan mit drei Prioritäten.',
         en: 'Many people feel healthy and want to know where they stand. In the Polaris Compass we look at the factors that, according to current knowledge, matter most for the heart, blood vessels and metabolism. At the end you receive a written plan with three priorities.',
@@ -127,11 +115,11 @@ export const praeventionsCheck: PreventionOffer = {
         body: {
           de: [
             'Lipoprotein(a), kurz Lp(a), ist ein Blutfett, dessen Höhe vor allem vererbt ist. Ein hoher Wert erhöht das Risiko für Herz-Kreislauf-Erkrankungen, auch wenn die übrigen Blutfette unauffällig sind. Die europäische Fachgesellschaft empfiehlt, Lp(a) bei Erwachsenen mindestens einmal zu bestimmen.',
-            'Ob die Bestimmung bei Ihnen sinnvoll ist, besprechen wir im Labortermin. Wurde der Wert schon einmal gemessen, ist keine Wiederholung nötig.',
+            'Ob die Bestimmung bei Ihnen sinnvoll ist, besprechen wir im Kurztermin. Wurde der Wert schon einmal gemessen, ist keine Wiederholung nötig.',
           ],
           en: [
             'Lipoprotein(a), Lp(a) for short, is a blood lipid whose level is largely inherited. A high level increases the risk of cardiovascular disease even when other lipids are normal. The European society recommends measuring Lp(a) at least once in adults.',
-            'We discuss in the lab appointment whether the test makes sense for you. If it has been measured before, there is no need to repeat it.',
+            'We discuss in the short appointment whether the test makes sense for you. If it has been measured before, there is no need to repeat it.',
           ],
         },
       },
@@ -183,9 +171,9 @@ export const praeventionsCheck: PreventionOffer = {
     sourceIds: ['escPraevention2021', 'easLpa2022', 'nvlHypertonie', 'gbaGesundheitsuntersuchung', 'whoBewegung2020', 'stikoImpfempfehlungen'],
     lastReviewed: new Date('2026-10-28'),
     related: [
-      { label: { de: 'Kompass für Männer 40+', en: 'Compass for men 40+' }, path: '/praevention/kompass-maenner' },
+      { label: { de: 'Check-up Männer 40+', en: 'Men’s check-up 40+' }, path: '/praevention/maenner-check-up' },
       { label: { de: 'Gewicht & Stoffwechsel', en: 'Weight & metabolism' }, path: '/praevention/gewicht-und-stoffwechsel' },
-      { label: { de: 'Werte einordnen', en: 'Making sense of your results' }, path: '/praevention/werte-einordnen' },
+      { label: { de: 'Blutwerte besprechen', en: 'Blood results explained' }, path: '/praevention/blutwerte-besprechen' },
       { label: { de: 'Kosten & Abrechnung', en: 'Fees & billing' }, path: '/kosten' },
     ],
     faq: [
@@ -196,13 +184,7 @@ export const praeventionsCheck: PreventionOffer = {
           en: 'Usually not. The check-up values can be measured without fasting. Take your medication as usual. If anything else applies, we will tell you beforehand.',
         },
       },
-      {
-        q: { de: 'Warum zwei Termine?', en: 'Why two appointments?' },
-        a: {
-          de: 'Damit im Haupttermin alle Werte vorliegen. So können wir Ihr Risiko vollständig einschätzen, und Ihr Plan ist am Ende des Termins fertig. Der Labortermin dauert nur etwa zehn Minuten.',
-          en: 'So that all results are available in the main appointment. This lets us assess your risk completely, and your plan is ready by the end of the appointment. The lab appointment only takes about ten minutes.',
-        },
-      },
+      frageDreiTermine,
       {
         q: { de: 'Ich bin gesetzlich versichert. Kann ich trotzdem kommen?', en: 'I have statutory health insurance. Can I still come?' },
         a: {
