@@ -10,8 +10,8 @@ export const reiseimpfungenService: ClinicalPage = {
   meta: {
     title: { de: 'Reiseimpfungen im Überblick', en: 'Travel vaccinations at a glance' },
     description: {
-      de: 'Welche Reiseimpfungen für welches Ziel? Überblick über Standard- und Reiseimpfungen, Pflichtimpfungen und den internationalen Impfnachweis.',
-      en: 'Which travel vaccinations for which destination? Overview of standard and travel vaccinations, mandatory vaccinations and the international certificate.',
+      de: 'Reiseimpfungen in Langenfeld, gut erreichbar aus Monheim, Hilden und Solingen: Überblick über Standard- und Pflichtimpfungen und den internationalen Impfnachweis.',
+      en: 'Travel vaccinations in Langenfeld, easy to reach from Monheim, Hilden and Solingen: overview of standard and mandatory vaccinations and the international certificate.',
     },
     eyebrow: { de: 'Leistung', en: 'Service' },
     lead: {
@@ -134,6 +134,20 @@ export const reiseimpfungenService: ClinicalPage = {
         ],
       },
     },
+    {
+      id: 'anfahrt',
+      heading: { de: 'Aus Monheim, Hilden und der Umgebung', en: 'From Monheim, Hilden and the surrounding area' },
+      body: {
+        de: [
+          'Unsere Praxis liegt am Leipziger Weg 5 (1. Etage) in Langenfeld-Richrath, nahe den Anschlussstellen Langenfeld-Richrath (A59) und Solingen (A3). Für Reiseimpfungen sind wir damit auch aus Monheim am Rhein, Hilden, Leichlingen, Solingen und Leverkusen gut erreichbar.',
+          'Sprechstunden finden nach Vereinbarung statt; Termine buchen Sie online oder telefonisch.',
+        ],
+        en: [
+          'Our practice is at Leipziger Weg 5 (1st floor) in Langenfeld-Richrath, close to the Langenfeld-Richrath (A59) and Solingen (A3) motorway junctions. This makes us easy to reach for travel vaccinations from Monheim am Rhein, Hilden, Leichlingen, Solingen and Leverkusen as well.',
+          'Consultations are by appointment; you can book online or by phone.',
+        ],
+      },
+    },
   ],
   sourceIds: ['stikoImpfempfehlungen', 'dtgReiseimpfungen', 'auswaertigesAmt', 'whoYellowFeverCountries'],
   lastReviewed: new Date('2026-06-16'),
@@ -144,5 +158,6 @@ export const reiseimpfungenService: ClinicalPage = {
     { label: { de: 'Dengue-Fieber', en: 'Dengue fever' }, path: '/krankheitsbilder/dengue' },
     { label: { de: 'Chikungunya', en: 'Chikungunya' }, path: '/krankheitsbilder/chikungunya' },
     { label: { de: 'Risikogebiete', en: 'Risk areas' }, path: '/risikogebiete' },
+    { label: { de: 'Kontakt & Anfahrt', en: 'Contact & directions' }, path: '/kontakt' },
   ],
 };

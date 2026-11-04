@@ -113,16 +113,16 @@ export const kostenPage: KostenPage = {
         {
           service: { de: 'Malaria- oder Höhenberatung (allein)', en: 'Malaria or altitude consultation (on its own)' },
           detail: {
-            de: 'Kurze, gezielte Beratung nur zum Malariaschutz oder nur zur Höhenmedizin – mit persönlichem Einnahme- und Schutzplan zum Mitnehmen und auf Wunsch mit Privatrezept.',
-            en: 'A short, focused consultation on malaria protection only or altitude medicine only – with a personal medication and protection plan to take home and a private prescription on request.',
+            de: 'Kurze, gezielte Beratung nur zum Malariaschutz oder nur zur Höhenmedizin – mit persönlichem Einnahme- und Schutzplan zum Mitnehmen und, wenn medizinisch angezeigt, Privatrezept.',
+            en: 'A short, focused consultation on malaria protection only or altitude medicine only – with a personal medication and protection plan to take home and, where medically indicated, a private prescription.',
           },
           price: { de: 'ca. 28 €', en: 'approx. €28' },
         },
         {
           service: { de: 'Malaria und Höhe zusammen', en: 'Malaria and altitude together' },
           detail: {
-            de: 'Eingehende Beratung zu Malariaschutz und Höhenmedizin in einem Termin – mit persönlichem Einnahme- und Schutzplan zum Mitnehmen und auf Wunsch mit Privatrezept.',
-            en: 'An in-depth consultation on malaria protection and altitude medicine in one appointment – with a personal medication and protection plan to take home and a private prescription on request.',
+            de: 'Eingehende Beratung zu Malariaschutz und Höhenmedizin in einem Termin – mit persönlichem Einnahme- und Schutzplan zum Mitnehmen und, wenn medizinisch angezeigt, Privatrezept.',
+            en: 'An in-depth consultation on malaria protection and altitude medicine in one appointment – with a personal medication and protection plan to take home and, where medically indicated, a private prescription.',
           },
           price: { de: 'ca. 38 €', en: 'approx. €38' },
         },

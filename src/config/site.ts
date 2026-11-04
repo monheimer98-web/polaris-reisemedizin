@@ -63,11 +63,11 @@ export const site = {
     /** Markenname — hier zentral änderbar. */
     name: 'Polaris',
     tagline: {
-      de: 'Praxis für Reise- & Impfmedizin',
-      en: 'Practice for Travel & Vaccination Medicine',
+      de: 'Reisemedizin, Impfungen & Prävention',
+      en: 'Travel medicine, vaccinations & prevention',
     },
     /** Vollständige rechtliche Bezeichnung (für Impressum/Datenschutz). */
-    legalName: 'Polaris – Privatpraxis für Reise- und Impfmedizin · Gelbfieberimpfstelle Langenfeld',
+    legalName: 'Polaris – Privatpraxis für Reisemedizin, Impfungen und Prävention',
     /**
      * Praxisinhaber (natürliche Person) — Einzelpraxis. Wird im Impressum sowie
      * als Verantwortlicher der Datenschutzerklärung namentlich ausgewiesen.
@@ -166,7 +166,7 @@ export const site = {
   team: [
     {
       name: 'Alexander Mayer',
-      role: { de: 'Arzt – Reise- & Impfmedizin', en: 'Physician – Travel & Vaccination Medicine' },
+      role: { de: 'Arzt', en: 'Physician' },
       bio: {
         de: 'Als Arzt der Praxis verantwortet er Beratung und Impfungen. Er nimmt sich Zeit für Ihre Reisepläne und erklärt jede Empfehlung verständlich.',
         en: 'As the practice’s physician, he is responsible for consultations and vaccinations. He takes time for your travel plans and explains every recommendation clearly.',

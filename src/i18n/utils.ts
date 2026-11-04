@@ -77,7 +77,7 @@ export function getAlternateLanguages(pathname: string): { lang: Locale; path: s
 }
 
 /** BCP-47-Codes für hreflang/lang-Attribute. */
-export const HREFLANG: Record<Locale, string> = { de: 'de-DE', en: 'en-US' };
+export const HREFLANG: Record<Locale, string> = { de: 'de', en: 'en' };
 
 /** „Stand"-Datum lokalisiert ausgeben. */
 export function formatReviewDate(date: Date, lang: Locale): string {

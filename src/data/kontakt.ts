@@ -88,7 +88,7 @@ export const kontaktPage: KontaktPage = {
       en: 'Contact & directions',
     },
     description: {
-      de: 'So erreichen Sie unsere Praxis für Reise- und Impfmedizin in Langenfeld: Adresse, Telefon, E-Mail, Sprechzeiten und Anfahrt.',
+      de: 'So erreichen Sie unsere Privatpraxis für Reisemedizin, Impfungen und Prävention in Langenfeld: Adresse, Telefon, E-Mail, Sprechzeiten und Anfahrt.',
       en: 'How to reach our travel and vaccination medicine practice in Langenfeld: address, phone, email, opening hours and directions.',
     },
     eyebrow: {
