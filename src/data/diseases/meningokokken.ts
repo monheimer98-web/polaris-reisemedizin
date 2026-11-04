@@ -92,11 +92,11 @@ export const meningokokkenDisease: ClinicalPage = {
       heading: { de: 'Einreisebestimmungen', en: 'Entry requirements' },
       body: {
         de: [
-          'Für Pilgerreisen nach Mekka (Hadsch und Umrah) verlangt Saudi-Arabien einen gültigen Nachweis einer Meningokokken-Impfung gegen die Serogruppen A, C, W und Y (ACWY). Ohne diesen Nachweis ist die Einreise zu diesem Zweck nicht möglich.',
+          'Für Pilgerreisen nach Mekka (Hadsch und Umrah) verlangt Saudi-Arabien einen gültigen Nachweis einer Meningokokken-Impfung gegen die Serogruppen A, C, W und Y (ACWY). Laut Auswärtigem Amt müssen alle Reisenden ab einem Jahr die Impfung bei der Einreise vorzeigen können. Im Impfausweis sollten Impfstoff und Impfdatum stehen.',
           'Der Impfnachweis muss meist eine bestimmte Zeit vor der Einreise ausgestellt sein und eine festgelegte Gültigkeitsdauer aufweisen. Da sich solche Vorgaben ändern können, prüfen wir die aktuell geltenden Anforderungen für Ihre Reise gemeinsam.',
         ],
         en: [
-          'For pilgrimages to Mecca (Hajj and Umrah), Saudi Arabia requires valid proof of meningococcal vaccination against serogroups A, C, W and Y (ACWY). Without this proof, entry for this purpose is not possible.',
+          'For pilgrimages to Mecca (Hajj and Umrah), Saudi Arabia requires valid proof of meningococcal vaccination against serogroups A, C, W and Y (ACWY). According to the German Federal Foreign Office, all travellers aged one and over must be able to show the vaccination on entry. Your vaccination record should state the vaccine and the date.',
           'The vaccination certificate must usually be issued a certain time before entry and have a defined period of validity. As such requirements can change, we check the rules currently in force for your trip together.',
         ],
       },
@@ -126,9 +126,13 @@ export const meningokokkenDisease: ClinicalPage = {
       },
     },
   ],
-  sourceIds: ['rkiMeningokokken', 'whoMeningitis', 'peiMeningokokken', 'stikoImpfempfehlungen', 'auswaertigesAmt'],
+  sourceIds: ['rkiMeningokokken', 'whoMeningitis', 'peiMeningokokken', 'stikoImpfempfehlungen', 'auswaertigesAmt', 'aaSaudiArabien'],
   lastReviewed: new Date('2026-06-12'),
   related: [
+    {
+      label: { de: 'Umra und Hadsch', en: 'Umrah and Hajj' },
+      path: '/ausland/pilgerreisen/umra-hadsch',
+    },
     {
       label: { de: 'Reisemedizinische Beratung', en: 'Travel medicine consultation' },
       path: '/leistungen/reiseberatung',

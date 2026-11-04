@@ -5,7 +5,8 @@
  * Ratgeber- und Länderseiten; Sprache wird aus der URL abgeleitet.
  */
 import Callout from './Callout.astro';
-import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, getLocalizedPath, withBase } from '../i18n/utils';
+import { BOOKING_PATH } from '../config/nav';
 import type { ClinicalPage } from '../data/types';
 
 interface Props {
@@ -15,6 +16,11 @@ interface Props {
 const { page } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Externe Quellen und PDFs öffnen in einem neuen Tab; PDFs tragen keinen Sprachpfad.
+const istExtern = (path: string) => path.startsWith('https://') || path.endsWith('.pdf');
+const linkZiel = (path: string) =>
+  path.startsWith('https://') ? path : path.endsWith('.pdf') ? withBase(path) : getLocalizedPath(path, lang);
 ---
 
 <div class="space-y-12 sm:space-y-14">
@@ -44,7 +50,8 @@ const t = useTranslations(lang);
             <span class="text-xs font-semibold uppercase tracking-wider text-ink-soft">{t('content.moreOnTopic')}</span>
             {section.links.map((link) => (
               <a
-                href={getLocalizedPath(link.path, lang)}
+                href={linkZiel(link.path)}
+                {...(istExtern(link.path) ? { target: '_blank', rel: 'noopener' } : {})}
                 class="group inline-flex items-center gap-1.5 rounded-full border border-petrol-100 bg-white px-3 py-1.5 text-sm font-medium text-petrol-800 transition-colors hover:border-gold-300 hover:bg-gold-50/50 hover:text-petrol-900"
               >
                 {link.label[lang]}
@@ -64,6 +71,22 @@ const t = useTranslations(lang);
         )}
       </section>
     ))
+  }
+  {
+    page.termine && page.termine.length > 0 && (
+      <section id="termin" class="scroll-mt-24 no-print">
+        <div class="rich-text">
+          <h2>{t('content.termineHeading')}</h2>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-3">
+          {page.termine.map((termin) => (
+            <a href={`${getLocalizedPath(BOOKING_PATH, lang)}?art=${termin.art}`} class="btn-gold inline-flex">
+              {termin.label[lang]}
+            </a>
+          ))}
+        </div>
+      </section>
+    )
   }
   {
     page.faq && page.faq.length > 0 && (

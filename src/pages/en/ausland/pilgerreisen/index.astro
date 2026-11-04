@@ -1,0 +1,7 @@
+---
+import AuslandFachseite from '../../../../components/AuslandFachseite.astro';
+import { PILGER_BUCHEN } from '../../../../data/ausland/fach-texte';
+import { pilgerUebersicht as page } from '../../../../data/ausland/pilger-uebersicht';
+---
+
+<AuslandFachseite page={page} bookingType="vollberatung" bookingLabel={PILGER_BUCHEN} />

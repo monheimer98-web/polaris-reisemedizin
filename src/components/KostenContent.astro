@@ -4,7 +4,7 @@
  * aus der URL ab und rendert die transparente Preisorientierung aus
  * `kostenPage`. Beträge sind Richtwerte nach GOÄ (siehe Daten-Modul).
  */
-import { getLangFromUrl, formatReviewDate } from '../i18n/utils';
+import { getLangFromUrl, getLocalizedPath, formatReviewDate } from '../i18n/utils';
 import { kostenPage as page } from '../data/kosten';
 
 const lang = getLangFromUrl(Astro.url);
@@ -57,7 +57,7 @@ const reviewedLabel = lang === 'de' ? 'Stand' : 'Last reviewed';
                     <dt class="font-medium text-petrol-900">{item.service[lang]}</dt>
                     <dd class="mt-1 text-sm leading-relaxed text-ink-soft">{item.detail[lang]}</dd>
                   </div>
-                  <p class="shrink-0 whitespace-nowrap font-display text-lg text-gold-700 sm:text-right">
+                  <p class="shrink-0 font-display text-lg text-gold-700 sm:whitespace-nowrap sm:text-right">
                     {item.price[lang]}
                   </p>
                 </div>
@@ -78,6 +78,15 @@ const reviewedLabel = lang === 'de' ? 'Stand' : 'Last reviewed';
             <h2 class="font-display text-lg text-petrol-900">{note.heading[lang]}</h2>
             <div class="mt-3 space-y-3 text-sm leading-relaxed text-ink-soft">
               {note.body[lang].map((paragraph) => <p>{paragraph}</p>)}
+              {
+                note.link && (
+                  <p>
+                    <a href={getLocalizedPath(note.link.path, lang)} class="font-semibold text-petrol-700 underline decoration-gold-400/50 underline-offset-4 hover:text-petrol-900">
+                      {note.link.label[lang]}
+                    </a>
+                  </p>
+                )
+              }
             </div>
           </div>
         ))

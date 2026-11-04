@@ -53,7 +53,7 @@ function isActive(path: string): boolean {
     {/* Desktop-Navigation — erst ab xl (≥1280px), da die achtteilige, zweisprachige
         Leiste (Marke + Tagline + Untermenüs + Sprache + CTA) darunter zu breit wird
         und im EN-Layout sonst überliefe. Zwischen lg und xl greift das Off-Canvas-Menü. */}
-    <nav class="hidden items-center gap-1 xl:flex" aria-label={t('header.primaryNav')}>
+    <nav class="hidden items-center gap-0.5 xl:flex" aria-label={t('header.primaryNav')}>
       {
         primaryNav.map((item) =>
           item.children?.length ? (
@@ -61,7 +61,7 @@ function isActive(path: string): boolean {
               <a
                 href={getLocalizedPath(item.path, lang)}
                 class:list={[
-                  'inline-flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-white',
+                  'inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition-colors hover:bg-white',
                   isActive(item.path) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
                 ]}
                 aria-current={isActive(item.path) ? 'page' : undefined}
@@ -94,7 +94,7 @@ function isActive(path: string): boolean {
             <a
               href={getLocalizedPath(item.path, lang)}
               class:list={[
-                'whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-white',
+                'whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition-colors hover:bg-white',
                 isActive(item.path) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
               ]}
               aria-current={isActive(item.path) ? 'page' : undefined}

@@ -1,0 +1,7 @@
+---
+import AuslandFachseite from '../../../components/AuslandFachseite.astro';
+import { PILGER_BUCHEN } from '../../../data/ausland/fach-texte';
+import { pilgerUmraHadsch as page } from '../../../data/ausland/pilger-umra-hadsch';
+---
+
+<AuslandFachseite page={page} bookingType="vollberatung" parent={{ label: 'Pilgerreisen', path: '/ausland/pilgerreisen' }} bookingLabel={PILGER_BUCHEN} />

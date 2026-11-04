@@ -46,9 +46,15 @@ interface Props {
   faq?: { q: string; a: string }[];
   /** Zusätzliche Brotkrumen-Ebene zwischen Hub und Seite (z. B. Region einer Länderseite). */
   parent?: { label: string; path: string };
+  /** Blendet Buchungsknopf und Abschluss-CTA aus, wenn die Seite nicht in einen Termin führen soll. */
+  noBooking?: boolean;
+  /** Abschlussband ohne Impf- und Gelbfieber-Bezug (Bereich Ausland). */
+  neutralCta?: boolean;
+  /** Eigene Beschriftung des Buchungsknopfs in Hero und Abschlussband (bereits in der Seitensprache). */
+  bookingLabel?: string;
 }
 
-const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel, faq = [], parent } = Astro.props;
+const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel, faq = [], parent, noBooking = false, neutralCta = false, bookingLabel } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const bookingHref = getLocalizedPath(BOOKING_PATH, lang) + (bookingType ? `?art=${bookingType}` : '');
 const t = useTranslations(lang);
@@ -62,8 +68,10 @@ const HUB_LABEL_KEY: Record<string, UiKey> = {
   leistungen: 'nav.services',
   reiseziele: 'nav.destinations',
   ratgeber: 'nav.guides',
+  ausland: 'nav.abroad',
 };
-const hubKey = HUB_LABEL_KEY[hubSegment];
+const isHubPage = getLogicalPath(Astro.url.pathname).replace(/\/+$/, '') === `/${hubSegment}`;
+const hubKey = isHubPage ? undefined : HUB_LABEL_KEY[hubSegment];
 const breadcrumbItems = [
   { label: t('nav.home'), path: getLocalizedPath('/', lang) },
   ...(hubKey ? [{ label: t(hubKey), path: getLocalizedPath(`/${hubSegment}`, lang) }] : []),
@@ -106,7 +114,7 @@ const faqSchema = faq.length
 // werden <section id> + zugehörige <h2> extrahiert. Bewusst nur für die
 // strukturgleichen Hubs (Krankheitsbilder/Leistungen) und erst ab 3 Abschnitten.
 const bodyHtml = await Astro.slots.render('default');
-const TOC_HUBS = new Set(['krankheitsbilder', 'leistungen', 'reiseziele', 'reiseapotheke', 'ratgeber']);
+const TOC_HUBS = new Set(['krankheitsbilder', 'leistungen', 'reiseziele', 'reiseapotheke', 'ratgeber', 'ausland', 'gutschein']);
 const toc: { id: string; label: string }[] = [];
 if (TOC_HUBS.has(hubSegment)) {
   // Im gerenderten HTML sind Zeichen wie & als Entities kodiert (&amp;); nach dem
@@ -138,9 +146,13 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
     <PageHero eyebrow={eyebrow} title={title} lead={lead}>
       <Breadcrumbs slot="breadcrumb" items={breadcrumbItems} label={t('content.breadcrumb')} />
       <div class="no-print mt-8 flex flex-wrap items-center gap-3">
-        <a href={bookingHref} class="btn-gold inline-flex" aria-label={t('cta.bookAria')}>
-          {t('cta.book')}
-        </a>
+        {
+          !noBooking && (
+            <a href={bookingHref} class="btn-gold inline-flex" aria-label={bookingLabel ? undefined : t('cta.bookAria')}>
+              {bookingLabel ?? t('cta.book')}
+            </a>
+          )
+        }
         {printLabel && <PrintButton label={printLabel} />}
       </div>
       <p class="mt-6 text-sm text-ink-soft">
@@ -227,5 +239,5 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
     </div>
   </article>
 
-  <CTA bookingType={bookingType} />
+  {!noBooking && <CTA bookingType={bookingType} neutral={neutralCta} label={bookingLabel} />}
 </BaseLayout>

@@ -15,6 +15,8 @@
  * iframe-Höhe entsprechend (kein innerer Scrollbalken). Die App erlaubt die
  * Einbettung per CSP `frame-ancestors` (Website-Origin in EMBED_ORIGINS).
  */
+import { getLangFromUrl } from '../i18n/utils';
+
 interface Props {
   /** Feste Buchungs-URL (…/buchung), bevorzugt. Leer → Laufzeit-Fallback app-url.json. */
   embedUrl?: string;
@@ -23,6 +25,21 @@ interface Props {
 }
 
 const { embedUrl = '', title } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const texte =
+  lang === 'en'
+    ? {
+        laden: 'Loading booking …',
+        fehler: 'Online booking is currently unavailable. Please call us or try again later.',
+        hinweis: 'Choose your appointment type and preferred time in a few steps.',
+        knopf: 'Go to online booking →',
+      }
+    : {
+        laden: 'Buchung wird geladen …',
+        fehler: 'Die Online-Buchung ist gerade nicht erreichbar. Bitte rufen Sie uns an oder versuchen Sie es später erneut.',
+        hinweis: 'Terminart wählen und Wunschtermin sichern – in wenigen Schritten.',
+        knopf: 'Zur Online-Buchung →',
+      };
 // Pfad zur selbst-aktualisierenden Adress-Datei (respektiert den Pages-Unterpfad).
 const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
 ---
@@ -32,8 +49,11 @@ const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
     class="booking-embed-mount"
     data-json={jsonUrl}
     data-fallback={embedUrl}
-    data-title={title}>
-    <div class="booking-embed-lade" role="status">Buchung wird geladen …</div>
+    data-title={title}
+    data-fehler={texte.fehler}
+    data-hinweis={texte.hinweis}
+    data-knopf={texte.knopf}>
+    <div class="booking-embed-lade" role="status">{texte.laden}</div>
   </div>
 </div>
 
@@ -46,6 +66,9 @@ const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
     const jsonUrl = mount.dataset.json || 'app-url.json';
     const fallback = mount.dataset.fallback || '';
     const title = mount.dataset.title || 'Terminbuchung';
+    const fehlerText = mount.dataset.fehler || '';
+    const hinweisText = mount.dataset.hinweis || '';
+    const knopfText = mount.dataset.knopf || '';
 
     // Terminart aus der Seiten-URL (?art=<id>, z. B. von einer Leistungsseite)
     // an die Buchung weitergeben, damit sie dort vorausgewählt ist.
@@ -77,9 +100,10 @@ const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
     }
 
     function fehler() {
-      mount!.innerHTML =
-        '<div class="booking-embed-lade">Die Online-Buchung ist gerade nicht erreichbar. ' +
-        'Bitte rufen Sie uns an oder versuchen Sie es später erneut.</div>';
+      const hinweis = document.createElement('div');
+      hinweis.className = 'booking-embed-lade';
+      hinweis.textContent = fehlerText;
+      mount!.replaceChildren(hinweis);
     }
 
     function baueButton(basis: string) {
@@ -94,7 +118,7 @@ const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
         'min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:36px 24px;';
       const text = document.createElement('p');
       text.style.cssText = 'margin:0;max-width:34ch;color:#5a6b6a;font-size:1rem;line-height:1.5;';
-      text.textContent = 'Terminart wählen und Wunschtermin sichern – in wenigen Schritten.';
+      text.textContent = hinweisText;
       const link = document.createElement('a');
       link.href = url;
       link.target = '_blank';
@@ -103,7 +127,7 @@ const jsonUrl = `${import.meta.env.BASE_URL}app-url.json`;
         'display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:9999px;' +
         'background:#123f3a;color:#fff;font-weight:600;font-size:1.05rem;text-decoration:none;' +
         'box-shadow:0 8px 22px rgba(0,0,0,0.16);';
-      link.textContent = 'Zur Online-Buchung →';
+      link.textContent = knopfText;
       wrap.append(text, link);
       mount!.replaceChildren(wrap);
     }

@@ -25,6 +25,9 @@ import { dominikanischeRepublikQuellen } from './reiseziele/laender/dominikanisc
 import { gelbfieberKostenQuellen } from './ratgeber/gelbfieber-kosten';
 import { tollwutImpfungQuellen } from './ratgeber/tollwut-impfung';
 import { malariaRezeptQuellen } from './ratgeber/malaria-rezept';
+import { auslandKernQuellen } from './ausland/quellen-kern';
+import { auslandFachQuellen } from './ausland/quellen-fach';
+import { auslandPilgerQuellen } from './ausland/quellen-pilger';
 
 export interface Source {
   /** Herausgeber/Institution, z. B. „WHO", „Robert Koch-Institut (RKI)". */
@@ -827,6 +830,9 @@ export const sources = {
   ...gelbfieberKostenQuellen,
   ...tollwutImpfungQuellen,
   ...malariaRezeptQuellen,
+  ...auslandKernQuellen,
+  ...auslandFachQuellen,
+  ...auslandPilgerQuellen,
 } satisfies Record<string, Source>;
 
 /** Zitierbare Quellen-ID (Union aller registrierten Quellen). */

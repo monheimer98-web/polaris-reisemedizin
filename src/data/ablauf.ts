@@ -159,6 +159,7 @@ export const processPage: ClinicalPage = {
   lastReviewed: new Date('2026-06-16'),
   related: [
     { label: { de: 'Reisemedizinische Beratung', en: 'Travel-medicine consultation' }, path: '/leistungen/reiseberatung' },
+    { label: { de: 'Vor der Zeit im Ausland', en: 'Before your time abroad' }, path: '/ausland' },
     { label: { de: 'Gelbfieberimpfung', en: 'Yellow fever vaccination' }, path: '/leistungen/gelbfieberimpfung' },
     { label: { de: 'Kosten & Abrechnung', en: 'Fees & billing' }, path: '/kosten' },
   ],

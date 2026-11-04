@@ -6,6 +6,7 @@
  * Die sichtbare Überschrift (H1) der Seite bleibt davon unberührt.
  */
 import type { Localized } from './types';
+import { NACHWEISE_IM_ANGEBOT } from './ausland/stand';
 
 export const seoTitles: Record<string, Localized> = {
   '/': {
@@ -31,6 +32,70 @@ export const seoTitles: Record<string, Localized> = {
   '/leistungen/malaria': {
     de: 'Malariaprophylaxe & Malaria-Beratung in Langenfeld | Polaris',
     en: 'Malaria Prevention Advice in Langenfeld | Polaris',
+  },
+  '/ausland': {
+    de: NACHWEISE_IM_ANGEBOT
+      ? 'Impfungen & Nachweise fürs Ausland in Langenfeld | Polaris'
+      : 'Impfungen & Beratung fürs Ausland in Langenfeld | Polaris',
+    en: NACHWEISE_IM_ANGEBOT
+      ? 'Vaccinations & Forms for Time Abroad, Langenfeld | Polaris'
+      : 'Vaccinations & Advice for Time Abroad, Langenfeld | Polaris',
+  },
+  '/ausland/auslandssemester': {
+    de: NACHWEISE_IM_ANGEBOT
+      ? 'Impfnachweis Auslandssemester in Langenfeld | Polaris'
+      : 'Impfungen vor dem Auslandssemester, Langenfeld | Polaris',
+    en: NACHWEISE_IM_ANGEBOT
+      ? 'Immunization Form for Study Abroad, Langenfeld | Polaris'
+      : 'Vaccinations Before Study Abroad, Langenfeld | Polaris',
+  },
+  '/ausland/nachweise': {
+    de: 'Impfbescheinigung & Attest auf Englisch, Langenfeld | Polaris',
+    en: 'English Vaccination Certificate & Forms, Langenfeld | Polaris',
+  },
+  '/ausland/pilgerreisen': {
+    de: 'Pilgerreise: Impfungen & Beratung in Langenfeld | Polaris',
+    en: 'Pilgrimage: Vaccinations & Advice, Langenfeld | Polaris',
+  },
+  '/ausland/pilgerreisen/umra-hadsch': {
+    de: 'Umrah & Hadsch: Impfnachweis & Beratung, Langenfeld | Polaris',
+    en: 'Umrah & Hajj: Vaccination Rules, Langenfeld | Polaris',
+  },
+  '/ausland/pilgerreisen/jakobsweg': {
+    de: 'Jakobsweg: Impfungen & Reiseapotheke in Langenfeld | Polaris',
+    en: 'Camino de Santiago: Health Advice, Langenfeld | Polaris',
+  },
+  '/ausland/auslandsjahr': {
+    de: NACHWEISE_IM_ANGEBOT
+      ? 'Auslandsjahr: Impfungen & Formular in Langenfeld | Polaris'
+      : 'Auslandsjahr: Impfungen & Impfpass in Langenfeld | Polaris',
+    en: NACHWEISE_IM_ANGEBOT
+      ? 'Exchange Year: Vaccinations & Forms, Langenfeld | Polaris'
+      : 'Exchange Year: Vaccinations & Advice, Langenfeld | Polaris',
+  },
+  '/ausland/au-pair': {
+    de: NACHWEISE_IM_ANGEBOT
+      ? 'Au-pair: Formular & Impfungen in Langenfeld | Polaris'
+      : 'Au-pair: Impfungen & Impfpass in Langenfeld | Polaris',
+    en: NACHWEISE_IM_ANGEBOT
+      ? 'Au Pair Medical Form & Vaccinations, Langenfeld | Polaris'
+      : 'Au Pair Vaccinations & Advice, Langenfeld | Polaris',
+  },
+  '/ausland/work-and-travel': {
+    de: 'Work & Travel: Impfungen & Beratung in Langenfeld | Polaris',
+    en: 'Work & Travel Vaccinations & Advice, Langenfeld | Polaris',
+  },
+  '/ausland/gesundheitszeugnis-visum': {
+    de: 'Gesundheitszeugnis fürs Visum in Langenfeld | Polaris',
+    en: 'Medical Certificate for a Visa in Langenfeld | Polaris',
+  },
+  '/ausland/flug-kreuzfahrt-attest': {
+    de: 'Flugattest & Formular für Kreuzfahrten, Langenfeld | Polaris',
+    en: 'Fit-to-Fly Certificate & Cruise Forms, Langenfeld | Polaris',
+  },
+  '/gutschein': {
+    de: 'Wertgutschein der Privatpraxis in Langenfeld | Polaris',
+    en: 'Gift Voucher: Private Practice in Langenfeld | Polaris',
   },
   '/kosten': {
     de: 'Preise nach GOÄ – Reisemedizin Langenfeld | Polaris',

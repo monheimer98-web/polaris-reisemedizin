@@ -81,7 +81,10 @@ export interface LegalSection {
 /** Querverweis auf eine verwandte Seite. */
 export interface RelatedLink {
   label: Localized;
-  /** Logischer Pfad ohne Locale-Präfix (z. B. „/leistungen/gelbfieberimpfung"). */
+  /**
+   * Logischer Pfad ohne Locale-Präfix (z. B. „/leistungen/gelbfieberimpfung").
+   * In Abschnitts-Links von `ClinicalSections` auch eine vollständige https-Adresse.
+   */
   path: string;
 }
 
@@ -102,4 +105,6 @@ export interface ClinicalPage {
   related?: RelatedLink[];
   /** Optionale häufige Fragen (werden als FAQ-Block + FAQPage-JSON-LD ausgegeben). */
   faq?: { q: Localized; a: Localized }[];
+  /** Optionale Termin-Links am Seitenende; `art` ist eine online buchbare Terminart der Praxis-App. */
+  termine?: { label: Localized; art: string }[];
 }

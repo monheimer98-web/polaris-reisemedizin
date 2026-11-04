@@ -10,9 +10,13 @@ import { BOOKING_PATH } from '../config/nav';
 interface Props {
   /** Terminart-ID, die auf der Buchungsseite vorbelegt wird (`?art=`). */
   bookingType?: string;
+  /** Band ohne Impf- und Gelbfieber-Bezug, z. B. auf Seiten zu Formularen und Nachweisen. */
+  neutral?: boolean;
+  /** Eigene Beschriftung des Buchungsknopfs (bereits in der Seitensprache). */
+  label?: string;
 }
 
-const { bookingType } = Astro.props;
+const { bookingType, neutral = false, label } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const bookingHref = getLocalizedPath(BOOKING_PATH, lang) + (bookingType ? `?art=${bookingType}` : '');
@@ -24,12 +28,12 @@ const bookingHref = getLocalizedPath(BOOKING_PATH, lang) + (bookingType ? `?art=
     <div class="pointer-events-none absolute -bottom-24 -left-10 h-64 w-64 rounded-full bg-petrol-300/10 blur-3xl" aria-hidden="true"></div>
 
     <div class="relative mx-auto max-w-2xl text-center">
-      <h2 class="text-3xl text-cream sm:text-4xl">{t('home.ctaTitle')}</h2>
-      <p class="mt-4 text-lg leading-relaxed text-cream/80">{t('home.ctaLead')}</p>
+      <h2 class="text-3xl text-cream sm:text-4xl">{t(neutral ? 'abroad.ctaTitle' : 'home.ctaTitle')}</h2>
+      <p class="mt-4 text-lg leading-relaxed text-cream/80">{t(neutral ? 'abroad.ctaLead' : 'home.ctaLead')}</p>
 
       <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href={bookingHref} class="btn-gold" aria-label={t('cta.bookAria')}>
-          {t('cta.book')}
+        <a href={bookingHref} class="btn-gold" aria-label={label ? undefined : t('cta.bookAria')}>
+          {label ?? t('cta.book')}
         </a>
         <a
           href={getLocalizedPath('/kontakt', lang)}
@@ -39,7 +43,7 @@ const bookingHref = getLocalizedPath(BOOKING_PATH, lang) + (bookingType ? `?art=
         </a>
       </div>
 
-      <p class="mt-6 text-sm leading-relaxed text-cream/75">{t('home.ctaNote')}</p>
+      {!neutral && <p class="mt-6 text-sm leading-relaxed text-cream/75">{t('home.ctaNote')}</p>}
     </div>
   </div>
 </section>

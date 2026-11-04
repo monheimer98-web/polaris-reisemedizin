@@ -3,6 +3,7 @@
  * Lange Fachinhalte liegen in Content-Collections, nicht hier.
  */
 import type { Locale } from '../config/site';
+import { NACHWEISE_IM_ANGEBOT } from '../data/ausland/stand';
 
 export const ui = {
   de: {
@@ -39,7 +40,15 @@ export const ui = {
     'nav.travelTips': 'Reisetipps',
     'nav.travelKit': 'Reiseapotheke',
     'nav.costs': 'Kosten',
-    'nav.business': 'Für Unternehmen',
+    'nav.business': 'Firmen',
+    'nav.abroad': 'Ausland',
+    'nav.abroadYear': 'Auslandsjahr und Austausch',
+    'nav.abroadAuPair': 'Au-pair',
+    'nav.abroadWorkTravel': 'Work & Travel',
+    'nav.abroadStudy': 'Auslandssemester',
+    'nav.abroadPilgrimage': 'Pilgerreisen',
+    'nav.abroadCertificates': 'Nachweise und Atteste',
+    'nav.voucher': 'Wertgutschein',
     'nav.team': 'Praxis',
     'nav.faq': 'Fragen & Antworten',
     'nav.guides': 'Ratgeber',
@@ -141,6 +150,21 @@ export const ui = {
     'home.serviceTravelVaccFact3': 'Dokumentation im Impfausweis',
     'home.servicesMoreTitle': 'Spezielle Themen & Pflichtimpfungen',
     'home.servicesAllLink': 'Alle Leistungen ansehen',
+    'home.servicesAbroadLink': 'Alles zum Bereich Ausland',
+    'home.abroadTitle': NACHWEISE_IM_ANGEBOT ? 'Ausland, Pilgerreisen und Nachweise' : 'Ausland und Pilgerreisen',
+    'home.abroadLead': NACHWEISE_IM_ANGEBOT
+      ? 'Vor einem Auslandsjahr, Studium, Au-pair oder einer Pilgerreise prüfen wir Ihren Impfpass und planen fehlende Impfungen. Dazu stellen wir Atteste, ärztliche Formulare und englische Impfbescheinigungen aus, soweit wir die Angaben prüfen können.'
+      : 'Vor einem Auslandsjahr, Studium, Au-pair oder einer Pilgerreise prüfen wir Ihren Impfpass und planen fehlende Impfungen.',
+    'home.abroadStayTitle': 'Auslandsjahr, Au-pair und Studium',
+    'home.abroadStayText': NACHWEISE_IM_ANGEBOT
+      ? 'Impfpass, fehlende Impfungen und das Formular Ihrer Schule, Hochschule oder Organisation.'
+      : 'Impfpass, fehlende Impfungen und die Vorgaben Ihrer Schule, Hochschule oder Organisation.',
+    'home.abroadPilgrimTitle': 'Pilgerreisen',
+    'home.abroadPilgrimText': 'Hadsch, Umra, Jakobsweg, Lourdes und Rom: was Sie je Ziel brauchen, und Reiseberatung für Ihre Pilgerreise.',
+    'home.abroadCertTitle': 'Atteste und Formulare',
+    'home.abroadCertText': 'Englische Impfbescheinigung, Impfpass-Check mit Nachholplan und ärztliche Formulare fürs Ausland.',
+    'home.abroadFlightTitle': 'Flug und Kreuzfahrt',
+    'home.abroadFlightText': 'Ärztliche Bescheinigung, wenn eine Fluggesellschaft oder Reederei ein Formular verlangt.',
     'cta.serviceDetail': 'Zur Leistung',
 
     // Startseite — Abschluss-CTA
@@ -174,6 +198,9 @@ export const ui = {
     'content.onThisPage': 'Auf dieser Seite',
     'content.moreOnTopic': 'Mehr dazu',
     'content.faqHeading': 'Häufige Fragen',
+    'content.termineHeading': 'Termin buchen',
+    'abroad.ctaTitle': 'Planen Sie Ihren Termin',
+    'abroad.ctaLead': NACHWEISE_IM_ANGEBOT ? 'Buchen Sie online oder rufen Sie uns an. Bringen Sie Ihren Impfausweis und das Formular mit, falls Sie eines haben.' : 'Buchen Sie online oder rufen Sie uns an. Bringen Sie bitte Ihren Impfausweis mit.',
     'content.countriesHeading': 'Länder im Detail',
     'content.saveAsPdf': 'Als PDF speichern / drucken',
     'content.printIntro': 'Diese Seite zum Mitnehmen: Speichern Sie sie als PDF oder drucken Sie sie zum Abhaken aus.',
@@ -214,7 +241,7 @@ export const ui = {
     'overview.diseaseJeText':
       'Durch Stechmücken übertragene Virusinfektion mit seltener, aber schwerer Hirnentzündung – in weiten Teilen Asiens.',
     'overview.diseaseMeningoText':
-      'Bakterien, die eine Hirnhautentzündung und Blutvergiftung auslösen können – impfpräventabel, mit Nachweispflicht für Pilgerreisen.',
+      'Bakterien, die eine Hirnhautentzündung und Blutvergiftung auslösen können – impfpräventabel, mit Nachweispflicht für Hadsch und Umra.',
     'overview.diseaseCholeraText':
       'Bakterielle Durchfallerkrankung über verunreinigtes Wasser – für gewöhnliche Reisende ein sehr geringes Risiko.',
     'cta.diseaseDetail': 'Zum Krankheitsbild',
@@ -260,7 +287,15 @@ export const ui = {
     'nav.travelTips': 'Travel tips',
     'nav.travelKit': 'Travel first-aid kit',
     'nav.costs': 'Costs',
-    'nav.business': 'For businesses',
+    'nav.business': 'Business',
+    'nav.abroad': 'Abroad',
+    'nav.abroadYear': 'Exchange year',
+    'nav.abroadAuPair': 'Au pair',
+    'nav.abroadWorkTravel': 'Work & travel',
+    'nav.abroadStudy': 'Study abroad',
+    'nav.abroadPilgrimage': 'Pilgrimages',
+    'nav.abroadCertificates': 'Certificates and forms',
+    'nav.voucher': 'Gift voucher',
     'nav.team': 'Practice',
     'nav.faq': 'FAQ',
     'nav.guides': 'Guides',
@@ -362,6 +397,21 @@ export const ui = {
     'home.serviceTravelVaccFact3': 'Documented in your vaccination certificate',
     'home.servicesMoreTitle': 'Specific topics & required vaccinations',
     'home.servicesAllLink': 'View all services',
+    'home.servicesAbroadLink': 'Everything on time abroad',
+    'home.abroadTitle': NACHWEISE_IM_ANGEBOT ? 'Time abroad, pilgrimages and certificates' : 'Time abroad and pilgrimages',
+    'home.abroadLead': NACHWEISE_IM_ANGEBOT
+      ? 'Before an exchange year, study abroad, an au pair stay or a pilgrimage, we check your vaccination record and plan missing vaccinations. We also issue medical certificates, forms and English vaccination certificates as far as we can verify the details.'
+      : 'Before an exchange year, study abroad, an au pair stay or a pilgrimage, we check your vaccination record and plan missing vaccinations.',
+    'home.abroadStayTitle': 'Exchange year, au pair and study abroad',
+    'home.abroadStayText': NACHWEISE_IM_ANGEBOT
+      ? 'Vaccination record, missing vaccinations and the form from your school, university or organisation.'
+      : 'Vaccination record, missing vaccinations and the requirements of your school, university or organisation.',
+    'home.abroadPilgrimTitle': 'Pilgrimages',
+    'home.abroadPilgrimText': 'Hajj, Umrah, the Camino, Lourdes and Rome: what you need for each destination, and a travel consultation for your pilgrimage.',
+    'home.abroadCertTitle': 'Certificates and forms',
+    'home.abroadCertText': 'English vaccination certificate, vaccination record check with catch-up plan and medical forms for time abroad.',
+    'home.abroadFlightTitle': 'Flights and cruises',
+    'home.abroadFlightText': 'A medical certificate when an airline or cruise line asks for a form.',
     'cta.serviceDetail': 'View service',
 
     // Home — closing CTA
@@ -395,6 +445,9 @@ export const ui = {
     'content.onThisPage': 'On this page',
     'content.moreOnTopic': 'Learn more',
     'content.faqHeading': 'Frequently asked questions',
+    'content.termineHeading': 'Book an appointment',
+    'abroad.ctaTitle': 'Plan your appointment',
+    'abroad.ctaLead': NACHWEISE_IM_ANGEBOT ? 'Book online or call us. Please bring your vaccination record and the form, if you have one.' : 'Book online or call us. Please bring your vaccination record.',
     'content.countriesHeading': 'Countries in detail',
     'content.saveAsPdf': 'Save as PDF / print',
     'content.printIntro': 'This page to take with you: save it as a PDF or print it out to tick off.',
@@ -435,7 +488,7 @@ export const ui = {
     'overview.diseaseJeText':
       'A mosquito-borne viral infection with rare but severe inflammation of the brain – across large parts of Asia.',
     'overview.diseaseMeningoText':
-      'Bacteria that can cause meningitis and blood poisoning – vaccine-preventable, with a proof requirement for pilgrimages.',
+      'Bacteria that can cause meningitis and blood poisoning – vaccine-preventable, with a proof requirement for Hajj and Umrah.',
     'overview.diseaseCholeraText':
       'A bacterial diarrhoeal disease from contaminated water – a very low risk for ordinary travellers.',
     'cta.diseaseDetail': 'View disease',

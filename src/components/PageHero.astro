@@ -14,6 +14,9 @@ interface Props {
 }
 
 const { eyebrow, title, lead, motif = true } = Astro.props;
+
+// „Gesundheits…"-Komposita passen bei 375 px nicht in eine H1-Zeile: bedingte Trennstelle.
+const heading = title.replace(/Gesundheits(?=\p{L})/gu, 'Gesundheits­');
 ---
 
 <header class="relative overflow-hidden border-b border-petrol-100/70">
@@ -42,7 +45,7 @@ const { eyebrow, title, lead, motif = true } = Astro.props;
     <div class="max-w-3xl">
       {Astro.slots.has('breadcrumb') && <div class="mb-6"><slot name="breadcrumb" /></div>}
       <p class="eyebrow"><span class="rule-gold"></span>{eyebrow}</p>
-      <h1 class="mt-5 text-4xl sm:text-5xl">{title}</h1>
+      <h1 class="mt-5 text-4xl sm:text-5xl">{heading}</h1>
       {lead && <p class="mt-5 text-lg leading-relaxed text-ink-soft">{lead}</p>}
       <slot />
     </div>

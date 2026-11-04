@@ -6,6 +6,7 @@
  * englische Seiten liegen unter /en/<gleicher-slug>.
  * `labelKey` verweist auf einen Schlüssel im i18n-Wörterbuch (src/i18n/ui.ts).
  */
+import { GUTSCHEIN_IM_ANGEBOT, NACHWEISE_IM_ANGEBOT } from '../data/ausland/stand';
 
 export interface NavItem {
   labelKey: string;
@@ -24,6 +25,7 @@ export const primaryNav: NavItem[] = [
       { labelKey: 'nav.fsmeVaccination', path: '/leistungen/fsme-impfung' },
       { labelKey: 'nav.malaria', path: '/leistungen/malaria' },
       { labelKey: 'nav.altitude', path: '/leistungen/hoehenmedizin' },
+      { labelKey: 'nav.process', path: '/ablauf' },
     ],
   },
   {
@@ -56,7 +58,19 @@ export const primaryNav: NavItem[] = [
       { labelKey: 'nav.destOceania', path: '/reiseziele/ozeanien' },
     ],
   },
-  { labelKey: 'nav.process', path: '/ablauf' },
+  {
+    labelKey: 'nav.abroad',
+    path: '/ausland',
+    children: [
+      { labelKey: 'nav.abroadYear', path: '/ausland/auslandsjahr' },
+      { labelKey: 'nav.abroadAuPair', path: '/ausland/au-pair' },
+      { labelKey: 'nav.abroadWorkTravel', path: '/ausland/work-and-travel' },
+      { labelKey: 'nav.abroadStudy', path: '/ausland/auslandssemester' },
+      { labelKey: 'nav.abroadPilgrimage', path: '/ausland/pilgerreisen' },
+      ...(NACHWEISE_IM_ANGEBOT ? [{ labelKey: 'nav.abroadCertificates', path: '/ausland/nachweise' }] : []),
+      ...(GUTSCHEIN_IM_ANGEBOT ? [{ labelKey: 'nav.voucher', path: '/gutschein' }] : []),
+    ],
+  },
   { labelKey: 'nav.costs', path: '/kosten' },
   { labelKey: 'nav.business', path: '/unternehmen' },
   { labelKey: 'nav.team', path: '/team' },
@@ -70,6 +84,8 @@ export const primaryNav: NavItem[] = [
  */
 export const footerInfoNav: NavItem[] = [
   { labelKey: 'nav.process', path: '/ablauf' },
+  { labelKey: 'nav.abroad', path: '/ausland' },
+  ...(GUTSCHEIN_IM_ANGEBOT ? [{ labelKey: 'nav.voucher', path: '/gutschein' }] : []),
   { labelKey: 'nav.destinations', path: '/reiseziele' },
   { labelKey: 'nav.guides', path: '/ratgeber' },
   { labelKey: 'nav.travelTips', path: '/reisetipps' },

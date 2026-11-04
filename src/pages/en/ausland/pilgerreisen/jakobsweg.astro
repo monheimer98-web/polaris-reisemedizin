@@ -1,0 +1,7 @@
+---
+import AuslandFachseite from '../../../../components/AuslandFachseite.astro';
+import { PILGER_BUCHEN } from '../../../../data/ausland/fach-texte';
+import { pilgerJakobsweg as page } from '../../../../data/ausland/pilger-jakobsweg';
+---
+
+<AuslandFachseite page={page} bookingType="vollberatung-kurz" parent={{ label: 'Pilgrimages', path: '/ausland/pilgerreisen' }} bookingLabel={PILGER_BUCHEN} />

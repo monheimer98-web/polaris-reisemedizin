@@ -6,6 +6,7 @@
  * Abstimmung mit dem betriebsärztlichen Dienst.
  */
 import type { Localized } from './types';
+import { NACHWEISE_IM_ANGEBOT } from './ausland/stand';
 
 export interface UnternehmenItem {
   title: Localized;
@@ -27,6 +28,8 @@ export interface UnternehmenPage {
   intro: Localized<string[]>;
   servicesHeading: Localized;
   services: UnternehmenItem[];
+  /** Hinweis für Einzelpersonen, die nur ein Formular oder eine Bescheinigung brauchen. */
+  abroadHint: { text: Localized; cta: Localized };
   processHeading: Localized;
   processLead: Localized;
   steps: UnternehmenStep[];
@@ -39,7 +42,9 @@ export const unternehmenPage: UnternehmenPage = {
     title: { de: 'Reisemedizin für Unternehmen', en: 'Travel medicine for businesses' },
     description: {
       de: 'Reisemedizinische Vorbereitung für entsendete und dienstreisende Mitarbeitende: Beratung, Impfungen, Impfnachweise und Dokumentation.',
-      en: 'Travel-medicine preparation for posted and business-travelling staff: consultation, vaccinations, certificates and documentation.',
+      en: NACHWEISE_IM_ANGEBOT
+        ? 'Travel-medicine preparation for posted and business-travelling staff: consultation, vaccinations, certificates and documentation.'
+        : 'Travel-medicine preparation for posted and business-travelling staff: consultation, vaccinations, vaccination records and documentation.',
     },
     eyebrow: { de: 'Für Unternehmen', en: 'For businesses' },
     lead: {
@@ -105,6 +110,13 @@ export const unternehmenPage: UnternehmenPage = {
     },
   ],
 
+  abroadHint: {
+    text: {
+      de: 'Einzelne Mitarbeitende brauchen ein Formular oder eine Bescheinigung fürs Ausland?',
+      en: 'Do individual employees need a form or certificate for abroad?',
+    },
+    cta: { de: 'Nachweise und Atteste', en: 'Certificates and forms' },
+  },
   processHeading: { de: 'So arbeiten wir mit Ihnen', en: 'How we work with you' },
   processLead: {
     de: 'Vier Schritte – von der ersten Anfrage bis zu vollständigen Nachweisen.',

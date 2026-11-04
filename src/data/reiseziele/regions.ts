@@ -671,6 +671,8 @@ const naherOsten: DestinationRegion = {
           },
         },
         links: [
+          { label: { de: 'Umra und Hadsch', en: 'Umrah and Hajj' }, path: '/ausland/pilgerreisen/umra-hadsch' },
+          { label: { de: 'Pilgerreisen im Überblick', en: 'Pilgrimages overview' }, path: '/ausland/pilgerreisen' },
           { label: { de: 'Meningokokken', en: 'Meningococcal disease' }, path: '/krankheitsbilder/meningokokken' },
           { label: { de: 'Reisemedizinische Beratung', en: 'Travel medicine consultation' }, path: '/leistungen/reiseberatung' },
         ],

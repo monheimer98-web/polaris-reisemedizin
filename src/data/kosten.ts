@@ -7,6 +7,7 @@
  * keine Heilversprechen, keine Werbeaussagen.
  */
 import type { Localized } from './types';
+import { GUTSCHEIN_IM_ANGEBOT, NACHWEISE_IM_ANGEBOT } from './ausland/stand';
 
 /** Eine Zeile in der Preisübersicht. */
 export interface PriceItem {
@@ -40,7 +41,7 @@ export interface KostenPage {
   tableHead: { service: Localized; price: Localized };
   groups: PriceGroup[];
   /** Erläuternde Hinweisblöcke unterhalb der Tabelle. */
-  notes: { heading: Localized; body: Localized<string[]> }[];
+  notes: { heading: Localized; body: Localized<string[]>; link?: { label: Localized; path: string } }[];
   /** Kompakter Schluss-Disclaimer (Richtwert-Charakter). */
   disclaimer: Localized;
   lastReviewed: Date;
@@ -226,6 +227,68 @@ export const kostenPage: KostenPage = {
         },
       ],
     },
+    {
+      id: 'ausland',
+      heading: NACHWEISE_IM_ANGEBOT ? { de: 'Auslandsaufenthalt und Nachweise', en: 'Time abroad and certificates' } : { de: 'Auslandsaufenthalt', en: 'Time abroad' },
+      note: {
+        de: 'Richtwert nach GOÄ, Faktor 2,3, zuzüglich Impfstoff, wenn geimpft wird. Der Betrag hängt vom Aufwand ab.',
+        en: 'Guide price under the GOÄ, factor 2.3, plus vaccine if you are vaccinated. The amount depends on the effort involved.',
+      },
+      items: [
+        {
+          service: { de: 'Beratung vor längerem Auslandsaufenthalt', en: 'Consultation before a longer stay abroad' },
+          detail: {
+            de: 'Für Auslandsjahr, Austausch, Au-pair, Work & Travel oder Weltreise. Gespräch ca. 20 €. Auf Wunsch mit schriftlichem Plan ca. 28 bis 38 €.',
+            en: 'For an exchange year, au pair stay, work & travel or world trip. Consultation approx. €20. With a written plan on request approx. €28 to €38.',
+          },
+          price: { de: 'ab ca. 20 €', en: 'from approx. €20' },
+        },
+        {
+          service: { de: 'Impftermin mit Nachweis', en: 'Vaccination appointment with proof' },
+          detail: {
+            de: 'Wenn Reiseziel und Vorgabe schon feststehen: kurzes Gespräch, Impfung und Eintrag in den internationalen Impfausweis.',
+            en: 'If your destination and the requirement are already clear: a short talk, the vaccination and an entry in the international vaccination record.',
+          },
+          price: { de: 'ca. 32 € + Impfstoff', en: 'approx. €32 + vaccine' },
+        },
+        {
+          service: { de: 'Impfpass-Check mit Nachholplan', en: 'Vaccination record check with catch-up plan' },
+          detail: {
+            de: 'Prüfung des Impfpasses ca. 20 €. Auf Wunsch mit schriftlicher Bewertung und Nachholplan ca. 28 €.',
+            en: 'Review of your vaccination record approx. €20. With a written assessment and catch-up plan on request approx. €28.',
+          },
+          price: { de: 'ab ca. 20 €', en: 'from approx. €20' },
+        },
+        ...(NACHWEISE_IM_ANGEBOT
+          ? [
+            {
+              service: { de: 'Formular oder Bescheinigung', en: 'Form or certificate' },
+              detail: {
+                de: 'Zum Beispiel für Hochschule, Austausch, Flug oder Kreuzfahrt, auch auf Englisch.',
+                en: 'For example for a university, exchange, flight or cruise, also in English.',
+              },
+              price: { de: 'ab ca. 16 €', en: 'from approx. €16' },
+            },
+            {
+              service: { de: 'Zeugnis mit Untersuchung', en: 'Certificate with examination' },
+              detail: {
+                de: 'Für Formulare und Visa, die eine ärztliche Untersuchung verlangen, soweit keine zugelassene Stelle vorgeschrieben ist.',
+                en: 'For forms and visas that require a medical examination, unless an appointed doctor is required.',
+              },
+              price: { de: 'ab ca. 51 €', en: 'from approx. €51' },
+            },
+            {
+              service: { de: 'Bescheinigung für Medikamente auf Reisen', en: 'Certificate for medication when travelling' },
+              detail: {
+                de: 'Für unsere Patientinnen und Patienten, nach telefonischer Absprache.',
+                en: 'For our patients, by arrangement by phone.',
+              },
+              price: { de: 'ab ca. 16 €', en: 'from approx. €16' },
+            },
+            ]
+          : []),
+      ],
+    },
   ],
 
   notes: [
@@ -242,15 +305,31 @@ export const kostenPage: KostenPage = {
         ],
       },
     },
+    ...(GUTSCHEIN_IM_ANGEBOT
+      ? [
+        {
+          heading: { de: 'Wertgutschein', en: 'Gift voucher' },
+          body: {
+            de: [
+              'Einen Wertgutschein über einen Euro-Betrag erhalten Sie in der Praxis. Er wird auf Rechnungen angerechnet, die Rechnung selbst bleibt unverändert.',
+            ],
+            en: [
+              'You can get a gift voucher for an amount in euros at the practice. It is credited against invoices; the invoice itself stays unchanged.',
+            ],
+          },
+          link: { label: { de: 'So funktioniert der Wertgutschein', en: 'How the gift voucher works' }, path: '/gutschein' },
+        },
+        ]
+      : []),
     {
       heading: { de: 'Erstattung durch Ihre Versicherung', en: 'Reimbursement by your insurer' },
       body: {
         de: [
-          'Für beruflich oder ausbildungsbedingte Auslandsaufenthalte sind die von der STIKO empfohlenen Reiseimpfungen eine Kassenleistung – allerdings in einer Kassenpraxis, nicht bei uns. Für private Reisen erstatten viele gesetzliche Krankenkassen Reiseimpfungen freiwillig als Satzungsleistung. Umfang und Bedingungen sind je Kasse sehr unterschiedlich: oft nur Impfstoff und/oder Impfleistung, die Reiseberatung meist nicht; manche Kassen erstatten nur Impfungen aus Kassenpraxen. Private Tarife regeln es individuell.',
+          'Ist Ihr Auslandsaufenthalt beruflich oder durch die Ausbildung bedingt, etwa ein vorgeschriebenes Auslandssemester oder Pflichtpraktikum, sind die von der STIKO für Ihre Reise empfohlenen Impfungen eine Kassenleistung – allerdings in einer Kassenpraxis, nicht bei uns. Bei Dienstreisen trägt die Kosten oft auch der Arbeitgeber. Für private Reisen erstatten viele gesetzliche Krankenkassen Reiseimpfungen freiwillig als Satzungsleistung. Umfang und Bedingungen sind je Kasse sehr unterschiedlich: oft nur Impfstoff und/oder Impfleistung, die Reiseberatung meist nicht; manche Kassen erstatten nur Impfungen aus Kassenpraxen. Private Tarife regeln es individuell.',
           'Bitte klären Sie die Erstattung vorab mit Ihrer Kasse. Sie erhalten von uns eine aufgeschlüsselte Rechnung nach GOÄ zum Einreichen.',
         ],
         en: [
-          'For stays abroad for work or training, the travel vaccinations recommended by STIKO are a statutory benefit – but in a statutory-insurance practice, not with us. For private trips, many statutory health insurers reimburse travel vaccinations voluntarily under their statutes. Scope and conditions vary widely: often only the vaccine and/or the vaccination itself, rarely the consultation; some insurers only reimburse vaccinations given in statutory-insurance practices. Private plans handle it individually.',
+          'If your stay abroad is required for work or for your education, such as a compulsory semester abroad or internship, the vaccinations recommended by STIKO for your trip are a statutory benefit – but in a statutory-insurance practice, not with us. For business trips, employers often cover the cost too. For private trips, many statutory health insurers reimburse travel vaccinations voluntarily under their statutes. Scope and conditions vary widely: often only the vaccine and/or the vaccination itself, rarely the consultation; some insurers only reimburse vaccinations given in statutory-insurance practices. Private plans handle it individually.',
           'Please check reimbursement with your insurer in advance. You will receive an itemised GOÄ invoice from us to submit.',
         ],
       },

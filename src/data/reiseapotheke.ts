@@ -8,6 +8,7 @@
  * Quellenbox und Disclaimer automatisch greifen.
  */
 import type { ClinicalPage } from './types';
+import { NACHWEISE_IM_ANGEBOT } from './ausland/stand';
 
 export const travelKitPage: ClinicalPage = {
   meta: {
@@ -135,6 +136,7 @@ export const travelKitPage: ClinicalPage = {
       links: [
         { label: { de: 'Malaria-Vorsorge', en: 'Malaria prevention' }, path: '/leistungen/malaria' },
         { label: { de: 'Allgemeine Reisetipps', en: 'General travel tips' }, path: '/reisetipps' },
+    ...(NACHWEISE_IM_ANGEBOT ? [{ label: { de: 'Bescheinigung für Medikamente auf Reisen', en: 'Certificate for medication when travelling' }, path: '/ausland/nachweise' }] : []),
       ],
     },
     {

@@ -5,6 +5,7 @@
  * Schemata bleiben bewusst allgemein – maßgeblich ist die individuelle Beratung.
  */
 import type { ClinicalPage } from '../types';
+import { NACHWEISE_IM_ANGEBOT } from '../ausland/stand';
 
 export const reiseimpfungenService: ClinicalPage = {
   meta: {
@@ -152,6 +153,8 @@ export const reiseimpfungenService: ClinicalPage = {
   sourceIds: ['stikoImpfempfehlungen', 'dtgReiseimpfungen', 'auswaertigesAmt', 'whoYellowFeverCountries'],
   lastReviewed: new Date('2026-06-16'),
   related: [
+    { label: NACHWEISE_IM_ANGEBOT ? { de: 'Impfungen und Nachweise fürs Ausland', en: 'Vaccinations and certificates for time abroad' } : { de: 'Impfungen fürs Ausland', en: 'Vaccinations for time abroad' }, path: '/ausland' },
+    { label: { de: 'Pilgerreisen', en: 'Pilgrimages' }, path: '/ausland/pilgerreisen' },
     { label: { de: 'Reisemedizinische Beratung', en: 'Travel medicine consultation' }, path: '/leistungen/reiseberatung' },
     { label: { de: 'Gelbfieberimpfung', en: 'Yellow fever vaccination' }, path: '/leistungen/gelbfieberimpfung' },
     { label: { de: 'FSME-Impfung', en: 'TBE (FSME) vaccination' }, path: '/leistungen/fsme-impfung' },

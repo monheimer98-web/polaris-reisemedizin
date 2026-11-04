@@ -1,0 +1,47 @@
+---
+/**
+ * Fachseite im Bereich „Ausland“ (DE und EN). Inhalt aus dem typisierten Daten-Modul,
+ * die Seiten unter src/pages/ausland bleiben dünn. `bookingType` ist immer eine online
+ * buchbare Terminart ohne Reiseanlass im Link.
+ */
+import ContentLayout from '../layouts/ContentLayout.astro';
+import ClinicalSections from './ClinicalSections.astro';
+import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
+import { getSources } from '../data/sources';
+import type { ClinicalPage, Localized } from '../data/types';
+
+interface Props {
+  page: ClinicalPage;
+  bookingType: string;
+  /** Zusätzliche Brotkrumen-Ebene, z. B. „Pilgerreisen“ über Umra und Hadsch. */
+  parent?: { label: string; path: string };
+  /** Ohne allgemeinen Terminknopf und Abschlussband, wenn nur die Termin-Links der Seite gelten sollen. */
+  noBooking?: boolean;
+  /** Eigene Beschriftung des Buchungsknopfs, z. B. auf den Pilgerseiten. */
+  bookingLabel?: Localized;
+}
+
+const { page, bookingType, parent, noBooking, bookingLabel } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const related = (page.related ?? []).map((item) => ({ label: item.label[lang], path: getLocalizedPath(item.path, lang) }));
+const faq = (page.faq ?? []).map((f) => ({ q: f.q[lang], a: f.a[lang] }));
+const parentLokal = parent && { label: parent.label, path: getLocalizedPath(parent.path, lang) };
+---
+
+<ContentLayout
+  title={page.meta.title[lang]}
+  description={page.meta.description[lang]}
+  eyebrow={page.meta.eyebrow[lang]}
+  lead={page.meta.lead[lang]}
+  lastReviewed={page.lastReviewed}
+  sources={getSources(page.sourceIds)}
+  related={related}
+  faq={faq}
+  bookingType={bookingType}
+  parent={parentLokal}
+  noBooking={noBooking}
+  bookingLabel={bookingLabel?.[lang]}
+  neutralCta
+>
+  <ClinicalSections page={page} />
+</ContentLayout>

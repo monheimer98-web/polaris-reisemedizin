@@ -1,0 +1,10 @@
+---
+/**
+ * Fachseite Au-pair (English). Inhalt aus dem typisierten Daten-Modul, die Seite bleibt dünn.
+ */
+import AuslandFachseite from '../../../components/AuslandFachseite.astro';
+import { NACHWEISE_IM_ANGEBOT } from '../../../data/ausland/stand';
+import { auPairPage as page } from '../../../data/ausland/au-pair';
+---
+
+<AuslandFachseite page={page} bookingType={NACHWEISE_IM_ANGEBOT ? 'nachweis-status' : 'langzeit'} />

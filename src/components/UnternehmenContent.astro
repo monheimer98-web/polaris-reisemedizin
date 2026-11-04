@@ -7,6 +7,7 @@
  */
 import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
 import { unternehmenPage as page } from '../data/unternehmen';
+import { NACHWEISE_IM_ANGEBOT } from '../data/ausland/stand';
 
 const lang = getLangFromUrl(Astro.url);
 const contactHref = getLocalizedPath('/kontakt', lang);
@@ -50,6 +51,16 @@ const contactHref = getLocalizedPath('/kontakt', lang);
         ))
       }
     </ul>
+    {
+      NACHWEISE_IM_ANGEBOT && (
+        <p class="mt-8 text-sm text-ink-soft">
+          {page.abroadHint.text[lang]}{' '}
+          <a href={getLocalizedPath('/ausland/nachweise', lang)} class="font-semibold text-petrol-700 underline decoration-gold-400/50 underline-offset-4 hover:text-petrol-900">
+            {page.abroadHint.cta[lang]}
+          </a>
+        </p>
+      )
+    }
   </section>
 
   {/* Ablauf (Band) */}

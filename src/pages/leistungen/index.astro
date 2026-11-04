@@ -1,16 +1,18 @@
 ---
 /**
  * Übersicht „Leistungen" (Deutsch) — Eltern-Seite der Navigation. Listet die
- * beiden Impfleistungen als Karten. Sprache aus der URL; identisch zu /en.
+ * Leistungen als Karten, darunter den Bereich Ausland. Sprache aus der URL; identisch zu /en.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import OverviewCard from '../../components/OverviewCard.astro';
 import PageHero from '../../components/PageHero.astro';
 import CTA from '../../components/CTA.astro';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
+import { auslandKartenStart } from '../../data/ausland/start-karten';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const auslandKarten = auslandKartenStart(t);
 ---
 
 <BaseLayout title={t('overview.servicesTitle')} description={t('overview.servicesMeta')}>
@@ -65,6 +67,21 @@ const t = useTranslations(lang);
           cta={t('cta.serviceDetail')}
           href={getLocalizedPath('/leistungen/hoehenmedizin', lang)}
         />
+      </div>
+
+      <h2 class="mt-14 font-display text-2xl text-petrol-900 sm:mt-16">{t('home.abroadTitle')}</h2>
+      <p class="mt-3 max-w-3xl leading-relaxed text-ink-soft">{t('home.abroadLead')}</p>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {auslandKarten.map((karte) => (
+          <OverviewCard
+            variant={karte.variant}
+            title={karte.title}
+            text={karte.text}
+            cta={t('cta.serviceDetail')}
+            href={getLocalizedPath(karte.path, lang)}
+            headingLevel="h3"
+          />
+        ))}
       </div>
     </div>
   </article>

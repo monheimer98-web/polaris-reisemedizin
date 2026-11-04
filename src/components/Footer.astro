@@ -14,6 +14,7 @@ const t = useTranslations(lang);
 const year = new Date().getFullYear();
 
 const servicesItem = primaryNav.find((i) => i.path === '/leistungen');
+const serviceLinks = servicesItem?.children?.filter((child) => child.path !== '/ablauf');
 const diseasesItem = primaryNav.find((i) => i.path === '/krankheitsbilder');
 const infoLinks = footerInfoNav;
 ---
@@ -36,7 +37,7 @@ const infoLinks = footerInfoNav;
         <h2 class="text-xs font-semibold uppercase tracking-[0.16em] text-gold-300">{t('footer.servicesTitle')}</h2>
         <ul class="mt-4 space-y-2.5 text-sm">
           {
-            servicesItem?.children?.map((child) => (
+            serviceLinks?.map((child) => (
               <li>
                 <a href={getLocalizedPath(child.path, lang)} class="text-cream/75 transition-colors hover:text-cream">
                   {t(child.labelKey as UiKey)}
