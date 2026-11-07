@@ -1,0 +1,26 @@
+---
+/**
+ * Fachseiten zu Formularen und Bescheinigungen (Deutsch): Nachweise und Atteste, Gesundheitszeugnis
+ * fürs Visum, Flug und Kreuzfahrt. Sie entstehen nur, solange NACHWEISE_IM_ANGEBOT an ist; aus heißt
+ * keine Route und kein Eintrag in der Sitemap. Feste Routen in diesem Ordner haben Vorrang.
+ */
+import AuslandFachseite from '../../components/AuslandFachseite.astro';
+import { NACHWEISE_IM_ANGEBOT } from '../../data/ausland/stand';
+import { auslandNachweisePage } from '../../data/ausland/nachweise';
+import { gesundheitszeugnisVisumPage } from '../../data/ausland/gesundheitszeugnis-visum';
+import { flugKreuzfahrtAttestPage } from '../../data/ausland/flug-kreuzfahrt-attest';
+
+export function getStaticPaths() {
+  return NACHWEISE_IM_ANGEBOT
+    ? [
+        { params: { seite: 'nachweise' }, props: { page: auslandNachweisePage, bookingType: 'nachweis-kurz' } },
+        { params: { seite: 'gesundheitszeugnis-visum' }, props: { page: gesundheitszeugnisVisumPage, bookingType: 'nachweis-status' } },
+        { params: { seite: 'flug-kreuzfahrt-attest' }, props: { page: flugKreuzfahrtAttestPage, bookingType: 'nachweis-status' } },
+      ]
+    : [];
+}
+
+const { page, bookingType } = Astro.props;
+---
+
+<AuslandFachseite page={page} bookingType={bookingType} />

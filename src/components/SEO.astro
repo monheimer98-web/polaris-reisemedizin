@@ -6,6 +6,7 @@
 import { site, SITE_URL, DEFAULT_LOCALE, type Locale } from '../config/site';
 import { getAlternateLanguages, getLocalizedPath, getLogicalPath, withBase, HREFLANG } from '../i18n/utils';
 import { seoTitles } from '../data/seoTitles';
+import { NACHWEISE_IM_ANGEBOT } from '../data/ausland/stand';
 
 interface Props {
   title: string;
@@ -120,6 +121,14 @@ const clinicSchema = {
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'FSME-Impfung' : 'TBE vaccination' },
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Malariaberatung' : 'Malaria advice' },
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Höhenmedizinische Beratung' : 'Altitude-medicine advice' },
+    { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Beratung vor Auslandsaufenthalten' : 'Advice before time abroad' },
+    { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Reiseberatung vor Pilgerreisen' : 'Travel consultation before a pilgrimage' },
+    ...(NACHWEISE_IM_ANGEBOT
+      ? [
+          { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Gesundheitsnachweise fürs Ausland' : 'Health certificates for abroad' },
+          { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Ärztliche Atteste und Formulare für Flug, Kreuzfahrt, Schule und Hochschule' : 'Medical certificates and forms for flights, cruises, schools and universities' },
+        ]
+      : []),
   ],
 };
 

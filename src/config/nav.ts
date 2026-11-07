@@ -10,6 +10,7 @@
  */
 import type { Localized } from '../data/types';
 import { PREVENTION_PATH, preventionOffers, preventionPath } from '../data/praevention';
+import { GUTSCHEIN_IM_ANGEBOT, NACHWEISE_IM_ANGEBOT } from '../data/ausland/stand';
 
 export interface NavItem {
   labelKey: string;
@@ -69,8 +70,8 @@ export const diseasesNav: NavItem = {
 /**
  * Hauptnavigation: zwei gleichrangige Bereiche der einen Praxis
  * („Reisemedizin" mit Leistungen, Reisezielen und Krankheitsbildern als
- * Gruppen; „Prävention & Lebensstil" mit eigener Farbwelt), dazu Firmen,
- * Kosten und Praxis. Gruppen (Einträge mit eigenen `children`) erscheinen am
+ * Gruppen; „Prävention & Lebensstil" mit eigener Farbwelt), dazu Ausland,
+ * Firmen, Kosten und Praxis. Gruppen (Einträge mit eigenen `children`) erscheinen am
  * Desktop als Spalten, mobil als Zwischenüberschriften.
  */
 export const primaryNav: NavItem[] = [
@@ -86,6 +87,20 @@ export const primaryNav: NavItem[] = [
     children: [
       { labelKey: 'nav.preventionArea', label: { de: 'Übersicht', en: 'Overview' }, path: PREVENTION_PATH },
       ...preventionOffers.map((o) => ({ labelKey: 'nav.preventionArea', label: o.shortName, path: preventionPath(o.slug) })),
+    ],
+  },
+  {
+    labelKey: 'nav.abroad',
+    path: '/ausland',
+    children: [
+      { labelKey: 'nav.abroad', label: { de: 'Übersicht', en: 'Overview' }, path: '/ausland' },
+      { labelKey: 'nav.abroadYear', path: '/ausland/auslandsjahr' },
+      { labelKey: 'nav.abroadAuPair', path: '/ausland/au-pair' },
+      { labelKey: 'nav.abroadWorkTravel', path: '/ausland/work-and-travel' },
+      { labelKey: 'nav.abroadStudy', path: '/ausland/auslandssemester' },
+      { labelKey: 'nav.abroadPilgrimage', path: '/ausland/pilgerreisen' },
+      ...(NACHWEISE_IM_ANGEBOT ? [{ labelKey: 'nav.abroadCertificates', path: '/ausland/nachweise' }] : []),
+      ...(GUTSCHEIN_IM_ANGEBOT ? [{ labelKey: 'nav.voucher', path: '/gutschein' }] : []),
     ],
   },
   { labelKey: 'nav.business', path: '/unternehmen' },
@@ -114,6 +129,8 @@ export function navPaths(item: NavItem): string[] {
  */
 export const footerInfoNav: NavItem[] = [
   { labelKey: 'nav.process', path: '/ablauf' },
+  { labelKey: 'nav.abroad', path: '/ausland' },
+  ...(GUTSCHEIN_IM_ANGEBOT ? [{ labelKey: 'nav.voucher', path: '/gutschein' }] : []),
   { labelKey: 'nav.destinations', path: '/reiseziele' },
   { labelKey: 'nav.preventionArea', path: PREVENTION_PATH },
   { labelKey: 'nav.guides', path: '/ratgeber' },

@@ -9,11 +9,15 @@
  * und werden als native `<details>`-Akkordeons gerendert (kein JS-Island).
  */
 import type { Localized } from './types';
+import { KEINE_FORMULARE } from './ausland/fach-texte';
+import { NACHWEISE_IM_ANGEBOT } from './ausland/stand';
 
 /** Eine Frage mit (ggf. mehrabsätziger) Antwort. */
 export interface FaqItem {
   q: Localized;
   a: Localized<string[]>;
+  /** Optionaler Verweis auf die Seite mit den Einzelheiten. */
+  link?: { label: Localized; path: string };
 }
 
 /** Thematische Gruppe mehrerer Fragen. */
@@ -131,6 +135,27 @@ export const faqPage: FaqPage = {
               'Yes. We offer advice and information in German and English. This website is also available in both languages.',
             ],
           },
+        },
+        {
+          q: {
+            de: 'Füllen Sie auch Formulare und Bescheinigungen fürs Ausland aus?',
+            en: 'Do you also complete forms and certificates for abroad?',
+          },
+          a: {
+            de: [
+              NACHWEISE_IM_ANGEBOT
+                ? 'Ja, soweit wir die Angaben prüfen können, auch auf Englisch. Untersuchungen, die ein Land zugelassenen Stellen vorbehält, führen wir nicht durch.'
+                : `${KEINE_FORMULARE.de} Wir prüfen Ihren Impfpass und planen fehlende Impfungen. Untersuchungen, die ein Land zugelassenen Stellen vorbehält, führen wir nicht durch.`,
+            ],
+            en: [
+              NACHWEISE_IM_ANGEBOT
+                ? 'Yes, as far as we can verify the details, also in English. We do not carry out examinations that a country reserves for appointed doctors.'
+                : `${KEINE_FORMULARE.en} We review your vaccination record and plan any missing vaccinations. We do not carry out examinations that a country reserves for appointed doctors.`,
+            ],
+          },
+          link: NACHWEISE_IM_ANGEBOT
+            ? { label: { de: 'Nachweise und Atteste', en: 'Certificates and forms' }, path: '/ausland/nachweise' }
+            : { label: { de: 'Vor der Zeit im Ausland', en: 'Before your time abroad' }, path: '/ausland' },
         },
       ],
     },

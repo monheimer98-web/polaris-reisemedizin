@@ -1,0 +1,51 @@
+---
+/**
+ * Abroad overview (English): cards for all sub-pages, then what applies to all of them.
+ * Sprache aus der URL, identisch zur anderen Sprachvariante.
+ */
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import ClinicalSections from '../../../components/ClinicalSections.astro';
+import OverviewCard from '../../../components/OverviewCard.astro';
+import { getLangFromUrl, getLocalizedPath } from '../../../i18n/utils';
+import { getSources } from '../../../data/sources';
+import { auslandHubPage as page, auslandKacheln, auslandKachelCta, auslandKachelnHeading } from '../../../data/ausland/hub';
+
+const lang = getLangFromUrl(Astro.url);
+const related = (page.related ?? []).map((item) => ({ label: item.label[lang], path: getLocalizedPath(item.path, lang) }));
+const faq = (page.faq ?? []).map((f) => ({ q: f.q[lang], a: f.a[lang] }));
+---
+
+<ContentLayout
+  title={page.meta.title[lang]}
+  description={page.meta.description[lang]}
+  eyebrow={page.meta.eyebrow[lang]}
+  lead={page.meta.lead[lang]}
+  lastReviewed={page.lastReviewed}
+  sources={getSources(page.sourceIds)}
+  related={related}
+  faq={faq}
+  bookingType="langzeit"
+  neutralCta
+>
+  <section id="anlass" class="mb-12 scroll-mt-24 sm:mb-14">
+    <div class="rich-text">
+      <h2>{auslandKachelnHeading[lang]}</h2>
+    </div>
+    <div class="mt-6 grid gap-6 sm:grid-cols-2">
+      {
+        auslandKacheln.map((kachel) => (
+          <OverviewCard
+            variant={kachel.variant}
+            title={kachel.title[lang]}
+            text={kachel.text[lang]}
+            cta={auslandKachelCta[lang]}
+            href={getLocalizedPath(kachel.path, lang)}
+            headingLevel="h3"
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <ClinicalSections page={page} />
+</ContentLayout>

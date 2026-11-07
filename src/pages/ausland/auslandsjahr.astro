@@ -1,0 +1,9 @@
+---
+/**
+ * Fachseite Auslandsjahr (Deutsch). Inhalt aus dem typisierten Daten-Modul, die Seite bleibt dünn.
+ */
+import AuslandFachseite from '../../components/AuslandFachseite.astro';
+import { auslandsjahrPage as page } from '../../data/ausland/auslandsjahr';
+---
+
+<AuslandFachseite page={page} bookingType="langzeit" />

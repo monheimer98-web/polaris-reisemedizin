@@ -3,15 +3,18 @@
  * Leistungs-Überblick der Startseite. Spiegelt das vollständige, beratungs-
  * geführte Angebot: zwei hervorgehobene Karten (Reisemedizinische Beratung &
  * Reiseimpfungen) und darunter die spezifischen Themen (Gelbfieber, FSME,
- * Malaria, Höhenmedizin) als kompakte Karten. Abschluss: Link auf die
- * Leistungsübersicht. Sprache aus der URL.
+ * Malaria, Höhenmedizin) als kompakte Karten, danach der Bereich Ausland mit
+ * eigenen Karten. Abschluss: Links auf Leistungsübersicht und Ausland.
+ * Sprache aus der URL.
  */
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import ServiceCard from './ServiceCard.astro';
 import OverviewCard from './OverviewCard.astro';
+import { auslandKartenStart } from '../data/ausland/start-karten';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const auslandKarten = auslandKartenStart(t);
 ---
 
 <section class="relative overflow-hidden">
@@ -81,12 +84,36 @@ const t = useTranslations(lang);
     />
   </div>
 
-  <div class="mt-10">
+  {/* Bereich Ausland: Auslandsaufenthalt, Pilgerreisen, Atteste und Formulare */}
+  <h3 class="mt-14 font-display text-xl text-petrol-900 sm:mt-16">{t('home.abroadTitle')}</h3>
+  <p class="mt-3 max-w-3xl leading-relaxed text-ink-soft">{t('home.abroadLead')}</p>
+  <div class:list={['mt-6 grid gap-6 sm:grid-cols-2', auslandKarten.length > 2 && 'lg:grid-cols-4']}>
+    {auslandKarten.map((karte) => (
+      <OverviewCard
+        variant={karte.variant}
+        title={karte.title}
+        text={karte.text}
+        cta={t('cta.serviceDetail')}
+        href={getLocalizedPath(karte.path, lang)}
+      />
+    ))}
+  </div>
+
+  <div class="mt-10 flex flex-col items-start gap-3">
     <a
       href={getLocalizedPath('/leistungen', lang)}
       class="inline-flex items-center gap-1.5 text-sm font-semibold text-petrol-700 transition-colors hover:text-petrol-900"
     >
       {t('home.servicesAllLink')}
+      <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <path d="M3 8h9M9 5l3 3-3 3" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+    <a
+      href={getLocalizedPath('/ausland', lang)}
+      class="inline-flex items-center gap-1.5 text-sm font-semibold text-petrol-700 transition-colors hover:text-petrol-900"
+    >
+      {t('home.servicesAbroadLink')}
       <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
         <path d="M3 8h9M9 5l3 3-3 3" stroke-linecap="round" stroke-linejoin="round" />
       </svg>

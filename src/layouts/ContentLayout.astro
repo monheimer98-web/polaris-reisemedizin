@@ -57,9 +57,15 @@ interface Props {
   areaCurrent?: string;
   /** Eigene Texte für das Abschluss-Band (bereits in der Seitensprache). */
   cta?: { title: string; lead: string; note?: string };
+  /** Blendet Buchungsknopf und Abschluss-CTA aus, wenn die Seite nicht in einen Termin führen soll. */
+  noBooking?: boolean;
+  /** Abschlussband ohne Impf- und Gelbfieber-Bezug (Bereich Ausland). */
+  neutralCta?: boolean;
+  /** Eigene Beschriftung des Buchungsknopfs in Hero und Abschlussband (bereits in der Seitensprache). */
+  bookingLabel?: string;
 }
 
-const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel, faq = [], parent, area, areaCurrent, cta } = Astro.props;
+const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel, faq = [], parent, area, areaCurrent, cta, noBooking = false, neutralCta = false, bookingLabel } = Astro.props;
 const areaClass = area === 'praevention' ? 'theme-praevention' : undefined;
 const lang = getLangFromUrl(Astro.url);
 const bookingPath = area === 'praevention' ? PREVENTION_BOOKING_PATH : BOOKING_PATH;
@@ -76,8 +82,10 @@ const HUB_LABEL_KEY: Record<string, UiKey> = {
   reiseziele: 'nav.destinations',
   ratgeber: 'nav.guides',
   praevention: 'nav.preventionArea',
+  ausland: 'nav.abroad',
 };
-const hubKey = HUB_LABEL_KEY[hubSegment];
+const isHubPage = getLogicalPath(Astro.url.pathname).replace(/\/+$/, '') === `/${hubSegment}`;
+const hubKey = isHubPage ? undefined : HUB_LABEL_KEY[hubSegment];
 const breadcrumbItems = [
   { label: t('nav.home'), path: getLocalizedPath('/', lang) },
   ...(hubKey ? [{ label: t(hubKey), path: getLocalizedPath(`/${hubSegment}`, lang) }] : []),
@@ -120,7 +128,7 @@ const faqSchema = faq.length
 // werden <section id> + zugehörige <h2> extrahiert. Bewusst nur für die
 // strukturgleichen Hubs (Krankheitsbilder/Leistungen) und erst ab 3 Abschnitten.
 const bodyHtml = await Astro.slots.render('default');
-const TOC_HUBS = new Set(['krankheitsbilder', 'leistungen', 'reiseziele', 'reiseapotheke', 'ratgeber', 'praevention']);
+const TOC_HUBS = new Set(['krankheitsbilder', 'leistungen', 'reiseziele', 'reiseapotheke', 'ratgeber', 'praevention', 'ausland', 'gutschein']);
 const toc: { id: string; label: string }[] = [];
 if (TOC_HUBS.has(hubSegment)) {
   // Im gerenderten HTML sind Zeichen wie & als Entities kodiert (&amp;); nach dem
@@ -152,9 +160,13 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
     <PageHero eyebrow={eyebrow} title={title} lead={lead}>
       <Breadcrumbs slot="breadcrumb" items={breadcrumbItems} label={t('content.breadcrumb')} />
       <div class="no-print mt-8 flex flex-wrap items-center gap-3">
-        <a href={bookingHref} class="btn-gold inline-flex" aria-label={t('cta.bookAria')}>
-          {t('cta.book')}
-        </a>
+        {
+          !noBooking && (
+            <a href={bookingHref} class="btn-gold inline-flex" aria-label={bookingLabel ? undefined : t('cta.bookAria')}>
+              {bookingLabel ?? t('cta.book')}
+            </a>
+          )
+        }
         {printLabel && <PrintButton label={printLabel} />}
       </div>
       <p class="mt-6 text-sm text-ink-soft">
@@ -243,7 +255,9 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
     </div>
   </article>
 
-  <div class={areaClass}>
-    <CTA bookingType={bookingType} title={cta?.title} lead={cta?.lead} note={cta?.note} bookingPath={bookingPath} />
-  </div>
+  {!noBooking && (
+    <div class={areaClass}>
+      <CTA bookingType={bookingType} title={cta?.title} lead={cta?.lead} note={cta?.note} bookingPath={bookingPath} neutral={neutralCta} label={bookingLabel} />
+    </div>
+  )}
 </BaseLayout>

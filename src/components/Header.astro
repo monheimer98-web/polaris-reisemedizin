@@ -74,10 +74,11 @@ function hasGroups(item: NavItem): boolean {
     </a>
 
     {/* Desktop-Navigation — erst ab xl (≥1280px). Zwei gleichrangige Bereiche
-        (Reisemedizin, Prävention & Lebensstil), dazu Firmen, Kosten, Praxis.
+        (Reisemedizin, Prävention & Lebensstil), dazu Ausland, Firmen, Kosten, Praxis.
         Einträge mit Gruppen (Reisemedizin) öffnen ein Spalten-Menü; der
-        Präventionsbereich trägt seine Salbei-Farbwelt schon in der Leiste. */}
-    <nav class="hidden items-center gap-1 xl:flex" aria-label={t('header.primaryNav')}>
+        Präventionsbereich trägt seine Salbei-Farbwelt schon in der Leiste.
+        Zwischen lg und xl greift das Off-Canvas-Menü, sonst liefe die EN-Leiste über. */}
+    <nav class="hidden items-center gap-0.5 xl:flex" aria-label={t('header.primaryNav')}>
       {
         primaryNav.map((item) =>
           item.children?.length ? (
@@ -85,7 +86,7 @@ function hasGroups(item: NavItem): boolean {
               <a
                 href={getLocalizedPath(item.path, lang)}
                 class:list={[
-                  'inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-white',
+                  'inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition-colors hover:bg-white',
                   isActiveItem(item) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
                 ]}
                 aria-current={isActiveItem(item) ? 'page' : undefined}
@@ -150,7 +151,7 @@ function hasGroups(item: NavItem): boolean {
             <a
               href={getLocalizedPath(item.path, lang)}
               class:list={[
-                'whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-white',
+                'whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition-colors hover:bg-white',
                 isActive(item.path) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
               ]}
               aria-current={isActive(item.path) ? 'page' : undefined}

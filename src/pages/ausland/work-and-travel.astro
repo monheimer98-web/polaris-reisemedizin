@@ -1,0 +1,9 @@
+---
+/**
+ * Fachseite Work & Travel (Deutsch). Inhalt aus dem typisierten Daten-Modul, die Seite bleibt dünn.
+ */
+import AuslandFachseite from '../../components/AuslandFachseite.astro';
+import { workAndTravelPage as page } from '../../data/ausland/work-and-travel';
+---
+
+<AuslandFachseite page={page} bookingType="langzeit" />

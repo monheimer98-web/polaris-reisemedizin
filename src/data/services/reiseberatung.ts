@@ -135,6 +135,8 @@ export const reiseberatungService: ClinicalPage = {
   related: [
     { label: { de: 'Reiseimpfungen im Überblick', en: 'Travel vaccinations at a glance' }, path: '/leistungen/reiseimpfungen' },
     { label: { de: 'Malaria-Vorsorge', en: 'Malaria prevention' }, path: '/leistungen/malaria' },
+    { label: { de: 'Vor der Zeit im Ausland', en: 'Before your time abroad' }, path: '/ausland' },
+    { label: { de: 'Work & Travel und Weltreise', en: 'Work & travel and world trips' }, path: '/ausland/work-and-travel' },
     { label: { de: 'Ablauf in unserer Praxis', en: 'How it works at our practice' }, path: '/ablauf' },
     { label: { de: 'Kosten & GOÄ', en: 'Costs & GOÄ' }, path: '/kosten' },
   ],

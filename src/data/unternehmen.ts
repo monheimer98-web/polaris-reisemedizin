@@ -31,6 +31,8 @@ export interface UnternehmenPage {
   intro: Localized<string[]>;
   servicesHeading: Localized;
   services: UnternehmenItem[];
+  /** Hinweis für Einzelpersonen, die nur ein Formular oder eine Bescheinigung brauchen. */
+  abroadHint: { text: Localized; cta: Localized };
   processHeading: Localized;
   processLead: Localized;
   steps: UnternehmenStep[];
@@ -113,6 +115,13 @@ export const unternehmenPage: UnternehmenPage = {
     },
   ],
 
+  abroadHint: {
+    text: {
+      de: 'Einzelne Mitarbeitende brauchen ein Formular oder eine Bescheinigung fürs Ausland?',
+      en: 'Do individual employees need a form or certificate for abroad?',
+    },
+    cta: { de: 'Nachweise und Atteste', en: 'Certificates and forms' },
+  },
   processHeading: { de: 'So läuft es ab', en: 'How it works' },
   processLead: {
     de: 'Gruppentermine nach Vereinbarung, auch abends oder samstags nach Vereinbarung möglich. Planen Sie möglichst einige Wochen Vorlauf vor der Abreise ein.',
