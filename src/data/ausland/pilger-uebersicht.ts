@@ -269,7 +269,7 @@ export const pilgerUebersicht: ClinicalPage = {
     { label: { de: 'Umra und Hadsch', en: 'Umrah and Hajj' }, path: '/ausland/pilgerreisen/umra-hadsch' },
     { label: { de: 'Jakobsweg', en: 'Camino de Santiago' }, path: '/ausland/pilgerreisen/jakobsweg' },
     { label: { de: 'Reiseberatung', en: 'Travel consultation' }, path: '/leistungen/reiseberatung' },
-    { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten' },
+    { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten#ausland' },
     { label: { de: 'Reiseziele', en: 'Destinations' }, path: '/reiseziele' },
     { label: { de: 'Reiseapotheke', en: 'Travel kit' }, path: '/reiseapotheke' },
   ],

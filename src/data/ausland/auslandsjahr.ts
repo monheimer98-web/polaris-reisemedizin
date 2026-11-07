@@ -193,7 +193,7 @@ export const auslandsjahrPage: ClinicalPage = {
         ],
       },
       links: [
-        { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten' },
+        { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten#ausland' },
         { label: { de: 'Kontakt', en: 'Contact' }, path: '/kontakt' },
       ],
     },
@@ -277,7 +277,7 @@ export const auslandsjahrPage: ClinicalPage = {
   related: [
     ...(NACHWEISE_IM_ANGEBOT ? [{ label: { de: 'Gesundheitsnachweise fürs Ausland', en: 'Health certificates for abroad' }, path: '/ausland/nachweise' }] : []),
     { label: { de: 'Au-pair im Ausland', en: 'Au pair abroad' }, path: '/ausland/au-pair' },
-    { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten' },
+    { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten#ausland' },
     { label: { de: 'Was kostet eine Reiseimpfung?', en: 'What does a travel vaccination cost?' }, path: '/ratgeber/reiseimpfung-kosten-krankenkasse' },
   ],
   sourceIds: [

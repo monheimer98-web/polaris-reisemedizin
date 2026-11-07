@@ -8,7 +8,7 @@ import { AUSLAND_GEPRUEFT } from './stand';
 
 export const auslandNachweisePage: ClinicalPage = {
   meta: {
-    title: { de: 'Gesundheitsnachweise fürs Ausland', en: 'Health certificates for abroad' },
+    title: { de: 'Englische Impfbescheinigung und Nachweise fürs Ausland', en: 'Health certificates for abroad' },
     description: {
       de: 'Englische Impfbescheinigung, Impfpass-Prüfung und Formulare fürs Ausland: was wir ausstellen und was das Zielland ernannten Ärzten vorbehält. In Langenfeld.',
       en: 'English vaccination certificate, record review and forms for abroad: what we issue and what a country reserves for appointed doctors. Practice in Langenfeld.',
@@ -231,6 +231,6 @@ export const auslandNachweisePage: ClinicalPage = {
   lastReviewed: AUSLAND_GEPRUEFT,
   related: [
     { label: { de: 'Alles zum Bereich Ausland', en: 'The abroad section' }, path: '/ausland' },
-    { label: { de: 'Kosten & Abrechnung', en: 'Fees & billing' }, path: '/kosten' },
+    { label: { de: 'Kosten & Abrechnung', en: 'Fees & billing' }, path: '/kosten#ausland' },
   ],
 };

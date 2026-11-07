@@ -147,7 +147,7 @@ export const gesundheitszeugnisVisumPage: ClinicalPage = {
           `You will find us at Leipziger Weg 5 (1st floor) in Langenfeld-Richrath, easy to reach from Monheim am Rhein, Hilden, Leichlingen, Solingen and Leverkusen. ${KOSTEN_HINWEIS.en}`,
         ],
       },
-      links: [{ label: { de: 'Kosten', en: 'Fees' }, path: '/kosten' }],
+      links: [{ label: { de: 'Kosten', en: 'Fees' }, path: '/kosten#ausland' }],
     },
   ],
   faq: [
@@ -220,7 +220,7 @@ export const gesundheitszeugnisVisumPage: ClinicalPage = {
   related: [
     { label: { de: 'Gesundheitsnachweise fürs Ausland', en: 'Health certificates for abroad' }, path: '/ausland/nachweise' },
     { label: { de: 'Work & Travel', en: 'Work & travel' }, path: '/ausland/work-and-travel' },
-    { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten' },
+    { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten#ausland' },
   ],
   sourceIds: [
     'cdcPanel',

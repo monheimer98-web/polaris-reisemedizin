@@ -351,7 +351,7 @@ export const auslandHubPage: ClinicalPage = {
     : ['stikoReise2026', 'cdcPanel', 'caTemporary', 'auPanel', 'nzPanel', 'sgb5Schutzimpfungen'],
   lastReviewed: AUSLAND_GEPRUEFT,
   related: [
-    { label: { de: 'Kosten & Abrechnung', en: 'Fees & billing' }, path: '/kosten' },
+    { label: { de: 'Kosten & Abrechnung', en: 'Fees & billing' }, path: '/kosten#ausland' },
     { label: { de: 'Ablauf in unserer Praxis', en: 'How it works at our practice' }, path: '/ablauf' },
     { label: { de: 'Reisemedizinische Beratung', en: 'Travel-medicine consultation' }, path: '/leistungen/reiseberatung' },
   ],

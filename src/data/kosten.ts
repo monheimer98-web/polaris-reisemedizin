@@ -25,6 +25,8 @@ export interface PriceGroup {
   heading: Localized;
   /** Optionaler erläuternder Vorspann zur Gruppe. */
   note?: Localized;
+  /** Über die volle Breite statt halbe Spalte, z. B. bei vielen Zeilen. */
+  wide?: boolean;
   items: PriceItem[];
 }
 
@@ -228,20 +230,91 @@ export const kostenPage: KostenPage = {
       ],
     },
     {
+      // Sprungmarke /kosten#ausland: Die Ausland-Seiten verlinken genau hierher.
+      // Gegliedert nach Anlässen, Beispiele nach GOÄ Faktor 2,3 ohne Impfstoff.
       id: 'ausland',
+      wide: true,
       heading: NACHWEISE_IM_ANGEBOT ? { de: 'Auslandsaufenthalt und Nachweise', en: 'Time abroad and certificates' } : { de: 'Auslandsaufenthalt', en: 'Time abroad' },
       note: {
-        de: 'Richtwert nach GOÄ, Faktor 2,3, zuzüglich Impfstoff, wenn geimpft wird. Der Betrag hängt vom Aufwand ab.',
-        en: 'Guide price under the GOÄ, factor 2.3, plus vaccine if you are vaccinated. The amount depends on the effort involved.',
+        de: 'Beispiele nach GOÄ, Faktor 2,3, ohne Impfstoff. Die Kosten hängen davon ab, was Sie brauchen. Vor der Behandlung nennen wir Ihnen den Betrag schriftlich. Blutwerte bieten wir derzeit nicht an.',
+        en: 'Examples under the GOÄ, factor 2.3, excluding vaccine. The cost depends on what you need. Before treatment we tell you the amount in writing. We do not currently offer blood tests.',
       },
       items: [
         {
-          service: { de: 'Beratung vor längerem Auslandsaufenthalt', en: 'Consultation before a longer stay abroad' },
+          service: { de: 'Beratung vor dem Auslandsjahr mit schriftlichem Plan', en: 'Consultation before a year abroad with a written plan' },
           detail: {
-            de: 'Für Auslandsjahr, Austausch, Au-pair, Work & Travel oder Weltreise. Gespräch ca. 20 €. Auf Wunsch mit schriftlichem Plan ca. 28 bis 38 €.',
-            en: 'For an exchange year, au pair stay, work & travel or world trip. Consultation approx. €20. With a written plan on request approx. €28 to €38.',
+            de: 'Auch vor Austausch, Studium, Au-pair, Work & Travel oder Weltreise.',
+            en: 'Also before an exchange, studies, an au pair stay, work & travel or a world trip.',
           },
-          price: { de: 'ab ca. 20 €', en: 'from approx. €20' },
+          price: { de: 'ca. 38 €', en: 'approx. €38' },
+        },
+        {
+          service: { de: 'Beratung vor dem Auslandsjahr mit Impfung im Termin', en: 'Consultation before a year abroad with vaccination in the same appointment' },
+          detail: {
+            de: 'Beratung mit schriftlichem Plan und Impfung im selben Termin, wenn der Impfstoff bei uns vorrätig ist.',
+            en: 'Consultation with a written plan and vaccination in the same appointment, if the vaccine is in stock.',
+          },
+          price: { de: 'ca. 50 € + Impfstoff', en: 'approx. €50 + vaccine' },
+        },
+        ...(NACHWEISE_IM_ANGEBOT
+          ? [
+            {
+              service: { de: 'Formular und Impfung am selben Tag (zwei Belege)', en: 'Form and vaccination on the same day (two receipts)' },
+              detail: {
+                de: 'Formular und Impfung erhalten Sie auf getrennten Belegen. Mit Untersuchung ca. 79 € + Impfstoff.',
+                en: 'You receive separate receipts for the form and the vaccination. With an examination approx. €79 + vaccine.',
+              },
+              price: { de: 'ca. 55 € + Impfstoff', en: 'approx. €55 + vaccine' },
+            },
+            {
+              service: { de: 'Hochschulformular mit Impfpass-Abgleich und Nachholplan', en: 'University form with vaccination record check and catch-up plan' },
+              detail: {
+                de: 'Für Auslandssemester oder Studium im Ausland, auch auf Englisch.',
+                en: 'For a semester or degree abroad, also in English.',
+              },
+              price: { de: 'ca. 34 €', en: 'approx. €34' },
+            },
+            {
+              service: { de: 'Au-pair- oder Schulformular mit Untersuchung', en: 'Au pair or school form with examination' },
+              detail: {
+                de: 'Für das Formular der Agentur, der Gastfamilie oder der Schule, auch für die USA.',
+                en: 'For the form from your agency, host family or school, also for the USA.',
+              },
+              price: { de: 'ca. 51 bis 63 €', en: 'approx. €51 to €63' },
+            },
+            {
+              service: { de: 'Gesundheitszeugnis fürs Visum', en: 'Health certificate for a visa' },
+              detail: {
+                de: 'Mit Untersuchung, wenn das Land keine zugelassene Stelle vorschreibt.',
+                en: 'With an examination, if the country does not require an appointed doctor.',
+              },
+              price: { de: 'ca. 51 bis 63 €', en: 'approx. €51 to €63' },
+            },
+            {
+              service: { de: 'Kurze Bestätigung für Flug oder Kreuzfahrt', en: 'Short confirmation for a flight or cruise' },
+              detail: {
+                de: 'Wenn die Gesellschaft nur eine kurze ärztliche Bestätigung verlangt.',
+                en: 'If the airline or cruise line only asks for a short medical confirmation.',
+              },
+              price: { de: 'ca. 27 €', en: 'approx. €27' },
+            },
+            {
+              service: { de: 'Formular der Reederei oder Airline mit Untersuchung', en: 'Cruise line or airline form with examination' },
+              detail: {
+                de: 'Wir untersuchen Sie und füllen das Formular aus, soweit wir die Angaben bestätigen können.',
+                en: 'We examine you and complete the form as far as we can confirm the details.',
+              },
+              price: { de: 'ca. 38 bis 51 €', en: 'approx. €38 to €51' },
+            },
+            ]
+          : []),
+        {
+          service: { de: 'Impfpass prüfen lassen, mit Nachholplan', en: 'Vaccination record review with catch-up plan' },
+          detail: {
+            de: 'Schriftliche Bewertung Ihres Impfpasses und Plan für fehlende Impfungen.',
+            en: 'A written assessment of your record and a plan for missing vaccinations.',
+          },
+          price: { de: 'ca. 28 €', en: 'approx. €28' },
         },
         {
           service: { de: 'Impftermin mit Nachweis', en: 'Vaccination appointment with proof' },
@@ -252,41 +325,13 @@ export const kostenPage: KostenPage = {
           price: { de: 'ca. 32 € + Impfstoff', en: 'approx. €32 + vaccine' },
         },
         {
-          service: { de: 'Impfpass-Check mit Nachholplan', en: 'Vaccination record check with catch-up plan' },
+          service: { de: 'Pilgerreise', en: 'Pilgrimage' },
           detail: {
-            de: 'Prüfung des Impfpasses ca. 20 €. Auf Wunsch mit schriftlicher Bewertung und Nachholplan ca. 28 €.',
-            en: 'Review of your vaccination record approx. €20. With a written assessment and catch-up plan on request approx. €28.',
+            de: 'Wie die Reiseberatung: ca. 28 € für ein Land in Europa, ca. 38 € für andere Ziele oder mehrere Länder.',
+            en: 'As for a travel consultation: approx. €28 for one country in Europe, approx. €38 for other destinations or several countries.',
           },
-          price: { de: 'ab ca. 20 €', en: 'from approx. €20' },
+          price: { de: 'ca. 28 oder 38 €', en: 'approx. €28 or €38' },
         },
-        ...(NACHWEISE_IM_ANGEBOT
-          ? [
-            {
-              service: { de: 'Formular oder Bescheinigung', en: 'Form or certificate' },
-              detail: {
-                de: 'Zum Beispiel für Hochschule, Austausch, Flug oder Kreuzfahrt, auch auf Englisch.',
-                en: 'For example for a university, exchange, flight or cruise, also in English.',
-              },
-              price: { de: 'ab ca. 16 €', en: 'from approx. €16' },
-            },
-            {
-              service: { de: 'Zeugnis mit Untersuchung', en: 'Certificate with examination' },
-              detail: {
-                de: 'Für Formulare und Visa, die eine ärztliche Untersuchung verlangen, soweit keine zugelassene Stelle vorgeschrieben ist.',
-                en: 'For forms and visas that require a medical examination, unless an appointed doctor is required.',
-              },
-              price: { de: 'ab ca. 51 €', en: 'from approx. €51' },
-            },
-            {
-              service: { de: 'Bescheinigung für Medikamente auf Reisen', en: 'Certificate for medication when travelling' },
-              detail: {
-                de: 'Für unsere Patientinnen und Patienten, nach telefonischer Absprache.',
-                en: 'For our patients, by arrangement by phone.',
-              },
-              price: { de: 'ab ca. 16 €', en: 'from approx. €16' },
-            },
-            ]
-          : []),
       ],
     },
   ],

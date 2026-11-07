@@ -11,7 +11,7 @@ export const auPairPage: ClinicalPage = {
   meta: {
     title: {
       de: NACHWEISE_IM_ANGEBOT
-        ? 'Au-pair im Ausland: ärztliches Formular und Impfungen'
+        ? 'Au-pair, auch USA: Gesundheitsformular und Impfungen'
         : 'Au-pair im Ausland: Impfungen und Impfpass',
       en: NACHWEISE_IM_ANGEBOT
         ? 'Au pair abroad: medical form and vaccinations'
@@ -168,7 +168,7 @@ export const auPairPage: ClinicalPage = {
           en: `Our practice at Leipziger Weg 5 (1st floor) in Langenfeld-Richrath is easy to reach from Monheim am Rhein, Hilden, Leichlingen, Solingen and Leverkusen. ${KOSTEN_HINWEIS.en}`,
         },
       },
-      links: [{ label: { de: 'Kosten', en: 'Fees' }, path: '/kosten' }],
+      links: [{ label: { de: 'Kosten', en: 'Fees' }, path: '/kosten#ausland' }],
     },
   ],
   faq: [
@@ -249,14 +249,17 @@ export const auPairPage: ClinicalPage = {
   ],
   termine: [
     ...(NACHWEISE_IM_ANGEBOT
-      ? [{ label: { de: 'Termin für Au-pair-Formular buchen', en: 'Book an appointment for an au pair form' }, art: 'nachweis-status' }]
+      ? [
+        { label: { de: 'Termin für Au-pair-Formular buchen', en: 'Book an appointment for an au pair form' }, art: 'nachweis-status' },
+        { label: { de: 'Beratung und Impfungen buchen', en: 'Book consultation and vaccinations' }, art: 'langzeit' },
+      ]
       : [{ label: { de: 'Beratung vor dem Auslandsaufenthalt buchen', en: 'Book a consultation before your time abroad' }, art: 'langzeit' }]),
     { label: { de: 'Impfpass prüfen lassen', en: 'Have your vaccination record reviewed' }, art: 'impfpass-check' },
   ],
   related: [
     ...(NACHWEISE_IM_ANGEBOT ? [{ label: { de: 'Gesundheitsnachweise fürs Ausland', en: 'Health certificates for abroad' }, path: '/ausland/nachweise' }] : []),
     { label: { de: 'Auslandsjahr und Schüleraustausch', en: 'Exchange year abroad' }, path: '/ausland/auslandsjahr' },
-    { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten' },
+    { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten#ausland' },
   ],
   sourceIds: ['cfrAuPair', 'caTemporary', 'caPanel', 'auHealthExams', 'auPanel', 'stikoImpfempfehlungen', 'stikoReise2026'],
   lastReviewed: AUSLAND_GEPRUEFT,

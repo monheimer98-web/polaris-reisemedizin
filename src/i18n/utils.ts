@@ -61,13 +61,18 @@ export function getLogicalPath(pathname: string): string {
   return noTrailing === '' ? '/' : noTrailing;
 }
 
-/** Logischen Pfad in die Ziel-Locale übersetzen (inkl. Basis-Pfad). */
+/**
+ * Logischen Pfad in die Ziel-Locale übersetzen (inkl. Basis-Pfad). Eine
+ * Sprungmarke (z. B. „/kosten#ausland") bleibt erhalten und steht hinter dem Slash.
+ */
 export function getLocalizedPath(path: string, lang: Locale): string {
-  const logical = getLogicalPath(path);
+  const hashAt = path.indexOf('#');
+  const hash = hashAt === -1 ? '' : path.slice(hashAt);
+  const logical = getLogicalPath(hashAt === -1 ? path : path.slice(0, hashAt));
   const localized = lang === DEFAULT_LOCALE ? logical : logical === '/' ? '/en' : `/en${logical}`;
   // Mit abschließendem Slash: GitHub Pages liefert Seiten als Verzeichnis aus;
   // ohne Slash folgt sonst bei jedem Link eine 301-Weiterleitung.
-  return withBase(localized === '/' ? '/' : `${localized}/`);
+  return withBase(localized === '/' ? '/' : `${localized}/`) + hash;
 }
 
 /** Alle Sprachvarianten eines Pfads (für hreflang & Sprachumschalter). */

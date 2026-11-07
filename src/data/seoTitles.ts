@@ -50,7 +50,7 @@ export const seoTitles: Record<string, Localized> = {
       : 'Vaccinations Before Study Abroad, Langenfeld | Polaris',
   },
   '/ausland/nachweise': {
-    de: 'Impfbescheinigung & Attest auf Englisch, Langenfeld | Polaris',
+    de: 'Englische Impfbescheinigung und Nachweise fürs Ausland | Polaris',
     en: 'English Vaccination Certificate & Forms, Langenfeld | Polaris',
   },
   '/ausland/pilgerreisen': {
@@ -62,7 +62,7 @@ export const seoTitles: Record<string, Localized> = {
     en: 'Umrah & Hajj: Vaccination Rules, Langenfeld | Polaris',
   },
   '/ausland/pilgerreisen/jakobsweg': {
-    de: 'Jakobsweg: Impfungen & Reiseapotheke in Langenfeld | Polaris',
+    de: 'Jakobsweg: Impfungen und Gesundheit unterwegs | Polaris',
     en: 'Camino de Santiago: Health Advice, Langenfeld | Polaris',
   },
   '/ausland/auslandsjahr': {
@@ -75,7 +75,7 @@ export const seoTitles: Record<string, Localized> = {
   },
   '/ausland/au-pair': {
     de: NACHWEISE_IM_ANGEBOT
-      ? 'Au-pair: Formular & Impfungen in Langenfeld | Polaris'
+      ? 'Au-pair, auch USA: Gesundheitsformular und Impfungen | Polaris'
       : 'Au-pair: Impfungen & Impfpass in Langenfeld | Polaris',
     en: NACHWEISE_IM_ANGEBOT
       ? 'Au Pair Medical Form & Vaccinations, Langenfeld | Polaris'
@@ -90,7 +90,7 @@ export const seoTitles: Record<string, Localized> = {
     en: 'Medical Certificate for a Visa in Langenfeld | Polaris',
   },
   '/ausland/flug-kreuzfahrt-attest': {
-    de: 'Flugattest & Formular für Kreuzfahrten, Langenfeld | Polaris',
+    de: 'Flugattest und Kreuzfahrt-Formular vom Arzt | Polaris',
     en: 'Fit-to-Fly Certificate & Cruise Forms, Langenfeld | Polaris',
   },
   '/gutschein': {

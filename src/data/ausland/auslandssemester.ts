@@ -204,7 +204,7 @@ export const auslandssemesterPage: ClinicalPage = {
           en: `Our practice is at Leipziger Weg 5 (1st floor) in Langenfeld-Richrath, easy to reach from Monheim am Rhein, Hilden, Leichlingen, Solingen and Leverkusen. ${KOSTEN_HINWEIS.en}`,
         },
       },
-      links: [{ label: { de: 'Kosten', en: 'Fees' }, path: '/kosten' }],
+      links: [{ label: { de: 'Kosten', en: 'Fees' }, path: '/kosten#ausland' }],
     },
   ],
   faq: [
@@ -292,7 +292,7 @@ export const auslandssemesterPage: ClinicalPage = {
     ...(NACHWEISE_IM_ANGEBOT ? [{ label: { de: 'Gesundheitsnachweise fürs Ausland', en: 'Health certificates for abroad' }, path: '/ausland/nachweise' }] : []),
     { label: { de: 'Auslandsjahr und Schüleraustausch', en: 'Exchange year abroad' }, path: '/ausland/auslandsjahr' },
     { label: { de: 'Reiseimpfungen', en: 'Travel vaccinations' }, path: '/leistungen/reiseimpfungen' },
-    { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten' },
+    { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten#ausland' },
   ],
   sourceIds: [
     'ucInternational',

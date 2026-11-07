@@ -38,7 +38,7 @@ const reviewedLabel = lang === 'de' ? 'Stand' : 'Last reviewed';
     <div class="grid gap-6 lg:grid-cols-2">
       {
         page.groups.map((group) => (
-          <div class="card flex flex-col">
+          <div id={group.id} class:list={['card flex scroll-mt-24 flex-col', group.wide && 'lg:col-span-2']}>
             <h2 class="font-display text-xl text-petrol-900">{group.heading[lang]}</h2>
             {group.note && <p class="mt-2 text-sm leading-relaxed text-ink-soft">{group.note[lang]}</p>}
 

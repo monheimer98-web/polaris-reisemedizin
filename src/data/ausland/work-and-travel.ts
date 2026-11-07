@@ -163,7 +163,7 @@ export const workAndTravelPage: ClinicalPage = {
       callout: { variant: 'important', text: VISA_GRENZE },
       links: [
         ...(NACHWEISE_IM_ANGEBOT ? [{ label: { de: 'Gesundheitszeugnis für ein Visum', en: 'Medical certificate for a visa' }, path: '/ausland/gesundheitszeugnis-visum' }] : []),
-        { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten' },
+        { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten#ausland' },
       ],
     },
   ],
@@ -224,7 +224,7 @@ export const workAndTravelPage: ClinicalPage = {
     { label: { de: 'Reiseberatung', en: 'Travel consultation' }, path: '/leistungen/reiseberatung' },
     { label: { de: 'Malaria-Beratung', en: 'Malaria advice' }, path: '/leistungen/malaria' },
     { label: { de: 'Reiseapotheke', en: 'Travel kit' }, path: '/reiseapotheke' },
-    { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten' },
+    { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten#ausland' },
   ],
   sourceIds: [
     'stikoReise2026',

@@ -10,7 +10,7 @@ import { AUSLAND_GEPRUEFT } from './stand';
 export const flugKreuzfahrtAttestPage: ClinicalPage = {
   meta: {
     title: {
-      de: 'Ärztliche Bescheinigung für Flug und Kreuzfahrt',
+      de: 'Flugattest und Kreuzfahrt-Formular vom Arzt',
       en: 'Medical certificate for flights and cruises',
     },
     description: {
@@ -153,7 +153,7 @@ export const flugKreuzfahrtAttestPage: ClinicalPage = {
           `You will find us at Leipziger Weg 5 (1st floor) in Langenfeld-Richrath, easy to reach from Monheim am Rhein, Hilden, Leichlingen, Solingen and Leverkusen. ${KOSTEN_HINWEIS.en}`,
         ],
       },
-      links: [{ label: { de: 'Kosten', en: 'Fees' }, path: '/kosten' }],
+      links: [{ label: { de: 'Kosten', en: 'Fees' }, path: '/kosten#ausland' }],
     },
   ],
   faq: [
@@ -203,13 +203,13 @@ export const flugKreuzfahrtAttestPage: ClinicalPage = {
     },
   ],
   termine: [
-    { label: { de: 'Termin für kurzes Formular buchen', en: 'Book an appointment for a short form' }, art: 'nachweis-kurz' },
-    { label: { de: 'Termin für Attest mit Untersuchung buchen', en: 'Book an appointment for a certificate with examination' }, art: 'nachweis-status' },
+    { label: { de: 'Termin für das Formular der Gesellschaft buchen', en: 'Book an appointment for your airline or cruise line’s form' }, art: 'nachweis-status' },
+    { label: { de: 'Termin für eine kurze Bestätigung buchen', en: 'Book an appointment for a short confirmation' }, art: 'nachweis-kurz' },
   ],
   related: [
     { label: { de: 'Gesundheitsnachweise fürs Ausland', en: 'Health certificates for abroad' }, path: '/ausland/nachweise' },
     { label: { de: 'Reisetipps', en: 'Travel tips' }, path: '/reisetipps' },
-    { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten' },
+    { label: { de: 'Kosten', en: 'Fees' }, path: '/kosten#ausland' },
   ],
   sourceIds: ['condorMedical', 'princessSchwangerschaft'],
   lastReviewed: AUSLAND_GEPRUEFT,

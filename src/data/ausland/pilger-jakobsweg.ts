@@ -8,7 +8,7 @@ import { AUSLAND_GEPRUEFT, NACHWEISE_IM_ANGEBOT } from './stand';
 
 export const pilgerJakobsweg: ClinicalPage = {
   meta: {
-    title: { de: 'Jakobsweg: Impfschutz und Gesundheit auf dem Weg', en: 'Camino de Santiago: vaccinations and health on the way' },
+    title: { de: 'Jakobsweg: Impfungen und Gesundheit unterwegs', en: 'Camino de Santiago: vaccinations and health on the way' },
     description: {
       de: 'Jakobsweg geplant? Wir prüfen den Impfschutz, besprechen Füße, Hitze, Zecken und Reiseapotheke und planen die Vorbereitung. Privatpraxis in Langenfeld.',
       en: 'Walking the Camino? We review your vaccinations and talk through feet, heat, ticks and your travel kit. Private practice in Langenfeld.',
