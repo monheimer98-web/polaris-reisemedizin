@@ -261,8 +261,8 @@ export const kostenPage: KostenPage = {
             {
               service: { de: 'Formular und Impfung am selben Tag (zwei Belege)', en: 'Form and vaccination on the same day (two receipts)' },
               detail: {
-                de: 'Formular und Impfung erhalten Sie auf getrennten Belegen. Mit Untersuchung ca. 79 bis 114 € + Impfstoff.',
-                en: 'You receive separate receipts for the form and the vaccination. With an examination approx. €79 to €114 + vaccine.',
+                de: 'Formular und Impfung erhalten Sie auf getrennten Belegen. Mit Untersuchung ca. 79 bis 117 € + Impfstoff.',
+                en: 'You receive separate receipts for the form and the vaccination. With an examination approx. €79 to €117 + vaccine.',
               },
               price: { de: 'ca. 55 € + Impfstoff', en: 'approx. €55 + vaccine' },
             },
@@ -280,7 +280,7 @@ export const kostenPage: KostenPage = {
                 de: 'Für das Formular der Agentur, der Gastfamilie oder der Schule, auch für die USA.',
                 en: 'For the form from your agency, host family or school, also for the USA.',
               },
-              price: { de: 'ca. 51 bis 86 €', en: 'approx. €51 to €86' },
+              price: { de: 'ca. 51 bis 89 €', en: 'approx. €51 to €89' },
             },
             {
               service: { de: 'Gesundheitszeugnis fürs Visum', en: 'Health certificate for a visa' },
@@ -288,7 +288,7 @@ export const kostenPage: KostenPage = {
                 de: 'Mit Untersuchung, wenn das Land keine zugelassene Stelle vorschreibt.',
                 en: 'With an examination, if the country does not require an appointed doctor.',
               },
-              price: { de: 'ca. 51 bis 86 €', en: 'approx. €51 to €86' },
+              price: { de: 'ca. 51 bis 89 €', en: 'approx. €51 to €89' },
             },
             {
               service: { de: 'Kurze Bestätigung für Flug oder Kreuzfahrt', en: 'Short confirmation for a flight or cruise' },
