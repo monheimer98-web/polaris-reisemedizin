@@ -280,7 +280,7 @@ export const kostenPage: KostenPage = {
                 de: 'Für das Formular der Agentur, der Gastfamilie oder der Schule, auch für die USA.',
                 en: 'For the form from your agency, host family or school, also for the USA.',
               },
-              price: { de: 'ca. 51 bis 63 €', en: 'approx. €51 to €63' },
+              price: { de: 'ca. 51 bis 86 €', en: 'approx. €51 to €86' },
             },
             {
               service: { de: 'Gesundheitszeugnis fürs Visum', en: 'Health certificate for a visa' },
@@ -288,7 +288,7 @@ export const kostenPage: KostenPage = {
                 de: 'Mit Untersuchung, wenn das Land keine zugelassene Stelle vorschreibt.',
                 en: 'With an examination, if the country does not require an appointed doctor.',
               },
-              price: { de: 'ca. 51 bis 63 €', en: 'approx. €51 to €63' },
+              price: { de: 'ca. 51 bis 86 €', en: 'approx. €51 to €86' },
             },
             {
               service: { de: 'Kurze Bestätigung für Flug oder Kreuzfahrt', en: 'Short confirmation for a flight or cruise' },
