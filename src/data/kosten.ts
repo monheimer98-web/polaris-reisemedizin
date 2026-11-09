@@ -261,8 +261,8 @@ export const kostenPage: KostenPage = {
             {
               service: { de: 'Formular und Impfung am selben Tag (zwei Belege)', en: 'Form and vaccination on the same day (two receipts)' },
               detail: {
-                de: 'Formular und Impfung erhalten Sie auf getrennten Belegen. Mit Untersuchung ca. 79 € + Impfstoff.',
-                en: 'You receive separate receipts for the form and the vaccination. With an examination approx. €79 + vaccine.',
+                de: 'Formular und Impfung erhalten Sie auf getrennten Belegen. Mit Untersuchung ca. 79 bis 114 € + Impfstoff.',
+                en: 'You receive separate receipts for the form and the vaccination. With an examination approx. €79 to €114 + vaccine.',
               },
               price: { de: 'ca. 55 € + Impfstoff', en: 'approx. €55 + vaccine' },
             },
