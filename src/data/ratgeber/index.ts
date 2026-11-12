@@ -8,12 +8,18 @@ import { wannImpfenGuide } from './wann-impfen';
 import { gelbfieberKostenGuide, gelbfieberKostenSummary } from './gelbfieber-kosten';
 import { tollwutImpfungGuide, tollwutImpfungSummary } from './tollwut-impfung';
 import { malariaRezeptGuide, malariaRezeptSummary } from './malaria-rezept';
+import { grossesBlutbildGuide, grossesBlutbildSummary } from './grosses-blutbild-kosten';
+import { vitaminTestGuide, vitaminTestSummary } from './vitamin-d-test-beim-arzt';
 
 export interface Guide {
   /** URL-Slug unter /ratgeber/ (DE und EN gleich). */
   slug: string;
   summary: Localized;
   page: ClinicalPage;
+  /** Ratgeber des Bereichs „Prävention & Lebensstil": Salbei, Bereichsnavigation, eigene Terminseite. */
+  area?: 'praevention';
+  /** Terminart-ID, die der Buchungsknopf vorbelegt (`?art=`). */
+  bookingType?: string;
 }
 
 export const guides: Guide[] = [
@@ -47,6 +53,20 @@ export const guides: Guide[] = [
     slug: 'malaria-tabletten-rezept',
     summary: malariaRezeptSummary,
     page: malariaRezeptGuide,
+  },
+  {
+    slug: 'grosses-blutbild-kosten',
+    summary: grossesBlutbildSummary,
+    page: grossesBlutbildGuide,
+    area: 'praevention',
+    bookingType: 'pv-v1',
+  },
+  {
+    slug: 'vitamin-d-test-beim-arzt',
+    summary: vitaminTestSummary,
+    page: vitaminTestGuide,
+    area: 'praevention',
+    bookingType: 'pv-v1',
   },
 ];
 

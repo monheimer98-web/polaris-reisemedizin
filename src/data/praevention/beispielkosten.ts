@@ -7,7 +7,7 @@
  * Stufe-2-Angebote (Schlaf, Muskel) erscheinen erst, wenn sie online gehen.
  */
 import type { Localized } from '../types';
-import { honorar, labor, termin, weg, euroDe, euroEn } from './preise';
+import { honorar, labor, laborwert, termin, weg, euroDe, euroEn } from './preise';
 
 export interface BeispielPosten {
   label: Localized;
@@ -216,6 +216,20 @@ export const beispielkostenSeite = {
       a: {
         de: `Beim Labor ca. ${labor.checkMitLpa - labor.check} €. Der Wert ist weitgehend erblich und muss in der Regel nur einmal bestimmt werden. Ob er für Sie sinnvoll ist, besprechen wir im Kurztermin.`,
         en: `Approx. €${labor.checkMitLpa - labor.check} at the laboratory. The value is largely inherited and usually only needs to be measured once. Whether it makes sense for you is something we discuss in the short appointment.`,
+      },
+    },
+    {
+      q: { de: 'Was kostet ein Vitamin-D-Test beim Arzt?', en: 'What does a vitamin D test at the doctor cost?' },
+      a: {
+        de: `Beim Labor ca. ${ganz(laborwert.vitaminD)} €, dazu ${euroDe(weg.einzelwerteKurz)} ärztliches Honorar für Gespräch, Blutabnahme und Befund. Ob die Messung für Sie etwas ändert, klären wir vorher im Gespräch; mehr dazu in unserem Ratgeber zu Vitamin D, B12 und Eisen.`,
+        en: `Approx. €${ganz(laborwert.vitaminD)} at the laboratory, plus ${euroEn(weg.einzelwerteKurz)} in medical fees for consultation, blood sample and results. Whether testing makes a difference for you is something we clarify beforehand; see our guide on vitamin D, B12 and iron.`,
+      },
+    },
+    {
+      q: { de: 'Was kostet ein großes Blutbild?', en: 'What does a full blood count cost?' },
+      a: {
+        de: `Beim Labor ca. ${ganz(laborwert.grossesBlutbild)} €, dazu ${euroDe(weg.einzelwerteKurz)} ärztliches Honorar für Gespräch, Blutabnahme und Befund. Blutfette, Zucker, Leber- und Nierenwerte gehören nicht zum Blutbild und kosten zusätzlich.`,
+        en: `Approx. €${ganz(laborwert.grossesBlutbild)} at the laboratory, plus ${euroEn(weg.einzelwerteKurz)} in medical fees for consultation, blood sample and results. Blood lipids, sugar, liver and kidney values are not part of the blood count and cost extra.`,
       },
     },
     {

@@ -42,6 +42,8 @@ export const honorar = {
   blutentnahme: termin.blutabnahme,
   /** Nr. 3 – Befund- oder Folgegespräch ab 10 Minuten, auch telefonisch */
   gespraech: 20.11,
+  /** Nr. 1 – kurzes Befundgespräch unter 10 Minuten, auch telefonisch */
+  kurzgespraech: 10.72,
   /** Nr. 375 – Impfung im selben Termin */
   impfung: 10.72,
   /** Nr. 377 – jede weitere Impfung im selben Termin */
@@ -72,6 +74,10 @@ export const weg = {
   gewichtJahr: 336.99,
   /** Wechseljahre, erstes Jahr: Erstgespräch, Plantermin, zwei Verläufe */
   wechseljahreJahr: summe(honorar.erstgespraech, honorar.planTermin, honorar.verlauf, honorar.verlauf),
+  /** Einzelne Blutwerte auf Wunsch: Gespräch mit Blutabnahme, später kurzes Befundgespräch */
+  einzelwerteKurz: summe(termin.kurzMitBlut, honorar.kurzgespraech),
+  /** Einzelne Blutwerte auf Wunsch: Gespräch mit Blutabnahme, später Befundgespräch ab 10 Minuten */
+  einzelwerte: summe(termin.kurzMitBlut, honorar.gespraech),
 } as const;
 
 /** Richtwerte Labor (direkt vom Labor, Faktor 1,15), gerundet (medizin-labor.md 4). */
@@ -95,6 +101,28 @@ export const labor = {
   muedigkeit: 52,
   /** Wechseljahre: meist keins, bei Anlass bis ca. */
   wechseljahreBis: 82,
+} as const;
+
+/**
+ * Einzelne Laborwerte (direkt vom Labor, Faktor 1,15; medizin-labor.md 5),
+ * auf den Cent wie in der Laborliste. Für die Ratgeber zu Blutbild und
+ * Vitamin D, B12, Eisen; vor Veröffentlichung mit dem Labor abgleichen.
+ */
+export const laborwert = {
+  /** Nr. 3550 – kleines Blutbild */
+  kleinesBlutbild: 4.02,
+  /** Nr. 3550 + 3551 – großes Blutbild (kleines Blutbild und Differenzierung) */
+  grossesBlutbild: 5.36,
+  /** Blutfette, HbA1c, Kreatinin wie im Gesundheitscheck */
+  checkBasis: 26.81,
+  /** ALT, AST, GGT */
+  leberwerte: 8.04,
+  /** Nr. 4138 – 25-OH-Vitamin D */
+  vitaminD: 32.17,
+  /** Nr. 4140 – Vitamin B12 */
+  vitaminB12: 16.76,
+  /** Nr. 3742 + 3550 – Ferritin mit kleinem Blutbild */
+  ferritinMitBlutbild: 20.78,
 } as const;
 
 /** „80,62 €" */

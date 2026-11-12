@@ -10,6 +10,7 @@ import ClinicalSections from '../../components/ClinicalSections.astro';
 import { getLangFromUrl, getLocalizedPath } from '../../i18n/utils';
 import { getSources } from '../../data/sources';
 import { guides, type Guide } from '../../data/ratgeber';
+import { preventionHub } from '../../data/praevention';
 
 export const getStaticPaths = (() =>
   guides.map((guide) => ({ params: { slug: guide.slug }, props: { guide } }))) satisfies GetStaticPaths;
@@ -23,6 +24,11 @@ const page = guide.page;
 const lang = getLangFromUrl(Astro.url);
 const related = (page.related ?? []).map((item) => ({ label: item.label[lang], path: getLocalizedPath(item.path, lang) }));
 const faq = (page.faq ?? []).map((f) => ({ q: f.q[lang], a: f.a[lang] }));
+// Ratgeber des Präventionsbereichs: Salbei, Bereichsnavigation, eigene Terminseite und eigenes Abschlussband.
+const praevention = guide.area === 'praevention';
+const cta = praevention
+  ? { title: preventionHub.ctaTitle[lang], lead: preventionHub.ctaLead[lang], note: preventionHub.ctaNote[lang] }
+  : undefined;
 ---
 
 <ContentLayout
@@ -34,6 +40,10 @@ const faq = (page.faq ?? []).map((f) => ({ q: f.q[lang], a: f.a[lang] }));
   sources={getSources(page.sourceIds)}
   related={related}
   faq={faq}
+  bookingType={guide.bookingType}
+  area={guide.area}
+  areaCurrent={praevention ? 'ratgeber' : undefined}
+  cta={cta}
 >
   <ClinicalSections page={page} />
 </ContentLayout>

@@ -229,6 +229,14 @@ export const seoTitles: Record<string, Localized> = {
     de: 'Tollwutimpfung vor der Reise: Schema & Kosten | Polaris',
     en: 'Rabies Vaccination Before Travel | Polaris Langenfeld',
   },
+  '/ratgeber/grosses-blutbild-kosten': {
+    de: 'Großes Blutbild: Kosten als Selbstzahler | Polaris Langenfeld',
+    en: 'Full Blood Count: Costs for Self-Payers | Polaris Langenfeld',
+  },
+  '/ratgeber/vitamin-d-test-beim-arzt': {
+    de: 'Vitamin-D-Test beim Arzt: Kosten & Nutzen | Polaris Langenfeld',
+    en: 'Vitamin D Test at the Doctor: Cost & Benefit | Polaris',
+  },
   '/ratgeber/malaria-tabletten-rezept': {
     de: 'Malaria-Tabletten: Rezept & Beratung in Langenfeld | Polaris',
     en: 'Malaria Tablets: Prescription & Advice | Polaris',

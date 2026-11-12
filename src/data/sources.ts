@@ -26,6 +26,7 @@ import { dominikanischeRepublikQuellen } from './reiseziele/laender/dominikanisc
 import { gelbfieberKostenQuellen } from './ratgeber/gelbfieber-kosten';
 import { tollwutImpfungQuellen } from './ratgeber/tollwut-impfung';
 import { malariaRezeptQuellen } from './ratgeber/malaria-rezept';
+import { vitaminTestQuellen } from './ratgeber/vitamin-d-test-beim-arzt';
 import { auslandKernQuellen } from './ausland/quellen-kern';
 import { auslandFachQuellen } from './ausland/quellen-fach';
 import { auslandPilgerQuellen } from './ausland/quellen-pilger';
@@ -833,6 +834,7 @@ export const sources = {
   ...gelbfieberKostenQuellen,
   ...tollwutImpfungQuellen,
   ...malariaRezeptQuellen,
+  ...vitaminTestQuellen,
   ...auslandKernQuellen,
   ...auslandFachQuellen,
   ...auslandPilgerQuellen,
