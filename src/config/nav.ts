@@ -104,3 +104,19 @@ export const legalNav: NavItem[] = [
 
 /** Buchungs-Route (CTA). */
 export const BOOKING_PATH = '/termin';
+
+/**
+ * Adresse des Buchungsknopfs. Mit Terminart und fester Buchungs-URL geht es direkt in die
+ * Buchung mit vorgewählter Terminart (ein Schritt weniger als über die Terminseite). Ohne
+ * Terminart oder ohne feste URL (Vorschau-Builds) bleibt es bei der Terminseite.
+ */
+export function bookingHref(terminPfad: string, bookingType?: string, embedUrl = ''): string {
+  if (bookingType && embedUrl) {
+    try {
+      return `${new URL(embedUrl).origin}/buchung?art=${encodeURIComponent(bookingType)}`;
+    } catch {
+      // ungültige URL im Build: Terminseite nehmen
+    }
+  }
+  return terminPfad + (bookingType ? `?art=${bookingType}` : '');
+}

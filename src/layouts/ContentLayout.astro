@@ -18,7 +18,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import DiseaseFactsBox from '../components/DiseaseFactsBox.astro';
 import { getLangFromUrl, useTranslations, formatReviewDate, getLocalizedPath, getLogicalPath, HREFLANG } from '../i18n/utils';
 import { SITE_URL, site } from '../config/site';
-import { BOOKING_PATH } from '../config/nav';
+import { BOOKING_PATH, bookingHref as bookingLink } from '../config/nav';
 import { diseaseFacts } from '../data/diseaseFacts';
 import type { UiKey } from '../i18n/ui';
 import type { SourceWithId } from '../data/sources';
@@ -56,7 +56,7 @@ interface Props {
 
 const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel, faq = [], parent, noBooking = false, neutralCta = false, bookingLabel } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-const bookingHref = getLocalizedPath(BOOKING_PATH, lang) + (bookingType ? `?art=${bookingType}` : '');
+const bookingHref = bookingLink(getLocalizedPath(BOOKING_PATH, lang), bookingType, site.booking.embedUrl);
 const t = useTranslations(lang);
 
 // Brotkrumen aus dem URL-Pfad: Start › <Hub> › <aktuelle Seite>.

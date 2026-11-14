@@ -136,7 +136,7 @@ const afrika: DestinationRegion = {
         body: {
           de: [
             'In weiten Teilen des tropischen Afrikas besteht ein Gelbfieberrisiko. Zahlreiche Länder verlangen bei der Einreise einen gültigen internationalen Impfnachweis (ICVP) – teils für alle Reisenden, teils nur bei Einreise aus einem weiteren Gelbfiebergebiet. Welche Regelung für Ihre Route gilt, hängt von den einzelnen Ländern und der Reihenfolge Ihrer Stationen ab.',
-            'Der internationale Gelbfieber-Impfnachweis (ICVP) gilt lebenslang, wird aber erst ab dem 10. Tag nach der Impfung gültig. Einige Länder verlangen ihn von allen Einreisenden – auch bei Anreise aus Deutschland (z. B. Ghana, Côte d’Ivoire, Kamerun, DR Kongo, Uganda; Stand WHO-Liste). Medizinisch empfiehlt die STIKO vor erneuter Reise einmalig eine Auffrischung, wenn die Erstimpfung 10 Jahre oder länger zurückliegt. Als staatlich autorisierte Gelbfieberimpfstelle führen wir die Impfung durch und stellen den international gültigen Eintrag aus.',
+            'Der internationale Gelbfieber-Impfnachweis (ICVP) gilt lebenslang, wird aber erst ab dem 10. Tag nach der Impfung gültig. Einige Länder verlangen ihn von allen Einreisenden – auch bei Anreise aus Deutschland (z. B. Ghana, Côte d’Ivoire, Kamerun, DR Kongo, Uganda; Stand WHO-Liste). Medizinisch empfiehlt die STIKO vor erneuter Reise einmalig eine Auffrischung, wenn die Erstimpfung 10 Jahre oder länger zurückliegt. Als staatlich zugelassene Gelbfieberimpfstelle führen wir die Impfung durch und stellen den international gültigen Eintrag aus.',
           ],
           en: [
             'In large parts of tropical Africa there is a yellow fever risk. Many countries require a valid international certificate of vaccination (ICVP) on entry – sometimes for all travellers, sometimes only when arriving from another yellow fever area. Which rule applies to your route depends on the individual countries and the order of your stops.',
@@ -479,7 +479,7 @@ const lateinamerika: DestinationRegion = {
         heading: { de: 'Gelbfieber im Amazonas & Höhe in den Anden', en: 'Yellow fever in the Amazon & altitude in the Andes' },
         body: {
           de: [
-            'In tropischen Gebieten Südamerikas – im Amazonasbecken von Brasilien, Peru, Bolivien, Ecuador und Kolumbien, in Brasilien inzwischen auch deutlich darüber hinaus – sowie im Süden Mittelamerikas (Panama) besteht ein Gelbfieberrisiko. Französisch-Guayana verlangt den Impfnachweis (ICVP) von allen Einreisenden, andere Länder vor allem bei Einreise aus einem Gelbfiebergebiet. Als staatlich autorisierte Gelbfieberimpfstelle führen wir die Impfung durch und stellen den Nachweis aus.',
+            'In tropischen Gebieten Südamerikas – im Amazonasbecken von Brasilien, Peru, Bolivien, Ecuador und Kolumbien, in Brasilien inzwischen auch deutlich darüber hinaus – sowie im Süden Mittelamerikas (Panama) besteht ein Gelbfieberrisiko. Französisch-Guayana verlangt den Impfnachweis (ICVP) von allen Einreisenden, andere Länder vor allem bei Einreise aus einem Gelbfiebergebiet. Als staatlich zugelassene Gelbfieberimpfstelle führen wir die Impfung durch und stellen den Nachweis aus.',
             'Wer in die Anden reist – etwa Cusco, Machu Picchu, La Paz oder den Titicacasee –, sollte die Höhenanpassung einplanen, um der Höhenkrankheit vorzubeugen. Ein langsamer Aufstieg, ausreichend Akklimatisierungszeit und das Erkennen von Warnzeichen sind entscheidend.',
           ],
           en: [

@@ -63,6 +63,7 @@ export const ui = {
     // Allgemeine Aktionen
     'cta.book': 'Termin vereinbaren',
     'cta.bookAria': 'Termin vereinbaren',
+    'cta.bookShort': 'Termin',
     'cta.callAria': 'Praxis anrufen',
     'cta.services': 'Unsere Leistungen',
     'cta.learnMore': 'Mehr erfahren',
@@ -96,11 +97,11 @@ export const ui = {
     'home.heroTitle': 'Gut vorbereitet reisen.',
     'home.heroLead':
       'Ihre reisemedizinische Privatpraxis in Langenfeld: persönliche Beratung, Reiseimpfungen und Vorsorge – ärztlich fundiert und auf dem aktuellen Stand der Wissenschaft.',
-    'home.badgeYellowFever': 'Staatlich autorisierte Gelbfieberimpfstelle',
+    'home.badgeYellowFever': 'Staatlich zugelassene Gelbfieberimpfstelle',
 
     // Startseite — Vertrauensleiste
     'trust.ariaLabel': 'Vertrauen und Qualität',
-    'trust.authorizedTitle': 'Autorisierte Gelbfieberimpfstelle',
+    'trust.authorizedTitle': 'Zugelassene Gelbfieberimpfstelle',
     'trust.authorizedText':
       'Staatlich zugelassen für die Gelbfieberimpfung – inklusive international gültigem Eintrag im Impfausweis.',
     'trust.specialistTitle': 'Ärztlich fundiert',
@@ -129,7 +130,7 @@ export const ui = {
       'Lebendimpfung mit international lebenslang gültigem Impfnachweis (ICVP) – in einigen Ländern Voraussetzung für die Einreise.',
     'home.serviceYfFact1': 'Lebendimpfstoff, zugelassen ab 9 Monaten',
     'home.serviceYfFact2': 'International gültiger Impfeintrag ab Tag 10',
-    'home.serviceYfFact3': 'Nur in autorisierten Impfstellen möglich',
+    'home.serviceYfFact3': 'Nur in zugelassenen Impfstellen möglich',
     'home.serviceFsmeTitle': 'FSME-Impfung',
     'home.serviceFsmeText':
       'Schutz vor der von Zecken übertragenen Frühsommer-Meningoenzephalitis – relevant in vielen Regionen Deutschlands und Europas.',
@@ -245,6 +246,19 @@ export const ui = {
     'overview.diseaseCholeraText':
       'Bakterielle Durchfallerkrankung über verunreinigtes Wasser – für gewöhnliche Reisende ein sehr geringes Risiko.',
     'cta.diseaseDetail': 'Zum Krankheitsbild',
+    // HPV und Gürtelrose (Entwurf 12.11.2026): Karten auf den Übersichten Leistungen und Krankheitsbilder
+    'overview.serviceHpvTitle': 'HPV-Impfung für Erwachsene',
+    'overview.serviceHpvText':
+      'Für Erwachsene, ausdrücklich auch für Männer: ab 18 Jahren eine individuelle Entscheidung nach ärztlicher Beratung – Impfschema mit drei Dosen.',
+    'overview.serviceShinglesTitle': 'Gürtelrose-Impfung',
+    'overview.serviceShinglesText':
+      'Impfung mit Totimpfstoff in zwei Dosen – für Menschen ab 50 Jahren, Selbstzahler und Privatversicherte.',
+    'overview.diseaseHpvTitle': 'HPV',
+    'overview.diseaseHpvText':
+      'Sehr häufige, meist unbemerkte Virusinfektion, die nach Jahren zu Krebsvorstufen, Krebs oder Genitalwarzen führen kann – bei Frauen wie bei Männern.',
+    'overview.diseaseShinglesTitle': 'Gürtelrose',
+    'overview.diseaseShinglesText':
+      'Schmerzhafter, meist halbseitiger Hautausschlag durch das wieder aktiv gewordene Windpocken-Virus – am häufigsten bei Menschen über 50 Jahre.',
 
     // 404
     'notFound.title': 'Seite nicht gefunden',
@@ -310,6 +324,7 @@ export const ui = {
     // General actions
     'cta.book': 'Arrange appointment',
     'cta.bookAria': 'Arrange an appointment',
+    'cta.bookShort': 'Book',
     'cta.callAria': 'Call the practice',
     'cta.services': 'Our services',
     'cta.learnMore': 'Learn more',
@@ -492,6 +507,19 @@ export const ui = {
     'overview.diseaseCholeraText':
       'A bacterial diarrhoeal disease from contaminated water – a very low risk for ordinary travellers.',
     'cta.diseaseDetail': 'View disease',
+    // HPV and shingles (draft 12 Nov 2026): cards on the services and diseases overviews
+    'overview.serviceHpvTitle': 'HPV vaccination for adults',
+    'overview.serviceHpvText':
+      'For adults, expressly including men: from age 18 an individual decision following medical advice – three-dose schedule.',
+    'overview.serviceShinglesTitle': 'Shingles vaccination',
+    'overview.serviceShinglesText':
+      'Vaccination with an inactivated vaccine in two doses – for people aged 50 and over, self-payers and people with private insurance.',
+    'overview.diseaseHpvTitle': 'HPV',
+    'overview.diseaseHpvText':
+      'A very common, usually unnoticed viral infection that can lead to precancerous lesions, cancer or genital warts after years – in women and men alike.',
+    'overview.diseaseShinglesTitle': 'Shingles',
+    'overview.diseaseShinglesText':
+      'A painful rash, usually on one side of the body, caused by the reactivated chickenpox virus – most common in people over 50.',
 
     // 404
     'notFound.title': 'Page not found',

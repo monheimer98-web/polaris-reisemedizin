@@ -95,7 +95,7 @@ export const riskAreasPage: ClinicalPage = {
         variant: 'important',
         title: { de: 'Nachweis (ICVP) rechtzeitig einplanen', en: 'Plan your certificate (ICVP) in good time' },
         text: {
-          de: 'Der Impfnachweis wird erst ab dem 10. Tag nach der Impfung gültig. Planen Sie den Termin daher mindestens zehn Tage vor Abreise. Die Gelbfieberimpfung führen wir als staatlich autorisierte Gelbfieberimpfstelle durch.',
+          de: 'Der Impfnachweis wird erst ab dem 10. Tag nach der Impfung gültig. Planen Sie den Termin daher mindestens zehn Tage vor Abreise. Die Gelbfieberimpfung führen wir als staatlich zugelassene Gelbfieberimpfstelle durch.',
           en: 'The certificate only becomes valid from day 10 after vaccination. Schedule your appointment at least ten days before departure. We perform yellow fever vaccination as a state-authorised yellow fever vaccination centre.',
         },
       },

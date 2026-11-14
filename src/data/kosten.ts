@@ -159,6 +159,25 @@ export const kostenPage: KostenPage = {
           },
           price: { de: 'ca. 32 € + Impfstoff', en: 'approx. €32 + vaccine' },
         },
+        // ENTWURF vom 12.11.2026 (HPV, Gürtelrose): vor Veröffentlichung ärztlich gegenlesen.
+        // Impfstoffpreise = Apothekenpreis Stand 11/2026 (Angabe der Praxis: 210,39 € bzw.
+        // 282,51 € je Dosis); dieselben Werte stehen in termin.ts und auf den Leistungsseiten.
+        {
+          service: { de: 'HPV-Impfung für Erwachsene (je Impftermin)', en: 'HPV vaccination for adults (per vaccination appointment)' },
+          detail: {
+            de: 'Ärztliches Honorar für Aufklärung, Impf-Check und Impfung. Den Impfstoff besorgen wir für Ihren Termin und berechnen ihn zum Apothekenpreis ohne Aufschlag, derzeit ca. 210 €. Je Impftermin also rund 243 €. Die Impfserie umfasst laut Schema drei Impftermine.',
+            en: 'Medical fee for information, the pre-vaccination check and the vaccination. We obtain the vaccine for your appointment and charge it at the pharmacy price without a mark-up, currently approx. €210. That makes about €243 per vaccination appointment. According to the schedule, the series comprises three vaccination appointments.',
+          },
+          price: { de: 'ca. 32 € + Impfstoff (derzeit ca. 210 €)', en: 'approx. €32 + vaccine (currently approx. €210)' },
+        },
+        {
+          service: { de: 'Gürtelrose-Impfung (je Impftermin)', en: 'Shingles vaccination (per vaccination appointment)' },
+          detail: {
+            de: 'Ärztliches Honorar für Aufklärung, Impf-Check und Impfung. Den Impfstoff besorgen wir für Ihren Termin und berechnen ihn zum Apothekenpreis ohne Aufschlag, derzeit ca. 283 €. Je Impftermin also rund 315 €. Die Impfserie umfasst laut Schema zwei Impftermine.',
+            en: 'Medical fee for information, the pre-vaccination check and the vaccination. We obtain the vaccine for your appointment and charge it at the pharmacy price without a mark-up, currently approx. €283. That makes about €315 per vaccination appointment. According to the schedule, the series comprises two vaccination appointments.',
+          },
+          price: { de: 'ca. 32 € + Impfstoff (derzeit ca. 283 €)', en: 'approx. €32 + vaccine (currently approx. €283)' },
+        },
         {
           service: { de: 'Mehrere Impfungen im selben Termin', en: 'Several vaccinations in the same appointment' },
           detail: {
@@ -215,7 +234,7 @@ export const kostenPage: KostenPage = {
       id: 'gelbfieber',
       heading: { de: 'Gelbfieberimpfung', en: 'Yellow-fever vaccination' },
       note: {
-        de: 'Als staatlich autorisierte Gelbfieberimpfstelle führen wir die Gelbfieberimpfung bei uns vor Ort durch und stellen den international gültigen Impfnachweis (ICVP) aus – in einem Termin bei uns vor Ort, auf Wunsch auch direkt im Rahmen der Reiseberatung.',
+        de: 'Als staatlich zugelassene Gelbfieberimpfstelle führen wir die Gelbfieberimpfung bei uns vor Ort durch und stellen den international gültigen Impfnachweis (ICVP) aus – in einem Termin bei uns vor Ort, auf Wunsch auch direkt im Rahmen der Reiseberatung.',
         en: 'As a state-authorised yellow-fever centre, we carry out the yellow-fever vaccination on site and issue the internationally valid certificate (ICVP) – in a single appointment on site, or directly as part of your travel consultation if you wish.',
       },
       items: [

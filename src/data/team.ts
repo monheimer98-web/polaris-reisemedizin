@@ -93,9 +93,9 @@ export const teamPage: TeamPage = {
     },
     {
       icon: 'shield',
-      title: { de: 'Autorisierte Gelbfieberimpfstelle', en: 'Authorised yellow-fever centre' },
+      title: { de: 'Zugelassene Gelbfieberimpfstelle', en: 'Authorised yellow-fever centre' },
       text: {
-        de: 'Als staatlich autorisierte Gelbfieberimpfstelle dürfen wir die Gelbfieberimpfung durchführen und den international gültigen Impfnachweis ausstellen.',
+        de: 'Als staatlich zugelassene Gelbfieberimpfstelle dürfen wir die Gelbfieberimpfung durchführen und den international gültigen Impfnachweis ausstellen.',
         en: 'As a state-authorised yellow fever vaccination centre, we may administer the yellow fever vaccination and issue the internationally valid certificate.',
       },
     },
@@ -123,7 +123,7 @@ export const teamPage: TeamPage = {
   practiceBody: {
     de: [
       'Bei uns sollen Sie sich vom ersten Moment an gut aufgehoben fühlen. Wir beraten Reisende sorgfältig und unabhängig und richten jede Empfehlung an Ihrer konkreten Reise aus.',
-      'Die Praxis ist als staatlich autorisierte Gelbfieberimpfstelle zugelassen und führt Reiseimpfungen wie die Gelbfieber- und die FSME-Impfung durch. Termine buchen Sie online, telefonisch oder per E-Mail; die persönliche Beratung findet in Ruhe vor Ort statt.',
+      'Die Praxis ist als Gelbfieberimpfstelle staatlich zugelassen und führt Reiseimpfungen wie die Gelbfieber- und die FSME-Impfung durch. Termine buchen Sie online, telefonisch oder per E-Mail; die persönliche Beratung findet in Ruhe vor Ort statt.',
     ],
     en: [
       'From the very first moment, you should feel in good hands with us. We advise travellers carefully and independently and tailor every recommendation to your specific trip.',

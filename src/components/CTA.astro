@@ -5,7 +5,8 @@
  * 10-Tage-Frist der Gelbfieberimpfung. Sprache aus der URL.
  */
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
-import { BOOKING_PATH } from '../config/nav';
+import { BOOKING_PATH, bookingHref as bookingLink } from '../config/nav';
+import { site } from '../config/site';
 
 interface Props {
   /** Terminart-ID, die auf der Buchungsseite vorbelegt wird (`?art=`). */
@@ -19,7 +20,7 @@ interface Props {
 const { bookingType, neutral = false, label } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const bookingHref = getLocalizedPath(BOOKING_PATH, lang) + (bookingType ? `?art=${bookingType}` : '');
+const bookingHref = bookingLink(getLocalizedPath(BOOKING_PATH, lang), bookingType, site.booking.embedUrl);
 ---
 
 <section class="no-print u-container pb-20 sm:pb-24">

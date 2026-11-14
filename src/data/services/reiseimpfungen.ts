@@ -88,7 +88,7 @@ export const reiseimpfungenService: ClinicalPage = {
       heading: { de: 'Pflichtimpfungen & internationaler Nachweis', en: 'Mandatory vaccinations & the international certificate' },
       body: {
         de: [
-          'Einzelne Länder verlangen bei der Einreise einen Impfnachweis. Am bekanntesten ist die Gelbfieberimpfung, die im Internationalen Impfausweis (ICVP) bescheinigt wird und nur in einer staatlich autorisierten Gelbfieberimpfstelle erfolgen darf. Für bestimmte Reisen – etwa die Pilgerfahrt nach Saudi-Arabien – kann eine Meningokokken-Impfung vorgeschrieben sein.',
+          'Einzelne Länder verlangen bei der Einreise einen Impfnachweis. Am bekanntesten ist die Gelbfieberimpfung, die im Internationalen Impfausweis (ICVP) bescheinigt wird und nur in einer staatlich zugelassenen Gelbfieberimpfstelle erfolgen darf. Für bestimmte Reisen – etwa die Pilgerfahrt nach Saudi-Arabien – kann eine Meningokokken-Impfung vorgeschrieben sein.',
           'Polio: Wegen der weltweiten Polio-Lage gelten WHO-Sonderregeln. Bei längeren Aufenthalten (über vier Wochen) in betroffenen Ländern – etwa Pakistan oder Afghanistan – kann bei der Ausreise der Nachweis einer Polio-Impfung verlangt werden, die zwischen vier Wochen und zwölf Monaten zurückliegt. Für Reisen in Polio-Risikogebiete prüfen wir Ihren Impfschutz und frischen bei Bedarf auf.',
           'Einreisebestimmungen ändern sich. Maßgeblich sind die offiziellen Vorgaben des Ziellandes; wir prüfen mit Ihnen die aktuelle Lage und verweisen auf die Hinweise des Auswärtigen Amts und der WHO.',
         ],
@@ -100,9 +100,9 @@ export const reiseimpfungenService: ClinicalPage = {
       },
       callout: {
         variant: 'important',
-        title: { de: 'Gelbfieber nur in autorisierter Impfstelle', en: 'Yellow fever only at an authorised centre' },
+        title: { de: 'Gelbfieber nur in zugelassener Impfstelle', en: 'Yellow fever only at an authorised centre' },
         text: {
-          de: 'Der gültige internationale Gelbfieber-Nachweis darf ausschließlich in einer staatlich autorisierten Impfstelle ausgestellt werden und wird erst zehn Tage nach der Impfung wirksam. Details finden Sie auf unserer Seite zur Gelbfieberimpfung.',
+          de: 'Der gültige internationale Gelbfieber-Nachweis darf ausschließlich in einer staatlich zugelassenen Impfstelle ausgestellt werden und wird erst zehn Tage nach der Impfung wirksam. Details finden Sie auf unserer Seite zur Gelbfieberimpfung.',
           en: 'The valid international yellow fever certificate may only be issued at a state-authorised centre and only takes effect ten days after vaccination. Details can be found on our yellow fever vaccination page.',
         },
       },
@@ -128,10 +128,12 @@ export const reiseimpfungenService: ClinicalPage = {
         de: [
           'Am Anfang steht die reisemedizinische Beratung mit einem schriftlichen Impfplan. Häufig benötigte Reiseimpfstoffe halten wir vorrätig – dann impfen wir auf Wunsch direkt im Beratungstermin. Seltener benötigte Impfstoffe besorgen wir bzw. Sie erhalten ein Privatrezept, und die Impfung erfolgt in einem Folgetermin. FSME und Gelbfieber sind direkt in einem Termin buchbar.',
           'Mehrere fällige Impfungen lassen sich häufig im selben Termin kombinieren – was sinnvoll und verträglich ist, besprechen wir mit Ihnen.',
+          'Termine vergeben wir nach Vereinbarung, auch samstags. Sie buchen online oder telefonisch.',
         ],
         en: [
           'It all starts with the travel-medicine consultation and a written vaccination plan. We keep commonly needed travel vaccines in stock – so we can vaccinate you directly in the consultation appointment if you wish. Less commonly needed vaccines we obtain, or you receive a private prescription, and the vaccination takes place at a follow-up appointment. TBE and yellow fever can be booked directly in a single appointment.',
           'Several due vaccinations can often be combined in the same appointment – we discuss with you what is sensible and well tolerated.',
+          'Appointments are by arrangement, including Saturdays. You can book online or by phone.',
         ],
       },
     },

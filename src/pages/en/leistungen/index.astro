@@ -68,6 +68,20 @@ const auslandKarten = auslandKartenStart(t);
           cta={t('cta.serviceDetail')}
           href={getLocalizedPath('/leistungen/hoehenmedizin', lang)}
         />
+        <OverviewCard
+          variant="hpv"
+          title={t('overview.serviceHpvTitle')}
+          text={t('overview.serviceHpvText')}
+          cta={t('cta.serviceDetail')}
+          href={getLocalizedPath('/leistungen/hpv-impfung-erwachsene', lang)}
+        />
+        <OverviewCard
+          variant="shingles"
+          title={t('overview.serviceShinglesTitle')}
+          text={t('overview.serviceShinglesText')}
+          cta={t('cta.serviceDetail')}
+          href={getLocalizedPath('/leistungen/guertelrose-impfung', lang)}
+        />
       </div>
 
       <h2 class="mt-14 font-display text-2xl text-petrol-900 sm:mt-16">{t('home.abroadTitle')}</h2>

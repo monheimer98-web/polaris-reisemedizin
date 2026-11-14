@@ -19,6 +19,11 @@ export interface DiseaseFacts {
   regions: Localized;
   /** Reiseimpfung (verfügbar/Typ, knapp). */
   vaccine: Localized;
+  /**
+   * Eigene Beschriftung der Impf-Zeile, wenn „Reiseimpfung“ nicht passt (z. B. HPV,
+   * Gürtelrose). Fehlt sie, bleibt es beim Wörterbuch-Eintrag `facts.vaccine`.
+   */
+  vaccineLabel?: Localized;
   /** Kurzer Schlüsselhinweis (Therapie/Schutz/Besonderheit). */
   note: Localized;
 }
@@ -162,6 +167,41 @@ export const diseaseFacts: Record<string, DiseaseFacts> = {
     note: {
       de: 'Geringes Risiko für übliche Reisen; Flüssigkeitsersatz ist zentral',
       en: 'Low risk for typical travel; fluid replacement is key',
+    },
+  },
+  // ENTWURF vom 12.11.2026 (HPV, Gürtelrose): vor Veröffentlichung ärztlich gegenlesen.
+  hpv: {
+    pathogen: { de: 'Humane Papillomviren (über 230 Typen)', en: 'Human papillomaviruses (more than 230 types)' },
+    transmission: {
+      de: 'Enger Haut- und Schleimhautkontakt, vor allem bei sexuellen Kontakten',
+      en: 'Close skin and mucosal contact, mainly during sexual activity',
+    },
+    regions: { de: 'Weltweit; betrifft alle Geschlechter', en: 'Worldwide; affects all genders' },
+    vaccineLabel: { de: 'Impfung', en: 'Vaccination' },
+    vaccine: {
+      de: 'Ja – Totimpfstoff; STIKO-Empfehlung von 9 bis 14 Jahren, Nachholen bis zum 18. Geburtstag',
+      en: 'Yes – inactivated vaccine; STIKO recommendation from 9 to 14 years, catch-up until the 18th birthday',
+    },
+    note: {
+      de: 'Meist ohne Beschwerden; bleibt die Infektion bestehen, sind Krebsvorstufen, Krebs und Genitalwarzen möglich',
+      en: 'Usually without symptoms; if the infection persists, precancerous lesions, cancer and genital warts are possible',
+    },
+  },
+  guertelrose: {
+    pathogen: { de: 'Varizella-zoster-Virus (Herpesvirus)', en: 'Varicella zoster virus (herpesvirus)' },
+    transmission: {
+      de: 'Reaktivierung des eigenen Windpocken-Virus; der Bläscheninhalt ist ansteckend',
+      en: 'Reactivation of a person’s own chickenpox virus; the blister fluid is infectious',
+    },
+    regions: { de: 'In jedem Alter möglich; am häufigsten über 50 Jahre', en: 'Possible at any age; most common over 50' },
+    vaccineLabel: { de: 'Impfung', en: 'Vaccination' },
+    vaccine: {
+      de: 'Ja – Totimpfstoff, zwei Dosen; STIKO-Empfehlung ab 60 Jahren, bei erhöhtem Risiko ab 18 Jahren',
+      en: 'Yes – inactivated vaccine, two doses; STIKO recommendation from age 60, from age 18 at increased risk',
+    },
+    note: {
+      de: 'Häufigste Komplikation: anhaltende Nervenschmerzen (postherpetische Neuralgie)',
+      en: 'Most common complication: persistent nerve pain (postherpetic neuralgia)',
     },
   },
 };

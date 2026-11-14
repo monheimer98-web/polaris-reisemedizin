@@ -29,6 +29,15 @@ export const seoTitles: Record<string, Localized> = {
     de: 'FSME-Impfung in Langenfeld | Polaris',
     en: 'TBE Vaccination in Langenfeld | Polaris',
   },
+  // Entwurf 12.11.2026 (HPV, Gürtelrose)
+  '/leistungen/hpv-impfung-erwachsene': {
+    de: 'HPV-Impfung für Erwachsene in Langenfeld | Polaris',
+    en: 'HPV Vaccination for Adults in Langenfeld | Polaris',
+  },
+  '/leistungen/guertelrose-impfung': {
+    de: 'Gürtelrose-Impfung in Langenfeld – Termin & Kosten | Polaris',
+    en: 'Shingles Vaccination in Langenfeld | Polaris',
+  },
   '/leistungen/malaria': {
     de: 'Malariaprophylaxe & Malaria-Beratung in Langenfeld | Polaris',
     en: 'Malaria Prevention Advice in Langenfeld | Polaris',

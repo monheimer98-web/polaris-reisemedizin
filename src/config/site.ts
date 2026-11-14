@@ -193,7 +193,7 @@ export const site = {
 
   /** Zulassung als Gelbfieberimpfstelle. */
   yellowFever: {
-    /** Zuständige Behörde / Bundesland, das die Impfstelle autorisiert hat. */
+    /** Zuständige Behörde / Bundesland, das die Impfstelle zugelassen hat. */
     authority: 'Ministerium für Arbeit, Gesundheit und Soziales des Landes Nordrhein-Westfalen (MAGS NRW)',
     /** Zulassungsnummer laut Bescheid. */
     approvalNumber: '867',

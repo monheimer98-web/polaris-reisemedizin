@@ -257,11 +257,11 @@ export const kontaktPage: KontaktPage = {
     },
     placeholderBody: {
       de: [
-        'Das Nachrichtenformular wird derzeit noch eingerichtet. Sie erreichen uns in der Zwischenzeit jederzeit direkt per Telefon oder E-Mail – die Kontaktdaten finden Sie nebenstehend.',
+        'Sie erreichen uns direkt per Telefon oder E-Mail – die Kontaktdaten finden Sie nebenstehend.',
         'Für eine reisemedizinische Beratung oder Impfung vereinbaren Sie am besten vorab einen Termin.',
       ],
       en: [
-        'The message form is still being set up. In the meantime you can reach us any time directly by phone or email – you will find the contact details alongside.',
+        'You can reach us directly by phone or email – you will find the contact details alongside.',
         'For travel-medicine advice or a vaccination, it is best to arrange an appointment in advance.',
       ],
     },

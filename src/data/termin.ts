@@ -31,7 +31,7 @@ export interface AppointmentType {
   price?: Localized;
   /** Empfohlener Einstieg (Beratung zuerst) – wird hervorgehoben. */
   recommended?: boolean;
-  /** Buchbar? (alle aktiv – Gelbfieber ist als autorisierte Impfstelle vor Ort buchbar) */
+  /** Buchbar? (alle aktiv – Gelbfieber ist als zugelassene Impfstelle vor Ort buchbar) */
   enabled: boolean;
 }
 
@@ -304,6 +304,39 @@ export const bookingPage: BookingPage = {
         price: { de: 'ca. 38 € + Impfstoff (ca. 73 €)', en: 'approx. €38 + vaccine (approx. €73)' },
         enabled: true,
       },
+      // ENTWURF vom 12.11.2026 (HPV, Gürtelrose): vor Veröffentlichung ärztlich gegenlesen.
+      // Impfstoffpreise = Apothekenpreis Stand 11/2026 (Angabe der Praxis: 210,39 € bzw.
+      // 282,51 € je Dosis); dieselben Werte stehen in kosten.ts und auf den Leistungsseiten.
+      {
+        id: 'hpv',
+        icon: 'vaccination',
+        name: {
+          de: 'HPV-Impftermin für Erwachsene',
+          en: 'HPV vaccination appointment for adults',
+        },
+        duration: { de: 'ca. 10 Minuten', en: 'approx. 10 minutes' },
+        description: {
+          de: 'Für Erwachsene, auch für Männer: Aufklärung, Impf-Check und Impfung. Den Impfstoff besorgen wir für Ihren Termin.',
+          en: 'For adults, including men: information, pre-vaccination check and vaccination. We obtain the vaccine for your appointment.',
+        },
+        price: { de: 'ca. 32 € + Impfstoff (ca. 210 €)', en: 'approx. €32 + vaccine (approx. €210)' },
+        enabled: true,
+      },
+      {
+        id: 'guertelrose',
+        icon: 'vaccination',
+        name: {
+          de: 'Gürtelrose-Impftermin',
+          en: 'Shingles vaccination appointment',
+        },
+        duration: { de: 'ca. 10 Minuten', en: 'approx. 10 minutes' },
+        description: {
+          de: 'Ab 50 Jahren, auch für Selbstzahler und Privatversicherte: Aufklärung, Impf-Check und Impfung. Den Impfstoff besorgen wir für Ihren Termin.',
+          en: 'From age 50, including self-payers and people with private insurance: information, pre-vaccination check and vaccination. We obtain the vaccine for your appointment.',
+        },
+        price: { de: 'ca. 32 € + Impfstoff (ca. 283 €)', en: 'approx. €32 + vaccine (approx. €283)' },
+        enabled: true,
+      },
     ],
   },
   bookableTypes: [
@@ -315,6 +348,9 @@ export const bookingPage: BookingPage = {
     { id: 'malaria-hoehe', name: { de: 'Malaria- & Höhenberatung (kombiniert)', en: 'Malaria & altitude (combined)' } },
     { id: 'fsme', name: { de: 'FSME-Impftermin', en: 'TBE vaccination appointment' } },
     { id: 'gelbfieber', name: { de: 'Gelbfieberimpfung', en: 'Yellow-fever vaccination' } },
+    // Entwurf 12.11.2026: Diese beiden IDs müssen als Terminarten in der praxis-app angelegt sein.
+    { id: 'hpv', name: { de: 'HPV-Impftermin für Erwachsene', en: 'HPV vaccination appointment for adults' } },
+    { id: 'guertelrose', name: { de: 'Gürtelrose-Impftermin', en: 'Shingles vaccination appointment' } },
     { id: 'b2b', name: { de: 'Reisemedizin für Unternehmen (B2B)', en: 'Corporate travel medicine (B2B)' } },
   ],
   form: {

@@ -90,7 +90,7 @@ export const unternehmenPage: UnternehmenPage = {
     {
       title: { de: 'Internationale Impfnachweise', en: 'International vaccination certificates' },
       text: {
-        de: 'Vollständige Impfdokumentation inklusive international gültigem Gelbfieber-Nachweis (ICVP) als staatlich autorisierte Gelbfieberimpfstelle.',
+        de: 'Vollständige Impfdokumentation inklusive international gültigem Gelbfieber-Nachweis (ICVP) als staatlich zugelassene Gelbfieberimpfstelle.',
         en: 'Complete vaccination records including the internationally valid yellow-fever certificate (ICVP) as a state-authorised yellow-fever vaccination centre.',
       },
     },

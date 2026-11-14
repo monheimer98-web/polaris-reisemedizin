@@ -1,7 +1,8 @@
 /**
  * Leistung Gelbfieberimpfung — fachlicher Inhalt (DE/EN), belegt über das
- * Quellen-Register. Sachlich, ohne Heilversprechen oder Preisangaben
- * (HWG-konform). Kostenfrage bewusst neutral gehalten.
+ * Quellen-Register. Sachlich, ohne Heilversprechen (HWG-konform). Der Abschnitt
+ * „Kosten“ nennt dieselben GOÄ-Richtwerte wie /kosten/ (dort pflegen), weil die
+ * Anzeigen den Gesamtpreis nennen und die Zielseite ihn zeigen muss.
  */
 import type { ClinicalPage } from '../types';
 
@@ -9,12 +10,12 @@ export const gelbfieberimpfungService: ClinicalPage = {
   meta: {
     title: { de: 'Gelbfieberimpfung', en: 'Yellow fever vaccination' },
     description: {
-      de: 'Gelbfieberimpfung in Langenfeld, gut erreichbar aus Monheim, Hilden und Solingen: staatlich autorisierte Impfstelle, internationaler Impfnachweis, Eignung und Ablauf.',
+      de: 'Gelbfieberimpfung in Langenfeld, gut erreichbar aus Monheim, Hilden und Solingen: staatlich zugelassene Impfstelle, internationaler Impfnachweis, Eignung und Ablauf.',
       en: 'Yellow fever vaccination in Langenfeld, easy to reach from Monheim, Hilden and Solingen: state-authorised centre, international certificate, suitability and procedure.',
     },
     eyebrow: { de: 'Leistung', en: 'Service' },
     lead: {
-      de: 'Als staatlich autorisierte Gelbfieberimpfstelle beraten wir Sie individuell zu Ihrer Reise und führen die Impfung fachgerecht durch. Hier erfahren Sie, wie die Impfung abläuft und was Sie beachten sollten.',
+      de: 'Als staatlich zugelassene Gelbfieberimpfstelle beraten wir Sie individuell zu Ihrer Reise und führen die Impfung fachgerecht durch. Hier erfahren Sie, wie die Impfung abläuft und was Sie beachten sollten.',
       en: 'As a state-authorised yellow fever vaccination centre, we advise you individually about your trip and carry out the vaccination professionally. Here you can read how the vaccination works and what to bear in mind.',
     },
   },
@@ -43,10 +44,10 @@ export const gelbfieberimpfungService: ClinicalPage = {
     },
     {
       id: 'autorisierung',
-      heading: { de: 'Autorisierte Impfstelle', en: 'Authorised vaccination centre' },
+      heading: { de: 'Zugelassene Impfstelle', en: 'Authorised vaccination centre' },
       body: {
         de: [
-          'In Deutschland dürfen die Gelbfieberimpfung und die Ausstellung des international gültigen Impfnachweises ausschließlich von staatlich autorisierten Gelbfieberimpfstellen vorgenommen werden. Unsere Praxis verfügt über diese Zulassung.',
+          'In Deutschland dürfen die Gelbfieberimpfung und die Ausstellung des international gültigen Impfnachweises ausschließlich von staatlich zugelassenen Gelbfieberimpfstellen vorgenommen werden. Unsere Praxis verfügt über diese Zulassung.',
         ],
         en: [
           'In Germany, the yellow fever vaccination and the issuing of the internationally valid certificate may only be carried out by state-authorised yellow fever vaccination centres. Our practice holds this authorisation.',
@@ -116,10 +117,12 @@ export const gelbfieberimpfungService: ClinicalPage = {
         de: [
           'Zu Ihrem Termin bringen Sie bitte Ihren Impfausweis und einen Lichtbildausweis mit. Nach einem ärztlichen Aufklärungs- und Beratungsgespräch führen wir die Impfung durch und tragen sie in den Internationalen Impfausweis ein.',
           'Nach der Impfung bitten wir Sie um eine kurze Wartezeit zur Beobachtung in der Praxis.',
+          'Termine vergeben wir nach Vereinbarung, auch samstags. Sie buchen online oder telefonisch.',
         ],
         en: [
           'For your appointment, please bring your vaccination certificate and a photo ID. After a medical consultation and explanation, we carry out the vaccination and record it in the international certificate of vaccination.',
           'After the vaccination, we ask you to remain at the practice for a short observation period.',
+          'Appointments are by arrangement, including Saturdays. You can book online or by phone.',
         ],
       },
     },
@@ -128,10 +131,12 @@ export const gelbfieberimpfungService: ClinicalPage = {
       heading: { de: 'Kosten', en: 'Costs' },
       body: {
         de: [
-          'Als Privatpraxis rechnen wir nach der Gebührenordnung für Ärzte (GOÄ) ab; Sie zahlen zunächst selbst. Manche Krankenkassen erstatten Reiseimpfungen freiwillig – Umfang und Bedingungen sind je Kasse sehr unterschiedlich, teils nur bei Impfung in einer Kassenpraxis. Bitte klären Sie die Erstattung vorab mit Ihrer Kasse. Die konkreten Kosten nennen wir Ihnen vor der Impfung.',
+          'Als Privatpraxis rechnen wir nach der Gebührenordnung für Ärzte (GOÄ) ab; Sie zahlen zunächst selbst. Manche Krankenkassen erstatten Reiseimpfungen freiwillig – Umfang und Bedingungen sind je Kasse sehr unterschiedlich, teils nur bei Impfung in einer Kassenpraxis. Bitte klären Sie die Erstattung vorab mit Ihrer Kasse.',
+          'Als Richtwert: Das ärztliche Honorar für Aufklärung, kurze Impf-Untersuchung, Impfung und internationalen Impfnachweis beträgt ca. 38 € nach GOÄ. Den Impfstoff berechnen wir zum Einkaufspreis ohne Aufschlag, derzeit ca. 73 €. Insgesamt also rund 110 €. An Samstagen kommt der GOÄ-Zuschlag von ca. 6 € dazu. Den genauen Betrag nennen wir Ihnen vor der Impfung.',
         ],
         en: [
-          'As a private practice we bill under the German medical fee schedule (GOÄ); you pay first yourself. Some health insurers reimburse travel vaccinations voluntarily – scope and conditions vary widely, sometimes only for vaccinations given in a statutory-insurance practice. Please check reimbursement with your insurer in advance. We will tell you the specific costs before the vaccination.',
+          'As a private practice we bill under the German medical fee schedule (GOÄ); you pay first yourself. Some health insurers reimburse travel vaccinations voluntarily – scope and conditions vary widely, sometimes only for vaccinations given in a statutory-insurance practice. Please check reimbursement with your insurer in advance.',
+          'As a guide: the medical fee for information, a brief pre-vaccination check, the vaccination and the international certificate is approx. €38 under the GOÄ. We charge the vaccine at cost price without a mark-up, currently approx. €73. In total about €110. On Saturdays the GOÄ surcharge of approx. €6 is added. We will tell you the exact amount before the vaccination.',
         ],
       },
     },

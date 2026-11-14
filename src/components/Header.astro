@@ -127,6 +127,10 @@ function isActive(path: string): boolean {
       <div class="hidden sm:block">
         <LanguageSwitcher />
       </div>
+      {/* Auf dem Handy bleibt der Weg zur Buchung in der mitlaufenden Kopfzeile sichtbar. */}
+      <a href={bookingHref} class="btn-gold inline-flex h-10 px-3 text-sm sm:hidden" aria-label={t('cta.bookAria')}>
+        {t('cta.bookShort')}
+      </a>
       <a href={bookingHref} class="btn-gold hidden h-10 px-4 sm:inline-flex" aria-label={t('cta.bookAria')}>
         {t('cta.book')}
       </a>
