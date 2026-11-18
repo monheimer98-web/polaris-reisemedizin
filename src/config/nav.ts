@@ -12,21 +12,80 @@ export interface NavItem {
   labelKey: string;
   path: string;
   children?: NavItem[];
+  /**
+   * Gliederung des Untermenüs unter kurzen Überschriften. Ist sie gesetzt, zeigt die Kopfzeile
+   * die Gruppen (am Desktop nebeneinander); `children` bleibt die flache Liste der Leistungen
+   * für die Fußzeile.
+   */
+  groups?: NavGroup[];
+  /** Verweise in der Fußzeile des gegliederten Untermenüs (zum Beispiel der Ablauf). */
+  more?: NavItem[];
 }
+
+export interface NavGroup {
+  labelKey: string;
+  items: NavItem[];
+}
+
+/**
+ * Anlässe für einen Auslandsaufenthalt. Sie stehen im Menü „Ausland" und zusätzlich als letzte
+ * Gruppe im Menü „Leistungen", damit dort sichtbar ist, dass die Praxis das anbietet.
+ */
+export const abroadOccasions: NavItem[] = [
+  { labelKey: 'nav.abroadYear', path: '/ausland/auslandsjahr' },
+  { labelKey: 'nav.abroadAuPair', path: '/ausland/au-pair' },
+  { labelKey: 'nav.abroadWorkTravel', path: '/ausland/work-and-travel' },
+  { labelKey: 'nav.abroadStudy', path: '/ausland/auslandssemester' },
+];
+
+/** Pilgerreisen: nur im Menü „Ausland" und als Verweis auf der Leistungsübersicht, nicht im Menü „Leistungen". */
+export const abroadPilgrimage: NavItem = { labelKey: 'nav.abroadPilgrimage', path: '/ausland/pilgerreisen' };
+
+/**
+ * Menü „Leistungen": alles, was die Praxis anbietet, unter kurzen Überschriften.
+ * Die Bescheinigungen liegen technisch unter /ausland, sind aber Leistungen und stehen deshalb hier;
+ * diese Gruppe hängt an NACHWEISE_IM_ANGEBOT. Dahinter folgt im Menü die Gruppe mit den Anlässen.
+ */
+const serviceGroups: NavGroup[] = [
+  {
+    labelKey: 'nav.groupAdvice',
+    items: [
+      { labelKey: 'nav.consultation', path: '/leistungen/reiseberatung' },
+      { labelKey: 'nav.malaria', path: '/leistungen/malaria' },
+      { labelKey: 'nav.altitude', path: '/leistungen/hoehenmedizin' },
+    ],
+  },
+  {
+    labelKey: 'nav.groupVaccinations',
+    items: [
+      { labelKey: 'nav.travelVaccinations', path: '/leistungen/reiseimpfungen' },
+      { labelKey: 'nav.yellowFeverVaccination', path: '/leistungen/gelbfieberimpfung' },
+      { labelKey: 'nav.fsmeVaccination', path: '/leistungen/fsme-impfung' },
+      { labelKey: 'nav.hpvVaccination', path: '/leistungen/hpv-impfung-erwachsene' },
+      { labelKey: 'nav.shinglesVaccination', path: '/leistungen/guertelrose-impfung' },
+    ],
+  },
+  ...(NACHWEISE_IM_ANGEBOT
+    ? [
+        {
+          labelKey: 'nav.groupCertificates',
+          items: [
+            { labelKey: 'nav.certVaccination', path: '/ausland/nachweise' },
+            { labelKey: 'nav.certVisa', path: '/ausland/gesundheitszeugnis-visum' },
+            { labelKey: 'nav.certFlight', path: '/ausland/flug-kreuzfahrt-attest' },
+          ],
+        },
+      ]
+    : []),
+];
 
 export const primaryNav: NavItem[] = [
   {
     labelKey: 'nav.services',
     path: '/leistungen',
-    children: [
-      { labelKey: 'nav.consultation', path: '/leistungen/reiseberatung' },
-      { labelKey: 'nav.travelVaccinations', path: '/leistungen/reiseimpfungen' },
-      { labelKey: 'nav.yellowFeverVaccination', path: '/leistungen/gelbfieberimpfung' },
-      { labelKey: 'nav.fsmeVaccination', path: '/leistungen/fsme-impfung' },
-      { labelKey: 'nav.malaria', path: '/leistungen/malaria' },
-      { labelKey: 'nav.altitude', path: '/leistungen/hoehenmedizin' },
-      { labelKey: 'nav.process', path: '/ablauf' },
-    ],
+    groups: [...serviceGroups, { labelKey: 'nav.groupAbroad', items: abroadOccasions }],
+    children: serviceGroups.flatMap((group) => group.items),
+    more: [{ labelKey: 'nav.process', path: '/ablauf' }],
   },
   {
     labelKey: 'nav.diseases',
@@ -62,11 +121,8 @@ export const primaryNav: NavItem[] = [
     labelKey: 'nav.abroad',
     path: '/ausland',
     children: [
-      { labelKey: 'nav.abroadYear', path: '/ausland/auslandsjahr' },
-      { labelKey: 'nav.abroadAuPair', path: '/ausland/au-pair' },
-      { labelKey: 'nav.abroadWorkTravel', path: '/ausland/work-and-travel' },
-      { labelKey: 'nav.abroadStudy', path: '/ausland/auslandssemester' },
-      { labelKey: 'nav.abroadPilgrimage', path: '/ausland/pilgerreisen' },
+      ...abroadOccasions,
+      abroadPilgrimage,
       ...(NACHWEISE_IM_ANGEBOT ? [{ labelKey: 'nav.abroadCertificates', path: '/ausland/nachweise' }] : []),
       ...(GUTSCHEIN_IM_ANGEBOT ? [{ labelKey: 'nav.voucher', path: '/gutschein' }] : []),
     ],

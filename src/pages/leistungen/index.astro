@@ -1,104 +1,19 @@
 ---
 /**
- * Übersicht „Leistungen" (Deutsch) — Eltern-Seite der Navigation. Listet die
- * Leistungen als Karten, darunter den Bereich Ausland. Sprache aus der URL; identisch zu /en.
+ * Übersicht „Leistungen" (Deutsch) — Eltern-Seite der Navigation. Dünne Seite:
+ * LeistungenContent rendert die Leistungen in drei Gruppen (Sprache aus der URL),
+ * CTA schließt ab. Identisch zur EN-Variante.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import OverviewCard from '../../components/OverviewCard.astro';
-import PageHero from '../../components/PageHero.astro';
+import LeistungenContent from '../../components/LeistungenContent.astro';
 import CTA from '../../components/CTA.astro';
-import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
-import { auslandKartenStart } from '../../data/ausland/start-karten';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const auslandKarten = auslandKartenStart(t);
 ---
 
 <BaseLayout title={t('overview.servicesTitle')} description={t('overview.servicesMeta')}>
-  <article>
-    <PageHero
-      eyebrow={t('nav.services')}
-      title={t('overview.servicesTitle')}
-      lead={t('overview.servicesLead')}
-    />
-
-    <div class="u-container pb-16 pt-12 sm:pb-20 sm:pt-16">
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <OverviewCard
-          variant="consultation"
-          title={t('home.serviceConsultationTitle')}
-          text={t('home.serviceConsultationText')}
-          cta={t('cta.serviceDetail')}
-          href={getLocalizedPath('/leistungen/reiseberatung', lang)}
-        />
-        <OverviewCard
-          variant="travelVaccinations"
-          title={t('home.serviceTravelVaccTitle')}
-          text={t('home.serviceTravelVaccText')}
-          cta={t('cta.serviceDetail')}
-          href={getLocalizedPath('/leistungen/reiseimpfungen', lang)}
-        />
-        <OverviewCard
-          variant="yellowFever"
-          title={t('home.serviceYfTitle')}
-          text={t('home.serviceYfText')}
-          cta={t('cta.serviceDetail')}
-          href={getLocalizedPath('/leistungen/gelbfieberimpfung', lang)}
-        />
-        <OverviewCard
-          variant="fsme"
-          title={t('home.serviceFsmeTitle')}
-          text={t('home.serviceFsmeText')}
-          cta={t('cta.serviceDetail')}
-          href={getLocalizedPath('/leistungen/fsme-impfung', lang)}
-        />
-        <OverviewCard
-          variant="malaria"
-          title={t('home.serviceMalariaTitle')}
-          text={t('home.serviceMalariaText')}
-          cta={t('cta.serviceDetail')}
-          href={getLocalizedPath('/leistungen/malaria', lang)}
-        />
-        <OverviewCard
-          variant="altitude"
-          title={t('home.serviceAltitudeTitle')}
-          text={t('home.serviceAltitudeText')}
-          cta={t('cta.serviceDetail')}
-          href={getLocalizedPath('/leistungen/hoehenmedizin', lang)}
-        />
-        <OverviewCard
-          variant="hpv"
-          title={t('overview.serviceHpvTitle')}
-          text={t('overview.serviceHpvText')}
-          cta={t('cta.serviceDetail')}
-          href={getLocalizedPath('/leistungen/hpv-impfung-erwachsene', lang)}
-        />
-        <OverviewCard
-          variant="shingles"
-          title={t('overview.serviceShinglesTitle')}
-          text={t('overview.serviceShinglesText')}
-          cta={t('cta.serviceDetail')}
-          href={getLocalizedPath('/leistungen/guertelrose-impfung', lang)}
-        />
-      </div>
-
-      <h2 class="mt-14 font-display text-2xl text-petrol-900 sm:mt-16">{t('home.abroadTitle')}</h2>
-      <p class="mt-3 max-w-3xl leading-relaxed text-ink-soft">{t('home.abroadLead')}</p>
-      <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {auslandKarten.map((karte) => (
-          <OverviewCard
-            variant={karte.variant}
-            title={karte.title}
-            text={karte.text}
-            cta={t('cta.serviceDetail')}
-            href={getLocalizedPath(karte.path, lang)}
-            headingLevel="h3"
-          />
-        ))}
-      </div>
-    </div>
-  </article>
-
+  <LeistungenContent />
   <CTA />
 </BaseLayout>

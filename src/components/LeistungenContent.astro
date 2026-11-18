@@ -1,0 +1,120 @@
+---
+/**
+ * Inhalt der Übersicht „Leistungen" (Deutsch und Englisch, Sprache aus der URL).
+ * Gliederung wie im Menü „Leistungen": Beratung, Impfungen, Bescheinigungen und Zeugnisse.
+ * Die Bescheinigungen stehen hier als Leistung; die Anlässe (Auslandsjahr, Au-pair …) folgen
+ * darunter nur als Verweise in den Bereich Ausland. Die Bescheinigungen hängen an NACHWEISE_IM_ANGEBOT.
+ */
+import OverviewCard from './OverviewCard.astro';
+import PageHero from './PageHero.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import type { UiKey } from '../i18n/ui';
+import { abroadOccasions, abroadPilgrimage } from '../config/nav';
+import { NACHWEISE_IM_ANGEBOT } from '../data/ausland/stand';
+import { auslandKacheln } from '../data/ausland/hub';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+interface Karte {
+  variant: string;
+  title: string;
+  text: string;
+  path: string;
+}
+
+const beratung: Karte[] = [
+  { variant: 'consultation', title: t('home.serviceConsultationTitle'), text: t('home.serviceConsultationText'), path: '/leistungen/reiseberatung' },
+  { variant: 'malaria', title: t('home.serviceMalariaTitle'), text: t('home.serviceMalariaText'), path: '/leistungen/malaria' },
+  { variant: 'altitude', title: t('home.serviceAltitudeTitle'), text: t('home.serviceAltitudeText'), path: '/leistungen/hoehenmedizin' },
+];
+
+const impfungen: Karte[] = [
+  { variant: 'travelVaccinations', title: t('home.serviceTravelVaccTitle'), text: t('home.serviceTravelVaccText'), path: '/leistungen/reiseimpfungen' },
+  { variant: 'yellowFever', title: t('home.serviceYfTitle'), text: t('home.serviceYfText'), path: '/leistungen/gelbfieberimpfung' },
+  { variant: 'fsme', title: t('home.serviceFsmeTitle'), text: t('home.serviceFsmeText'), path: '/leistungen/fsme-impfung' },
+  { variant: 'hpv', title: t('overview.serviceHpvTitle'), text: t('overview.serviceHpvText'), path: '/leistungen/hpv-impfung-erwachsene' },
+  { variant: 'shingles', title: t('overview.serviceShinglesTitle'), text: t('overview.serviceShinglesText'), path: '/leistungen/guertelrose-impfung' },
+];
+
+// Der Kartentext zum Gesundheitszeugnis steht bereits auf der Ausland-Übersicht (hub.ts).
+const visumText = auslandKacheln.find((k) => k.path === '/ausland/gesundheitszeugnis-visum')?.text[lang] ?? '';
+const bescheinigungen: Karte[] = NACHWEISE_IM_ANGEBOT
+  ? [
+      { variant: 'certificate', title: t('nav.certVaccination'), text: t('home.abroadCertText'), path: '/ausland/nachweise' },
+      { variant: 'visa', title: t('nav.certVisa'), text: visumText, path: '/ausland/gesundheitszeugnis-visum' },
+      { variant: 'flight', title: t('nav.certFlight'), text: t('home.abroadFlightText'), path: '/ausland/flug-kreuzfahrt-attest' },
+    ]
+  : [];
+
+const gruppen = [
+  { id: 'beratung', title: t('nav.groupAdvice'), lead: '', karten: beratung },
+  { id: 'impfungen', title: t('nav.groupVaccinations'), lead: '', karten: impfungen },
+  { id: 'bescheinigungen', title: t('nav.groupCertificates'), lead: t('overview.certLead'), karten: bescheinigungen },
+].filter((gruppe) => gruppe.karten.length > 0);
+
+// Anlässe wie im Menü „Ausland" (gleiche Reihenfolge, gleiche Bezeichnungen).
+const anlaesse = [...abroadOccasions, abroadPilgrimage];
+---
+
+<article>
+  <PageHero eyebrow={t('nav.services')} title={t('overview.servicesTitle')} lead={t('overview.servicesLead')} />
+
+  <div class="u-container pb-16 pt-12 sm:pb-20 sm:pt-16">
+    {
+      gruppen.map((gruppe, i) => (
+        <section id={gruppe.id} class:list={['scroll-mt-28', i > 0 && 'mt-14 sm:mt-16']} aria-labelledby={`${gruppe.id}-titel`}>
+          <h2 id={`${gruppe.id}-titel`} class="font-display text-2xl text-petrol-900">
+            {gruppe.title}
+          </h2>
+          {gruppe.lead && <p class="mt-3 max-w-3xl leading-relaxed text-ink-soft">{gruppe.lead}</p>}
+          <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {gruppe.karten.map((karte) => (
+              <OverviewCard
+                variant={karte.variant}
+                title={karte.title}
+                text={karte.text}
+                cta={t('cta.serviceDetail')}
+                href={getLocalizedPath(karte.path, lang)}
+                headingLevel="h3"
+              />
+            ))}
+          </div>
+        </section>
+      ))
+    }
+
+    {/* Anlässe: keine weiteren Leistungen, sondern der Einstieg nach Reiseanlass. */}
+    <section
+      id="ausland"
+      class="mt-14 scroll-mt-28 rounded-2xl border border-line bg-white/70 p-6 sm:mt-16 sm:p-8"
+      aria-labelledby="ausland-titel"
+    >
+      <h2 id="ausland-titel" class="font-display text-2xl text-petrol-900">{t('overview.occasionTitle')}</h2>
+      <p class="mt-3 max-w-3xl leading-relaxed text-ink-soft">{t('overview.occasionLead')}</p>
+      <ul class="mt-5 flex flex-wrap gap-2.5">
+        {
+          anlaesse.map((anlass) => (
+            <li>
+              <a
+                href={getLocalizedPath(anlass.path, lang)}
+                class="inline-flex rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-petrol-800 transition-colors hover:border-petrol-200 hover:bg-petrol-50"
+              >
+                {t(anlass.labelKey as UiKey)}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a
+        href={getLocalizedPath('/ausland', lang)}
+        class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-petrol-700 transition-colors hover:text-petrol-900"
+      >
+        {t('home.servicesAbroadLink')}
+        <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M3 8h9M9 5l3 3-3 3" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </section>
+  </div>
+</article>

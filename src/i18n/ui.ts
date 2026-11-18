@@ -48,6 +48,17 @@ export const ui = {
     'nav.abroadStudy': 'Auslandssemester',
     'nav.abroadPilgrimage': 'Pilgerreisen',
     'nav.abroadCertificates': 'Nachweise und Atteste',
+    // Menü „Leistungen": Gruppen mit kurzen Überschriften
+    'nav.groupAdvice': 'Beratung',
+    'nav.groupVaccinations': 'Impfungen',
+    'nav.groupCertificates': 'Bescheinigungen und Zeugnisse',
+    'nav.groupAbroad': 'Auslandsaufenthalt',
+    'nav.hpvVaccination': 'HPV-Impfung',
+    'nav.shinglesVaccination': 'Gürtelrose-Impfung',
+    'nav.certVaccination': 'Impfbescheinigung und Formulare',
+    'nav.certVisa': 'Gesundheitszeugnis fürs Visum',
+    'nav.certFlight': 'Attest für Flug und Kreuzfahrt',
+    'nav.allServices': 'Alle Leistungen',
     'nav.voucher': 'Wertgutschein',
     'nav.team': 'Praxis',
     'nav.faq': 'Fragen & Antworten',
@@ -216,10 +227,19 @@ export const ui = {
 
     // Übersichtsseiten (Eltern-Navigation)
     'overview.servicesTitle': 'Unsere Leistungen',
-    'overview.servicesLead':
-      'Reisemedizin aus einer Hand: persönliche Beratung, Reiseimpfungen sowie Malaria- und Höhenvorsorge. Wählen Sie eine Leistung für alle Details zu Ablauf, Eignung und Kosten.',
-    'overview.servicesMeta':
-      'Reisemedizin aus einer Hand: persönliche Beratung, Reiseimpfungen sowie Malaria- und Höhenvorsorge – mit Details zu Ablauf, Eignung und Kosten.',
+    'overview.servicesLead': NACHWEISE_IM_ANGEBOT
+      ? 'Aus einer Hand: persönliche reisemedizinische Beratung, Impfungen sowie Bescheinigungen und Zeugnisse fürs Ausland. Wählen Sie eine Leistung für alle Details zu Ablauf, Eignung und Kosten.'
+      : 'Aus einer Hand: persönliche reisemedizinische Beratung und Impfungen. Wählen Sie eine Leistung für alle Details zu Ablauf, Eignung und Kosten.',
+    'overview.servicesMeta': NACHWEISE_IM_ANGEBOT
+      ? 'Reisemedizinische Beratung, Reiseimpfungen, Gelbfieber, FSME, HPV und Gürtelrose sowie Bescheinigungen und Zeugnisse fürs Ausland. Privatpraxis in Langenfeld.'
+      : 'Reisemedizinische Beratung, Reiseimpfungen, Gelbfieber, FSME, HPV und Gürtelrose sowie Malaria- und Höhenvorsorge. Privatpraxis in Langenfeld.',
+    // Übersicht Leistungen: Abschnitt Bescheinigungen und Verweis auf die Anlässe im Bereich Ausland
+    'overview.certLead':
+      'Wir stellen Atteste, ärztliche Formulare und englische Impfbescheinigungen aus, soweit wir die Angaben prüfen können.',
+    'overview.occasionTitle': 'Vorbereitung auf Ihren Auslandsaufenthalt',
+    'overview.occasionLead': NACHWEISE_IM_ANGEBOT
+      ? 'Auslandsjahr, Au-pair, Work & Travel oder Auslandssemester: Im Bereich Ausland lesen Sie je Anlass, was Sie brauchen, von der Impfpass-Prüfung über fehlende Impfungen bis zum passenden Formular.'
+      : 'Auslandsjahr, Au-pair, Work & Travel oder Auslandssemester: Im Bereich Ausland lesen Sie je Anlass, was Sie brauchen, von der Impfpass-Prüfung bis zu fehlenden Impfungen.',
     'overview.diseasesTitle': 'Krankheitsbilder im Überblick',
     'overview.diseasesLead':
       'Fachlich fundierte Informationen zu den Erkrankungen, vor denen unsere Impfungen schützen – mit Angabe der Quellen und des jeweiligen Stands.',
@@ -309,6 +329,17 @@ export const ui = {
     'nav.abroadStudy': 'Study abroad',
     'nav.abroadPilgrimage': 'Pilgrimages',
     'nav.abroadCertificates': 'Certificates and forms',
+    // Services menu: groups with short headings
+    'nav.groupAdvice': 'Advice',
+    'nav.groupVaccinations': 'Vaccinations',
+    'nav.groupCertificates': 'Certificates and forms',
+    'nav.groupAbroad': 'Time abroad',
+    'nav.hpvVaccination': 'HPV vaccination',
+    'nav.shinglesVaccination': 'Shingles vaccination',
+    'nav.certVaccination': 'Vaccination certificate and forms',
+    'nav.certVisa': 'Medical certificate for a visa',
+    'nav.certFlight': 'Certificate for flights and cruises',
+    'nav.allServices': 'All services',
     'nav.voucher': 'Gift voucher',
     'nav.team': 'Practice',
     'nav.faq': 'FAQ',
@@ -477,10 +508,19 @@ export const ui = {
 
     // Overview pages (parent navigation)
     'overview.servicesTitle': 'Our services',
-    'overview.servicesLead':
-      'Travel medicine from a single source: personal advice, travel vaccinations and malaria and altitude prevention. Choose a service for all the details on procedure, suitability and costs.',
-    'overview.servicesMeta':
-      'Travel medicine from a single source: personal advice, travel vaccinations, malaria and altitude care – details on process, suitability and cost.',
+    'overview.servicesLead': NACHWEISE_IM_ANGEBOT
+      ? 'From a single source: personal travel medicine advice, vaccinations, and certificates and forms for time abroad. Choose a service for all the details on procedure, suitability and costs.'
+      : 'From a single source: personal travel medicine advice and vaccinations. Choose a service for all the details on procedure, suitability and costs.',
+    'overview.servicesMeta': NACHWEISE_IM_ANGEBOT
+      ? 'Travel medicine advice, travel vaccinations, yellow fever, TBE, HPV and shingles, plus certificates and forms for time abroad. Private practice in Langenfeld.'
+      : 'Travel medicine advice, travel vaccinations, yellow fever, TBE, HPV and shingles, plus malaria and altitude care. Private practice in Langenfeld.',
+    // Services overview: certificates section and pointer to the occasions in the Abroad section
+    'overview.certLead':
+      'We issue medical certificates, forms and English vaccination certificates as far as we can verify the details.',
+    'overview.occasionTitle': 'Preparing for your time abroad',
+    'overview.occasionLead': NACHWEISE_IM_ANGEBOT
+      ? 'Exchange year, au pair, work & travel or study abroad: the Abroad section sets out what you need for each occasion, from the vaccination record check and missing vaccinations to the right form.'
+      : 'Exchange year, au pair, work & travel or study abroad: the Abroad section sets out what you need for each occasion, from the vaccination record check to missing vaccinations.',
     'overview.diseasesTitle': 'Diseases at a glance',
     'overview.diseasesLead':
       'Evidence-based information on the diseases our vaccinations protect against – with the relevant sources and review date stated.',

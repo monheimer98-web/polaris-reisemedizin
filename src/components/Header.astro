@@ -71,23 +71,86 @@ function isActive(path: string): boolean {
                   <path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </a>
-              <div class="invisible absolute left-0 top-full z-30 min-w-[15rem] pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                <ul class="overflow-hidden rounded-2xl border border-line bg-white p-1.5 shadow-[var(--shadow-card)]">
-                  {item.children.map((child) => (
-                    <li>
+              <div
+                class:list={[
+                  'invisible absolute left-0 top-full z-30 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100',
+                  item.groups?.length ? 'w-max' : 'min-w-[15rem]',
+                ]}
+              >
+                {item.groups?.length ? (
+                  /* Gegliedertes Untermenü: Gruppen nebeneinander, damit es breit und flach
+                     statt lang aufgeht; unten Ablauf und der Weg zur ganzen Übersicht. */
+                  <div class="overflow-hidden rounded-2xl border border-line bg-white shadow-[var(--shadow-card)]">
+                    <div class="flex p-2">
+                      {item.groups.map((group, g) => (
+                        <div class:list={['min-w-[13rem] px-1', g > 0 && 'border-l border-line/70']}>
+                          <p
+                            id={`nav-gruppe-${g}`}
+                            class="whitespace-nowrap px-3.5 pb-1.5 pt-3 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-petrol-500"
+                          >
+                            {t(group.labelKey as UiKey)}
+                          </p>
+                          <ul aria-labelledby={`nav-gruppe-${g}`}>
+                            {group.items.map((child) => (
+                              <li>
+                                <a
+                                  href={getLocalizedPath(child.path, lang)}
+                                  class:list={[
+                                    'block whitespace-nowrap rounded-xl px-3.5 py-2 text-sm transition-colors hover:bg-cream',
+                                    isActive(child.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
+                                  ]}
+                                  aria-current={isActive(child.path) ? 'page' : undefined}
+                                >
+                                  {t(child.labelKey as UiKey)}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                    <div class="flex items-center gap-6 border-t border-line bg-cream/70 px-6 py-3 text-sm">
+                      {item.more?.map((extra) => (
+                        <a
+                          href={getLocalizedPath(extra.path, lang)}
+                          class:list={[
+                            'transition-colors hover:text-petrol-900',
+                            isActive(extra.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft',
+                          ]}
+                          aria-current={isActive(extra.path) ? 'page' : undefined}
+                        >
+                          {t(extra.labelKey as UiKey)}
+                        </a>
+                      ))}
                       <a
-                        href={getLocalizedPath(child.path, lang)}
-                        class:list={[
-                          'block rounded-xl px-3.5 py-2.5 text-sm transition-colors hover:bg-cream',
-                          isActive(child.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
-                        ]}
-                        aria-current={isActive(child.path) ? 'page' : undefined}
+                        href={getLocalizedPath(item.path, lang)}
+                        class="ml-auto inline-flex items-center gap-1.5 font-semibold text-petrol-700 transition-colors hover:text-petrol-900"
                       >
-                        {t(child.labelKey as UiKey)}
+                        {t('nav.allServices')}
+                        <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                          <path d="M3 8h9M9 5l3 3-3 3" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
                       </a>
-                    </li>
-                  ))}
-                </ul>
+                    </div>
+                  </div>
+                ) : (
+                  <ul class="overflow-hidden rounded-2xl border border-line bg-white p-1.5 shadow-[var(--shadow-card)]">
+                    {item.children.map((child) => (
+                      <li>
+                        <a
+                          href={getLocalizedPath(child.path, lang)}
+                          class:list={[
+                            'block rounded-xl px-3.5 py-2.5 text-sm transition-colors hover:bg-cream',
+                            isActive(child.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
+                          ]}
+                          aria-current={isActive(child.path) ? 'page' : undefined}
+                        >
+                          {t(child.labelKey as UiKey)}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           ) : (
@@ -156,8 +219,13 @@ function isActive(path: string): boolean {
   </div>
 
   {/* Mobile-Menü — Akkordeon: Untermenüs sind eingeklappt und per Pfeil aufklappbar,
-      damit die lange Liste (u. a. 12 Krankheitsbilder) kompakt und übersichtlich bleibt. */}
-  <div id="mobile-menu" class="hidden border-t border-line bg-cream xl:hidden">
+      damit die lange Liste (u. a. 12 Krankheitsbilder) kompakt und übersichtlich bleibt.
+      Höhe auf den Bildschirm begrenzt und in sich scrollbar: Die Kopfzeile klebt oben, ein
+      längeres aufgeklapptes Menü wäre sonst unten nicht erreichbar. */}
+  <div
+    id="mobile-menu"
+    class="hidden max-h-[calc(100dvh-4.25rem)] overflow-y-auto overscroll-contain border-t border-line bg-cream sm:max-h-[calc(100dvh-5.25rem)] xl:hidden"
+  >
     <nav class="mx-auto flex w-full max-w-7xl flex-col px-5 py-2 sm:px-8" aria-label={t('header.primaryNav')}>
       {
         primaryNav.map((item, i) => (
@@ -188,22 +256,95 @@ function isActive(path: string): boolean {
                   </button>
                 </div>
                 <div id={`submenu-${i}`} class="submenu hidden">
-                  <ul class="mb-2 ml-3 flex flex-col border-l border-petrol-100 pl-3">
-                    {item.children.map((child) => (
-                      <li>
+                  {item.groups?.length ? (
+                    /* Gegliedertes Untermenü: dieselben Gruppen wie am Desktop, jede einzeln aufklappbar,
+                       damit die Liste kurz bleibt. Die Gruppe der aktuellen Seite ist schon offen.
+                       Die Knöpfe nutzen dieselbe Klasse wie die Pfeile der Hauptpunkte (Skript unten). */
+                    <div class="mb-2 ml-3 border-l border-petrol-100 pl-3">
+                      {item.groups.map((group, g) => {
+                        const open = group.items.some((child) => isActive(child.path));
+                        return (
+                          <div>
+                            <button
+                              type="button"
+                              class="submenu-toggle flex w-full items-center justify-between gap-3 rounded-lg px-2 py-2.5 text-left text-sm font-medium text-ink transition-colors hover:text-petrol-900"
+                              aria-expanded={open ? 'true' : 'false'}
+                              aria-controls={`nav-gruppe-mobil-${g}`}
+                            >
+                              {t(group.labelKey as UiKey)}
+                              <svg
+                                class:list={['submenu-chevron mr-0.5 h-4 w-4 shrink-0 text-petrol-500 transition-transform duration-200', open && 'rotate-180']}
+                                viewBox="0 0 12 12"
+                                fill="none"
+                                aria-hidden="true"
+                              >
+                                <path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                              </svg>
+                            </button>
+                            <ul
+                              id={`nav-gruppe-mobil-${g}`}
+                              class:list={['mb-1.5 ml-2 flex flex-col border-l border-petrol-100 pl-2', !open && 'hidden']}
+                            >
+                              {group.items.map((child) => (
+                                <li>
+                                  <a
+                                    href={getLocalizedPath(child.path, lang)}
+                                    class:list={[
+                                      'block rounded-lg px-2 py-2 text-sm transition-colors',
+                                      isActive(child.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
+                                    ]}
+                                    aria-current={isActive(child.path) ? 'page' : undefined}
+                                  >
+                                    {t(child.labelKey as UiKey)}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        );
+                      })}
+                      <div class="mt-1.5 flex items-center justify-between gap-4 border-t border-line/70 px-2 pt-2 text-sm">
+                        {item.more?.map((extra) => (
+                          <a
+                            href={getLocalizedPath(extra.path, lang)}
+                            class:list={[
+                              'py-1.5 transition-colors hover:text-petrol-900',
+                              isActive(extra.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft',
+                            ]}
+                            aria-current={isActive(extra.path) ? 'page' : undefined}
+                          >
+                            {t(extra.labelKey as UiKey)}
+                          </a>
+                        ))}
                         <a
-                          href={getLocalizedPath(child.path, lang)}
-                          class:list={[
-                            'block rounded-lg px-2 py-2 text-sm transition-colors',
-                            isActive(child.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
-                          ]}
-                          aria-current={isActive(child.path) ? 'page' : undefined}
+                          href={getLocalizedPath(item.path, lang)}
+                          class="ml-auto inline-flex items-center gap-1.5 py-1.5 font-semibold text-petrol-700 transition-colors hover:text-petrol-900"
                         >
-                          {t(child.labelKey as UiKey)}
+                          {t('nav.allServices')}
+                          <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                            <path d="M3 8h9M9 5l3 3-3 3" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
                         </a>
-                      </li>
-                    ))}
-                  </ul>
+                      </div>
+                    </div>
+                  ) : (
+                    <ul class="mb-2 ml-3 flex flex-col border-l border-petrol-100 pl-3">
+                      {item.children.map((child) => (
+                        <li>
+                          <a
+                            href={getLocalizedPath(child.path, lang)}
+                            class:list={[
+                              'block rounded-lg px-2 py-2 text-sm transition-colors',
+                              isActive(child.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
+                            ]}
+                            aria-current={isActive(child.path) ? 'page' : undefined}
+                          >
+                            {t(child.labelKey as UiKey)}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             ) : (
