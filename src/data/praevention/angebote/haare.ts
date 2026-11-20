@@ -96,8 +96,8 @@ export const haare: PreventionOffer = {
     meta: {
       title: { de: 'Haarsprechstunde mit Haaranalyse', en: 'Hair consultation with hair analysis' },
       description: {
-        de: 'Haarausfall ärztlich abklären: Gespräch, Untersuchung der Kopfhaut, Blutwerte und ein klarer Plan in zwei Terminen. Privatpraxis in Langenfeld.',
-        en: 'Hair loss assessed by a doctor: conversation, scalp examination, blood tests and a clear plan in two appointments. Private practice in Langenfeld.',
+        de: 'Haarausfall ärztlich abklären in Langenfeld bei Düsseldorf: Gespräch, Untersuchung der Kopfhaut, Blutwerte und ein klarer Plan in zwei Terminen.',
+        en: 'Hair loss assessed by a doctor in Langenfeld near Düsseldorf: conversation, scalp examination, blood tests and a clear plan in two appointments.',
       },
       eyebrow: { de: 'Prävention', en: 'Prevention' },
       lead: {
@@ -307,8 +307,8 @@ export const haarePrp: ClinicalPage = {
   meta: {
     title: { de: 'PRP bei Haarausfall', en: 'PRP for hair loss' },
     description: {
-      de: 'PRP aus Eigenblut bei Haarausfall: was es kann, was nicht, Ablauf und Kosten. Erster Termin mit ärztlicher Prüfung. Privatpraxis Langenfeld.',
-      en: 'PRP from your own blood for hair loss: what it can and cannot do, procedure and costs. First appointment with a medical assessment. Langenfeld.',
+      de: 'PRP aus Eigenblut bei Haarausfall in Langenfeld bei Düsseldorf: was es kann, was nicht, Ablauf und Kosten. Erster Termin mit ärztlicher Prüfung.',
+      en: 'PRP from your own blood for hair loss in Langenfeld near Düsseldorf: what it can and cannot do, procedure and costs, with a medical assessment first.',
     },
     eyebrow: { de: 'Prävention', en: 'Prevention' },
     lead: {

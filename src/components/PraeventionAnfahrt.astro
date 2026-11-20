@@ -1,0 +1,47 @@
+---
+/**
+ * Abschnitt „Aus Düsseldorf, Monheim, Hilden und Umgebung“ für die Seiten der Prävention.
+ *
+ * Nicki, 20.11.2026: Die Prävention soll nicht nur für Langenfeld gefunden werden, sondern auch
+ * von Menschen aus Düsseldorf, Monheim, Solingen und Umgebung. Messung am selben Abend: Mit Ort
+ * gesucht wird fast nur „… düsseldorf“ (und „… köln“); die kleinen Nachbarstädte tauchen nur bei
+ * „ernährungsberatung“ auf. Deshalb nennt jede Präventionsseite einmal, in einem echten Absatz,
+ * woher man gut zu uns kommt. Keine eigenen Seiten je Stadt: Die wertet Google als Brückenseiten,
+ * und sie täuschen Standorte vor. Fakten wie auf der Kontaktseite (src/data/kontakt.ts).
+ */
+import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
+
+interface Props {
+  /** Der Befundtermin geht auch am Telefon: dann kommt man nur einmal in die Praxis. */
+  befundAmTelefon?: boolean;
+}
+
+const { befundAmTelefon = false } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const de = lang === 'de';
+const kontakt = getLocalizedPath('/kontakt', lang) + '#anfahrt';
+---
+
+<section id="anfahrt" class="mt-12 scroll-mt-32 sm:mt-14">
+  <div class="rich-text">
+    <h2>{de ? 'Aus Düsseldorf, Monheim, Hilden und Umgebung' : 'From Düsseldorf, Monheim, Hilden and nearby'}</h2>
+    <p>
+      {
+        de
+          ? 'Unsere Praxis liegt am Leipziger Weg 5 in Langenfeld-Richrath, zwischen Düsseldorf und Köln. Die Anschlussstellen Langenfeld-Richrath (A59) und Solingen (A3) sind nah. So erreichen Sie uns gut aus Monheim am Rhein, Hilden, Leichlingen, Solingen, Leverkusen und dem Düsseldorfer Süden, etwa aus Benrath, Garath und Hellerhof.'
+          : 'Our practice is at Leipziger Weg 5 in Langenfeld-Richrath, between Düsseldorf and Cologne, close to the Langenfeld-Richrath (A59) and Solingen (A3) motorway junctions. This makes us easy to reach from Monheim am Rhein, Hilden, Leichlingen, Solingen, Leverkusen and southern Düsseldorf, for example Benrath, Garath and Hellerhof.'
+      }
+    </p>
+    <p>
+      {
+        de
+          ? 'Mit Bus und Bahn: S6 (Köln–Düsseldorf–Essen) bis Langenfeld (Rheinland), von dort mit den Buslinien 785 oder 790 nach Richrath. Die Haltestellen Bahnstraße und Winkelsweg liegen zwei bis drei Gehminuten von der Praxis entfernt.'
+          : 'By public transport: S6 (Cologne–Düsseldorf–Essen) to Langenfeld (Rheinland), then bus 785 or 790 to Richrath. The Bahnstraße and Winkelsweg stops are a two to three minute walk from the practice.'
+      }
+      {befundAmTelefon && (de ? ' Den Befundtermin können Sie auch am Telefon wahrnehmen. Dann kommen Sie nur einmal zu uns.' : ' The results appointment can also take place by phone, so you only need to come in once.')}
+    </p>
+    <p>
+      <a href={kontakt}>{de ? 'Anfahrt und Parken' : 'Directions and parking'}</a>
+    </p>
+  </div>
+</section>

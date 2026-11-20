@@ -42,7 +42,7 @@ const reise = [
 
 const text = `# ${site.brand.legalName}
 
-> Ärztliche Privatpraxis in ${site.contact.city} bei Düsseldorf für Prävention, Reisemedizin und Impfungen. Gesundheitscheck, Blutwerte, Sprechstunde Gewicht und Stoffwechsel, Haarsprechstunde${hatPrp ? ' und PRP bei Haarausfall' : ''}; dazu reisemedizinische Beratung und Reiseimpfungen als staatlich zugelassene Gelbfieberimpfstelle. Termine lassen sich direkt über die Website buchen.
+> Ärztliche Privatpraxis in ${site.contact.city} bei Düsseldorf für Prävention, Reisemedizin und Impfungen. Gesundheitscheck, Blutwerte, Sprechstunde Gewicht und Stoffwechsel mit ärztlicher Ernährungsberatung, Haarsprechstunde${hatPrp ? ' und PRP bei Haarausfall' : ''}; dazu reisemedizinische Beratung und Reiseimpfungen als staatlich zugelassene Gelbfieberimpfstelle. Termine lassen sich direkt über die Website buchen.
 
 - Adresse: ${site.contact.street}, ${site.contact.zip} ${site.contact.city}
 - Telefon: ${site.contact.phone}

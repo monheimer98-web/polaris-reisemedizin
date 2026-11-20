@@ -108,8 +108,8 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
         en: `${name.en}: medical support`,
       },
       description: {
-        de: 'Ärztliche Beratung zu Gewicht und Stoffwechsel in Langenfeld: Untersuchung, Blutwerte, Ernährung, Bewegung, Schlaf und ein persönlicher Plan.',
-        en: 'Medical advice on weight and metabolic health in Langenfeld: examination, blood tests, diet, activity, sleep and a personal plan.',
+        de: 'Ärztliche Beratung zu Ernährung, Gewicht und Stoffwechsel in Langenfeld bei Düsseldorf: Untersuchung, Blutwerte, Bewegung, Schlaf und ein persönlicher Plan.',
+        en: 'Medical advice on nutrition, weight and metabolic health in Langenfeld near Düsseldorf: examination, blood tests, activity, sleep and a personal plan.',
       },
       eyebrow: { de: 'Prävention', en: 'Prevention' },
       lead: {

@@ -7,6 +7,7 @@
  */
 import ContentLayout from '../layouts/ContentLayout.astro';
 import ClinicalSections from './ClinicalSections.astro';
+import PraeventionAnfahrt from './PraeventionAnfahrt.astro';
 import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
 import { getSources } from '../data/sources';
 import { preventionHub } from '../data/praevention';
@@ -49,6 +50,7 @@ const about = thema ? { ...thema, contraindication: prpGegenanzeigen(lang) } : u
   }}
 >
   <ClinicalSections page={{ ...rest, faq: undefined }} />
+  <PraeventionAnfahrt />
   {
     faq.length > 0 && (
       <div class="mt-12 sm:mt-14">

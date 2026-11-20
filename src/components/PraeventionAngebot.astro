@@ -7,6 +7,7 @@
  * sie aufnimmt.
  */
 import ClinicalSections from './ClinicalSections.astro';
+import PraeventionAnfahrt from './PraeventionAnfahrt.astro';
 import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
 import { PREVENTION_COSTS_PATH, preventionDoctor } from '../data/praevention';
 import type { PreventionOffer } from '../data/praevention/types';
@@ -78,6 +79,9 @@ const { faq, ...rest } = offer.page;
     </p>
   </div>
 </section>
+
+{/* Einmal je Seite: woher man gut zu uns kommt (Suchen mit „Düsseldorf“, Nachbarstädte). */}
+<PraeventionAnfahrt befundAmTelefon={offer.slug === 'laborwerte-check' || offer.slug === 'haare'} />
 
 {
   faq && faq.length > 0 && (

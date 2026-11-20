@@ -94,8 +94,8 @@ export const praeventionsCheck: PreventionOffer = {
         en: 'Health check-up: two appointments, one written report',
       },
       description: {
-        de: 'Gesundheitscheck für Privatversicherte und Selbstzahler in Langenfeld: Messungen, Blutwerte, Untersuchung von Kopf bis Fuß und schriftlicher Befundbericht.',
-        en: 'Health check-up for privately insured and self-paying patients in Langenfeld: measurements, blood tests, a full examination and a written report.',
+        de: 'Gesundheitscheck für Privatversicherte und Selbstzahler in Langenfeld bei Düsseldorf: Messungen, Blutwerte, Untersuchung von Kopf bis Fuß und Befundbericht.',
+        en: 'Health check-up for privately insured and self-paying patients in Langenfeld near Düsseldorf: measurements, blood tests, a full examination and a report.',
       },
       eyebrow: {
         de: 'Prävention',

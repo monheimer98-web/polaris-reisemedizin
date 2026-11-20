@@ -104,7 +104,7 @@ export const preventionHub = {
     title: { de: 'Prävention in Langenfeld: Gesundheitscheck und Blutwerte', en: 'Prevention in Langenfeld: health check-up and blood values' },
     description: {
       de: 'Gesundheitscheck, Blutwerte, Gewicht und Haarausfall: ärztliche Prävention in zwei Terminen, mit Befundbericht. Privatpraxis in Langenfeld bei Düsseldorf.',
-      en: 'Health check-up, blood tests, weight and hair loss: medical prevention in two appointments, with a written report. Private practice in Langenfeld.',
+      en: 'Health check-up, blood tests, weight and hair loss: medical prevention in two appointments, with a written report. Private practice in Langenfeld near Düsseldorf.',
     },
     eyebrow: { de: 'Prävention bei Polaris', en: 'Prevention at Polaris' },
     lead: {

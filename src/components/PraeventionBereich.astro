@@ -10,6 +10,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from './PageHero.astro';
 import PraeventionNav from './PraeventionNav.astro';
 import CTA from './CTA.astro';
+import PraeventionAnfahrt from './PraeventionAnfahrt.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
 import { getLangFromUrl, getLocalizedPath, useTranslations } from '../i18n/utils';
 import { SITE_URL } from '../config/site';
@@ -168,6 +169,12 @@ const angebotsListe = {
         </div>
       </div>
     </section>
+
+    <div class="u-container pb-14 sm:pb-16">
+      <div class="max-w-3xl">
+        <PraeventionAnfahrt />
+      </div>
+    </div>
 
     <CTA title={hub.ctaTitle[lang]} lead={hub.ctaLead[lang]} note={hub.ctaNote[lang]} bookingPath={PREVENTION_BOOKING_PATH} />
   </div>

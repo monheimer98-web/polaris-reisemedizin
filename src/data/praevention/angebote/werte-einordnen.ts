@@ -84,8 +84,8 @@ export const werteEinordnen: PreventionOffer = {
         en: 'Blood test check: blood values on request',
       },
       description: {
-        de: 'Blutwerte auf Wunsch in Langenfeld: Wir besprechen, welche Werte etwas aussagen, nehmen Blut ab und ordnen jeden Wert schriftlich ein. Kosten nach GOÄ.',
-        en: 'Blood tests on request in Langenfeld: we discuss which values are informative, take a sample and explain each result in writing. Fees under the GOÄ.',
+        de: 'Blutwerte privat untersuchen lassen in Langenfeld bei Düsseldorf: welche Werte etwas aussagen, Blutabnahme und schriftliche Einordnung. Kosten nach GOÄ.',
+        en: 'Private blood tests in Langenfeld near Düsseldorf: which values are informative, a blood sample and a written explanation of each result. Fees under the GOÄ.',
       },
       eyebrow: { de: 'Prävention', en: 'Prevention' },
       lead: {
