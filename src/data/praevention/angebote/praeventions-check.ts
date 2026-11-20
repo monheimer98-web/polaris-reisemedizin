@@ -272,8 +272,8 @@ export const praeventionsCheck: PreventionOffer = {
       {
         q: { de: 'Muss ich zur Blutentnahme nüchtern sein?', en: 'Do I need to fast for the blood test?' },
         a: {
-          de: 'In der Regel nicht. Die Werte des Basislabors lassen sich ohne Nüchternheit bestimmen. Nehmen Sie Ihre Medikamente wie gewohnt ein. Wenn etwas anderes gilt, sagen wir es Ihnen vorab.',
-          en: 'Usually not. The basic panel can be measured without fasting. Take your medication as usual. If anything else applies, we will tell you beforehand.',
+          de: 'In der Regel nicht. Die Werte des Basislabors lassen sich ohne Nüchternheit bestimmen. Nehmen Sie Ihre Medikamente wie gewohnt ein. Braucht ein Wert doch Nüchternheit, nehmen wir dieses Blut in einem eigenen kurzen Termin ab.',
+          en: 'Usually not. The basic panel can be measured without fasting. Take your medication as usual. If a value does require fasting, we take that sample at a separate short appointment.',
         },
       },
       {

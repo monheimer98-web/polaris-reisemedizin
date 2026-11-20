@@ -49,8 +49,8 @@ export const werteEinordnen: PreventionOffer = {
     {
       title: { de: 'Blutabnahme im selben Termin', en: 'Blood sample in the same appointment' },
       text: {
-        de: 'Direkt im Anschluss nehmen wir Blut ab, auch bei Terminen am Abend oder am Samstag. Ihre Probe geht mit der nächsten Abholung ins Labor. Für die meisten Werte müssen Sie nicht nüchtern sein. Wenn ein Wert nüchtern bestimmt werden oder besonders schnell ins Labor muss, sagen wir es Ihnen vorher.',
-        en: 'We take the blood sample straight afterwards, also for appointments in the evening or on Saturday. Your sample goes to the laboratory with the next collection. For most values you do not need to fast. If a value needs fasting or has to reach the laboratory particularly quickly, we tell you beforehand.',
+        de: 'Direkt im Anschluss nehmen wir Blut ab, auch bei Terminen am Abend oder am Samstag. Wir bereiten Ihre Probe in der Praxis auf und lagern sie gekühlt, bis das Labor sie abholt. Für die meisten Werte müssen Sie nicht nüchtern sein. Braucht ein Wert Nüchternheit, nehmen wir dieses Blut in einem eigenen kurzen Termin ab.',
+        en: 'We take the blood sample straight afterwards, also for appointments in the evening or on Saturday. We prepare your sample at the practice and keep it refrigerated until the laboratory collects it. For most values you do not need to fast. If a value requires fasting, we take that sample at a separate short appointment.',
       },
     },
     {
@@ -230,8 +230,8 @@ export const werteEinordnen: PreventionOffer = {
       {
         q: { de: 'Muss ich nüchtern kommen?', en: 'Do I need to fast?' },
         a: {
-          de: 'Für die meisten Werte nicht. Für den Nüchternzucker ja: mindestens acht Stunden nichts essen, Wasser ist erlaubt. Wenn es bei Ihren Werten darauf ankommt, sagen wir es Ihnen vorher.',
-          en: 'Not for most values. For fasting blood sugar, yes: nothing to eat for at least eight hours, water is allowed. If it matters for your tests, we tell you beforehand.',
+          de: 'Für die meisten Werte nicht. Der Nüchternzucker braucht mindestens acht Stunden ohne Essen, Wasser ist erlaubt. Dafür vereinbaren wir einen eigenen kurzen Termin zur Blutabnahme.',
+          en: 'Not for most values. Fasting blood sugar needs at least eight hours without food, water is allowed. For that we arrange a separate short appointment for the blood sample.',
         },
       },
       {

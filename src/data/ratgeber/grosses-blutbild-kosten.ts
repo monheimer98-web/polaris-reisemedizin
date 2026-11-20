@@ -137,11 +137,11 @@ export const grossesBlutbildGuide: ClinicalPage = {
       heading: { de: 'So läuft es ab', en: 'How it works' },
       body: {
         de: [
-          'Sie buchen den Ersttermin des Laborwerte-Checks und kommen dafür in die Praxis: Wir besprechen, was sinnvoll ist, nennen die Kosten und nehmen direkt im Anschluss Blut ab. Ein Blutbild sollte bald ins Labor. Liegt Ihr Termin kurz vor dem Wochenende, sagen wir Ihnen vorher, ob wir dafür einen anderen Tag vorschlagen.',
+          'Sie buchen den Ersttermin des Laborwerte-Checks und kommen dafür in die Praxis: Wir besprechen, was sinnvoll ist, nennen die Kosten und nehmen direkt im Anschluss Blut ab. Wir bereiten Ihre Probe in der Praxis auf und lagern sie gekühlt, bis das Labor sie abholt.',
           'Die Ergebnisse besprechen wir einige Tage später, auf Wunsch am Telefon. Wenn sich im Gespräch zeigt, dass der Gesundheitscheck besser zu Ihrer Frage passt, erklären wir den Unterschied, und Sie entscheiden.',
         ],
         en: [
-          'You book the first appointment of the lab value check and come to the practice: we discuss what makes sense, tell you the costs and take the blood sample straight afterwards. A blood count should reach the laboratory soon. If your appointment is just before the weekend, we tell you beforehand whether we suggest another day.',
+          'You book the first appointment of the lab value check and come to the practice: we discuss what makes sense, tell you the costs and take the blood sample straight afterwards. We prepare your sample at the practice and keep it refrigerated until the laboratory collects it.',
           'We discuss the results a few days later, by phone if you wish. If the conversation shows that the health check-up fits your question better, we explain the difference and you decide.',
         ],
       },
@@ -181,8 +181,8 @@ export const grossesBlutbildGuide: ClinicalPage = {
     {
       q: { de: 'Muss ich nüchtern kommen?', en: 'Do I need to fast?' },
       a: {
-        de: 'Für das Blutbild nicht. Auch die meisten anderen Werte bestimmen wir, ohne dass Sie nüchtern sein müssen. Wenn es bei einem Wert darauf ankommt, sagen wir es Ihnen vorher.',
-        en: 'Not for the blood count. We also measure most other values without you having to fast. If it matters for a particular test, we tell you beforehand.',
+        de: 'Für das Blutbild nicht. Auch die meisten anderen Werte bestimmen wir, ohne dass Sie nüchtern sein müssen. Braucht ein Wert doch Nüchternheit, nehmen wir dieses Blut in einem eigenen kurzen Termin ab.',
+        en: 'Not for the blood count. We also measure most other values without you having to fast. If a value does require fasting, we take that sample at a separate short appointment.',
       },
     },
     {
