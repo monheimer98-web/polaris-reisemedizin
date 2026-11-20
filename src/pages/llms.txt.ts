@@ -27,6 +27,12 @@ const wissen = [
   zeile('Welche Blutwerte wofür?', '/ratgeber/blutwerte-erklaert', 'Die wichtigsten Blutwerte verständlich erklärt.'),
   zeile('Großes Blutbild: Kosten', '/ratgeber/grosses-blutbild-kosten', 'Was ein großes Blutbild zeigt und was es als Selbstzahlerleistung kostet.'),
   zeile('Vitamin-D-Test beim Arzt', '/ratgeber/vitamin-d-test-beim-arzt', 'Wann eine Messung etwas ändert und was sie kostet.'),
+  ...(hatPrp
+    ? [
+        zeile('Haarausfall: Ursachen', '/ratgeber/haarausfall-ursachen', 'Häufige Ursachen bei Frauen und Männern, was man selbst tun kann und wann man zum Arzt geht.'),
+        zeile('Haarausfall: zu welchem Arzt?', '/ratgeber/haarausfall-welcher-arzt', 'Hausarztpraxis, Hautarztpraxis, Frauenarztpraxis oder Haarsprechstunde: wer wobei hilft und wann es eilt.'),
+      ]
+    : []),
 ];
 
 const reise = [

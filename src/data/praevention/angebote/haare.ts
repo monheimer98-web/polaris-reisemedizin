@@ -223,6 +223,8 @@ export const haare: PreventionOffer = {
     lastReviewed: new Date('2026-11-20'),
     related: [
       { label: { de: 'PRP bei Haarausfall', en: 'PRP for hair loss' }, path: '/praevention/haare/prp' },
+      { label: { de: 'Haarausfall: Ursachen', en: 'Hair loss: causes' }, path: '/ratgeber/haarausfall-ursachen' },
+      { label: { de: 'Haarausfall: zu welchem Arzt?', en: 'Hair loss: which doctor?' }, path: '/ratgeber/haarausfall-welcher-arzt' },
       { label: { de: 'Laborwerte-Check', en: 'Blood test check' }, path: '/praevention/laborwerte-check' },
       { label: { de: 'Gesundheitscheck', en: 'Health check-up' }, path: '/praevention/gesundheitscheck' },
       { label: { de: 'Welche Blutwerte wofür?', en: 'Blood tests explained' }, path: '/ratgeber/blutwerte-erklaert' },
@@ -485,6 +487,7 @@ export const haarePrp: ClinicalPage = {
   lastReviewed: new Date('2026-11-20'),
   related: [
     { label: { de: 'Haarsprechstunde', en: 'Hair consultation' }, path: '/praevention/haare' },
+    { label: { de: 'Haarausfall: Ursachen', en: 'Hair loss: causes' }, path: '/ratgeber/haarausfall-ursachen' },
     { label: { de: 'Welche Blutwerte wofür?', en: 'Blood tests explained' }, path: '/ratgeber/blutwerte-erklaert' },
     { label: { de: 'Kosten & Abrechnung', en: 'Fees & billing' }, path: '/kosten' },
   ],

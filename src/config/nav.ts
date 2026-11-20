@@ -176,6 +176,12 @@ export function preventionNav(hatHaare: boolean): NavItem[] {
         { labelKey: 'nav.pvBloodValues', path: '/ratgeber/blutwerte-erklaert' },
         { labelKey: 'nav.pvBloodCount', path: '/ratgeber/grosses-blutbild-kosten' },
         { labelKey: 'nav.pvVitaminD', path: '/ratgeber/vitamin-d-test-beim-arzt' },
+        ...(hatHaare
+          ? [
+              { labelKey: 'nav.pvHairCauses', path: '/ratgeber/haarausfall-ursachen' },
+              { labelKey: 'nav.pvHairDoctor', path: '/ratgeber/haarausfall-welcher-arzt' },
+            ]
+          : []),
       ],
     },
     { labelKey: 'nav.costs', path: '/praevention/kosten' },

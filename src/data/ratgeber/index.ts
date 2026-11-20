@@ -11,6 +11,12 @@ import { malariaRezeptGuide, malariaRezeptSummary } from './malaria-rezept';
 import { grossesBlutbildGuide, grossesBlutbildSummary } from './grosses-blutbild-kosten';
 import { vitaminTestGuide, vitaminTestSummary } from './vitamin-d-test-beim-arzt';
 import { blutwerteGuide, blutwerteSummary } from './blutwerte-erklaert';
+import { haarausfallUrsachenGuide, haarausfallUrsachenSummary } from './haarausfall-ursachen';
+import { haarausfallArztGuide, haarausfallArztSummary } from './haarausfall-welcher-arzt';
+import { preventionOffers } from '../praevention/index';
+
+/** Die Haarausfall-Ratgeber verweisen auf die Haarsprechstunde; ohne sie gibt es sie nicht. */
+const hatHaare = preventionOffers.some((o) => o.slug === 'haare');
 
 export interface Guide {
   /** URL-Slug unter /ratgeber/ (DE und EN gleich). */
@@ -76,6 +82,24 @@ export const guides: Guide[] = [
     area: 'praevention',
     bookingType: 'pv-e2',
   },
+  ...(hatHaare
+    ? [
+        {
+          slug: 'haarausfall-ursachen',
+          summary: haarausfallUrsachenSummary,
+          page: haarausfallUrsachenGuide,
+          area: 'praevention' as const,
+          bookingType: 'pv-haare',
+        },
+        {
+          slug: 'haarausfall-welcher-arzt',
+          summary: haarausfallArztSummary,
+          page: haarausfallArztGuide,
+          area: 'praevention' as const,
+          bookingType: 'pv-haare',
+        },
+      ]
+    : []),
 ];
 
 /** Bestehende Seiten, die thematisch in den Ratgeber gehören. */

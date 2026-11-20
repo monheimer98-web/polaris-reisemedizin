@@ -254,6 +254,14 @@ export const seoTitles: Record<string, Localized> = {
     de: 'Vitamin-D-Test beim Arzt: Kosten & Nutzen | Polaris Langenfeld',
     en: 'Vitamin D Test at the Doctor: Cost & Benefit | Polaris',
   },
+  '/ratgeber/haarausfall-ursachen': {
+    de: 'Haarausfall: Ursachen und was Sie tun können | Polaris',
+    en: 'Hair Loss: Causes and What You Can Do | Polaris',
+  },
+  '/ratgeber/haarausfall-welcher-arzt': {
+    de: 'Haarausfall: Zu welchem Arzt? Rat aus Langenfeld | Polaris',
+    en: 'Hair Loss: Which Doctor to See? | Polaris Langenfeld',
+  },
   '/ratgeber/malaria-tabletten-rezept': {
     de: 'Malaria-Tabletten: Rezept & Beratung in Langenfeld | Polaris',
     en: 'Malaria Tablets: Prescription & Advice | Polaris',
