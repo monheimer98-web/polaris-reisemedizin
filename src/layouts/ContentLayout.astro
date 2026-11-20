@@ -65,9 +65,11 @@ interface Props {
   bookingLabel?: string;
   /** Zweiter Buchungsknopf im Kopf (Terminart-ID und Beschriftung in der Seitensprache). */
   secondaryBooking?: { type: string; label: string };
+  /** Hauptthema der Seite für das JSON-LD (`about`), z. B. die Präventionsleistung. */
+  about?: Record<string, unknown>;
 }
 
-const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel, faq = [], parent, area, areaCurrent, cta, noBooking = false, neutralCta = false, bookingLabel, secondaryBooking } = Astro.props;
+const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel, faq = [], parent, area, areaCurrent, cta, noBooking = false, neutralCta = false, bookingLabel, secondaryBooking, about } = Astro.props;
 const areaClass = area === 'praevention' ? 'theme-praevention' : undefined;
 const lang = getLangFromUrl(Astro.url);
 const bookingPath = area === 'praevention' ? PREVENTION_BOOKING_PATH : BOOKING_PATH;
@@ -117,7 +119,7 @@ const medicalWebPageSchema = {
   lastReviewed: lastReviewed.toISOString().slice(0, 10),
   reviewedBy: { '@id': `${SITE_URL}/#practice` },
   isPartOf: { '@id': `${SITE_URL}/#practice` },
-  ...(aboutType ? { about: { '@type': aboutType, name: title } } : {}),
+  ...(about ? { about } : aboutType ? { about: { '@type': aboutType, name: title } } : {}),
 };
 const faqSchema = faq.length
   ? {

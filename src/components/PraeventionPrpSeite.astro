@@ -11,6 +11,8 @@ import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
 import { getSources } from '../data/sources';
 import { preventionHub } from '../data/praevention';
 import { haarePrp } from '../data/praevention/angebote/haare';
+import { SITE_URL } from '../config/site';
+import { praeventionThema, prpGegenanzeigen } from '../data/praevention/schema';
 
 const lang = getLangFromUrl(Astro.url);
 const de = lang === 'de';
@@ -18,6 +20,8 @@ const page = haarePrp;
 const related = (page.related ?? []).map((item) => ({ label: item.label[lang], path: getLocalizedPath(item.path, lang) }));
 const faq = (page.faq ?? []).map((f) => ({ q: f.q[lang], a: f.a[lang] }));
 const { faq: _faq, ...rest } = page;
+const thema = praeventionThema('prp', lang, (pfad) => new URL(getLocalizedPath(pfad, lang), SITE_URL).href);
+const about = thema ? { ...thema, contraindication: prpGegenanzeigen(lang) } : undefined;
 ---
 
 <ContentLayout
@@ -34,6 +38,7 @@ const { faq: _faq, ...rest } = page;
   secondaryBooking={{ type: 'pv-haare', label: de ? 'Zuerst die Haarsprechstunde buchen' : 'Book the hair consultation first' }}
   area="praevention"
   areaCurrent="haare"
+  about={about}
   parent={{ label: de ? 'Haarsprechstunde' : 'Hair consultation', path: getLocalizedPath('/praevention/haare', lang) }}
   cta={{
     title: de ? 'Ihr erster PRP-Termin' : 'Your first PRP appointment',

@@ -44,8 +44,8 @@ export const teamPage: TeamPage = {
       en: 'Our practice',
     },
     description: {
-      de: 'Lernen Sie unsere Privatpraxis für Reisemedizin, Impfungen und Prävention kennen – mit ärztlicher Beratung auf Grundlage gesicherter Fachquellen.',
-      en: 'Get to know our travel and vaccination medicine practice – with medical advice grounded in trusted professional sources.',
+      de: 'Lernen Sie unsere Privatpraxis für Prävention, Reisemedizin und Impfungen kennen – mit ärztlicher Beratung auf Grundlage gesicherter Fachquellen.',
+      en: 'Get to know our private practice for prevention, travel medicine and vaccinations – with medical advice grounded in trusted professional sources.',
     },
     eyebrow: {
       de: 'Über uns',

@@ -9,6 +9,7 @@ lizenzierte Stockfotografie** zum Einsatz.
 | `../favicon.svg` | Marken-Signet „Polaris" (Kompass/Globus) | Eigenanfertigung für diese Praxis | © Praxisinhaber, alle Rechte vorbehalten |
 | `../apple-touch-icon.png` | Home-Screen-Icon (180×180), abgeleitet vom Signet | Eigenanfertigung (generiert aus dem Signet) | © Praxisinhaber, alle Rechte vorbehalten |
 | `og-default.png` | Open-Graph-Vorschaubild (1200×630) | Eigenanfertigung (Marke/Typografie) | © Praxisinhaber, alle Rechte vorbehalten |
+| `og-praevention.png` | Open-Graph-Vorschaubild der Präventionswelt (1200×630, Salbei) | Eigenanfertigung (Marke/Typografie) | © Praxisinhaber, alle Rechte vorbehalten |
 | `team/alexander-mayer.webp` | Porträt Alexander Mayer (Arzt) | Vom Auftraggeber bereitgestellt | Nutzungsrecht durch die abgebildete Person erteilt |
 
 ## Hinweise

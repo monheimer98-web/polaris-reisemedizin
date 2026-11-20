@@ -10,6 +10,8 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
 import PraeventionAngebot from '../../../components/PraeventionAngebot.astro';
 import { getLangFromUrl, getLocalizedPath } from '../../../i18n/utils';
 import { getSources } from '../../../data/sources';
+import { SITE_URL } from '../../../config/site';
+import { praeventionThema } from '../../../data/praevention/schema';
 import { allPreventionOffers, preventionHub, preventionOffers, preventionPath } from '../../../data/praevention';
 import type { PreventionOffer } from '../../../data/praevention/types';
 
@@ -29,6 +31,7 @@ const related = (page.related ?? [])
   .filter((item) => !unveroeffentlicht.has(item.path))
   .map((item) => ({ label: item.label[lang], path: getLocalizedPath(item.path, lang) }));
 const faq = (page.faq ?? []).map((f) => ({ q: f.q[lang], a: f.a[lang] }));
+const about = praeventionThema(offer.slug, lang, (pfad) => new URL(getLocalizedPath(pfad, lang), SITE_URL).href);
 ---
 
 <ContentLayout
@@ -45,6 +48,7 @@ const faq = (page.faq ?? []).map((f) => ({ q: f.q[lang], a: f.a[lang] }));
   secondaryBooking={offer.secondaryBooking ? { type: offer.secondaryBooking.type, label: offer.secondaryBooking.label[lang] } : undefined}
   area="praevention"
   areaCurrent={offer.slug}
+  about={about}
   cta={{ title: preventionHub.ctaTitle[lang], lead: preventionHub.ctaLead[lang], note: preventionHub.ctaNote[lang] }}
 >
   <PraeventionAngebot offer={offer} />

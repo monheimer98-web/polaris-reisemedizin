@@ -3,7 +3,7 @@
  * Zentrale SEO-Komponente: Title, Description, Canonical, hreflang-Alternates,
  * OpenGraph/Twitter sowie JSON-LD (MedicalClinic) aus der Praxis-Konfiguration.
  */
-import { preventionOffers } from '../data/praevention';
+import { praeventionLeistungen, praxisThemen } from '../data/praevention/schema';
 import { site, SITE_URL, DEFAULT_LOCALE, type Locale } from '../config/site';
 import { getAlternateLanguages, getLocalizedPath, getLogicalPath, withBase, HREFLANG } from '../i18n/utils';
 import { seoTitles } from '../data/seoTitles';
@@ -26,17 +26,14 @@ interface Props {
   welt?: 'reise' | 'praevention';
 }
 
-const { title, description, image = '/images/og-default.png', noindex = false, lang, schema, welt = 'reise' } = Astro.props;
+const { title, description, image: bildProp, noindex = false, lang, schema, welt = 'reise' } = Astro.props;
 const praevention = welt === 'praevention';
-// Leistungen der Präventionswelt (dieselbe Praxis, derselbe Standort).
-const preventionServices = [
-  { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Gesundheitscheck für Erwachsene mit Befundbesprechung' : 'Health check-up for adults with results consultation' },
-  { '@type': 'MedicalTest', name: lang === 'de' ? 'Laborwerte-Check: Blutwerte auf Wunsch mit ärztlicher Einordnung' : 'Lab value check: blood tests on request with medical interpretation' },
-  { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Sprechstunde Gewicht und Stoffwechsel' : 'Weight and metabolism consultation' },
-  ...(preventionOffers.some((o) => o.slug === 'haare')
-    ? [{ '@type': 'MedicalProcedure', name: lang === 'de' ? 'Haarsprechstunde' : 'Hair consultation' }]
-    : []),
-];
+// Vorschaubild beim Teilen: Präventionswelt in Salbei, sonst Petrol (beide mit dem Leitstern).
+const image = bildProp ?? (praevention ? '/images/og-praevention.png' : '/images/og-default.png');
+// Leistungen der Präventionswelt (dieselbe Praxis, derselbe Standort), je mit
+// Art, Kurzbeschreibung und Adresse der eigenen Seite (data/praevention/schema.ts).
+const zuUrl = (pfad: string) => new URL(getLocalizedPath(pfad, lang), SITE_URL).href;
+const preventionServices = praeventionLeistungen(lang, zuUrl);
 
 // Auslieferungs-Origin: konfigurierte `site`-URL (Custom-Domain ODER GitHub-
 // Pages-Vorschau, je nach Build) mit Fallback auf die Default-Domain.
@@ -76,7 +73,7 @@ const clinicSchema = {
   '@context': 'https://schema.org',
   '@type': 'MedicalClinic',
   '@id': `${homeUrl}#practice`,
-  name: `${site.brand.name} – Privatpraxis für Reisemedizin, Impfungen und Prävention`,
+  name: site.brand.legalName,
   alternateName: site.brand.name,
   description,
   url: homeUrl,
@@ -127,8 +124,10 @@ const clinicSchema = {
     },
     result: { '@type': 'Reservation', name: lang === 'de' ? 'Arzttermin' : 'Medical appointment' },
   },
+  // Nicki 20.11.2026: Prävention steht vorn, auch im Namen der Praxis.
+  knowsAbout: praxisThemen(lang),
   availableService: [
-    ...(praevention ? preventionServices : []),
+    ...preventionServices,
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Reisemedizinische Beratung' : 'Travel-medicine consultation' },
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Reiseimpfungen' : 'Travel vaccinations' },
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Gelbfieberimpfung' : 'Yellow fever vaccination' },
@@ -145,7 +144,6 @@ const clinicSchema = {
           { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Ärztliche Atteste und Formulare für Flug, Kreuzfahrt, Schule und Hochschule' : 'Medical certificates and forms for flights, cruises, schools and universities' },
         ]
       : []),
-   ...(praevention ? [] : preventionServices),
   ],
 };
 

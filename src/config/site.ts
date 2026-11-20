@@ -63,11 +63,11 @@ export const site = {
     /** Markenname — hier zentral änderbar. */
     name: 'Polaris',
     tagline: {
-      de: 'Reisemedizin, Impfungen & Prävention',
-      en: 'Travel medicine, vaccinations & prevention',
+      de: 'Prävention, Reisemedizin & Impfungen',
+      en: 'Prevention, travel medicine & vaccinations',
     },
     /** Vollständige rechtliche Bezeichnung (für Impressum/Datenschutz). */
-    legalName: 'Polaris – Privatpraxis für Reisemedizin, Impfungen und Prävention',
+    legalName: 'Polaris – Privatpraxis für Prävention, Reisemedizin und Impfungen',
     /**
      * Praxisinhaber (natürliche Person) — Einzelpraxis. Wird im Impressum sowie
      * als Verantwortlicher der Datenschutzerklärung namentlich ausgewiesen.

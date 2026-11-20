@@ -12,6 +12,8 @@ import PraeventionNav from './PraeventionNav.astro';
 import CTA from './CTA.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
 import { getLangFromUrl, getLocalizedPath, useTranslations } from '../i18n/utils';
+import { SITE_URL } from '../config/site';
+import { praeventionLeistungen } from '../data/praevention/schema';
 import {
   PREVENTION_BOOKING_PATH,
   PREVENTION_COSTS_PATH,
@@ -31,9 +33,18 @@ const groups = preventionGroups
   .filter((g) => g.offers.length > 0);
 const entryPoints = preventionEntryPoints.filter((e) => preventionOffers.some((o) => o.slug === e.slug));
 const crumbs = [{ label: t('nav.home'), path: getLocalizedPath('/', lang) }, { label: t('nav.preventionArea') }];
+// Liste aller Präventionsleistungen mit Adresse, damit Suchmaschinen und KI-Dienste
+// das Angebot als Ganzes erkennen (data/praevention/schema.ts).
+const leistungen = praeventionLeistungen(lang, (pfad) => new URL(getLocalizedPath(pfad, lang), SITE_URL).href);
+const angebotsListe = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: lang === 'de' ? 'Gesundheit und Prävention in Langenfeld' : 'Health and prevention in Langenfeld',
+  itemListElement: leistungen.map((k, i) => ({ '@type': 'ListItem', position: i + 1, name: k.name, url: k.url })),
+};
 ---
 
-<BaseLayout title={hub.meta.title[lang]} description={hub.meta.description[lang]}>
+<BaseLayout title={hub.meta.title[lang]} description={hub.meta.description[lang]} schema={angebotsListe}>
   <div class="theme-praevention">
     <PageHero eyebrow={hub.meta.eyebrow[lang]} title={hub.meta.title[lang]} lead={hub.meta.lead[lang]}>
       <Breadcrumbs slot="breadcrumb" items={crumbs} label={t('content.breadcrumb')} />
