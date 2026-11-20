@@ -1,12 +1,11 @@
 ---
 /**
- * Terminseite des Bereichs „Prävention & Lebensstil" (/praevention/termin):
- * zeigt nur Präventions-Termine, Reise-Terminarten bleiben auf /termin. Solange
- * die App die Präventions-Terminarten noch nicht kennt
- * (`preventionOnlineBooking = false`), läuft die Vereinbarung über Telefon und
- * E-Mail statt über das Buchungstool. Indexierbar (eigener Inhalt: was zuerst
- * buchen, Ablauf in drei Schritten); keine festen Beträge, sondern Hinweis auf
- * die Beispielkosten. Sprache aus der URL.
+ * Terminseite der Themenwelt „Prävention" (/praevention/termin): bettet die
+ * Buchung mit `bereich=praevention` ein, Reise-Terminarten bleiben auf /termin.
+ * Mit `preventionOnlineBooking = false` stehen statt der Buchung Telefon und
+ * E-Mail. Indexierbar (eigener Inhalt: was zuerst buchen, Ablauf in zwei
+ * Terminen); keine festen Beträge, sondern Hinweis auf die Beispielkosten.
+ * Sprache aus der URL.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from './PageHero.astro';

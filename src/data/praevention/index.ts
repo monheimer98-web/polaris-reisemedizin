@@ -21,10 +21,14 @@ export const PREVENTION_BOOKING_PATH = '/praevention/termin';
 /** Beispielkosten statt Festbeträgen auf Karten und Terminseite. */
 export { BEISPIELKOSTEN_PATH as PREVENTION_COSTS_PATH } from './ablauf';
 /**
- * Online-Buchung der Präventions-Terminarten an? Erst mit dem App-Update
- * (`/buchung?bereich=praevention`) einschalten; bis dahin Telefon und E-Mail.
+ * Präventions-Knöpfe führen direkt in die Buchung (`/buchung?bereich=praevention`).
+ * Ob dort wirklich gebucht werden kann, entscheidet die Praxissoftware: Schalter
+ * PRAEVENTION in ihrer .env und die freigegebenen Sprechzeiten. Ohne
+ * PRAEVENTION=online zeigt die Buchungsseite einen Telefon-Hinweis. So reicht
+ * ein gemeinsames Einspielen von Website und Praxissoftware (Praxissoftware
+ * zuerst). `false` = Knöpfe führen auf /praevention/termin mit Telefon und E-Mail.
  */
-export const preventionOnlineBooking = false;
+export const preventionOnlineBooking = true;
 
 /** Alle vorbereiteten Angebote (auch Stufe 2). */
 export const allPreventionOffers: PreventionOffer[] = [
