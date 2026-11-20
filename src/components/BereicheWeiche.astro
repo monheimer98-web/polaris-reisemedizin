@@ -1,9 +1,14 @@
 ---
 /**
  * Startseiten-Weiche: zwei gleich große Einstiege in die beiden Bereiche der
- * einen Praxis – „Reisemedizin & Impfungen" (Petrol) und „Prävention &
- * Lebensstil" (Salbei). Steht direkt unter dem Hero, damit niemand erst
- * scrollen muss, um den eigenen Bereich zu finden. Sprache aus der URL.
+ * einen Praxis – „Reisemedizin & Impfungen" (Petrol) und „Prävention" (Salbei).
+ *
+ * Sitzt im Hero direkt unter Titel und Einleitung (Hero.astro), damit beide
+ * Bereiche schon im ersten Bild zu sehen sind, auch am Handy. Am Handy ist jede
+ * Karte kurz (Titel, eine Zeile, Pfeil) und als Ganzes anklickbar; ab sm kommen
+ * Beschreibung, Unterpunkte und Knopf dazu. Die Karte ist über den Titel-Link
+ * anklickbar (über die ganze Fläche gelegt); die Unterpunkte liegen darüber und
+ * bleiben eigene Links. Sprache aus der URL.
  */
 import { getLangFromUrl, getLocalizedPath, useTranslations } from '../i18n/utils';
 import { primaryNav } from '../config/nav';
@@ -13,11 +18,13 @@ import { PREVENTION_PATH, preventionOffers, preventionPath } from '../data/praev
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const de = lang === 'de';
+const hatHaare = preventionOffers.some((o) => o.slug === 'haare');
 
 const bereiche = [
   {
     theme: undefined,
     title: de ? 'Reisemedizin & Impfungen' : 'Travel medicine & vaccinations',
+    kurz: de ? 'Reiseberatung, Impfungen, Gelbfieber, Malaria' : 'Travel advice, vaccinations, yellow fever, malaria',
     text: de
       ? 'Reiseberatung mit schriftlichem Reiseplan, Reiseimpfungen, Gelbfieber, Malaria und Höhe – auch abends und samstags.'
       : 'Travel health advice with a written travel plan, travel vaccinations, yellow fever, malaria and altitude – also evenings and Saturdays.',
@@ -28,9 +35,12 @@ const bereiche = [
   {
     theme: 'theme-praevention',
     title: de ? 'Prävention' : 'Prevention',
+    kurz: de
+      ? `Gesundheitscheck, Laborwerte, Ernährung${hatHaare ? ', Haare' : ''}`
+      : `Health check-up, blood tests, nutrition${hatHaare ? ', hair' : ''}`,
     text: de
       ? 'Gesundheitscheck mit Befundbericht, Laborwerte-Check und Sprechstunde Ernährung, Gewicht und Stoffwechsel – in zwei Terminen, mit Ihrem Ergebnis schwarz auf weiß.'
-      : 'Health check-up with a written report, lab value check and a weight and metabolism consultation – in two appointments, with your results in writing.',
+      : 'Health check-up with a written report, lab value check and a nutrition, weight and metabolism consultation – in two appointments, with your results in writing.',
     links: preventionOffers.slice(0, 4).map((o) => ({ label: o.shortName[lang], path: preventionPath(o.slug) })),
     cta: de ? 'Zur Prävention' : 'Go to prevention',
     path: PREVENTION_PATH,
@@ -38,36 +48,51 @@ const bereiche = [
 ];
 ---
 
-<section class="u-container -mt-10 relative z-10 pb-6 sm:-mt-14" aria-label={de ? 'Bereiche der Praxis' : 'Areas of the practice'}>
-  <div class="grid gap-5 md:grid-cols-2">
-    {
-      bereiche.map((b) => (
-        <div class:list={[b.theme]}>
-          <div class="flex h-full flex-col rounded-3xl border border-petrol-100 bg-white p-6 shadow-[var(--shadow-card)] sm:p-8">
-            <p class="eyebrow">
-              <span class="h-2 w-2 rounded-full bg-petrol-500" aria-hidden="true"></span>
-              {de ? 'Bereich' : 'Area'}
-            </p>
-            <h2 class="mt-3 text-2xl sm:text-3xl">{b.title}</h2>
-            <p class="mt-3 flex-1 text-ink-soft">{b.text}</p>
-            <ul class="mt-5 flex flex-wrap gap-2">
-              {b.links.map((l) => (
-                <li>
-                  <a
-                    href={getLocalizedPath(l.path, lang)}
-                    class="inline-flex rounded-full border border-petrol-100 bg-petrol-50/60 px-3 py-1.5 text-sm font-medium text-petrol-800 transition-colors hover:border-gold-300"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <a href={getLocalizedPath(b.path, lang)} class="btn-primary mt-6 self-start">
-              {b.cta}
+<div class="grid gap-3 sm:grid-cols-2 sm:gap-5" role="group" aria-label={de ? 'Bereiche der Praxis' : 'Areas of the practice'}>
+  {
+    bereiche.map((b) => (
+      <div class:list={[b.theme]}>
+        <div class="relative flex h-full flex-col rounded-2xl border-t-4 border-petrol-500 bg-petrol-50 py-3.5 pl-4 pr-12 text-ink shadow-[0_22px_45px_-22px_rgba(0,0,0,0.7)] transition-transform duration-200 hover:-translate-y-0.5 sm:rounded-3xl sm:p-6 lg:p-7">
+          <p class="eyebrow hidden sm:inline-flex">
+            <span class="h-2 w-2 rounded-full bg-petrol-500" aria-hidden="true"></span>
+            {de ? 'Bereich' : 'Area'}
+          </p>
+          <h2 class="text-xl sm:mt-2 sm:text-2xl lg:text-[1.7rem]">
+            <a
+              href={getLocalizedPath(b.path, lang)}
+              class="after:absolute after:inset-0 after:rounded-[inherit] focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-gold-400 focus-visible:after:ring-offset-2 focus-visible:after:ring-offset-petrol-900"
+            >
+              {b.title}
             </a>
-          </div>
+          </h2>
+          <p class="mt-0.5 text-sm text-ink-soft sm:hidden">{b.kurz}</p>
+          <p class="mt-2 hidden flex-1 text-[0.95rem] leading-relaxed text-ink-soft sm:block">{b.text}</p>
+          <ul class="relative z-10 mt-4 hidden flex-wrap gap-2 sm:flex">
+            {b.links.map((l) => (
+              <li>
+                <a
+                  href={getLocalizedPath(l.path, lang)}
+                  class="inline-flex rounded-full border border-petrol-100 bg-white px-3 py-1.5 text-sm font-medium text-petrol-800 transition-colors hover:border-gold-300"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <span class="btn-primary mt-5 hidden self-start sm:inline-flex" aria-hidden="true">
+            {b.cta}
+            <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M3 8h9M9 5l3 3-3 3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          {/* Pfeil am Handy: zeigt, dass die ganze Karte weiterführt. */}
+          <span class="absolute right-3 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-petrol-800 text-cream sm:hidden" aria-hidden="true">
+            <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M3 8h9M9 5l3 3-3 3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
         </div>
-      ))
-    }
-  </div>
-</section>
+      </div>
+    ))
+  }
+</div>

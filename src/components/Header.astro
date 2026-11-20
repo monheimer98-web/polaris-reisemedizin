@@ -9,6 +9,7 @@ import { WELT_START, type Welt } from '../lib/welt';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import { site } from '../config/site';
 import type { UiKey } from '../i18n/ui';
+import type { NavItem } from '../config/nav';
 import Logo from './Logo.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 
@@ -23,16 +24,63 @@ const t = useTranslations(lang);
 const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const homeHref = getLocalizedPath('/', lang);
 const bookingHref = getLocalizedPath(welt === 'praevention' ? PREVENTION_BOOKING_PATH : BOOKING_PATH, lang);
-const navItems = welt === 'praevention' ? preventionNav(preventionOffers.some((o) => o.slug === 'haare')) : primaryNav;
-const welten: { id: Welt; labelKey: UiKey; aktiv: string; ruhig: string }[] = [
-  { id: 'reise', labelKey: 'nav.worldTravel', aktiv: 'bg-[#0e3b43] text-white', ruhig: 'text-[#0e3b43] hover:bg-[#edf5f5]' },
-  { id: 'praevention', labelKey: 'nav.worldPrevention', aktiv: 'bg-[#29402c] text-white', ruhig: 'text-[#29402c] hover:bg-[#f1f5ef]' },
+const hatHaare = preventionOffers.some((o) => o.slug === 'haare');
+const navItems = welt === 'praevention' ? preventionNav(hatHaare) : primaryNav;
+/* Feste Farben je Welt. Das jeweils andere Feld ist in seiner Farbe getönt und
+   umrandet, damit es als zweite Wahl sofort auffällt. */
+const welten: { id: Welt; labelKey: UiKey; aktiv: string; ruhig: string; icon: string }[] = [
+  {
+    id: 'reise',
+    labelKey: 'nav.worldTravel',
+    aktiv: 'bg-[#0e3b43] text-white shadow-sm',
+    ruhig: 'bg-[#edf5f5] text-[#0e3b43] ring-1 ring-inset ring-[#0e3b43]/20 hover:bg-[#d2e6e6]',
+    icon: 'M14 2 2 7.2l5.1 1.7L8.8 14 14 2Z',
+  },
+  {
+    id: 'praevention',
+    labelKey: 'nav.worldPrevention',
+    aktiv: 'bg-[#29402c] text-white shadow-sm',
+    ruhig: 'bg-[#f1f5ef] text-[#29402c] ring-1 ring-inset ring-[#29402c]/25 hover:bg-[#dfe9dc]',
+    icon: 'M13.5 2.5c-6.4 0-10 3-10 7.3 0 1.4.4 2.6 1.2 3.4C6 10 8.4 7.9 11 6.6 8.7 8.2 6.6 10.6 5.6 13.6c.7.3 1.4.4 2.2.4 4.4 0 5.7-4.4 5.7-11.5Z',
+  },
 ];
+/* Kurzer Hinweis neben dem Umschalter: was im anderen Bereich zu finden ist. */
+const listeDe = (teile: string[]) => (teile.length > 1 ? `${teile.slice(0, -1).join(', ')} und ${teile[teile.length - 1]}` : teile.join(''));
+const listeEn = (teile: string[]) => (teile.length > 1 ? `${teile.slice(0, -1).join(', ')} and ${teile[teile.length - 1]}` : teile.join(''));
+const andereWelt: Welt = welt === 'praevention' ? 'reise' : 'praevention';
+const weltHinweis =
+  andereWelt === 'praevention'
+    ? lang === 'de'
+      ? listeDe(['Gesundheitscheck', 'Laborwerte', 'Ernährung', ...(hatHaare ? ['Haare'] : [])])
+      : listeEn(['Health check-up', 'blood tests', 'nutrition', ...(hatHaare ? ['hair'] : [])])
+    : lang === 'de'
+      ? 'Reiseberatung, Reiseimpfungen und Gelbfieber'
+      : 'Travel advice, travel vaccinations and yellow fever';
+const toneClass: Record<NonNullable<NavItem['tone']>, string> = {
+  reise: 'text-[#0e3b43]',
+  praevention: 'text-[#29402c]',
+};
+const toneDot: Record<NonNullable<NavItem['tone']>, string> = {
+  reise: 'bg-[#c9a24b]',
+  praevention: 'bg-[#8fb08a]',
+};
 
 function isActive(path: string): boolean {
   const localized = (getLocalizedPath(path, lang).replace(/\/+$/, '') || '/');
   if (localized === '/') return currentPath === '/';
   return currentPath === localized || currentPath.startsWith(localized + '/');
+}
+
+/** Hauptpunkt aktiv? Bei `exact` nur auf genau dieser Seite oder bei aktivem Unterpunkt. */
+function isItemActive(item: NavItem): boolean {
+  if (!item.exact) return isActive(item.path);
+  const localized = (getLocalizedPath(item.path, lang).replace(/\/+$/, '') || '/');
+  return currentPath === localized || (item.children ?? []).some((c) => !c.tone && isActive(c.path));
+}
+
+/** Ab lg (1024 px) sichtbar: Leistungen, Kosten, Kontakt. Der Rest erst ab xl, darunter im Menü. */
+function isKern(item: NavItem, i: number): boolean {
+  return i === 0 || item.labelKey === 'nav.costs' || item.labelKey === 'nav.contact';
 }
 ---
 
@@ -43,20 +91,42 @@ function isActive(path: string): boolean {
 <header class="sticky top-0 z-40 border-b border-petrol-100/70 bg-gradient-to-b from-petrol-50/90 to-cream/85 backdrop-blur-md">
   {/* Feine goldene Markenkante — dezenter Premium-Akzent */}
   <div class="h-[3px] w-full bg-gradient-to-r from-gold-300/0 via-gold-400 to-gold-300/0" aria-hidden="true"></div>
-  {/* Umschalter zwischen den beiden Themenwelten derselben Praxis. Feste Farben
-      (nicht die umgemappten Petrol-Stufen), damit jede Welt ihre Farbe behält. */}
-  <nav class="border-b border-black/5 bg-white/55" aria-label={t('nav.worldSwitch')}>
-    <div class="mx-auto flex h-9 w-full max-w-7xl items-center gap-1.5 px-5 sm:px-8">
-      {welten.map((w) => (
-        <a
-          href={getLocalizedPath(WELT_START[w.id], lang)}
-          class:list={['inline-flex h-7 items-center gap-1.5 rounded-full px-3.5 text-xs font-semibold tracking-wide transition-colors', welt === w.id ? w.aktiv : w.ruhig]}
-          aria-current={welt === w.id ? 'true' : undefined}
-        >
-          <span class:list={['h-1.5 w-1.5 rounded-full', w.id === 'reise' ? 'bg-[#c9a24b]' : 'bg-[#8fb08a]']} aria-hidden="true"></span>
-          {t(w.labelKey)}
-        </a>
-      ))}
+  {/* Umschalter zwischen den beiden Themenwelten derselben Praxis: zwei deutliche Felder
+      ganz oben, am Handy über die volle Breite. Daneben (ab lg) ein kurzer Hinweis, was im
+      anderen Bereich zu finden ist. Feste Farben (nicht die umgemappten Petrol-Stufen),
+      damit jede Welt ihre Farbe behält. Höhe: am Handy 44 px, ab sm 40 px; die Kopfzeile
+      bleibt damit unter scroll-mt-32 (128 px). */}
+  <nav class="border-b border-black/5 bg-white/70" aria-label={t('nav.worldSwitch')}>
+    <div class="mx-auto flex h-11 w-full max-w-7xl items-center gap-3 px-5 sm:h-10 sm:px-8">
+      <span class="hidden shrink-0 text-xs font-medium text-ink-soft sm:inline" aria-hidden="true">{t('nav.worldSwitch')}:</span>
+      <div class="grid w-full grid-cols-2 gap-1 rounded-full bg-black/[0.05] p-1 sm:inline-grid sm:w-auto">
+        {welten.map((w) => (
+          <a
+            href={getLocalizedPath(WELT_START[w.id], lang)}
+            class:list={['inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded-full px-4 text-sm font-semibold transition-colors sm:h-7', welt === w.id ? w.aktiv : w.ruhig]}
+            aria-current={welt === w.id ? 'true' : undefined}
+          >
+            <svg
+              class:list={['h-3.5 w-3.5 shrink-0', welt === w.id && (w.id === 'reise' ? 'text-[#c9a24b]' : 'text-[#8fb08a]')]}
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d={w.icon} />
+            </svg>
+            {t(w.labelKey)}
+          </a>
+        ))}
+      </div>
+      <a
+        href={getLocalizedPath(WELT_START[andereWelt], lang)}
+        class:list={['hidden min-w-0 items-center gap-1.5 truncate text-xs font-medium transition-opacity hover:opacity-75 lg:inline-flex', toneClass[andereWelt]]}
+      >
+        <span class="truncate">{weltHinweis}</span>
+        <svg class="h-3.5 w-3.5 shrink-0" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M3 8h9M9 5l3 3-3 3" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
     </div>
   </nav>
   {/* Eigene, etwas breitere Container-Breite als der Inhalt (max-w-7xl statt
@@ -66,44 +136,46 @@ function isActive(path: string): boolean {
   <div class="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-5 sm:h-20 sm:px-8">
     {/* Marke — shrink-0, damit der Schriftzug nie in die Navigation gestaucht wird.
         Die (breite, gesperrte) Tagline erscheint nur dort, wo Platz ist: auf
-        Tablet (sm–lg). Im Desktop-Navi-Bereich (ab xl, achtteilige Leiste im
-        gedeckelten Container) bleibt sie aus, sonst kollidiert sie mit
-        „Leistungen". whitespace-nowrap verhindert das Umbrechen. */}
+        Tablet (sm bis unter lg). Ab lg steht dort die Navigation (lg: Leistungen,
+        Kosten, Kontakt; ab xl alle Punkte), dann bleibt sie aus, sonst kollidiert
+        sie mit „Leistungen". whitespace-nowrap verhindert das Umbrechen. */}
     <a href={homeHref} class="group flex shrink-0 items-center gap-2.5" aria-label={`${site.brand.name} — ${t('nav.home')}`}>
       <Logo class="h-9 w-9 shrink-0 sm:h-10 sm:w-10" />
       <span class="flex flex-col leading-none">
         <span class="font-display text-lg font-semibold tracking-tight text-petrol-900 sm:text-xl">{site.brand.name}</span>
-        <span class="hidden whitespace-nowrap text-[0.66rem] font-medium uppercase tracking-[0.16em] text-petrol-500 sm:block xl:hidden">
+        <span class="hidden whitespace-nowrap text-[0.66rem] font-medium uppercase tracking-[0.16em] text-petrol-500 sm:block lg:hidden">
           {site.brand.tagline[lang]}
         </span>
       </span>
     </a>
 
-    {/* Desktop-Navigation — erst ab xl (≥1280px), da die achtteilige, zweisprachige
-        Leiste (Marke + Tagline + Untermenüs + Sprache + CTA) darunter zu breit wird
-        und im EN-Layout sonst überliefe. Zwischen lg und xl greift das Off-Canvas-Menü. */}
-    <nav class="hidden items-center gap-0.5 xl:flex" aria-label={t('header.primaryNav')}>
+    {/* Desktop-Navigation — voll erst ab xl (≥1280px), da die achtteilige, zweisprachige
+        Leiste (Marke + Untermenüs + Sprache + CTA) darunter zu breit wird und im EN-Layout
+        sonst überliefe. Zwischen lg und xl stehen nur Leistungen, Kosten und Kontakt hier
+        (Leistungen als Link ohne Untermenü, das breite Menü passt dort nicht); alle Punkte
+        bleiben über das Menü-Symbol erreichbar. */}
+    <nav class="hidden items-center gap-0.5 lg:flex" aria-label={t('header.primaryNav')}>
       {
-        navItems.map((item) =>
+        navItems.map((item, i) =>
           item.children?.length ? (
-            <div class="group relative">
+            <div class:list={['group relative', !isKern(item, i) && 'hidden xl:block']}>
               <a
                 href={getLocalizedPath(item.path, lang)}
                 class:list={[
                   'inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition-colors hover:bg-white',
-                  isActive(item.path) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
+                  isItemActive(item) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
                 ]}
-                aria-current={isActive(item.path) ? 'page' : undefined}
+                aria-current={isItemActive(item) ? 'page' : undefined}
               >
                 {t(item.labelKey as UiKey)}
-                <svg class="h-3.5 w-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <svg class="hidden h-3.5 w-3.5 opacity-60 transition-transform group-hover:rotate-180 xl:block" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                   <path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </a>
               <div
                 class:list={[
-                  'invisible absolute left-0 top-full z-30 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100',
-                  item.groups?.length ? 'w-max' : 'min-w-[15rem]',
+                  'invisible absolute left-0 top-full z-30 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 max-xl:hidden',
+                  item.groups?.length ? 'w-max' : 'w-max min-w-[15rem] max-w-[22rem]',
                 ]}
               >
                 {item.groups?.length ? (
@@ -139,18 +211,28 @@ function isActive(path: string): boolean {
                       ))}
                     </div>
                     <div class="flex items-center gap-6 border-t border-line bg-cream/70 px-6 py-3 text-sm">
-                      {item.more?.map((extra) => (
-                        <a
-                          href={getLocalizedPath(extra.path, lang)}
-                          class:list={[
-                            'transition-colors hover:text-petrol-900',
-                            isActive(extra.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft',
-                          ]}
-                          aria-current={isActive(extra.path) ? 'page' : undefined}
-                        >
-                          {t(extra.labelKey as UiKey)}
-                        </a>
-                      ))}
+                      {item.more?.map((extra) =>
+                        extra.tone ? (
+                          <a
+                            href={getLocalizedPath(extra.path, lang)}
+                            class:list={['inline-flex items-center gap-2 font-semibold transition-opacity hover:opacity-75', toneClass[extra.tone]]}
+                          >
+                            <span class:list={['h-2 w-2 rounded-full', toneDot[extra.tone]]} aria-hidden="true"></span>
+                            {t(extra.labelKey as UiKey)}
+                          </a>
+                        ) : (
+                          <a
+                            href={getLocalizedPath(extra.path, lang)}
+                            class:list={[
+                              'transition-colors hover:text-petrol-900',
+                              isActive(extra.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft',
+                            ]}
+                            aria-current={isActive(extra.path) ? 'page' : undefined}
+                          >
+                            {t(extra.labelKey as UiKey)}
+                          </a>
+                        )
+                      )}
                       <a
                         href={getLocalizedPath(item.path, lang)}
                         class="ml-auto inline-flex items-center gap-1.5 font-semibold text-petrol-700 transition-colors hover:text-petrol-900"
@@ -164,20 +246,32 @@ function isActive(path: string): boolean {
                   </div>
                 ) : (
                   <ul class="overflow-hidden rounded-2xl border border-line bg-white p-1.5 shadow-[var(--shadow-card)]">
-                    {item.children.map((child) => (
-                      <li>
-                        <a
-                          href={getLocalizedPath(child.path, lang)}
-                          class:list={[
-                            'block rounded-xl px-3.5 py-2.5 text-sm transition-colors hover:bg-cream',
-                            isActive(child.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
-                          ]}
-                          aria-current={isActive(child.path) ? 'page' : undefined}
-                        >
-                          {t(child.labelKey as UiKey)}
-                        </a>
-                      </li>
-                    ))}
+                    {item.children.map((child) =>
+                      child.tone ? (
+                        <li class="mt-1 border-t border-line pt-1">
+                          <a
+                            href={getLocalizedPath(child.path, lang)}
+                            class:list={['flex items-center gap-2 whitespace-nowrap rounded-xl px-3.5 py-2.5 text-sm font-semibold transition-colors hover:bg-cream', toneClass[child.tone]]}
+                          >
+                            <span class:list={['h-2 w-2 rounded-full', toneDot[child.tone]]} aria-hidden="true"></span>
+                            {t(child.labelKey as UiKey)}
+                          </a>
+                        </li>
+                      ) : (
+                        <li>
+                          <a
+                            href={getLocalizedPath(child.path, lang)}
+                            class:list={[
+                              'block rounded-xl px-3.5 py-2.5 text-sm transition-colors hover:bg-cream',
+                              isActive(child.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
+                            ]}
+                            aria-current={isActive(child.path) ? 'page' : undefined}
+                          >
+                            {t(child.labelKey as UiKey)}
+                          </a>
+                        </li>
+                      )
+                    )}
                   </ul>
                 )}
               </div>
@@ -187,9 +281,10 @@ function isActive(path: string): boolean {
               href={getLocalizedPath(item.path, lang)}
               class:list={[
                 'whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition-colors hover:bg-white',
-                isActive(item.path) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
+                isItemActive(item) ? 'text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
+                !isKern(item, i) && 'hidden xl:inline',
               ]}
-              aria-current={isActive(item.path) ? 'page' : undefined}
+              aria-current={isItemActive(item) ? 'page' : undefined}
             >
               {t(item.labelKey as UiKey)}
             </a>
@@ -253,7 +348,7 @@ function isActive(path: string): boolean {
       längeres aufgeklapptes Menü wäre sonst unten nicht erreichbar. */}
   <div
     id="mobile-menu"
-    class="hidden max-h-[calc(100dvh-6.5625rem)] overflow-y-auto overscroll-contain border-t border-line bg-cream sm:max-h-[calc(100dvh-7.5625rem)] xl:hidden"
+    class="hidden max-h-[calc(100dvh-7.0625rem)] overflow-y-auto overscroll-contain border-t border-line bg-cream sm:max-h-[calc(100dvh-7.8125rem)] xl:hidden"
   >
     <nav class="mx-auto flex w-full max-w-7xl flex-col px-5 py-2 sm:px-8" aria-label={t('header.primaryNav')}>
       {
@@ -266,9 +361,9 @@ function isActive(path: string): boolean {
                     href={getLocalizedPath(item.path, lang)}
                     class:list={[
                       'flex-1 rounded-lg px-2 py-3 text-[0.95rem] font-semibold transition-colors',
-                      isActive(item.path) ? 'text-petrol-900' : 'text-ink hover:text-petrol-900',
+                      isItemActive(item) ? 'text-petrol-900' : 'text-ink hover:text-petrol-900',
                     ]}
-                    aria-current={isActive(item.path) ? 'page' : undefined}
+                    aria-current={isItemActive(item) ? 'page' : undefined}
                   >
                     {t(item.labelKey as UiKey)}
                   </a>
@@ -332,19 +427,29 @@ function isActive(path: string): boolean {
                           </div>
                         );
                       })}
-                      <div class="mt-1.5 flex items-center justify-between gap-4 border-t border-line/70 px-2 pt-2 text-sm">
-                        {item.more?.map((extra) => (
-                          <a
-                            href={getLocalizedPath(extra.path, lang)}
-                            class:list={[
-                              'py-1.5 transition-colors hover:text-petrol-900',
-                              isActive(extra.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft',
-                            ]}
-                            aria-current={isActive(extra.path) ? 'page' : undefined}
-                          >
-                            {t(extra.labelKey as UiKey)}
-                          </a>
-                        ))}
+                      <div class="mt-1.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t border-line/70 px-2 pt-2 text-sm">
+                        {item.more?.map((extra) =>
+                          extra.tone ? (
+                            <a
+                              href={getLocalizedPath(extra.path, lang)}
+                              class:list={['inline-flex items-center gap-2 py-1.5 font-semibold transition-opacity hover:opacity-75', toneClass[extra.tone]]}
+                            >
+                              <span class:list={['h-2 w-2 rounded-full', toneDot[extra.tone]]} aria-hidden="true"></span>
+                              {t(extra.labelKey as UiKey)}
+                            </a>
+                          ) : (
+                            <a
+                              href={getLocalizedPath(extra.path, lang)}
+                              class:list={[
+                                'py-1.5 transition-colors hover:text-petrol-900',
+                                isActive(extra.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft',
+                              ]}
+                              aria-current={isActive(extra.path) ? 'page' : undefined}
+                            >
+                              {t(extra.labelKey as UiKey)}
+                            </a>
+                          )
+                        )}
                         <a
                           href={getLocalizedPath(item.path, lang)}
                           class="ml-auto inline-flex items-center gap-1.5 py-1.5 font-semibold text-petrol-700 transition-colors hover:text-petrol-900"
@@ -358,20 +463,32 @@ function isActive(path: string): boolean {
                     </div>
                   ) : (
                     <ul class="mb-2 ml-3 flex flex-col border-l border-petrol-100 pl-3">
-                      {item.children.map((child) => (
-                        <li>
-                          <a
-                            href={getLocalizedPath(child.path, lang)}
-                            class:list={[
-                              'block rounded-lg px-2 py-2 text-sm transition-colors',
-                              isActive(child.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
-                            ]}
-                            aria-current={isActive(child.path) ? 'page' : undefined}
-                          >
-                            {t(child.labelKey as UiKey)}
-                          </a>
-                        </li>
-                      ))}
+                      {item.children.map((child) =>
+                        child.tone ? (
+                          <li>
+                            <a
+                              href={getLocalizedPath(child.path, lang)}
+                              class:list={['flex items-center gap-2 rounded-lg px-2 py-2 text-sm font-semibold transition-opacity hover:opacity-75', toneClass[child.tone]]}
+                            >
+                              <span class:list={['h-2 w-2 rounded-full', toneDot[child.tone]]} aria-hidden="true"></span>
+                              {t(child.labelKey as UiKey)}
+                            </a>
+                          </li>
+                        ) : (
+                          <li>
+                            <a
+                              href={getLocalizedPath(child.path, lang)}
+                              class:list={[
+                                'block rounded-lg px-2 py-2 text-sm transition-colors',
+                                isActive(child.path) ? 'font-semibold text-petrol-900' : 'text-ink-soft hover:text-petrol-900',
+                              ]}
+                              aria-current={isActive(child.path) ? 'page' : undefined}
+                            >
+                              {t(child.labelKey as UiKey)}
+                            </a>
+                          </li>
+                        )
+                      )}
                     </ul>
                   )}
                 </div>
@@ -381,9 +498,9 @@ function isActive(path: string): boolean {
                 href={getLocalizedPath(item.path, lang)}
                 class:list={[
                   'block rounded-lg px-2 py-3 text-[0.95rem] font-semibold transition-colors',
-                  isActive(item.path) ? 'text-petrol-900' : 'text-ink hover:text-petrol-900',
+                  isItemActive(item) ? 'text-petrol-900' : 'text-ink hover:text-petrol-900',
                 ]}
-                aria-current={isActive(item.path) ? 'page' : undefined}
+                aria-current={isItemActive(item) ? 'page' : undefined}
               >
                 {t(item.labelKey as UiKey)}
               </a>

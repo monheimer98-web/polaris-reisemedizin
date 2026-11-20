@@ -20,6 +20,13 @@ export interface NavItem {
   groups?: NavGroup[];
   /** Verweise in der Fußzeile des gegliederten Untermenüs (zum Beispiel der Ablauf). */
   more?: NavItem[];
+  /**
+   * Verweis in die andere Themenwelt: wird in deren Farbe und mit Punkt gezeigt
+   * (zum Beispiel „Leistungen der Prävention“ im Menü der Reisemedizin).
+   */
+  tone?: 'reise' | 'praevention';
+  /** Nur bei genau diesem Pfad (oder einem aktiven Unterpunkt) als aktiv markieren. */
+  exact?: boolean;
 }
 
 export interface NavGroup {
@@ -85,7 +92,10 @@ export const primaryNav: NavItem[] = [
     path: '/leistungen',
     groups: [...serviceGroups, { labelKey: 'nav.groupAbroad', items: abroadOccasions }],
     children: serviceGroups.flatMap((group) => group.items),
-    more: [{ labelKey: 'nav.process', path: '/ablauf' }],
+    more: [
+      { labelKey: 'nav.process', path: '/ablauf' },
+      { labelKey: 'nav.servicesPrevention', path: '/praevention', tone: 'praevention' },
+    ],
   },
   {
     labelKey: 'nav.diseases',
@@ -160,15 +170,24 @@ export const legalNav: NavItem[] = [
 
 /**
  * Menü der Themenwelt „Prävention" (eigene Kopfzeile unter /praevention und auf
- * Präventions-Ratgebern). Feste Pfade; Haare erscheint erst, wenn das Angebot
- * in den Daten steht.
+ * Präventions-Ratgebern). Wie in der Reisemedizin steht „Leistungen“ vorn; darin
+ * die Angebote und der Weg zu den Leistungen der Reisemedizin. Feste Pfade; Haare
+ * erscheint erst, wenn das Angebot in den Daten steht.
  */
 export function preventionNav(hatHaare: boolean): NavItem[] {
   return [
-    { labelKey: 'nav.pvCheck', path: '/praevention/gesundheitscheck' },
-    { labelKey: 'nav.pvLab', path: '/praevention/laborwerte-check' },
-    { labelKey: 'nav.pvWeight', path: '/praevention/gewicht-und-stoffwechsel' },
-    ...(hatHaare ? [{ labelKey: 'nav.pvHair', path: '/praevention/haare' }] : []),
+    {
+      labelKey: 'nav.services',
+      path: '/praevention',
+      exact: true,
+      children: [
+        { labelKey: 'nav.pvCheck', path: '/praevention/gesundheitscheck' },
+        { labelKey: 'nav.pvLab', path: '/praevention/laborwerte-check' },
+        { labelKey: 'nav.pvWeightLong', path: '/praevention/gewicht-und-stoffwechsel' },
+        ...(hatHaare ? [{ labelKey: 'nav.pvHairLong', path: '/praevention/haare' }] : []),
+        { labelKey: 'nav.servicesTravel', path: '/leistungen', tone: 'reise' as const },
+      ],
+    },
     {
       labelKey: 'nav.pvKnowledge',
       path: '/ratgeber/blutwerte-erklaert',

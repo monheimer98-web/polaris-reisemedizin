@@ -4,6 +4,8 @@
  * Gliederung wie im Menü „Leistungen": Beratung, Impfungen, Bescheinigungen und Zeugnisse.
  * Die Bescheinigungen stehen hier als Leistung; die Anlässe (Auslandsjahr, Au-pair …) folgen
  * darunter nur als Verweise in den Bereich Ausland. Die Bescheinigungen hängen an NACHWEISE_IM_ANGEBOT.
+ * Danach der zweite Bereich der Praxis, die Prävention (in Salbei), damit unter „Leistungen“
+ * alles zu finden ist.
  */
 import OverviewCard from './OverviewCard.astro';
 import PageHero from './PageHero.astro';
@@ -12,6 +14,7 @@ import type { UiKey } from '../i18n/ui';
 import { abroadOccasions, abroadPilgrimage } from '../config/nav';
 import { NACHWEISE_IM_ANGEBOT } from '../data/ausland/stand';
 import { auslandKacheln } from '../data/ausland/hub';
+import { PREVENTION_PATH, preventionOffers, preventionPath } from '../data/praevention';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -53,6 +56,22 @@ const gruppen = [
   { id: 'bescheinigungen', title: t('nav.groupCertificates'), lead: t('overview.certLead'), karten: bescheinigungen },
 ].filter((gruppe) => gruppe.karten.length > 0);
 
+// Prävention: die buchbaren Angebote mit ihrem Satz von der Bereichsseite.
+const pvIcon: Record<string, string> = {
+  gesundheitscheck: 'pvCheck',
+  'laborwerte-check': 'pvLab',
+  'gewicht-und-stoffwechsel': 'pvWeight',
+  haare: 'pvHair',
+};
+const praevention: Karte[] = preventionOffers.map((o) => ({
+  variant: pvIcon[o.slug] ?? 'pvCheck',
+  title: o.shortName[lang],
+  text: o.teaser[lang],
+  path: preventionPath(o.slug),
+}));
+const de = lang === 'de';
+const hatHaare = preventionOffers.some((o) => o.slug === 'haare');
+
 // Anlässe wie im Menü „Ausland" (gleiche Reihenfolge, gleiche Bezeichnungen).
 const anlaesse = [...abroadOccasions, abroadPilgrimage];
 ---
@@ -83,6 +102,44 @@ const anlaesse = [...abroadOccasions, abroadPilgrimage];
         </section>
       ))
     }
+
+    {/* Prävention: zweiter Bereich der Praxis, in seiner eigenen Farbe. */}
+    <section
+      id="praevention"
+      class="theme-praevention mt-14 scroll-mt-32 rounded-3xl border border-petrol-100 bg-petrol-50/80 p-6 sm:mt-16 sm:p-8"
+      aria-labelledby="praevention-titel"
+    >
+      <p class="eyebrow">
+        <span class="h-2 w-2 rounded-full bg-petrol-500" aria-hidden="true"></span>
+        {de ? 'Zweiter Bereich der Praxis' : 'Second area of the practice'}
+      </p>
+      <h2 id="praevention-titel" class="mt-2 font-display text-2xl text-petrol-900">{t('nav.worldPrevention')}</h2>
+      <p class="mt-3 max-w-3xl leading-relaxed text-ink-soft">
+        {
+          de
+            ? `Neben der Reisemedizin bieten wir Termine zur Vorsorge an: vom Gesundheitscheck mit Befundbericht bis zur ${hatHaare ? 'Haarsprechstunde' : 'Sprechstunde Ernährung, Gewicht und Stoffwechsel'}. Gleiche Praxis, eigene Termine.`
+            : `Alongside travel medicine we offer preventive appointments: from a health check-up with a written report to the ${hatHaare ? 'hair consultation' : 'nutrition, weight and metabolism consultation'}. Same practice, separate appointments.`
+        }
+      </p>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        {praevention.map((karte) => (
+          <OverviewCard
+            variant={karte.variant}
+            title={karte.title}
+            text={karte.text}
+            cta={t('cta.serviceDetail')}
+            href={getLocalizedPath(karte.path, lang)}
+            headingLevel="h3"
+          />
+        ))}
+      </div>
+      <a href={getLocalizedPath(PREVENTION_PATH, lang)} class="btn-primary mt-7">
+        {de ? 'Zur Prävention' : 'Go to prevention'}
+        <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M3 8h9M9 5l3 3-3 3" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </section>
 
     {/* Anlässe: keine weiteren Leistungen, sondern der Einstieg nach Reiseanlass. */}
     <section

@@ -6,8 +6,10 @@
  * langsam fließenden Aurora-/Nebel-Lichtstimmung, einem Tiefen-Sternenfeld
  * (Canvas, Parallaxe zur Zeigerbewegung), einem weich atmenden Polaris-Leitlicht
  * mit feinem Lens-Flare-Glanz und gelegentlichen, dezenten Sternschnuppen.
- * Inhalt (Eyebrow, Titel, Lead, CTAs, Vertrauens-Badge) blendet beim Laden mit
- * ruhiger Bewegungskurve gestaffelt ein. Sprache aus der URL.
+ * Inhalt (Eyebrow, Titel, Lead, die beiden Bereiche, CTAs, Vertrauens-Badge)
+ * blendet beim Laden mit ruhiger Bewegungskurve gestaffelt ein. Die zwei
+ * Bereichskarten (BereicheWeiche) stehen im Hero, damit Reisemedizin und
+ * Prävention schon im ersten Bild zu sehen sind. Sprache aus der URL.
  *
  * Bewusst zurückhaltend & seriös (Medizin, HWG-konform): weiche, langsame
  * Bewegung, kein Blinken. Vollständig `prefers-reduced-motion`-tauglich — dann
@@ -16,6 +18,7 @@
  */
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import { BOOKING_PATH } from '../config/nav';
+import BereicheWeiche from './BereicheWeiche.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -68,8 +71,9 @@ const t = useTranslations(lang);
   >
   </div>
 
-  {/* Polaris — weich atmendes Leitlicht mit feinem Glanz (ab lg sichtbar) */}
-  <div class="hero-parallax pointer-events-none absolute top-[42%] right-[8%] hidden lg:block xl:right-[12%]" data-depth="0.5" aria-hidden="true">
+  {/* Polaris — weich atmendes Leitlicht mit feinem Glanz (ab lg sichtbar). Sitzt oben
+      rechts neben dem Titel, damit es nicht hinter den Bereichskarten verschwindet. */}
+  <div class="hero-parallax pointer-events-none absolute top-[17%] right-[8%] hidden lg:block xl:right-[12%]" data-depth="0.5" aria-hidden="true">
     <div class="hero-polaris relative h-2.5 w-2.5">
       {/* weicher Lichthof */}
       <span
@@ -84,30 +88,33 @@ const t = useTranslations(lang);
     </div>
   </div>
 
-  <div class="u-container relative py-24 sm:py-32 lg:py-36">
+  <div class="u-container relative py-10 sm:py-20 lg:py-24">
     <div class="max-w-3xl">
       <p class="hero-reveal eyebrow !text-gold-300" style="--i:0">
         <span class="rule-gold"></span>
         {t('home.eyebrow')}
       </p>
-      <h1 class="hero-reveal mt-5 text-balance text-4xl font-semibold text-white sm:text-5xl lg:text-6xl" style="--i:1">
+      <h1 class="hero-reveal mt-4 text-balance text-4xl font-semibold text-white sm:mt-5 sm:text-5xl lg:text-6xl" style="--i:1">
         {t('home.heroTitle')}
       </h1>
-      <p class="hero-reveal mt-6 max-w-2xl text-lg leading-relaxed text-cream/80" style="--i:2">{t('home.heroLead')}</p>
+      <p class="hero-reveal mt-4 max-w-2xl text-base leading-relaxed text-cream/80 sm:mt-6 sm:text-lg" style="--i:2">{t('home.heroLead')}</p>
+    </div>
 
-      <div class="hero-reveal mt-9 flex flex-wrap items-center gap-3" style="--i:3">
-        <a href={getLocalizedPath(BOOKING_PATH, lang)} class="btn-gold shadow-[0_10px_30px_-8px_rgba(201,162,75,0.55)]" aria-label={t('cta.bookAria')}>
-          {t('cta.book')}
-        </a>
-        <a
-          href={getLocalizedPath('/leistungen', lang)}
-          class="inline-flex items-center justify-center gap-2 rounded-full border border-cream/25 bg-white/[0.04] px-6 py-3 text-sm font-semibold leading-none text-cream backdrop-blur-sm transition-colors duration-200 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
-        >
-          {t('cta.services')}
-        </a>
-      </div>
+    <div class="hero-reveal mt-6 sm:mt-10" style="--i:3">
+      <BereicheWeiche />
+    </div>
 
-      <div class="hero-reveal mt-10 inline-flex items-center gap-3 rounded-full border border-cream/15 bg-white/[0.06] px-4 py-2.5 backdrop-blur-sm" style="--i:4">
+    <div class="hero-reveal mt-7 flex flex-wrap items-center gap-3 sm:mt-9" style="--i:4">
+      <a href={getLocalizedPath(BOOKING_PATH, lang)} class="btn-gold shadow-[0_10px_30px_-8px_rgba(201,162,75,0.55)]" aria-label={t('cta.bookAria')}>
+        {t('cta.book')}
+      </a>
+      <a
+        href={getLocalizedPath('/leistungen', lang)}
+        class="inline-flex items-center justify-center gap-2 rounded-full border border-cream/25 bg-white/[0.04] px-6 py-3 text-sm font-semibold leading-none text-cream backdrop-blur-sm transition-colors duration-200 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
+      >
+        {t('cta.services')}
+      </a>
+      <div class="inline-flex items-center gap-3 rounded-full border border-cream/15 bg-white/[0.06] px-4 py-2.5 backdrop-blur-sm sm:ml-2">
         <svg class="h-5 w-5 shrink-0 text-gold-300" viewBox="0 0 20 20" fill="none" aria-hidden="true">
           <path d="M10 1.5l6.5 2.4v4.3c0 4.1-2.8 7.3-6.5 8.3-3.7-1-6.5-4.2-6.5-8.3V3.9L10 1.5z" fill="currentColor" opacity="0.18" />
           <path d="M10 1.5l6.5 2.4v4.3c0 4.1-2.8 7.3-6.5 8.3-3.7-1-6.5-4.2-6.5-8.3V3.9L10 1.5z" stroke="currentColor" stroke-width="1.3" />
