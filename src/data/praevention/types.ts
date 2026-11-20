@@ -23,6 +23,10 @@ export interface PreventionOffer {
    * App-Update an; bis dahin ignoriert das Buchungsformular die Vorbelegung.
    */
   bookingType: string;
+  /** Eigene Beschriftung des Buchungsknopfs (sonst „Termin buchen“). */
+  bookingLabel?: Localized;
+  /** Zweiter Buchungsknopf im Kopf der Seite, z. B. PRP neben der Haarsprechstunde. */
+  secondaryBooking?: { type: string; label: Localized };
   group: PreventionGroup;
   /**
    * Startstufe: 1 = jetzt buchbar (Seite, Navigation, Kachel); 2 = fertig

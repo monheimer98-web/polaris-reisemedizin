@@ -22,8 +22,12 @@ export const seoTitles: Record<string, Localized> = {
     en: 'Lab Value Check: Private Blood Tests, Langenfeld | Polaris',
   },
   '/praevention/haare': {
-    de: 'Haarsprechstunde in Langenfeld bei Düsseldorf | Polaris',
+    de: 'Haarsprechstunde mit Haaranalyse in Langenfeld | Polaris',
     en: 'Hair Consultation in Langenfeld near Düsseldorf | Polaris',
+  },
+  '/praevention/haare/prp': {
+    de: 'PRP bei Haarausfall in Langenfeld: Ablauf, Kosten | Polaris',
+    en: 'PRP for Hair Loss in Langenfeld: Procedure, Costs | Polaris',
   },
   '/ratgeber/blutwerte-erklaert': {
     de: 'Welche Blutwerte wofür? Ärztlich erklärt | Polaris',

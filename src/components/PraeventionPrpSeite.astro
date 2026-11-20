@@ -1,0 +1,54 @@
+---
+/**
+ * Unterseite „PRP bei Haarausfall“ (/praevention/haare/prp, DE und EN gleich).
+ * Eigener Buchungsknopf für den ersten PRP-Termin (pv-prp-erst, 60 Min. mit
+ * Haarsprechstunde), zweiter Knopf zur Haarsprechstunde. Welche Termine frei
+ * sind, entscheidet die Praxissoftware (PRP_AB); die Seite nennt kein Datum.
+ */
+import ContentLayout from '../layouts/ContentLayout.astro';
+import ClinicalSections from './ClinicalSections.astro';
+import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
+import { getSources } from '../data/sources';
+import { preventionHub } from '../data/praevention';
+import { haarePrp } from '../data/praevention/angebote/haare';
+
+const lang = getLangFromUrl(Astro.url);
+const de = lang === 'de';
+const page = haarePrp;
+const related = (page.related ?? []).map((item) => ({ label: item.label[lang], path: getLocalizedPath(item.path, lang) }));
+const faq = (page.faq ?? []).map((f) => ({ q: f.q[lang], a: f.a[lang] }));
+const { faq: _faq, ...rest } = page;
+---
+
+<ContentLayout
+  title={page.meta.title[lang]}
+  description={page.meta.description[lang]}
+  eyebrow={page.meta.eyebrow[lang]}
+  lead={page.meta.lead[lang]}
+  lastReviewed={page.lastReviewed}
+  sources={getSources(page.sourceIds)}
+  related={related}
+  faq={faq}
+  bookingType="pv-prp-erst"
+  bookingLabel={de ? 'PRP-Termin buchen' : 'Book a PRP appointment'}
+  secondaryBooking={{ type: 'pv-haare', label: de ? 'Zuerst die Haarsprechstunde buchen' : 'Book the hair consultation first' }}
+  area="praevention"
+  areaCurrent="haare"
+  parent={{ label: de ? 'Haarsprechstunde' : 'Hair consultation', path: getLocalizedPath('/praevention/haare', lang) }}
+  cta={{
+    title: de ? 'Ihr erster PRP-Termin' : 'Your first PRP appointment',
+    lead: de
+      ? 'Der erste Termin beginnt mit der Haarsprechstunde. Passt PRP nicht zu Ihrem Haarausfall, behandeln wir nicht und berechnen nur die Haarsprechstunde.'
+      : 'The first appointment begins with the hair consultation. If PRP does not suit your hair loss, we do not treat and only charge for the hair consultation.',
+    note: preventionHub.ctaNote[lang],
+  }}
+>
+  <ClinicalSections page={{ ...rest, faq: undefined }} />
+  {
+    faq.length > 0 && (
+      <div class="mt-12 sm:mt-14">
+        <ClinicalSections page={{ ...rest, sections: [], faq: page.faq }} />
+      </div>
+    )
+  }
+</ContentLayout>

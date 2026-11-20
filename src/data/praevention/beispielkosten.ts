@@ -7,7 +7,9 @@
  * Stufe-2-Angebote (Schlaf, Muskel) erscheinen erst, wenn sie online gehen.
  */
 import type { Localized } from '../types';
-import { haarPreis, honorar, labor, laborwert, termin, weg, zweiTermine, zweiTermineWeg, euroDe, euroEn } from './preise';
+import { haarPreis, honorar, labor, laborwert, termin, weg, zweiTermine, zweiTermineWeg, euroDe, euroEn, prpPreis } from './preise';
+
+const prpBetrag = prpPreis.fassung ? prpPreis[prpPreis.fassung] : null;
 
 export interface BeispielPosten {
   label: Localized;
@@ -117,8 +119,16 @@ export const beispielrechnungen: Beispielrechnung[] = [
       en: `approx. €${ganz(zweiTermineWeg.haare + haarPreis.labor)} in total`,
     },
     hinweis: {
-      de: `Ein späterer Verlaufstermin kostet ca. ${euroDe(haarPreis.verlauf)}.`,
-      en: `A later follow-up costs approx. ${euroEn(haarPreis.verlauf)}.`,
+      de: `Ein späterer Verlaufstermin kostet ca. ${euroDe(haarPreis.verlauf)}. ${
+        prpBetrag
+          ? `PRP kostet ca. ${prpBetrag.sitzung[0]} bis ${prpBetrag.sitzung[1]} € je Sitzung, die Röhrchen eingeschlossen.`
+          : 'Die Kosten für PRP bekommen Sie vor der ersten Behandlung schriftlich.'
+      }`,
+      en: `A later follow-up costs approx. ${euroEn(haarPreis.verlauf)}. ${
+        prpBetrag
+          ? `PRP costs approx. €${prpBetrag.sitzung[0]} to €${prpBetrag.sitzung[1]} per session, including the tubes.`
+          : 'You receive the costs of PRP in writing before the first treatment.'
+      }`,
     },
   },
   {

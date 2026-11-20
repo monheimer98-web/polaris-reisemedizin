@@ -41,6 +41,8 @@ const faq = (page.faq ?? []).map((f) => ({ q: f.q[lang], a: f.a[lang] }));
   related={related}
   faq={faq}
   bookingType={offer.bookingType}
+  bookingLabel={offer.bookingLabel?.[lang]}
+  secondaryBooking={offer.secondaryBooking ? { type: offer.secondaryBooking.type, label: offer.secondaryBooking.label[lang] } : undefined}
   area="praevention"
   areaCurrent={offer.slug}
   cta={{ title: preventionHub.ctaTitle[lang], lead: preventionHub.ctaLead[lang], note: preventionHub.ctaNote[lang] }}

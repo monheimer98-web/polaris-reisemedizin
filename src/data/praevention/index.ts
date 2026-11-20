@@ -165,8 +165,8 @@ export const preventionHub = {
     en: 'Choose the right service when booking. Not sure? Call us and we will help you get started.',
   },
   ctaNote: {
-    de: 'Polaris ist eine Privatpraxis. Kosten je nach Leistung nach GOÄ. Laborkosten kommen je nach Angebot hinzu; das Labor rechnet sie direkt mit Ihnen ab.',
-    en: 'Polaris is a private practice. Costs depend on the service, under the GOÄ. Depending on the service, lab costs are added; the laboratory bills them directly to you.',
+    de: 'Polaris ist eine Privatpraxis. Kosten je nach Leistung nach GOÄ. Laborkosten kommen je nach Angebot hinzu; einfache Werte stehen auf unserer Rechnung, die übrigen rechnet das Labor ab.',
+    en: 'Polaris is a private practice. Costs depend on the service, under the GOÄ. Depending on the service, lab costs are added; simple tests are on our invoice, the laboratory bills the others.',
   },
   faqTitle: { de: 'Häufige Fragen', en: 'Frequently asked questions' },
   faq: [

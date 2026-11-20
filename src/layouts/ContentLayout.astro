@@ -63,14 +63,17 @@ interface Props {
   neutralCta?: boolean;
   /** Eigene Beschriftung des Buchungsknopfs in Hero und Abschlussband (bereits in der Seitensprache). */
   bookingLabel?: string;
+  /** Zweiter Buchungsknopf im Kopf (Terminart-ID und Beschriftung in der Seitensprache). */
+  secondaryBooking?: { type: string; label: string };
 }
 
-const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel, faq = [], parent, area, areaCurrent, cta, noBooking = false, neutralCta = false, bookingLabel } = Astro.props;
+const { title, description, eyebrow, lead, lastReviewed, sources, related = [], image, noindex, bookingType, printLabel, faq = [], parent, area, areaCurrent, cta, noBooking = false, neutralCta = false, bookingLabel, secondaryBooking } = Astro.props;
 const areaClass = area === 'praevention' ? 'theme-praevention' : undefined;
 const lang = getLangFromUrl(Astro.url);
 const bookingPath = area === 'praevention' ? PREVENTION_BOOKING_PATH : BOOKING_PATH;
 const embedUrl = area === 'praevention' && !preventionOnlineBooking ? '' : site.booking.embedUrl;
 const bookingHref = bookingLink(getLocalizedPath(bookingPath, lang), bookingType, embedUrl, area);
+const secondaryHref = secondaryBooking ? bookingLink(getLocalizedPath(bookingPath, lang), secondaryBooking.type, embedUrl, area) : '';
 const t = useTranslations(lang);
 
 // Brotkrumen aus dem URL-Pfad: Start › <Hub> › <aktuelle Seite>.
@@ -165,6 +168,13 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
           !noBooking && (
             <a href={bookingHref} class="btn-gold inline-flex" aria-label={bookingLabel ? undefined : t('cta.bookAria')}>
               {bookingLabel ?? t('cta.book')}
+            </a>
+          )
+        }
+        {
+          !noBooking && secondaryBooking && (
+            <a href={secondaryHref} class="btn-ghost inline-flex">
+              {secondaryBooking.label}
             </a>
           )
         }

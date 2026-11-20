@@ -78,6 +78,20 @@ export const haarPreis = {
   labor: 38,
 } as const;
 
+/**
+ * PRP je Sitzung, PRP-Röhrchen eingeschlossen (haare-seitentexte.md, Stand 19:30).
+ * `fassung` entscheidet Nicki: 'A' = GOÄ-Regelsatz, 'B' = Honorarvereinbarung nach
+ * § 2 GOÄ (Faktor 3,5). Solange `null`, nennt die Website keinen Betrag, nur
+ * „Kosten vorher schriftlich“. Umstellen = nur diese eine Zeile ändern.
+ */
+export const prpPreis = {
+  fassung: null as null | 'A' | 'B',
+  A: { sitzung: [200, 260], dreiSitzungen: [620, 780] },
+  B: { sitzung: [290, 370], dreiSitzungen: [890, 1140] },
+  /** Nr. 1 + 5 – Haarsprechstunde zu Beginn des ersten PRP-Termins */
+  sprechstundeErsttermin: 21.44,
+} as const;
+
 /** Ganze Wege in zwei Terminen (Praxis, ohne Labor), Regelsatz. */
 export const zweiTermineWeg = {
   check: summe(zweiTermine.checkErst, zweiTermine.checkBefund),
