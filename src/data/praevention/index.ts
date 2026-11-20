@@ -124,8 +124,8 @@ export const preventionHub = {
     {
       title: { de: 'Zwei Termine, ein klares Ergebnis', en: 'Two appointments, one clear result' },
       text: {
-        de: 'Im Ersttermin legen wir gemeinsam fest, welche Werte sinnvoll sind, und nehmen Blut ab. Wenn alle Werte vorliegen, besprechen wir sie im Befundtermin, beim Gesundheitscheck mit der Untersuchung.',
-        en: 'In the first appointment we decide together which values make sense and take a blood sample. Once all results are ready we go through them in the results appointment, which for the health check-up includes the examination.',
+        de: 'Im Ersttermin legen wir gemeinsam fest, welche Werte sinnvoll sind, und nehmen Blut ab. Wenn alle Werte vorliegen, besprechen wir sie im Befundtermin. Beim Gesundheitscheck untersuchen wir Sie schon im Ersttermin.',
+        en: 'In the first appointment we decide together which values make sense and take a blood sample. Once all results are ready we go through them in the results appointment. For the health check-up, the examination already takes place in the first appointment.',
       },
     },
     {
@@ -138,8 +138,8 @@ export const preventionHub = {
     {
       title: { de: 'Kosten je nach Bedarf, vorher schriftlich', en: 'Costs as needed, in writing beforehand' },
       text: {
-        de: 'Jeder Termin wird einzeln nach der Gebührenordnung für Ärzte (GOÄ) abgerechnet, ohne Festpreis, Abo oder Vorkasse. Die voraussichtlichen Kosten erhalten Sie vor dem Termin schriftlich.',
-        en: 'Each appointment is billed individually under the German fee schedule for doctors (GOÄ), with no fixed price, subscription or prepayment. You receive the expected costs in writing before the appointment.',
+        de: 'Jeder Termin wird einzeln nach der Gebührenordnung für Ärzte (GOÄ) abgerechnet, ohne Festpreis und ohne Abo. Die voraussichtlichen Kosten erhalten Sie vor dem Termin schriftlich.',
+        en: 'Each appointment is billed individually under the German fee schedule for doctors (GOÄ), with no fixed price and no subscription. You receive the expected costs in writing before the appointment.',
       },
     },
   ],

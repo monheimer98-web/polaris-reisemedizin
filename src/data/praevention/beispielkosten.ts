@@ -42,9 +42,9 @@ export const beispielrechnungen: Beispielrechnung[] = [
     slug: 'gesundheitscheck',
     title: { de: 'Gesundheitscheck', en: 'Health check-up' },
     posten: [
-      { label: { de: 'Termin 1: Gespräch, Messungen, Blutabnahme', en: 'Appointment 1: consultation, measurements, blood sample' }, betrag: zweiTermine.checkErst },
+      { label: { de: 'Termin 1: Gesundheitsuntersuchung mit Gespräch, Untersuchung, Messungen und Blutabnahme', en: 'Appointment 1: health examination with consultation, examination, measurements and blood sample' }, betrag: zweiTermine.checkErst },
       {
-        label: { de: 'Termin 2: Untersuchung, Besprechung der Werte, schriftlicher Befundbericht', en: 'Appointment 2: examination, discussion of results, written report' },
+        label: { de: 'Termin 2: ausführliche Besprechung aller Werte, mit schriftlichem Befundbericht', en: 'Appointment 2: detailed discussion of all results, with written report' },
         betrag: zweiTermine.checkBefund,
       },
     ],
@@ -58,8 +58,8 @@ export const beispielrechnungen: Beispielrechnung[] = [
       en: `approx. €${ganz(zweiTermineWeg.check + labor.check)}–${ganz(zweiTermineWeg.check + labor.checkMitLpa)} in total`,
     },
     hinweis: {
-      de: `Mit Ruhe-EKG auf Wunsch kommen ca. ${euroDe(zweiTermine.ekg)} dazu.`,
-      en: `A resting ECG on request adds approx. ${euroEn(zweiTermine.ekg)}.`,
+      de: `Mit Ruhe-EKG auf Wunsch im ersten Termin kommen ca. ${euroDe(zweiTermine.ekg)} dazu.`,
+      en: `A resting ECG on request in the first appointment adds approx. ${euroEn(zweiTermine.ekg)}.`,
     },
   },
   {
@@ -226,11 +226,11 @@ export const beispielkostenSeite = {
   laborTitle: { de: 'Laborkosten', en: 'Lab costs' },
   laborText: {
     de: [
-      'Die Blutwerte bestimmt ein ärztliches Labor. Es stellt Ihnen seine Rechnung selbst. Deshalb nennen wir die Laborkosten getrennt und als Spanne: Sie hängen davon ab, welche Werte wir gemeinsam auswählen.',
+      'Die Blutwerte bestimmt ein ärztliches Labor. Einfache Werte wie Blutfette, Blutzucker-Langzeitwert, Nierenwert oder kleines Blutbild rechnen wir über unsere Laborgemeinschaft auf unserer Rechnung ab. Für die übrigen Werte stellt Ihnen das Labor seine Rechnung selbst. Wir nennen die Laborkosten getrennt und als Spanne: Sie hängen davon ab, welche Werte wir gemeinsam auswählen.',
       'Werte, die für Ihre Entscheidung nichts ändern, bestimmen wir nicht. Ein „Komplettlabor“ bieten wir bewusst nicht an.',
     ],
     en: [
-      'Blood tests are carried out by a medical laboratory. It sends you its own invoice. That is why we show lab costs separately and as a range: they depend on which tests we choose together.',
+      'Blood tests are carried out by a medical laboratory. Simple values such as blood lipids, long-term blood sugar, kidney value or basic blood count appear on our invoice via our laboratory association. For the other values the laboratory sends you its own invoice. We show lab costs separately and as a range: they depend on which tests we choose together.',
       'We do not measure values that would not change your decision. We deliberately do not offer a “full blood panel”.',
     ],
   },
@@ -246,15 +246,15 @@ export const beispielkostenSeite = {
     ],
   },
   fussnote: {
-    de: 'Beispiele zum Regelsatz der GOÄ, Stand November 2026. Berechnet wird nur, was stattfindet; weniger Termine oder Werte kosten weniger. Für Termine am Samstag sieht die GOÄ einen Zuschlag von ca. 6 € vor. Laborkosten stellt das Labor selbst in Rechnung. Keine Umsatzsteuer.',
-    en: 'Examples at the standard GOÄ rate, as of November 2026. You only pay for what takes place; fewer appointments or tests cost less. For appointments on a Saturday, the GOÄ provides for a surcharge of approx. €6. The laboratory invoices lab costs itself. No VAT.',
+    de: 'Beispiele zum Regelsatz der GOÄ, Stand November 2026. Berechnet wird nur, was stattfindet; weniger Termine oder Werte kosten weniger. Für Termine am Samstag sieht die GOÄ einen Zuschlag von ca. 6 € vor. Laborkosten sind Richtwerte; einfache Werte stehen auf unserer Rechnung, die übrigen berechnet das Labor selbst. Keine Umsatzsteuer.',
+    en: 'Examples at the standard GOÄ rate, as of November 2026. You only pay for what takes place; fewer appointments or tests cost less. For appointments on a Saturday, the GOÄ provides for a surcharge of approx. €6. Lab costs are guide values; simple values appear on our invoice, the laboratory invoices the others itself. No VAT.',
   },
   faq: [
     {
       q: { de: 'Was kostet ein Check-up als Selbstzahler?', en: 'What does a self-pay check-up cost?' },
       a: {
-        de: `Bei uns gibt es keinen Paketpreis. Für den Gesundheitscheck in zwei Terminen sind es typisch ca. ${ganz(zweiTermineWeg.check)} € ärztliches Honorar nach GOÄ, mit Ruhe-EKG ca. ${ganz(zweiTermineWeg.checkMitEkg)} €, dazu ca. ${labor.check}–${labor.checkMitLpa} € Laborkosten, die das Labor selbst berechnet. Wie viel es bei Ihnen wird, hängt davon ab, welche Werte wir gemeinsam für sinnvoll halten.`,
-        en: `We have no package price. For the health check-up in two appointments it is typically approx. €${ganz(zweiTermineWeg.check)} in medical fees under the GOÄ, with a resting ECG approx. €${ganz(zweiTermineWeg.checkMitEkg)}, plus approx. €${labor.check}–${labor.checkMitLpa} in lab costs invoiced by the laboratory. How much it is for you depends on which tests we agree make sense.`,
+        de: `Bei uns gibt es keinen Paketpreis. Für den Gesundheitscheck in zwei Terminen sind es typisch ca. ${ganz(zweiTermineWeg.check)} € ärztliches Honorar nach GOÄ, mit Ruhe-EKG ca. ${ganz(zweiTermineWeg.checkMitEkg)} €, dazu ca. ${labor.check}–${labor.checkMitLpa} € Laborkosten. Wie viel es bei Ihnen wird, hängt davon ab, welche Werte wir gemeinsam für sinnvoll halten.`,
+        en: `We have no package price. For the health check-up in two appointments it is typically approx. €${ganz(zweiTermineWeg.check)} in medical fees under the GOÄ, with a resting ECG approx. €${ganz(zweiTermineWeg.checkMitEkg)}, plus approx. €${labor.check}–${labor.checkMitLpa} in lab costs. How much it is for you depends on which tests we agree make sense.`,
       },
     },
     {
@@ -286,17 +286,17 @@ export const beispielkostenSeite = {
       },
     },
     {
-      q: { de: 'Wer stellt die Laborrechnung, und was erstattet die private Krankenversicherung?', en: 'Who issues the lab invoice, and what does private health insurance reimburse?' },
+      q: { de: 'Wer berechnet die Laborwerte, und was erstattet die private Krankenversicherung?', en: 'Who bills the lab tests, and what does private health insurance reimburse?' },
       a: {
-        de: 'Die Laborrechnung kommt direkt vom Labor. Private Krankenversicherung und Beihilfe erstatten je nach Tarif; fragen Sie im Zweifel vorher dort nach. Unsere Rechnungen und die Kosteninformation helfen Ihnen dabei.',
-        en: 'The lab invoice comes directly from the laboratory. Private health insurance and Beihilfe reimburse depending on the tariff; if in doubt, ask them beforehand. Our invoices and cost information help you with this.',
+        de: 'Einfache Werte rechnen wir über unsere Laborgemeinschaft auf unserer Rechnung ab, die übrigen berechnet das Labor direkt. Private Krankenversicherung und Beihilfe erstatten je nach Tarif; fragen Sie im Zweifel vorher dort nach. Unsere Rechnungen und die Kosteninformation helfen Ihnen dabei.',
+        en: 'Simple values appear on our invoice via our laboratory association; the laboratory bills the others directly. Private health insurance and Beihilfe reimburse depending on the tariff; if in doubt, ask them beforehand. Our invoices and cost information help you with this.',
       },
     },
     {
       q: { de: 'Muss ich vorher bezahlen?', en: 'Do I have to pay in advance?' },
       a: {
-        de: 'Nein. Es gibt keine Vorkasse und keine Anzahlung. Sie bekommen nach jedem Termin eine eigene Rechnung.',
-        en: 'No. There is no prepayment and no deposit. You receive a separate invoice after each appointment.',
+        de: 'In der Regel nicht. Sie bekommen nach jedem Termin eine eigene Rechnung. Vereinbaren wir für Nüchternwerte einen eigenen Termin zur Blutabnahme, zahlen Sie die Blutabnahme und die Laborwerte, die wir selbst abrechnen, im ersten Termin an. Die Anzahlung wird auf der Rechnung vom Tag der Blutabnahme angerechnet.',
+        en: 'Usually not. You receive a separate invoice after each appointment. If we arrange a separate appointment to take blood for fasting values, you pay a deposit for the blood sample and the lab tests we bill ourselves at the first appointment. The deposit is credited on the invoice from the day of the blood sample.',
       },
     },
   ],

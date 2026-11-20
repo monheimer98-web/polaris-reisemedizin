@@ -45,13 +45,15 @@ export const termin = {
  */
 export const zweiTermine = {
   /**
-   * Gesundheitscheck wie die Pakete der Praxissoftware (Schema 52, live seit 20.11.):
-   * Termin 1 Nr. 1 + 250 – Gespräch, Messungen, Blutabnahme mit Basislabor.
+   * Gesundheitscheck nach Nickis Ablauf vom 20.11.2026 (ca. 18:50):
+   * Termin 1 Nr. 29 (2,3) 58,99 € + Nr. 250 (1,8) 4,20 € – Gesundheitsuntersuchung
+   * mit Anamnese, Untersuchung von Kopf bis Fuß, Messungen und Blutabnahme.
+   * Neben Nr. 29 keine Nr. 1 bis 8 am selben Tag.
    */
-  checkErst: 14.92,
-  /** Termin 2 Nr. 29 + 75 – Untersuchung von Kopf bis Fuß, Besprechung der Werte, schriftlicher Befundbericht */
-  checkBefund: 76.42,
-  /** Nr. 651 – Ruhe-EKG auf Wunsch im Termin 2 (nur mit eigenem Gerät) */
+  checkErst: 63.19,
+  /** Termin 2 Nr. 3 (2,3) allein – Befundbesprechung; Befundbericht ohne eigene Ziffer (Nr. 75 nicht neben Nr. 3) */
+  checkBefund: 20.11,
+  /** Nr. 651 (1,8) – Ruhe-EKG auf Wunsch im Termin 1 (Gerät in der Praxis vorhanden) */
   ekg: 26.54,
   /** Nr. 1 + 75 – Befundbesprechung mit schriftlichem Befundbericht (Laborwerte-Check, Gewicht) */
   befund: 28.15,
@@ -72,7 +74,7 @@ export const haarPreis = {
   befund: 20.11,
   /** Nr. 1 + 5 – späterer Verlaufstermin */
   verlauf: 21.44,
-  /** Labor: Ferritin, kleines Blutbild, TSH (Richtwert, Rechnung vom Labor) */
+  /** Labor: Ferritin, kleines Blutbild, TSH (Richtwert; M II über die Laborgemeinschaft auf der Praxisrechnung, Rest vom Labor) */
   labor: 38,
 } as const;
 
@@ -129,7 +131,7 @@ export const weg = {
   einzelwerte: summe(termin.kurzMitBlut, honorar.gespraech),
 } as const;
 
-/** Richtwerte Labor (direkt vom Labor, Faktor 1,15), gerundet (medizin-labor.md 4). */
+/** Richtwerte Labor (Faktor 1,15), gerundet (medizin-labor.md 4). M II rechnet die Praxis über die Laborgemeinschaft ab, M III das Labor. */
 export const labor = {
   /** Blutfette, HbA1c, Kreatinin */
   check: 27,
@@ -153,7 +155,7 @@ export const labor = {
 } as const;
 
 /**
- * Einzelne Laborwerte (direkt vom Labor, Faktor 1,15; medizin-labor.md 5),
+ * Einzelne Laborwerte (Faktor 1,15; M II über die Laborgemeinschaft, M III vom Labor; medizin-labor.md 5),
  * auf den Cent wie in der Laborliste. Für die Ratgeber zu Blutbild und
  * Vitamin D, B12, Eisen; vor Veröffentlichung mit dem Labor abgleichen.
  */

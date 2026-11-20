@@ -1,10 +1,10 @@
 /**
- * Gesundheitscheck (DE/EN). Seit 20.11.2026 in zwei Terminen wie die Pakete
- * der Praxissoftware (Schema 52): Termin 1 (Nr. 1 + 250) Gespräch darüber, was
- * untersucht wird, Messungen durch das Praxisteam, Blutabnahme mit Basislabor;
- * Termin 2 (Nr. 29 + 75, Ruhe-EKG Nr. 651 auf Wunsch) Untersuchung von Kopf
- * bis Fuß, Besprechung aller Werte, schriftlicher Befundbericht. Anamnese,
- * Risikoprofil und Beratung gehören in Termin 2 (Nr. 29).
+ * Gesundheitscheck (DE/EN). Nickis Ablauf vom 20.11.2026 (ca. 18:50):
+ * Termin 1 = Gesundheitsuntersuchung (Nr. 29 + 250, Ruhe-EKG Nr. 651 auf
+ * Wunsch): Anamnese, Risikoprofil, Untersuchung von Kopf bis Fuß, Messungen,
+ * Blutabnahme mit Basislabor. Termin 2 = Befundbesprechung als eingehende
+ * Beratung (Nr. 3, allein); den Befundbericht gibt es dort ohne eigene Ziffer
+ * (Nr. 75 geht nicht neben Nr. 3). Nüchternwerte: eigener kurzer Termin.
  * Der Befundbericht ist das sichtbare Ergebnis und steht deshalb oben.
  * Kein Festpreis, kein „inklusive", kein Komplettlabor, kein Heilversprechen.
  */
@@ -20,8 +20,8 @@ export const praeventionsCheck: PreventionOffer = {
   stage: 1,
   shortName: { de: 'Gesundheitscheck', en: 'Health check-up' },
   teaser: {
-    de: 'Zwei Termine: Gespräch, Messungen und Blutabnahme, dann Untersuchung von Kopf bis Fuß und Ihr schriftlicher Befundbericht mit allen Werten.',
-    en: 'Two appointments: conversation, measurements and blood sample, then a head-to-toe examination and your written report with all results.',
+    de: 'Zwei Termine: Gesundheitsuntersuchung von Kopf bis Fuß mit Messungen und Blutabnahme, dann die Besprechung aller Werte und Ihr schriftlicher Befundbericht.',
+    en: 'Two appointments: a head-to-toe health examination with measurements and blood sample, then a discussion of all results and your written report.',
   },
   facts: {
     forWhom: {
@@ -29,59 +29,59 @@ export const praeventionsCheck: PreventionOffer = {
       en: 'Adults without symptoms, privately insured or self-paying, who want to know where they stand with their health.',
     },
     appointments: {
-      de: 'Ersttermin ca. 20 Min. mit Gespräch, Messungen und Blutabnahme; etwa eine Woche später Untersuchung und Befund ca. 40 Min. Beide Termine in der Praxis.',
-      en: 'First appointment approx. 20 min with conversation, measurements and blood sample; about a week later examination and results approx. 40 min. Both appointments at the practice.',
+      de: 'Termin 1 ca. 40 Min. mit Gespräch, Untersuchung, Messungen und Blutabnahme; etwa eine Woche später Besprechung der Werte ca. 20 Min. Beide Termine in der Praxis.',
+      en: 'Appointment 1 approx. 40 min with consultation, examination, measurements and blood sample; about a week later discussion of results approx. 20 min. Both appointments at the practice.',
     },
     fee: {
       de: `Nach GOÄ, je nachdem, was Sie brauchen. Typisch für beide Termine zusammen: ${caDe(zweiTermineWeg.check)}, mit Ruhe-EKG ${caDe(zweiTermineWeg.checkMitEkg)}.`,
       en: `Under the GOÄ, depending on what you need. Typically for both appointments together: ${caEn(zweiTermineWeg.check)}, with a resting ECG ${caEn(zweiTermineWeg.checkMitEkg)}.`,
     },
     lab: {
-      de: `${caDe(labor.check)}, mit einmaliger Lp(a)-Bestimmung ${caDe(labor.checkMitLpa)}, eigene Rechnung vom Labor`,
-      en: `${caEn(labor.check)}, with a one-off Lp(a) test ${caEn(labor.checkMitLpa)}, separate invoice from the laboratory`,
+      de: `${caDe(labor.check)}, mit einmaliger Lp(a)-Bestimmung ${caDe(labor.checkMitLpa)}`,
+      en: `${caEn(labor.check)}, with a one-off Lp(a) test ${caEn(labor.checkMitLpa)}`,
     },
   },
   steps: [
     {
-      title: { de: 'Ersttermin: besprechen, was wir untersuchen', en: 'First appointment: what we will examine' },
+      title: { de: 'Termin 1: Gesundheitsuntersuchung', en: 'Appointment 1: health examination' },
       text: {
-        de: 'Etwa 20 Minuten in der Praxis. Wir besprechen, was der Check umfasst, welche Blutwerte bei Ihnen etwas aussagen und was das kostet.',
-        en: 'About 20 minutes at the practice. We discuss what the check-up covers, which blood tests are informative in your case and what this costs.',
+        de: 'Etwa 40 Minuten in der Praxis. Wir sprechen über Ihre Vorgeschichte, Ihre Familie, Ihren Alltag und Ihre Ziele, untersuchen Sie von Kopf bis Fuß und sehen in Ihren Impfpass. Wir besprechen, welche Blutwerte bei Ihnen etwas aussagen und was das kostet.',
+        en: 'About 40 minutes at the practice. We talk about your medical history, your family, your everyday life and your goals, examine you from head to toe and look at your vaccination record. We discuss which blood tests are informative in your case and what this costs.',
       },
     },
     {
-      title: { de: 'Noch im Ersttermin: Messungen und Blutabnahme', en: 'Still in the first appointment: measurements and blood sample' },
+      title: { de: 'Noch in Termin 1: Messungen und Blutabnahme', en: 'Still in appointment 1: measurements and blood sample' },
       text: {
-        de: 'Unser Praxisteam misst Blutdruck, Größe, Gewicht und Taillenumfang und nimmt Blut ab für das Basislabor: Blutfette, Blutzucker-Langzeitwert (HbA1c) und Nierenwert, beim ersten Check auf Wunsch einmalig Lp(a). Sie müssen dafür in der Regel nicht nüchtern sein.',
-        en: 'Our practice team measures blood pressure, height, weight and waist circumference and takes a blood sample for the basic panel: blood lipids, long-term blood sugar (HbA1c) and kidney value, and at the first check-up a one-off Lp(a) test if you wish. You usually do not need to fast.',
+        de: 'Unser Praxisteam misst Blutdruck, Größe, Gewicht und Taillenumfang und nimmt Blut ab für das Basislabor: Blutfette, Blutzucker-Langzeitwert (HbA1c) und Nierenwert, beim ersten Check auf Wunsch einmalig Lp(a). Sie müssen dafür in der Regel nicht nüchtern sein. Auf Wunsch schreiben wir ein Ruhe-EKG.',
+        en: 'Our practice team measures blood pressure, height, weight and waist circumference and takes a blood sample for the basic panel: blood lipids, long-term blood sugar (HbA1c) and kidney value, and at the first check-up a one-off Lp(a) test if you wish. You usually do not need to fast. On request we record a resting ECG.',
       },
     },
     {
-      title: { de: 'Untersuchung und Befund', en: 'Examination and results' },
+      title: { de: 'Termin 2: Besprechung Ihrer Werte', en: 'Appointment 2: discussing your results' },
       text: {
-        de: 'Etwa eine Woche später, wenn alle Werte vorliegen, folgt Termin 2. In etwa 40 Minuten sprechen wir über Ihre Vorgeschichte, Ihre Familie, Ihren Alltag und Ihre Ziele, untersuchen Sie von Kopf bis Fuß und sehen in Ihren Impfpass. Auf Wunsch schreiben wir ein Ruhe-EKG.',
-        en: 'About a week later, once all results are in, comes appointment 2. In about 40 minutes we talk about your medical history, your family, your everyday life and your goals, examine you from head to toe and look at your vaccination record. On request we record a resting ECG.',
+        de: 'Etwa eine Woche später, wenn alle Werte vorliegen. In etwa 20 Minuten gehen wir alle Ergebnisse mit Ihnen durch: Untersuchung, Messungen, Blutwerte und, wenn gemacht, das Ruhe-EKG. Wir besprechen, was daraus folgt.',
+        en: 'About a week later, once all results are in. In about 20 minutes we go through all results with you: examination, measurements, blood tests and, if recorded, the resting ECG. We discuss what follows from them.',
       },
     },
     {
       title: { de: 'Ihr Befundbericht zum Mitnehmen', en: 'Your written report to take home' },
       text: {
-        de: 'Wir besprechen alle Werte mit Ihnen. Sie gehen mit Ihrem schriftlichen Befundbericht nach Hause: Ihre Werte mit Grafik und Einordnung und was daraus folgt.',
-        en: 'We go through all results with you. You leave with your written report: your values with a chart and an assessment, and what follows from them.',
+        de: 'Sie gehen mit Ihrem schriftlichen Befundbericht nach Hause: Ihre Werte mit Grafik und Einordnung und was daraus folgt.',
+        en: 'You leave with your written report: your values with a chart and an assessment, and what follows from them.',
       },
     },
   ],
   costs: {
     de: [
-      `Ärztliches Honorar nach GOÄ (Regelsatz), je Termin: Ersttermin mit Gespräch, Messungen und Blutabnahme ${caDe(zweiTermine.checkErst)}, Untersuchung von Kopf bis Fuß, Besprechung aller Werte und schriftlicher Befundbericht ${caDe(zweiTermine.checkBefund)}, Ruhe-EKG auf Wunsch ${caDe(zweiTermine.ekg)}. Zusammen ${caDe(zweiTermineWeg.check)}, mit Ruhe-EKG ${caDe(zweiTermineWeg.checkMitEkg)}.`,
-      `Dazu kommen die Laborkosten für das Basislabor, ${caDe(labor.check)}, mit einmaliger Lp(a)-Bestimmung ${caDe(labor.checkMitLpa)}. Weitere Werte bestimmen wir nur, wenn wir sie gemeinsam für sinnvoll halten.`,
+      `Ärztliches Honorar nach GOÄ (Regelsatz), je Termin: Termin 1, Gesundheitsuntersuchung mit Blutabnahme, ${caDe(zweiTermine.checkErst)}, Ruhe-EKG auf Wunsch ${caDe(zweiTermine.ekg)}; Termin 2, ausführliche Besprechung aller Werte mit Befundbericht, ${caDe(zweiTermine.checkBefund)}. Zusammen ${caDe(zweiTermineWeg.check)}, mit Ruhe-EKG ${caDe(zweiTermineWeg.checkMitEkg)}.`,
+      `Dazu kommen die Laborkosten für das Basislabor, ${caDe(labor.check)}, mit einmaliger Lp(a)-Bestimmung ${caDe(labor.checkMitLpa)}. Einfache Werte rechnen wir über unsere Laborgemeinschaft auf unserer Rechnung ab, die übrigen berechnet das Labor selbst. Weitere Werte bestimmen wir nur, wenn wir sie gemeinsam für sinnvoll halten.`,
       `Eine Impfung im selben Termin wird zusätzlich nach GOÄ berechnet, ${caDe(honorar.impfung)}, dazu kommt der Impfstoff.`,
       kostenVorab.de,
       'Private Krankenversicherungen und Beihilfe erstatten Gesundheitsuntersuchungen je nach Tarif, häufig in den Abständen der gesetzlichen Gesundheitsuntersuchung (ab 35 Jahren alle drei Jahre). Bitte klären Sie die Erstattung vorab.',
     ],
     en: [
-      `Medical fee under the GOÄ (standard rate), per appointment: first appointment with conversation, measurements and blood sample ${caEn(zweiTermine.checkErst)}, head-to-toe examination, discussion of all results and written report ${caEn(zweiTermine.checkBefund)}, resting ECG on request ${caEn(zweiTermine.ekg)}. Together ${caEn(zweiTermineWeg.check)}, with a resting ECG ${caEn(zweiTermineWeg.checkMitEkg)}.`,
-      `Lab costs for the basic panel come on top, ${caEn(labor.check)}, with a one-off Lp(a) test ${caEn(labor.checkMitLpa)}. We only measure further values if we agree that they make sense.`,
+      `Medical fee under the GOÄ (standard rate), per appointment: appointment 1, health examination with blood sample, ${caEn(zweiTermine.checkErst)}, resting ECG on request ${caEn(zweiTermine.ekg)}; appointment 2, detailed discussion of all results with written report, ${caEn(zweiTermine.checkBefund)}. Together ${caEn(zweiTermineWeg.check)}, with a resting ECG ${caEn(zweiTermineWeg.checkMitEkg)}.`,
+      `Lab costs for the basic panel come on top, ${caEn(labor.check)}, with a one-off Lp(a) test ${caEn(labor.checkMitLpa)}. Simple values appear on our invoice via our laboratory association, the others are invoiced by the laboratory itself. We only measure further values if we agree that they make sense.`,
       `A vaccination in the same appointment is billed additionally under the GOÄ, ${caEn(honorar.impfung)}, plus the vaccine.`,
       kostenVorab.en,
       'Private health insurers and civil-service allowances (Beihilfe) reimburse health check-ups depending on the tariff, often at the intervals of the statutory check-up (every three years from age 35). Please check reimbursement in advance.',
@@ -150,10 +150,10 @@ export const praeventionsCheck: PreventionOffer = {
         heading: { de: 'Was wir uns ansehen', en: 'What we look at' },
         body: {
           de: [
-            'Der Check konzentriert sich auf das, woraus sich etwas ableiten lässt. Im Ersttermin misst unser Praxisteam und nimmt Blut ab. Im zweiten Termin untersuchen wir Sie und besprechen alles zusammen.',
+            'Der Check konzentriert sich auf das, woraus sich etwas ableiten lässt. Im ersten Termin untersuchen wir Sie, unser Praxisteam misst und nimmt Blut ab. Im zweiten Termin besprechen wir alles zusammen.',
           ],
           en: [
-            'The check-up focuses on what leads to a decision. In the first appointment our practice team takes measurements and a blood sample. In the second appointment we examine you and discuss everything together.',
+            'The check-up focuses on what leads to a decision. In the first appointment we examine you, and our practice team takes measurements and a blood sample. In the second appointment we discuss everything together.',
           ],
         },
         list: {
@@ -200,10 +200,10 @@ export const praeventionsCheck: PreventionOffer = {
         heading: { de: 'Ruhe-EKG auf Wunsch', en: 'Resting ECG on request' },
         body: {
           de: [
-            'Ein Ruhe-EKG zeichnet die elektrische Tätigkeit des Herzens im Liegen auf, zum Beispiel Herzrhythmus und Herzfrequenz. Wir schreiben es im zweiten Termin, wenn Sie es wünschen. Bei Menschen ohne Beschwerden ist es keine Pflicht; wir besprechen mit Ihnen, ob es für Sie etwas aussagt. Ein Belastungs-EKG gehört nicht zum Check.',
+            'Ein Ruhe-EKG zeichnet die elektrische Tätigkeit des Herzens im Liegen auf, zum Beispiel Herzrhythmus und Herzfrequenz. Wir schreiben es im ersten Termin, wenn Sie es wünschen. Bei Menschen ohne Beschwerden ist es keine Pflicht; wir besprechen mit Ihnen, ob es für Sie etwas aussagt. Ein Belastungs-EKG gehört nicht zum Check.',
           ],
           en: [
-            'A resting ECG records the electrical activity of the heart while you lie down, for example heart rhythm and heart rate. We record it in the second appointment if you wish. For people without symptoms it is not required; we discuss with you whether it is informative in your case. An exercise ECG is not part of the check-up.',
+            'A resting ECG records the electrical activity of the heart while you lie down, for example heart rhythm and heart rate. We record it in the first appointment if you wish. For people without symptoms it is not required; we discuss with you whether it is informative in your case. An exercise ECG is not part of the check-up.',
           ],
         },
       },
@@ -212,10 +212,10 @@ export const praeventionsCheck: PreventionOffer = {
         heading: { de: 'Impfschutz gleich mit prüfen', en: 'Checking your vaccinations at the same time' },
         body: {
           de: [
-            'Bringen Sie zum zweiten Termin Ihren Impfpass mit. Wir prüfen die Standardimpfungen nach den Empfehlungen der Ständigen Impfkommission (STIKO). Fehlt eine Impfung, können Sie sie bei uns in der Praxis nachholen.',
+            'Bringen Sie zum ersten Termin Ihren Impfpass mit. Wir prüfen die Standardimpfungen nach den Empfehlungen der Ständigen Impfkommission (STIKO). Fehlt eine Impfung, können Sie sie bei uns in der Praxis nachholen.',
           ],
           en: [
-            'Please bring your vaccination record to the second appointment. We check your standard vaccinations against the recommendations of the German Standing Committee on Vaccination (STIKO). If a vaccination is missing, you can catch up on it at our practice.',
+            'Please bring your vaccination record to the first appointment. We check your standard vaccinations against the recommendations of the German Standing Committee on Vaccination (STIKO). If a vaccination is missing, you can catch up on it at our practice.',
           ],
         },
       },
@@ -265,8 +265,8 @@ export const praeventionsCheck: PreventionOffer = {
       {
         q: { de: 'Warum zwei Termine?', en: 'Why two appointments?' },
         a: {
-          de: 'Damit im zweiten Termin alle Werte vorliegen. Im Ersttermin besprechen wir, was wir untersuchen, messen und nehmen Blut ab. Etwa eine Woche später, wenn alle Werte vorliegen, untersuchen wir Sie, besprechen alle Ergebnisse auf einmal, und Sie nehmen Ihren Befundbericht mit.',
-          en: 'So that all results are available in the second appointment. In the first appointment we discuss what we will examine, take measurements and a blood sample. About a week later, once all results are in, we examine you, discuss all results at once, and you take your report home.',
+          de: 'Damit im zweiten Termin alle Werte vorliegen. Im ersten Termin untersuchen wir Sie, messen und nehmen Blut ab. Etwa eine Woche später, wenn alle Werte vorliegen, besprechen wir alle Ergebnisse auf einmal, und Sie nehmen Ihren Befundbericht mit.',
+          en: 'So that all results are available in the second appointment. In the first appointment we examine you, take measurements and a blood sample. About a week later, once all results are in, we discuss all results at once, and you take your report home.',
         },
       },
       {
@@ -277,7 +277,7 @@ export const praeventionsCheck: PreventionOffer = {
         },
       },
       {
-        q: { de: 'Was bringe ich zum zweiten Termin mit?', en: 'What should I bring to the second appointment?' },
+        q: { de: 'Was bringe ich zum ersten Termin mit?', en: 'What should I bring to the first appointment?' },
         a: {
           de: 'Ihren Impfpass, eine Liste Ihrer Medikamente und, wenn vorhanden, frühere Befunde.',
           en: 'Your vaccination record, a list of your medication and, if available, earlier test results.',

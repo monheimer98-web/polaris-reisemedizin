@@ -50,8 +50,8 @@ export const haare: PreventionOffer = {
       en: `Under the GOÄ. Typically for both appointments together: ${caEn(beideTermine)}; a later follow-up ${caEn(haarPreis.verlauf)}.`,
     },
     lab: {
-      de: `${caDe(haarPreis.labor)} für Ferritin, kleines Blutbild und TSH, eigene Rechnung vom Labor`,
-      en: `${caEn(haarPreis.labor)} for ferritin, basic blood count and TSH, separate invoice from the laboratory`,
+      de: `${caDe(haarPreis.labor)} für Ferritin, kleines Blutbild und TSH, je nach Wert auf unserer Rechnung oder vom Labor`,
+      en: `${caEn(haarPreis.labor)} for ferritin, basic blood count and TSH, on our invoice or from the laboratory, depending on the test`,
     },
   },
   steps: [

@@ -161,10 +161,10 @@ export const vitaminTestGuide: ClinicalPage = {
       heading: { de: 'Was es bei uns kostet', en: 'What it costs with us' },
       body: {
         de: [
-          `Wir rechnen nach der Gebührenordnung für Ärzte (GOÄ) ab. Das ärztliche Honorar für beide Termine des Laborwerte-Checks beträgt ${caDe(zweiTermineWeg.werte)}: Ersttermin mit Blutabnahme und Befundtermin mit schriftlichem Werte-Bogen. Das Labor stellt seine Rechnung selbst:`,
+          `Wir rechnen nach der Gebührenordnung für Ärzte (GOÄ) ab. Das ärztliche Honorar für beide Termine des Laborwerte-Checks beträgt ${caDe(zweiTermineWeg.werte)}: Ersttermin mit Blutabnahme und Befundtermin mit schriftlichem Werte-Bogen. Dazu kommen die Laborkosten, je nach Wert auf unserer Rechnung oder vom Labor:`,
         ],
         en: [
-          `We bill under the German fee schedule for doctors (GOÄ). The medical fee for both appointments of the lab value check is ${caEn(zweiTermineWeg.werte)}: first appointment with blood sample and results appointment with a written summary. The laboratory issues its own invoice:`,
+          `We bill under the German fee schedule for doctors (GOÄ). The medical fee for both appointments of the lab value check is ${caEn(zweiTermineWeg.werte)}: first appointment with blood sample and results appointment with a written summary. Lab costs come on top, on our invoice or from the laboratory depending on the test:`,
         ],
       },
       list: {

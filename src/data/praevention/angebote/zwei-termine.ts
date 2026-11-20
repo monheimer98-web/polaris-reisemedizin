@@ -10,8 +10,8 @@ import type { Localized } from '../../types';
 
 /** Pflichtsatz im Kosten-Abschnitt: Kosten vorab schriftlich, GOÄ, Labor rechnet selbst ab. */
 export const kostenVorab: Localized = {
-  de: 'Die voraussichtlichen Kosten nennen wir Ihnen vor dem Termin schriftlich. Abgerechnet wird nach der Gebührenordnung für Ärzte (GOÄ), je Termin und nur für das, was stattfindet, ohne Pakete, Abos oder Vorkasse. Das Labor rechnet seine Werte selbst mit Ihnen ab.',
-  en: 'We tell you the expected costs in writing before the appointment. We bill under the German fee schedule for doctors (GOÄ), per appointment and only for what takes place, with no packages, subscriptions or prepayment. The laboratory bills its tests to you directly.',
+  de: 'Die voraussichtlichen Kosten nennen wir Ihnen vor dem Termin schriftlich. Abgerechnet wird nach der Gebührenordnung für Ärzte (GOÄ), je Termin und nur für das, was stattfindet, ohne Pakete und ohne Abo. Einfache Laborwerte stehen auf unserer Rechnung, die übrigen rechnet das Labor selbst mit Ihnen ab.',
+  en: 'We tell you the expected costs in writing before the appointment. We bill under the German fee schedule for doctors (GOÄ), per appointment and only for what takes place, with no packages and no subscription. Simple lab values appear on our invoice, the laboratory bills the others to you directly.',
 };
 
 /** Erstattung für Privatversicherte und Beihilfe, ohne Zusage. */

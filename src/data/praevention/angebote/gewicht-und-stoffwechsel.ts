@@ -44,8 +44,8 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
       en: `Under the GOÄ, depending on what you need. Typically for both appointments together: ${caEn(zweiTermineWeg.gewicht)}; a follow-up ${caEn(honorar.verlauf)}.`,
     },
     lab: {
-      de: `ca. ${labor.gewichtStart}–${euroDe(labor.gewichtStartMitTsh)}, eigene Rechnung vom Labor`,
-      en: `approx. ${euroEn(labor.gewichtStart)}–${euroEn(labor.gewichtStartMitTsh)}, separate invoice from the laboratory`,
+      de: `ca. ${labor.gewichtStart}–${euroDe(labor.gewichtStartMitTsh)}, je nach Wert auf unserer Rechnung oder vom Labor`,
+      en: `approx. ${euroEn(labor.gewichtStart)}–${euroEn(labor.gewichtStartMitTsh)}, on our invoice or from the laboratory, depending on the test`,
     },
   },
   steps: [

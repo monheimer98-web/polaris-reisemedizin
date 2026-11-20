@@ -85,10 +85,10 @@ export const grossesBlutbildGuide: ClinicalPage = {
       heading: { de: 'Was es bei uns kostet', en: 'What it costs with us' },
       body: {
         de: [
-          'Wir rechnen nach der Gebührenordnung für Ärzte (GOÄ) ab, je Termin und nur für das, was stattfindet. Das Labor stellt seine Rechnung selbst. Deshalb nennen wir Honorar und Labor getrennt. Drei Beispiele zum Regelsatz:',
+          'Wir rechnen nach der Gebührenordnung für Ärzte (GOÄ) ab, je Termin und nur für das, was stattfindet. Das Blutbild und andere einfache Werte rechnen wir über unsere Laborgemeinschaft auf unserer Rechnung ab, die übrigen berechnet das Labor selbst. Wir nennen Honorar und Labor getrennt. Drei Beispiele zum Regelsatz:',
         ],
         en: [
-          'We bill under the German fee schedule for doctors (GOÄ), per appointment and only for what takes place. The laboratory issues its own invoice. That is why we show medical fees and lab costs separately. Three examples at the standard rate:',
+          'We bill under the German fee schedule for doctors (GOÄ), per appointment and only for what takes place. The blood count and other simple values appear on our invoice via our laboratory association; the laboratory bills the others itself. We show medical fees and lab costs separately. Three examples at the standard rate:',
         ],
       },
       list: {

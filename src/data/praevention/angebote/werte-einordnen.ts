@@ -34,8 +34,8 @@ export const werteEinordnen: PreventionOffer = {
       en: `Under the GOÄ. Typically for both appointments together: ${caEn(zweiTermineWeg.werte)}.`,
     },
     lab: {
-      de: `je nach Wert, zum Beispiel kleines Blutbild ${caDe(laborwert.kleinesBlutbild)}, Vitamin D ${caDe(laborwert.vitaminD)}; eigene Rechnung vom Labor`,
-      en: `depending on the test, for example basic blood count ${caEn(laborwert.kleinesBlutbild)}, vitamin D ${caEn(laborwert.vitaminD)}; separate invoice from the laboratory`,
+      de: `je nach Wert, zum Beispiel kleines Blutbild ${caDe(laborwert.kleinesBlutbild)}, Vitamin D ${caDe(laborwert.vitaminD)}; auf unserer Rechnung oder vom Labor`,
+      en: `depending on the test, for example basic blood count ${caEn(laborwert.kleinesBlutbild)}, vitamin D ${caEn(laborwert.vitaminD)}; on our invoice or from the laboratory`,
     },
   },
   steps: [
