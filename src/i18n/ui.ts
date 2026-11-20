@@ -10,8 +10,6 @@ export const ui = {
     // Navigation
     'nav.home': 'Start',
     'nav.services': 'Leistungen',
-    'nav.prevention': 'Prävention',
-    'nav.travelMedicine': 'Reisemedizin',
     'nav.worldSwitch': 'Bereich wählen',
     'nav.worldTravel': 'Reisepraxis',
     'nav.worldPrevention': 'Prävention',
@@ -306,8 +304,6 @@ export const ui = {
     // Navigation
     'nav.home': 'Home',
     'nav.services': 'Services',
-    'nav.prevention': 'Prevention',
-    'nav.travelMedicine': 'Travel medicine',
     'nav.worldSwitch': 'Choose area',
     'nav.worldTravel': 'Travel clinic',
     'nav.worldPrevention': 'Prevention',
@@ -419,11 +415,11 @@ export const ui = {
     'home.heroTitle': 'Travel well prepared.',
     'home.heroLead':
       'Your travel-medicine private practice in Langenfeld: personal advice, travel vaccinations and prevention – medically grounded and based on the current state of science.',
-    'home.badgeYellowFever': 'State-approved yellow fever vaccination centre',
+    'home.badgeYellowFever': 'State-authorised yellow fever vaccination centre',
 
     // Home — trust bar
     'trust.ariaLabel': 'Trust and quality',
-    'trust.authorizedTitle': 'Approved yellow fever centre',
+    'trust.authorizedTitle': 'Authorised yellow fever centre',
     'trust.authorizedText':
       'State-approved for the yellow fever vaccination – including the internationally valid entry in your vaccination certificate.',
     'trust.specialistTitle': 'Physician-led',
@@ -452,7 +448,7 @@ export const ui = {
       'Live vaccination with an international certificate (ICVP) valid for life – a condition of entry in some countries.',
     'home.serviceYfFact1': 'Live vaccine, approved from 9 months of age',
     'home.serviceYfFact2': 'Internationally valid certificate from day 10',
-    'home.serviceYfFact3': 'Only available at approved vaccination centres',
+    'home.serviceYfFact3': 'Only available at authorised vaccination centres',
     'home.serviceFsmeTitle': 'TBE vaccination',
     'home.serviceFsmeText':
       'Protection against tick-borne encephalitis (TBE/FSME) – relevant in many regions of Germany and Europe.',

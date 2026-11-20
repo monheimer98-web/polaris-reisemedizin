@@ -2,13 +2,11 @@
  * Inhalt der Seite „Reisemedizin für Unternehmen" (B2B). Eigene Säule des
  * Angebots: reisemedizinische Vorbereitung entsendeter bzw. dienstreisender
  * Mitarbeitender. Sachlich und HWG-konform; keine arbeitsmedizinische
- * Vorsorge (z. B. Grundsatz G35) im eigenen Namen – diese bleibt beim
- * betriebsärztlichen Dienst. Wortlaut nach der internen Formulierungsliste
- * für Firmentexte (Stand 28.10.2026): keine Daten an den Arbeitgeber ohne
- * Einwilligung, keine Zusagen zu Wartezeiten, Abrechnung nach GOÄ.
+ * Vorsorge (z. B. Grundsatz G35) im eigenen Namen – diese erfolgt in
+ * Abstimmung mit dem betriebsärztlichen Dienst.
  */
-import { site } from '../config/site';
 import type { Localized } from './types';
+import { NACHWEISE_IM_ANGEBOT } from './ausland/stand';
 
 export interface UnternehmenItem {
   title: Localized;
@@ -26,7 +24,6 @@ export interface UnternehmenPage {
     description: Localized;
     eyebrow: Localized;
     lead: Localized;
-    approval: Localized;
   };
   intro: Localized<string[]>;
   servicesHeading: Localized;
@@ -36,36 +33,34 @@ export interface UnternehmenPage {
   processHeading: Localized;
   processLead: Localized;
   steps: UnternehmenStep[];
-  billing: { heading: Localized; body: Localized<string[]>; costsLink: Localized };
-  contact: { heading: Localized; text: Localized; person: Localized; writeLink: Localized };
+  billing: { heading: Localized; body: Localized<string[]> };
+  contact: { heading: Localized; text: Localized; cta: Localized };
 }
 
 export const unternehmenPage: UnternehmenPage = {
   meta: {
     title: { de: 'Reisemedizin für Unternehmen', en: 'Travel medicine for businesses' },
     description: {
-      de: 'Reisemedizinische Beratung und Impfungen für Mitarbeitende: Gelbfieber-Impfstelle in Langenfeld, Gruppentermine nach Vereinbarung, Abrechnung nach GOÄ.',
-      en: 'Travel-medicine advice and vaccinations for staff: yellow fever vaccination centre in Langenfeld, group appointments by arrangement, billing under the GOÄ.',
+      de: 'Reisemedizinische Vorbereitung für entsendete und dienstreisende Mitarbeitende: Beratung, Impfungen, Impfnachweise und Dokumentation.',
+      en: NACHWEISE_IM_ANGEBOT
+        ? 'Travel-medicine preparation for posted and business-travelling staff: consultation, vaccinations, certificates and documentation.'
+        : 'Travel-medicine preparation for posted and business-travelling staff: consultation, vaccinations, vaccination records and documentation.',
     },
     eyebrow: { de: 'Für Unternehmen', en: 'For businesses' },
     lead: {
-      de: 'Wenn Mitarbeitende beruflich außerhalb Europas unterwegs sind, gehören Impfungen und reisemedizinische Beratung zur Vorbereitung. Polaris in Langenfeld übernimmt diesen Teil.',
-      en: 'When staff travel outside Europe for work, vaccinations and travel-medicine advice are part of the preparation. Polaris in Langenfeld takes care of this part.',
-    },
-    approval: {
-      de: `Staatlich zugelassene Gelbfieber-Impfstelle (Zulassung Nr. ${site.yellowFever.approvalNumber})`,
-      en: `State-approved yellow fever vaccination centre (approval no. ${site.yellowFever.approvalNumber})`,
+      de: 'Wenn Sie Mitarbeitende ins Ausland entsenden oder auf Dienstreise schicken, sorgen wir für die reisemedizinische Vorbereitung – strukturiert, dokumentiert und zuverlässig.',
+      en: 'When you post staff abroad or send them on business trips, we handle the travel-medicine preparation – structured, documented and reliable.',
     },
   },
 
   intro: {
     de: [
-      'Wir beraten je Zielland und Tätigkeit, impfen und tragen die Impfungen in den Impfausweis und bei Gelbfieber in den Internationalen Impfnachweis (ICVP) ein. Häufig benötigte Reiseimpfstoffe sind vorrätig, Beratung und Impfung sind daher oft in einem Termin möglich.',
-      'Medizinische Angaben bleiben in der Praxis. Für die Organisation gibt es einen festen Ansprechpartner. Außerdem bieten wir Prävention & Lebensstil an.',
+      'Dienstreisen, Entsendungen und Projekteinsätze im Ausland brauchen eine verlässliche reisemedizinische Vorsorge. Wir beraten Ihre Mitarbeitenden, führen die nötigen Impfungen durch und kümmern uns um die vollständige Dokumentation – auf Wunsch für einzelne Personen oder für ganze Teams.',
+      'Die reisemedizinische Beratung und Impfung liegt in ärztlicher Verantwortung. Den organisatorischen Ablauf stimmen wir eng mit Ihnen ab, damit der Aufwand für Ihre Mitarbeitenden gering bleibt.',
     ],
     en: [
-      'We advise according to destination and activity, vaccinate, and enter the vaccinations in the vaccination record and, for yellow fever, in the International Certificate of Vaccination (ICVP). Frequently needed travel vaccines are in stock, so advice and vaccination are often possible in one appointment.',
-      'Medical information stays at the practice. You have one fixed contact person for the organisation. We also offer prevention and lifestyle medicine.',
+      'Business trips, postings and project assignments abroad require reliable travel-medicine preparation. We advise your staff, carry out the necessary vaccinations and take care of complete documentation – for individuals or entire teams, as you prefer.',
+      'Travel-medicine advice and vaccination are provided under medical responsibility. We coordinate the organisational process closely with you so the effort for your staff stays low.',
     ],
   },
 
@@ -74,26 +69,26 @@ export const unternehmenPage: UnternehmenPage = {
     {
       title: { de: 'Reisemedizinische Beratung für Mitarbeitende', en: 'Travel-medicine advice for staff' },
       text: {
-        de: 'Je Zielland, Reisedauer und Tätigkeit. Jede Person wird einzeln beraten.',
-        en: 'By destination, length of stay and activity. Each person is advised individually.',
+        de: 'Einzeln oder im Team – abgestimmt auf Reiseziel, Dauer und Tätigkeit vor Ort.',
+        en: 'Individually or as a team – tailored to destination, duration and on-site activity.',
       },
     },
     {
-      title: { de: 'Reiseimpfungen und Impfplanung', en: 'Travel vaccinations and planning' },
+      title: { de: 'Impfungen & Impfplanung für Auslandseinsätze', en: 'Vaccinations & planning for overseas assignments' },
       text: {
-        de: 'Reiseimpfungen nach Empfehlung, Prüfung des Impfstatus, Planung von Impfserien und Auffrischungen.',
-        en: 'Travel vaccinations as recommended, review of vaccination status, planning of vaccination series and boosters.',
+        de: 'Empfohlene und vorgeschriebene Reiseimpfungen, individuell geplant und sauber dokumentiert.',
+        en: 'Recommended and required travel vaccinations, individually planned and cleanly documented.',
       },
     },
     {
-      title: { de: 'Malariavorbeugung, Höhe, Reiseapotheke', en: 'Malaria prevention, altitude, travel kit' },
+      title: { de: 'Malaria- & Gesundheitsrisiken vor Ort', en: 'Malaria & on-site health risks' },
       text: {
-        de: 'Beratung zu Malariavorbeugung, Aufenthalten in großer Höhe und Reiseapotheke.',
-        en: 'Advice on malaria prevention, stays at high altitude and the travel medicine kit.',
+        de: 'Beratung zu Malariaprophylaxe, Mückenschutz und regionalen Gesundheitsrisiken.',
+        en: 'Advice on malaria prophylaxis, mosquito protection and regional health risks.',
       },
     },
     {
-      title: { de: 'Internationaler Impfnachweis (ICVP)', en: 'International vaccination certificate (ICVP)' },
+      title: { de: 'Internationale Impfnachweise', en: 'International vaccination certificates' },
       text: {
         de: 'Vollständige Impfdokumentation inklusive international gültigem Gelbfieber-Nachweis (ICVP) als staatlich zugelassene Gelbfieberimpfstelle.',
         en: 'Complete vaccination records including the internationally valid yellow-fever certificate (ICVP) as a state-authorised yellow-fever vaccination centre.',
@@ -102,15 +97,15 @@ export const unternehmenPage: UnternehmenPage = {
     {
       title: { de: 'Abstimmung mit Ihrem Betriebsarzt', en: 'Coordination with your company physician' },
       text: {
-        de: 'Die arbeitsmedizinische Vorsorge nach ArbMedVV, zum Beispiel bei Tätigkeiten in den Tropen und Subtropen, bleibt beim Betriebsarzt. Wir stimmen uns auf Wunsch mit ihm ab.',
-        en: 'Occupational health check-ups under the ArbMedVV, for example for work in the tropics and subtropics, remain with your company physician. We coordinate with them on request.',
+        de: 'Wir übernehmen die reisemedizinische Beratung und die Impfungen. Vorgaben aus der betriebsärztlichen Betreuung Ihres Unternehmens stimmen wir auf Wunsch mit Ihrem Betriebsarzt ab.',
+        en: 'We provide the travel-medicine consultation and the vaccinations. On request we coordinate requirements from your company’s occupational health care with your company physician.',
       },
     },
     {
-      title: { de: 'Nachweise und Daten Ihrer Mitarbeitenden', en: 'Your staff’s records and data' },
+      title: { de: 'Dokumentation für Ihre Personalabteilung', en: 'Documentation for your HR department' },
       text: {
-        de: 'Die Mitarbeitenden erhalten ihre Nachweise selbst. Ihr Unternehmen erfährt nur mit nachweisbarer Einwilligung der Mitarbeitenden, wer welchen Termin wahrgenommen hat.',
-        en: 'Staff receive their records themselves. Your company only learns who attended which appointment with the verifiable consent of the employee.',
+        de: 'Nachvollziehbare Nachweise und Berichte für Reise und Personalakte.',
+        en: 'Traceable records and reports for the trip and the personnel file.',
       },
     },
   ],
@@ -122,38 +117,38 @@ export const unternehmenPage: UnternehmenPage = {
     },
     cta: { de: 'Nachweise und Atteste', en: 'Certificates and forms' },
   },
-  processHeading: { de: 'So läuft es ab', en: 'How it works' },
+  processHeading: { de: 'So arbeiten wir mit Ihnen', en: 'How we work with you' },
   processLead: {
-    de: 'Gruppentermine nach Vereinbarung, auch abends oder samstags nach Vereinbarung möglich. Planen Sie möglichst einige Wochen Vorlauf vor der Abreise ein.',
-    en: 'Group appointments by arrangement; evenings or Saturdays are also possible by arrangement. Please allow a few weeks before departure where possible.',
+    de: 'Vier Schritte – von der ersten Anfrage bis zu vollständigen Nachweisen.',
+    en: 'Four steps – from the first enquiry to complete records.',
   },
   steps: [
     {
-      title: { de: 'Anrufen', en: 'Call us' },
+      title: { de: 'Anfrage & Bedarf klären', en: 'Enquiry & needs assessment' },
       text: {
-        de: 'Sie nennen uns Zielländer, Reisezeitraum und Anzahl der Personen.',
-        en: 'You tell us the destinations, travel dates and number of people.',
+        de: 'Reiseziele, Anzahl der Mitarbeitenden und Zeitrahmen – wir erfassen, worum es geht.',
+        en: 'Destinations, number of staff and timeframe – we capture what is needed.',
       },
     },
     {
-      title: { de: 'Planen', en: 'Plan' },
+      title: { de: 'Individuelle Planung', en: 'Individual planning' },
       text: {
-        de: 'Wir klären, welche Impfungen für die Ziele vorgeschrieben oder empfohlen sind und wie viele Termine nötig sind.',
-        en: 'We clarify which vaccinations are required or recommended for the destinations and how many appointments are needed.',
+        de: 'Impf- und Beratungsplan je Mitarbeitendem oder Team, abgestimmt auf den Einsatz.',
+        en: 'Vaccination and consultation plan per employee or team, matched to the assignment.',
       },
     },
     {
-      title: { de: 'Beraten und impfen', en: 'Advise and vaccinate' },
+      title: { de: 'Termine in der Praxis', en: 'Appointments at the practice' },
       text: {
-        de: 'Jede Person wird einzeln beraten und aufgeklärt und entscheidet selbst. Die Impfungen tragen wir in den Impfausweis bzw. den ICVP ein.',
-        en: 'Each person is individually advised and informed, and decides for themselves. We enter the vaccinations in the vaccination record or the ICVP.',
+        de: 'Einzeln oder gebündelt, auf Wunsch in enger Taktung – mit kurzen Wartezeiten.',
+        en: 'Individually or bundled, in close succession if desired – with short waiting times.',
       },
     },
     {
-      title: { de: 'Abschließen', en: 'Complete' },
+      title: { de: 'Dokumentation & Nachweise', en: 'Documentation & records' },
       text: {
-        de: 'Die Mitarbeitenden erhalten ihre Nachweise und die Rechnung, oder die Rechnung geht mit ihrer Einwilligung an Ihr Unternehmen. Folgetermine planen wir gleich mit.',
-        en: 'Staff receive their records and the invoice, or the invoice goes to your company with their consent. We plan any follow-up appointments at the same time.',
+        de: 'Vollständige Unterlagen für die Reise und für Ihre Personalakte.',
+        en: 'Complete documents for the trip and for your personnel file.',
       },
     },
   ],
@@ -162,27 +157,22 @@ export const unternehmenPage: UnternehmenPage = {
     heading: { de: 'Abrechnung', en: 'Billing' },
     body: {
       de: [
-        'Abrechnung nach GOÄ, auch bei Gruppen. Impfstoff wird abgerechnet, wie in der GOÄ vorgesehen. Voraussichtliche Kosten je Person teilen wir vorab schriftlich mit.',
-        'Die Rechnung geht an die Mitarbeitenden oder, mit ihrer schriftlichen Einwilligung, direkt an Ihr Unternehmen.',
+        'Die Leistungen werden nach der Gebührenordnung für Ärzte (GOÄ) abgerechnet. Für Unternehmen ist auf Wunsch eine gebündelte Abrechnung möglich.',
+        'Umfang, Termine und ein passendes Angebot besprechen wir gern persönlich mit Ihnen.',
       ],
       en: [
-        'Billing under the German Medical Fee Schedule (GOÄ), including for groups. Vaccines are charged as provided for in the GOÄ. We let you know the expected costs per person in writing in advance.',
-        'The invoice goes to the employee or, with their written consent, directly to your company.',
+        'Services are billed under the German Medical Fee Schedule (GOÄ). For businesses, consolidated billing is available on request.',
+        'We are happy to discuss scope, scheduling and a suitable quotation with you in person.',
       ],
     },
-    costsLink: { de: 'Aktuelle Richtwerte auf der Seite Kosten', en: 'Current guide prices on the costs page' },
   },
 
   contact: {
     heading: { de: 'Reisemedizin für Ihr Team?', en: 'Travel medicine for your team?' },
     text: {
-      de: 'Firmentermine vereinbaren wir telefonisch.',
-      en: 'We arrange company appointments by phone.',
+      de: 'Sprechen Sie uns an – wir stimmen Umfang, Termine und Ablauf individuell mit Ihnen ab.',
+      en: 'Get in touch – we will tailor scope, scheduling and process to your needs.',
     },
-    person: {
-      de: 'Ihr Ansprechpartner: Konstantin Mayer, Organisation & Firmenkunden',
-      en: 'Your contact: Konstantin Mayer, Organisation & Corporate Clients',
-    },
-    writeLink: { de: 'Oder schreiben Sie uns', en: 'Or write to us' },
+    cta: { de: 'Kontakt aufnehmen', en: 'Get in touch' },
   },
 };

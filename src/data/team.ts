@@ -127,7 +127,7 @@ export const teamPage: TeamPage = {
     ],
     en: [
       'From the very first moment, you should feel in good hands with us. We advise travellers carefully and independently and tailor every recommendation to your specific trip.',
-      'The practice is a state-approved yellow fever vaccination centre and provides travel vaccinations such as the yellow fever and TBE vaccination. You can book appointments online, by phone or email; the personal consultation takes place, unhurried, on site.',
+      'The practice is licensed as a state-authorised yellow fever vaccination centre and provides travel vaccinations such as the yellow fever and TBE vaccination. You can book appointments online, by phone or email; the personal consultation takes place, unhurried, on site.',
     ],
   },
 };

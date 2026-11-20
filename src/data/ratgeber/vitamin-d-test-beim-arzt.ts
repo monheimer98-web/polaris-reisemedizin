@@ -11,7 +11,7 @@
  */
 import type { ClinicalPage, Localized } from '../types';
 import type { Source } from '../sources';
-import { laborwert, weg, caDe, caEn, euroDe, euroEn } from '../praevention/preise';
+import { laborwert, zweiTermineWeg, caDe, caEn } from '../praevention/preise';
 
 const laborAlleDrei = laborwert.vitaminD + laborwert.vitaminB12 + laborwert.ferritinMitBlutbild;
 
@@ -97,7 +97,7 @@ export const vitaminTestGuide: ClinicalPage = {
         variant: 'info',
         title: { de: 'Müde im Winter?', en: 'Tired in winter?' },
         text: {
-          de: 'Bei Müdigkeit ohne weiteren Hinweis gehört Vitamin D nicht zu den Werten, die die hausärztliche Leitlinie zuerst empfiehlt. Hält die Müdigkeit an, lohnt ein Gespräch über mögliche Ursachen mehr als ein einzelner Wert.',
+          de: 'Bei Müdigkeit ohne weiteren Hinweis gehört Vitamin D nicht zu den Werten, die die Leitlinie der Allgemeinmedizin zuerst empfiehlt. Hält die Müdigkeit an, lohnt ein Gespräch über mögliche Ursachen mehr als ein einzelner Wert.',
           en: 'For tiredness without any other pointer, vitamin D is not among the tests the German primary-care guideline recommends first. If tiredness persists, a conversation about possible causes is worth more than a single value.',
         },
       },
@@ -161,24 +161,24 @@ export const vitaminTestGuide: ClinicalPage = {
       heading: { de: 'Was es bei uns kostet', en: 'What it costs with us' },
       body: {
         de: [
-          `Wir rechnen nach der Gebührenordnung für Ärzte (GOÄ) ab. Das ärztliche Honorar für das Gespräch mit Blutabnahme und ein kurzes Gespräch zum Ergebnis beträgt ${euroDe(weg.einzelwerteKurz)}, mit einem Gespräch zu den Ergebnissen ab 10 Minuten ${euroDe(weg.einzelwerte)}. Das Labor stellt seine Rechnung selbst:`,
+          `Wir rechnen nach der Gebührenordnung für Ärzte (GOÄ) ab. Das ärztliche Honorar für beide Termine des Laborwerte-Checks beträgt ${caDe(zweiTermineWeg.werte)}: Ersttermin mit Blutabnahme und Befundtermin mit schriftlichem Werte-Bogen. Das Labor stellt seine Rechnung selbst:`,
         ],
         en: [
-          `We bill under the German fee schedule for doctors (GOÄ). The medical fee for the consultation with blood sample and a short conversation about the result is ${euroEn(weg.einzelwerteKurz)}, with a conversation about the results of 10 minutes or more ${euroEn(weg.einzelwerte)}. The laboratory issues its own invoice:`,
+          `We bill under the German fee schedule for doctors (GOÄ). The medical fee for both appointments of the lab value check is ${caEn(zweiTermineWeg.werte)}: first appointment with blood sample and results appointment with a written summary. The laboratory issues its own invoice:`,
         ],
       },
       list: {
         de: [
-          `Vitamin D: Labor ${caDe(laborwert.vitaminD)}, mit Honorar zusammen ${caDe(weg.einzelwerteKurz + laborwert.vitaminD)}.`,
-          `Vitamin B12: Labor ${caDe(laborwert.vitaminB12)}, mit Honorar zusammen ${caDe(weg.einzelwerteKurz + laborwert.vitaminB12)}.`,
-          `Eisenspeicher (Ferritin) mit kleinem Blutbild: Labor ${caDe(laborwert.ferritinMitBlutbild)}, mit Honorar zusammen ${caDe(weg.einzelwerteKurz + laborwert.ferritinMitBlutbild)}.`,
-          `Alle drei in einer Blutabnahme: Labor ${caDe(laborAlleDrei)}, mit Honorar zusammen ca. ${Math.round(weg.einzelwerteKurz + laborAlleDrei)}–${Math.round(weg.einzelwerte + laborAlleDrei)} €.`,
+          `Vitamin D: Labor ${caDe(laborwert.vitaminD)}, mit Honorar zusammen ${caDe(zweiTermineWeg.werte + laborwert.vitaminD)}.`,
+          `Vitamin B12: Labor ${caDe(laborwert.vitaminB12)}, mit Honorar zusammen ${caDe(zweiTermineWeg.werte + laborwert.vitaminB12)}.`,
+          `Eisenspeicher (Ferritin) mit kleinem Blutbild: Labor ${caDe(laborwert.ferritinMitBlutbild)}, mit Honorar zusammen ${caDe(zweiTermineWeg.werte + laborwert.ferritinMitBlutbild)}.`,
+          `Alle drei in einer Blutabnahme: Labor ${caDe(laborAlleDrei)}, mit Honorar zusammen ${caDe(zweiTermineWeg.werte + laborAlleDrei)}.`,
         ],
         en: [
-          `Vitamin D: laboratory ${caEn(laborwert.vitaminD)}, together with the medical fee ${caEn(weg.einzelwerteKurz + laborwert.vitaminD)}.`,
-          `Vitamin B12: laboratory ${caEn(laborwert.vitaminB12)}, together with the medical fee ${caEn(weg.einzelwerteKurz + laborwert.vitaminB12)}.`,
-          `Iron stores (ferritin) with a basic blood count: laboratory ${caEn(laborwert.ferritinMitBlutbild)}, together with the medical fee ${caEn(weg.einzelwerteKurz + laborwert.ferritinMitBlutbild)}.`,
-          `All three from one blood sample: laboratory ${caEn(laborAlleDrei)}, together with the medical fee ${caEn(weg.einzelwerteKurz + laborAlleDrei)}–${Math.round(weg.einzelwerte + laborAlleDrei)}.`,
+          `Vitamin D: laboratory ${caEn(laborwert.vitaminD)}, together with the medical fee ${caEn(zweiTermineWeg.werte + laborwert.vitaminD)}.`,
+          `Vitamin B12: laboratory ${caEn(laborwert.vitaminB12)}, together with the medical fee ${caEn(zweiTermineWeg.werte + laborwert.vitaminB12)}.`,
+          `Iron stores (ferritin) with a basic blood count: laboratory ${caEn(laborwert.ferritinMitBlutbild)}, together with the medical fee ${caEn(zweiTermineWeg.werte + laborwert.ferritinMitBlutbild)}.`,
+          `All three from one blood sample: laboratory ${caEn(laborAlleDrei)}, together with the medical fee ${caEn(zweiTermineWeg.werte + laborAlleDrei)}.`,
         ],
       },
       links: [
@@ -199,7 +199,7 @@ export const vitaminTestGuide: ClinicalPage = {
       heading: { de: 'So läuft es ab', en: 'How it works' },
       body: {
         de: [
-          'Sie buchen den Ersttermin des Laborwerte-Checks und kommen am Morgen in die Praxis. Wir besprechen, welche Werte bei Ihnen etwas aussagen, nennen die Kosten und nehmen direkt im Anschluss Blut ab. Sie müssen dafür nicht nüchtern sein.',
+          'Sie buchen den Ersttermin des Laborwerte-Checks und kommen am Vormittag in die Praxis. Wir besprechen, welche Werte bei Ihnen etwas aussagen, nennen die Kosten und nehmen direkt im Anschluss Blut ab. Sie müssen dafür nicht nüchtern sein.',
           'Bitte nennen Sie uns Ihre Nahrungsergänzung. Präparate mit Biotin können einige Messungen stören und sollten vorher pausiert werden. Die Ergebnisse besprechen wir einige Tage später, auf Wunsch am Telefon.',
           'Wir verkaufen keine Präparate und bieten keine Vitamin-Kuren oder Infusionen an.',
         ],
@@ -224,8 +224,8 @@ export const vitaminTestGuide: ClinicalPage = {
     {
       q: { de: 'Was kostet ein Vitamin-D-Test beim Arzt?', en: 'What does a vitamin D test at the doctor cost?' },
       a: {
-        de: `Beim Labor ${caDe(laborwert.vitaminD)}. Dazu kommt das ärztliche Honorar für Gespräch, Blutabnahme und Befund, bei uns ${euroDe(weg.einzelwerteKurz)} nach GOÄ. Zusammen sind es ${caDe(weg.einzelwerteKurz + laborwert.vitaminD)}.`,
-        en: `${caEn(laborwert.vitaminD)} at the laboratory. In addition there is the medical fee for consultation, blood sample and results, with us ${euroEn(weg.einzelwerteKurz)} under the GOÄ. Together that is ${caEn(weg.einzelwerteKurz + laborwert.vitaminD)}.`,
+        de: `Beim Labor ${caDe(laborwert.vitaminD)}. Dazu kommt das ärztliche Honorar nach GOÄ für beide Termine des Laborwerte-Checks, bei uns ${caDe(zweiTermineWeg.werte)}. Zusammen sind es ${caDe(zweiTermineWeg.werte + laborwert.vitaminD)}.`,
+        en: `${caEn(laborwert.vitaminD)} at the laboratory. In addition there is the medical fee under the GOÄ for both appointments of the lab value check, with us ${caEn(zweiTermineWeg.werte)}. Together that is ${caEn(zweiTermineWeg.werte + laborwert.vitaminD)}.`,
       },
     },
     {
@@ -245,8 +245,8 @@ export const vitaminTestGuide: ClinicalPage = {
     {
       q: { de: 'Ich habe schon einen Selbsttest gemacht. Was nun?', en: 'I have already done a home test. What now?' },
       a: {
-        de: 'Bringen Sie das Ergebnis mit. Im Termin „Blutwerte besprechen“ ordnen wir es ein und sagen Ihnen, ob daraus etwas folgt.',
-        en: 'Bring the result with you. In the “blood results explained” appointment we put it into context and tell you whether anything follows from it.',
+        de: 'Bringen Sie das Ergebnis mit. Im Laborwerte-Check ordnen wir es ein und sagen Ihnen, ob daraus etwas folgt.',
+        en: 'Bring the result with you. In the lab value check we put it into context and tell you whether anything follows from it.',
       },
     },
     {

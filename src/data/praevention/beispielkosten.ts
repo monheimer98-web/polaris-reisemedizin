@@ -7,7 +7,7 @@
  * Stufe-2-Angebote (Schlaf, Muskel) erscheinen erst, wenn sie online gehen.
  */
 import type { Localized } from '../types';
-import { honorar, labor, laborwert, termin, weg, zweiTermine, zweiTermineWeg, euroDe, euroEn } from './preise';
+import { haarPreis, honorar, labor, laborwert, termin, weg, zweiTermine, zweiTermineWeg, euroDe, euroEn } from './preise';
 
 export interface BeispielPosten {
   label: Localized;
@@ -101,6 +101,27 @@ export const beispielrechnungen: Beispielrechnung[] = [
     },
   },
   {
+    slug: 'haare',
+    title: { de: 'Haarsprechstunde', en: 'Hair consultation' },
+    posten: [
+      { label: { de: 'Haarsprechstunde: Gespräch, Untersuchung, Fotos, Blutabnahme', en: 'Hair consultation: consultation, examination, photos, blood sample' }, betrag: haarPreis.sprechstunde },
+      { label: { de: 'Befund und Plan, in der Praxis oder am Telefon', en: 'Results and plan, at the practice or by phone' }, betrag: haarPreis.befund },
+    ],
+    praxis: zweiTermineWeg.haare,
+    labor: {
+      de: `ca. ${euroDe(haarPreis.labor)} für Ferritin, kleines Blutbild und TSH`,
+      en: `approx. ${euroEn(haarPreis.labor)} for ferritin, basic blood count and TSH`,
+    },
+    typisch: {
+      de: `ca. ${ganz(zweiTermineWeg.haare + haarPreis.labor)} € zusammen`,
+      en: `approx. €${ganz(zweiTermineWeg.haare + haarPreis.labor)} in total`,
+    },
+    hinweis: {
+      de: `Ein späterer Verlaufstermin kostet ca. ${euroDe(haarPreis.verlauf)}.`,
+      en: `A later follow-up costs approx. ${euroEn(haarPreis.verlauf)}.`,
+    },
+  },
+  {
     slug: 'maenner-check-up',
     title: { de: 'Check-up Männer 40+', en: 'Men’s check-up 40+' },
     posten: dreischritt,
@@ -179,8 +200,8 @@ export const beispielkostenSeite = {
   meta: {
     title: { de: 'Was kostet Prävention bei Polaris? Beispielkosten nach GOÄ', en: 'What does preventive care cost at Polaris? Example fees under the GOÄ' },
     description: {
-      de: 'Kosten je nachdem, was Sie brauchen: Beispielrechnungen nach GOÄ für Gesundheitscheck, Blutwerte, Wechseljahre und Gewicht, Honorar und Labor getrennt.',
-      en: 'Costs depend on what you need: example bills under the GOÄ for check-ups, blood results, menopause and weight, with medical fees and lab costs shown separately.',
+      de: 'Kosten je nachdem, was Sie brauchen: Beispielrechnungen nach GOÄ für Gesundheitscheck, Laborwerte-Check, Gewicht und Haarsprechstunde, Honorar und Labor getrennt.',
+      en: 'Costs depend on what you need: example bills under the GOÄ for the health check-up, lab value check, weight and hair consultation, with medical fees and lab costs shown separately.',
     },
     eyebrow: { de: 'Prävention', en: 'Prevention' },
     lead: {
@@ -232,29 +253,29 @@ export const beispielkostenSeite = {
     {
       q: { de: 'Was kostet ein Check-up als Selbstzahler?', en: 'What does a self-pay check-up cost?' },
       a: {
-        de: `Bei uns gibt es keinen Paketpreis. Für den Gesundheitscheck mit drei Terminen sind es typisch ca. ${ganz(weg.check)} € ärztliches Honorar nach GOÄ, dazu ca. ${labor.check}–${labor.checkMitLpa} € Laborkosten, die das Labor selbst berechnet. Wie viel es bei Ihnen wird, hängt davon ab, welche Werte wir gemeinsam für sinnvoll halten.`,
-        en: `We have no package price. For the health check-up with three appointments it is typically approx. €${ganz(weg.check)} in medical fees under the GOÄ, plus approx. €${labor.check}–${labor.checkMitLpa} in lab costs invoiced by the laboratory. How much it is for you depends on which tests we agree make sense.`,
+        de: `Bei uns gibt es keinen Paketpreis. Für den Gesundheitscheck in zwei Terminen sind es typisch ca. ${ganz(zweiTermineWeg.check)} € ärztliches Honorar nach GOÄ, mit Ruhe-EKG ca. ${ganz(zweiTermineWeg.checkMitEkg)} €, dazu ca. ${labor.check}–${labor.checkMitLpa} € Laborkosten, die das Labor selbst berechnet. Wie viel es bei Ihnen wird, hängt davon ab, welche Werte wir gemeinsam für sinnvoll halten.`,
+        en: `We have no package price. For the health check-up in two appointments it is typically approx. €${ganz(zweiTermineWeg.check)} in medical fees under the GOÄ, with a resting ECG approx. €${ganz(zweiTermineWeg.checkMitEkg)}, plus approx. €${labor.check}–${labor.checkMitLpa} in lab costs invoiced by the laboratory. How much it is for you depends on which tests we agree make sense.`,
       },
     },
     {
       q: { de: 'Was kostet die Bestimmung von Lipoprotein(a)?', en: 'What does a lipoprotein(a) test cost?' },
       a: {
-        de: `Beim Labor ca. ${labor.checkMitLpa - labor.check} €. Der Wert ist weitgehend erblich und muss in der Regel nur einmal bestimmt werden. Ob er für Sie sinnvoll ist, besprechen wir im Kurztermin.`,
-        en: `Approx. €${labor.checkMitLpa - labor.check} at the laboratory. The value is largely inherited and usually only needs to be measured once. Whether it makes sense for you is something we discuss in the short appointment.`,
+        de: `Beim Labor ca. ${labor.checkMitLpa - labor.check} €. Der Wert ist weitgehend erblich und muss in der Regel nur einmal bestimmt werden. Ob er für Sie sinnvoll ist, besprechen wir im Ersttermin.`,
+        en: `Approx. €${labor.checkMitLpa - labor.check} at the laboratory. The value is largely inherited and usually only needs to be measured once. Whether it makes sense for you is something we discuss in the first appointment.`,
       },
     },
     {
       q: { de: 'Was kostet ein Vitamin-D-Test beim Arzt?', en: 'What does a vitamin D test at the doctor cost?' },
       a: {
-        de: `Beim Labor ca. ${ganz(laborwert.vitaminD)} €, dazu ${euroDe(weg.einzelwerteKurz)} ärztliches Honorar für Gespräch, Blutabnahme und Befund. Ob die Messung für Sie etwas ändert, klären wir vorher im Gespräch; mehr dazu in unserem Ratgeber zu Vitamin D, B12 und Eisen.`,
-        en: `Approx. €${ganz(laborwert.vitaminD)} at the laboratory, plus ${euroEn(weg.einzelwerteKurz)} in medical fees for consultation, blood sample and results. Whether testing makes a difference for you is something we clarify beforehand; see our guide on vitamin D, B12 and iron.`,
+        de: `Beim Labor ca. ${ganz(laborwert.vitaminD)} €, dazu ca. ${ganz(zweiTermineWeg.werte)} € ärztliches Honorar für beide Termine des Laborwerte-Checks. Ob die Messung für Sie etwas ändert, klären wir vorher im Gespräch; mehr dazu in unserem Ratgeber zu Vitamin D, B12 und Eisen.`,
+        en: `Approx. €${ganz(laborwert.vitaminD)} at the laboratory, plus approx. €${ganz(zweiTermineWeg.werte)} in medical fees for both appointments of the lab value check. Whether testing makes a difference for you is something we clarify beforehand; see our guide on vitamin D, B12 and iron.`,
       },
     },
     {
       q: { de: 'Was kostet ein großes Blutbild?', en: 'What does a full blood count cost?' },
       a: {
-        de: `Beim Labor ca. ${ganz(laborwert.grossesBlutbild)} €, dazu ${euroDe(weg.einzelwerteKurz)} ärztliches Honorar für Gespräch, Blutabnahme und Befund. Blutfette, Zucker, Leber- und Nierenwerte gehören nicht zum Blutbild und kosten zusätzlich.`,
-        en: `Approx. €${ganz(laborwert.grossesBlutbild)} at the laboratory, plus ${euroEn(weg.einzelwerteKurz)} in medical fees for consultation, blood sample and results. Blood lipids, sugar, liver and kidney values are not part of the blood count and cost extra.`,
+        de: `Beim Labor ca. ${ganz(laborwert.grossesBlutbild)} €, dazu ca. ${ganz(zweiTermineWeg.werte)} € ärztliches Honorar für beide Termine des Laborwerte-Checks. Blutfette, Zucker, Leber- und Nierenwerte gehören nicht zum Blutbild und kosten zusätzlich.`,
+        en: `Approx. €${ganz(laborwert.grossesBlutbild)} at the laboratory, plus approx. €${ganz(zweiTermineWeg.werte)} in medical fees for both appointments of the lab value check. Blood lipids, sugar, liver and kidney values are not part of the blood count and cost extra.`,
       },
     },
     {
@@ -274,8 +295,8 @@ export const beispielkostenSeite = {
     {
       q: { de: 'Muss ich vorher bezahlen?', en: 'Do I have to pay in advance?' },
       a: {
-        de: 'Nein. Es gibt keine Vorkasse und keine Anzahlung. Bezahlt wird einmal, im Termin mit Ihren Ergebnissen, mit Karte.',
-        en: 'No. There is no prepayment and no deposit. You pay once, at the appointment where we discuss your results, by card.',
+        de: 'Nein. Es gibt keine Vorkasse und keine Anzahlung. Sie bekommen nach jedem Termin eine eigene Rechnung.',
+        en: 'No. There is no prepayment and no deposit. You receive a separate invoice after each appointment.',
       },
     },
   ],

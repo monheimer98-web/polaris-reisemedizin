@@ -32,24 +32,25 @@ const t = useTranslations(lang);
 const de = lang === 'de';
 const title = de ? 'Termin in der Prävention' : 'Prevention appointment';
 const lead = de
-  ? 'Wählen Sie Ihr Angebot und buchen Sie den Ersttermin. Dort besprechen wir, was sinnvoll ist, untersuchen Sie und nehmen Blut ab. Den Befundtermin legen wir im Ersttermin gemeinsam fest.'
-  : 'Choose your service and book the first appointment. There we discuss what makes sense, examine you and take a blood sample. We arrange the results appointment together during the first appointment.';
+  ? 'Wählen Sie Ihr Angebot und buchen Sie den Ersttermin. Dort besprechen wir, was sinnvoll ist, und nehmen Blut ab. Den Befundtermin legen wir im Ersttermin gemeinsam fest.'
+  : 'Choose your service and book the first appointment. There we discuss what makes sense and take a blood sample. We arrange the results appointment together during the first appointment.';
 const description = de
   ? 'Termin für Gesundheitscheck, Laborwerte-Check oder Sprechstunde Gewicht und Stoffwechsel in Langenfeld bei Düsseldorf: zwei Termine, schriftliches Ergebnis.'
   : 'Appointment for a health check-up, lab value check or weight and metabolism consultation in Langenfeld near Düsseldorf: two appointments, written results.';
 const schritte = de
   ? [
-      { titel: 'Ersttermin', text: 'Wir besprechen Ihre Fragen und legen fest, was untersucht wird. Dann untersuchen wir Sie und nehmen Blut ab. Die voraussichtlichen Kosten erhalten Sie vorher schriftlich.' },
-      { titel: 'Befundtermin', text: 'Etwa eine Woche später, wenn alle Werte vorliegen: Wir erklären Ihre Ergebnisse, und Sie bekommen Ihren Befundbericht zum Mitnehmen.' },
+      { titel: 'Ersttermin', text: 'Wir besprechen Ihre Fragen und legen fest, welche Werte sinnvoll sind. Dann nehmen wir Blut ab. Die voraussichtlichen Kosten erhalten Sie vorher schriftlich.' },
+      { titel: 'Befundtermin', text: 'Wenn alle Werte vorliegen, meist nach wenigen Tagen bis einer Woche: Wir erklären Ihre Ergebnisse, und Sie bekommen sie schriftlich. Beim Gesundheitscheck untersuchen wir Sie in diesem Termin.' },
     ]
   : [
-      { titel: 'First appointment', text: 'We discuss your questions and decide what to examine. Then we examine you and take a blood sample. You receive the expected costs in writing beforehand.' },
-      { titel: 'Results appointment', text: 'About a week later, when all results are in: we explain your results and you receive your written report to take home.' },
+      { titel: 'First appointment', text: 'We discuss your questions and decide which values make sense. Then we take a blood sample. You receive the expected costs in writing beforehand.' },
+      { titel: 'Results appointment', text: 'Once all results are in, usually after a few days to a week: we explain your results and give them to you in writing. For the health check-up, the examination takes place in this appointment.' },
     ];
 const faq = de
   ? [
       { q: 'Was buche ich zuerst?', a: 'Den Ersttermin des passenden Angebots. Den Befundtermin vereinbaren wir im Ersttermin mit Ihnen.' },
       { q: 'Warum zwei Termine?', a: 'Blutwerte brauchen einige Tage im Labor. Im zweiten Termin liegen alle Ergebnisse vor, und wir nehmen uns Zeit, sie mit Ihnen durchzugehen.' },
+      { q: 'Zu welcher Uhrzeit liegen die Ersttermine?', a: 'Ersttermine mit Blutabnahme liegen montags bis freitags am Vormittag, damit Ihr Blut am selben Tag ins Labor kommt. Wenn Ihnen das nicht passt, rufen Sie uns an.' },
       { q: 'Muss ich zur Blutabnahme nüchtern kommen?', a: 'In der Regel nicht. Wenn ein Wert nüchtern bestimmt werden sollte, sagen wir es Ihnen vor dem Termin.' },
       { q: 'Kann ich Befunde vorher schicken?', a: 'Bitte bringen Sie vorhandene Befunde zum Termin mit. Schicken Sie Gesundheitsdaten bitte nicht per E-Mail.' },
       { q: 'Kann ich telefonisch buchen?', a: 'Ja. Rufen Sie uns an, wir finden gemeinsam den passenden Termin.' },
@@ -57,6 +58,7 @@ const faq = de
   : [
       { q: 'What do I book first?', a: 'The first appointment of the right service. We arrange the results appointment with you during the first appointment.' },
       { q: 'Why two appointments?', a: 'Blood tests take a few days at the laboratory. At the second appointment all results are in, and we take time to go through them with you.' },
+      { q: 'At what time are the first appointments?', a: 'First appointments with a blood sample take place Monday to Friday in the morning, so that your sample reaches the laboratory the same day. If that does not suit you, please call us.' },
       { q: 'Do I need to fast for the blood sample?', a: 'Usually not. If a value should be measured fasting, we will tell you before the appointment.' },
       { q: 'Can I send results in advance?', a: 'Please bring existing results to the appointment. Please do not send health data by e-mail.' },
       { q: 'Can I book by phone?', a: 'Yes. Call us and we will find a suitable appointment together.' },

@@ -202,7 +202,7 @@ const kenia: ClinicalPage = {
         en: [
           'No vaccination is required when entering directly from Germany. Travellers aged one year and older arriving from a yellow fever area must show proof of yellow fever vaccination.',
           'Regardless of the requirement, WHO, STIKO and DTG recommend yellow fever vaccination for most parts of the country. It is not generally recommended if you visit only Nairobi, Mombasa, the coastal districts of Kilifi, Kwale, Lamu, Malindi and Tana River, or the north-east. In 2022, yellow fever cases occurred inland and in part spread to these areas as well. STIKO and DTG therefore currently advise using the vaccination generously for travel anywhere in Kenya – even if you visit only the areas listed.',
-          'Vaccination is only given at a state-approved yellow fever vaccination centre; the first dose must be given at least ten days before entry. The certificate is valid for life. If your vaccination was ten or more years ago, STIKO recommends a single booster before travelling to a yellow fever area again; special rules apply to children, pregnant women and people with a weakened immune system.',
+          'Vaccination is only given at a state-authorised yellow fever vaccination centre; the first dose must be given at least ten days before entry. The certificate is valid for life. If your vaccination was ten or more years ago, STIKO recommends a single booster before travelling to a yellow fever area again; special rules apply to children, pregnant women and people with a weakened immune system.',
         ],
       },
       callout: {

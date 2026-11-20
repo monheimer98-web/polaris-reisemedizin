@@ -12,10 +12,12 @@
  */
 import { readdirSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const HAUPT = 'https://www.polaris-reisemedizin.de';
-const [neu = 'https://polaris-gesundheit.de', richtung = 'ziel'] = process.argv.slice(2);
-const DIST = new URL('../dist/', import.meta.url).pathname;
+const [neuArg = 'https://polaris-gesundheit.de', richtung = 'ziel'] = process.argv.slice(2);
+const neu = neuArg.replace(/\/+$/, '');
+const DIST = fileURLToPath(new URL('../dist/', import.meta.url));
 const MUSTER = /^\/(en\/)?(praevention(\/|$)|ratgeber\/(blutwerte-erklaert|grosses-blutbild-kosten|vitamin-d-test-beim-arzt)\/)/;
 
 function seiten(dir, basis = '/') {
@@ -34,6 +36,7 @@ for (const pfad of pfade) {
   const [a, b] = richtung === 'quelle' ? [`${HAUPT}${pfad}`, `${neu}${kurz}`] : [`${neu}${kurz}`, `${HAUPT}${pfad}`];
   zeilen.push(`${a},${b},301`);
 }
-const ziel = new URL('../praevention-weiterleitungen.csv', import.meta.url).pathname;
+// Im Projektordner; steht in .gitignore, weil sie aus dist/ jederzeit neu entsteht.
+const ziel = join(DIST, '..', 'praevention-weiterleitungen.csv');
 writeFileSync(ziel, `${zeilen.join('\n')}\n`);
 console.log(`${pfade.length} Pfade → ${ziel}`);

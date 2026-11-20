@@ -10,12 +10,8 @@ import { NACHWEISE_IM_ANGEBOT } from './ausland/stand';
 
 export const seoTitles: Record<string, Localized> = {
   '/': {
-    de: 'Reisemedizin, Impfungen & Prävention in Langenfeld | Polaris',
-    en: 'Travel Medicine & Prevention near Düsseldorf | Polaris',
-  },
-  '/leistungen': {
-    de: 'Reisemedizin & Impfungen in Langenfeld | Polaris',
-    en: 'Travel Medicine & Vaccinations in Langenfeld | Polaris',
+    de: 'Reisemedizin & Reiseimpfungen in Langenfeld | Polaris',
+    en: 'English-speaking Travel Clinic near Düsseldorf | Polaris',
   },
   '/praevention': {
     de: 'Gesundheitscheck & Prävention in Langenfeld | Polaris',

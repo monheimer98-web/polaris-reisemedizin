@@ -140,7 +140,7 @@ const afrika: DestinationRegion = {
           ],
           en: [
             'In large parts of tropical Africa there is a yellow fever risk. Many countries require a valid international certificate of vaccination (ICVP) on entry – sometimes for all travellers, sometimes only when arriving from another yellow fever area. Which rule applies to your route depends on the individual countries and the order of your stops.',
-            'The international yellow fever certificate (ICVP) is valid for life but only becomes valid from day 10 after vaccination. Some countries require it from all arriving travellers – even when coming from Germany (e.g. Ghana, Côte d’Ivoire, Cameroon, DR Congo, Uganda; per the WHO list). Medically, STIKO recommends a single booster before renewed travel if the first vaccination was 10 or more years ago. As a state-approved yellow fever vaccination centre, we perform the vaccination and issue the internationally valid entry.',
+            'The international yellow fever certificate (ICVP) is valid for life but only becomes valid from day 10 after vaccination. Some countries require it from all arriving travellers – even when coming from Germany (e.g. Ghana, Côte d’Ivoire, Cameroon, DR Congo, Uganda; per the WHO list). Medically, STIKO recommends a single booster before renewed travel if the first vaccination was 10 or more years ago. As a state-authorised yellow fever vaccination centre, we perform the vaccination and issue the internationally valid entry.',
           ],
         },
         callout: {
@@ -483,7 +483,7 @@ const lateinamerika: DestinationRegion = {
             'Wer in die Anden reist – etwa Cusco, Machu Picchu, La Paz oder den Titicacasee –, sollte die Höhenanpassung einplanen, um der Höhenkrankheit vorzubeugen. Ein langsamer Aufstieg, ausreichend Akklimatisierungszeit und das Erkennen von Warnzeichen sind entscheidend.',
           ],
           en: [
-            'In tropical South America – the Amazon basin of Brazil, Peru, Bolivia, Ecuador and Colombia, and in Brazil now well beyond it – and in southern Central America (Panama) there is a yellow fever risk. French Guiana requires a certificate (ICVP) from all arriving travellers, other countries mainly when entering from a yellow fever area. As a state-approved yellow fever vaccination centre, we perform the vaccination and issue the certificate.',
+            'In tropical South America – the Amazon basin of Brazil, Peru, Bolivia, Ecuador and Colombia, and in Brazil now well beyond it – and in southern Central America (Panama) there is a yellow fever risk. French Guiana requires a certificate (ICVP) from all arriving travellers, other countries mainly when entering from a yellow fever area. As a state-authorised yellow fever vaccination centre, we perform the vaccination and issue the certificate.',
             'Anyone travelling to the Andes – for example Cusco, Machu Picchu, La Paz or Lake Titicaca – should plan for acclimatisation to prevent altitude sickness. A slow ascent, sufficient time to acclimatise and recognising warning signs are decisive.',
           ],
         },

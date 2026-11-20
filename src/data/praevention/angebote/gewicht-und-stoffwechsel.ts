@@ -73,8 +73,8 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
     {
       title: { de: 'Befund und Plan', en: 'Results and plan' },
       text: {
-        de: 'Wenn alle Werte vorliegen, besprechen wir sie mit Ihnen. Sie erhalten Ihren schriftlichen Plan: realistische Ziele nicht nur für die Waage, sondern auch für Taille, Blutdruck, Blutwerte, Kraft und Schlaf, und konkrete Schritte für Ernährung und Bewegung.',
-        en: 'Once all values are available, we discuss them with you. You receive your written plan: realistic goals not only for the scales but also for waist, blood pressure, blood values, strength and sleep, and concrete steps for diet and activity.',
+        de: 'Wenn alle Werte vorliegen, besprechen wir sie mit Ihnen, in etwa 30 Minuten. Sie erhalten Ihren schriftlichen Plan: realistische Ziele nicht nur für die Waage, sondern auch für Taille, Blutdruck, Blutwerte, Kraft und Schlaf, und konkrete Schritte für Ernährung und Bewegung.',
+        en: 'Once all values are available, we discuss them with you in about 30 minutes. You receive your written plan: realistic goals not only for the scales but also for waist, blood pressure, blood values, strength and sleep, and concrete steps for diet and activity.',
       },
     },
     {
@@ -123,12 +123,12 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
         heading: { de: 'Wenn Sie schon vieles probiert haben', en: 'If you have already tried a lot' },
         body: {
           de: [
-            'Viele, die zu uns kommen, haben Diäten, Apps und Programme hinter sich – und das Gefühl, damit allein gelassen worden zu sein. Wir fangen nicht bei null an: Wir sehen uns gemeinsam an, was bisher geholfen hat, was nicht und warum. Daraus entsteht ein Plan, der zu Ihrem Alltag passt.',
-            'Wenn Sie möchten, begleiten wir Sie danach mit festen Terminen und derselben ärztlichen Ansprechperson. Ein Verlaufsbogen zeigt auch die Fortschritte, die keine Waage misst.',
+            'Viele Menschen haben Diäten, Apps und Programme hinter sich – und das Gefühl, damit allein gelassen worden zu sein. Wir fangen nicht bei null an: Wir sehen uns gemeinsam an, was bisher geholfen hat, was nicht und warum. Daraus entsteht ein Plan, der zu Ihrem Alltag passt.',
+            'Wenn Sie möchten, begleiten wir Sie danach mit festen Terminen und derselben ärztlichen Ansprechperson. Ein Verlaufsbogen zeigt auch Veränderungen, die keine Waage misst.',
           ],
           en: [
-            'Many people who come to us have been through diets, apps and programmes – and feel they were left on their own. We do not start from scratch: together we look at what has helped so far, what has not, and why. This becomes a plan that fits your everyday life.',
-            'If you wish, we then support you with fixed appointments and the same doctor each time. A progress chart also shows the progress no scales can measure.',
+            'Many people have been through diets, apps and programmes – and feel they were left on their own. We do not start from scratch: together we look at what has helped so far, what has not, and why. This becomes a plan that fits your everyday life.',
+            'If you wish, we then support you with fixed appointments and the same doctor each time. A progress chart also shows changes no scales can measure.',
           ],
         },
       },
@@ -142,14 +142,14 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
         list: {
           de: [
             'Gewicht, Größe, Taillenumfang und das Verhältnis von Taille zu Körpergröße,',
-            'Blutdruck nach Standard und eine Untersuchung von Kopf bis Fuß,',
+            'Blutdruck, mehrfach in Ruhe gemessen, und eine Untersuchung von Kopf bis Fuß,',
             'Blutzucker-Langzeitwert (HbA1c), Blutfette, Leber- und Nierenwerte, kleines Blutbild, bei Bedarf der Schilddrüsenwert,',
             'Handkraft und Aufstehen vom Stuhl als einfache Maße für Ihre Muskelkraft,',
             'Essen, Bewegung, Schlaf, Belastung und was Sie bisher versucht haben.',
           ],
           en: [
             'weight, height, waist circumference and waist-to-height ratio,',
-            'blood pressure measured to standard and a head-to-toe examination,',
+            'blood pressure, measured several times at rest, and a head-to-toe examination,',
             'long-term blood sugar (HbA1c), blood lipids, liver and kidney values, a basic blood count and, if needed, the thyroid value,',
             'grip strength and rising from a chair as simple measures of muscle strength,',
             'eating, activity, sleep, stress and what you have tried so far.',
@@ -204,10 +204,10 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
         heading: { de: 'Nach Leitlinie, mit Ihnen gemeinsam', en: 'Guideline-based, decided together' },
         body: {
           de: [
-            'Grundlage ist die S3-Leitlinie zur Prävention und Therapie der Adipositas. Sie stellt Ernährung, Bewegung und Verhalten an den Anfang. Darauf baut Ihr Plan auf, angepasst an Ihren Ausgangspunkt und Ihren Alltag. Die Ziele legen wir gemeinsam fest.',
+            'Grundlage ist die S3-Leitlinie zur Prävention und Therapie der Adipositas. Sie stellt Ernährung, Bewegung und Verhalten in den Mittelpunkt. Darauf baut Ihr Plan auf, angepasst an Ihren Ausgangspunkt und Ihren Alltag. Die Ziele legen wir gemeinsam fest.',
           ],
           en: [
-            'The basis is the German S3 guideline on the prevention and treatment of obesity. It puts nutrition, physical activity and behaviour first. Your plan builds on this, adapted to your starting point and your everyday life. We set the goals together.',
+            'The basis is the German S3 guideline on the prevention and treatment of obesity. It puts nutrition, physical activity and behaviour at the centre. Your plan builds on this, adapted to your starting point and your everyday life. We set the goals together.',
           ],
         },
       },

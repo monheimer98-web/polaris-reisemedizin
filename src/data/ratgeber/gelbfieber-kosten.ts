@@ -20,7 +20,7 @@ export const gelbfieberKostenQuellen = {
     retrieved: new Date('2026-10-28'),
     note: {
       de: 'Gelbfieberimpfungen nur in Impfstellen, die von der zuständigen Behörde zugelassen sind; Ausstellung der internationalen Impfbescheinigung nach IGV.',
-      en: 'Yellow fever vaccinations only at centres approved by the competent authority; issuing of the international certificate under the IHR.',
+      en: 'Yellow fever vaccinations only at centres authorised by the competent authority; issuing of the international certificate under the IHR.',
     },
   },
   whoIhr2005: {
@@ -95,15 +95,15 @@ export const gelbfieberKostenGuide: ClinicalPage = {
     },
     {
       id: 'impfstelle',
-      heading: { de: 'Nur in zugelassenen Gelbfieber-Impfstellen', en: 'Only at approved yellow fever centres' },
+      heading: { de: 'Nur in zugelassenen Gelbfieber-Impfstellen', en: 'Only at authorised yellow fever centres' },
       body: {
         de: [
           'Gegen Gelbfieber darf in Deutschland nur eine Impfstelle impfen, die von der zuständigen Gesundheitsbehörde dafür zugelassen ist (§ 7 IGV-Durchführungsgesetz). Voraussetzung sind eine besondere fachliche Qualifikation der impfenden Ärztin oder des impfenden Arztes und geeignete Räume für Lagerung und Impfung. Die Impfstelle stellt auch den internationalen Impfnachweis aus.',
           'Unsere Praxis in Langenfeld ist als Gelbfieber-Impfstelle zugelassen. Aufklärung, Impfung und Impfnachweis erhalten Sie in einem Termin.',
         ],
         en: [
-          'In Germany, only vaccination centres approved by the competent health authority may vaccinate against yellow fever (Section 7 of the IHR Implementation Act). This requires specific professional qualifications of the vaccinating doctor and suitable premises for storing the vaccine and giving the vaccination. The centre also issues the international certificate.',
-          'Our practice in Langenfeld is an approved yellow fever vaccination centre. You receive the briefing, vaccination and certificate in one appointment.',
+          'In Germany, only vaccination centres authorised by the competent health authority may vaccinate against yellow fever (Section 7 of the IHR Implementation Act). This requires specific professional qualifications of the vaccinating doctor and suitable premises for storing the vaccine and giving the vaccination. The centre also issues the international certificate.',
+          'Our practice in Langenfeld is an authorised yellow fever vaccination centre. You receive the briefing, vaccination and certificate in one appointment.',
         ],
       },
       links: [{ label: { de: 'Gelbfieberimpfung in unserer Praxis', en: 'Yellow fever vaccination at our practice' }, path: '/leistungen/gelbfieberimpfung' }],
@@ -289,7 +289,7 @@ export const gelbfieberKostenGuide: ClinicalPage = {
       q: { de: 'Darf jede Arztpraxis gegen Gelbfieber impfen?', en: 'Can any medical practice vaccinate against yellow fever?' },
       a: {
         de: 'Nein. In Deutschland dürfen nur staatlich zugelassene Gelbfieber-Impfstellen gegen Gelbfieber impfen und den internationalen Impfnachweis ausstellen. Unsere Praxis in Langenfeld ist als Gelbfieber-Impfstelle zugelassen.',
-        en: 'No. In Germany, only state-approved yellow fever vaccination centres may vaccinate against yellow fever and issue the international certificate. Our practice in Langenfeld is an approved yellow fever vaccination centre.',
+        en: 'No. In Germany, only state-authorised yellow fever vaccination centres may vaccinate against yellow fever and issue the international certificate. Our practice in Langenfeld is an authorised yellow fever vaccination centre.',
       },
     },
   ],

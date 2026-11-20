@@ -4,16 +4,19 @@
  * rechtliche Links sowie medizinischer Disclaimer und Quellenhinweis.
  */
 import { primaryNav, preventionNav, footerInfoNav, legalNav, BOOKING_PATH } from '../config/nav';
-import { PREVENTION_PATH, preventionOffers } from '../data/praevention';
+import { PREVENTION_BOOKING_PATH, PREVENTION_PATH, preventionOffers } from '../data/praevention';
 import type { Welt } from '../lib/welt';
-
-interface Props {
-  welt?: Welt;
-}
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import { site } from '../config/site';
 import type { UiKey } from '../i18n/ui';
 import Logo from './Logo.astro';
+
+interface Props {
+  welt?: Welt;
+}
+
+const { welt = 'reise' } = Astro.props;
+const bookingPath = welt === 'praevention' ? PREVENTION_BOOKING_PATH : BOOKING_PATH;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -53,7 +56,7 @@ const preventionLinks = preventionNav(preventionOffers.some((o) => o.slug === 'h
             ))
           }
           <li>
-            <a href={getLocalizedPath(BOOKING_PATH, lang)} class="text-cream/75 transition-colors hover:text-cream">
+            <a href={getLocalizedPath(bookingPath, lang)} class="text-cream/75 transition-colors hover:text-cream">
               {t('nav.booking')}
             </a>
           </li>

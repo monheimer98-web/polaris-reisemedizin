@@ -21,24 +21,8 @@
  */
 import type { ClinicalPage } from '../../types';
 import type { PreventionOffer } from '../types';
-import { honorar, caDe, caEn } from '../preise';
+import { haarPreis, caDe, caEn } from '../preise';
 import { kostenVorab } from './zwei-termine';
-
-/**
- * Beträge der Haarsprechstunde zum Regelsatz (haare-seitentexte.md, Variante
- * ohne Auflichtgerät). Gehören nach `../preise.ts`, sobald die Leitsitzung
- * dort einen Eintrag anlegt.
- */
-const haarPreis = {
-  /** Nr. 1 + 5 + 250 – Haarsprechstunde mit Untersuchung und Blutabnahme */
-  sprechstunde: 25.64,
-  /** Nr. 3 – Befund und Plan, auch am Telefon oder per Video */
-  befund: honorar.gespraech,
-  /** Nr. 1 + 5 – späterer Verlaufstermin mit Rezept */
-  verlauf: 21.44,
-  /** Labor: Ferritin, kleines Blutbild, TSH (Richtwert, Rechnung vom Labor) */
-  labor: 38,
-} as const;
 
 const beideTermine = haarPreis.sprechstunde + haarPreis.befund;
 
@@ -49,8 +33,8 @@ export const haare: PreventionOffer = {
   stage: 1,
   shortName: { de: 'Haarsprechstunde', en: 'Hair consultation' },
   teaser: {
-    de: 'Ihr Haar wird dünner? In der Haarsprechstunde klären wir die Ursache, mit Untersuchung der Kopfhaut und Blutwerten. Danach bekommen Sie einen Plan.',
-    en: 'Is your hair getting thinner? In the hair consultation we find the cause, with an examination of the scalp and blood tests. You then receive a plan.',
+    de: 'Ihr Haar wird dünner? In der Haarsprechstunde suchen wir nach der Ursache, mit Untersuchung der Kopfhaut und Blutwerten. Danach bekommen Sie einen Plan.',
+    en: 'Is your hair getting thinner? In the hair consultation we look for the cause, with an examination of the scalp and blood tests. You then receive a plan.',
   },
   facts: {
     forWhom: {
@@ -58,12 +42,12 @@ export const haare: PreventionOffer = {
       en: 'Women and men whose hair is slowly getting thinner or who have noticeably more hair falling out for some weeks.',
     },
     appointments: {
-      de: 'Haarsprechstunde ca. 20 Min. in der Praxis; etwa eine Woche später Befund und Plan ca. 15 Min., in der Praxis, am Telefon oder per Video.',
-      en: 'Hair consultation approx. 20 min at the practice; about a week later results and plan approx. 15 min, at the practice, by phone or by video.',
+      de: 'Haarsprechstunde ca. 20 Min. in der Praxis; etwa eine Woche später Befund und Plan ca. 15 Min., in der Praxis oder am Telefon.',
+      en: 'Hair consultation approx. 20 min at the practice; about a week later results and plan approx. 15 min, at the practice or by phone.',
     },
     fee: {
-      de: `Nach GOÄ. Typisch für beide Termine zusammen: ${caDe(beideTermine)}; ein späterer Verlaufstermin mit Rezept ${caDe(haarPreis.verlauf)}.`,
-      en: `Under the GOÄ. Typically for both appointments together: ${caEn(beideTermine)}; a later follow-up with prescription ${caEn(haarPreis.verlauf)}.`,
+      de: `Nach GOÄ. Typisch für beide Termine zusammen: ${caDe(beideTermine)}; ein späterer Verlaufstermin ${caDe(haarPreis.verlauf)}.`,
+      en: `Under the GOÄ. Typically for both appointments together: ${caEn(beideTermine)}; a later follow-up ${caEn(haarPreis.verlauf)}.`,
     },
     lab: {
       de: `${caDe(haarPreis.labor)} für Ferritin, kleines Blutbild und TSH, eigene Rechnung vom Labor`,
@@ -95,19 +79,19 @@ export const haare: PreventionOffer = {
     {
       title: { de: 'Befund und Plan', en: 'Results and plan' },
       text: {
-        de: 'Etwa eine Woche später, ca. 15 Minuten, in der Praxis, am Telefon oder per Video. Wir besprechen die Blutwerte und das Ergebnis der Untersuchung. Sie bekommen einen Plan, zum Beispiel mit Eisen bei Mangel, einem Mittel zum Auftragen auf die Kopfhaut oder einer anderen Behandlung, die zu Ihrer Form von Haarausfall passt. Wenn es passt, sprechen wir auch über PRP.',
-        en: 'About a week later, approx. 15 minutes, at the practice, by phone or by video. We discuss the blood results and the findings of the examination. You receive a plan, for example with iron if you are deficient, a product to apply to the scalp or another treatment that suits your type of hair loss. If appropriate, we also talk about PRP.',
+        de: 'Etwa eine Woche später, ca. 15 Minuten, in der Praxis oder am Telefon. Wir besprechen die Blutwerte und das Ergebnis der Untersuchung. Sie bekommen einen Plan, zum Beispiel mit Eisen bei Mangel, einem Mittel zum Auftragen auf die Kopfhaut oder einer anderen Behandlung, die zu Ihrer Form von Haarausfall passt. Wenn es passt, sprechen wir auch über PRP.',
+        en: 'About a week later, approx. 15 minutes, at the practice or by phone. We discuss the blood results and the findings of the examination. You receive a plan, for example with iron if you are deficient, a product to apply to the scalp or another treatment that suits your type of hair loss. If appropriate, we also talk about PRP.',
       },
     },
   ],
   costs: {
     de: [
-      `Wir sind eine Privatpraxis und rechnen nach der Gebührenordnung für Ärzte (GOÄ) ab. Ärztliches Honorar zum Regelsatz, je Termin: Haarsprechstunde mit Haaranalyse und Blutabnahme ${caDe(haarPreis.sprechstunde)}, Befund und Plan ${caDe(haarPreis.befund)}, ein späterer Verlaufstermin mit Rezept ${caDe(haarPreis.verlauf)}. Die Beträge sind Richtwerte.`,
+      `Wir sind eine Privatpraxis und rechnen nach der Gebührenordnung für Ärzte (GOÄ) ab. Ärztliches Honorar zum Regelsatz, je Termin: Haarsprechstunde mit Haaranalyse und Blutabnahme ${caDe(haarPreis.sprechstunde)}, Befund und Plan ${caDe(haarPreis.befund)}, ein späterer Verlaufstermin ${caDe(haarPreis.verlauf)}. Die Beträge sind Richtwerte.`,
       `Dazu kommen die Laborkosten für Ferritin, kleines Blutbild und TSH, ${caDe(haarPreis.labor)}. Bei Frauen mit unregelmäßigem Zyklus oder unreiner Haut können weitere Hormonwerte sinnvoll sein; was das kostet, sagen wir Ihnen vorher.`,
       kostenVorab.de,
     ],
     en: [
-      `We are a private practice and bill under the German fee schedule for doctors (GOÄ). Medical fee at the standard rate, per appointment: hair consultation with hair analysis and blood sample ${caEn(haarPreis.sprechstunde)}, results and plan ${caEn(haarPreis.befund)}, a later follow-up with prescription ${caEn(haarPreis.verlauf)}. The amounts are guide values.`,
+      `We are a private practice and bill under the German fee schedule for doctors (GOÄ). Medical fee at the standard rate, per appointment: hair consultation with hair analysis and blood sample ${caEn(haarPreis.sprechstunde)}, results and plan ${caEn(haarPreis.befund)}, a later follow-up ${caEn(haarPreis.verlauf)}. The amounts are guide values.`,
       `Lab costs for ferritin, basic blood count and TSH come on top, ${caEn(haarPreis.labor)}. For women with an irregular cycle or blemished skin, further hormone values can be useful; we tell you the cost beforehand.`,
       kostenVorab.en,
     ],
@@ -269,10 +253,10 @@ export const haare: PreventionOffer = {
         },
       },
       {
-        q: { de: 'Bekomme ich ein Rezept?', en: 'Will I get a prescription?' },
+        q: { de: 'Welche Behandlung kommt in Frage?', en: 'Which treatment is an option?' },
         a: {
-          de: 'Wenn ein Mittel für Sie passt, ja, als Privatrezept. Mittel zum Auftragen sind besser untersucht als PRP. Wir besprechen mit Ihnen ehrlich, was ein Mittel bringt und welche Nebenwirkungen es haben kann.',
-          en: 'If a product suits you, yes, as a private prescription. Products to apply to the scalp have been studied better than PRP. We discuss honestly with you what a product can do and which side effects it can have.',
+          de: 'Das hängt von der Form Ihres Haarausfalls und von Ihren Blutwerten ab. Mittel zum Auftragen sind besser untersucht als PRP. Wir besprechen mit Ihnen ehrlich, was eine Behandlung bringen kann und welche Nebenwirkungen sie haben kann.',
+          en: 'That depends on your type of hair loss and your blood values. Products to apply to the scalp have been studied better than PRP. We discuss honestly with you what a treatment can do and which side effects it can have.',
         },
       },
       {
@@ -285,8 +269,8 @@ export const haare: PreventionOffer = {
       {
         q: { de: 'Geht der Befundtermin auch am Telefon?', en: 'Can the results appointment take place by phone?' },
         a: {
-          de: 'Ja. Den Befund besprechen wir in der Praxis, am Telefon oder per Video, wie es Ihnen lieber ist.',
-          en: 'Yes. We discuss the results at the practice, by phone or by video, whichever you prefer.',
+          de: 'Ja. Den Befund besprechen wir in der Praxis oder am Telefon, wie es Ihnen lieber ist.',
+          en: 'Yes. We discuss the results at the practice or by phone, whichever you prefer.',
         },
       },
     ],

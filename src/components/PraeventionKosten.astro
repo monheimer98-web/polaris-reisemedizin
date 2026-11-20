@@ -50,7 +50,7 @@ const crumbs = [
         <ul class="mt-6 grid gap-5 lg:grid-cols-2">
           {
             beispiele.map((b) => (
-              <li id={b.slug} class="flex scroll-mt-24 flex-col rounded-2xl border border-petrol-100 bg-white p-6 shadow-[var(--shadow-soft)]">
+              <li id={b.slug} class="flex scroll-mt-32 flex-col rounded-2xl border border-petrol-100 bg-white p-6 shadow-[var(--shadow-soft)]">
                 <h3 class="text-xl">
                   <a
                     href={getLocalizedPath(preventionPath(b.slug), lang)}
@@ -102,7 +102,7 @@ const crumbs = [
         </p>
       </section>
 
-      <section id="fragen" class="mt-12 max-w-3xl scroll-mt-24 sm:mt-14">
+      <section id="fragen" class="mt-12 max-w-3xl scroll-mt-32 sm:mt-14">
         <div class="rich-text">
           <h2>{t('content.faqHeading')}</h2>
         </div>

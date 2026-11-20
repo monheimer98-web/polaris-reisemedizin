@@ -63,7 +63,7 @@ const anlaesse = [...abroadOccasions, abroadPilgrimage];
   <div class="u-container pb-16 pt-12 sm:pb-20 sm:pt-16">
     {
       gruppen.map((gruppe, i) => (
-        <section id={gruppe.id} class:list={['scroll-mt-28', i > 0 && 'mt-14 sm:mt-16']} aria-labelledby={`${gruppe.id}-titel`}>
+        <section id={gruppe.id} class:list={['scroll-mt-32', i > 0 && 'mt-14 sm:mt-16']} aria-labelledby={`${gruppe.id}-titel`}>
           <h2 id={`${gruppe.id}-titel`} class="font-display text-2xl text-petrol-900">
             {gruppe.title}
           </h2>
@@ -87,7 +87,7 @@ const anlaesse = [...abroadOccasions, abroadPilgrimage];
     {/* Anlässe: keine weiteren Leistungen, sondern der Einstieg nach Reiseanlass. */}
     <section
       id="ausland"
-      class="mt-14 scroll-mt-28 rounded-2xl border border-line bg-white/70 p-6 sm:mt-16 sm:p-8"
+      class="mt-14 scroll-mt-32 rounded-2xl border border-line bg-white/70 p-6 sm:mt-16 sm:p-8"
       aria-labelledby="ausland-titel"
     >
       <h2 id="ausland-titel" class="font-display text-2xl text-petrol-900">{t('overview.occasionTitle')}</h2>

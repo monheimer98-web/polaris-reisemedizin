@@ -84,7 +84,7 @@ export const suedafrika: ClinicalPage = {
           'No vaccination is required when entering directly from Germany. Travellers aged one year and older arriving from a yellow fever area must show proof of yellow fever vaccination. This also applies if you spent more than twelve hours at the airport of a yellow fever country while changing planes.',
           'South Africa enforces this strictly: according to the South African government, anyone arriving without a valid certificate may be refused entry or placed under quarantine surveillance for up to six days. If you cannot be vaccinated for medical reasons, you need a medical exemption certificate; even then, monitoring by the health authorities is possible.',
           'South Africa sets its own list of yellow fever countries – including, for example, Kenya, Uganda, Rwanda, Ethiopia, Ghana, Nigeria, Brazil, Colombia and Peru. According to South Africa, no certificate is currently required after a stay in Tanzania or Zambia; however, such rules have changed in the past.',
-          'Vaccination is only given at a state-approved yellow fever vaccination centre and must be given at least ten days before arrival. The certificate is valid for life. Yellow fever is not transmitted in South Africa itself, so vaccination for your own protection is not needed there.',
+          'Vaccination is only given at a state-authorised yellow fever vaccination centre and must be given at least ten days before arrival. The certificate is valid for life. Yellow fever is not transmitted in South Africa itself, so vaccination for your own protection is not needed there.',
         ],
       },
       callout: {

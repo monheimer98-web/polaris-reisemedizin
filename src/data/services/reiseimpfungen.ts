@@ -93,7 +93,7 @@ export const reiseimpfungenService: ClinicalPage = {
           'Einreisebestimmungen ändern sich. Maßgeblich sind die offiziellen Vorgaben des Ziellandes; wir prüfen mit Ihnen die aktuelle Lage und verweisen auf die Hinweise des Auswärtigen Amts und der WHO.',
         ],
         en: [
-          'Some countries require proof of vaccination on entry. The best known is the yellow fever vaccination, which is certified in the International Certificate of Vaccination (ICVP) and may only be administered at a state-approved yellow fever vaccination centre. For certain trips – such as the pilgrimage to Saudi Arabia – a meningococcal vaccination may be required.',
+          'Some countries require proof of vaccination on entry. The best known is the yellow fever vaccination, which is certified in the International Certificate of Vaccination (ICVP) and may only be administered at a state-authorised yellow fever vaccination centre. For certain trips – such as the pilgrimage to Saudi Arabia – a meningococcal vaccination may be required.',
           'Polio: because of the global polio situation, special WHO rules apply. For longer stays (over four weeks) in affected countries – such as Pakistan or Afghanistan – proof of a polio vaccination given between four weeks and twelve months earlier may be required on departure. For travel to polio risk areas we check your protection and give a booster if needed.',
           'Entry requirements change. The official requirements of the destination country are decisive; we check the current situation with you and refer to the information from the Federal Foreign Office and the WHO.',
         ],

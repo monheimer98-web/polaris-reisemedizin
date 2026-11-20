@@ -49,8 +49,8 @@ export const werteEinordnen: PreventionOffer = {
     {
       title: { de: 'Blutabnahme im selben Termin', en: 'Blood sample in the same appointment' },
       text: {
-        de: 'Direkt im Anschluss nehmen wir Blut ab. Für die meisten Werte müssen Sie nicht nüchtern sein; wenn es darauf ankommt, sagen wir es Ihnen vorher.',
-        en: 'We take the blood sample straight afterwards. For most values you do not need to fast; if it matters, we tell you beforehand.',
+        de: 'Direkt im Anschluss nehmen wir Blut ab. Deshalb liegt der Ersttermin am Vormittag: So kommt Ihr Blut am selben Tag ins Labor. Für die meisten Werte müssen Sie nicht nüchtern sein; wenn es darauf ankommt, sagen wir es Ihnen vorher.',
+        en: 'We take the blood sample straight afterwards. That is why the first appointment is in the morning: your sample reaches the laboratory the same day. For most values you do not need to fast; if it matters, we tell you beforehand.',
       },
     },
     {
@@ -140,14 +140,14 @@ export const werteEinordnen: PreventionOffer = {
         },
         list: {
           de: [
-            'Viele Werte auf einmal ohne Frage: Ein Referenzbereich umfasst die Werte von 95 von 100 gesunden Menschen. Wer viele Werte bestimmen lässt, hat deshalb fast immer einen auffälligen, ohne krank zu sein.',
+            'Viele Werte auf einmal ohne Frage: Ein Referenzbereich umfasst die Werte von 95 von 100 gesunden Menschen. Wer viele Werte bestimmen lässt, hat deshalb oft mindestens einen auffälligen, ohne krank zu sein.',
             'Vitamin D ohne Beschwerden und ohne Risiko: Der IGeL-Monitor bewertet diese Messung mit „unklar“.',
             'Eisen im Blut allein: Es schwankt über den Tag stark. Aussagekräftig ist das Ferritin, und auch das kann während eines Infekts falsch hoch sein.',
             'Lp(a) ein zweites Mal: Der Wert ist weitgehend vererbt; einmal im Leben reicht in der Regel.',
             'Kontrollen in kurzen Abständen, aus denen nichts folgt.',
           ],
           en: [
-            'Many values at once without a question: a reference range covers the values of 95 out of 100 healthy people. Anyone who has many values measured will therefore almost always have one outside the range without being ill.',
+            'Many values at once without a question: a reference range covers the values of 95 out of 100 healthy people. Anyone who has many values measured will therefore often have one outside the range without being ill.',
             'Vitamin D without symptoms and without a risk: the IGeL-Monitor rates this test as “unclear”.',
             'Iron in the blood on its own: it varies strongly over the day. The informative value is ferritin, and even that can be falsely high during an infection.',
             'Lp(a) a second time: the level is largely inherited; once in a lifetime is usually enough.',

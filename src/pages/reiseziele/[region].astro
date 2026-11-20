@@ -51,7 +51,7 @@ const related = (page.related ?? []).map((item) => ({
   <div class="space-y-12 sm:space-y-14">
     {
       page.sections.map((section) => (
-        <section id={section.id} class="scroll-mt-24">
+        <section id={section.id} class="scroll-mt-32">
           <div class="rich-text">
             <h2>{section.heading[lang]}</h2>
             {section.body[lang].map((paragraph) => (
@@ -98,7 +98,7 @@ const related = (page.related ?? []).map((item) => ({
     }
     {
       countries.length > 0 && (
-        <section id="laender" class="scroll-mt-24">
+        <section id="laender" class="scroll-mt-32">
           <div class="rich-text">
             <h2>{t('content.countriesHeading')}</h2>
           </div>

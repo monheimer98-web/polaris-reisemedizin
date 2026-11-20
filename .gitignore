@@ -1,5 +1,6 @@
 # build output
 dist/
+praevention-weiterleitungen.csv
 .output/
 
 # generated types & cache

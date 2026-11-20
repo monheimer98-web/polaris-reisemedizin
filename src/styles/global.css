@@ -233,13 +233,13 @@
 }
 
 /* ------------------------------------------------------------------ *
- * Bereich „Prävention & Lebensstil"
+ * Themenwelt „Prävention"
  * Die Utilities lesen die Farb-Variablen zur Laufzeit. Innerhalb von
  * `.theme-praevention` zeigen die Petrol-Stufen deshalb auf Salbei: Hero,
  * Überschriften, Buttons, Rahmen und Abschluss-Band wechseln die Farbwelt,
  * ohne dass Komponenten doppelt gepflegt werden. Gold bleibt der gemeinsame
- * Markenakzent (Leitstern); Kopf- und Fußzeile bleiben Petrol – es ist
- * dieselbe Praxis.
+ * Markenakzent (Leitstern). In der Präventionswelt sitzt die Klasse am
+ * <body> (BaseLayout), dadurch werden auch Kopf- und Fußzeile salbei.
  * ------------------------------------------------------------------ */
 .theme-praevention {
   --color-petrol-50: var(--color-salbei-50);

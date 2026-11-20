@@ -81,7 +81,7 @@ ersetzen (eine Datei, eine Wahrheit):
 | `professional.professionalRulesUrl` | URL zur Berufsordnung |
 | `professional.vatId` | USt-IdNr., falls vorhanden (sonst leer lassen) |
 | `yellowFever.authorizationRef` | **Aktenzeichen der Gelbfieber-Zulassung** |
-| `yellowFever.authority` | zulassende Behörde / Bundesland |
+| `yellowFever.authority` | autorisierende Behörde / Bundesland |
 | `liabilityInsurance.insurer` | Berufshaftpflicht: Versicherer + Sitz |
 | `team[].bio` (DE+EN) | Kurzvita beider Personen (derzeit `[…]`) |
 
@@ -95,8 +95,8 @@ Außerdem:
 ## Gelbfieber-Terminbuchung aktivieren (sobald die Zulassung vorliegt)
 
 Die Gelbfieberimpfung ist **inhaltlich vollständig** umgesetzt, die **Buchung
-ist jedoch bewusst deaktiviert**, bis die Praxis als Gelbfieber-Impfstelle
-staatlich zugelassen ist und ein Buchungskonto besteht. Zum
+ist jedoch bewusst deaktiviert**, bis die Praxis als staatlich autorisierte
+Gelbfieberimpfstelle zugelassen ist und ein Buchungskonto besteht. Zum
 Scharfschalten genau diese Stellen anpassen:
 
 1. **`src/config/site.ts → site.yellowFever`** — `authorizationRef` und
@@ -116,8 +116,8 @@ Scharfschalten genau diese Stellen anpassen:
      den Richtwert `price: 'in Vorbereitung'` durch eine GOÄ-Orientierung ersetzen
    - ggf. `src/data/services/gelbfieberimpfung.ts` auf den aktiven Stand prüfen
 5. **Wichtig (rechtlich):** Erst wenn die Zulassung tatsächlich erteilt ist,
-   dürfen die Aussagen „staatlich zugelassene Gelbfieber-Impfstelle" /
-   „approved yellow-fever centre" sichtbar bleiben. Diese Formulierung steht
+   dürfen die Aussagen „staatlich autorisierte Gelbfieberimpfstelle" /
+   „authorised yellow-fever centre" sichtbar bleiben. Diese Formulierung steht
    an mehreren Stellen (u. a. `src/data/impressum.ts`, `src/i18n/ui.ts`,
    `src/data/faq.ts`, `src/data/team.ts`, `src/data/risikogebiete.ts`,
    `src/data/services/gelbfieberimpfung.ts`). Vor Go-Live entweder die Zulassung
@@ -356,7 +356,7 @@ Actions, `.github/workflows/deploy.yml`), später Migration auf einen
   nicht-essenzieller Cookie standardmäßig.
 
 > ### ⚠ Wichtigster Go-Live-Blocker
-> Die Aussage **„staatlich zugelassene Gelbfieber-Impfstelle"** (DE+EN) ist an
+> Die Aussage **„staatlich autorisierte Gelbfieberimpfstelle"** (DE+EN) ist an
 > mehreren Stellen im Inhalt verankert — am rechtlich sensibelsten im
 > **Impressum** (`src/data/impressum.ts`). Diese Aussage darf nur sichtbar
 > bleiben, **wenn die Zulassung tatsächlich erteilt ist**. Andernfalls vor dem

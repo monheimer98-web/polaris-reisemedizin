@@ -29,8 +29,8 @@ export const praeventionsCheck: PreventionOffer = {
       en: 'Adults without symptoms, privately insured or self-paying, who want to know where they stand with their health.',
     },
     appointments: {
-      de: 'Ersttermin ca. 20 Min. mit Gespräch, Messungen und Blutabnahme; frühestens etwa eine Woche später Untersuchung und Befund ca. 40 Min. Beide Termine in der Praxis.',
-      en: 'First appointment approx. 20 min with conversation, measurements and blood sample; at the earliest about a week later examination and results approx. 40 min. Both appointments at the practice.',
+      de: 'Ersttermin ca. 20 Min. mit Gespräch, Messungen und Blutabnahme; etwa eine Woche später Untersuchung und Befund ca. 40 Min. Beide Termine in der Praxis.',
+      en: 'First appointment approx. 20 min with conversation, measurements and blood sample; about a week later examination and results approx. 40 min. Both appointments at the practice.',
     },
     fee: {
       de: `Nach GOÄ, je nachdem, was Sie brauchen. Typisch für beide Termine zusammen: ${caDe(zweiTermineWeg.check)}, mit Ruhe-EKG ${caDe(zweiTermineWeg.checkMitEkg)}.`,
@@ -50,7 +50,7 @@ export const praeventionsCheck: PreventionOffer = {
       },
     },
     {
-      title: { de: 'Messungen und Blutabnahme', en: 'Measurements and blood sample' },
+      title: { de: 'Noch im Ersttermin: Messungen und Blutabnahme', en: 'Still in the first appointment: measurements and blood sample' },
       text: {
         de: 'Unser Praxisteam misst Blutdruck, Größe, Gewicht und Taillenumfang und nimmt Blut ab für das Basislabor: Blutfette, Blutzucker-Langzeitwert (HbA1c) und Nierenwert, beim ersten Check auf Wunsch einmalig Lp(a). Sie müssen dafür in der Regel nicht nüchtern sein.',
         en: 'Our practice team measures blood pressure, height, weight and waist circumference and takes a blood sample for the basic panel: blood lipids, long-term blood sugar (HbA1c) and kidney value, and at the first check-up a one-off Lp(a) test if you wish. You usually do not need to fast.',
@@ -59,8 +59,8 @@ export const praeventionsCheck: PreventionOffer = {
     {
       title: { de: 'Untersuchung und Befund', en: 'Examination and results' },
       text: {
-        de: 'Frühestens etwa eine Woche später liegen alle Werte vor. In etwa 40 Minuten sprechen wir über Ihre Vorgeschichte, Ihre Familie, Ihren Alltag und Ihre Ziele, untersuchen Sie von Kopf bis Fuß und sehen in Ihren Impfpass. Auf Wunsch schreiben wir ein Ruhe-EKG.',
-        en: 'At the earliest about a week later all results are available. In about 40 minutes we talk about your medical history, your family, your everyday life and your goals, examine you from head to toe and look at your vaccination record. On request we record a resting ECG.',
+        de: 'Etwa eine Woche später, wenn alle Werte vorliegen, folgt Termin 2. In etwa 40 Minuten sprechen wir über Ihre Vorgeschichte, Ihre Familie, Ihren Alltag und Ihre Ziele, untersuchen Sie von Kopf bis Fuß und sehen in Ihren Impfpass. Auf Wunsch schreiben wir ein Ruhe-EKG.',
+        en: 'About a week later, once all results are in, comes appointment 2. In about 40 minutes we talk about your medical history, your family, your everyday life and your goals, examine you from head to toe and look at your vaccination record. On request we record a resting ECG.',
       },
     },
     {
@@ -158,7 +158,7 @@ export const praeventionsCheck: PreventionOffer = {
         },
         list: {
           de: [
-            'Blutdruck nach Standard, Größe, Gewicht, Taillenumfang und das Verhältnis von Taille zu Körpergröße,',
+            'Blutdruck, mehrfach in Ruhe gemessen, Größe, Gewicht, Taillenumfang und das Verhältnis von Taille zu Körpergröße,',
             'Blutfette, Blutzucker-Langzeitwert (HbA1c) und Nierenfunktion,',
             'Ihre Vorgeschichte und Erkrankungen in Ihrer Familie,',
             'Bewegung, Ernährung, Schlaf, Rauchen, Alkohol und Belastung im Alltag,',
@@ -166,7 +166,7 @@ export const praeventionsCheck: PreventionOffer = {
             'Ihren Impfschutz anhand Ihres Impfpasses.',
           ],
           en: [
-            'blood pressure measured to standard, height, weight, waist circumference and waist-to-height ratio,',
+            'blood pressure, measured several times at rest, height, weight, waist circumference and waist-to-height ratio,',
             'blood lipids, long-term blood sugar (HbA1c) and kidney function,',
             'your medical history and conditions in your family,',
             'physical activity, diet, sleep, smoking, alcohol and everyday stress,',
@@ -265,8 +265,8 @@ export const praeventionsCheck: PreventionOffer = {
       {
         q: { de: 'Warum zwei Termine?', en: 'Why two appointments?' },
         a: {
-          de: 'Damit im zweiten Termin alle Werte vorliegen. Im Ersttermin besprechen wir, was wir untersuchen, messen und nehmen Blut ab. Frühestens etwa eine Woche später untersuchen wir Sie, besprechen alle Ergebnisse auf einmal, und Sie nehmen Ihren Befundbericht mit.',
-          en: 'So that all results are available in the second appointment. In the first appointment we discuss what we will examine, take measurements and a blood sample. At the earliest about a week later we examine you, discuss all results at once, and you take your report home.',
+          de: 'Damit im zweiten Termin alle Werte vorliegen. Im Ersttermin besprechen wir, was wir untersuchen, messen und nehmen Blut ab. Etwa eine Woche später, wenn alle Werte vorliegen, untersuchen wir Sie, besprechen alle Ergebnisse auf einmal, und Sie nehmen Ihren Befundbericht mit.',
+          en: 'So that all results are available in the second appointment. In the first appointment we discuss what we will examine, take measurements and a blood sample. About a week later, once all results are in, we examine you, discuss all results at once, and you take your report home.',
         },
       },
       {

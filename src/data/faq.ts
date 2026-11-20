@@ -175,7 +175,7 @@ export const faqPage: FaqPage = {
               'Die Gelbfieberimpfung darf in Deutschland ausschließlich von staatlich zugelassenen Gelbfieberimpfstellen durchgeführt werden. Unsere Praxis besitzt diese Zulassung und stellt den international gültigen Impfnachweis aus.',
             ],
             en: [
-              'In Germany, the yellow fever vaccination may only be administered by state-approved yellow fever vaccination centres. Our practice holds this approval and issues the internationally valid certificate.',
+              'In Germany, the yellow fever vaccination may only be administered by state-authorised yellow fever vaccination centres. Our practice holds this authorisation and issues the internationally valid certificate.',
             ],
           },
         },

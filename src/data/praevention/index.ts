@@ -104,8 +104,8 @@ export const preventionHub = {
     },
     eyebrow: { de: 'Prävention bei Polaris', en: 'Prevention at Polaris' },
     lead: {
-      de: 'Wissen, wo Sie stehen: Im ersten Termin besprechen wir, was sinnvoll ist, untersuchen Sie und nehmen Blut ab. Im zweiten Termin bekommen Sie Ihre Ergebnisse erklärt und schriftlich zum Mitnehmen.',
-      en: 'Know where you stand: in the first appointment we discuss what makes sense, examine you and take a blood sample. In the second appointment we explain your results and give them to you in writing.',
+      de: 'Wissen, wo Sie stehen: Im ersten Termin besprechen wir, was sinnvoll ist, und nehmen Blut ab. Im zweiten Termin bekommen Sie Ihre Ergebnisse erklärt und schriftlich zum Mitnehmen.',
+      en: 'Know where you stand: in the first appointment we discuss what makes sense and take a blood sample. In the second appointment we explain your results and give them to you in writing.',
     },
   },
   principlesTitle: { de: 'So arbeiten wir', en: 'How we work' },
@@ -120,8 +120,8 @@ export const preventionHub = {
     {
       title: { de: 'Zwei Termine, ein klares Ergebnis', en: 'Two appointments, one clear result' },
       text: {
-        de: 'Im Ersttermin legen wir gemeinsam fest, was untersucht wird, untersuchen Sie und nehmen Blut ab. Etwa eine Woche später liegen alle Werte vor, und wir besprechen sie im Befundtermin.',
-        en: 'In the first appointment we decide together what to examine, examine you and take a blood sample. About a week later all results are ready and we go through them in the results appointment.',
+        de: 'Im Ersttermin legen wir gemeinsam fest, welche Werte sinnvoll sind, und nehmen Blut ab. Wenn alle Werte vorliegen, besprechen wir sie im Befundtermin, beim Gesundheitscheck mit der Untersuchung.',
+        en: 'In the first appointment we decide together which values make sense and take a blood sample. Once all results are ready we go through them in the results appointment, which for the health check-up includes the examination.',
       },
     },
     {
@@ -143,7 +143,7 @@ export const preventionHub = {
   notOfferedTitle: { de: 'Was wir bewusst nicht anbieten', en: 'What we deliberately do not offer' },
   notOffered: {
     de: [
-      '„Komplettlabor", Longevity-Profile und Tests auf ein „biologisches Alter",',
+      '„Komplettlabor", Profile zur „Langlebigkeit" und Tests auf ein „biologisches Alter",',
       'Infusionen, Vitamin-Kuren und den Verkauf von Präparaten,',
       'Hormonbehandlungen zur „Optimierung",',
       'Diagnosen per Online-Fragebogen – jede Behandlung beginnt mit einem persönlichen Termin.',
@@ -180,8 +180,8 @@ export const preventionHub = {
     {
       q: { de: 'Was buche ich zuerst?', en: 'What do I book first?' },
       a: {
-        de: 'Sie buchen online den Ersttermin des passenden Angebots. Den Befundtermin legen wir im Ersttermin mit Ihnen fest, etwa eine Woche später, wenn alle Werte vorliegen. Wer schon Blutwerte hat, bringt sie zum Ersttermin mit.',
-        en: 'Book the first appointment for the right service online. We arrange the results appointment with you during the first appointment, about a week later when all results are in. If you already have blood results, bring them along.',
+        de: 'Sie vereinbaren den Ersttermin des passenden Angebots. Den Befundtermin legen wir im Ersttermin mit Ihnen fest, etwa eine Woche später, wenn alle Werte vorliegen. Wer schon Blutwerte hat, bringt sie zum Ersttermin mit.',
+        en: 'Book the first appointment for the right service. We arrange the results appointment with you during the first appointment, about a week later when all results are in. If you already have blood results, bring them along.',
       },
     },
     {

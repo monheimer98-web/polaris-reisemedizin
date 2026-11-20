@@ -9,7 +9,7 @@
  * dem Labor abgleichen.
  */
 import type { ClinicalPage, Localized } from '../types';
-import { labor, laborwert, weg, caDe, caEn, euroDe, euroEn } from '../praevention/preise';
+import { labor, laborwert, zweiTermineWeg, caDe, caEn } from '../praevention/preise';
 
 const laborPaket = laborwert.grossesBlutbild + laborwert.checkBasis + laborwert.leberwerte;
 
@@ -93,14 +93,14 @@ export const grossesBlutbildGuide: ClinicalPage = {
       },
       list: {
         de: [
-          `Nur das große Blutbild: ärztliches Honorar ${euroDe(weg.einzelwerteKurz)} (Gespräch mit Blutabnahme, später ein kurzes Gespräch zum Ergebnis), Labor ${caDe(laborwert.grossesBlutbild)}. Zusammen ${caDe(weg.einzelwerteKurz + laborwert.grossesBlutbild)}.`,
-          `Großes Blutbild mit Blutfetten, Langzeitzucker, Nieren- und Leberwerten: ärztliches Honorar ${euroDe(weg.einzelwerte)} (Gespräch mit Blutabnahme, später ein Gespräch zu den Ergebnissen ab 10 Minuten), Labor ${caDe(laborPaket)}. Zusammen ${caDe(weg.einzelwerte + laborPaket)}.`,
-          `Gesundheitscheck mit Untersuchung, Risikoeinschätzung und schriftlichem Plan: ärztliches Honorar ${caDe(weg.check)} für drei Termine, Labor ca. ${labor.check}–${labor.checkMitLpa} €.`,
+          `Nur das große Blutbild: ärztliches Honorar ${caDe(zweiTermineWeg.werte)} für beide Termine des Laborwerte-Checks, Labor ${caDe(laborwert.grossesBlutbild)}. Zusammen ${caDe(zweiTermineWeg.werte + laborwert.grossesBlutbild)}.`,
+          `Großes Blutbild mit Blutfetten, Langzeitzucker, Nieren- und Leberwerten: ärztliches Honorar ebenfalls ${caDe(zweiTermineWeg.werte)}, Labor ${caDe(laborPaket)}. Zusammen ${caDe(zweiTermineWeg.werte + laborPaket)}.`,
+          `Gesundheitscheck mit Untersuchung, Risikoeinschätzung und Befundbericht: ärztliches Honorar ${caDe(zweiTermineWeg.check)} für zwei Termine, mit Ruhe-EKG ${caDe(zweiTermineWeg.checkMitEkg)}, Labor ca. ${labor.check}–${labor.checkMitLpa} €.`,
         ],
         en: [
-          `Full blood count only: medical fee ${euroEn(weg.einzelwerteKurz)} (consultation with blood sample, later a short conversation about the result), laboratory ${caEn(laborwert.grossesBlutbild)}. Together ${caEn(weg.einzelwerteKurz + laborwert.grossesBlutbild)}.`,
-          `Full blood count with blood lipids, long-term blood sugar, kidney and liver values: medical fee ${euroEn(weg.einzelwerte)} (consultation with blood sample, later a conversation about the results of 10 minutes or more), laboratory ${caEn(laborPaket)}. Together ${caEn(weg.einzelwerte + laborPaket)}.`,
-          `Health check-up with examination, risk assessment and written plan: medical fee ${caEn(weg.check)} for three appointments, laboratory approx. €${labor.check}–${labor.checkMitLpa}.`,
+          `Full blood count only: medical fee ${caEn(zweiTermineWeg.werte)} for both appointments of the lab value check, laboratory ${caEn(laborwert.grossesBlutbild)}. Together ${caEn(zweiTermineWeg.werte + laborwert.grossesBlutbild)}.`,
+          `Full blood count with blood lipids, long-term blood sugar, kidney and liver values: medical fee also ${caEn(zweiTermineWeg.werte)}, laboratory ${caEn(laborPaket)}. Together ${caEn(zweiTermineWeg.werte + laborPaket)}.`,
+          `Health check-up with examination, risk assessment and written report: medical fee ${caEn(zweiTermineWeg.check)} for two appointments, with a resting ECG ${caEn(zweiTermineWeg.checkMitEkg)}, laboratory approx. €${labor.check}–${labor.checkMitLpa}.`,
         ],
       },
       links: [
@@ -137,7 +137,7 @@ export const grossesBlutbildGuide: ClinicalPage = {
       heading: { de: 'So läuft es ab', en: 'How it works' },
       body: {
         de: [
-          'Sie buchen den Ersttermin des Laborwerte-Checks und kommen dafür am Morgen in die Praxis: Wir besprechen, was sinnvoll ist, nennen die Kosten und nehmen direkt im Anschluss Blut ab. Ein Blutbild muss am selben Tag ins Labor, deshalb der Termin am Morgen.',
+          'Sie buchen den Ersttermin des Laborwerte-Checks und kommen dafür am Vormittag in die Praxis: Wir besprechen, was sinnvoll ist, nennen die Kosten und nehmen direkt im Anschluss Blut ab. Ein Blutbild muss am selben Tag ins Labor, deshalb der Termin am Vormittag.',
           'Die Ergebnisse besprechen wir einige Tage später, auf Wunsch am Telefon. Wenn sich im Gespräch zeigt, dass der Gesundheitscheck besser zu Ihrer Frage passt, erklären wir den Unterschied, und Sie entscheiden.',
         ],
         en: [
@@ -160,8 +160,8 @@ export const grossesBlutbildGuide: ClinicalPage = {
     {
       q: { de: 'Was kostet ein großes Blutbild?', en: 'What does a full blood count cost?' },
       a: {
-        de: `Beim Labor ${caDe(laborwert.grossesBlutbild)}. Dazu kommt das ärztliche Honorar für Gespräch, Blutabnahme und Befund, bei uns ${euroDe(weg.einzelwerteKurz)} nach GOÄ. Zusammen sind es ${caDe(weg.einzelwerteKurz + laborwert.grossesBlutbild)}. Weitere Werte wie Blutfette oder Leberwerte kosten zusätzlich.`,
-        en: `${caEn(laborwert.grossesBlutbild)} at the laboratory. In addition there is the medical fee for consultation, blood sample and results, with us ${euroEn(weg.einzelwerteKurz)} under the GOÄ. Together that is ${caEn(weg.einzelwerteKurz + laborwert.grossesBlutbild)}. Further values such as blood lipids or liver values cost extra.`,
+        de: `Beim Labor ${caDe(laborwert.grossesBlutbild)}. Dazu kommt das ärztliche Honorar nach GOÄ für beide Termine des Laborwerte-Checks, bei uns ${caDe(zweiTermineWeg.werte)}. Zusammen sind es ${caDe(zweiTermineWeg.werte + laborwert.grossesBlutbild)}. Weitere Werte wie Blutfette oder Leberwerte kosten zusätzlich.`,
+        en: `${caEn(laborwert.grossesBlutbild)} at the laboratory. In addition there is the medical fee under the GOÄ for both appointments of the lab value check, with us ${caEn(zweiTermineWeg.werte)}. Together that is ${caEn(zweiTermineWeg.werte + laborwert.grossesBlutbild)}. Further values such as blood lipids or liver values cost extra.`,
       },
     },
     {

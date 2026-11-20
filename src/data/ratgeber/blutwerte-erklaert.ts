@@ -37,11 +37,11 @@ export const blutwerteGuide: ClinicalPage = {
       heading: { de: 'Vorweg: Ein Wert ist nur so gut wie die Frage', en: 'First: a test is only as good as the question' },
       body: {
         de: [
-          'Ein Laborwert ist eine Messung, keine Diagnose. Der Referenzbereich auf dem Befund umfasst die Werte von 95 von 100 gesunden Menschen. Wer viele Werte bestimmen lässt, hat deshalb fast immer einen, der außerhalb liegt, ohne krank zu sein. Sinnvoll ist ein Wert, wenn sein Ergebnis eine Entscheidung ändert.',
+          'Ein Laborwert ist eine Messung, keine Diagnose. Der Referenzbereich auf dem Befund umfasst die Werte von 95 von 100 gesunden Menschen. Wer viele Werte bestimmen lässt, hat deshalb oft mindestens einen, der außerhalb liegt, ohne krank zu sein. Sinnvoll ist ein Wert, wenn sein Ergebnis eine Entscheidung ändert.',
           'Damit die Messung stimmt, hilft ein wenig Vorbereitung:',
         ],
         en: [
-          'A lab value is a measurement, not a diagnosis. The reference range on the report covers the values of 95 out of 100 healthy people. Anyone who has many values measured will therefore almost always have one outside the range without being ill. A test makes sense when its result changes a decision.',
+          'A lab value is a measurement, not a diagnosis. The reference range on the report covers the values of 95 out of 100 healthy people. Anyone who has many values measured will therefore often have one outside the range without being ill. A test makes sense when its result changes a decision.',
           'A little preparation helps the measurement to be accurate:',
         ],
       },

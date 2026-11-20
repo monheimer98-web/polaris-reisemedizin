@@ -61,12 +61,28 @@ export const zweiTermine = {
   gewichtErst: 49.78,
 } as const;
 
+/**
+ * Haarsprechstunde zum Regelsatz (haare-seitentexte.md der Sitzung „PRP und
+ * Haarsprechstunde“, Variante ohne Auflichtgerät, [OFFEN: 1]).
+ */
+export const haarPreis = {
+  /** Nr. 1 + 5 + 250 – Haarsprechstunde mit Untersuchung und Blutabnahme */
+  sprechstunde: 25.64,
+  /** Nr. 3 – Befund und Plan, auch am Telefon */
+  befund: 20.11,
+  /** Nr. 1 + 5 – späterer Verlaufstermin */
+  verlauf: 21.44,
+  /** Labor: Ferritin, kleines Blutbild, TSH (Richtwert, Rechnung vom Labor) */
+  labor: 38,
+} as const;
+
 /** Ganze Wege in zwei Terminen (Praxis, ohne Labor), Regelsatz. */
 export const zweiTermineWeg = {
   check: summe(zweiTermine.checkErst, zweiTermine.checkBefund),
   checkMitEkg: summe(zweiTermine.checkErst, zweiTermine.checkBefund, zweiTermine.ekg),
   werte: summe(zweiTermine.werteErst, zweiTermine.befund),
   gewicht: summe(zweiTermine.gewichtErst, zweiTermine.befund),
+  haare: summe(haarPreis.sprechstunde, haarPreis.befund),
 } as const;
 
 /** Beträge einzelner Termine außerhalb des Ablaufs mit Blutwerten. */

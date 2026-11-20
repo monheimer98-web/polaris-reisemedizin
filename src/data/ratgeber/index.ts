@@ -17,7 +17,7 @@ export interface Guide {
   slug: string;
   summary: Localized;
   page: ClinicalPage;
-  /** Ratgeber des Bereichs „Prävention & Lebensstil": Salbei, Bereichsnavigation, eigene Terminseite. */
+  /** Ratgeber des Bereichs „Prävention": Salbei, Bereichsnavigation, eigene Terminseite. */
   area?: 'praevention';
   /** Terminart-ID, die der Buchungsknopf vorbelegt (`?art=`). */
   bookingType?: string;
@@ -60,14 +60,14 @@ export const guides: Guide[] = [
     summary: grossesBlutbildSummary,
     page: grossesBlutbildGuide,
     area: 'praevention',
-    bookingType: 'pv-v1',
+    bookingType: 'pv-e2',
   },
   {
     slug: 'vitamin-d-test-beim-arzt',
     summary: vitaminTestSummary,
     page: vitaminTestGuide,
     area: 'praevention',
-    bookingType: 'pv-v1',
+    bookingType: 'pv-e2',
   },
   {
     slug: 'blutwerte-erklaert',
