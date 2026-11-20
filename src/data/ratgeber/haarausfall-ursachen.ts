@@ -310,6 +310,15 @@ export const haarausfallUrsachenGuide: ClinicalPage = {
   ],
   sourceIds: ['s3AndrogenetischeAlopezie', 'daeHaarKopfhaut', 'gesundBundHaarausfall', 'akdaeBiotin', 'goae'],
   lastReviewed: new Date('2026-11-20'),
+  bild: {
+    src: '/images/praevention/haarbuerste-farn-1600.webp',
+    width: 1600,
+    height: 1000,
+    alt: {
+      de: 'Haarbürste aus Holz auf hellem Stein, daneben Farnzweige',
+      en: 'Wooden hairbrush on light stone next to fern sprigs',
+    },
+  },
   related: [
     { label: { de: 'Haarsprechstunde', en: 'Hair consultation' }, path: '/praevention/haare' },
     { label: { de: 'PRP bei Haarausfall', en: 'PRP for hair loss' }, path: '/praevention/haare/prp' },

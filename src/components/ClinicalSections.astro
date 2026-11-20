@@ -25,6 +25,22 @@ const linkZiel = (path: string) =>
 
 <div class="space-y-12 sm:space-y-14">
   {
+    page.bild && (
+      <figure class="overflow-hidden rounded-2xl border border-petrol-100 bg-petrol-50">
+        <img
+          src={withBase(page.bild.src)}
+          srcset={`${withBase(page.bild.src.replace('-1600.', '-800.'))} 800w, ${withBase(page.bild.src)} 1600w`}
+          sizes="(min-width: 768px) 720px, 100vw"
+          width={page.bild.width}
+          height={page.bild.height}
+          alt={page.bild.alt[lang]}
+          decoding="async"
+          class="block h-auto w-full"
+        />
+      </figure>
+    )
+  }
+  {
     page.sections.map((section) => (
       <section id={section.id} class="scroll-mt-32">
         <div class="rich-text">

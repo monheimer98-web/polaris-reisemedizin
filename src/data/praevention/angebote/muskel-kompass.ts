@@ -135,7 +135,7 @@ export const muskelKompass: PreventionOffer = {
     sourceIds: ['whoBewegung2020', 'ewgsop2', 'dgeProtein', 'dvoOsteoporose'],
     lastReviewed: new Date('2026-10-28'),
     related: [
-      { label: { de: 'Gewicht & Stoffwechsel', en: 'Weight & metabolism' }, path: '/praevention/gewicht-und-stoffwechsel' },
+      { label: { de: 'Ernährung, Gewicht & Stoffwechsel', en: 'Nutrition, weight & metabolism' }, path: '/praevention/gewicht-und-stoffwechsel' },
       { label: { de: 'Sprechstunde Wechseljahre', en: 'Menopause consultation' }, path: '/praevention/wechseljahre' },
       { label: { de: 'Check-up 60+', en: 'Check-up 60+' }, path: '/praevention/check-up-60-plus' },
     ],

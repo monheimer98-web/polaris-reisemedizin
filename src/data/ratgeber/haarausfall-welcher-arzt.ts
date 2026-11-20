@@ -150,6 +150,15 @@ export const haarausfallArztGuide: ClinicalPage = {
   ],
   sourceIds: ['daeHaarKopfhaut', 's3AndrogenetischeAlopezie', 'goae'],
   lastReviewed: new Date('2026-11-20'),
+  bild: {
+    src: '/images/praevention/haarbuerste-farn-1600.webp',
+    width: 1600,
+    height: 1000,
+    alt: {
+      de: 'Haarbürste aus Holz auf hellem Stein, daneben Farnzweige',
+      en: 'Wooden hairbrush on light stone next to fern sprigs',
+    },
+  },
   related: [
     { label: { de: 'Haarsprechstunde', en: 'Hair consultation' }, path: '/praevention/haare' },
     { label: { de: 'Haarausfall: Ursachen', en: 'Hair loss: causes' }, path: '/ratgeber/haarausfall-ursachen' },

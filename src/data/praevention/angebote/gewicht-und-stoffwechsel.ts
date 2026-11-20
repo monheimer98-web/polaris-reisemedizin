@@ -1,5 +1,5 @@
 /**
- * Sprechstunde Gewicht und Stoffwechsel (DE/EN). Seit 20.11.2026 in zwei
+ * Sprechstunde Ernährung, Gewicht und Stoffwechsel (DE/EN). Seit 20.11.2026 in zwei
  * Terminen: Ersttermin mit Gespräch, Messung, Untersuchung von Kopf bis Fuß und
  * Blutabnahme, danach Befund und Plan; Begleitung danach freiwillig.
  * Streng nach § 10 HWG und BGH I ZR 74/25 (schon die erkennbare Wirkstoffklasse
@@ -14,10 +14,17 @@ import type { PreventionOffer } from '../types';
 import { honorar, labor, zweiTermine, zweiTermineWeg, caDe, caEn, euroDe, euroEn } from '../preise';
 import { erstattung, kostenVorab } from './zwei-termine';
 
-/** Arbeitsname des Angebots – nur hier ändern (Kachel, Navigation, Überschrift, Verweise). */
+/**
+ * Name des Angebots – nur hier ändern (Kachel, Navigation, Überschrift, Verweise).
+ * Leitsitzung 20.11.2026: „Ernährung, Gewicht und Stoffwechsel“, weil
+ * „ernährungsberatung“ rund 90-mal so oft gesucht wird wie „abnehmen arzt“.
+ * Nicht „Ernährungsmedizin“ (Zusatzbezeichnung der Kammer) und nicht
+ * „Ernährungsberatung“ allein (klingt nach Kurs einer Ernährungsfachkraft);
+ * im Text „ärztliche Beratung zu Ernährung“.
+ */
 const name: Localized = {
-  de: 'Sprechstunde Gewicht und Stoffwechsel',
-  en: 'Weight and metabolism consultation',
+  de: 'Ernährung, Gewicht und Stoffwechsel',
+  en: 'Nutrition, weight and metabolism',
 };
 
 export const gewichtUndStoffwechsel: PreventionOffer = {

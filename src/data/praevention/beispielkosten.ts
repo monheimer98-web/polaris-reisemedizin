@@ -82,7 +82,7 @@ export const beispielrechnungen: Beispielrechnung[] = [
   },
   {
     slug: 'gewicht-und-stoffwechsel',
-    title: { de: 'Gewicht und Stoffwechsel, Start', en: 'Weight and metabolism, start' },
+    title: { de: 'Ernährung, Gewicht und Stoffwechsel, Start', en: 'Nutrition, weight and metabolism, start' },
     posten: [
       { label: { de: 'Ersttermin: Gespräch, Messung, Untersuchung, Blutabnahme', en: 'First appointment: consultation, measurements, examination, blood sample' }, betrag: zweiTermine.gewichtErst },
       { label: { de: 'Befund und persönlicher Plan', en: 'Results and personal plan' }, betrag: zweiTermine.befund },

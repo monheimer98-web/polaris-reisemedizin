@@ -186,7 +186,7 @@ export const wechseljahre: PreventionOffer = {
     related: [
       { label: { de: 'Schlaf, Energie & Jetlag', en: 'Sleep, energy & jet lag' }, path: '/praevention/schlaf-und-jetlag' },
       { label: { de: 'Muskel-Kompass 40+', en: 'Muscle compass 40+' }, path: '/praevention/muskel-kompass' },
-      { label: { de: 'Gewicht & Stoffwechsel', en: 'Weight & metabolism' }, path: '/praevention/gewicht-und-stoffwechsel' },
+      { label: { de: 'Ernährung, Gewicht & Stoffwechsel', en: 'Nutrition, weight & metabolism' }, path: '/praevention/gewicht-und-stoffwechsel' },
       { label: { de: 'Gesundheitscheck', en: 'Health check-up' }, path: '/praevention/gesundheitscheck' },
     ],
     faq: [

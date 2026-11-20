@@ -96,7 +96,7 @@ export const preventionGroups: { id: PreventionGroup; title: Localized; lead: Lo
 export const preventionEntryPoints: { label: Localized; slug: string }[] = [
   { label: { de: 'Ich möchte wissen, wo ich gesundheitlich stehe', en: 'I want to know where I stand with my health' }, slug: 'gesundheitscheck' },
   { label: { de: 'Ich möchte bestimmte Blutwerte prüfen lassen', en: 'I want specific blood values checked' }, slug: 'laborwerte-check' },
-  { label: { de: 'Ich möchte mein Gewicht ärztlich angehen', en: 'I want medical support with my weight' }, slug: 'gewicht-und-stoffwechsel' },
+  { label: { de: 'Ich möchte Ernährung und Gewicht ärztlich angehen', en: 'I want medical support with nutrition and weight' }, slug: 'gewicht-und-stoffwechsel' },
 ];
 
 export const preventionHub = {
@@ -144,6 +144,52 @@ export const preventionHub = {
     },
   ],
   entryTitle: { de: 'Wo fange ich an?', en: 'Where do I start?' },
+  /**
+   * Abschnitt „Gesund älter werden“ (Leitsitzung 20.11.2026, Frage C): Antwort auf die
+   * Suche „longevity“ (Trends NRW rund 44-mal „gelbfieberimpfung“). Das englische
+   * Suchwort steht genau einmal, in Anführungszeichen und erklärt. Sachlich, ohne
+   * Versprechen eines längeren Lebens (§ 3 HWG); passt zu „Was wir bewusst nicht
+   * anbieten“ (keine Profile zur Langlebigkeit, kein „biologisches Alter“).
+   */
+  gesundAelter: {
+    title: { de: 'Gesund älter werden', en: 'Healthy ageing' },
+    body: {
+      de: [
+        'Viele suchen dazu heute nach „Longevity“, dem englischen Wort für Langlebigkeit. Einen Test, der Ihr „biologisches Alter“ misst, oder ein Mittel, das das Leben verlängert, gibt es nicht.',
+        'Gut belegt ist etwas anderes: Wer Blutdruck, Blutfette und Blutzucker kennt und im Blick behält, sich regelmäßig bewegt, seine Muskeln erhält, gut schläft und nicht raucht, senkt sein Risiko für Herzinfarkt, Schlaganfall und Diabetes. Dabei begleiten wir Sie:',
+      ],
+      en: [
+        'Many people search for this as “longevity” today. There is no test that measures your “biological age” and no remedy that extends life.',
+        'What is well established is something else: knowing and keeping an eye on your blood pressure, blood lipids and blood sugar, staying active, maintaining your muscles, sleeping well and not smoking lowers your risk of heart attack, stroke and diabetes. We support you with this:',
+      ],
+    },
+    links: [
+      {
+        label: { de: 'Gesundheitscheck', en: 'Health check-up' },
+        text: {
+          de: 'Ihr Risiko für Herz und Kreislauf mit Blutwerten, Untersuchung und Befundbericht, beim nächsten Check mit Verlauf.',
+          en: 'Your cardiovascular risk with blood tests, examination and a written report, with the trend at your next check-up.',
+        },
+        path: '/praevention/gesundheitscheck',
+      },
+      {
+        label: { de: 'Ernährung, Gewicht und Stoffwechsel', en: 'Nutrition, weight and metabolism' },
+        text: {
+          de: 'Ärztliche Beratung zu Ernährung, Bewegung und Schlaf, mit persönlichem Plan.',
+          en: 'Medical advice on diet, activity and sleep, with a personal plan.',
+        },
+        path: '/praevention/gewicht-und-stoffwechsel',
+      },
+      {
+        label: { de: 'Impfungen für Erwachsene', en: 'Vaccinations for adults' },
+        text: {
+          de: 'Schutz, der mit dem Alter wichtiger wird, zum Beispiel gegen Gürtelrose.',
+          en: 'Protection that becomes more important with age, for example against shingles.',
+        },
+        path: '/leistungen/guertelrose-impfung',
+      },
+    ],
+  },
   notOfferedTitle: { de: 'Was wir bewusst nicht anbieten', en: 'What we deliberately do not offer' },
   notOffered: {
     de: [

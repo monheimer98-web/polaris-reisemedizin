@@ -107,4 +107,10 @@ export interface ClinicalPage {
   faq?: { q: Localized; a: Localized }[];
   /** Optionale Termin-Links am Seitenende; `art` ist eine online buchbare Terminart der Praxis-App. */
   termine?: { label: Localized; art: string }[];
+  /**
+   * Optionales Bild über dem ersten Abschnitt. Nur frei lizenzierte Fotos ohne Gesicht
+   * und ohne Schrift; jede Datei steht in public/images/CREDITS.md. `src` ist der Pfad
+   * der großen Fassung (…-1600.webp), daneben liegt …-800.webp.
+   */
+  bild?: { src: string; width: number; height: number; alt: Localized };
 }
