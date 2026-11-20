@@ -40,7 +40,7 @@ const reise = [
   zeile('Reiseziele', '/reiseziele', 'Impf- und Gesundheitshinweise nach Reiseland.'),
   zeile('Krankheitsbilder', '/krankheitsbilder', 'Reisekrankheiten und impfpräventable Erkrankungen erklärt.'),
   ...(NACHWEISE_IM_ANGEBOT
-    ? [zeile('Ausland und Nachweise', '/ausland', 'Beratung vor Auslandsaufenthalten und Pilgerreisen, Gesundheitsnachweise und Atteste.')]
+    ? [zeile('Ausland und Nachweise', '/ausland', 'Beratung vor Auslandsaufenthalten, Gesundheitsnachweise und Atteste.')]
     : []),
   zeile('Kosten und Abrechnung', '/kosten', 'Abrechnung nach GOÄ, Beispielkosten der Reisemedizin.'),
   zeile('Termin Reisemedizin und Impfungen', '/termin', 'Termine direkt über die Website buchen.'),
