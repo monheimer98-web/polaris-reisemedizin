@@ -10,7 +10,7 @@ export const wechseljahre: PreventionOffer = {
   slug: 'wechseljahre',
   bookingType: 'pv-e1',
   group: 'begleitung',
-  stage: 1,
+  stage: 2,
   shortName: { de: 'Sprechstunde Wechseljahre', en: 'Menopause consultation' },
   teaser: {
     de: 'Zeit für Ihre Fragen: Beschwerden strukturiert erfassen, Herz, Knochen, Muskeln und Schlaf mitdenken, Möglichkeiten sachlich besprechen.',

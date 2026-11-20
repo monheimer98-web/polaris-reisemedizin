@@ -1,144 +1,194 @@
 /**
- * Werte einordnen – Labor, Smartwatch, Selbsttests und Präparate (DE/EN).
- * Niedrigschwelliger Einstieg, auch für junge Erwachsene. Keine Marken- oder
- * Herstellernamen, keine Diagnose per Uhr, keine „Optimalwerte".
+ * Laborwerte-Check (DE/EN), vorher „Blutwerte besprechen". Seit 20.11.2026:
+ * bestimmte Blutwerte auf Wunsch in zwei Terminen – Ersttermin (Nr. 1 + 250:
+ * welche Werte, warum, Blutabnahme), Befundbesprechung (Nr. 1 + 75, auch am
+ * Telefon) mit schriftlichem Werte-Bogen. Ehrlich sagen, wann ein Wert wenig
+ * bringt; keine großen Profile ohne Frage, keine Präparate, keine Marken.
+ * Dateiname und Exportname bleiben, damit `../index.ts` unverändert passt.
  */
 import type { PreventionOffer } from '../types';
-import { honorar, caDe, caEn, euroDe, euroEn } from '../preise';
+import { laborwert, zweiTermine, zweiTermineWeg, caDe, caEn } from '../preise';
+import { biotinHinweis, erstattung, kostenVorab } from './zwei-termine';
 
 export const werteEinordnen: PreventionOffer = {
-  slug: 'blutwerte-besprechen',
+  slug: 'laborwerte-check',
   bookingType: 'pv-e2',
-  group: 'einordnen',
+  group: 'checks',
   stage: 1,
-  shortName: { de: 'Blutwerte besprechen', en: 'Blood results explained' },
+  shortName: { de: 'Laborwerte-Check', en: 'Blood test check' },
   teaser: {
-    de: 'Befunde aus dem Online-Labor, Meldungen der Smartwatch, Selbsttests und Nahrungsergänzung: Was bedeutet das, und folgt daraus etwas?',
-    en: 'Results from online labs, smartwatch alerts, home tests and supplements: what do they mean, and does anything follow from them?',
+    de: 'Bestimmte Blutwerte auf Wunsch: Wir besprechen vorher, welche Werte für Ihre Frage etwas aussagen, und ordnen die Ergebnisse schriftlich ein.',
+    en: 'Specific blood tests on request: we first discuss which values are informative for your question and then explain the results in writing.',
   },
   facts: {
     forWhom: {
-      de: 'Alle, die Werte haben und wissen möchten, was sie bedeuten – gerade auch Jüngere.',
-      en: 'Anyone with results who wants to know what they mean – including younger people.',
+      de: 'Alle, die bestimmte Blutwerte auf Wunsch bestimmen lassen möchten, zum Beispiel Eisenspeicher, Vitamin D oder Blutfette – privat versichert oder als Selbstzahler.',
+      en: 'Anyone who would like specific blood values measured on request, for example iron stores, vitamin D or blood lipids – privately insured or self-paying.',
     },
     appointments: {
-      de: 'ca. 20–30 Min.; mit befundbezogener Untersuchung ca. 25–35 Min.',
-      en: 'approx. 20–30 min; approx. 25–35 min with a related examination.',
+      de: 'Ersttermin ca. 15 Min. in der Praxis mit Blutabnahme; Befundbesprechung ca. 15 Min., wenn alle Werte vorliegen, in der Praxis oder am Telefon.',
+      en: 'First appointment approx. 15 min at the practice with blood sample; results discussion approx. 15 min once all values are available, at the practice or by phone.',
     },
     fee: {
-      de: `Je nachdem, was Sie brauchen, nach GOÄ. Typisch für das Gespräch mit Werte-Bogen: ${caDe(honorar.planTermin)}, mit Untersuchung ${caDe(honorar.bilanz)}.`,
-      en: `Depending on what you need, under the GOÄ. Typically for the consultation with results sheet: ${caEn(honorar.planTermin)}, with examination ${caEn(honorar.bilanz)}.`,
+      de: `Nach GOÄ. Typisch für beide Termine zusammen: ${caDe(zweiTermineWeg.werte)}.`,
+      en: `Under the GOÄ. Typically for both appointments together: ${caEn(zweiTermineWeg.werte)}.`,
     },
     lab: {
-      de: 'meist keins; nur gezielt, wenn sich daraus etwas ableitet',
-      en: 'usually none; only targeted tests that lead to a decision',
+      de: `je nach Wert, zum Beispiel kleines Blutbild ${caDe(laborwert.kleinesBlutbild)}, Vitamin D ${caDe(laborwert.vitaminD)}; eigene Rechnung vom Labor`,
+      en: `depending on the test, for example basic blood count ${caEn(laborwert.kleinesBlutbild)}, vitamin D ${caEn(laborwert.vitaminD)}; separate invoice from the laboratory`,
     },
   },
   steps: [
     {
-      title: { de: 'Unterlagen mitbringen', en: 'Bring your documents' },
+      title: { de: 'Ersttermin: welche Werte passen', en: 'First appointment: which tests fit' },
       text: {
-        de: 'Bringen Sie Befunde, Bildschirmfotos aus Uhr oder App, Ihre Präparateliste und Ihre drei wichtigsten Fragen mit. Bitte schicken Sie Gesundheitsdaten nicht per E-Mail.',
-        en: 'Bring your reports, screenshots from your watch or app, your list of supplements and your three most important questions. Please do not send health data by e-mail.',
+        de: 'Etwa 15 Minuten in der Praxis. Sie sagen uns, was Sie wissen möchten. Wir besprechen, welche Werte dazu etwas aussagen, warum, und was sie kosten. Wenn ein Wert für Sie nichts ändert, sagen wir das offen.',
+        en: 'About 15 minutes at the practice. You tell us what you would like to know. We discuss which values are informative, why, and what they cost. If a test would not change anything for you, we say so openly.',
       },
     },
     {
-      title: { de: 'Jeden Wert einordnen', en: 'Assess each result' },
+      title: { de: 'Blutabnahme im selben Termin', en: 'Blood sample in the same appointment' },
       text: {
-        de: 'Wir erklären, was ein Wert aussagt, wie zuverlässig die Messung ist und ob ein Befund auch falsch auffällig sein kann.',
-        en: 'We explain what a result says, how reliable the measurement is and whether a finding could be a false alarm.',
+        de: 'Direkt im Anschluss nehmen wir Blut ab. Für die meisten Werte müssen Sie nicht nüchtern sein; wenn es darauf ankommt, sagen wir es Ihnen vorher.',
+        en: 'We take the blood sample straight afterwards. For most values you do not need to fast; if it matters, we tell you beforehand.',
       },
     },
     {
-      title: { de: 'Eine klare Handlung', en: 'One clear action' },
+      title: { de: 'Befundbesprechung mit Werte-Bogen', en: 'Results discussion with results sheet' },
       text: {
-        de: 'Zu jedem Wert halten wir fest: nichts tun, kontrollieren oder abklären. Sie erhalten einen schriftlichen Werte-Bogen.',
-        en: 'For each result we note: do nothing, recheck or investigate. You receive a written results sheet.',
+        de: 'Wenn alle Werte vorliegen, besprechen wir sie in etwa 15 Minuten, in der Praxis oder am Telefon. Zu jedem Wert halten wir fest: nichts tun, kontrollieren oder abklären. Sie erhalten einen schriftlichen Werte-Bogen.',
+        en: 'Once all values are available, we discuss them in about 15 minutes, at the practice or by phone. For each value we note: do nothing, recheck or investigate. You receive a written results sheet.',
       },
     },
   ],
   costs: {
     de: [
-      `Ärztliches Honorar nach GOÄ (Regelsatz): ${euroDe(honorar.planTermin)} für Gespräch und schriftlichen Werte-Bogen, mit befundbezogener Untersuchung (zum Beispiel Blutdruck nach einem Hinweis der Uhr) ${euroDe(honorar.bilanz)}.`,
-      'Diese Leistung ist meist eine Wunschleistung ohne Erstattung durch die Krankenversicherung. Sie erhalten vorab eine Kosteninformation.',
+      `Ärztliches Honorar nach GOÄ (Regelsatz), je Termin: Ersttermin mit Beratung und Blutabnahme ${caDe(zweiTermine.werteErst)}, Befundbesprechung mit schriftlichem Werte-Bogen ${caDe(zweiTermine.befund)}. Zusammen ${caDe(zweiTermineWeg.werte)}.`,
+      `Dazu kommen die Laborkosten je Wert, zum Beispiel: kleines Blutbild ${caDe(laborwert.kleinesBlutbild)}, großes Blutbild ${caDe(laborwert.grossesBlutbild)}, Eisenspeicher (Ferritin) mit kleinem Blutbild ${caDe(laborwert.ferritinMitBlutbild)}, Vitamin D ${caDe(laborwert.vitaminD)}, Vitamin B12 ${caDe(laborwert.vitaminB12)}, Leberwerte ${caDe(laborwert.leberwerte)}, Blutfette, Langzeitzucker und Nierenwert zusammen ${caDe(laborwert.checkBasis)}.`,
+      'Zeigt sich im Ersttermin, dass ein Wert für Sie nichts ändert, nehmen wir kein Blut ab. Dann zahlen Sie nur die Beratung.',
+      kostenVorab.de,
+      erstattung.de,
     ],
     en: [
-      `Medical fee under the GOÄ (standard rate): ${euroEn(honorar.planTermin)} for consultation and written results sheet, with a related examination (for example blood pressure after a watch alert) ${euroEn(honorar.bilanz)}.`,
-      'This is usually a self-pay service that health insurers do not reimburse. You receive a cost overview beforehand.',
+      `Medical fee under the GOÄ (standard rate), per appointment: first appointment with advice and blood sample ${caEn(zweiTermine.werteErst)}, results discussion with written results sheet ${caEn(zweiTermine.befund)}. Together ${caEn(zweiTermineWeg.werte)}.`,
+      `Lab costs per test come on top, for example: basic blood count ${caEn(laborwert.kleinesBlutbild)}, full blood count ${caEn(laborwert.grossesBlutbild)}, iron stores (ferritin) with a basic blood count ${caEn(laborwert.ferritinMitBlutbild)}, vitamin D ${caEn(laborwert.vitaminD)}, vitamin B12 ${caEn(laborwert.vitaminB12)}, liver values ${caEn(laborwert.leberwerte)}, blood lipids, long-term blood sugar and kidney value together ${caEn(laborwert.checkBasis)}.`,
+      'If the first appointment shows that a test would not change anything for you, we do not take blood. You then only pay for the advice.',
+      kostenVorab.en,
+      erstattung.en,
     ],
   },
   page: {
     meta: {
       title: {
-        de: 'Blutwerte besprechen: Laborbefunde und Smartwatch-Daten verständlich erklärt',
-        en: 'Discussing your blood results: lab reports and smartwatch data explained',
+        de: 'Laborwerte-Check: Blutwerte auf Wunsch bestimmen',
+        en: 'Blood test check: blood values on request',
       },
       description: {
-        de: 'Befund vom Online-Labor, aus der Apotheke oder eine Smartwatch-Meldung? Wir erklären, was der Wert aussagt und ob etwas daraus folgt. In Langenfeld.',
-        en: 'Results from an online lab, a pharmacy or a smartwatch alert? We explain what the value means and whether anything follows from it. In Langenfeld.',
+        de: 'Blutwerte auf Wunsch in Langenfeld: Wir besprechen, welche Werte etwas aussagen, nehmen Blut ab und ordnen jeden Wert schriftlich ein. Kosten nach GOÄ.',
+        en: 'Blood tests on request in Langenfeld: we discuss which values are informative, take a sample and explain each result in writing. Fees under the GOÄ.',
       },
-      eyebrow: { de: 'Prävention & Lebensstil', en: 'Prevention & lifestyle' },
+      eyebrow: { de: 'Prävention', en: 'Prevention' },
       lead: {
-        de: 'Blutwerte aus dem Online-Labor, ein Check in der Apotheke, eine Meldung der Smartwatch: Werte sind heute leicht zu bekommen, ihre Bedeutung oft nicht. Wir sehen uns Ihre Befunde und Daten gemeinsam an und erklären, was ein Wert aussagt, wie zuverlässig er ist und ob daraus etwas folgt.',
-        en: 'Blood results from an online lab, a check at the pharmacy, an alert from your smartwatch: results are easy to get today, their meaning often is not. We look at your reports and data together and explain what a result says, how reliable it is and whether anything follows from it.',
+        de: 'Sie möchten bestimmte Blutwerte wissen, etwa Ihren Eisenspeicher, Vitamin D oder Ihre Blutfette? Im Laborwerte-Check besprechen wir zuerst, welche Werte für Ihre Frage etwas aussagen, und nehmen dann Blut ab. In der Befundbesprechung ordnen wir jeden Wert ein, und Sie erhalten einen schriftlichen Werte-Bogen.',
+        en: 'Would you like to know specific blood values, such as your iron stores, vitamin D or blood lipids? In the blood test check we first discuss which values are informative for your question and then take a blood sample. In the results discussion we explain each value, and you receive a written results sheet.',
       },
     },
     sections: [
       {
-        id: 'labor',
-        heading: { de: 'Laborbefunde aus Online-Labor und Apotheke', en: 'Lab reports from online labs and pharmacies' },
+        id: 'welche-werte',
+        heading: { de: 'Welche Werte Sie bestimmen lassen können', en: 'Which values you can have measured' },
         body: {
-          de: [
-            'Große Profile liefern viele Werte – und damit fast immer einen, der außerhalb des Referenzbereichs liegt. Wir ordnen jeden Wert in Ihre Situation ein und sagen offen, wenn eine Abweichung keine Bedeutung hat.',
-          ],
-          en: [
-            'Large panels deliver many values – and therefore almost always one outside the reference range. We put each value into context and say openly when a deviation does not matter.',
-          ],
-        },
-      },
-      {
-        id: 'uhr',
-        heading: { de: 'Meldungen aus Uhr und App', en: 'Alerts from watches and apps' },
-        body: {
-          de: [
-            'Uhren und Apps messen vieles, aber nicht alles zuverlässig. Wir erklären, was hinter einer Meldung steckt und welcher nächste Schritt sinnvoll ist.',
-          ],
-          en: [
-            'Watches and apps measure a lot, but not everything reliably. We explain what lies behind an alert and which next step makes sense.',
-          ],
+          de: ['Häufige Wünsche sind zum Beispiel:'],
+          en: ['Common requests include:'],
         },
         list: {
           de: [
-            'Eine Meldung zu unregelmäßigem Herzrhythmus braucht ein ärztliches EKG; den Weg dorthin besprechen wir mit Ihnen.',
-            'Blutdruck-Hinweise prüfen wir mit einer Messung am Oberarm nach Standard.',
-            'Schlaf- und Erholungswerte sind Anhaltspunkte, keine Diagnose.',
+            'kleines oder großes Blutbild,',
+            'Eisenspeicher (Ferritin),',
+            'Vitamin D und Vitamin B12,',
+            'Schilddrüsenwert (TSH),',
+            'Blutzucker-Langzeitwert (HbA1c),',
+            'Blutfette und, einmal im Leben, Lp(a),',
+            'Nieren- und Leberwerte.',
           ],
           en: [
-            'An irregular-rhythm alert needs a medical ECG; we discuss how to get one.',
-            'Blood-pressure alerts are checked with a standard upper-arm measurement.',
-            'Sleep and recovery scores are pointers, not a diagnosis.',
+            'basic or full blood count,',
+            'iron stores (ferritin),',
+            'vitamin D and vitamin B12,',
+            'thyroid value (TSH),',
+            'long-term blood sugar (HbA1c),',
+            'blood lipids and, once in a lifetime, Lp(a),',
+            'kidney and liver values.',
           ],
         },
+        links: [{ label: { de: 'Welche Blutwerte wofür?', en: 'Blood tests explained' }, path: '/ratgeber/blutwerte-erklaert' }],
         callout: {
-          variant: 'caution',
-          title: { de: 'Sofort 112', en: 'Call 112 immediately' },
+          variant: 'info',
+          title: { de: 'Sie haben schon Werte?', en: 'Already have results?' },
           text: {
-            de: 'bei einer Rhythmus-Meldung zusammen mit Brustschmerz, Atemnot, Schwindel oder Ohnmacht.',
-            en: 'if a rhythm alert comes with chest pain, shortness of breath, dizziness or fainting.',
+            de: 'Bringen Sie Befunde aus einem anderen Labor zum Ersttermin mit, ausgedruckt oder auf dem Handy. Manchmal zeigt sich dann, dass kein neuer Wert nötig ist. Gesundheitsdaten nehmen wir nicht per E-Mail an.',
+            en: 'Bring results from another laboratory to the first appointment, printed or on your phone. Sometimes it then turns out that no new test is needed. We do not accept health data by e-mail.',
           },
         },
       },
       {
-        id: 'praeparate',
-        heading: { de: 'Nahrungsergänzung: behalten, absetzen, offen', en: 'Supplements: keep, stop, undecided' },
+        id: 'wann-wenig',
+        heading: { de: 'Wann ein Wert wenig bringt', en: 'When a test tells you little' },
         body: {
+          de: ['Wir bestimmen gern, was Sie wissen möchten. Wir sagen aber offen, wenn ein Wert für Ihre Frage wenig aussagt, zum Beispiel:'],
+          en: ['We are happy to measure what you would like to know. But we say openly when a value tells you little for your question, for example:'],
+        },
+        list: {
           de: [
-            'Wir sehen uns Ihre Präparate mit Ihnen an: Dosis im Vergleich zu den empfohlenen Höchstmengen, Wechselwirkungen mit Medikamenten und ob ein Präparat Laborwerte verfälschen kann. Am Ende steht ein Bogen mit „behalten", „absetzen" oder „offen". Wir verkaufen keine Präparate und empfehlen keine Marken.',
+            'Viele Werte auf einmal ohne Frage: Ein Referenzbereich umfasst die Werte von 95 von 100 gesunden Menschen. Wer viele Werte bestimmen lässt, hat deshalb fast immer einen auffälligen, ohne krank zu sein.',
+            'Vitamin D ohne Beschwerden und ohne Risiko: Der IGeL-Monitor bewertet diese Messung mit „unklar“.',
+            'Eisen im Blut allein: Es schwankt über den Tag stark. Aussagekräftig ist das Ferritin, und auch das kann während eines Infekts falsch hoch sein.',
+            'Lp(a) ein zweites Mal: Der Wert ist weitgehend vererbt; einmal im Leben reicht in der Regel.',
+            'Kontrollen in kurzen Abständen, aus denen nichts folgt.',
           ],
           en: [
-            'We review your supplements with you: dose compared with recommended maximum levels, interactions with medicines and whether a product can distort lab results. The result is a sheet with “keep”, “stop” or “undecided”. We do not sell supplements or recommend brands.',
+            'Many values at once without a question: a reference range covers the values of 95 out of 100 healthy people. Anyone who has many values measured will therefore almost always have one outside the range without being ill.',
+            'Vitamin D without symptoms and without a risk: the IGeL-Monitor rates this test as “unclear”.',
+            'Iron in the blood on its own: it varies strongly over the day. The informative value is ferritin, and even that can be falsely high during an infection.',
+            'Lp(a) a second time: the level is largely inherited; once in a lifetime is usually enough.',
+            'Rechecks at short intervals that do not change anything.',
           ],
         },
+        callout: {
+          variant: 'info',
+          title: { de: 'Keine großen Profile ohne Frage', en: 'No large panels without a question' },
+          text: {
+            de: 'Ein „Komplettlabor“ ohne Frage bieten wir bewusst nicht an. Wir wählen mit Ihnen die Werte aus, die für Ihre Frage etwas aussagen.',
+            en: 'We deliberately do not offer a “full blood panel” without a question. Together with you we choose the values that are informative for your question.',
+          },
+        },
+      },
+      {
+        id: 'werte-bogen',
+        heading: { de: 'Ihr Werte-Bogen', en: 'Your results sheet' },
+        body: {
+          de: [
+            'Zu jedem Wert erhalten Sie eine kurze Einordnung in verständlichen Worten und eine klare Handlung: nichts tun, kontrollieren oder abklären. Ergibt sich ein Befund, der eine Behandlung braucht, schreiben wir – mit Ihrem Einverständnis – Ihrer Hausarztpraxis.',
+            biotinHinweis.de,
+          ],
+          en: [
+            'For each value you receive a short assessment in plain language and one clear action: do nothing, recheck or investigate. If a finding needs treatment, we write to your GP – with your consent.',
+            biotinHinweis.en,
+          ],
+        },
+      },
+      {
+        id: 'oder-gesundheitscheck',
+        heading: { de: 'Laborwerte-Check oder Gesundheitscheck?', en: 'Blood test check or health check-up?' },
+        body: {
+          de: [
+            'Der Laborwerte-Check ist für einzelne Werte zu einer bestimmten Frage. Wer wissen möchte, wo er insgesamt steht, mit Untersuchung von Kopf bis Fuß, Einschätzung des Herz-Kreislauf-Risikos und Befundbericht, ist im Gesundheitscheck besser aufgehoben. Zeigt sich im Ersttermin, dass der Check besser passt, erklären wir den Unterschied, und Sie entscheiden.',
+          ],
+          en: [
+            'The blood test check is for single values on a specific question. If you want to know where you stand overall, with a head-to-toe examination, an assessment of your cardiovascular risk and a written report, the health check-up is the better fit. If the first appointment shows that the check-up suits you better, we explain the difference and you decide.',
+          ],
+        },
+        links: [{ label: { de: 'Gesundheitscheck', en: 'Health check-up' }, path: '/praevention/gesundheitscheck' }],
       },
       {
         id: 'nicht-dazu',
@@ -146,42 +196,56 @@ export const werteEinordnen: PreventionOffer = {
         body: { de: ['Bewusst nicht im Angebot sind:'], en: ['We deliberately do not offer:'] },
         list: {
           de: [
-            'Laborprofile „auf Verdacht" und Tests auf ein „biologisches Alter",',
+            'Laborprofile „auf Verdacht“ und Tests auf ein „biologisches Alter“,',
             'Mikrobiom-, Haar-, Speichel-Hormon- oder IgG-Nahrungsmitteltests,',
-            'die laufende Auswertung von Wearable-Daten,',
-            'die Deutung vorhersagender Gentests – dafür ist die Humangenetik zuständig.',
+            'die Deutung vorhersagender Gentests – dafür ist die Humangenetik zuständig,',
+            'Infusionen, Vitamin-Kuren und den Verkauf von Präparaten.',
           ],
           en: [
             'lab panels “just in case” and tests for a “biological age”,',
             'microbiome, hair, saliva hormone or IgG food tests,',
-            'ongoing analysis of wearable data,',
-            'interpretation of predictive genetic tests – this belongs in human genetics.',
+            'interpretation of predictive genetic tests – this belongs in human genetics,',
+            'infusions, vitamin cures and the sale of supplements.',
           ],
         },
       },
     ],
-    sourceIds: ['escPraevention2021', 'nvlHypertonie', 'dgeEmpfehlungen'],
-    lastReviewed: new Date('2026-10-28'),
+    sourceIds: ['igelVitaminD', 'igelVitaminB12', 'easLpa2022', 'awmfMuedigkeit', 'goae'],
+    lastReviewed: new Date('2026-11-20'),
     related: [
       { label: { de: 'Gesundheitscheck', en: 'Health check-up' }, path: '/praevention/gesundheitscheck' },
-      { label: { de: 'Check-up Männer 40+', en: 'Men’s check-up 40+' }, path: '/praevention/maenner-check-up' },
-      { label: { de: 'Schlaf, Energie & Jetlag', en: 'Sleep, energy & jet lag' }, path: '/praevention/schlaf-und-jetlag' },
+      { label: { de: 'Welche Blutwerte wofür?', en: 'Blood tests explained' }, path: '/ratgeber/blutwerte-erklaert' },
       { label: { de: 'Großes Blutbild: Kosten', en: 'Full blood count: costs' }, path: '/ratgeber/grosses-blutbild-kosten' },
       { label: { de: 'Vitamin D, B12 und Eisen testen lassen', en: 'Testing vitamin D, B12 and iron' }, path: '/ratgeber/vitamin-d-test-beim-arzt' },
+      { label: { de: 'Kosten & Abrechnung', en: 'Fees & billing' }, path: '/kosten' },
     ],
     faq: [
       {
-        q: { de: 'Kann ich meine Befunde vorab schicken?', en: 'Can I send my reports in advance?' },
+        q: { de: 'Kann ich die Werte selbst auswählen?', en: 'Can I choose the tests myself?' },
         a: {
-          de: 'Bitte bringen Sie sie zum Termin mit, ausgedruckt oder auf dem Handy. Gesundheitsdaten nehmen wir nicht per E-Mail an.',
-          en: 'Please bring them to the appointment, printed or on your phone. We do not accept health data by e-mail.',
+          de: 'Sie sagen uns, was Sie wissen möchten, und wir besprechen, welche Werte dazu etwas aussagen. Wenn ein Wert für Ihre Frage wenig bringt, sagen wir es offen, bevor Blut abgenommen wird.',
+          en: 'You tell us what you would like to know, and we discuss which values are informative. If a test tells you little for your question, we say so openly before any blood is taken.',
         },
       },
       {
-        q: { de: 'Machen Sie auch neue Laborwerte?', en: 'Do you also run new lab tests?' },
+        q: { de: 'Muss ich nüchtern kommen?', en: 'Do I need to fast?' },
         a: {
-          de: 'Nur gezielt, wenn sich aus dem Ergebnis eine Entscheidung ableitet – zum Beispiel eine Kontrolle eines auffälligen Werts.',
-          en: 'Only targeted tests whose result leads to a decision – for example rechecking an abnormal value.',
+          de: 'Für die meisten Werte nicht. Für den Nüchternzucker ja: mindestens acht Stunden nichts essen, Wasser ist erlaubt. Wenn es bei Ihren Werten darauf ankommt, sagen wir es Ihnen vorher.',
+          en: 'Not for most values. For fasting blood sugar, yes: nothing to eat for at least eight hours, water is allowed. If it matters for your tests, we tell you beforehand.',
+        },
+      },
+      {
+        q: { de: 'Geht die Befundbesprechung am Telefon?', en: 'Can the results discussion take place by phone?' },
+        a: {
+          de: 'Ja. Die Befundbesprechung geht in der Praxis oder am Telefon, wie es Ihnen lieber ist. Den Werte-Bogen erhalten Sie in jedem Fall schriftlich.',
+          en: 'Yes. The results discussion can take place at the practice or by phone, whichever you prefer. You receive the results sheet in writing either way.',
+        },
+      },
+      {
+        q: { de: 'Wie schnell sind die Ergebnisse da?', en: 'How quickly are the results available?' },
+        a: {
+          de: 'Das Blutbild liegt meist am selben oder am nächsten Werktag vor, einzelne andere Werte nach ein bis zwei Werktagen.',
+          en: 'The blood count is usually available the same or the next working day, some other values after one to two working days.',
         },
       },
     ],

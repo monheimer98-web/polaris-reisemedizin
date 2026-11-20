@@ -137,11 +137,11 @@ export const grossesBlutbildGuide: ClinicalPage = {
       heading: { de: 'So läuft es ab', en: 'How it works' },
       body: {
         de: [
-          'Sie buchen den Kurztermin. Wenn es um ein Blutbild oder wenige einzelne Werte geht, kommen Sie dafür am Morgen in die Praxis: Wir besprechen, was sinnvoll ist, nennen die Kosten und nehmen direkt im Anschluss Blut ab. Ein Blutbild muss am selben Tag ins Labor, deshalb der Termin am Morgen.',
+          'Sie buchen den Ersttermin des Laborwerte-Checks und kommen dafür am Morgen in die Praxis: Wir besprechen, was sinnvoll ist, nennen die Kosten und nehmen direkt im Anschluss Blut ab. Ein Blutbild muss am selben Tag ins Labor, deshalb der Termin am Morgen.',
           'Die Ergebnisse besprechen wir einige Tage später, auf Wunsch am Telefon. Wenn sich im Gespräch zeigt, dass der Gesundheitscheck besser zu Ihrer Frage passt, erklären wir den Unterschied, und Sie entscheiden.',
         ],
         en: [
-          'You book the short appointment. If it is about a blood count or a few single values, you come to the practice in the morning: we discuss what makes sense, tell you the costs and take the blood sample straight afterwards. A blood count has to reach the laboratory the same day, hence the morning appointment.',
+          'You book the first appointment of the lab value check and come to the practice in the morning: we discuss what makes sense, tell you the costs and take the blood sample straight afterwards. A blood count has to reach the laboratory the same day, hence the morning appointment.',
           'We discuss the results a few days later, by phone if you wish. If the conversation shows that the health check-up fits your question better, we explain the difference and you decide.',
         ],
       },
@@ -151,7 +151,8 @@ export const grossesBlutbildGuide: ClinicalPage = {
   lastReviewed: new Date('2026-11-12'),
   related: [
     { label: { de: 'Gesundheitscheck', en: 'Health check-up' }, path: '/praevention/gesundheitscheck' },
-    { label: { de: 'Blutwerte besprechen', en: 'Blood results explained' }, path: '/praevention/blutwerte-besprechen' },
+    { label: { de: 'Laborwerte-Check', en: 'Lab value check' }, path: '/praevention/laborwerte-check' },
+    { label: { de: 'Welche Blutwerte wofür?', en: 'Which blood values for what?' }, path: '/ratgeber/blutwerte-erklaert' },
     { label: { de: 'Vitamin D, B12 und Eisen testen lassen', en: 'Testing vitamin D, B12 and iron' }, path: '/ratgeber/vitamin-d-test-beim-arzt' },
     { label: { de: 'Beispielkosten', en: 'Example fees' }, path: '/praevention/kosten' },
   ],

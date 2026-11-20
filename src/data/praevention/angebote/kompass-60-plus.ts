@@ -11,7 +11,7 @@ export const kompass60Plus: PreventionOffer = {
   slug: 'check-up-60-plus',
   bookingType: 'pv-v3',
   group: 'checks',
-  stage: 1,
+  stage: 2,
   shortName: { de: 'Check-up 60+', en: 'Check-up 60+' },
   teaser: {
     de: 'Herz, Stoffwechsel, Kraft und Gleichgewicht, Impfungen ab 60 und Reisen im Alter – mit Plan und Übungsblatt.',

@@ -199,12 +199,12 @@ export const vitaminTestGuide: ClinicalPage = {
       heading: { de: 'So läuft es ab', en: 'How it works' },
       body: {
         de: [
-          'Sie buchen den Kurztermin und kommen am Morgen in die Praxis. Wir besprechen, welche Werte bei Ihnen etwas aussagen, nennen die Kosten und nehmen direkt im Anschluss Blut ab. Sie müssen dafür nicht nüchtern sein.',
+          'Sie buchen den Ersttermin des Laborwerte-Checks und kommen am Morgen in die Praxis. Wir besprechen, welche Werte bei Ihnen etwas aussagen, nennen die Kosten und nehmen direkt im Anschluss Blut ab. Sie müssen dafür nicht nüchtern sein.',
           'Bitte nennen Sie uns Ihre Nahrungsergänzung. Präparate mit Biotin können einige Messungen stören und sollten vorher pausiert werden. Die Ergebnisse besprechen wir einige Tage später, auf Wunsch am Telefon.',
           'Wir verkaufen keine Präparate und bieten keine Vitamin-Kuren oder Infusionen an.',
         ],
         en: [
-          'You book the short appointment and come to the practice in the morning. We discuss which tests are informative for you, tell you the costs and take the blood sample straight afterwards. You do not need to fast.',
+          'You book the first appointment of the lab value check and come to the practice in the morning. We discuss which tests are informative for you, tell you the costs and take the blood sample straight afterwards. You do not need to fast.',
           'Please tell us about your supplements. Products containing biotin can interfere with some tests and should be paused beforehand. We discuss the results a few days later, by phone if you wish.',
           'We do not sell supplements and do not offer vitamin courses or infusions.',
         ],
@@ -215,7 +215,8 @@ export const vitaminTestGuide: ClinicalPage = {
   lastReviewed: new Date('2026-11-12'),
   related: [
     { label: { de: 'Großes Blutbild: Kosten', en: 'Full blood count: costs' }, path: '/ratgeber/grosses-blutbild-kosten' },
-    { label: { de: 'Blutwerte besprechen', en: 'Blood results explained' }, path: '/praevention/blutwerte-besprechen' },
+    { label: { de: 'Laborwerte-Check', en: 'Lab value check' }, path: '/praevention/laborwerte-check' },
+    { label: { de: 'Welche Blutwerte wofür?', en: 'Which blood values for what?' }, path: '/ratgeber/blutwerte-erklaert' },
     { label: { de: 'Gesundheitscheck', en: 'Health check-up' }, path: '/praevention/gesundheitscheck' },
     { label: { de: 'Beispielkosten', en: 'Example fees' }, path: '/praevention/kosten' },
   ],

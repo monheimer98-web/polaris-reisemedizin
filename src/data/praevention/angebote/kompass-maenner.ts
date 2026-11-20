@@ -11,7 +11,7 @@ export const kompassMaenner: PreventionOffer = {
   slug: 'maenner-check-up',
   bookingType: 'pv-v2',
   group: 'checks',
-  stage: 1,
+  stage: 2,
   shortName: { de: 'Check-up Männer 40+', en: 'Men’s check-up 40+' },
   teaser: {
     de: 'Herz, Stoffwechsel, Schlaf und Muskeln – sachlich eingeordnet, mit drei Prioritäten, die sich umsetzen lassen.',

@@ -49,10 +49,6 @@ export const seoTitles: Record<string, Localized> = {
     de: 'Check-up für Männer ab 40 in Langenfeld | Polaris',
     en: 'Men’s Health Check-up 40+ in Langenfeld | Polaris',
   },
-  '/praevention/blutwerte-besprechen': {
-    de: 'Blutwerte erklären lassen in Langenfeld | Polaris',
-    en: 'Blood Test Results Explained in Langenfeld | Polaris',
-  },
   '/praevention/check-up-60-plus': {
     de: 'Gesund älter werden: Check-up 60+ in Langenfeld | Polaris',
     en: 'Health Check-up 60+ in Langenfeld | Polaris',

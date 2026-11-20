@@ -1,5 +1,5 @@
 /**
- * Bereich „Prävention & Lebensstil": Angebotsliste (Reihenfolge = Navigation)
+ * Themenwelt „Prävention": Angebotsliste (Reihenfolge = Navigation)
  * und Inhalte der Bereichsseite /praevention. Eine Praxis, eine Website: der
  * Bereich hat eigene Farbe und Navigation, gehört aber zur Praxis Polaris.
  */
@@ -13,6 +13,7 @@ import { gewichtUndStoffwechsel } from './angebote/gewicht-und-stoffwechsel';
 import { wechseljahre } from './angebote/wechseljahre';
 import { schlafUndJetlag } from './angebote/schlaf-und-jetlag';
 import { werteEinordnen } from './angebote/werte-einordnen';
+import { haare } from './angebote/haare';
 
 export const PREVENTION_PATH = '/praevention';
 /** Eigene Terminseite des Bereichs; Reise-Terminarten erscheinen hier nicht. */
@@ -30,6 +31,7 @@ export const allPreventionOffers: PreventionOffer[] = [
   praeventionsCheck,
   werteEinordnen,
   gewichtUndStoffwechsel,
+  haare,
   wechseljahre,
   kompassMaenner,
   schlafUndJetlag,
@@ -55,8 +57,8 @@ export const preventionDoctor: Localized = {
 
 /** Satz unter Karten und Terminliste statt fester Beträge (kosten-goae.md 4.3). */
 export const preventionCostNote: Localized = {
-  de: 'Kosten: je nach Leistung, abgerechnet nach der Gebührenordnung für Ärzte (GOÄ). Welche Werte für Sie sinnvoll sind, besprechen wir im Kurztermin. Vor der Blutentnahme erhalten Sie die voraussichtlichen Kosten schriftlich.',
-  en: 'Costs: depending on the service, billed under the German fee schedule for doctors (GOÄ). We discuss which tests make sense for you in the short appointment. You receive the expected costs in writing before any blood is taken.',
+  de: 'Kosten: je nach Leistung, abgerechnet nach der Gebührenordnung für Ärzte (GOÄ). Welche Werte für Sie sinnvoll sind, besprechen wir im Ersttermin. Vor der Blutabnahme erhalten Sie die voraussichtlichen Kosten schriftlich.',
+  en: 'Costs: depending on the service, billed under the German fee schedule for doctors (GOÄ). We discuss which tests make sense for you in the first appointment. You receive the expected costs in writing before any blood is taken.',
 };
 
 export const preventionGroups: { id: PreventionGroup; title: Localized; lead: Localized }[] = [

@@ -7,7 +7,7 @@
  * Stufe-2-Angebote (Schlaf, Muskel) erscheinen erst, wenn sie online gehen.
  */
 import type { Localized } from '../types';
-import { honorar, labor, laborwert, termin, weg, euroDe, euroEn } from './preise';
+import { honorar, labor, laborwert, termin, weg, zweiTermine, zweiTermineWeg, euroDe, euroEn } from './preise';
 
 export interface BeispielPosten {
   label: Localized;
@@ -41,15 +41,63 @@ export const beispielrechnungen: Beispielrechnung[] = [
   {
     slug: 'gesundheitscheck',
     title: { de: 'Gesundheitscheck', en: 'Health check-up' },
-    posten: dreischritt,
-    praxis: weg.check,
+    posten: [
+      { label: { de: 'Termin 1: Gespräch, Messungen, Blutabnahme', en: 'Appointment 1: consultation, measurements, blood sample' }, betrag: zweiTermine.checkErst },
+      {
+        label: { de: 'Termin 2: Untersuchung, Besprechung der Werte, schriftlicher Befundbericht', en: 'Appointment 2: examination, discussion of results, written report' },
+        betrag: zweiTermine.checkBefund,
+      },
+    ],
+    praxis: zweiTermineWeg.check,
     labor: {
       de: `ca. ${euroDe(labor.check)}, beim ersten Check mit einmaliger Lp(a)-Bestimmung ca. ${euroDe(labor.checkMitLpa)}`,
       en: `approx. ${euroEn(labor.check)}, at the first check-up with a one-off Lp(a) test approx. ${euroEn(labor.checkMitLpa)}`,
     },
     typisch: {
-      de: `ca. ${ganz(weg.check + labor.check)}–${ganz(weg.check + labor.checkMitLpa)} € zusammen`,
-      en: `approx. €${ganz(weg.check + labor.check)}–${ganz(weg.check + labor.checkMitLpa)} in total`,
+      de: `ca. ${ganz(zweiTermineWeg.check + labor.check)}–${ganz(zweiTermineWeg.check + labor.checkMitLpa)} € zusammen`,
+      en: `approx. €${ganz(zweiTermineWeg.check + labor.check)}–${ganz(zweiTermineWeg.check + labor.checkMitLpa)} in total`,
+    },
+    hinweis: {
+      de: `Mit Ruhe-EKG auf Wunsch kommen ca. ${euroDe(zweiTermine.ekg)} dazu.`,
+      en: `A resting ECG on request adds approx. ${euroEn(zweiTermine.ekg)}.`,
+    },
+  },
+  {
+    slug: 'laborwerte-check',
+    title: { de: 'Laborwerte-Check', en: 'Lab value check' },
+    posten: [
+      { label: { de: 'Ersttermin: welche Werte, Blutabnahme', en: 'First appointment: which values, blood sample' }, betrag: zweiTermine.werteErst },
+      { label: { de: 'Befundtermin mit schriftlichem Werte-Bogen', en: 'Results appointment with written summary' }, betrag: zweiTermine.befund },
+    ],
+    praxis: zweiTermineWeg.werte,
+    labor: {
+      de: `je nach Wert, z. B. großes Blutbild ca. ${euroDe(laborwert.grossesBlutbild)}, Vitamin D ca. ${euroDe(laborwert.vitaminD)}, Ferritin mit kleinem Blutbild ca. ${euroDe(laborwert.ferritinMitBlutbild)}`,
+      en: `depending on the value, e.g. full blood count approx. ${euroEn(laborwert.grossesBlutbild)}, vitamin D approx. ${euroEn(laborwert.vitaminD)}, ferritin with small blood count approx. ${euroEn(laborwert.ferritinMitBlutbild)}`,
+    },
+    typisch: {
+      de: `ca. ${ganz(zweiTermineWeg.werte + laborwert.vitaminD)}–${ganz(zweiTermineWeg.werte + laborwert.vitaminD + laborwert.vitaminB12 + laborwert.ferritinMitBlutbild)} € zusammen, z. B. Vitamin D allein oder Vitamin D, B12 und Eisen`,
+      en: `approx. €${ganz(zweiTermineWeg.werte + laborwert.vitaminD)}–${ganz(zweiTermineWeg.werte + laborwert.vitaminD + laborwert.vitaminB12 + laborwert.ferritinMitBlutbild)} in total, e.g. vitamin D alone or vitamin D, B12 and iron`,
+    },
+  },
+  {
+    slug: 'gewicht-und-stoffwechsel',
+    title: { de: 'Gewicht und Stoffwechsel, Start', en: 'Weight and metabolism, start' },
+    posten: [
+      { label: { de: 'Ersttermin: Gespräch, Messung, Untersuchung, Blutabnahme', en: 'First appointment: consultation, measurements, examination, blood sample' }, betrag: zweiTermine.gewichtErst },
+      { label: { de: 'Befund und persönlicher Plan', en: 'Results and personal plan' }, betrag: zweiTermine.befund },
+    ],
+    praxis: zweiTermineWeg.gewicht,
+    labor: {
+      de: `ca. ${euroDe(labor.gewichtStart)}, ab einem BMI von 30 mit Schilddrüsenwert ca. ${euroDe(labor.gewichtStartMitTsh)}`,
+      en: `approx. ${euroEn(labor.gewichtStart)}, from a BMI of 30 with thyroid test approx. ${euroEn(labor.gewichtStartMitTsh)}`,
+    },
+    typisch: {
+      de: `ca. ${ganz(zweiTermineWeg.gewicht + labor.gewichtStart)}–${ganz(zweiTermineWeg.gewicht + labor.gewichtStartMitTsh)} € für den Start`,
+      en: `approx. €${ganz(zweiTermineWeg.gewicht + labor.gewichtStart)}–${ganz(zweiTermineWeg.gewicht + labor.gewichtStartMitTsh)} for the start`,
+    },
+    hinweis: {
+      de: 'Weitere Termine zur Begleitung vereinbaren wir nur, wenn Sie das möchten; jeder wird einzeln abgerechnet.',
+      en: 'Further follow-up appointments only if you wish; each is billed individually.',
     },
   },
   {
@@ -86,29 +134,6 @@ export const beispielrechnungen: Beispielrechnung[] = [
     hinweis: {
       de: `Impfung im Befundtermin ${euroDe(honorar.impfung)}, jede weitere ${euroDe(honorar.weitereImpfung)}, zuzüglich Impfstoff.`,
       en: `Vaccination in the results appointment ${euroEn(honorar.impfung)}, each further one ${euroEn(honorar.weitereImpfung)}, plus vaccine.`,
-    },
-  },
-  {
-    slug: 'gewicht-und-stoffwechsel',
-    title: { de: 'Gewicht & Stoffwechsel, erster Monat', en: 'Weight & metabolism, first month' },
-    posten: [
-      { label: { de: 'Kurztermin mit Messung: welche Werte sinnvoll sind', en: 'Short appointment with measurements: which tests make sense' }, betrag: termin.kurzMitMessung },
-      { label: { de: 'Blutabnahme am Morgen', en: 'Blood sample in the morning' }, betrag: termin.blutabnahme },
-      { label: { de: 'Start mit allen Werten und Behandlungsplan', en: 'Start with all results and treatment plan' }, betrag: termin.befundGewicht },
-      { label: { de: 'Plantermin mit Ernährungsplan', en: 'Plan appointment with nutrition plan' }, betrag: termin.ernaehrungsplan },
-    ],
-    praxis: weg.gewichtMonat1,
-    labor: {
-      de: `ca. ${labor.gewichtStart}–${euroDe(labor.gewichtStartMitTsh)}`,
-      en: `approx. ${euroEn(labor.gewichtStart)}–${euroEn(labor.gewichtStartMitTsh)}`,
-    },
-    typisch: {
-      de: `ca. ${ganz(weg.gewichtMonat1 + labor.gewichtStart)}–${ganz(weg.gewichtMonat1 + labor.gewichtStartMitTsh)} € im ersten Monat`,
-      en: `approx. €${ganz(weg.gewichtMonat1 + labor.gewichtStart)}–${ganz(weg.gewichtMonat1 + labor.gewichtStartMitTsh)} in the first month`,
-    },
-    hinweis: {
-      de: `Danach Verlaufstermine je ${euroDe(honorar.verlauf)} in der Praxis, per Video ${euroDe(honorar.gespraech)}. Ein typisches erstes Jahr: ca. ${ganz(weg.gewichtJahr)} € Honorar und ca. ${labor.gewichtJahrVon}–${labor.gewichtJahrBis} € Labor.`,
-      en: `After that, follow-ups of ${euroEn(honorar.verlauf)} each at the practice, ${euroEn(honorar.gespraech)} by video. A typical first year: approx. €${ganz(weg.gewichtJahr)} in fees and approx. €${labor.gewichtJahrVon}–${labor.gewichtJahrBis} for the laboratory.`,
     },
   },
   {
@@ -157,7 +182,7 @@ export const beispielkostenSeite = {
       de: 'Kosten je nachdem, was Sie brauchen: Beispielrechnungen nach GOÄ für Gesundheitscheck, Blutwerte, Wechseljahre und Gewicht, Honorar und Labor getrennt.',
       en: 'Costs depend on what you need: example bills under the GOÄ for check-ups, blood results, menopause and weight, with medical fees and lab costs shown separately.',
     },
-    eyebrow: { de: 'Prävention & Lebensstil', en: 'Prevention & lifestyle' },
+    eyebrow: { de: 'Prävention', en: 'Prevention' },
     lead: {
       de: 'Bei uns gibt es keine Pakete und keinen Festpreis. Was es kostet, hängt davon ab, was Sie brauchen. Damit Sie trotzdem planen können, zeigen wir hier typische Beispiele.',
       en: 'We have no packages and no fixed price. What it costs depends on what you need. So that you can still plan, we show typical examples here.',
@@ -167,13 +192,13 @@ export const beispielkostenSeite = {
   warum: {
     de: [
       'Ärztliche Leistungen rechnen wir nach der Gebührenordnung für Ärzte (GOÄ) ab, und zwar je Termin und nur für das, was stattfindet. Pauschalpreise erlaubt die GOÄ nicht.',
-      'Bei Angeboten mit Blutwerten beginnen wir mit einem Kurztermin. Dort legen wir gemeinsam fest, welche Werte bei Ihnen etwas aussagen. Vor der Blutabnahme erhalten Sie die voraussichtlichen Kosten schriftlich. Wenn Sie danach nicht weitermachen möchten, zahlen Sie nur den Kurztermin.',
-      'Bezahlt wird einmal, im Termin mit Ihren Ergebnissen, mit Karte. Sie erhalten für jeden Termin eine eigene Rechnung, die Sie bei Ihrer Versicherung einreichen können.',
+      'Jedes Angebot hat zwei Termine. Im Ersttermin legen wir gemeinsam fest, welche Werte bei Ihnen etwas aussagen, und nehmen Blut ab. Im zweiten Termin besprechen wir die Ergebnisse. Die voraussichtlichen Kosten erhalten Sie vorher schriftlich.',
+      'Sie erhalten für jeden Termin eine eigene Rechnung, die Sie bei Ihrer Versicherung einreichen können.',
     ],
     en: [
       'We bill medical services under the German fee schedule for doctors (GOÄ), per appointment and only for what takes place. The GOÄ does not allow flat-rate prices.',
-      'For services with blood tests we start with a short appointment. There we decide together which tests tell us something in your case. You receive the expected costs in writing before any blood is taken. If you decide not to continue, you only pay for the short appointment.',
-      'You pay once, at the appointment where we discuss your results, by card. You receive a separate invoice for each appointment, which you can submit to your insurer.',
+      'Every service has two appointments. In the first we decide together which tests tell us something in your case and take a blood sample. In the second we discuss the results. You receive the expected costs in writing beforehand.',
+      'You receive a separate invoice for each appointment, which you can submit to your insurer.',
     ],
   },
   beispieleTitle: { de: 'Beispiele', en: 'Examples' },

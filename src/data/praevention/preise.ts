@@ -44,11 +44,16 @@ export const termin = {
  * `vereinbarung` (wird nach Nickis Entscheidung gesetzt).
  */
 export const zweiTermine = {
-  /** Nr. 29 + 250 – Gesundheitscheck, Ersttermin: Gesundheitsuntersuchung mit Ganzkörperstatus, Risikoprofil, Beratung, Blutabnahme */
-  checkErst: 63.19,
-  /** Nr. 651 – Ruhe-EKG auf Wunsch im Ersttermin */
+  /**
+   * Gesundheitscheck wie die Pakete der Praxissoftware (Schema 52, live seit 20.11.):
+   * Termin 1 Nr. 1 + 250 – Gespräch, Messungen, Blutabnahme mit Basislabor.
+   */
+  checkErst: 14.92,
+  /** Termin 2 Nr. 29 + 75 – Untersuchung von Kopf bis Fuß, Besprechung der Werte, schriftlicher Befundbericht */
+  checkBefund: 76.42,
+  /** Nr. 651 – Ruhe-EKG auf Wunsch im Termin 2 (nur mit eigenem Gerät) */
   ekg: 26.54,
-  /** Nr. 1 + 75 – Befundbesprechung mit schriftlichem Befundbericht */
+  /** Nr. 1 + 75 – Befundbesprechung mit schriftlichem Befundbericht (Laborwerte-Check, Gewicht) */
   befund: 28.15,
   /** Nr. 1 + 250 – Laborwerte-Check, Ersttermin: welche Werte, warum, Blutabnahme */
   werteErst: 14.92,
@@ -58,8 +63,8 @@ export const zweiTermine = {
 
 /** Ganze Wege in zwei Terminen (Praxis, ohne Labor), Regelsatz. */
 export const zweiTermineWeg = {
-  check: summe(zweiTermine.checkErst, zweiTermine.befund),
-  checkMitEkg: summe(zweiTermine.checkErst, zweiTermine.ekg, zweiTermine.befund),
+  check: summe(zweiTermine.checkErst, zweiTermine.checkBefund),
+  checkMitEkg: summe(zweiTermine.checkErst, zweiTermine.checkBefund, zweiTermine.ekg),
   werte: summe(zweiTermine.werteErst, zweiTermine.befund),
   gewicht: summe(zweiTermine.gewichtErst, zweiTermine.befund),
 } as const;

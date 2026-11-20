@@ -1,104 +1,120 @@
 /**
- * Gewicht & Stoffwechsel – ärztliche Begleitung über 6–12 Monate (DE/EN).
- * Für Menschen, die schon vieles probiert haben. HWG: keine Wirkstoff-,
- * Präparate- oder „Abnehmspritzen"-Begriffe, keine Kilogramm-Versprechen,
- * keine Vorher-Nachher-Bilder, keine Pakete. Medikamente werden nicht erwähnt
- * (§ 10 HWG; BGH I ZR 74/25: schon die erkennbare Wirkstoffklasse genügt).
+ * Sprechstunde Gewicht und Stoffwechsel (DE/EN). Seit 20.11.2026 in zwei
+ * Terminen: Ersttermin mit Gespräch, Messung, Untersuchung von Kopf bis Fuß und
+ * Blutabnahme, danach Befund und Plan; Begleitung danach freiwillig.
+ * Streng nach § 10 HWG und BGH I ZR 74/25 (schon die erkennbare Wirkstoffklasse
+ * genügt): kein Arzneimittel, keine Wirkstoffgruppe, keine Andeutung einer
+ * Behandlung mit Mitteln, keine Kilogramm- oder Gewichtsversprechen, keine
+ * Vorher-nachher-Bilder, keine Patientenstimmen, keine Pakete.
+ * Erlaubt: Beratung, Untersuchung, Blutwerte, Ernährung, Bewegung, Schlaf,
+ * persönlicher Plan, Begleitung.
  */
+import type { Localized } from '../../types';
 import type { PreventionOffer } from '../types';
-import { honorar, labor, termin, weg, caDe, caEn, euroDe, euroEn } from '../preise';
-import { bezahlenAbsatz } from '../ablauf';
+import { honorar, labor, zweiTermine, zweiTermineWeg, caDe, caEn, euroDe, euroEn } from '../preise';
+import { erstattung, kostenVorab } from './zwei-termine';
+
+/** Arbeitsname des Angebots – nur hier ändern (Kachel, Navigation, Überschrift, Verweise). */
+const name: Localized = {
+  de: 'Sprechstunde Gewicht und Stoffwechsel',
+  en: 'Weight and metabolism consultation',
+};
 
 export const gewichtUndStoffwechsel: PreventionOffer = {
   slug: 'gewicht-und-stoffwechsel',
   bookingType: 'pv-v4',
   group: 'begleitung',
   stage: 1,
-  shortName: { de: 'Gewicht & Stoffwechsel', en: 'Weight & metabolism' },
+  shortName: name,
   teaser: {
-    de: 'Ärztliche Begleitung über 6–12 Monate: Werte, Ernährung mit Plan, Muskeln und regelmäßige Termine – ohne Pakete und ohne Versprechen.',
-    en: 'Medical support over 6–12 months: test results, a nutrition plan, muscle strength and regular appointments – no packages, no promises.',
+    de: 'Ärztliche Beratung mit Zeit: Untersuchung, Blutwerte, Ernährung, Bewegung und Schlaf – mit persönlichem Plan und Begleitung, wenn Sie möchten.',
+    en: 'Medical advice with time to talk: examination, blood tests, diet, activity and sleep – with a personal plan and ongoing support if you wish.',
   },
   facts: {
     forWhom: {
-      de: 'Erwachsene mit Übergewicht oder erhöhten Stoffwechselwerten – auch wenn Sie schon vieles ausprobiert haben.',
-      en: 'Adults with excess weight or raised metabolic values – including those who have already tried a lot.',
+      de: 'Erwachsene mit Übergewicht oder erhöhten Stoffwechselwerten, die mit ärztlicher Begleitung etwas ändern möchten – auch wenn Sie schon vieles ausprobiert haben.',
+      en: 'Adults with excess weight or raised metabolic values who want to make changes with medical support – including those who have already tried a lot.',
     },
     appointments: {
-      de: 'Kurztermin ca. 20 Min. in der Praxis, Blutabnahme ca. 10 Min. am Morgen, Start mit allen Werten ca. 45 Min., Plantermin mit Ernährungsplan ca. 20 Min., danach Verlaufstermine ca. 15–20 Min. etwa monatlich; ca. 10–12 Termine im ersten Jahr.',
-      en: 'Short appointment approx. 20 min at the practice, blood sample approx. 10 min in the morning, start with all results approx. 45 min, plan appointment with nutrition plan approx. 20 min, then follow-ups of approx. 15–20 min about monthly; approx. 10–12 appointments in the first year.',
+      de: 'Ersttermin ca. 40 Min. in der Praxis, Befund und Plan ca. 30 Min., wenn alle Werte vorliegen, meist etwa eine Woche später. Danach auf Wunsch Verlaufstermine ca. 15–20 Min.',
+      en: 'First appointment approx. 40 min at the practice, results and plan approx. 30 min once all values are available, usually about a week later. After that, follow-ups of approx. 15–20 min if you wish.',
     },
     fee: {
-      de: `Je nachdem, was Sie brauchen, nach GOÄ und je Termin. Typisch für den ersten Monat mit Ernährungsplan: ${caDe(weg.gewichtMonat1)}; ein Verlaufstermin ${euroDe(honorar.verlauf)}.`,
-      en: `Depending on what you need, under the GOÄ and per appointment. Typically for the first month with nutrition plan: ${caEn(weg.gewichtMonat1)}; a follow-up ${euroEn(honorar.verlauf)}.`,
+      de: `Nach GOÄ, je nachdem, was Sie brauchen. Typisch für beide Termine zusammen: ${caDe(zweiTermineWeg.gewicht)}; ein Verlaufstermin ${caDe(honorar.verlauf)}.`,
+      en: `Under the GOÄ, depending on what you need. Typically for both appointments together: ${caEn(zweiTermineWeg.gewicht)}; a follow-up ${caEn(honorar.verlauf)}.`,
     },
     lab: {
-      de: `zu Beginn ca. ${labor.gewichtStart}–${euroDe(labor.gewichtStartMitTsh)}, mit den Kontrollen nach 3 und 12 Monaten ca. ${labor.gewichtJahrVon}–${euroDe(labor.gewichtJahrBis)} im ersten Jahr, eigene Rechnung vom Labor`,
-      en: `approx. ${euroEn(labor.gewichtStart)}–${euroEn(labor.gewichtStartMitTsh)} at the start, including the checks after 3 and 12 months approx. €${labor.gewichtJahrVon}–${euroEn(labor.gewichtJahrBis)} in the first year, separate invoice from the laboratory`,
+      de: `ca. ${labor.gewichtStart}–${euroDe(labor.gewichtStartMitTsh)}, eigene Rechnung vom Labor`,
+      en: `approx. ${euroEn(labor.gewichtStart)}–${euroEn(labor.gewichtStartMitTsh)}, separate invoice from the laboratory`,
     },
   },
   steps: [
     {
-      title: { de: 'Kurztermin: Messung und Werteauswahl', en: 'Short appointment: measurements and choice of tests' },
+      title: { de: 'Ersttermin: Ihre Geschichte', en: 'First appointment: your story' },
       text: {
-        de: 'Etwa 20 Minuten in der Praxis. Wir messen Gewicht, Taille und Blutdruck, besprechen kurz, warum Sie kommen, und legen fest, welche Blutwerte für Ihren Plan nötig sind. Die voraussichtlichen Kosten erhalten Sie danach schriftlich.',
-        en: 'About 20 minutes at the practice. We measure weight, waist and blood pressure, briefly discuss why you have come and decide which blood tests your plan needs. You then receive the expected costs in writing.',
+        de: 'Etwa 40 Minuten in der Praxis. Sie erzählen uns Ihre Gewichtsgeschichte: was Sie schon versucht haben, was geholfen hat und was nicht. Wir fragen nach Alltag, Essen, Bewegung, Schlaf und Belastung und nach Ihren Zielen.',
+        en: 'About 40 minutes at the practice. You tell us your weight history: what you have tried, what helped and what did not. We ask about your everyday life, eating, activity, sleep and stress, and about your goals.',
       },
     },
     {
-      title: { de: 'Blutabnahme am Morgen', en: 'Blood sample in the morning' },
+      title: { de: 'Messen und untersuchen', en: 'Measurements and examination' },
       text: {
-        de: 'Ein kurzer Termin von etwa 10 Minuten in unserem Laborfenster. Vorab erzählen Sie uns im Fragebogen Ihre Gewichtsgeschichte: was Sie schon versucht haben, was geholfen hat und was nicht.',
-        en: 'A short appointment of about 10 minutes in our lab window. Beforehand you tell us your weight history in the questionnaire: what you have tried, what helped and what did not.',
+        de: 'Wir messen Gewicht, Größe, Taille und Blutdruck und untersuchen Sie von Kopf bis Fuß. Dazu kommen zwei einfache Kraftmessungen: Handkraft und Aufstehen vom Stuhl.',
+        en: 'We measure weight, height, waist and blood pressure and examine you from head to toe. We add two simple strength tests: grip strength and rising from a chair.',
       },
     },
     {
-      title: { de: 'Start mit allen Werten', en: 'Start with all results' },
+      title: { de: 'Blutabnahme im selben Termin', en: 'Blood sample in the same appointment' },
       text: {
-        de: 'Wir untersuchen Sie gründlich, sehen auf Leber, Blutzucker, Blutfette, Schlaf und Medikamente, die das Gewicht beeinflussen können, und legen realistische Ziele fest – nicht nur für die Waage, sondern auch für Taille, Blutdruck, Blutzucker und Kraft. Sie erhalten Ihren schriftlichen Behandlungsplan.',
-        en: 'We examine you thoroughly, look at liver, blood sugar, lipids, sleep and medicines that can affect weight, and set realistic goals – not only for the scales, but also for waist, blood pressure, blood sugar and strength. You receive your written treatment plan.',
+        de: 'Am Ende des Ersttermins nehmen wir Blut ab: Blutzucker-Langzeitwert, Blutfette, Leber- und Nierenwerte, ein kleines Blutbild und, wenn er für Sie etwas aussagt, den Schilddrüsenwert. Sie müssen dafür in der Regel nicht nüchtern sein.',
+        en: 'At the end of the first appointment we take a blood sample: long-term blood sugar, blood lipids, liver and kidney values, a basic blood count and, if it is informative for you, the thyroid value. You usually do not need to fast.',
       },
     },
     {
-      title: { de: 'Ernährungsprotokoll und Plantermin', en: 'Food diary and plan appointment' },
+      title: { de: 'Befund und Plan', en: 'Results and plan' },
       text: {
-        de: 'Sie schreiben drei Tage lang auf, was Sie essen und trinken. Im Plantermin erhalten Sie Ihren persönlichen Ernährungsplan mit Beispielen aus Ihrem Alltag.',
-        en: 'For three days you note what you eat and drink. In the plan appointment you receive your personal nutrition plan with examples from your everyday life.',
+        de: 'Wenn alle Werte vorliegen, besprechen wir sie mit Ihnen. Sie erhalten Ihren schriftlichen Plan: realistische Ziele nicht nur für die Waage, sondern auch für Taille, Blutdruck, Blutwerte, Kraft und Schlaf, und konkrete Schritte für Ernährung und Bewegung.',
+        en: 'Once all values are available, we discuss them with you. You receive your written plan: realistic goals not only for the scales but also for waist, blood pressure, blood values, strength and sleep, and concrete steps for diet and activity.',
       },
     },
     {
-      title: { de: 'Regelmäßige Begleitung', en: 'Regular support' },
+      title: { de: 'Begleitung, wenn Sie möchten', en: 'Ongoing support if you wish' },
       text: {
-        de: 'Etwa einmal im Monat sehen wir uns: Was hat funktioniert, was nicht? Wir passen den Plan an, und der Verlaufsbogen zeigt, was sich verändert. Nach 3 und 12 Monaten kontrollieren wir die Laborwerte, nach 6 und 12 Monaten ziehen wir Bilanz.',
-        en: 'About once a month we meet: what worked, what did not? We adjust the plan, and the progress chart shows what is changing. After 3 and 12 months we recheck the lab values, and after 6 and 12 months we review progress.',
+        de: 'Auf Wunsch sehen wir uns danach etwa einmal im Monat: Was hat funktioniert, was nicht? Wir passen den Plan an, und ein Verlaufsbogen zeigt, was sich verändert. Blutwerte kontrollieren wir etwa nach drei und nach zwölf Monaten.',
+        en: 'If you wish, we then meet about once a month: what worked, what did not? We adjust the plan, and a progress chart shows what is changing. We recheck blood values after about three and twelve months.',
       },
     },
   ],
   costs: {
     de: [
-      `Jeder Termin wird einzeln nach GOÄ (Regelsatz) abgerechnet: Kurztermin mit Messung ${euroDe(termin.kurzMitMessung)}, Blutabnahme ${euroDe(termin.blutabnahme)}, Start mit Untersuchung und schriftlichem Behandlungsplan ${euroDe(termin.befundGewicht)}, Plantermin mit persönlichem Ernährungsplan ${euroDe(termin.ernaehrungsplan)}. Der erste Monat kostet damit ${euroDe(weg.gewichtMonat1)}. Danach Verlaufstermin ${euroDe(honorar.verlauf)}, Halbjahres- und Jahresbilanz je ${euroDe(honorar.bilanz)}.`,
-      `Ein typisches erstes Jahr mit 10 bis 12 Terminen kostet ${caDe(weg.gewichtJahr)} ärztliches Honorar, dazu Laborkosten von ca. ${labor.gewichtJahrVon}–${euroDe(labor.gewichtJahrBis)} mit eigener Rechnung vom Labor.`,
-      bezahlenAbsatz.de,
-      'Private Krankenversicherungen und Beihilfe erstatten ärztliche Behandlungen je nach Tarif und Diagnose. Gesetzlich Versicherte zahlen die Termine selbst. Bitte klären Sie die Erstattung vorab.',
+      `Ärztliches Honorar nach GOÄ (Regelsatz), je Termin: Ersttermin mit Gespräch, Messung, Untersuchung von Kopf bis Fuß und Blutabnahme ${caDe(zweiTermine.gewichtErst)}, Befund und Plan mit schriftlichem Plan ${caDe(zweiTermine.befund)}. Zusammen ${caDe(zweiTermineWeg.gewicht)}. Ein persönlicher Ernährungsplan wird auf Wunsch zusätzlich nach GOÄ berechnet.`,
+      `Jeder weitere Termin ist freiwillig. Ein Verlaufstermin kostet ${caDe(honorar.verlauf)}.`,
+      `Dazu kommen die Laborkosten, ca. ${labor.gewichtStart}–${euroDe(labor.gewichtStartMitTsh)}, je nachdem, welche Werte wir gemeinsam auswählen. Kontrollen im Verlauf bestimmen wir nur, wenn sie für Ihren Plan etwas ändern.`,
+      kostenVorab.de,
+      erstattung.de,
     ],
     en: [
-      `Each appointment is billed individually under the GOÄ (standard rate): short appointment with measurements ${euroEn(termin.kurzMitMessung)}, blood sample ${euroEn(termin.blutabnahme)}, start with examination and written treatment plan ${euroEn(termin.befundGewicht)}, plan appointment with personal nutrition plan ${euroEn(termin.ernaehrungsplan)}. The first month therefore costs ${euroEn(weg.gewichtMonat1)}. After that a follow-up costs ${euroEn(honorar.verlauf)}, the six-month and annual review ${euroEn(honorar.bilanz)} each.`,
-      `A typical first year with 10 to 12 appointments costs ${caEn(weg.gewichtJahr)} in medical fees, plus lab costs of approx. €${labor.gewichtJahrVon}–${euroEn(labor.gewichtJahrBis)} with a separate invoice from the laboratory.`,
-      bezahlenAbsatz.en,
-      'Private health insurers and Beihilfe reimburse medical treatment depending on the tariff and diagnosis. People with statutory insurance pay for the appointments themselves. Please check reimbursement in advance.',
+      `Medical fee under the GOÄ (standard rate), per appointment: first appointment with conversation, measurements, head-to-toe examination and blood sample ${caEn(zweiTermine.gewichtErst)}, results and plan with a written plan ${caEn(zweiTermine.befund)}. Together ${caEn(zweiTermineWeg.gewicht)}. A personal nutrition plan, if you would like one, is billed additionally under the GOÄ.`,
+      `Every further appointment is optional. A follow-up costs ${caEn(honorar.verlauf)}.`,
+      `Lab costs come on top, approx. ${euroEn(labor.gewichtStart)}–${euroEn(labor.gewichtStartMitTsh)}, depending on which tests we choose together. We only recheck values later if this changes something in your plan.`,
+      kostenVorab.en,
+      erstattung.en,
     ],
   },
   page: {
     meta: {
-      title: { de: 'Gewicht & Stoffwechsel: ärztlich begleitet, Schritt für Schritt', en: 'Weight & metabolism: medical support, step by step' },
-      description: {
-        de: 'Ärztliche Begleitung bei Gewicht und Stoffwechsel über Monate: Werte, Ernährung mit genug Eiweiß, Muskeln, feste Termine. Privatpraxis in Langenfeld.',
-        en: 'Medical support for weight and metabolic health over several months: blood values, diet with enough protein, muscles and fixed appointments.',
+      title: {
+        de: `${name.de}: ärztlich begleitet`,
+        en: `${name.en}: medical support`,
       },
-      eyebrow: { de: 'Prävention & Lebensstil', en: 'Prevention & lifestyle' },
+      description: {
+        de: 'Ärztliche Beratung zu Gewicht und Stoffwechsel in Langenfeld: Untersuchung, Blutwerte, Ernährung, Bewegung, Schlaf und ein persönlicher Plan.',
+        en: 'Medical advice on weight and metabolic health in Langenfeld: examination, blood tests, diet, activity, sleep and a personal plan.',
+      },
+      eyebrow: { de: 'Prävention', en: 'Prevention' },
       lead: {
-        de: 'Gewicht ist mehr als eine Zahl auf der Waage. Im Start-Check sehen wir uns Ihre Blutwerte, Blutdruck, Leber, Muskelkraft und Ihren Alltag an und vereinbaren mit Ihnen realistische Ziele. Danach begleiten wir Sie über sechs bis zwölf Monate mit regelmäßigen Terminen und einem Verlaufsbogen, der zeigt, was sich verändert.',
-        en: 'Weight is more than a number on the scales. In the start check we look at your blood values, blood pressure, liver, muscle strength and everyday life and agree realistic goals with you. We then support you over six to twelve months with regular appointments and a progress chart that shows what is changing.',
+        de: 'Gewicht ist mehr als eine Zahl auf der Waage. Im Ersttermin hören wir zu, messen, untersuchen Sie und nehmen Blut ab. Im zweiten Termin besprechen wir die Ergebnisse und Ihren persönlichen Plan für Ernährung, Bewegung und Schlaf. Wenn Sie möchten, begleiten wir Sie danach mit regelmäßigen Terminen.',
+        en: 'Weight is more than a number on the scales. In the first appointment we listen, take measurements, examine you and take a blood sample. In the second appointment we discuss the results and your personal plan for diet, activity and sleep. If you wish, we then support you with regular appointments.',
       },
     },
     sections: [
@@ -108,37 +124,78 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
         body: {
           de: [
             'Viele, die zu uns kommen, haben Diäten, Apps und Programme hinter sich – und das Gefühl, damit allein gelassen worden zu sein. Wir fangen nicht bei null an: Wir sehen uns gemeinsam an, was bisher geholfen hat, was nicht und warum. Daraus entsteht ein Plan, der zu Ihrem Alltag passt.',
-            'Sie haben feste Termine, eine Ärztin, die Ihre Geschichte kennt, und einen Verlaufsbogen, der auch die Fortschritte zeigt, die keine Waage misst.',
+            'Wenn Sie möchten, begleiten wir Sie danach mit festen Terminen und derselben ärztlichen Ansprechperson. Ein Verlaufsbogen zeigt auch die Fortschritte, die keine Waage misst.',
           ],
           en: [
             'Many people who come to us have been through diets, apps and programmes – and feel they were left on their own. We do not start from scratch: together we look at what has helped so far, what has not, and why. This becomes a plan that fits your everyday life.',
-            'You have fixed appointments, a doctor who knows your story and a progress chart that also shows the progress no scales can measure.',
+            'If you wish, we then support you with fixed appointments and the same doctor each time. A progress chart also shows the progress no scales can measure.',
           ],
         },
+      },
+      {
+        id: 'was-wir-ansehen',
+        heading: { de: 'Was wir uns im Ersttermin ansehen', en: 'What we look at in the first appointment' },
+        body: {
+          de: ['Wir nehmen uns Zeit für Ihre Geschichte und sehen uns an, was für Ihren Plan zählt:'],
+          en: ['We take time for your story and look at what matters for your plan:'],
+        },
+        list: {
+          de: [
+            'Gewicht, Größe, Taillenumfang und das Verhältnis von Taille zu Körpergröße,',
+            'Blutdruck nach Standard und eine Untersuchung von Kopf bis Fuß,',
+            'Blutzucker-Langzeitwert (HbA1c), Blutfette, Leber- und Nierenwerte, kleines Blutbild, bei Bedarf der Schilddrüsenwert,',
+            'Handkraft und Aufstehen vom Stuhl als einfache Maße für Ihre Muskelkraft,',
+            'Essen, Bewegung, Schlaf, Belastung und was Sie bisher versucht haben.',
+          ],
+          en: [
+            'weight, height, waist circumference and waist-to-height ratio,',
+            'blood pressure measured to standard and a head-to-toe examination,',
+            'long-term blood sugar (HbA1c), blood lipids, liver and kidney values, a basic blood count and, if needed, the thyroid value,',
+            'grip strength and rising from a chair as simple measures of muscle strength,',
+            'eating, activity, sleep, stress and what you have tried so far.',
+          ],
+        },
+        links: [{ label: { de: 'Welche Blutwerte wofür?', en: 'Blood tests explained' }, path: '/ratgeber/blutwerte-erklaert' }],
       },
       {
         id: 'ernaehrung',
         heading: { de: 'Ernährung mit Plan', en: 'Nutrition with a plan' },
         body: {
           de: [
-            'Statt eines starren Diätplans erhalten Sie nach einer Woche Ernährungsprotokoll einen persönlichen Ernährungsplan mit Zielen und Beispielen: genug Eiweiß, damit beim Abnehmen die Muskeln erhalten bleiben, ballaststoffreiche Kost, feste Mahlzeiten-Strukturen, Einkauf und Alltag. Grundlage sind die Empfehlungen der Deutschen Gesellschaft für Ernährung.',
+            'Statt eines starren Diätplans geht es um Ziele und Beispiele aus Ihrem Alltag: genug Eiweiß, damit die Muskeln erhalten bleiben, ballaststoffreiche Kost, feste Mahlzeiten, Einkauf und Essen unterwegs. Grundlage sind die Empfehlungen der Deutschen Gesellschaft für Ernährung.',
+            'Auf Wunsch erhalten Sie einen persönlichen Ernährungsplan. Dafür schreiben Sie zwischen den beiden Terminen drei Tage lang auf, was Sie essen und trinken.',
             'Wer eine ausführliche Ernährungstherapie über mehrere Sitzungen möchte, kann sie zusätzlich bei einer qualifizierten Ernährungsfachkraft Ihrer Wahl machen. Bei bestimmten Diagnosen beteiligen sich Krankenkassen an den Kosten; eine ärztliche Bescheinigung stellen wir aus, wenn eine behandlungsbedürftige Erkrankung vorliegt.',
           ],
           en: [
-            'Instead of a rigid diet plan, after a week of keeping a food diary you receive a personal nutrition plan with goals and examples: enough protein to preserve muscle while losing weight, a diet rich in fibre, regular meal structures, shopping and everyday life. It is based on the recommendations of the German Nutrition Society (DGE).',
+            'Instead of a rigid diet plan, it is about goals and examples from your everyday life: enough protein to preserve muscle, a diet rich in fibre, regular meals, shopping and eating on the go. It is based on the recommendations of the German Nutrition Society (DGE).',
+            'If you wish, you receive a personal nutrition plan. For this, you note for three days between the two appointments what you eat and drink.',
             'If you would like more detailed nutrition therapy over several sessions, you can also see a qualified nutrition professional of your choice. For certain diagnoses health insurers contribute to the costs; we issue a medical certificate if there is a condition that requires treatment.',
           ],
         },
       },
       {
-        id: 'muskeln',
+        id: 'bewegung',
         heading: { de: 'Bewegung und Muskeln', en: 'Activity and muscles' },
         body: {
           de: [
-            'Krafttraining an zwei bis drei Tagen pro Woche schützt beim Abnehmen die Muskulatur und hilft Herz, Stoffwechsel und Knochen. Wir messen Ihre Handkraft und wie schnell Sie vom Stuhl aufstehen, und geben Ihnen ein Bewegungsrezept, das zu Ihrem Ausgangspunkt passt.',
+            'Krafttraining an zwei bis drei Tagen pro Woche erhält die Muskulatur und hilft Herz, Stoffwechsel und Knochen. Ausgehend von Ihren Kraftmessungen erhalten Sie ein Bewegungsrezept, das zu Ihrem Ausgangspunkt passt.',
           ],
           en: [
-            'Strength training on two to three days a week protects muscle during weight loss and helps the heart, metabolism and bones. We measure your grip strength and how quickly you can rise from a chair, and give you an exercise prescription that fits your starting point.',
+            'Strength training on two to three days a week preserves muscle and helps the heart, metabolism and bones. Based on your strength tests you receive an exercise prescription that fits your starting point.',
+          ],
+        },
+      },
+      {
+        id: 'schlaf',
+        heading: { de: 'Schlaf und Alltag', en: 'Sleep and everyday life' },
+        body: {
+          de: [
+            'Schlaf, Stress und Schichtarbeit wirken auf Hunger, Energie und Bewegung. Wir fragen danach und beziehen sie in Ihren Plan ein.',
+            'Lautes Schnarchen, beobachtete Atemaussetzer und starke Tagesmüdigkeit können auf eine schlafbezogene Atmungsstörung hinweisen. Dann nennen wir Ihnen den Weg zur schlafmedizinischen Abklärung.',
+          ],
+          en: [
+            'Sleep, stress and shift work affect hunger, energy and activity. We ask about them and include them in your plan.',
+            'Loud snoring, observed breathing pauses and severe daytime sleepiness can indicate a sleep-related breathing disorder. We then tell you how to get a sleep-medicine assessment.',
           ],
         },
       },
@@ -147,12 +204,10 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
         heading: { de: 'Nach Leitlinie, mit Ihnen gemeinsam', en: 'Guideline-based, decided together' },
         body: {
           de: [
-            'Grundlage der Begleitung ist die S3-Leitlinie zur Adipositas: Ernährung, Bewegung und Verhalten, angepasst an Ihren Ausgangspunkt. Welche Schritte für Sie passen, entscheiden wir gemeinsam im persönlichen Termin, nach Untersuchung und Laborwerten.',
-            'Sie sind bereits in Behandlung? Dann begleiten wir Sie mit Messungen, Labor, Ernährung mit genug Eiweiß und Krafttraining.',
+            'Grundlage ist die S3-Leitlinie zur Prävention und Therapie der Adipositas. Sie stellt Ernährung, Bewegung und Verhalten an den Anfang. Darauf baut Ihr Plan auf, angepasst an Ihren Ausgangspunkt und Ihren Alltag. Die Ziele legen wir gemeinsam fest.',
           ],
           en: [
-            'The support is based on the German S3 guideline on obesity: nutrition, physical activity and behaviour, adapted to your starting point. Which steps suit you is decided together in person, after examination and lab tests.',
-            'Already in treatment? Then we support you with measurements, lab tests, a diet with enough protein and strength training.',
+            'The basis is the German S3 guideline on the prevention and treatment of obesity. It puts nutrition, physical activity and behaviour first. Your plan builds on this, adapted to your starting point and your everyday life. We set the goals together.',
           ],
         },
       },
@@ -164,46 +219,53 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
           de: [
             'Programm- oder Monatspreise, Pakete und Vorkasse,',
             'Formula-Diäten, Nahrungsergänzung und den Verkauf von Produkten,',
-            'Behandlungen zur Fettauflösung, Hormonkuren und Infusionen,',
+            'Infusionen und Kuren,',
             'Behandlung von Essstörungen – hier vermitteln wir den passenden Weg.',
           ],
           en: [
             'programme or monthly prices, packages and prepayment,',
             'meal-replacement diets, supplements and product sales,',
-            'fat-dissolving treatments, hormone cures and infusions,',
+            'infusions and cures,',
             'treatment of eating disorders – here we help you find the right support.',
           ],
         },
       },
     ],
-    sourceIds: ['awmfAdipositas', 'dgeEmpfehlungen', 'dgeProtein', 'whoBewegung2020', 'escPraevention2021'],
-    lastReviewed: new Date('2026-10-28'),
+    sourceIds: ['awmfAdipositas', 'dgeEmpfehlungen', 'dgeProtein', 'whoBewegung2020', 'awmfSchlafapnoe', 'escPraevention2021'],
+    lastReviewed: new Date('2026-11-20'),
     related: [
-      { label: { de: 'Muskel-Kompass 40+', en: 'Muscle compass 40+' }, path: '/praevention/muskel-kompass' },
       { label: { de: 'Gesundheitscheck', en: 'Health check-up' }, path: '/praevention/gesundheitscheck' },
-      { label: { de: 'Sprechstunde Wechseljahre', en: 'Menopause consultation' }, path: '/praevention/wechseljahre' },
+      { label: { de: 'Laborwerte-Check', en: 'Blood test check' }, path: '/praevention/laborwerte-check' },
+      { label: { de: 'Welche Blutwerte wofür?', en: 'Blood tests explained' }, path: '/ratgeber/blutwerte-erklaert' },
       { label: { de: 'Kosten & Abrechnung', en: 'Fees & billing' }, path: '/kosten' },
     ],
     faq: [
       {
         q: { de: 'Wie viel werde ich abnehmen?', en: 'How much weight will I lose?' },
         a: {
-          de: 'Das können wir nicht versprechen. Die Leitlinie hält eine moderate, schrittweise Abnahme für realistisch; ebenso wichtig sind Taille, Blutdruck, Blutzucker und Kraft.',
-          en: 'We cannot promise that. The guideline considers moderate, gradual weight loss realistic; waist, blood pressure, blood sugar and strength matter just as much.',
+          de: 'Das versprechen wir nicht. Jeder Körper und jeder Alltag ist anders. Wir achten nicht nur auf die Waage, sondern auch auf Taille, Blutdruck, Blutwerte, Kraft und Schlaf.',
+          en: 'We do not promise that. Every body and every everyday life is different. We look not only at the scales but also at waist, blood pressure, blood values, strength and sleep.',
         },
       },
       {
-        q: { de: 'Muss ich mich für ein Jahr verpflichten?', en: 'Do I have to commit for a year?' },
+        q: { de: 'Warum zwei Termine?', en: 'Why two appointments?' },
         a: {
-          de: 'Nein. Jeder Termin wird einzeln abgerechnet. Den nächsten Termin vereinbaren wir jeweils gemeinsam; Sie können jederzeit aufhören oder in Ihre Hausarztpraxis wechseln.',
-          en: 'No. Each appointment is billed individually. We agree the next appointment together each time; you can stop at any time or return to your GP.',
+          de: 'Im Ersttermin lernen wir Sie kennen, untersuchen Sie und nehmen Blut ab. Bis alle Werte vorliegen, dauert es einige Tage. Im zweiten Termin liegen alle Ergebnisse vor, und Ihr Plan baut auf ihnen auf.',
+          en: 'In the first appointment we get to know you, examine you and take a blood sample. It takes a few days until all values are available. In the second appointment all results are ready, and your plan builds on them.',
+        },
+      },
+      {
+        q: { de: 'Muss ich mich für längere Zeit verpflichten?', en: 'Do I have to commit for a longer period?' },
+        a: {
+          de: 'Nein. Jeder Termin wird einzeln abgerechnet. Nach Befund und Plan entscheiden Sie, ob Sie weitere Termine möchten. Sie können jederzeit aufhören oder in Ihre Hausarztpraxis wechseln.',
+          en: 'No. Each appointment is billed individually. After the results and plan appointment you decide whether you would like further appointments. You can stop at any time or return to your GP.',
         },
       },
       {
         q: { de: 'Sind auch Termine per Video möglich?', en: 'Are video appointments possible?' },
         a: {
-          de: 'Der Start und die Termine mit Untersuchung finden immer in der Praxis statt. Ob einzelne Verlaufsgespräche später auch per Video möglich sind, sagen wir Ihnen, sobald dieser Weg eingerichtet ist.',
-          en: 'The start and appointments with an examination always take place in the practice. We will let you know once individual follow-up conversations can also be held by video.',
+          de: 'Der Ersttermin mit Untersuchung findet immer in der Praxis statt. Ob einzelne Verlaufsgespräche später auch per Video möglich sind, sagen wir Ihnen, sobald dieser Weg eingerichtet ist.',
+          en: 'The first appointment with examination always takes place at the practice. We will let you know once individual follow-up conversations can also be held by video.',
         },
       },
     ],

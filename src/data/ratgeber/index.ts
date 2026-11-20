@@ -10,6 +10,7 @@ import { tollwutImpfungGuide, tollwutImpfungSummary } from './tollwut-impfung';
 import { malariaRezeptGuide, malariaRezeptSummary } from './malaria-rezept';
 import { grossesBlutbildGuide, grossesBlutbildSummary } from './grosses-blutbild-kosten';
 import { vitaminTestGuide, vitaminTestSummary } from './vitamin-d-test-beim-arzt';
+import { blutwerteGuide, blutwerteSummary } from './blutwerte-erklaert';
 
 export interface Guide {
   /** URL-Slug unter /ratgeber/ (DE und EN gleich). */
@@ -67,6 +68,13 @@ export const guides: Guide[] = [
     page: vitaminTestGuide,
     area: 'praevention',
     bookingType: 'pv-v1',
+  },
+  {
+    slug: 'blutwerte-erklaert',
+    summary: blutwerteSummary,
+    page: blutwerteGuide,
+    area: 'praevention',
+    bookingType: 'pv-e2',
   },
 ];
 
