@@ -19,7 +19,7 @@ import DiseaseFactsBox from '../components/DiseaseFactsBox.astro';
 import PraeventionNav from '../components/PraeventionNav.astro';
 import { getLangFromUrl, useTranslations, formatReviewDate, getLocalizedPath, getLogicalPath, HREFLANG } from '../i18n/utils';
 import { SITE_URL, site } from '../config/site';
-import { BOOKING_PATH } from '../config/nav';
+import { BOOKING_PATH, bookingHref as bookingLink } from '../config/nav';
 import { PREVENTION_BOOKING_PATH } from '../data/praevention';
 import { diseaseFacts } from '../data/diseaseFacts';
 import type { UiKey } from '../i18n/ui';
@@ -69,7 +69,7 @@ const { title, description, eyebrow, lead, lastReviewed, sources, related = [], 
 const areaClass = area === 'praevention' ? 'theme-praevention' : undefined;
 const lang = getLangFromUrl(Astro.url);
 const bookingPath = area === 'praevention' ? PREVENTION_BOOKING_PATH : BOOKING_PATH;
-const bookingHref = getLocalizedPath(bookingPath, lang) + (bookingType ? `?art=${bookingType}` : '');
+const bookingHref = bookingLink(getLocalizedPath(bookingPath, lang), bookingType, site.booking.embedUrl, area);
 const t = useTranslations(lang);
 
 // Brotkrumen aus dem URL-Pfad: Start › <Hub> › <aktuelle Seite>.
@@ -257,7 +257,7 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
 
   {!noBooking && (
     <div class={areaClass}>
-      <CTA bookingType={bookingType} title={cta?.title} lead={cta?.lead} note={cta?.note} bookingPath={bookingPath} neutral={neutralCta} label={bookingLabel} />
+      <CTA bookingType={bookingType} title={cta?.title} lead={cta?.lead} note={cta?.note} bookingPath={bookingPath} bereich={area} neutral={neutralCta} label={bookingLabel} />
     </div>
   )}
 </BaseLayout>

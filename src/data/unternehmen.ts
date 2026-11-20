@@ -95,8 +95,8 @@ export const unternehmenPage: UnternehmenPage = {
     {
       title: { de: 'Internationaler Impfnachweis (ICVP)', en: 'International vaccination certificate (ICVP)' },
       text: {
-        de: 'Als staatlich zugelassene Gelbfieber-Impfstelle stellen wir den Internationalen Impfnachweis aus. Der Gelbfieber-Nachweis gilt ab dem 10. Tag nach der Erstimpfung.',
-        en: 'As a state-approved yellow fever vaccination centre we issue the international certificate. The yellow fever certificate is valid from the 10th day after the first vaccination.',
+        de: 'Vollständige Impfdokumentation inklusive international gültigem Gelbfieber-Nachweis (ICVP) als staatlich zugelassene Gelbfieberimpfstelle.',
+        en: 'Complete vaccination records including the internationally valid yellow-fever certificate (ICVP) as a state-authorised yellow-fever vaccination centre.',
       },
     },
     {

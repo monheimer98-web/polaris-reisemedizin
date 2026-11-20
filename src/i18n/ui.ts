@@ -51,6 +51,17 @@ export const ui = {
     'nav.abroadStudy': 'Auslandssemester',
     'nav.abroadPilgrimage': 'Pilgerreisen',
     'nav.abroadCertificates': 'Nachweise und Atteste',
+    // Menü „Leistungen": Gruppen mit kurzen Überschriften
+    'nav.groupAdvice': 'Beratung',
+    'nav.groupVaccinations': 'Impfungen',
+    'nav.groupCertificates': 'Bescheinigungen und Zeugnisse',
+    'nav.groupAbroad': 'Auslandsaufenthalt',
+    'nav.hpvVaccination': 'HPV-Impfung',
+    'nav.shinglesVaccination': 'Gürtelrose-Impfung',
+    'nav.certVaccination': 'Impfbescheinigung und Formulare',
+    'nav.certVisa': 'Gesundheitszeugnis fürs Visum',
+    'nav.certFlight': 'Attest für Flug und Kreuzfahrt',
+    'nav.allServices': 'Alle Leistungen',
     'nav.voucher': 'Wertgutschein',
     'nav.team': 'Praxis',
     'nav.faq': 'Fragen & Antworten',
@@ -66,6 +77,7 @@ export const ui = {
     // Allgemeine Aktionen
     'cta.book': 'Termin vereinbaren',
     'cta.bookAria': 'Termin vereinbaren',
+    'cta.bookShort': 'Termin',
     'cta.callAria': 'Praxis anrufen',
     'cta.services': 'Unsere Leistungen',
     'cta.learnMore': 'Mehr erfahren',
@@ -99,11 +111,11 @@ export const ui = {
     'home.heroTitle': 'Gut vorbereitet reisen.',
     'home.heroLead':
       'Ihre reisemedizinische Privatpraxis in Langenfeld: persönliche Beratung, Reiseimpfungen und Vorsorge – ärztlich fundiert und auf dem aktuellen Stand der Wissenschaft.',
-    'home.badgeYellowFever': 'Staatlich zugelassene Gelbfieber-Impfstelle',
+    'home.badgeYellowFever': 'Staatlich zugelassene Gelbfieberimpfstelle',
 
     // Startseite — Vertrauensleiste
     'trust.ariaLabel': 'Vertrauen und Qualität',
-    'trust.authorizedTitle': 'Zugelassene Gelbfieber-Impfstelle',
+    'trust.authorizedTitle': 'Zugelassene Gelbfieberimpfstelle',
     'trust.authorizedText':
       'Staatlich zugelassen für die Gelbfieberimpfung – inklusive international gültigem Eintrag im Impfausweis.',
     'trust.specialistTitle': 'Ärztlich fundiert',
@@ -218,10 +230,19 @@ export const ui = {
 
     // Übersichtsseiten (Eltern-Navigation)
     'overview.servicesTitle': 'Unsere Leistungen',
-    'overview.servicesLead':
-      'Reisemedizin aus einer Hand: persönliche Beratung, Reiseimpfungen sowie Malaria- und Höhenvorsorge. Wählen Sie eine Leistung für alle Details zu Ablauf, Eignung und Kosten.',
-    'overview.servicesMeta':
-      'Reisemedizin aus einer Hand: persönliche Beratung, Reiseimpfungen sowie Malaria- und Höhenvorsorge – mit Details zu Ablauf, Eignung und Kosten.',
+    'overview.servicesLead': NACHWEISE_IM_ANGEBOT
+      ? 'Aus einer Hand: persönliche reisemedizinische Beratung, Impfungen sowie Bescheinigungen und Zeugnisse fürs Ausland. Wählen Sie eine Leistung für alle Details zu Ablauf, Eignung und Kosten.'
+      : 'Aus einer Hand: persönliche reisemedizinische Beratung und Impfungen. Wählen Sie eine Leistung für alle Details zu Ablauf, Eignung und Kosten.',
+    'overview.servicesMeta': NACHWEISE_IM_ANGEBOT
+      ? 'Reisemedizinische Beratung, Reiseimpfungen, Gelbfieber, FSME, HPV und Gürtelrose sowie Bescheinigungen und Zeugnisse fürs Ausland. Privatpraxis in Langenfeld.'
+      : 'Reisemedizinische Beratung, Reiseimpfungen, Gelbfieber, FSME, HPV und Gürtelrose sowie Malaria- und Höhenvorsorge. Privatpraxis in Langenfeld.',
+    // Übersicht Leistungen: Abschnitt Bescheinigungen und Verweis auf die Anlässe im Bereich Ausland
+    'overview.certLead':
+      'Wir stellen Atteste, ärztliche Formulare und englische Impfbescheinigungen aus, soweit wir die Angaben prüfen können.',
+    'overview.occasionTitle': 'Vorbereitung auf Ihren Auslandsaufenthalt',
+    'overview.occasionLead': NACHWEISE_IM_ANGEBOT
+      ? 'Auslandsjahr, Au-pair, Work & Travel oder Auslandssemester: Im Bereich Ausland lesen Sie je Anlass, was Sie brauchen, von der Impfpass-Prüfung über fehlende Impfungen bis zum passenden Formular.'
+      : 'Auslandsjahr, Au-pair, Work & Travel oder Auslandssemester: Im Bereich Ausland lesen Sie je Anlass, was Sie brauchen, von der Impfpass-Prüfung bis zu fehlenden Impfungen.',
     'overview.diseasesTitle': 'Krankheitsbilder im Überblick',
     'overview.diseasesLead':
       'Fachlich fundierte Informationen zu den Erkrankungen, vor denen unsere Impfungen schützen – mit Angabe der Quellen und des jeweiligen Stands.',
@@ -248,6 +269,19 @@ export const ui = {
     'overview.diseaseCholeraText':
       'Bakterielle Durchfallerkrankung über verunreinigtes Wasser – für gewöhnliche Reisende ein sehr geringes Risiko.',
     'cta.diseaseDetail': 'Zum Krankheitsbild',
+    // HPV und Gürtelrose (Entwurf 12.11.2026): Karten auf den Übersichten Leistungen und Krankheitsbilder
+    'overview.serviceHpvTitle': 'HPV-Impfung für Erwachsene',
+    'overview.serviceHpvText':
+      'Für Erwachsene, ausdrücklich auch für Männer: ab 18 Jahren eine individuelle Entscheidung nach ärztlicher Beratung – Impfschema mit drei Dosen.',
+    'overview.serviceShinglesTitle': 'Gürtelrose-Impfung',
+    'overview.serviceShinglesText':
+      'Impfung mit Totimpfstoff in zwei Dosen – für Menschen ab 50 Jahren, Selbstzahler und Privatversicherte.',
+    'overview.diseaseHpvTitle': 'HPV',
+    'overview.diseaseHpvText':
+      'Sehr häufige, meist unbemerkte Virusinfektion, die nach Jahren zu Krebsvorstufen, Krebs oder Genitalwarzen führen kann – bei Frauen wie bei Männern.',
+    'overview.diseaseShinglesTitle': 'Gürtelrose',
+    'overview.diseaseShinglesText':
+      'Schmerzhafter, meist halbseitiger Hautausschlag durch das wieder aktiv gewordene Windpocken-Virus – am häufigsten bei Menschen über 50 Jahre.',
 
     // 404
     'notFound.title': 'Seite nicht gefunden',
@@ -301,6 +335,17 @@ export const ui = {
     'nav.abroadStudy': 'Study abroad',
     'nav.abroadPilgrimage': 'Pilgrimages',
     'nav.abroadCertificates': 'Certificates and forms',
+    // Services menu: groups with short headings
+    'nav.groupAdvice': 'Advice',
+    'nav.groupVaccinations': 'Vaccinations',
+    'nav.groupCertificates': 'Certificates and forms',
+    'nav.groupAbroad': 'Time abroad',
+    'nav.hpvVaccination': 'HPV vaccination',
+    'nav.shinglesVaccination': 'Shingles vaccination',
+    'nav.certVaccination': 'Vaccination certificate and forms',
+    'nav.certVisa': 'Medical certificate for a visa',
+    'nav.certFlight': 'Certificate for flights and cruises',
+    'nav.allServices': 'All services',
     'nav.voucher': 'Gift voucher',
     'nav.team': 'Practice',
     'nav.faq': 'FAQ',
@@ -316,6 +361,7 @@ export const ui = {
     // General actions
     'cta.book': 'Arrange appointment',
     'cta.bookAria': 'Arrange an appointment',
+    'cta.bookShort': 'Book',
     'cta.callAria': 'Call the practice',
     'cta.services': 'Our services',
     'cta.learnMore': 'Learn more',
@@ -468,10 +514,19 @@ export const ui = {
 
     // Overview pages (parent navigation)
     'overview.servicesTitle': 'Our services',
-    'overview.servicesLead':
-      'Travel medicine from a single source: personal advice, travel vaccinations and malaria and altitude prevention. Choose a service for all the details on procedure, suitability and costs.',
-    'overview.servicesMeta':
-      'Travel medicine from a single source: personal advice, travel vaccinations, malaria and altitude care – details on process, suitability and cost.',
+    'overview.servicesLead': NACHWEISE_IM_ANGEBOT
+      ? 'From a single source: personal travel medicine advice, vaccinations, and certificates and forms for time abroad. Choose a service for all the details on procedure, suitability and costs.'
+      : 'From a single source: personal travel medicine advice and vaccinations. Choose a service for all the details on procedure, suitability and costs.',
+    'overview.servicesMeta': NACHWEISE_IM_ANGEBOT
+      ? 'Travel medicine advice, travel vaccinations, yellow fever, TBE, HPV and shingles, plus certificates and forms for time abroad. Private practice in Langenfeld.'
+      : 'Travel medicine advice, travel vaccinations, yellow fever, TBE, HPV and shingles, plus malaria and altitude care. Private practice in Langenfeld.',
+    // Services overview: certificates section and pointer to the occasions in the Abroad section
+    'overview.certLead':
+      'We issue medical certificates, forms and English vaccination certificates as far as we can verify the details.',
+    'overview.occasionTitle': 'Preparing for your time abroad',
+    'overview.occasionLead': NACHWEISE_IM_ANGEBOT
+      ? 'Exchange year, au pair, work & travel or study abroad: the Abroad section sets out what you need for each occasion, from the vaccination record check and missing vaccinations to the right form.'
+      : 'Exchange year, au pair, work & travel or study abroad: the Abroad section sets out what you need for each occasion, from the vaccination record check to missing vaccinations.',
     'overview.diseasesTitle': 'Diseases at a glance',
     'overview.diseasesLead':
       'Evidence-based information on the diseases our vaccinations protect against – with the relevant sources and review date stated.',
@@ -498,6 +553,19 @@ export const ui = {
     'overview.diseaseCholeraText':
       'A bacterial diarrhoeal disease from contaminated water – a very low risk for ordinary travellers.',
     'cta.diseaseDetail': 'View disease',
+    // HPV and shingles (draft 12 Nov 2026): cards on the services and diseases overviews
+    'overview.serviceHpvTitle': 'HPV vaccination for adults',
+    'overview.serviceHpvText':
+      'For adults, expressly including men: from age 18 an individual decision following medical advice – three-dose schedule.',
+    'overview.serviceShinglesTitle': 'Shingles vaccination',
+    'overview.serviceShinglesText':
+      'Vaccination with an inactivated vaccine in two doses – for people aged 50 and over, self-payers and people with private insurance.',
+    'overview.diseaseHpvTitle': 'HPV',
+    'overview.diseaseHpvText':
+      'A very common, usually unnoticed viral infection that can lead to precancerous lesions, cancer or genital warts after years – in women and men alike.',
+    'overview.diseaseShinglesTitle': 'Shingles',
+    'overview.diseaseShinglesText':
+      'A painful rash, usually on one side of the body, caused by the reactivated chickenpox virus – most common in people over 50.',
 
     // 404
     'notFound.title': 'Page not found',

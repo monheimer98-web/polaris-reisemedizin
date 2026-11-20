@@ -135,12 +135,12 @@ export const impressumPage: ImpressumPage = {
       en: 'Approval as a yellow fever vaccination centre',
     },
     yellowFeverIntro: {
-      de: 'Die Praxis ist nach den Internationalen Gesundheitsvorschriften (IGV) als Gelbfieber-Impfstelle staatlich zugelassen.',
-      en: 'The practice is state-approved as a yellow fever vaccination centre under the International Health Regulations (IHR).',
+      de: 'Die Praxis ist als Gelbfieberimpfstelle nach den Internationalen Gesundheitsvorschriften (IGV) staatlich zugelassen.',
+      en: 'The practice is authorised as a state-approved yellow fever vaccination centre under the International Health Regulations (IHR).',
     },
     yellowFeverAuthorityLabel: {
       de: 'Zulassende Behörde',
-      en: 'Approving authority',
+      en: 'Authorising body',
     },
     yellowFeverNumberLabel: {
       de: 'Zulassungsnummer',

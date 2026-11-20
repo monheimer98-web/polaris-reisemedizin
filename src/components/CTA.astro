@@ -5,7 +5,8 @@
  * 10-Tage-Frist der Gelbfieberimpfung. Sprache aus der URL.
  */
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
-import { BOOKING_PATH } from '../config/nav';
+import { BOOKING_PATH, bookingHref as bookingLink } from '../config/nav';
+import { site } from '../config/site';
 
 interface Props {
   /** Terminart-ID, die auf der Buchungsseite vorbelegt wird (`?art=`). */
@@ -16,16 +17,18 @@ interface Props {
   note?: string;
   /** Eigene Terminseite (Bereich Prävention); sonst die allgemeine. */
   bookingPath?: string;
+  /** Bereich der Buchung in der Praxissoftware (`?bereich=`), z. B. Prävention. */
+  bereich?: 'praevention';
   /** Band ohne Impf- und Gelbfieber-Bezug, z. B. auf Seiten zu Formularen und Nachweisen. */
   neutral?: boolean;
   /** Eigene Beschriftung des Buchungsknopfs (bereits in der Seitensprache). */
   label?: string;
 }
 
-const { bookingType, title, lead, note, bookingPath = BOOKING_PATH, neutral = false, label } = Astro.props;
+const { bookingType, title, lead, note, bookingPath = BOOKING_PATH, bereich, neutral = false, label } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const bookingHref = getLocalizedPath(bookingPath, lang) + (bookingType ? `?art=${bookingType}` : '');
+const bookingHref = bookingLink(getLocalizedPath(bookingPath, lang), bookingType, site.booking.embedUrl, bereich);
 ---
 
 <section class="no-print u-container pb-20 sm:pb-24">

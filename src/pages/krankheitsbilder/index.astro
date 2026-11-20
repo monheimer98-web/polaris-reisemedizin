@@ -100,6 +100,20 @@ const t = useTranslations(lang);
           cta={t('cta.diseaseDetail')}
           href={getLocalizedPath('/krankheitsbilder/cholera', lang)}
         />
+        <OverviewCard
+          variant="hpv"
+          title={t('overview.diseaseHpvTitle')}
+          text={t('overview.diseaseHpvText')}
+          cta={t('cta.diseaseDetail')}
+          href={getLocalizedPath('/krankheitsbilder/hpv', lang)}
+        />
+        <OverviewCard
+          variant="shingles"
+          title={t('overview.diseaseShinglesTitle')}
+          text={t('overview.diseaseShinglesText')}
+          cta={t('cta.diseaseDetail')}
+          href={getLocalizedPath('/krankheitsbilder/guertelrose', lang)}
+        />
       </div>
     </div>
   </article>

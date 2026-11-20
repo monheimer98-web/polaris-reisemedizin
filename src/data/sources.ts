@@ -30,6 +30,7 @@ import { vitaminTestQuellen } from './ratgeber/vitamin-d-test-beim-arzt';
 import { auslandKernQuellen } from './ausland/quellen-kern';
 import { auslandFachQuellen } from './ausland/quellen-fach';
 import { auslandPilgerQuellen } from './ausland/quellen-pilger';
+import { hpvGuertelroseQuellen } from './quellen-hpv-guertelrose';
 
 export interface Source {
   /** Herausgeber/Institution, z. B. „WHO", „Robert Koch-Institut (RKI)". */
@@ -838,6 +839,8 @@ export const sources = {
   ...auslandKernQuellen,
   ...auslandFachQuellen,
   ...auslandPilgerQuellen,
+  // HPV und Gürtelrose (11/2026, Entwurf) – Quellen in eigener Datei gepflegt.
+  ...hpvGuertelroseQuellen,
 } satisfies Record<string, Source>;
 
 /** Zitierbare Quellen-ID (Union aller registrierten Quellen). */
