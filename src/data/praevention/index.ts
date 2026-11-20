@@ -28,10 +28,10 @@ export const preventionOnlineBooking = false;
 /** Alle vorbereiteten Angebote (auch Stufe 2). */
 export const allPreventionOffers: PreventionOffer[] = [
   praeventionsCheck,
+  werteEinordnen,
   gewichtUndStoffwechsel,
   wechseljahre,
   kompassMaenner,
-  werteEinordnen,
   schlafUndJetlag,
   muskelKompass,
   kompass60Plus,
@@ -88,25 +88,22 @@ export const preventionGroups: { id: PreventionGroup; title: Localized; lead: Lo
 
 /** „Wo fange ich an?" – Einstieg nach Lebenslage. */
 export const preventionEntryPoints: { label: Localized; slug: string }[] = [
-  { label: { de: 'Ich möchte wissen, wo ich stehe', en: 'I want to know where I stand' }, slug: 'gesundheitscheck' },
-  { label: { de: 'Ich habe schon vieles probiert, um abzunehmen', en: 'I have tried a lot to lose weight' }, slug: 'gewicht-und-stoffwechsel' },
-  { label: { de: 'Ich bin über 40 und merke die Wechseljahre', en: 'I am over 40 and notice menopause' }, slug: 'wechseljahre' },
-  { label: { de: 'Ich habe Werte oder eine Smartwatch-Meldung', en: 'I have results or a smartwatch alert' }, slug: 'blutwerte-besprechen' },
-  { label: { de: 'Ich bin 60 oder älter und möchte fit bleiben', en: 'I am 60 or older and want to stay fit' }, slug: 'check-up-60-plus' },
-  { label: { de: 'Ich bin Mann, über 40 und will es genau wissen', en: 'I am a man over 40 and want to know exactly' }, slug: 'maenner-check-up' },
+  { label: { de: 'Ich möchte wissen, wo ich gesundheitlich stehe', en: 'I want to know where I stand with my health' }, slug: 'gesundheitscheck' },
+  { label: { de: 'Ich möchte bestimmte Blutwerte prüfen lassen', en: 'I want specific blood values checked' }, slug: 'laborwerte-check' },
+  { label: { de: 'Ich möchte mein Gewicht ärztlich angehen', en: 'I want medical support with my weight' }, slug: 'gewicht-und-stoffwechsel' },
 ];
 
 export const preventionHub = {
   meta: {
-    title: { de: 'Prävention & Lebensstil in Langenfeld: Orientierung für Ihre Gesundheit', en: 'Prevention & lifestyle in Langenfeld: guidance for your health' },
+    title: { de: 'Prävention in Langenfeld: Gesundheitscheck und Blutwerte', en: 'Prevention in Langenfeld: health check-up and blood values' },
     description: {
-      de: 'Gesundheitscheck, Blutwerte besprechen, Sprechstunde Wechseljahre, Gewicht & Stoffwechsel: ärztlich, mit Zeit und Plan. Privatpraxis in Langenfeld.',
-      en: 'Health check-up, blood results, menopause consultation, weight & metabolism: medical care with time and a written plan. Private practice in Langenfeld.',
+      de: 'Gesundheitscheck mit Befundbericht, Laborwerte-Check und Sprechstunde Gewicht: in zwei Terminen, mit Zeit. Privatpraxis in Langenfeld bei Düsseldorf.',
+      en: 'Health check-up with written report, lab value check and weight consultation: two appointments, with time. Private practice in Langenfeld near Düsseldorf.',
     },
-    eyebrow: { de: 'Ein Bereich der Praxis Polaris', en: 'Part of the Polaris practice' },
+    eyebrow: { de: 'Prävention bei Polaris', en: 'Prevention at Polaris' },
     lead: {
-      de: 'Gesundheit ist mehr als die Abwesenheit von Krankheit. Wir nehmen uns Zeit, ordnen ein, was belegt ist, und geben Ihnen einen schriftlichen Plan, der zu Ihrem Alltag passt.',
-      en: 'Health is more than the absence of illness. We take time, explain what is supported by evidence and give you a written plan that fits your everyday life.',
+      de: 'Wissen, wo Sie stehen: Im ersten Termin besprechen wir, was sinnvoll ist, untersuchen Sie und nehmen Blut ab. Im zweiten Termin bekommen Sie Ihre Ergebnisse erklärt und schriftlich zum Mitnehmen.',
+      en: 'Know where you stand: in the first appointment we discuss what makes sense, examine you and take a blood sample. In the second appointment we explain your results and give them to you in writing.',
     },
   },
   principlesTitle: { de: 'So arbeiten wir', en: 'How we work' },
@@ -119,24 +116,24 @@ export const preventionHub = {
       },
     },
     {
-      title: { de: 'Erst besprechen, dann messen', en: 'Discuss first, then measure' },
+      title: { de: 'Zwei Termine, ein klares Ergebnis', en: 'Two appointments, one clear result' },
       text: {
-        de: 'Bei Angeboten mit Blutwerten beginnen wir mit einem Kurztermin, auch am Telefon oder per Video. Dort legen wir die Werte fest. Morgens nehmen wir kurz Blut ab, und im Befundtermin liegen alle Ergebnisse vor.',
-        en: 'For services with blood tests we start with a short appointment, also by phone or video. There we decide on the tests. We take a quick blood sample in the morning, and all results are ready for the results appointment.',
+        de: 'Im Ersttermin legen wir gemeinsam fest, was untersucht wird, untersuchen Sie und nehmen Blut ab. Etwa eine Woche später liegen alle Werte vor, und wir besprechen sie im Befundtermin.',
+        en: 'In the first appointment we decide together what to examine, examine you and take a blood sample. About a week later all results are ready and we go through them in the results appointment.',
       },
     },
     {
-      title: { de: 'Ein schriftlicher Plan', en: 'A written plan' },
+      title: { de: 'Ihr Befundbericht zum Mitnehmen', en: 'Your written report to take home' },
       text: {
-        de: 'Jedes Angebot endet mit einem Plan zum Mitnehmen: Prioritäten, nächste Schritte und, wenn nötig, ein Brief an Ihre Hausarztpraxis.',
-        en: 'Every service ends with a plan to take home: priorities, next steps and, if needed, a letter to your GP.',
+        de: 'Sie bekommen Ihre Werte übersichtlich mit Grafik und Einordnung, dazu Prioritäten und nächste Schritte. Beim nächsten Check sehen Sie den Verlauf. Auf Wunsch geht ein Bericht an Ihre Hausarztpraxis.',
+        en: 'You receive your values clearly laid out with charts and interpretation, plus priorities and next steps. At your next check-up you see how they have changed. On request we send a report to your GP.',
       },
     },
     {
       title: { de: 'Kosten je nach Bedarf, vorher schriftlich', en: 'Costs as needed, in writing beforehand' },
       text: {
-        de: 'Jeder Termin wird einzeln nach der Gebührenordnung abgerechnet, ohne Pakete, Abos oder Vorkasse. Die voraussichtlichen Kosten erhalten Sie vorab schriftlich, bezahlt wird einmal mit Karte.',
-        en: 'Each appointment is billed individually under the German fee schedule, with no packages, subscriptions or prepayment. You receive the expected costs in writing beforehand and pay once by card.',
+        de: 'Jeder Termin wird einzeln nach der Gebührenordnung für Ärzte (GOÄ) abgerechnet, ohne Festpreis, Abo oder Vorkasse. Die voraussichtlichen Kosten erhalten Sie vor dem Termin schriftlich.',
+        en: 'Each appointment is billed individually under the German fee schedule for doctors (GOÄ), with no fixed price, subscription or prepayment. You receive the expected costs in writing before the appointment.',
       },
     },
   ],
@@ -156,7 +153,7 @@ export const preventionHub = {
       'diagnoses via online questionnaire – every treatment starts with an in-person appointment.',
     ],
   },
-  ctaTitle: { de: 'Ihr Termin in der Präventionssprechstunde', en: 'Your appointment in our prevention clinic' },
+  ctaTitle: { de: 'Ihr Ersttermin in der Prävention', en: 'Your first prevention appointment' },
   ctaLead: {
     de: 'Wählen Sie bei der Buchung das passende Angebot. Unsicher? Rufen Sie uns an, wir helfen Ihnen beim Einstieg.',
     en: 'Choose the right service when booking. Not sure? Call us and we will help you get started.',
@@ -181,8 +178,8 @@ export const preventionHub = {
     {
       q: { de: 'Was buche ich zuerst?', en: 'What do I book first?' },
       a: {
-        de: 'Beim Gesundheitscheck, den Check-ups und bei Gewicht & Stoffwechsel buchen Sie zuerst den Kurztermin. Die Blutabnahme und den Befundtermin vereinbaren wir danach mit Ihnen. Für die Sprechstunde Wechseljahre und für mitgebrachte Blutwerte buchen Sie direkt das Gespräch.',
-        en: 'For the health check-up, the check-ups and weight & metabolism, you first book the short appointment. We then arrange the blood sample and the results appointment with you. For the menopause consultation and for results you bring with you, book the consultation directly.',
+        de: 'Sie buchen online den Ersttermin des passenden Angebots. Den Befundtermin legen wir im Ersttermin mit Ihnen fest, etwa eine Woche später, wenn alle Werte vorliegen. Wer schon Blutwerte hat, bringt sie zum Ersttermin mit.',
+        en: 'Book the first appointment for the right service online. We arrange the results appointment with you during the first appointment, about a week later when all results are in. If you already have blood results, bring them along.',
       },
     },
     {

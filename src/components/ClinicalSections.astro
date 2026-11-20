@@ -26,7 +26,7 @@ const linkZiel = (path: string) =>
 <div class="space-y-12 sm:space-y-14">
   {
     page.sections.map((section) => (
-      <section id={section.id} class="scroll-mt-24">
+      <section id={section.id} class="scroll-mt-32">
         <div class="rich-text">
           <h2>{section.heading[lang]}</h2>
           {section.body[lang].map((paragraph) => (
@@ -74,7 +74,7 @@ const linkZiel = (path: string) =>
   }
   {
     page.termine && page.termine.length > 0 && (
-      <section id="termin" class="scroll-mt-24 no-print">
+      <section id="termin" class="scroll-mt-32 no-print">
         <div class="rich-text">
           <h2>{t('content.termineHeading')}</h2>
         </div>
@@ -90,7 +90,7 @@ const linkZiel = (path: string) =>
   }
   {
     page.faq && page.faq.length > 0 && (
-      <section id="fragen" class="scroll-mt-24">
+      <section id="fragen" class="scroll-mt-32">
         <div class="rich-text">
           <h2>{t('content.faqHeading')}</h2>
         </div>

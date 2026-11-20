@@ -46,7 +46,7 @@ const { faq, ...rest } = offer.page;
 
 <ClinicalSections page={{ ...rest, faq: undefined }} />
 
-<section id="ablauf" class="mt-12 scroll-mt-24 sm:mt-14">
+<section id="ablauf" class="mt-12 scroll-mt-32 sm:mt-14">
   <div class="rich-text">
     <h2>{de ? 'So läuft es ab' : 'How it works'}</h2>
   </div>
@@ -67,7 +67,7 @@ const { faq, ...rest } = offer.page;
   </ol>
 </section>
 
-<section id="kosten" class="mt-12 scroll-mt-24 sm:mt-14">
+<section id="kosten" class="mt-12 scroll-mt-32 sm:mt-14">
   <div class="rich-text">
     <h2>{de ? 'Kosten' : 'Costs'}</h2>
     {offer.costs[lang].map((p) => <p>{p}</p>)}

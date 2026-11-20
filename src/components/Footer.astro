@@ -3,7 +3,13 @@
  * Globale Fußzeile: Marke, Navigationsspalten, Kontakt & Sprechzeiten,
  * rechtliche Links sowie medizinischer Disclaimer und Quellenhinweis.
  */
-import { primaryNav, footerInfoNav, legalNav, BOOKING_PATH } from '../config/nav';
+import { primaryNav, preventionNav, footerInfoNav, legalNav, BOOKING_PATH } from '../config/nav';
+import { PREVENTION_PATH, preventionOffers } from '../data/praevention';
+import type { Welt } from '../lib/welt';
+
+interface Props {
+  welt?: Welt;
+}
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import { site } from '../config/site';
 import type { UiKey } from '../i18n/ui';
@@ -17,6 +23,7 @@ const servicesItem = primaryNav.find((i) => i.path === '/leistungen');
 const serviceLinks = servicesItem?.children?.filter((child) => child.path !== '/ablauf');
 const diseasesItem = primaryNav.find((i) => i.path === '/krankheitsbilder');
 const infoLinks = footerInfoNav;
+const preventionLinks = preventionNav(preventionOffers.some((o) => o.slug === 'haare')).filter((i) => i.path.startsWith('/praevention/') && i.path !== '/praevention/kosten');
 ---
 
 <footer class="mt-24 border-t border-line bg-petrol-900 text-cream/80">
@@ -50,6 +57,21 @@ const infoLinks = footerInfoNav;
               {t('nav.booking')}
             </a>
           </li>
+        </ul>
+        {/* Zweite Welt derselben Praxis: Prävention (interne Verlinkung von jeder Seite) */}
+        <h2 class="mt-8 text-xs font-semibold uppercase tracking-[0.16em] text-gold-300">
+          <a href={getLocalizedPath(PREVENTION_PATH, lang)} class="hover:text-cream">{t('footer.prevention')}</a>
+        </h2>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          {
+            preventionLinks.map((item) => (
+              <li>
+                <a href={getLocalizedPath(item.path, lang)} class="text-cream/75 transition-colors hover:text-cream">
+                  {t(item.labelKey as UiKey)}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </nav>
 

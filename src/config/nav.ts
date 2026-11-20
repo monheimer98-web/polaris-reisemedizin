@@ -158,6 +158,32 @@ export const legalNav: NavItem[] = [
   { labelKey: 'nav.privacy', path: '/datenschutz' },
 ];
 
+/**
+ * Menü der Themenwelt „Prävention" (eigene Kopfzeile unter /praevention und auf
+ * Präventions-Ratgebern). Feste Pfade; Haare erscheint erst, wenn das Angebot
+ * in den Daten steht.
+ */
+export function preventionNav(hatHaare: boolean): NavItem[] {
+  return [
+    { labelKey: 'nav.pvCheck', path: '/praevention/gesundheitscheck' },
+    { labelKey: 'nav.pvLab', path: '/praevention/laborwerte-check' },
+    { labelKey: 'nav.pvWeight', path: '/praevention/gewicht-und-stoffwechsel' },
+    ...(hatHaare ? [{ labelKey: 'nav.pvHair', path: '/praevention/haare' }] : []),
+    {
+      labelKey: 'nav.pvKnowledge',
+      path: '/ratgeber/blutwerte-erklaert',
+      children: [
+        { labelKey: 'nav.pvBloodValues', path: '/ratgeber/blutwerte-erklaert' },
+        { labelKey: 'nav.pvBloodCount', path: '/ratgeber/grosses-blutbild-kosten' },
+        { labelKey: 'nav.pvVitaminD', path: '/ratgeber/vitamin-d-test-beim-arzt' },
+      ],
+    },
+    { labelKey: 'nav.costs', path: '/praevention/kosten' },
+    { labelKey: 'nav.team', path: '/team' },
+    { labelKey: 'nav.contact', path: '/kontakt' },
+  ];
+}
+
 /** Buchungs-Route (CTA). */
 export const BOOKING_PATH = '/termin';
 

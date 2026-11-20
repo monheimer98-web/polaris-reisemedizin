@@ -12,6 +12,7 @@ import { getLangFromUrl, withBase, HREFLANG } from '../i18n/utils';
 import SEO from '../components/SEO.astro';
 import Analytics from '../components/Analytics.astro';
 import Header from '../components/Header.astro';
+import { weltAusPfad, type Welt } from '../lib/welt';
 import Footer from '../components/Footer.astro';
 
 interface Props {
@@ -23,9 +24,12 @@ interface Props {
   noindex?: boolean;
   /** Seitenspezifische JSON-LD-Objekte (z. B. FAQPage, Physician). */
   schema?: Record<string, unknown> | Record<string, unknown>[];
+  /** Themenwelt; ohne Angabe aus dem Pfad (alles unter /praevention = Prävention). */
+  welt?: Welt;
 }
 
-const { title, description, image, noindex, schema } = Astro.props;
+const { title, description, image, noindex, schema, welt: weltProp } = Astro.props;
+const welt: Welt = weltProp ?? weltAusPfad(Astro.url.pathname);
 const lang = getLangFromUrl(Astro.url);
 ---
 
@@ -36,16 +40,16 @@ const lang = getLangFromUrl(Astro.url);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
     <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
-    <meta name="theme-color" content="#0E3B43" />
+    <meta name="theme-color" content={welt === 'praevention' ? '#29402C' : '#0E3B43'} />
     <meta name="generator" content={Astro.generator} />
-    <SEO title={title} description={description} image={image} noindex={noindex} lang={lang} schema={schema} />
+    <SEO title={title} description={description} image={image} noindex={noindex} lang={lang} schema={schema} welt={welt} />
     <Analytics />
   </head>
-  <body class="flex min-h-screen flex-col">
-    <Header />
+  <body class:list={['flex min-h-screen flex-col', welt === 'praevention' && 'theme-praevention']} data-welt={welt}>
+    <Header welt={welt} />
     <main id="main" class="flex-1">
       <slot />
     </main>
-    <Footer />
+    <Footer welt={welt} />
   </body>
 </html>

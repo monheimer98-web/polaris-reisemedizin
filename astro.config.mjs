@@ -5,6 +5,9 @@ import sitemap from '@astrojs/sitemap';
 
 import { SITE_URL } from './src/config/site';
 
+// Pfade der Themenwelt Prävention (Unterpfad und ihre Ratgeber).
+const PRAEVENTION_URL = /\/(en\/)?(praevention(\/|$)|ratgeber\/(blutwerte-erklaert|grosses-blutbild-kosten|vitamin-d-test-beim-arzt)\/)/;
+
 // Deployment-Ziel über Umgebungsvariablen steuerbar, ohne Code zu ändern:
 // - Standard (lokaler Build / Custom-Domain): Root-Pfad „/" + echte Domain.
 // - GitHub-Pages-Projekt-Vorschau: der Deploy-Workflow setzt PUBLIC_BASE_PATH
@@ -35,6 +38,12 @@ export default defineConfig({
           de: 'de',
           en: 'en',
         },
+      },
+      // Eigener Abschnitt für die Themenwelt Prävention (sitemap-praevention-0.xml),
+      // damit sie in der Search Console getrennt auswertbar ist und ein späterer
+      // Umzug auf eine eigene Adresse sauber abgegrenzt bleibt.
+      chunks: {
+        praevention: (item) => (PRAEVENTION_URL.test(item.url) ? item : undefined),
       },
     }),
   ],

@@ -20,7 +20,7 @@ import PraeventionNav from '../components/PraeventionNav.astro';
 import { getLangFromUrl, useTranslations, formatReviewDate, getLocalizedPath, getLogicalPath, HREFLANG } from '../i18n/utils';
 import { SITE_URL, site } from '../config/site';
 import { BOOKING_PATH, bookingHref as bookingLink } from '../config/nav';
-import { PREVENTION_BOOKING_PATH } from '../data/praevention';
+import { PREVENTION_BOOKING_PATH, preventionOnlineBooking } from '../data/praevention';
 import { diseaseFacts } from '../data/diseaseFacts';
 import type { UiKey } from '../i18n/ui';
 import type { SourceWithId } from '../data/sources';
@@ -69,7 +69,8 @@ const { title, description, eyebrow, lead, lastReviewed, sources, related = [], 
 const areaClass = area === 'praevention' ? 'theme-praevention' : undefined;
 const lang = getLangFromUrl(Astro.url);
 const bookingPath = area === 'praevention' ? PREVENTION_BOOKING_PATH : BOOKING_PATH;
-const bookingHref = bookingLink(getLocalizedPath(bookingPath, lang), bookingType, site.booking.embedUrl, area);
+const embedUrl = area === 'praevention' && !preventionOnlineBooking ? '' : site.booking.embedUrl;
+const bookingHref = bookingLink(getLocalizedPath(bookingPath, lang), bookingType, embedUrl, area);
 const t = useTranslations(lang);
 
 // Brotkrumen aus dem URL-Pfad: Start › <Hub> › <aktuelle Seite>.
@@ -155,7 +156,7 @@ const slug = getLogicalPath(Astro.url.pathname).split('/').pop() ?? '';
 const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined;
 ---
 
-<BaseLayout title={title} description={description} image={image} noindex={noindex} schema={faqSchema ? [medicalWebPageSchema, faqSchema] : medicalWebPageSchema}>
+<BaseLayout title={title} description={description} image={image} noindex={noindex} welt={area === 'praevention' ? 'praevention' : undefined} schema={faqSchema ? [medicalWebPageSchema, faqSchema] : medicalWebPageSchema}>
   <article class:list={[printLabel && 'is-printable', areaClass]}>
     <PageHero eyebrow={eyebrow} title={title} lead={lead}>
       <Breadcrumbs slot="breadcrumb" items={breadcrumbItems} label={t('content.breadcrumb')} />

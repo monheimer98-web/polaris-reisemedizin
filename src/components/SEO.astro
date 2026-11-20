@@ -3,6 +3,7 @@
  * Zentrale SEO-Komponente: Title, Description, Canonical, hreflang-Alternates,
  * OpenGraph/Twitter sowie JSON-LD (MedicalClinic) aus der Praxis-Konfiguration.
  */
+import { preventionOffers } from '../data/praevention';
 import { site, SITE_URL, DEFAULT_LOCALE, type Locale } from '../config/site';
 import { getAlternateLanguages, getLocalizedPath, getLogicalPath, withBase, HREFLANG } from '../i18n/utils';
 import { seoTitles } from '../data/seoTitles';
@@ -21,9 +22,21 @@ interface Props {
    * die zusätzlich zum MedicalClinic-Knoten ausgegeben werden.
    */
   schema?: Record<string, unknown> | Record<string, unknown>[];
+  /** Themenwelt: Prävention stellt ihre Leistungen voran und nennt das weitere Einzugsgebiet. */
+  welt?: 'reise' | 'praevention';
 }
 
-const { title, description, image = '/images/og-default.png', noindex = false, lang, schema } = Astro.props;
+const { title, description, image = '/images/og-default.png', noindex = false, lang, schema, welt = 'reise' } = Astro.props;
+const praevention = welt === 'praevention';
+// Leistungen der Präventionswelt (dieselbe Praxis, derselbe Standort).
+const preventionServices = [
+  { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Gesundheitscheck für Erwachsene mit Befundbesprechung' : 'Health check-up for adults with results consultation' },
+  { '@type': 'MedicalTest', name: lang === 'de' ? 'Laborwerte-Check: Blutwerte auf Wunsch mit ärztlicher Einordnung' : 'Lab value check: blood tests on request with medical interpretation' },
+  { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Sprechstunde Gewicht und Stoffwechsel' : 'Weight and metabolism consultation' },
+  ...(preventionOffers.some((o) => o.slug === 'haare')
+    ? [{ '@type': 'MedicalProcedure', name: lang === 'de' ? 'Haarsprechstunde' : 'Hair consultation' }]
+    : []),
+];
 
 // Auslieferungs-Origin: konfigurierte `site`-URL (Custom-Domain ODER GitHub-
 // Pages-Vorschau, je nach Build) mit Fallback auf die Default-Domain.
@@ -75,7 +88,7 @@ const clinicSchema = {
   // damit Suchmaschinen den regionalen Bezug (Langenfeld/Rheinland) erkennen.
   areaServed: [
     { '@type': 'City', name: site.contact.city },
-    ...['Monheim am Rhein', 'Hilden', 'Leichlingen', 'Solingen', 'Leverkusen'].map((name) => ({ '@type': 'City', name })),
+    ...['Monheim am Rhein', 'Hilden', 'Leichlingen', 'Solingen', 'Leverkusen', ...(praevention ? ['Düsseldorf', 'Haan', 'Köln'] : [])].map((name) => ({ '@type': 'City', name })),
     { '@type': 'State', name: site.contact.region[lang] },
     { '@type': 'Country', name: site.contact.country[lang] },
   ],
@@ -115,6 +128,7 @@ const clinicSchema = {
     result: { '@type': 'Reservation', name: lang === 'de' ? 'Arzttermin' : 'Medical appointment' },
   },
   availableService: [
+    ...(praevention ? preventionServices : []),
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Reisemedizinische Beratung' : 'Travel-medicine consultation' },
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Reiseimpfungen' : 'Travel vaccinations' },
     { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Gelbfieberimpfung' : 'Yellow fever vaccination' },
@@ -131,6 +145,7 @@ const clinicSchema = {
           { '@type': 'MedicalProcedure', name: lang === 'de' ? 'Ärztliche Atteste und Formulare für Flug, Kreuzfahrt, Schule und Hochschule' : 'Medical certificates and forms for flights, cruises, schools and universities' },
         ]
       : []),
+   ...(praevention ? [] : preventionServices),
   ],
 };
 

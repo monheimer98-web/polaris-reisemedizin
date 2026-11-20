@@ -6,7 +6,7 @@
  * scrollen muss, um den eigenen Bereich zu finden. Sprache aus der URL.
  */
 import { getLangFromUrl, getLocalizedPath, useTranslations } from '../i18n/utils';
-import { travelServicesNav } from '../config/nav';
+import { primaryNav } from '../config/nav';
 import type { UiKey } from '../i18n/ui';
 import { PREVENTION_PATH, preventionOffers, preventionPath } from '../data/praevention';
 
@@ -21,18 +21,18 @@ const bereiche = [
     text: de
       ? 'Reiseberatung mit schriftlichem Reiseplan, Reiseimpfungen, Gelbfieber, Malaria und Höhe – auch abends und samstags.'
       : 'Travel health advice with a written travel plan, travel vaccinations, yellow fever, malaria and altitude – also evenings and Saturdays.',
-    links: (travelServicesNav.children ?? []).slice(0, 4).map((c) => ({ label: t(c.labelKey as UiKey), path: c.path })),
+    links: (primaryNav.find((i) => i.path === '/leistungen')?.children ?? []).slice(0, 4).map((c) => ({ label: t(c.labelKey as UiKey), path: c.path })),
     cta: de ? 'Zur Reisemedizin' : 'Go to travel medicine',
     path: '/leistungen',
   },
   {
     theme: 'theme-praevention',
-    title: de ? 'Prävention & Lebensstil' : 'Prevention & lifestyle',
+    title: de ? 'Prävention' : 'Prevention',
     text: de
-      ? 'Gesundheitscheck, Begleitung bei Gewicht und Stoffwechsel, Sprechstunde Wechseljahre und das Einordnen Ihrer Werte – mit Zeit und schriftlichem Plan.'
-      : 'Health check-up, support for weight and metabolism, a menopause consultation and help making sense of your results – with time and a written plan.',
+      ? 'Gesundheitscheck mit Befundbericht, Laborwerte-Check und Sprechstunde Gewicht und Stoffwechsel – in zwei Terminen, mit Ihrem Ergebnis schwarz auf weiß.'
+      : 'Health check-up with a written report, lab value check and a weight and metabolism consultation – in two appointments, with your results in writing.',
     links: preventionOffers.slice(0, 4).map((o) => ({ label: o.shortName[lang], path: preventionPath(o.slug) })),
-    cta: de ? 'Zu Prävention & Lebensstil' : 'Go to prevention & lifestyle',
+    cta: de ? 'Zur Prävention' : 'Go to prevention',
     path: PREVENTION_PATH,
   },
 ];

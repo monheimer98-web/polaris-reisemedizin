@@ -36,6 +36,34 @@ export const termin = {
   ernaehrungsplan: 20.1,
 } as const;
 
+/**
+ * Stand 20.11.2026: Ablauf in zwei Terminen (Nickis Vorgabe). Ersttermin mit
+ * Gespräch, Untersuchung und Blutabnahme, danach Befundbesprechung mit
+ * schriftlichem Befundbericht (Nr. 75). Beträge zum Regelsatz; ob und in
+ * welcher Höhe eine Vereinbarung nach § 2 GOÄ dazukommt, steht in
+ * `vereinbarung` (wird nach Nickis Entscheidung gesetzt).
+ */
+export const zweiTermine = {
+  /** Nr. 29 + 250 – Gesundheitscheck, Ersttermin: Gesundheitsuntersuchung mit Ganzkörperstatus, Risikoprofil, Beratung, Blutabnahme */
+  checkErst: 63.19,
+  /** Nr. 651 – Ruhe-EKG auf Wunsch im Ersttermin */
+  ekg: 26.54,
+  /** Nr. 1 + 75 – Befundbesprechung mit schriftlichem Befundbericht */
+  befund: 28.15,
+  /** Nr. 1 + 250 – Laborwerte-Check, Ersttermin: welche Werte, warum, Blutabnahme */
+  werteErst: 14.92,
+  /** Nr. 1 + 8 + 250 – Gewicht und Stoffwechsel, Ersttermin mit Ganzkörperstatus und Blutabnahme */
+  gewichtErst: 49.78,
+} as const;
+
+/** Ganze Wege in zwei Terminen (Praxis, ohne Labor), Regelsatz. */
+export const zweiTermineWeg = {
+  check: summe(zweiTermine.checkErst, zweiTermine.befund),
+  checkMitEkg: summe(zweiTermine.checkErst, zweiTermine.ekg, zweiTermine.befund),
+  werte: summe(zweiTermine.werteErst, zweiTermine.befund),
+  gewicht: summe(zweiTermine.gewichtErst, zweiTermine.befund),
+} as const;
+
 /** Beträge einzelner Termine außerhalb des Ablaufs mit Blutwerten. */
 export const honorar = {
   /** Nr. 250 – Blutentnahme */

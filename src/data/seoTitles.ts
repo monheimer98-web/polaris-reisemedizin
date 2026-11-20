@@ -18,15 +18,27 @@ export const seoTitles: Record<string, Localized> = {
     en: 'Travel Medicine & Vaccinations in Langenfeld | Polaris',
   },
   '/praevention': {
-    de: 'Prävention & Check-ups in Langenfeld | Polaris',
+    de: 'Gesundheitscheck & Prävention in Langenfeld | Polaris',
     en: 'Preventive Health & Check-ups in Langenfeld | Polaris',
   },
+  '/praevention/laborwerte-check': {
+    de: 'Laborwerte-Check: Blutwerte privat, Langenfeld | Polaris',
+    en: 'Lab Value Check: Private Blood Tests, Langenfeld | Polaris',
+  },
+  '/praevention/haare': {
+    de: 'Haarsprechstunde in Langenfeld bei Düsseldorf | Polaris',
+    en: 'Hair Consultation in Langenfeld near Düsseldorf | Polaris',
+  },
+  '/ratgeber/blutwerte-erklaert': {
+    de: 'Welche Blutwerte wofür? Ärztlich erklärt | Polaris',
+    en: 'Which Blood Values for What? Explained | Polaris',
+  },
   '/praevention/gesundheitscheck': {
-    de: 'Gesundheitscheck privat in Langenfeld | Polaris',
+    de: 'Gesundheitscheck privat in Langenfeld bei Düsseldorf | Polaris',
     en: 'Private Health Check-up in Langenfeld | Polaris',
   },
   '/praevention/gewicht-und-stoffwechsel': {
-    de: 'Gewicht ärztlich begleitet in Langenfeld | Polaris',
+    de: 'Sprechstunde Gewicht & Stoffwechsel, Langenfeld | Polaris',
     en: 'Weight & Metabolic Health, Medically Guided | Polaris',
   },
   '/praevention/wechseljahre': {

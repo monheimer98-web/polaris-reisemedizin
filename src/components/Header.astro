@@ -3,18 +3,31 @@
  * Globale Kopfzeile: Marke, Hauptnavigation (mit Untermenüs), Sprachumschalter
  * und Buchungs-CTA. Mobil als zugängliches Off-Canvas-Menü.
  */
-import { primaryNav, BOOKING_PATH } from '../config/nav';
+import { primaryNav, preventionNav, BOOKING_PATH } from '../config/nav';
+import { PREVENTION_BOOKING_PATH, preventionOffers } from '../data/praevention';
+import { WELT_START, type Welt } from '../lib/welt';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import { site } from '../config/site';
 import type { UiKey } from '../i18n/ui';
 import Logo from './Logo.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 
+interface Props {
+  /** Themenwelt der Seite: bestimmt Menü, Buchungsziel und Umschalter. */
+  welt?: Welt;
+}
+
+const { welt = 'reise' } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const homeHref = getLocalizedPath('/', lang);
-const bookingHref = getLocalizedPath(BOOKING_PATH, lang);
+const bookingHref = getLocalizedPath(welt === 'praevention' ? PREVENTION_BOOKING_PATH : BOOKING_PATH, lang);
+const navItems = welt === 'praevention' ? preventionNav(preventionOffers.some((o) => o.slug === 'haare')) : primaryNav;
+const welten: { id: Welt; labelKey: UiKey; aktiv: string; ruhig: string }[] = [
+  { id: 'reise', labelKey: 'nav.worldTravel', aktiv: 'bg-[#0e3b43] text-white', ruhig: 'text-[#0e3b43] hover:bg-[#edf5f5]' },
+  { id: 'praevention', labelKey: 'nav.worldPrevention', aktiv: 'bg-[#29402c] text-white', ruhig: 'text-[#29402c] hover:bg-[#f1f5ef]' },
+];
 
 function isActive(path: string): boolean {
   const localized = (getLocalizedPath(path, lang).replace(/\/+$/, '') || '/');
@@ -30,6 +43,22 @@ function isActive(path: string): boolean {
 <header class="sticky top-0 z-40 border-b border-petrol-100/70 bg-gradient-to-b from-petrol-50/90 to-cream/85 backdrop-blur-md">
   {/* Feine goldene Markenkante — dezenter Premium-Akzent */}
   <div class="h-[3px] w-full bg-gradient-to-r from-gold-300/0 via-gold-400 to-gold-300/0" aria-hidden="true"></div>
+  {/* Umschalter zwischen den beiden Themenwelten derselben Praxis. Feste Farben
+      (nicht die umgemappten Petrol-Stufen), damit jede Welt ihre Farbe behält. */}
+  <nav class="border-b border-black/5 bg-white/55" aria-label={t('nav.worldSwitch')}>
+    <div class="mx-auto flex h-9 w-full max-w-7xl items-center gap-1.5 px-5 sm:px-8">
+      {welten.map((w) => (
+        <a
+          href={getLocalizedPath(WELT_START[w.id], lang)}
+          class:list={['inline-flex h-7 items-center gap-1.5 rounded-full px-3.5 text-xs font-semibold tracking-wide transition-colors', welt === w.id ? w.aktiv : w.ruhig]}
+          aria-current={welt === w.id ? 'true' : undefined}
+        >
+          <span class:list={['h-1.5 w-1.5 rounded-full', w.id === 'reise' ? 'bg-[#c9a24b]' : 'bg-[#8fb08a]']} aria-hidden="true"></span>
+          {t(w.labelKey)}
+        </a>
+      ))}
+    </div>
+  </nav>
   {/* Eigene, etwas breitere Container-Breite als der Inhalt (max-w-7xl statt
       max-w-6xl): Die achtteilige Navigation plus Marke, Sprachumschalter und CTA
       braucht im gedeckelten Raster mehr Luft. Ein etwas breiterer Kopfbalken als
@@ -55,7 +84,7 @@ function isActive(path: string): boolean {
         und im EN-Layout sonst überliefe. Zwischen lg und xl greift das Off-Canvas-Menü. */}
     <nav class="hidden items-center gap-0.5 xl:flex" aria-label={t('header.primaryNav')}>
       {
-        primaryNav.map((item) =>
+        navItems.map((item) =>
           item.children?.length ? (
             <div class="group relative">
               <a
@@ -224,11 +253,11 @@ function isActive(path: string): boolean {
       längeres aufgeklapptes Menü wäre sonst unten nicht erreichbar. */}
   <div
     id="mobile-menu"
-    class="hidden max-h-[calc(100dvh-4.25rem)] overflow-y-auto overscroll-contain border-t border-line bg-cream sm:max-h-[calc(100dvh-5.25rem)] xl:hidden"
+    class="hidden max-h-[calc(100dvh-6.5rem)] overflow-y-auto overscroll-contain border-t border-line bg-cream sm:max-h-[calc(100dvh-7.5rem)] xl:hidden"
   >
     <nav class="mx-auto flex w-full max-w-7xl flex-col px-5 py-2 sm:px-8" aria-label={t('header.primaryNav')}>
       {
-        primaryNav.map((item, i) => (
+        navItems.map((item, i) => (
           <div class="border-b border-line/50 last:border-b-0">
             {item.children?.length ? (
               <div>

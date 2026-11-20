@@ -7,6 +7,7 @@
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import { BOOKING_PATH, bookingHref as bookingLink } from '../config/nav';
 import { site } from '../config/site';
+import { preventionOnlineBooking } from '../data/praevention';
 
 interface Props {
   /** Terminart-ID, die auf der Buchungsseite vorbelegt wird (`?art=`). */
@@ -28,7 +29,9 @@ interface Props {
 const { bookingType, title, lead, note, bookingPath = BOOKING_PATH, bereich, neutral = false, label } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const bookingHref = bookingLink(getLocalizedPath(bookingPath, lang), bookingType, site.booking.embedUrl, bereich);
+// Prävention: direkt in die Buchung erst, wenn die Praxissoftware die Terminarten online anbietet.
+const embedUrl = bereich === 'praevention' && !preventionOnlineBooking ? '' : site.booking.embedUrl;
+const bookingHref = bookingLink(getLocalizedPath(bookingPath, lang), bookingType, embedUrl, bereich);
 ---
 
 <section class="no-print u-container pb-20 sm:pb-24">

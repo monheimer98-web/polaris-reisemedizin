@@ -30,36 +30,34 @@ import {
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const de = lang === 'de';
-const title = de ? 'Termin für Prävention & Lebensstil' : 'Appointment for prevention & lifestyle';
+const title = de ? 'Termin in der Prävention' : 'Prevention appointment';
 const lead = de
-  ? 'Wählen Sie Ihr Angebot. Wenn Blutwerte dazugehören, buchen Sie zuerst den Kurztermin, auch am Telefon oder per Video. Dort legen wir die Werte fest; Blutabnahme und Befundtermin vereinbaren wir danach mit Ihnen.'
-  : 'Choose your service. If blood tests are part of it, first book the short appointment, also by phone or video. There we decide on the tests; we then arrange the blood sample and the results appointment with you.';
+  ? 'Wählen Sie Ihr Angebot und buchen Sie den Ersttermin. Dort besprechen wir, was sinnvoll ist, untersuchen Sie und nehmen Blut ab. Den Befundtermin legen wir im Ersttermin gemeinsam fest.'
+  : 'Choose your service and book the first appointment. There we discuss what makes sense, examine you and take a blood sample. We arrange the results appointment together during the first appointment.';
 const description = de
-  ? 'Termin für Gesundheitscheck, Check-up, Gewicht & Stoffwechsel, Wechseljahre oder Blutwerte in Langenfeld: was Sie zuerst buchen und wie die Termine ablaufen.'
-  : 'Appointment for a health check-up, weight & metabolism, menopause or blood results in Langenfeld: what to book first and how the appointments work.';
+  ? 'Termin für Gesundheitscheck, Laborwerte-Check oder Sprechstunde Gewicht und Stoffwechsel in Langenfeld bei Düsseldorf: zwei Termine, schriftliches Ergebnis.'
+  : 'Appointment for a health check-up, lab value check or weight and metabolism consultation in Langenfeld near Düsseldorf: two appointments, written results.';
 const schritte = de
   ? [
-      { titel: 'Kurztermin', text: 'Ca. 15 Minuten in der Praxis, am Telefon oder per Video. Wir legen fest, welche Werte sinnvoll sind, und Sie erhalten die voraussichtlichen Kosten schriftlich.' },
-      { titel: 'Blutabnahme', text: 'Ca. 10 Minuten am Morgen. Bei weitem Weg auf Wunsch direkt nach einem Kurztermin in der Praxis.' },
-      { titel: 'Befundtermin', text: 'Etwa eine Woche später in der Praxis: alle Ergebnisse, Untersuchung und Ihr schriftlicher Plan. Bezahlt wird einmal, mit Karte.' },
+      { titel: 'Ersttermin', text: 'Wir besprechen Ihre Fragen und legen fest, was untersucht wird. Dann untersuchen wir Sie und nehmen Blut ab. Die voraussichtlichen Kosten erhalten Sie vorher schriftlich.' },
+      { titel: 'Befundtermin', text: 'Etwa eine Woche später, wenn alle Werte vorliegen: Wir erklären Ihre Ergebnisse, und Sie bekommen Ihren Befundbericht zum Mitnehmen.' },
     ]
   : [
-      { titel: 'Short appointment', text: 'About 15 minutes at the practice, by phone or by video. We decide which tests make sense, and you receive the expected costs in writing.' },
-      { titel: 'Blood sample', text: 'About 10 minutes in the morning. If you have a long way, on request straight after a short appointment at the practice.' },
-      { titel: 'Results appointment', text: 'About a week later at the practice: all results, examination and your written plan. You pay once, by card.' },
+      { titel: 'First appointment', text: 'We discuss your questions and decide what to examine. Then we examine you and take a blood sample. You receive the expected costs in writing beforehand.' },
+      { titel: 'Results appointment', text: 'About a week later, when all results are in: we explain your results and you receive your written report to take home.' },
     ];
 const faq = de
   ? [
-      { q: 'Was buche ich zuerst?', a: 'Beim Gesundheitscheck, den Check-ups und bei Gewicht & Stoffwechsel den Kurztermin. Für die Sprechstunde Wechseljahre und für mitgebrachte Blutwerte buchen Sie direkt das Gespräch.' },
-      { q: 'Warum drei Termine?', a: 'Damit wir nur messen, was für Sie etwas ändert, und Sie die Kosten kennen, bevor Blut abgenommen wird. Im Befundtermin liegen dann alle Ergebnisse vor. Den Kurztermin können Sie auch am Telefon oder per Video wahrnehmen; in die Praxis kommen Sie dann nur zweimal.' },
-      { q: 'Muss ich zur Blutabnahme nüchtern kommen?', a: 'In der Regel nicht. Wenn ein Wert es erfordert, sagen wir es Ihnen im Kurztermin.' },
+      { q: 'Was buche ich zuerst?', a: 'Den Ersttermin des passenden Angebots. Den Befundtermin vereinbaren wir im Ersttermin mit Ihnen.' },
+      { q: 'Warum zwei Termine?', a: 'Blutwerte brauchen einige Tage im Labor. Im zweiten Termin liegen alle Ergebnisse vor, und wir nehmen uns Zeit, sie mit Ihnen durchzugehen.' },
+      { q: 'Muss ich zur Blutabnahme nüchtern kommen?', a: 'In der Regel nicht. Wenn ein Wert nüchtern bestimmt werden sollte, sagen wir es Ihnen vor dem Termin.' },
       { q: 'Kann ich Befunde vorher schicken?', a: 'Bitte bringen Sie vorhandene Befunde zum Termin mit. Schicken Sie Gesundheitsdaten bitte nicht per E-Mail.' },
       { q: 'Kann ich telefonisch buchen?', a: 'Ja. Rufen Sie uns an, wir finden gemeinsam den passenden Termin.' },
     ]
   : [
-      { q: 'What do I book first?', a: 'For the health check-up, the check-ups and weight & metabolism, the short appointment. For the menopause consultation and for results you bring with you, book the consultation directly.' },
-      { q: 'Why three appointments?', a: 'So that we only measure what makes a difference for you, and you know the costs before any blood is taken. All results are then ready for the results appointment. You can also have the short appointment by phone or video; you then only come to the practice twice.' },
-      { q: 'Do I need to fast for the blood sample?', a: 'Usually not. If a test requires it, we tell you in the short appointment.' },
+      { q: 'What do I book first?', a: 'The first appointment of the right service. We arrange the results appointment with you during the first appointment.' },
+      { q: 'Why two appointments?', a: 'Blood tests take a few days at the laboratory. At the second appointment all results are in, and we take time to go through them with you.' },
+      { q: 'Do I need to fast for the blood sample?', a: 'Usually not. If a value should be measured fasting, we will tell you before the appointment.' },
       { q: 'Can I send results in advance?', a: 'Please bring existing results to the appointment. Please do not send health data by e-mail.' },
       { q: 'Can I book by phone?', a: 'Yes. Call us and we will find a suitable appointment together.' },
     ];
@@ -72,7 +70,7 @@ const crumbs = [
 
 <BaseLayout title={title} description={description}>
   <div class="theme-praevention">
-    <PageHero eyebrow={de ? 'Prävention & Lebensstil' : 'Prevention & lifestyle'} title={title} lead={lead}>
+    <PageHero eyebrow={de ? 'Prävention' : 'Prevention'} title={title} lead={lead}>
       <Breadcrumbs slot="breadcrumb" items={crumbs} label={t('content.breadcrumb')} />
       <p class="mt-6 text-sm text-ink-soft">
         {de ? 'Im falschen Bereich gelandet? ' : 'In the wrong section? '}
@@ -107,7 +105,7 @@ const crumbs = [
 
     <section class="u-container pb-14 sm:pb-16" aria-labelledby="ablauf">
       <h2 id="ablauf" class="text-2xl sm:text-3xl">{de ? 'So läuft es mit Blutwerten ab' : 'How it works with blood tests'}</h2>
-      <ol class="mt-6 grid gap-4 md:grid-cols-3">
+      <ol class="mt-6 grid gap-4 md:grid-cols-2">
         {
           schritte.map((s, i) => (
             <li class="flex gap-4 rounded-2xl border border-petrol-100 bg-white/70 p-5">
@@ -153,7 +151,7 @@ const crumbs = [
       <p class="mt-3 max-w-3xl text-sm text-ink-soft">{preventionHub.ctaNote[lang]} {preventionDoctor[lang]}</p>
     </section>
 
-    <section id="fragen" class="u-container scroll-mt-24 pb-16 sm:pb-20">
+    <section id="fragen" class="u-container scroll-mt-32 pb-16 sm:pb-20">
       <div class="max-w-3xl">
         <div class="rich-text">
           <h2>{t('content.faqHeading')}</h2>
