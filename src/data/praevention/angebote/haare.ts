@@ -7,8 +7,8 @@
  * Nickis Entscheidungen vom 20.11.: kein Auflichtgerät (Nr. 1 + 5 + 250 =
  * ca. 26 €), Haarsprechstunde online ab 29.11. (HAARE_AB), PRP direkt buchbar
  * und gleich mit der Website live; die ersten freien PRP-Termine liegen ab
- * 04.12. (PRP_AB, steuert die Praxissoftware). Offen: Betrag je PRP-Sitzung
- * (Fassung A oder B, `prpPreis` in preise.ts).
+ * 04.12. (PRP_AB, steuert die Praxissoftware). PRP ca. 260 € je Sitzung mit
+ * Röhrchen (Honorarvereinbarung nach § 2 GOÄ, `prpPreis` in preise.ts).
  * Rezeptpflichtige Tabletten („für Männer, auf Rezept“) nicht genannt, weil
  * der Wirkstoff daraus erkennbar wäre (§ 10 HWG, BGH I ZR 74/25); es bleibt
  * „ein Mittel zum Auftragen“ oder „eine andere Behandlung“.
@@ -280,36 +280,25 @@ export const haare: PreventionOffer = {
  * Stand 20.11.2026, 19:30. PRP ist direkt buchbar (Terminart pv-prp-erst,
  * 60 Min., beginnt mit der Haarsprechstunde). Welche Termine online frei sind,
  * steuert die Praxissoftware (PRP_AB: erste Termine ab 04.12.2026); die Seite
- * nennt deshalb kein Datum. Betrag je Sitzung erst, wenn Nicki die Fassung
- * wählt (prpPreis.fassung in preise.ts). Bewusst ohne „Tabletten auf Rezept“
+ * nennt deshalb kein Datum. Preis ca. 260 € je Sitzung (Nicki 20.11. abends,
+ * prpPreis in preise.ts). Bewusst ohne „Tabletten auf Rezept“
  * (§ 10 HWG): „Mittel zum Auftragen“ und „andere ärztliche Behandlungen“.
  */
-const prp = prpPreis.fassung ? prpPreis[prpPreis.fassung] : null;
-const spanneDe = ([a, b]: readonly number[]) => `ca. ${a.toLocaleString('de-DE')} bis ${b.toLocaleString('de-DE')} €`;
-const spanneEn = ([a, b]: readonly number[]) => `approx. €${a.toLocaleString('en-GB')} to €${b.toLocaleString('en-GB')}`;
 const prpKostenDe = [
-  prp
-    ? `${spanneDe(prp.sitzung)} je Sitzung, die PRP-Röhrchen eingeschlossen. Der Betrag hängt von der Zahl der Einstiche ab.`
-    : 'Was eine Sitzung kostet, hängt von der Zahl der Einstiche ab. Der Betrag setzt sich aus dem ärztlichen Honorar und den PRP-Röhrchen zusammen, die nur einmal verwendet werden. Die Kosten bekommen Sie vor der ersten Behandlung schriftlich.',
+  `${caDe(prpPreis.sitzung)} je Sitzung, die PRP-Röhrchen eingeschlossen.`,
   `Am ersten Termin kommt die Haarsprechstunde dazu, ${caDe(prpPreis.sprechstundeErsttermin)}.`,
-  ...(prp ? [`Für drei Sitzungen rechnen Sie mit ${spanneDe(prp.dreiSitzungen)}.`] : []),
-  ...(prpPreis.fassung === 'B'
-    ? ['Das Honorar vereinbaren wir vor der ersten Behandlung schriftlich mit Ihnen. So sieht es die Gebührenordnung für Ärzte (GOÄ) vor.']
-    : []),
-  'Es gibt keine Pakete. Sie zahlen jede Sitzung einzeln nach der Gebührenordnung für Ärzte (GOÄ) und können nach jeder Sitzung entscheiden, ob Sie weitermachen.',
+  `Für drei Sitzungen rechnen Sie mit ${caDe(prpPreis.dreiSitzungenRund)}.`,
+  'Das Honorar vereinbaren wir vor der ersten Behandlung schriftlich mit Ihnen. So sieht es die Gebührenordnung für Ärzte (GOÄ) vor.',
+  'Es gibt keine Pakete. Sie zahlen jede Sitzung einzeln und können nach jeder Sitzung entscheiden, ob Sie weitermachen.',
   'Passt PRP nicht zu Ihrem Haarausfall, behandeln wir nicht. Dann zahlen Sie nur die Haarsprechstunde.',
   'Rechnen Sie damit, dass Sie PRP selbst zahlen.',
 ];
 const prpKostenEn = [
-  prp
-    ? `${spanneEn(prp.sitzung)} per session, including the PRP tubes. The amount depends on the number of injection points.`
-    : 'What a session costs depends on the number of injection points. The amount consists of the medical fee and the single-use PRP tubes. You receive the costs in writing before the first treatment.',
+  `${caEn(prpPreis.sitzung)} per session, including the PRP tubes.`,
   `At the first appointment the hair consultation is added, ${caEn(prpPreis.sprechstundeErsttermin)}.`,
-  ...(prp ? [`For three sessions, expect ${spanneEn(prp.dreiSitzungen)}.`] : []),
-  ...(prpPreis.fassung === 'B'
-    ? ['We agree the fee with you in writing before the first treatment, as the German fee schedule for doctors (GOÄ) requires.']
-    : []),
-  'There are no packages. You pay for each session individually under the German fee schedule for doctors (GOÄ) and can decide after each session whether to continue.',
+  `For three sessions, expect ${caEn(prpPreis.dreiSitzungenRund)}.`,
+  'We agree the fee with you in writing before the first treatment, as the German fee schedule for doctors (GOÄ) requires.',
+  'There are no packages. You pay for each session individually and can decide after each session whether to continue.',
   'If PRP does not suit your hair loss, we do not treat. You then only pay for the hair consultation.',
   'Expect to pay for PRP yourself.',
 ];
