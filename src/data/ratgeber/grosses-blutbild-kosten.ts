@@ -137,11 +137,11 @@ export const grossesBlutbildGuide: ClinicalPage = {
       heading: { de: 'So läuft es ab', en: 'How it works' },
       body: {
         de: [
-          'Sie buchen den Ersttermin des Laborwerte-Checks und kommen dafür am Vormittag in die Praxis: Wir besprechen, was sinnvoll ist, nennen die Kosten und nehmen direkt im Anschluss Blut ab. Ein Blutbild muss am selben Tag ins Labor, deshalb der Termin am Vormittag.',
+          'Sie buchen den Ersttermin des Laborwerte-Checks und kommen dafür in die Praxis: Wir besprechen, was sinnvoll ist, nennen die Kosten und nehmen direkt im Anschluss Blut ab. Ein Blutbild sollte bald ins Labor. Liegt Ihr Termin kurz vor dem Wochenende, sagen wir Ihnen vorher, ob wir dafür einen anderen Tag vorschlagen.',
           'Die Ergebnisse besprechen wir einige Tage später, auf Wunsch am Telefon. Wenn sich im Gespräch zeigt, dass der Gesundheitscheck besser zu Ihrer Frage passt, erklären wir den Unterschied, und Sie entscheiden.',
         ],
         en: [
-          'You book the first appointment of the lab value check and come to the practice in the morning: we discuss what makes sense, tell you the costs and take the blood sample straight afterwards. A blood count has to reach the laboratory the same day, hence the morning appointment.',
+          'You book the first appointment of the lab value check and come to the practice: we discuss what makes sense, tell you the costs and take the blood sample straight afterwards. A blood count should reach the laboratory soon. If your appointment is just before the weekend, we tell you beforehand whether we suggest another day.',
           'We discuss the results a few days later, by phone if you wish. If the conversation shows that the health check-up fits your question better, we explain the difference and you decide.',
         ],
       },

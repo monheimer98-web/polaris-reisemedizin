@@ -49,8 +49,8 @@ export const werteEinordnen: PreventionOffer = {
     {
       title: { de: 'Blutabnahme im selben Termin', en: 'Blood sample in the same appointment' },
       text: {
-        de: 'Direkt im Anschluss nehmen wir Blut ab. Deshalb liegt der Ersttermin am Vormittag: So kommt Ihr Blut am selben Tag ins Labor. Für die meisten Werte müssen Sie nicht nüchtern sein; wenn es darauf ankommt, sagen wir es Ihnen vorher.',
-        en: 'We take the blood sample straight afterwards. That is why the first appointment is in the morning: your sample reaches the laboratory the same day. For most values you do not need to fast; if it matters, we tell you beforehand.',
+        de: 'Direkt im Anschluss nehmen wir Blut ab, auch bei Terminen am Abend oder am Samstag. Ihre Probe geht mit der nächsten Abholung ins Labor. Für die meisten Werte müssen Sie nicht nüchtern sein. Wenn ein Wert nüchtern bestimmt werden oder besonders schnell ins Labor muss, sagen wir es Ihnen vorher.',
+        en: 'We take the blood sample straight afterwards, also for appointments in the evening or on Saturday. Your sample goes to the laboratory with the next collection. For most values you do not need to fast. If a value needs fasting or has to reach the laboratory particularly quickly, we tell you beforehand.',
       },
     },
     {

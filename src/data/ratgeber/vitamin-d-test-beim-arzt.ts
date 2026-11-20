@@ -199,12 +199,12 @@ export const vitaminTestGuide: ClinicalPage = {
       heading: { de: 'So läuft es ab', en: 'How it works' },
       body: {
         de: [
-          'Sie buchen den Ersttermin des Laborwerte-Checks und kommen am Vormittag in die Praxis. Wir besprechen, welche Werte bei Ihnen etwas aussagen, nennen die Kosten und nehmen direkt im Anschluss Blut ab. Sie müssen dafür nicht nüchtern sein.',
+          'Sie buchen den Ersttermin des Laborwerte-Checks und kommen in die Praxis, je nach Woche auch am Abend oder am Samstag. Wir besprechen, welche Werte bei Ihnen etwas aussagen, nennen die Kosten und nehmen direkt im Anschluss Blut ab. Sie müssen dafür nicht nüchtern sein.',
           'Bitte nennen Sie uns Ihre Nahrungsergänzung. Präparate mit Biotin können einige Messungen stören und sollten vorher pausiert werden. Die Ergebnisse besprechen wir einige Tage später, auf Wunsch am Telefon.',
           'Wir verkaufen keine Präparate und bieten keine Vitamin-Kuren oder Infusionen an.',
         ],
         en: [
-          'You book the first appointment of the lab value check and come to the practice in the morning. We discuss which tests are informative for you, tell you the costs and take the blood sample straight afterwards. You do not need to fast.',
+          'You book the first appointment of the lab value check and come to the practice, depending on the week also in the evening or on Saturday. We discuss which tests are informative for you, tell you the costs and take the blood sample straight afterwards. You do not need to fast.',
           'Please tell us about your supplements. Products containing biotin can interfere with some tests and should be paused beforehand. We discuss the results a few days later, by phone if you wish.',
           'We do not sell supplements and do not offer vitamin courses or infusions.',
         ],

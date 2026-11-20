@@ -246,8 +246,8 @@ export const beispielkostenSeite = {
     ],
   },
   fussnote: {
-    de: 'Beispiele zum Regelsatz der GOÄ, Stand November 2026. Berechnet wird nur, was stattfindet; weniger Termine oder Werte kosten weniger. Laborkosten stellt das Labor selbst in Rechnung. Keine Umsatzsteuer.',
-    en: 'Examples at the standard GOÄ rate, as of November 2026. You only pay for what takes place; fewer appointments or tests cost less. The laboratory invoices lab costs itself. No VAT.',
+    de: 'Beispiele zum Regelsatz der GOÄ, Stand November 2026. Berechnet wird nur, was stattfindet; weniger Termine oder Werte kosten weniger. Für Termine am Samstag sieht die GOÄ einen Zuschlag von ca. 6 € vor. Laborkosten stellt das Labor selbst in Rechnung. Keine Umsatzsteuer.',
+    en: 'Examples at the standard GOÄ rate, as of November 2026. You only pay for what takes place; fewer appointments or tests cost less. For appointments on a Saturday, the GOÄ provides for a surcharge of approx. €6. The laboratory invoices lab costs itself. No VAT.',
   },
   faq: [
     {
