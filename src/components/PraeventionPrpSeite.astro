@@ -10,7 +10,6 @@ import ClinicalSections from './ClinicalSections.astro';
 import PraeventionAnfahrt from './PraeventionAnfahrt.astro';
 import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
 import { getSources } from '../data/sources';
-import { preventionHub } from '../data/praevention';
 import { haarePrp } from '../data/praevention/angebote/haare';
 import { SITE_URL } from '../config/site';
 import { praeventionThema, prpGegenanzeigen } from '../data/praevention/schema';
@@ -46,7 +45,9 @@ const about = thema ? { ...thema, contraindication: prpGegenanzeigen(lang) } : u
     lead: de
       ? 'Direkt buchbar, ohne Haarsprechstunde davor: ca. 260 € je Sitzung, Röhrchen eingeschlossen. Vor der ersten Behandlung klären wir Sie auf. Passt PRP nicht zu Ihrem Haarausfall, behandeln wir nicht.'
       : 'Bookable directly, without a hair consultation beforehand: approx. €260 per session, tubes included. Before the first treatment we explain everything. If PRP does not suit your hair loss, we do not treat.',
-    note: preventionHub.ctaNote[lang],
+    note: de
+      ? 'Polaris ist eine Privatpraxis. Abrechnung nach GOÄ mit schriftlicher Honorarvereinbarung, die Sie vor der Behandlung erhalten.'
+      : 'Polaris is a private practice. Billed under the GOÄ with a written fee agreement, which you receive before the treatment.',
   }}
 >
   <ClinicalSections page={{ ...rest, faq: undefined }} />

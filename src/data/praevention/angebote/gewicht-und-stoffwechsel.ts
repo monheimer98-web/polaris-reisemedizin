@@ -51,8 +51,8 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
       en: `Under the GOÄ, depending on what you need. Typically for both appointments together: ${caEn(zweiTermineWeg.gewicht)}; a follow-up ${caEn(honorar.verlauf)}.`,
     },
     lab: {
-      de: `ca. ${labor.gewichtStart}–${euroDe(labor.gewichtStartMitTsh)}, je nach Wert auf unserer Rechnung oder vom Labor`,
-      en: `approx. ${euroEn(labor.gewichtStart)}–${euroEn(labor.gewichtStartMitTsh)}, on our invoice or from the laboratory, depending on the test`,
+      de: `ca. ${labor.gewichtStart} bis ${euroDe(labor.gewichtStartMitTsh)}, je nach Wert auf unserer Rechnung oder vom Labor`,
+      en: `approx. ${euroEn(labor.gewichtStart)} to ${euroEn(labor.gewichtStartMitTsh)}, on our invoice or from the laboratory, depending on the test`,
     },
   },
   steps: [
@@ -96,14 +96,14 @@ export const gewichtUndStoffwechsel: PreventionOffer = {
     de: [
       `Ärztliches Honorar nach GOÄ (Regelsatz), je Termin: Ersttermin mit Gespräch, Messung, Untersuchung von Kopf bis Fuß und Blutabnahme ${caDe(zweiTermine.gewichtErst)}, Befund und Plan mit schriftlichem Plan ${caDe(zweiTermine.befund)}. Zusammen ${caDe(zweiTermineWeg.gewicht)}. Ein persönlicher Ernährungsplan wird auf Wunsch zusätzlich nach GOÄ berechnet.`,
       `Jeder weitere Termin ist freiwillig. Ein Verlaufstermin kostet ${caDe(honorar.verlauf)}.`,
-      `Dazu kommen die Laborkosten, ca. ${labor.gewichtStart}–${euroDe(labor.gewichtStartMitTsh)}, je nachdem, welche Werte wir gemeinsam auswählen. Kontrollen im Verlauf bestimmen wir nur, wenn sie für Ihren Plan etwas ändern.`,
+      `Dazu kommen die Laborkosten, ca. ${labor.gewichtStart} bis ${euroDe(labor.gewichtStartMitTsh)}, je nachdem, welche Werte wir gemeinsam auswählen. Kontrollen im Verlauf bestimmen wir nur, wenn sie für Ihren Plan etwas ändern.`,
       kostenVorab.de,
       erstattung.de,
     ],
     en: [
       `Medical fee under the GOÄ (standard rate), per appointment: first appointment with conversation, measurements, head-to-toe examination and blood sample ${caEn(zweiTermine.gewichtErst)}, results and plan with a written plan ${caEn(zweiTermine.befund)}. Together ${caEn(zweiTermineWeg.gewicht)}. A personal nutrition plan, if you would like one, is billed additionally under the GOÄ.`,
       `Every further appointment is optional. A follow-up costs ${caEn(honorar.verlauf)}.`,
-      `Lab costs come on top, approx. ${euroEn(labor.gewichtStart)}–${euroEn(labor.gewichtStartMitTsh)}, depending on which tests we choose together. We only recheck values later if this changes something in your plan.`,
+      `Lab costs come on top, approx. ${euroEn(labor.gewichtStart)} to ${euroEn(labor.gewichtStartMitTsh)}, depending on which tests we choose together. We only recheck values later if this changes something in your plan.`,
       kostenVorab.en,
       erstattung.en,
     ],

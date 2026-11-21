@@ -1,7 +1,7 @@
 /**
  * Ärztliches Honorar der Präventionsangebote nach GOÄ zum Regelsatz
  * (ärztliche Leistungen 2,3; Blutentnahme Nr. 250 1,8), ohne Steigerung und
- * ohne Honorarvereinbarung. Eine Stelle für alle Beträge der Präventionsseiten,
+ * ohne Honorarvereinbarung (Ausnahme PRP, siehe prpPreis). Eine Stelle für alle Beträge der Präventionsseiten,
  * damit Website, Beispielkosten, App-Schnellwahl und Preisliste gleich bleiben.
  * Labor rechnet das Labor direkt ab; Laborbeträge sind gerundete Richtwerte
  * (Faktor 1,15).
@@ -155,8 +155,8 @@ export const labor = {
   maennerMax: 140,
   /** Gewicht: Blutfette, HbA1c, Kreatinin, Leberwerte, kleines Blutbild */
   gewichtStart: 36,
-  /** dasselbe ab BMI 30 mit TSH */
-  gewichtStartMitTsh: 53,
+  /** dasselbe ab BMI 30 mit TSH; Laborpaket der Praxissoftware 55,63 € (Stand 21.11.2026) */
+  gewichtStartMitTsh: 56,
   /** erstes Jahr: Start, nach 3 und nach 12 Monaten */
   gewichtJahrVon: 92,
   gewichtJahrBis: 109,

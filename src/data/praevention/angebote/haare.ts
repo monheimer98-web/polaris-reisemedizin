@@ -84,11 +84,13 @@ export const haare: PreventionOffer = {
     de: [
       `Wir sind eine Privatpraxis und rechnen nach der Gebührenordnung für Ärzte (GOÄ) ab. Ärztliches Honorar zum Regelsatz, je Termin: Haarsprechstunde mit Untersuchung und Blutabnahme ${caDe(haarPreis.sprechstunde)}, Befund und Plan ${caDe(haarPreis.befund)}, ein späterer Verlaufstermin ${caDe(haarPreis.verlauf)}. Die Beträge sind Richtwerte.`,
       `Dazu kommen die Laborkosten für Ferritin, kleines Blutbild und TSH, ${caDe(haarPreis.labor)}. Bei Frauen mit unregelmäßigem Zyklus oder unreiner Haut können weitere Hormonwerte sinnvoll sein; was das kostet, sagen wir Ihnen vorher.`,
+      `PRP rechnen wir anders ab: ${caDe(prpPreis.sitzung)} je Sitzung, die Röhrchen eingeschlossen. Abrechnung nach GOÄ mit schriftlicher Honorarvereinbarung, die Sie vor der Behandlung erhalten.`,
       kostenVorab.de,
     ],
     en: [
       `We are a private practice and bill under the German fee schedule for doctors (GOÄ). Medical fee at the standard rate, per appointment: hair consultation with examination and blood sample ${caEn(haarPreis.sprechstunde)}, results and plan ${caEn(haarPreis.befund)}, a later follow-up ${caEn(haarPreis.verlauf)}. The amounts are guide values.`,
       `Lab costs for ferritin, basic blood count and TSH come on top, ${caEn(haarPreis.labor)}. For women with an irregular cycle or blemished skin, further hormone values can be useful; we tell you the cost beforehand.`,
+      `PRP is billed differently: ${caEn(prpPreis.sitzung)} per session, tubes included. Billed under the GOÄ with a written fee agreement, which you receive before the treatment.`,
       kostenVorab.en,
     ],
   },
@@ -292,7 +294,7 @@ export const haare: PreventionOffer = {
 const prpKostenDe = [
   `${caDe(prpPreis.sitzung)} je Sitzung, die PRP-Röhrchen eingeschlossen.`,
   `Für drei Sitzungen rechnen Sie mit ${caDe(prpPreis.dreiSitzungenRund)}.`,
-  'Das Honorar vereinbaren wir vor der ersten Behandlung schriftlich mit Ihnen. So sieht es die Gebührenordnung für Ärzte (GOÄ) vor.',
+  'Abrechnung nach GOÄ mit schriftlicher Honorarvereinbarung, die Sie vor der Behandlung erhalten.',
   'Es gibt keine Pakete. Sie zahlen jede Sitzung einzeln und können nach jeder Sitzung entscheiden, ob Sie weitermachen.',
   'Passt PRP nicht zu Ihrem Haarausfall, behandeln wir nicht. Dann zahlen Sie keine PRP-Sitzung.',
   'Rechnen Sie damit, dass Sie PRP selbst zahlen.',
@@ -300,7 +302,7 @@ const prpKostenDe = [
 const prpKostenEn = [
   `${caEn(prpPreis.sitzung)} per session, including the PRP tubes.`,
   `For three sessions, expect ${caEn(prpPreis.dreiSitzungenRund)}.`,
-  'We agree the fee with you in writing before the first treatment, as the German fee schedule for doctors (GOÄ) requires.',
+  'Billed under the GOÄ with a written fee agreement, which you receive before the treatment.',
   'There are no packages. You pay for each session individually and can decide after each session whether to continue.',
   'If PRP does not suit your hair loss, we do not treat. You then do not pay for a PRP session.',
   'Expect to pay for PRP yourself.',

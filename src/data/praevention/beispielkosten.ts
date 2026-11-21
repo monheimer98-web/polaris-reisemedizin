@@ -55,8 +55,8 @@ export const beispielrechnungen: Beispielrechnung[] = [
       en: `approx. ${euroEn(labor.check)}, at the first check-up with a one-off Lp(a) test approx. ${euroEn(labor.checkMitLpa)}`,
     },
     typisch: {
-      de: `ca. ${ganz(zweiTermineWeg.check + labor.check)}–${ganz(zweiTermineWeg.check + labor.checkMitLpa)} € zusammen`,
-      en: `approx. €${ganz(zweiTermineWeg.check + labor.check)}–${ganz(zweiTermineWeg.check + labor.checkMitLpa)} in total`,
+      de: `ca. ${ganz(zweiTermineWeg.check + labor.check)} bis ${ganz(zweiTermineWeg.check + labor.checkMitLpa)} € zusammen`,
+      en: `approx. €${ganz(zweiTermineWeg.check + labor.check)} to ${ganz(zweiTermineWeg.check + labor.checkMitLpa)} in total`,
     },
     hinweis: {
       de: `Mit Ruhe-EKG auf Wunsch im ersten Termin kommen ca. ${euroDe(zweiTermine.ekg)} dazu.`,
@@ -76,8 +76,8 @@ export const beispielrechnungen: Beispielrechnung[] = [
       en: `depending on the value, e.g. full blood count approx. ${euroEn(laborwert.grossesBlutbild)}, vitamin D approx. ${euroEn(laborwert.vitaminD)}, ferritin with small blood count approx. ${euroEn(laborwert.ferritinMitBlutbild)}`,
     },
     typisch: {
-      de: `ca. ${ganz(zweiTermineWeg.werte + laborwert.vitaminD)}–${ganz(zweiTermineWeg.werte + laborwert.vitaminD + laborwert.vitaminB12 + laborwert.ferritinMitBlutbild)} € zusammen, z. B. Vitamin D allein oder Vitamin D, B12 und Eisen`,
-      en: `approx. €${ganz(zweiTermineWeg.werte + laborwert.vitaminD)}–${ganz(zweiTermineWeg.werte + laborwert.vitaminD + laborwert.vitaminB12 + laborwert.ferritinMitBlutbild)} in total, e.g. vitamin D alone or vitamin D, B12 and iron`,
+      de: `ca. ${ganz(zweiTermineWeg.werte + laborwert.vitaminD)} bis ${ganz(zweiTermineWeg.werte + laborwert.vitaminD + laborwert.vitaminB12 + laborwert.ferritinMitBlutbild)} € zusammen, z. B. Vitamin D allein oder Vitamin D, B12 und Eisen`,
+      en: `approx. €${ganz(zweiTermineWeg.werte + laborwert.vitaminD)} to ${ganz(zweiTermineWeg.werte + laborwert.vitaminD + laborwert.vitaminB12 + laborwert.ferritinMitBlutbild)} in total, e.g. vitamin D alone or vitamin D, B12 and iron`,
     },
   },
   {
@@ -93,8 +93,8 @@ export const beispielrechnungen: Beispielrechnung[] = [
       en: `approx. ${euroEn(labor.gewichtStart)}, from a BMI of 30 with thyroid test approx. ${euroEn(labor.gewichtStartMitTsh)}`,
     },
     typisch: {
-      de: `ca. ${ganz(zweiTermineWeg.gewicht + labor.gewichtStart)}–${ganz(zweiTermineWeg.gewicht + labor.gewichtStartMitTsh)} € für den Start`,
-      en: `approx. €${ganz(zweiTermineWeg.gewicht + labor.gewichtStart)}–${ganz(zweiTermineWeg.gewicht + labor.gewichtStartMitTsh)} for the start`,
+      de: `ca. ${ganz(zweiTermineWeg.gewicht + labor.gewichtStart)} bis ${ganz(zweiTermineWeg.gewicht + labor.gewichtStartMitTsh)} € für den Start`,
+      en: `approx. €${ganz(zweiTermineWeg.gewicht + labor.gewichtStart)} to ${ganz(zweiTermineWeg.gewicht + labor.gewichtStartMitTsh)} for the start`,
     },
     hinweis: {
       de: 'Weitere Termine zur Begleitung vereinbaren wir nur, wenn Sie das möchten; jeder wird einzeln abgerechnet.',
@@ -118,8 +118,8 @@ export const beispielrechnungen: Beispielrechnung[] = [
       en: `approx. €${ganz(zweiTermineWeg.haare + haarPreis.labor)} in total`,
     },
     hinweis: {
-      de: `Ein späterer Verlaufstermin kostet ca. ${euroDe(haarPreis.verlauf)}. PRP kostet ${caDe(prpPreis.sitzung)} je Sitzung, die Röhrchen eingeschlossen; das Honorar vereinbaren wir vorher schriftlich.`,
-      en: `A later follow-up costs approx. ${euroEn(haarPreis.verlauf)}. PRP costs ${caEn(prpPreis.sitzung)} per session, including the tubes; we agree the fee in writing beforehand.`,
+      de: `Ein späterer Verlaufstermin kostet ca. ${euroDe(haarPreis.verlauf)}. PRP kostet ${caDe(prpPreis.sitzung)} je Sitzung, die Röhrchen eingeschlossen. Abrechnung nach GOÄ mit schriftlicher Honorarvereinbarung, die Sie vor der Behandlung erhalten.`,
+      en: `A later follow-up costs approx. ${euroEn(haarPreis.verlauf)}. PRP costs ${caEn(prpPreis.sitzung)} per session, including the tubes. Billed under the GOÄ with a written fee agreement, which you receive before the treatment.`,
     },
   },
   {
@@ -150,8 +150,8 @@ export const beispielrechnungen: Beispielrechnung[] = [
       en: `approx. ${euroEn(labor.check)}, with a one-off Lp(a) test approx. ${euroEn(labor.checkMitLpa)}; further tests only if there is a reason`,
     },
     typisch: {
-      de: `ca. ${ganz(weg.check + labor.check)}–${ganz(weg.check + labor.checkMitLpa)} € zusammen, ohne Impfungen`,
-      en: `approx. €${ganz(weg.check + labor.check)}–${ganz(weg.check + labor.checkMitLpa)} in total, without vaccinations`,
+      de: `ca. ${ganz(weg.check + labor.check)} bis ${ganz(weg.check + labor.checkMitLpa)} € zusammen, ohne Impfungen`,
+      en: `approx. €${ganz(weg.check + labor.check)} to ${ganz(weg.check + labor.checkMitLpa)} in total, without vaccinations`,
     },
     hinweis: {
       de: `Impfung im Befundtermin ${euroDe(honorar.impfung)}, jede weitere ${euroDe(honorar.weitereImpfung)}, zuzüglich Impfstoff.`,
@@ -247,15 +247,15 @@ export const beispielkostenSeite = {
     ],
   },
   fussnote: {
-    de: 'Beispiele zum Regelsatz der GOÄ, Stand November 2026. Berechnet wird nur, was stattfindet; weniger Termine oder Werte kosten weniger. Für Termine am Samstag sieht die GOÄ einen Zuschlag von ca. 6 € vor. Laborkosten sind Richtwerte; einfache Werte stehen auf unserer Rechnung, die übrigen berechnet das Labor selbst. Keine Umsatzsteuer.',
-    en: 'Examples at the standard GOÄ rate, as of November 2026. You only pay for what takes place; fewer appointments or tests cost less. For appointments on a Saturday, the GOÄ provides for a surcharge of approx. €6. Lab costs are guide values; simple values appear on our invoice, the laboratory invoices the others itself. No VAT.',
+    de: 'Beispiele zum Regelsatz der GOÄ, Stand November 2026, ausgenommen PRP (schriftliche Honorarvereinbarung). Berechnet wird nur, was stattfindet; weniger Termine oder Werte kosten weniger. Für Termine am Samstag sieht die GOÄ einen Zuschlag von ca. 6 € vor. Laborkosten sind Richtwerte; einfache Werte stehen auf unserer Rechnung, die übrigen berechnet das Labor selbst. Keine Umsatzsteuer.',
+    en: 'Examples at the standard GOÄ rate, as of November 2026, except PRP (written fee agreement). You only pay for what takes place; fewer appointments or tests cost less. For appointments on a Saturday, the GOÄ provides for a surcharge of approx. €6. Lab costs are guide values; simple values appear on our invoice, the laboratory invoices the others itself. No VAT.',
   },
   faq: [
     {
       q: { de: 'Was kostet ein Check-up als Selbstzahler?', en: 'What does a self-pay check-up cost?' },
       a: {
-        de: `Bei uns gibt es keinen Paketpreis. Für den Gesundheitscheck in zwei Terminen sind es typisch ca. ${ganz(zweiTermineWeg.check)} € ärztliches Honorar nach GOÄ, mit Ruhe-EKG ca. ${ganz(zweiTermineWeg.checkMitEkg)} €, dazu ca. ${labor.check}–${labor.checkMitLpa} € Laborkosten. Wie viel es bei Ihnen wird, hängt davon ab, welche Werte wir gemeinsam für sinnvoll halten.`,
-        en: `We have no package price. For the health check-up in two appointments it is typically approx. €${ganz(zweiTermineWeg.check)} in medical fees under the GOÄ, with a resting ECG approx. €${ganz(zweiTermineWeg.checkMitEkg)}, plus approx. €${labor.check}–${labor.checkMitLpa} in lab costs. How much it is for you depends on which tests we agree make sense.`,
+        de: `Bei uns gibt es keinen Paketpreis. Für den Gesundheitscheck in zwei Terminen sind es typisch ca. ${ganz(zweiTermineWeg.check)} € ärztliches Honorar nach GOÄ, mit Ruhe-EKG ca. ${ganz(zweiTermineWeg.checkMitEkg)} €, dazu ca. ${labor.check} bis ${labor.checkMitLpa} € Laborkosten. Wie viel es bei Ihnen wird, hängt davon ab, welche Werte wir gemeinsam für sinnvoll halten.`,
+        en: `We have no package price. For the health check-up in two appointments it is typically approx. €${ganz(zweiTermineWeg.check)} in medical fees under the GOÄ, with a resting ECG approx. €${ganz(zweiTermineWeg.checkMitEkg)}, plus approx. €${labor.check} to ${labor.checkMitLpa} in lab costs. How much it is for you depends on which tests we agree make sense.`,
       },
     },
     {
@@ -314,7 +314,7 @@ export const beispielkostenSeite = {
 export interface Richtpreis {
   /** Name der Terminart, wenn zwei Preise nebeneinander stehen */
   name: Localized;
-  /** Kurz für Karten: „ca. 83 € + Labor ca. 27–47 €“ */
+  /** Kurz für Karten: „ca. 83 € + Labor ca. 27 bis 47 €“ */
   kurz: Localized;
   /** Ausführlich für Kopf der Seite und Terminübersicht */
   lang: Localized;
@@ -325,10 +325,10 @@ const r = (b: number) => Math.round(b);
 export const richtpreise: Record<string, Richtpreis> = {
   'pv-v1': {
     name: { de: 'Gesundheitscheck', en: 'Health check-up' },
-    kurz: { de: `ca. ${r(zweiTermineWeg.check)} € + Labor ca. ${labor.check}–${labor.checkMitLpa} €`, en: `approx. €${r(zweiTermineWeg.check)} + lab approx. €${labor.check}–${labor.checkMitLpa}` },
+    kurz: { de: `ca. ${r(zweiTermineWeg.check)} € + Labor ca. ${labor.check} bis ${labor.checkMitLpa} €`, en: `approx. €${r(zweiTermineWeg.check)} + lab approx. €${labor.check} to ${labor.checkMitLpa}` },
     lang: {
-      de: `ca. ${r(zweiTermineWeg.check)} € für beide Termine, dazu Labor ca. ${labor.check}–${labor.checkMitLpa} €`,
-      en: `approx. €${r(zweiTermineWeg.check)} for both appointments, plus lab approx. €${labor.check}–${labor.checkMitLpa}`,
+      de: `ca. ${r(zweiTermineWeg.check)} € für beide Termine, dazu Labor ca. ${labor.check} bis ${labor.checkMitLpa} €`,
+      en: `approx. €${r(zweiTermineWeg.check)} for both appointments, plus lab approx. €${labor.check} to ${labor.checkMitLpa}`,
     },
   },
   'pv-e2': {
@@ -341,10 +341,10 @@ export const richtpreise: Record<string, Richtpreis> = {
   },
   'pv-v4': {
     name: { de: 'Ernährung, Gewicht und Stoffwechsel', en: 'Nutrition, weight and metabolism' },
-    kurz: { de: `ca. ${r(zweiTermineWeg.gewicht)} € + Labor ca. ${labor.gewichtStart}–${labor.gewichtStartMitTsh} €`, en: `approx. €${r(zweiTermineWeg.gewicht)} + lab approx. €${labor.gewichtStart}–${labor.gewichtStartMitTsh}` },
+    kurz: { de: `ca. ${r(zweiTermineWeg.gewicht)} € + Labor ca. ${labor.gewichtStart} bis ${labor.gewichtStartMitTsh} €`, en: `approx. €${r(zweiTermineWeg.gewicht)} + lab approx. €${labor.gewichtStart} to ${labor.gewichtStartMitTsh}` },
     lang: {
-      de: `ca. ${r(zweiTermineWeg.gewicht)} € für beide Termine, dazu Labor ca. ${labor.gewichtStart}–${labor.gewichtStartMitTsh} €`,
-      en: `approx. €${r(zweiTermineWeg.gewicht)} for both appointments, plus lab approx. €${labor.gewichtStart}–${labor.gewichtStartMitTsh}`,
+      de: `ca. ${r(zweiTermineWeg.gewicht)} € für beide Termine, dazu Labor ca. ${labor.gewichtStart} bis ${labor.gewichtStartMitTsh} €`,
+      en: `approx. €${r(zweiTermineWeg.gewicht)} for both appointments, plus lab approx. €${labor.gewichtStart} to ${labor.gewichtStartMitTsh}`,
     },
   },
   'pv-haare': {

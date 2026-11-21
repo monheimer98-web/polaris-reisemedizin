@@ -95,12 +95,12 @@ export const grossesBlutbildGuide: ClinicalPage = {
         de: [
           `Nur das große Blutbild: ärztliches Honorar ${caDe(zweiTermineWeg.werte)} für beide Termine des Laborwerte-Checks, Labor ${caDe(laborwert.grossesBlutbild)}. Zusammen ${caDe(zweiTermineWeg.werte + laborwert.grossesBlutbild)}.`,
           `Großes Blutbild mit Blutfetten, Langzeitzucker, Nieren- und Leberwerten: ärztliches Honorar ebenfalls ${caDe(zweiTermineWeg.werte)}, Labor ${caDe(laborPaket)}. Zusammen ${caDe(zweiTermineWeg.werte + laborPaket)}.`,
-          `Gesundheitscheck mit Untersuchung, Risikoeinschätzung und Befundbericht: ärztliches Honorar ${caDe(zweiTermineWeg.check)} für zwei Termine, mit Ruhe-EKG ${caDe(zweiTermineWeg.checkMitEkg)}, Labor ca. ${labor.check}–${labor.checkMitLpa} €.`,
+          `Gesundheitscheck mit Untersuchung, Risikoeinschätzung und Befundbericht: ärztliches Honorar ${caDe(zweiTermineWeg.check)} für zwei Termine, mit Ruhe-EKG ${caDe(zweiTermineWeg.checkMitEkg)}, Labor ca. ${labor.check} bis ${labor.checkMitLpa} €.`,
         ],
         en: [
           `Full blood count only: medical fee ${caEn(zweiTermineWeg.werte)} for both appointments of the lab value check, laboratory ${caEn(laborwert.grossesBlutbild)}. Together ${caEn(zweiTermineWeg.werte + laborwert.grossesBlutbild)}.`,
           `Full blood count with blood lipids, long-term blood sugar, kidney and liver values: medical fee also ${caEn(zweiTermineWeg.werte)}, laboratory ${caEn(laborPaket)}. Together ${caEn(zweiTermineWeg.werte + laborPaket)}.`,
-          `Health check-up with examination, risk assessment and written report: medical fee ${caEn(zweiTermineWeg.check)} for two appointments, with a resting ECG ${caEn(zweiTermineWeg.checkMitEkg)}, laboratory approx. €${labor.check}–${labor.checkMitLpa}.`,
+          `Health check-up with examination, risk assessment and written report: medical fee ${caEn(zweiTermineWeg.check)} for two appointments, with a resting ECG ${caEn(zweiTermineWeg.checkMitEkg)}, laboratory approx. €${labor.check} to ${labor.checkMitLpa}.`,
         ],
       },
       links: [

@@ -18,7 +18,7 @@ const zeile = (name: string, pfad: string, text: string) => `- [${name}](${url(p
 const praevention = [
   ...preventionOffers.map((o) => zeile(o.page.meta.title.de, preventionPath(o.slug), `${o.teaser.de} Kosten: ${richtpreise[o.bookingType]?.lang.de ?? 'nach GOÄ, siehe Beispielkosten'}.`)),
   ...(hatPrp
-    ? [zeile(haarePrp.meta.title.de, PRP_PFAD, 'Plasma aus dem eigenen Blut bei erblich bedingtem Haarausfall, ca. 260 € je Sitzung. Direkt buchbar, ohne Haarsprechstunde davor; vor der ersten Behandlung Aufklärung, und passt PRP nicht, wird nicht behandelt.')]
+    ? [zeile(haarePrp.meta.title.de, PRP_PFAD, 'Plasma aus dem eigenen Blut bei erblich bedingtem Haarausfall, ca. 260 € je Sitzung, Abrechnung nach GOÄ mit schriftlicher Honorarvereinbarung. Direkt buchbar, ohne Haarsprechstunde davor; vor der ersten Behandlung Aufklärung, und passt PRP nicht, wird nicht behandelt.')]
     : []),
   zeile('Beispielkosten Prävention', '/praevention/kosten', 'Richtwerte nach der Gebührenordnung für Ärzte (GOÄ), je Termin und mit Laborwerten.'),
   zeile('Termin Prävention', '/praevention/termin', 'Ersttermine direkt über die Website buchen, auch am Abend und am Samstag.'),
