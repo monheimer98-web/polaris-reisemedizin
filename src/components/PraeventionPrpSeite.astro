@@ -1,8 +1,8 @@
 ---
 /**
  * Unterseite „PRP bei Haarausfall“ (/praevention/haare/prp, DE und EN gleich).
- * Eigener Buchungsknopf für den ersten PRP-Termin (pv-prp-erst, 60 Min. mit
- * Haarsprechstunde), zweiter Knopf zur Haarsprechstunde. Welche Termine frei
+ * Eigener Buchungsknopf für den PRP-Termin (pv-prp-erst, seit 21.11.2026 ohne
+ * Haarsprechstunde davor), zweiter Knopf zur Haarsprechstunde. Welche Termine frei
  * sind, entscheidet die Praxissoftware (PRP_AB); die Seite nennt kein Datum.
  */
 import ContentLayout from '../layouts/ContentLayout.astro';
@@ -42,10 +42,10 @@ const about = thema ? { ...thema, contraindication: prpGegenanzeigen(lang) } : u
   about={about}
   parent={{ label: de ? 'Haarsprechstunde' : 'Hair consultation', path: getLocalizedPath('/praevention/haare', lang) }}
   cta={{
-    title: de ? 'Ihr erster PRP-Termin' : 'Your first PRP appointment',
+    title: de ? 'PRP-Termin buchen' : 'Book a PRP appointment',
     lead: de
-      ? 'Der erste Termin beginnt mit der Haarsprechstunde. Passt PRP nicht zu Ihrem Haarausfall, behandeln wir nicht und berechnen nur die Haarsprechstunde.'
-      : 'The first appointment begins with the hair consultation. If PRP does not suit your hair loss, we do not treat and only charge for the hair consultation.',
+      ? 'Direkt buchbar, ohne Haarsprechstunde davor: ca. 260 € je Sitzung, Röhrchen eingeschlossen. Vor der ersten Behandlung klären wir Sie auf. Passt PRP nicht zu Ihrem Haarausfall, behandeln wir nicht.'
+      : 'Bookable directly, without a hair consultation beforehand: approx. €260 per session, tubes included. Before the first treatment we explain everything. If PRP does not suit your hair loss, we do not treat.',
     note: preventionHub.ctaNote[lang],
   }}
 >

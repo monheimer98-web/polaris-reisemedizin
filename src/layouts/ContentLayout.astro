@@ -20,7 +20,8 @@ import PraeventionNav from '../components/PraeventionNav.astro';
 import { getLangFromUrl, useTranslations, formatReviewDate, getLocalizedPath, getLogicalPath, HREFLANG } from '../i18n/utils';
 import { SITE_URL, site } from '../config/site';
 import { BOOKING_PATH, bookingHref as bookingLink } from '../config/nav';
-import { PREVENTION_BOOKING_PATH, preventionOnlineBooking } from '../data/praevention';
+import { PREVENTION_BOOKING_PATH, PREVENTION_COSTS_PATH, preventionOnlineBooking } from '../data/praevention';
+import { richtpreise } from '../data/praevention/beispielkosten';
 import { diseaseFacts } from '../data/diseaseFacts';
 import type { UiKey } from '../i18n/ui';
 import type { SourceWithId } from '../data/sources';
@@ -158,6 +159,12 @@ const showToc = toc.length >= 3;
 // (= letztes Pfadsegment) laden. Nur für den Krankheitsbilder-Hub, damit
 // Leistungs-/Top-Level-Seiten unberührt bleiben.
 const slug = getLogicalPath(Astro.url.pathname).split('/').pop() ?? '';
+/* Ungefähre Preise unter den Buchungsknöpfen der Präventionsseiten (Nicki 20./21.11.2026:
+   „ungefähre Preise müssen bei Prävention überall stehen“). Steht ein zweiter Knopf mit
+   eigenem Preis daneben (Haarsprechstunde und PRP), stehen beide Preise mit Namen da. */
+const preise = area === 'praevention' && !noBooking
+  ? [bookingType, secondaryBooking?.type].map((typ) => (typ ? richtpreise[typ] : undefined)).filter((p): p is NonNullable<typeof p> => Boolean(p))
+  : [];
 const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined;
 ---
 
@@ -182,6 +189,17 @@ const facts = hubSegment === 'krankheitsbilder' ? diseaseFacts[slug] : undefined
         }
         {printLabel && <PrintButton label={printLabel} />}
       </div>
+      {
+        preise.length > 0 && (
+          <p class="no-print mt-4 max-w-2xl text-sm leading-relaxed text-ink-soft">
+            <span class="font-semibold text-ink">{lang === 'de' ? 'Kosten:' : 'Costs:'}</span>{' '}
+            {preise.length === 1 ? preise[0].lang[lang] : preise.map((p) => `${p.name[lang]} ${p.lang[lang]}`).join(' · ')}.{' '}
+            <a href={getLocalizedPath(PREVENTION_COSTS_PATH, lang)} class="font-medium text-petrol-700 underline decoration-gold-400/50 underline-offset-4 hover:text-petrol-900">
+              {lang === 'de' ? 'Beispielkosten' : 'Example fees'}
+            </a>
+          </p>
+        )
+      }
       <p class="mt-6 text-sm text-ink-soft">
         <span class="font-medium text-ink">{t('content.lastReviewedLabel')}</span>
         {' '}{formatReviewDate(lastReviewed, lang)}

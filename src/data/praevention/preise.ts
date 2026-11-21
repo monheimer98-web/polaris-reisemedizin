@@ -82,13 +82,12 @@ export const haarPreis = {
  * PRP je Sitzung, PRP-Röhrchen eingeschlossen. Nicki 20.11.2026 abends: „Ich wollte
  * 260 €. Finde ich gut.“ Technisch Honorarvereinbarung nach § 2 GOÄ, Faktor 3,1 auf
  * Nr. 284 und 252 bei 30 Einstichen (233,16 €) plus Röhrchen 27,10 € = 260,26 €.
+ * Seit 21.11.2026 ohne Haarsprechstunde am ersten Termin (Nickis Vorgabe).
  */
 export const prpPreis = {
   sitzung: 260.26,
-  /** Nr. 1 + 5 – Haarsprechstunde zu Beginn des ersten PRP-Termins */
-  sprechstundeErsttermin: 21.44,
-  /** Drei Sitzungen plus Haarsprechstunde = 802,22 €; auf der Website gerundet „ca. 800 €“ */
-  dreiSitzungenRund: 800,
+  /** Drei Sitzungen = 780,78 €; auf der Website gerundet „ca. 780 €“ */
+  dreiSitzungenRund: 780,
 } as const;
 
 /** Ganze Wege in zwei Terminen (Praxis, ohne Labor), Regelsatz. */

@@ -1,5 +1,5 @@
 /**
- * Haarsprechstunde mit Haaranalyse (DE/EN), Seite /praevention/haare, plus
+ * Haarsprechstunde (DE/EN), Seite /praevention/haare, plus
  * die Unterseite /praevention/haare/prp als `haarePrp`. Quelle:
  * haare-seitentexte.md der Sitzung „PRP und Haarsprechstunde“, Stand
  * 20.11.2026, 19:30.
@@ -82,19 +82,19 @@ export const haare: PreventionOffer = {
   ],
   costs: {
     de: [
-      `Wir sind eine Privatpraxis und rechnen nach der Gebührenordnung für Ärzte (GOÄ) ab. Ärztliches Honorar zum Regelsatz, je Termin: Haarsprechstunde mit Haaranalyse und Blutabnahme ${caDe(haarPreis.sprechstunde)}, Befund und Plan ${caDe(haarPreis.befund)}, ein späterer Verlaufstermin ${caDe(haarPreis.verlauf)}. Die Beträge sind Richtwerte.`,
+      `Wir sind eine Privatpraxis und rechnen nach der Gebührenordnung für Ärzte (GOÄ) ab. Ärztliches Honorar zum Regelsatz, je Termin: Haarsprechstunde mit Untersuchung und Blutabnahme ${caDe(haarPreis.sprechstunde)}, Befund und Plan ${caDe(haarPreis.befund)}, ein späterer Verlaufstermin ${caDe(haarPreis.verlauf)}. Die Beträge sind Richtwerte.`,
       `Dazu kommen die Laborkosten für Ferritin, kleines Blutbild und TSH, ${caDe(haarPreis.labor)}. Bei Frauen mit unregelmäßigem Zyklus oder unreiner Haut können weitere Hormonwerte sinnvoll sein; was das kostet, sagen wir Ihnen vorher.`,
       kostenVorab.de,
     ],
     en: [
-      `We are a private practice and bill under the German fee schedule for doctors (GOÄ). Medical fee at the standard rate, per appointment: hair consultation with hair analysis and blood sample ${caEn(haarPreis.sprechstunde)}, results and plan ${caEn(haarPreis.befund)}, a later follow-up ${caEn(haarPreis.verlauf)}. The amounts are guide values.`,
+      `We are a private practice and bill under the German fee schedule for doctors (GOÄ). Medical fee at the standard rate, per appointment: hair consultation with examination and blood sample ${caEn(haarPreis.sprechstunde)}, results and plan ${caEn(haarPreis.befund)}, a later follow-up ${caEn(haarPreis.verlauf)}. The amounts are guide values.`,
       `Lab costs for ferritin, basic blood count and TSH come on top, ${caEn(haarPreis.labor)}. For women with an irregular cycle or blemished skin, further hormone values can be useful; we tell you the cost beforehand.`,
       kostenVorab.en,
     ],
   },
   page: {
     meta: {
-      title: { de: 'Haarsprechstunde mit Haaranalyse', en: 'Hair consultation with hair analysis' },
+      title: { de: 'Haarsprechstunde', en: 'Hair consultation' },
       description: {
         de: 'Haarausfall ärztlich abklären in Langenfeld bei Düsseldorf: Gespräch, Untersuchung der Kopfhaut, Blutwerte und ein klarer Plan in zwei Terminen.',
         en: 'Hair loss assessed by a doctor in Langenfeld near Düsseldorf: conversation, scalp examination, blood tests and a clear plan in two appointments.',
@@ -126,14 +126,14 @@ export const haare: PreventionOffer = {
         },
       },
       {
-        id: 'haaranalyse',
-        heading: { de: 'Haaranalyse: eine ärztliche Untersuchung', en: 'Hair analysis: a medical examination' },
+        id: 'untersuchung',
+        heading: { de: 'Eine ärztliche Untersuchung, kein Haartest', en: 'A medical examination, not a hair test' },
         body: {
           de: [
-            'Unsere Haaranalyse ist eine ärztliche Untersuchung. Sie ist kein Mineraltest an abgeschnittenen Haaren, wie ihn manche Labore anbieten.',
+            'In der Haarsprechstunde untersuchen wir Sie ärztlich: Kopfhaut, Haare und Nägel, dazu Blutwerte. Einen Mineraltest an abgeschnittenen Haaren, wie ihn manche Labore anbieten, machen wir nicht.',
           ],
           en: [
-            'Our hair analysis is a medical examination. It is not a mineral test on cut hair, as some laboratories offer.',
+            'In the hair consultation we examine you medically: scalp, hair and nails, plus blood tests. We do not do a mineral test on cut hair, as some laboratories offer.',
           ],
         },
       },
@@ -210,10 +210,10 @@ export const haare: PreventionOffer = {
         heading: { de: 'PRP: direkt buchen oder nach der Haarsprechstunde', en: 'PRP: book directly or after the hair consultation' },
         body: {
           de: [
-            'PRP ist eine Behandlung mit Plasma aus Ihrem eigenen Blut. Sie können den ersten PRP-Termin direkt über unsere Website buchen. Er beginnt mit einer Haarsprechstunde. Darin klären wir, ob PRP zu Ihrem Haarausfall passt. Passt es nicht, behandeln wir nicht und berechnen nur die Haarsprechstunde. Wenn Sie zuerst nur die Ursache klären möchten, buchen Sie die Haarsprechstunde.',
+            'PRP ist eine Behandlung mit Plasma aus Ihrem eigenen Blut. Sie können einen PRP-Termin direkt über unsere Website buchen, ohne Haarsprechstunde davor. Vor der ersten Behandlung klären wir Sie auf und prüfen kurz, ob PRP zu Ihrem Haarausfall passt. Passt es nicht, behandeln wir nicht. Wenn Sie zuerst die Ursache klären möchten, buchen Sie die Haarsprechstunde.',
           ],
           en: [
-            'PRP is a treatment with plasma from your own blood. You can book the first PRP appointment directly on our website. It begins with a hair consultation, in which we clarify whether PRP suits your hair loss. If it does not, we do not treat and only charge for the hair consultation. If you would first like to clarify the cause only, book the hair consultation.',
+            'PRP is a treatment with plasma from your own blood. You can book a PRP appointment directly on our website, without a hair consultation beforehand. Before the first treatment we explain everything and briefly check whether PRP suits your hair loss. If it does not, we do not treat. If you would first like to clarify the cause, book the hair consultation.',
           ],
         },
         links: [{ label: { de: 'Mehr zu PRP: Ablauf, Studienlage, Kosten', en: 'More about PRP: procedure, evidence, costs' }, path: '/praevention/haare/prp' }],
@@ -262,8 +262,8 @@ export const haare: PreventionOffer = {
       {
         q: { de: 'Kann ich PRP direkt buchen?', en: 'Can I book PRP directly?' },
         a: {
-          de: 'Ja. Ihr erster PRP-Termin beginnt dann mit der Haarsprechstunde. Passt PRP nicht zu Ihrem Haarausfall, behandeln wir nicht und berechnen nur die Haarsprechstunde.',
-          en: 'Yes. Your first PRP appointment then begins with the hair consultation. If PRP does not suit your hair loss, we do not treat and only charge for the hair consultation.',
+          de: 'Ja, auch ohne Haarsprechstunde davor. Vor der ersten Behandlung klären wir Sie auf und prüfen kurz, ob PRP zu Ihnen passt. Passt es nicht, behandeln wir nicht, und Sie zahlen keine PRP-Sitzung.',
+          en: 'Yes, even without a hair consultation beforehand. Before the first treatment we explain everything and briefly check whether PRP suits you. If it does not, we do not treat, and you do not pay for a PRP session.',
         },
       },
       {
@@ -279,8 +279,11 @@ export const haare: PreventionOffer = {
 
 /**
  * Unterseite /praevention/haare/prp (DE/EN), Texte aus haare-seitentexte.md,
- * Stand 20.11.2026, 19:30. PRP ist direkt buchbar (Terminart pv-prp-erst,
- * 60 Min., beginnt mit der Haarsprechstunde). Welche Termine online frei sind,
+ * Stand 20.11.2026, 19:30. PRP ist direkt buchbar (Terminart pv-prp-erst).
+ * Seit 21.11.2026 ohne Haarsprechstunde davor (Nicki: „prp haare als termin
+ * ohne sprechstunde soll buchbar sein direkt“); Aufklärung, Prüfung auf
+ * Gegenanzeigen und die schriftliche Honorarvereinbarung bleiben vor der ersten
+ * Behandlung im selben Termin. Welche Termine online frei sind,
  * steuert die Praxissoftware (PRP_AB: erste Termine ab 04.12.2026); die Seite
  * nennt deshalb kein Datum. Preis ca. 260 € je Sitzung (Nicki 20.11. abends,
  * prpPreis in preise.ts). Bewusst ohne „Tabletten auf Rezept“
@@ -288,20 +291,18 @@ export const haare: PreventionOffer = {
  */
 const prpKostenDe = [
   `${caDe(prpPreis.sitzung)} je Sitzung, die PRP-Röhrchen eingeschlossen.`,
-  `Am ersten Termin kommt die Haarsprechstunde dazu, ${caDe(prpPreis.sprechstundeErsttermin)}.`,
   `Für drei Sitzungen rechnen Sie mit ${caDe(prpPreis.dreiSitzungenRund)}.`,
   'Das Honorar vereinbaren wir vor der ersten Behandlung schriftlich mit Ihnen. So sieht es die Gebührenordnung für Ärzte (GOÄ) vor.',
   'Es gibt keine Pakete. Sie zahlen jede Sitzung einzeln und können nach jeder Sitzung entscheiden, ob Sie weitermachen.',
-  'Passt PRP nicht zu Ihrem Haarausfall, behandeln wir nicht. Dann zahlen Sie nur die Haarsprechstunde.',
+  'Passt PRP nicht zu Ihrem Haarausfall, behandeln wir nicht. Dann zahlen Sie keine PRP-Sitzung.',
   'Rechnen Sie damit, dass Sie PRP selbst zahlen.',
 ];
 const prpKostenEn = [
   `${caEn(prpPreis.sitzung)} per session, including the PRP tubes.`,
-  `At the first appointment the hair consultation is added, ${caEn(prpPreis.sprechstundeErsttermin)}.`,
   `For three sessions, expect ${caEn(prpPreis.dreiSitzungenRund)}.`,
   'We agree the fee with you in writing before the first treatment, as the German fee schedule for doctors (GOÄ) requires.',
   'There are no packages. You pay for each session individually and can decide after each session whether to continue.',
-  'If PRP does not suit your hair loss, we do not treat. You then only pay for the hair consultation.',
+  'If PRP does not suit your hair loss, we do not treat. You then do not pay for a PRP session.',
   'Expect to pay for PRP yourself.',
 ];
 
@@ -314,8 +315,8 @@ export const haarePrp: ClinicalPage = {
     },
     eyebrow: { de: 'Prävention', en: 'Prevention' },
     lead: {
-      de: 'PRP heißt plättchenreiches Plasma. Wir nehmen Ihnen etwas Blut ab. Eine Zentrifuge trennt daraus den Teil mit vielen Blutplättchen ab. Diesen Teil spritzen wir mit einer sehr feinen Nadel in die Kopfhaut. Die Idee: Wachstumsstoffe aus den Blutplättchen sollen die Haarwurzeln anregen. PRP ist eine Ergänzung. Es ist nicht die erste Wahl bei Haarausfall. Deshalb prüfen wir vor der ersten Behandlung in einer Haarsprechstunde, ob PRP zu Ihrem Haarausfall passt.',
-      en: 'PRP stands for platelet-rich plasma. We take a little of your blood. A centrifuge separates out the part with many platelets. We inject this part into the scalp with a very fine needle. The idea: growth factors from the platelets are meant to stimulate the hair roots. PRP is an add-on. It is not the first choice for hair loss. That is why, before the first treatment, we check in a hair consultation whether PRP suits your hair loss.',
+      de: 'PRP heißt plättchenreiches Plasma. Wir nehmen Ihnen etwas Blut ab. Eine Zentrifuge trennt daraus den Teil mit vielen Blutplättchen ab. Diesen Teil spritzen wir mit einer sehr feinen Nadel in die Kopfhaut. Die Idee: Wachstumsstoffe aus den Blutplättchen sollen die Haarwurzeln anregen. PRP ist eine Ergänzung. Es ist nicht die erste Wahl bei Haarausfall. Deshalb prüfen wir vor der ersten Behandlung kurz, ob PRP zu Ihrem Haarausfall passt. Eine Haarsprechstunde vorher ist nicht nötig.',
+      en: 'PRP stands for platelet-rich plasma. We take a little of your blood. A centrifuge separates out the part with many platelets. We inject this part into the scalp with a very fine needle. The idea: growth factors from the platelets are meant to stimulate the hair roots. PRP is an add-on. It is not the first choice for hair loss. That is why, before the first treatment, we briefly check whether PRP suits your hair loss. A hair consultation beforehand is not necessary.',
     },
   },
   sections: [
@@ -398,7 +399,7 @@ export const haarePrp: ClinicalPage = {
       },
       list: {
         de: [
-          'Haarsprechstunde: Gespräch, Untersuchung von Kopfhaut, Haaren und Nägeln, Fotos.',
+          'Kurzes Gespräch: Wir fragen nach Gegenanzeigen und sehen uns Kopfhaut und Haare an. Dazu Fotos für den späteren Vergleich.',
           'Wir sagen Ihnen, ob PRP passt. Wenn ja, klären wir Sie über Ablauf, Nutzen und Risiken auf. Sie bekommen die Kosten schriftlich.',
           'Wir nehmen etwas Blut aus der Armvene ab, wie bei einer Blutabnahme.',
           'Die Zentrifuge trennt das Plasma ab. Das dauert etwa zehn Minuten.',
@@ -406,7 +407,7 @@ export const haarePrp: ClinicalPage = {
           'Danach können Sie direkt nach Hause oder zur Arbeit. Was Sie am selben Tag meiden sollten, steht auf einem Merkblatt, das Sie mitbekommen.',
         ],
         en: [
-          'Hair consultation: conversation, examination of scalp, hair and nails, photos.',
+          'Short conversation: we ask about contraindications and look at your scalp and hair, with photos for later comparison.',
           'We tell you whether PRP suits you. If so, we explain the procedure, benefits and risks. You receive the costs in writing.',
           'We take a little blood from a vein in your arm, as for a blood test.',
           'The centrifuge separates the plasma. This takes about ten minutes.',
@@ -471,12 +472,12 @@ export const haarePrp: ClinicalPage = {
       },
       list: {
         de: [
-          'Sie buchen den ersten PRP-Termin über unsere Website. Oder Sie buchen zuerst die Haarsprechstunde, wenn Sie erst die Ursache klären möchten.',
+          'Sie buchen den PRP-Termin direkt über unsere Website, ohne Haarsprechstunde davor. Oder Sie buchen zuerst die Haarsprechstunde, wenn Sie erst die Ursache klären möchten.',
           'Am ersten Termin klären wir zuerst, ob PRP passt. Wenn ja, behandeln wir direkt.',
           'Die zweite und dritte Sitzung vereinbaren wir mit Ihnen vor Ort.',
         ],
         en: [
-          'You book the first PRP appointment on our website. Or you book the hair consultation first if you would like to clarify the cause first.',
+          'You book the PRP appointment directly on our website, without a hair consultation beforehand. Or you book the hair consultation first if you would like to clarify the cause first.',
           'At the first appointment we first clarify whether PRP suits you. If so, we treat you straight away.',
           'We arrange the second and third sessions with you at the practice.',
         ],
@@ -530,8 +531,8 @@ export const haarePrp: ClinicalPage = {
     {
       q: { de: 'Was passiert, wenn PRP bei mir nicht passt?', en: 'What happens if PRP is not right for me?' },
       a: {
-        de: 'Dann behandeln wir nicht. Sie zahlen nur die Haarsprechstunde und erfahren, was bei Ihrer Form von Haarausfall besser hilft. Wenn nötig, schicken wir Sie mit einem kurzen Bericht zur Hautärztin oder zum Hautarzt.',
-        en: 'Then we do not treat. You only pay for the hair consultation and find out what helps better with your type of hair loss. If necessary, we refer you to a dermatologist with a short report.',
+        de: 'Dann behandeln wir nicht, und Sie zahlen keine PRP-Sitzung. Wir sagen Ihnen, was bei Ihrer Form von Haarausfall besser helfen kann; die Ursache klären wir gern in der Haarsprechstunde. Wenn nötig, schicken wir Sie mit einem kurzen Bericht zur Hautärztin oder zum Hautarzt.',
+        en: 'Then we do not treat, and you do not pay for a PRP session. We tell you what may help better with your type of hair loss; we are happy to clarify the cause in the hair consultation. If necessary, we refer you to a dermatologist with a short report.',
       },
     },
     {

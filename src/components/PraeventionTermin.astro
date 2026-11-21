@@ -4,7 +4,8 @@
  * Buchung mit `bereich=praevention` ein, Reise-Terminarten bleiben auf /termin.
  * Mit `preventionOnlineBooking = false` stehen statt der Buchung Telefon und
  * E-Mail. Indexierbar (eigener Inhalt: was zuerst buchen, Ablauf in zwei
- * Terminen); keine festen Beträge, sondern Hinweis auf die Beispielkosten.
+ * Terminen). Ungefähre Preise je Angebot aus `richtpreise` (Nicki 20./21.11.2026),
+ * dazu der Hinweis auf die Beispielkosten.
  * Sprache aus der URL.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -25,6 +26,7 @@ import {
   preventionOnlineBooking,
   preventionPath,
 } from '../data/praevention';
+import { richtpreise } from '../data/praevention/beispielkosten';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -62,6 +64,22 @@ const faq = de
       { q: 'Can I send results in advance?', a: 'Please bring existing results to the appointment. Please do not send health data by e-mail.' },
       { q: 'Can I book by phone?', a: 'Yes. Call us and we will find a suitable appointment together.' },
     ];
+// Angebote mit Preis; PRP als eigener Termin ohne Haarsprechstunde (Nicki 21.11.2026).
+const zeilen = [
+  ...preventionOffers.map((o) => ({ name: o.shortName[lang], path: preventionPath(o.slug), text: o.facts.appointments[lang], preis: richtpreise[o.bookingType]?.lang[lang] })),
+  ...(preventionOffers.some((o) => o.slug === 'haare')
+    ? [
+        {
+          name: 'PRP Haare',
+          path: '/praevention/haare/prp',
+          text: de
+            ? 'Eigener Termin, direkt buchbar, ohne Haarsprechstunde davor. Vor der ersten Behandlung klären wir Sie auf.'
+            : 'A separate appointment, bookable directly, without a hair consultation beforehand. Before the first treatment we explain everything.',
+          preis: richtpreise['pv-prp-erst']?.lang[lang],
+        },
+      ]
+    : []),
+];
 const crumbs = [
   { label: t('nav.home'), path: getLocalizedPath('/', lang) },
   { label: t('nav.preventionArea'), path: getLocalizedPath(PREVENTION_PATH, lang) },
@@ -127,15 +145,18 @@ const crumbs = [
       <h2 class="text-2xl sm:text-3xl">{de ? 'Unsere Angebote' : 'Our services'}</h2>
       <ul class="mt-6 divide-y divide-petrol-100 rounded-2xl border border-petrol-100 bg-white">
         {
-          preventionOffers.map((o) => (
+          zeilen.map((z) => (
             <li class="grid gap-1 px-5 py-4 sm:grid-cols-[14rem_1fr] sm:gap-6">
               <a
-                href={getLocalizedPath(preventionPath(o.slug), lang)}
+                href={getLocalizedPath(z.path, lang)}
                 class="font-semibold text-petrol-900 underline decoration-gold-400/50 underline-offset-4"
               >
-                {o.shortName[lang]}
+                {z.name}
               </a>
-              <p class="text-sm leading-relaxed text-ink-soft">{o.facts.appointments[lang]}</p>
+              <div>
+                {z.preis && <p class="text-sm font-semibold text-petrol-900">{z.preis}</p>}
+                <p class="mt-0.5 text-sm leading-relaxed text-ink-soft">{z.text}</p>
+              </div>
             </li>
           ))
         }

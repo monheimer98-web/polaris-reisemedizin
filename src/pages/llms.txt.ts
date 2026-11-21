@@ -4,6 +4,7 @@
  * Datei liest, ist nicht gesichert; sie fasst nur zusammen, was auf den Seiten
  * steht, und wird bei jedem Bau aus denselben Daten erzeugt.
  */
+import { richtpreise } from '../data/praevention/beispielkosten';
 import type { APIRoute } from 'astro';
 import { site, SITE_URL } from '../config/site';
 import { preventionOffers, preventionPath } from '../data/praevention';
@@ -15,9 +16,9 @@ const url = (pfad: string) => new URL(pfad.endsWith('/') ? pfad : `${pfad}/`, SI
 const zeile = (name: string, pfad: string, text: string) => `- [${name}](${url(pfad)}): ${text}`;
 
 const praevention = [
-  ...preventionOffers.map((o) => zeile(o.page.meta.title.de, preventionPath(o.slug), o.teaser.de)),
+  ...preventionOffers.map((o) => zeile(o.page.meta.title.de, preventionPath(o.slug), `${o.teaser.de} Kosten: ${richtpreise[o.bookingType]?.lang.de ?? 'nach GOÄ, siehe Beispielkosten'}.`)),
   ...(hatPrp
-    ? [zeile(haarePrp.meta.title.de, PRP_PFAD, 'Plasma aus dem eigenen Blut bei erblich bedingtem Haarausfall. Der erste Termin beginnt mit einer Haarsprechstunde; passt PRP nicht, wird nicht behandelt.')]
+    ? [zeile(haarePrp.meta.title.de, PRP_PFAD, 'Plasma aus dem eigenen Blut bei erblich bedingtem Haarausfall, ca. 260 € je Sitzung. Direkt buchbar, ohne Haarsprechstunde davor; vor der ersten Behandlung Aufklärung, und passt PRP nicht, wird nicht behandelt.')]
     : []),
   zeile('Beispielkosten Prävention', '/praevention/kosten', 'Richtwerte nach der Gebührenordnung für Ärzte (GOÄ), je Termin und mit Laborwerten.'),
   zeile('Termin Prävention', '/praevention/termin', 'Ersttermine direkt über die Website buchen, auch am Abend und am Samstag.'),

@@ -302,3 +302,62 @@ export const beispielkostenSeite = {
     },
   ],
 };
+
+/**
+ * Ungefährer Preis je Terminart für Karten, den Kopf der Angebotsseiten, die
+ * Terminübersicht und /leistungen. Nicki 20./21.11.2026: „ungefähre Preise müssen
+ * bei Prävention überall stehen“. Wie bei der Reisemedizin („ca. 38 € + Impfstoff“):
+ * ärztliches Honorar zum Regelsatz für beide Termine, das Labor getrennt dahinter.
+ * Gleiche Zahlen wie die Beispielrechnungen oben; kein „ab“, kein „nur“, nie „inklusive Labor“.
+ * Schlüssel ist die Terminart (`bookingType`), damit Seiten mit Buchungsknopf den Preis finden.
+ */
+export interface Richtpreis {
+  /** Name der Terminart, wenn zwei Preise nebeneinander stehen */
+  name: Localized;
+  /** Kurz für Karten: „ca. 83 € + Labor ca. 27–47 €“ */
+  kurz: Localized;
+  /** Ausführlich für Kopf der Seite und Terminübersicht */
+  lang: Localized;
+}
+
+const r = (b: number) => Math.round(b);
+
+export const richtpreise: Record<string, Richtpreis> = {
+  'pv-v1': {
+    name: { de: 'Gesundheitscheck', en: 'Health check-up' },
+    kurz: { de: `ca. ${r(zweiTermineWeg.check)} € + Labor ca. ${labor.check}–${labor.checkMitLpa} €`, en: `approx. €${r(zweiTermineWeg.check)} + lab approx. €${labor.check}–${labor.checkMitLpa}` },
+    lang: {
+      de: `ca. ${r(zweiTermineWeg.check)} € für beide Termine, dazu Labor ca. ${labor.check}–${labor.checkMitLpa} €`,
+      en: `approx. €${r(zweiTermineWeg.check)} for both appointments, plus lab approx. €${labor.check}–${labor.checkMitLpa}`,
+    },
+  },
+  'pv-e2': {
+    name: { de: 'Laborwerte-Check', en: 'Lab value check' },
+    kurz: { de: `ca. ${r(zweiTermineWeg.werte)} € + Labor je nach Wert`, en: `approx. €${r(zweiTermineWeg.werte)} + lab depending on the test` },
+    lang: {
+      de: `ca. ${r(zweiTermineWeg.werte)} € für beide Termine, dazu Labor je nach Wert, z. B. Vitamin D ca. ${r(laborwert.vitaminD)} €`,
+      en: `approx. €${r(zweiTermineWeg.werte)} for both appointments, plus lab depending on the test, e.g. vitamin D approx. €${r(laborwert.vitaminD)}`,
+    },
+  },
+  'pv-v4': {
+    name: { de: 'Ernährung, Gewicht und Stoffwechsel', en: 'Nutrition, weight and metabolism' },
+    kurz: { de: `ca. ${r(zweiTermineWeg.gewicht)} € + Labor ca. ${labor.gewichtStart}–${labor.gewichtStartMitTsh} €`, en: `approx. €${r(zweiTermineWeg.gewicht)} + lab approx. €${labor.gewichtStart}–${labor.gewichtStartMitTsh}` },
+    lang: {
+      de: `ca. ${r(zweiTermineWeg.gewicht)} € für beide Termine, dazu Labor ca. ${labor.gewichtStart}–${labor.gewichtStartMitTsh} €`,
+      en: `approx. €${r(zweiTermineWeg.gewicht)} for both appointments, plus lab approx. €${labor.gewichtStart}–${labor.gewichtStartMitTsh}`,
+    },
+  },
+  'pv-haare': {
+    name: { de: 'Haarsprechstunde', en: 'Hair consultation' },
+    kurz: { de: `ca. ${r(zweiTermineWeg.haare)} € + Labor ca. ${haarPreis.labor} €`, en: `approx. €${r(zweiTermineWeg.haare)} + lab approx. €${haarPreis.labor}` },
+    lang: {
+      de: `ca. ${r(zweiTermineWeg.haare)} € für beide Termine, dazu Labor ca. ${haarPreis.labor} €`,
+      en: `approx. €${r(zweiTermineWeg.haare)} for both appointments, plus lab approx. €${haarPreis.labor}`,
+    },
+  },
+  'pv-prp-erst': {
+    name: { de: 'PRP', en: 'PRP' },
+    kurz: { de: `${caDe(prpPreis.sitzung)} je Sitzung`, en: `${caEn(prpPreis.sitzung)} per session` },
+    lang: { de: `${caDe(prpPreis.sitzung)} je Sitzung, Röhrchen eingeschlossen`, en: `${caEn(prpPreis.sitzung)} per session, tubes included` },
+  },
+};

@@ -15,6 +15,7 @@ import { abroadOccasions, abroadPilgrimage } from '../config/nav';
 import { NACHWEISE_IM_ANGEBOT } from '../data/ausland/stand';
 import { auslandKacheln } from '../data/ausland/hub';
 import { PREVENTION_PATH, preventionOffers, preventionPath } from '../data/praevention';
+import { richtpreise } from '../data/praevention/beispielkosten';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -63,11 +64,15 @@ const pvIcon: Record<string, string> = {
   'gewicht-und-stoffwechsel': 'pvWeight',
   haare: 'pvHair',
 };
-const praevention: Karte[] = preventionOffers.map((o) => ({
+const praevention: (Karte & { preis?: string })[] = preventionOffers.map((o) => ({
   variant: pvIcon[o.slug] ?? 'pvCheck',
   title: o.shortName[lang],
   text: o.teaser[lang],
   path: preventionPath(o.slug),
+  preis: [o.bookingType, o.secondaryBooking?.type]
+    .map((typ, i) => (typ && richtpreise[typ] ? `${i > 0 ? `${richtpreise[typ].name[lang]}: ` : ''}${richtpreise[typ].lang[lang]}` : ''))
+    .filter(Boolean)
+    .join(' · '),
 }));
 const de = lang === 'de';
 const hatHaare = preventionOffers.some((o) => o.slug === 'haare');
@@ -130,6 +135,7 @@ const anlaesse = [...abroadOccasions, abroadPilgrimage];
             cta={t('cta.serviceDetail')}
             href={getLocalizedPath(karte.path, lang)}
             headingLevel="h3"
+            price={karte.preis || undefined}
           />
         ))}
       </div>
